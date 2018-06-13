@@ -13,7 +13,7 @@ The following figure illustrates the concept of an ECS instance. You can use the
 Know the basic concepts before you proceed to use ECS:
 
 -   [Region and zone](https://www.alibabacloud.com/help/doc-detail/40654.htm): A physical location where a data center is located.
--   [Instance](intl.en-US/Product Introduction/Instance.md#)A virtual computing environment that includes CPU, memory, operating system, bandwidth, disks, and other basic computing components.
+-   [Instance](intl.en-US/Product Introduction/Instance.md#): A virtual computing environment that includes CPU, memory, operating system, bandwidth, disks, and other basic computing components.
 -   [Instance type](intl.en-US/Product Introduction/Instance type families.md#): The specification of an ECS instance, including the number of vCPU cores, memory, networking performance. An instance type determines the compute capability of an ECS instance.
 -   [Images](intl.en-US/Product Introduction/Images.md#): A running environment template for ECS instances. It generally includes an operating system and preinstalled software. The operating system supports multiple Linux verions and various Windows versions.
 -   [Block storage](intl.en-US/Product Introduction/Block storage.md#): Block level storage products for your ECS, including elastic block storage based on the distributed storage architecture and local disks located on the physical server that an ECS instance is hosted on.
