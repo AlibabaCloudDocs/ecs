@@ -13,7 +13,7 @@ The following figure illustrates the concept of an ECS instance. You can use the
 Know the basic concepts before you proceed to use ECS:
 
 -   [Region and zone](https://www.alibabacloud.com/help/doc-detail/40654.htm): A physical location where a data center is located.
--   [Instance](intl.en-US/Product Introduction/Instance.md#)A virtual computing environment that includes CPU, memory, operating system, bandwidth, disks, and other basic computing components.
+-   [Instance](intl.en-US/Product Introduction/Instance.md#): A virtual computing environment that includes CPU, memory, operating system, bandwidth, disks, and other basic computing components.
 -   [Instance type](intl.en-US/Product Introduction/Instance type families.md#): The specification of an ECS instance, including the number of vCPU cores, memory, networking performance. An instance type determines the compute capability of an ECS instance.
 -   [Images](intl.en-US/Product Introduction/Images.md#): A running environment template for ECS instances. It generally includes an operating system and preinstalled software. The operating system supports multiple Linux verions and various Windows versions.
 -   [Block storage](intl.en-US/Product Introduction/Block storage.md#): Block level storage products for your ECS, including elastic block storage based on the distributed storage architecture and local disks located on the physical server that an ECS instance is hosted on.
@@ -24,7 +24,7 @@ Know the basic concepts before you proceed to use ECS:
 -   [Security groups](intl.en-US/Product Introduction/Network & Security/Security groups.md#): A logical group that groups instances in the same region with the same security requirements and mutual trust. A security group works as a virtual firewall for the ECS instances inside it.
 -   [SSH key pairs](intl.en-US/Product Introduction/Network & Security/SSH key pairs.md#) : A secure authentication method to remotely log on to Linux instances. The public key is placed in a Linux instance, and you can use the private key to log on to the instance by using SSH commands or related tools. Besides, you can use a [password](../intl.en-US/User Guide/Connect/Connect to a Linux instance by using a password.md#) to log on to a Linux instance.
 -   IP address: When an ECS instance is created, a private IP address is assigned to it for  [intranet communication](intl.en-US/Product Introduction/Network & Security/Intranet.md#). If the instance needs Internet access, a public IP address is assigned.
--   [EIP address \(EIP\)](https://help.aliyun.com/product/61789.html): A public IP address resource that you can purchase and possess independently. You can bind an EIP address to a VPC-Connected ECS instance.
+-   [EIP address \(EIP\)](https://www.alibabacloud.com/help/zh/product/61789.htm): A public IP address resource that you can purchase and possess independently. You can bind an EIP address to a VPC-Connected ECS instance.
 -   [ECS console](https://ecs.console.aliyun.com/#/home): The Web application for managing ECS instances.
 -   [ECS console](https://partners-intl.console.aliyun.com/#/ecs): The Web application for managing ECS instances.
 
