@@ -60,27 +60,31 @@ Create a JSON file named alicloud and paste the following content:
 ```
 
 
-"variables": {
-"access_key": "{{env `ALICLOUD_ACCESS_KEY`}}",
-"secret_key": "{{env `ALICLOUD_SECRET_KEY`}}"
-
-"builders": [{
-"type":"alicloud-ecs",
-"access_key":"{{user `access_key`}}",
-"secret_key":"{{user `secret_key`}}",
-"region":"cn-beijing",
-"image_name":"packer_basic",
-"source_image":"centos_7_02_64_20G_alibase_20170818.vhd",
-"ssh_username":"root",
-"instance_type":"ecs.n1.tiny",
-"internet_charge_type":"PayByTraffic",
-"io_optimized":"true"
-
-"provisioners": [{
-"type": "shell",
-"inline": [
-"sleep 30",
-"yum install redis.x86_64 -y"
+{
+  "variables": {
+    "access_key": "{{env `ALICLOUD_ACCESS_KEY`}}",
+    "secret_key": "{{env `ALICLOUD_SECRET_KEY`}}"
+  },
+  "builders": [{
+    "type":"alicloud-ecs",
+    "access_key":"{{user `access_key`}}",
+    "secret_key":"{{user `secret_key`}}",
+    "region":"cn-beijing",
+    "image_name":"packer_basic",
+    "source_image":"centos_7_02_64_20G_alibase_20170818.vhd",
+    "ssh_username":"root",
+    "instance_type":"ecs.n1.tiny",
+    "io_optimized":"true",
+    "internet_charge_type":"PayByTraffic"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sleep 30",
+      "yum install redis.x86_64 -y"
+    ]
+  }]
+}
 
 
 
