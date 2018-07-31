@@ -8,7 +8,7 @@ When you call this interface, consider the following:
 
 -   You can use a custom image only after its status becomes **Available** \(`Available`\).
 
--   If the specified instance is [locked](intl.en-US/API Reference/Appendix/API behavior when an instance is locked for security reasons.md#), and the `OperationLocks` of the instance indicates `LockReason:  "security"`.
+-   If the specified instance is [locked](intl.en-US/API Reference/Appendix/API behavior when an instance is locked for security reasons.md#), and the `OperationLocks` of the instance indicates `LockReason:  "security"`.You Can’t create custom image.
 
 
 **Approaches**
