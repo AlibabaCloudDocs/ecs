@@ -39,7 +39,7 @@ https://ecs.aliyuncs.com/?Action=DescribeRegions
     <RequestId>611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F</RequestId>
     <Regions>
         <Region>
-            <RegionId>cn-hangzhou </RegionId>
+            <RegionId>cn-hangzhou</RegionId>
         </Region>
         <Region>
             <RegionId>cn-qingdao</RegionId>
@@ -55,7 +55,7 @@ https://ecs.aliyuncs.com/?Action=DescribeRegions
     "RequestId": "611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F",
     "Regions": {
         "Region": [{
-            "RegionId": "cn-hangzhou "
+            "RegionId": "cn-hangzhou"
         },
         {
             "RegionId": "cn-qingdao"
