@@ -127,6 +127,78 @@
 4.  部分操作系统里，修改分区后可能会重新自动挂载文件系统。建议先执行 `df -h` 重新查看文件系统空间和使用情况。如果文件系统重新被挂载，执行 `umount [文件系统名称]` 再次卸载文件系统。
 5.  检查文件系统，并变更文件系统大小。
 
+    首先 使用 df 或 parted 查看文件系统类型 
+
+    ```
+    
+    # 检查文件系统 选择已安装的命令执行
+    df -Th | grep "^/dev"
+    parted /dev/vdb1 'print'
+    
+    
+    ```
+
+    如果显示扩容的分区类型是 xfs 系列，使用 
+
+    ```
+    
+    xfs_repair /dev/vdb1 # 检查文件系统
+    xfs_growfs /dev/vdb1 # 变更
+    xfs_info /dev/vdb1 # 查看文件系统
+    
+    
+    ```
+
+    以下为示例输出结果。
+
+    ```
+    
+    [root@iXXXXXX ~]# xfs_repair /dev/vdb1
+    Phase 1 - find and verify superblock...
+    Phase 2 - using internal log
+            - zero log...
+            - scan filesystem freespace and inode maps...
+            - found root inode chunk
+    Phase 3 - for each AG...
+            - scan and clear agi unlinked lists...
+            - process known inodes and perform inode discovery...
+            - agno = 0
+            - agno = 1
+            - agno = 2
+            - agno = 3
+            - process newly discovered inodes...
+    Phase 4 - check for duplicate blocks...
+            - setting up duplicate extent list...
+            - check for inodes claiming duplicate blocks...
+            - agno = 0
+            - agno = 1
+            - agno = 2
+            - agno = 3
+    Phase 5 - rebuild AG headers and trees...
+            - reset superblock...
+    Phase 6 - check inode connectivity...
+            - resetting contents of realtime bitmap and summary inodes
+            - traversing filesystem ...
+            - traversal finished ...
+            - moving disconnected inodes to lost+found ...
+    Phase 7 - verify and correct link counts...
+    done
+    [root@iXXXXXX ~]# xfs_growfs /dev/vdb1
+    meta-data=/dev/vdb1              isize=256    agcount=4, agsize=26214336 blks
+             =                       sectsz=512   attr=2, projid32bit=1
+             =                       crc=0        finobt=0
+    data     =                       bsize=4096   blocks=104857344, imaxpct=25
+             =                       sunit=0      swidth=0 blks
+    naming   =version 2              bsize=4096   ascii-ci=0 ftype=0
+    log      =internal               bsize=4096   blocks=51199, version=2
+             =                       sectsz=512   sunit=0 blks, lazy-count=1
+    realtime =none                   extsz=4096   blocks=0, rtextents=0
+    data blocks changed from 104857344 to 157286144
+    ```
+
+
+    否则如果显示为 ext 系列的格式， 使用以下命令 
+
     ```
     
     e2fsck -f /dev/vdb1 # 检查文件系统
