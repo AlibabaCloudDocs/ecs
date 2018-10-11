@@ -96,3 +96,21 @@
 2.  运行命令修改私钥文件的属性：`chmod 400 [.pem私钥文件在本地机上的存储路径]`。例如， `chmod 400 /root/xxx.pem`。
 3.  运行命令连接至实例：`ssh -i [.pem私钥文件在本地机上的存储路径] root@[公网IP地址]`。例如， `ssh -i /root/xxx.pem root@10.10.10.100`。
 
+**通过SSH配置简化连接命令**
+
+进入用户根目录的ssh目录，修改其中的config文件如下:
+
+```
+Host ecs    // ecs服务器的别名
+HostName 192.168.211.218 // ecs服务器的公网地址
+Port 1022   // 端口
+User root   // 登录账号
+IdentityFile ~/.ssh/ecs.pem // .pem私钥在本机的地址
+```
+
+保存config后，重启ssh。以后连接ECS服务器只需输入如下命令即可：`ssh [ecs别名]`。例如，`ssh ecs`。
+
+
+
+
+
