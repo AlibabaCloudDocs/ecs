@@ -26,7 +26,7 @@ Any of the following sets of parameters can determine a Security Group Entry dir
 -   all: Support four protocols at the same time
 
 |
-|Portrange|String|Yes.|Range of the port numbers of a specific IP protocol. value:-   TCP/UDP: 1/65535  . Use the slash \(/\) to separate the starting and ending ports. For example, `1/200` indicates that the range of the port numbers is \[1, 200\], and an error returns if you specify TCP/UDP to `200/1`.
+|PortRange|String|Yes.|Range of the port numbers of a specific IP protocol. value:-   TCP/UDP: 1/65535  . Use the slash \(/\) to separate the starting and ending ports. For example, `1/200` indicates that the range of the port numbers is \[1, 200\], and an error returns if you specify TCP/UDP to `200/1`.
 -   ICMP: -1/-1
 -   GRE: -1/-1
 -   All: -1/-1
