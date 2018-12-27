@@ -15,10 +15,25 @@
 实例元数据请参阅 [实例元数据](cn.zh-CN/用户指南/实例/实例自定义数据和元数据/实例元数据.md#)，并通过以下元数据项获取 IPv6 地址：
 
 -   IPv6 地址：network/interfaces/macs/\[mac\]/ipv6s
-
 -   IPv6 网关：network/interfaces/macs/\[mac\]/ipv6-gateway
-
 -   IPv6 虚拟交换机 CIDR 地址段：network/interfaces/macs/\[mac\]/vswitch-ipv6-cidr-block
+
+**具体操作方式如下：**
+
+打开 **PowerShell**，首先运行如下语句获取 MAC 信息：
+
+```powershell
+Invoke-RestMethod http://100.100.100.200/2016-01-01/meta-data/mac
+```
+
+例如返回：`00:16:3e:00:24:64` 后续使用 `00:16:3e:00:24:64` 代替 `[mac]`
+
+获取 IPv6 地址和 IPv6 网关：
+
+```powershell
+Invoke-RestMethod http://100.100.100.200/2016-01-01/meta-data/network/interfaces/macs/[返回的mac地址]/ipv6s
+Invoke-RestMethod http://100.100.100.200/2016-01-01/meta-data/network/interfaces/[返回的mac地址]/00:16:3e:00:24:64/ipv6s
+```
 
 
 ## 步骤 2：配置静态 IPv6 地址 {#section_lxr_2jx_yfb .section}
@@ -74,5 +89,3 @@
 ```
 netsh interface ipv6 add route ::/0 "本地连接 2" <IPv6网关>
 ```
-
-
