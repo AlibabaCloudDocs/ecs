@@ -161,7 +161,7 @@ Gateway=<IPv6网关>
 
         **说明：** 为区分单个 IPv6 与多个 IPv6 地址，您只需重复添加地址信息即可。
 
-3.  重启网络服务：运行 `systemctr restart systemd-networkd`。
+3.  重启网络服务：运行 `systemctl restart systemd-networkd`。
 
 
 **FreeBSD 11 操作步骤**
