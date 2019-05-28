@@ -30,7 +30,7 @@ It is helpful to understand the following concepts before you use ECS:
 
     -   Virtual Private Cloud \(VPC\): A private network established in Alibaba Cloud. VPCs are logically isolated from other virtual networks in Alibaba Cloud. For more information, see [What is VPC](../../../../reseller.en-US/Product Introduction/What is VPC?.md#).
 
-    -   Classic network: A network majorly deployed in the public infrastructure of Alibaba Cloud.
+    -   Classic network: A network primarily deployed in Alibaba Cloud's public infrastructure.
 
 -   [Security group](reseller.en-US/Product Introduction/Network and security/Security group.md#): A logical group of instances that are in the same region and have the same security requirements and mutual trust. A security group works as a virtual firewall for the ECS instances inside it.
 
