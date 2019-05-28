@@ -73,7 +73,7 @@ The table lists the benefits of ECS compared with traditional IDCs.
 |:---|:--|:---------------|
 |Equipment rooms|Provides independently developed DC powered servers with low PUE.|Provides traditional AC powered servers with high PUE.|
 |Provides backbone equipment rooms with high outbound bandwidth and dedicated bandwidth.|Provides equipment rooms with various quality levels and shared bandwidth primarily, difficult for users to choose.|
-|Provides multiline BGP equipment rooms, enabling smooth and balanced access throughout the country.|Provides equipment rooms with single or dual line primarily.|
+|Provides multiline BGP equipment rooms, enabling smooth and balanced access throughout the world.|Provides equipment rooms with single or dual line primarily.|
 |Ease of operation|Provides built-in mainstream OSs, including activated Windows OS.|Purchases and installs OS manually.|
 |Switches OS online.|Reinstalls OSs manually.|
 |Provides a Web-based console for online management.|Users must manage and maintain network manually.|
