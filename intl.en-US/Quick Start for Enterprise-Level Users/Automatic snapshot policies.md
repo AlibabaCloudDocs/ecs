@@ -1,6 +1,6 @@
 # Automatic snapshot policies {#concept_d35_r2w_wdb .concept}
 
-Snapshots are the state of system data at a certain time point, and are used for data backup or image creation. You can create automatic snapshot policies to automatically take snapshots of disks. Alternatively, you can manually take snapshots of disks. The creation time of automatic snapshot is determined by the automatic snapshot policies, whereas manually created snapshots are irrelevant to the automatic snapshot policies.
+Snapshots are the state of system data at a certain time point, and are used for data backup or image creation. You can create automatic snapshot policies to automatically take snapshots of disks. Alternatively, you can manually take snapshots of disks. The creation time of an automatic snapshot is determined by the automatic snapshot policies, whereas manually created snapshots are irrelevant to the automatic snapshot policies.
 
 ## Parameter settings {#section_yzd_gfw_wdb .section}
 
