@@ -53,7 +53,7 @@ Before using Server Load Balancer, make the following preparations.
 
     -   During Layer-4 listening, requests are directly forwarded to the backend server and headers are not modified. After requests of clients arrive at the Server Load Balancer listener, the Server Load Balancer servers establish TCP connections with backend ECS instances through the backend ports configured for listening.
     -   In principle, Layer-7 listening is a way of implementing reverse proxy. After requests of clients arrive at the Server Load Balancer listener, the Server Load Balancer servers establish TCP connections with the backend ECS instances, namely to access the HTTP backend servers through the new TCP connections again instead of directly forwarding packets to the backend ECS instances.
-    Compared with Layer-4 listening, Layer-7 listening requires an extra step of Tengine processing. Therefore, the performance of Layer-7 listening is not so good as that of Layer-4 listening. In addition, Layer-7 listening performance may be deteriorated by such factors as insufficient number of client ports and too many backend server connections. If high performance requirements are raised, Layer-4 listening is recommended.
+    Compared with Layer-4 listening, Layer-7 listening requires an extra step of Tengine processing. Therefore, the performance of Layer-7 listening is not as good as that of Layer-4 listening. In addition, Layer-7 listening performance may be reduced by such factors as insufficient number of client ports and too many backend server connections. If high performance requirements are raised, Layer-4 listening is recommended.
 
 -   **Prepare backend servers**
 
@@ -65,7 +65,7 @@ Before using Server Load Balancer, make the following preparations.
 
     -   ECS configuration
 
-        After deploying applications on the ECS instances, you do not have to perform special configuration. owever, to configure a Layer-4 listener \(TCP or UDP\) for Linux ECS instances, make sure that values of the following parameters in the net.ipv4.conf file are set 0s:
+        After deploying applications on the ECS instances, you do not have to perform special configuration. However, to configure a Layer-4 listener \(TCP or UDP\) for Linux ECS instances, make sure that the following parameters in the net.ipv4.conf file are set to 0:
 
         ```
         net.ipv4.conf.default.rp_filter = 0
@@ -80,7 +80,7 @@ Before using Server Load Balancer, make the following preparations.
 
 ## Procedure {#section_vny_jsw_wdb .section}
 
-1.  Create ECS instances. You must have at least two ECS instances for the Server Load Balancer service. For more information, see [create ECS instances](../../../../reseller.en-US/User Guide/Instances/Create an instance/Create an instance by using the wizard.md#).
+1.  Create ECS instances. You must have at least two ECS instances to use the Server Load Balancer service. For more information, see [create ECS instances](../../../../reseller.en-US/User Guide/Instances/Create an instance/Create an instance by using the wizard.md#).
 2.  After the ECS instances are created, deploy related applications on the ECS instances. For more information, see [install static web pages](../../../../reseller.en-US/Quick Start (New Console)/Install static web pages.md#).
 3.  Create a Server Load Balancer instance. A Server Load Balancer instance can be mapped to multiple listeners and backend servers. For more information, see [create an SLB instance](../../../../reseller.en-US/Quick Start (New Console)/Create an SLB instance.md#).
 4.  After the Server Load Balancer instance is created, add at least one listener and one group of backend servers behind it. For more information, see [configure an SLB instance](../../../../reseller.en-US/Quick Start (New Console)/Configure an SLB instance.md#).
