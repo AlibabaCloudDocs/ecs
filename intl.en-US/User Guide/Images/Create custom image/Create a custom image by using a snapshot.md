@@ -66,7 +66,7 @@ umount/mnt/hda5
 umount/dev/hda5/mnt/hda5
 ```
 
-`/Etc/fstab` is an important configuration file in Linux. It contains the details of mounting the file system and storage devices upon startup. If you do not want to mount a specified partition when starting the instance, delete the corresponding lines from `/etc/fstab`. For example, you can delete the following statement to disconnect xvdb1 upon startup: `/dev/xvdb1 /leejd ext4 defaults 0 0`.
+`/etc/fstab` is an important configuration file in Linux. It contains the details of mounting the file system and storage devices upon startup. If you do not want to mount a specified partition when starting the instance, delete the corresponding lines from `/etc/fstab`. For example, you can delete the following statement to disconnect xvdb1 upon startup: `/dev/xvdb1 /leejd ext4 defaults 0 0`.
 
 **How to determine whether a data disk is detached and a custom image can be created?**
 
