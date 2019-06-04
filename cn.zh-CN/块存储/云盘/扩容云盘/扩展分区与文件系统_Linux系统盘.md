@@ -85,6 +85,8 @@
     The filesystem on /dev/vda1 is now 26213807 blocks long.
     ```
 
+
+
 5.  运行`df -h`查看磁盘分区大小。返回分区（/dev/vda1）是100 GiB，表示已经成功扩容。
 
     ```
@@ -97,6 +99,7 @@
     tmpfs           7.8G  500K  7.8G   1% /run
     tmpfs           7.8G     0  7.8G   0% /sys/fs/cgroup
     tmpfs           1.6G     0  1.6G   0% /run/user/0
+    ```
     ```
 
 
@@ -151,7 +154,10 @@
     
     CHANGED: partition=1 start=2048 old: size=41940992 end=41943040 new: size=209710462,end=209712510
     ```
-
+    ```
+    #xfs 文件系统请通过xfs_growfs 完成文件系统扩容
+    [root@AliYunOS ~]# xfs_growfs /dev/vda 1
+    ```
 6.  重启实例。
 
     ```
