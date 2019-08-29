@@ -108,7 +108,7 @@ Step 1: Modify the partition table
     ``` {#codeblock_b9z_gmj_5um}
     [root@ecshost ~]# mount | grep "/dev/vdb"
     /dev/vdb1 on /mnt type ext4 (rw,relatime,data=ordered)
-    [root@ecshost ~]# unmount /dev/vdb1
+    [root@ecshost ~]# umount /dev/vdb1
     [root@ecshost ~]# mount | grep "/dev/vdb"
     ```
 
@@ -451,7 +451,7 @@ To resize an existing GPT partition, perform the following steps: In the example
     ``` {#codeblock_tl5_yci_a49}
     [root@ecshost ~]# mount | grep "/dev/vdb"
     /dev/vdb1 on /mnt type ext4 (rw,relatime,data=ordered)
-    [root@ecshost ~]# unmount /dev/vdb1
+    [root@ecshost ~]# umount /dev/vdb1
     [root@ecshost ~]# mount | grep "/dev/vdb"
     ```
 
