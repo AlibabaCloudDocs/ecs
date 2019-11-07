@@ -235,7 +235,7 @@
 |[TagResources](intl.zh-CN/API参考/标签/TagResources.md)|调用TagResources为指定的ECS资源列表统一创建并绑定标签。|
 |[ListTagResources](intl.zh-CN/API参考/标签/ListTagResources.md)|调用ListTagResources查询一个或多个ECS资源已经绑定的标签列表。|
 |[UntagResources](intl.zh-CN/API参考/标签/UntagResources.md)|调用UntagResources为指定的ECS资源列表统一解绑并删除标签。|
-
+|[RemoveTags](intl.zh-CN/API参考/标签/RemoveTags.md)|调用RemoveTags从磁盘、快照、镜像或者安全组等解绑一个或多个标签。|
 ## 地域 {#section_vfv_ltn_ovn .section}
 
 |API|描述|
