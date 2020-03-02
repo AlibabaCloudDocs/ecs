@@ -92,7 +92,7 @@
     The filesystem on /dev/vda1 is now 26213807 blocks long.
     ```
 
-    **说明：** 如果您使用的是xfs文件系统，运行`xfs_growfs /dev/vda1`命令扩容文件系统。
+    **说明：** 如果您使用的是xfs文件系统，运行`xfs_growfs /dev/vda1`【ali_centos_8_x64 `xfs_growfs -d /`】命令扩容文件系统。
 
 5.  运行`df -h`命令查看云盘分区大小。 
 
