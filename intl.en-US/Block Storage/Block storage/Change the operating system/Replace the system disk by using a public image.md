@@ -110,11 +110,11 @@ To replace the system disk, follow these steps:
         **Note:** If you have renewed your instance and downgraded the configurations, the system disk space cannot be changed until the next billing cycle starts.
 
     3.  **Security enhancement**:
-        -   If the new OS is Windows, you can only use password authentication.
+        -   If the new OS is Windows, you can only select password for the authentication.
 
             ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9682/15623087395517_en-US.png)
 
-        -   If the instance is an I/O optimized instance and the new OS is Linux, you can use a password or an SSH key pair for authentication. In this case, we recommend you set a logon password or bind an SSH key pair.
+        -   If the instance is an I/O optimized instance and the new OS is Linux, you can select key pair, password, or set after change. In this case, we recommend you to bind an SSH key pair, if needs must refer to [create an SSH key pair](reseller.en-US/Security/Key pairs/Use an SSH key pair.md#).
 
             ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9682/15623087395518_en-US.png)
 
