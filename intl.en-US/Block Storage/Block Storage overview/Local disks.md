@@ -16,9 +16,8 @@ Local disks are suitable for business scenarios that require high storage I/O pe
 
     Instances of the following instance families are equipped with NVMe SSDs:
 
-    -   Instance families equipped with local SSDs: i2, i2g, i2ne, i2gne, and i1
+    -   Instance families equipped with local SSDs: i3, i2, i2g, i2ne, i2gne, and i1
     -   GPU-accelerated compute optimized instance family: gn5
-    -   GPU-accelerated visualization and compute optimized instance family: ga1
     For example, instance families with local NVMe SSDs are suitable for the following scenarios:
 
     -   Services such as online games, e-commerce, live streaming, and media services that run I/O intensive applications and require high I/O performance and low latency.
