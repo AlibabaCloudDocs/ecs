@@ -1,5 +1,5 @@
 ---
-keyword: [snapshot backup, custom image, disk, data backup, modify key files, rollback, backup, cloud disk]
+keyword: [snapshot, cloud disk backup, snapshot copy, snapshot copy across regions, disaster recovery]
 ---
 
 # Copy a snapshot
@@ -12,15 +12,13 @@ When you copy a snapshot, take note of the following items:
 
 -   The following regions support the snapshot copying feature:
     -   You can copy snapshots among the following regions: China \(Hangzhou\), China \(Shanghai\), China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou-Beijing Winter Olympics\), China \(Hohhot\), China \(Ulanqab\), China \(Shenzhen\), China \(Heyuan\), and China \(Chengdu\).
-    -   You can copy snapshots between the following regions: China \(Hong Kong\), Singapore, Australia \(Sydney\), Malaysia \(Kuala Lumpur\), Indonesia \(Jakarta\), Japan \(Tokyo\), Germany \(Frankfurt\), UK \(London\), US \(Silicon Valley\), US \(Virginia\), and India \(Mumbai\).
+    -   You can copy snapshots among the following regions: China \(Hong Kong\), Singapore, Australia \(Sydney\), Malaysia \(Kuala Lumpur\), Indonesia \(Jakarta\), Japan \(Tokyo\), Germany \(Frankfurt\), UK \(London\), US \(Silicon Valley\), US \(Virginia\), and India \(Mumbai\).
 -   Billing:
 
-    When you copy a snapshot to a new region, a snapshot copy is created. You are charged for the traffic consumed during the snapshot copying process and for the storage of the snapshot copy. For more information, see [Snapshot billing](/intl.en-US/Pricing/Snapshot billing.md).
+    When you copy a snapshot to a new region, a snapshot copy is created. You are charged for copying snapshots and for the storage of the snapshot copy. For more information, see [Snapshot](/intl.en-US/Pricing/Billing items/Snapshot billing.md).
 
-    **Note:**
+    **Note:** When a disk snapshot is copied for the first time, all data stored in the disk is copied. All subsequent copies of the snapshot in the same region are incremental copies. Snapshots are billed based on snapshot sizes. Incremental copies can significantly reduce the sizes of snapshots to be copied.
 
-    -   The snapshot copying feature is in invitational preview. During the invitational preview, you are not charged for the traffic consumed during the copying process. However, you are still charged for the storage of the snapshot copy.
-    -   When a disk snapshot is copied for the first time, all data stored in the disk is copied. All subsequent copies of the snapshot in the same region are incremental copies. Snapshots are billed based on snapshot sizes. Incremental copies can significantly reduce the sizes of snapshots to be copied.
 -   A new snapshot that you copy from its source snapshot cannot be used to roll back the disk for which the source snapshot is created.
 -   Tags bound to source snapshots cannot be copied together with source snapshots.
 -   Encrypted snapshots cannot be copied.
@@ -29,6 +27,9 @@ Scenarios:
 
 -   DevOps: You can copy snapshots to start business in new regions or migrate business systems to new regions. This helps you reduce O&M costs and improve data availability.
 -   Cross-region backup: Snapshot copying meets the requirements for compliance audit and improvement of business reliability. You can restore your business systems in another region by using new snapshots in the event of a disaster. This reduces recovery time objectives \(RTOs\) and recovery point objectives \(RPOs\).
+
+    **Note:** Snapshot copying is fast, and can be used to speed up image copying and eliminate capacity constraints. To copy an image, we recommend that you copy a snapshot and use the snapshot to create an image.
+
 
 ## Copy a snapshot
 
@@ -41,8 +42,6 @@ Scenarios:
 4.  Find the snapshot to be copied and click **Copy Snapshot** in the **Actions** column.
 
 5.  In the **Copy Snapshot** dialog box, configure the parameters.
-
-    ![Copy Snapshot](../images/p89221.png)
 
     |Parameter|Description|
     |---------|-----------|
@@ -62,7 +61,7 @@ Scenarios:
 
 3.  In the top navigation bar, select a region.
 
-4.  Select the snapshot that is being copied and click **Delete** in the lower-left part of the page.
+4.  Select the snapshot that is being copied and click **Delete** in the lower part of the page.
 
 5.  In the **Delete** message, click **OK**.
 
