@@ -1,0 +1,172 @@
+---
+keyword: [disk performance, Elastic Block Storage performance, enhanced SSD performance, performance metrics, IOPS, capacity, throughput, throughput]
+---
+
+# Test the performance of Elastic Block Storage devices
+
+This topic describes how to use the fio tool on a Linux instance to test the performance of Elastic Block Storage devices, including cloud disks and local disks. The performance metrics include IOPS, throughput, and latency.
+
+An Elastic Block Storage device is created and attached to an ECS instance.
+
+**Note:** If you want to test only the performance of a specific type of Elastic Block Storage devices, we recommend that you use a new pay-as-you-go data disk. You can release the disk at any time after the test is complete.
+
+You can use other tools to test the performance of Elastic Block Storage devices, but you may obtain different baseline performance. For example, tools such as dd, sysbench, and iometer may be affected by test parameters and file systems and return inaccurate results. The performance results in this topic are those of a Linux instance tested by using fio. These results are used as performance references for Alibaba Cloud Elastic Block Storage devices. We recommend that you use the fio tool to test the performance of Elastic Block Storage devices for both Linux and Windows instances.
+
+**Warning:** You can obtain accurate test results by testing raw disk partitions. However, you may destroy the file system structure in a raw disk partition if you test the partition directly. Before you perform such a test, you must create a snapshot of the disk to back up your data. For more information about how to create a snapshot, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md). To prevent data loss, we recommend that you use a new ECS instance that contains no data for the test.
+
+## Procedure
+
+1.  Remotely connect to an ECS instance. For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+
+2.  Before you test an Elastic Block Storage device, ensure that it is 4 KiB aligned.
+
+    ```
+    sudo fdisk -lu
+    ```
+
+    If the value of Start in the command output is divisible by 8, the device is 4 KiB aligned. Otherwise, perform 4 KiB alignment before you proceed with the test.
+
+    ```
+    Device     Boot Start      End  Sectors Size Id Type
+    /dev/vda1  *     2048 83886046 83883999  40G 83 Linux
+    ```
+
+3.  Run the following commands to install the libaio and fio tools:
+
+    ```
+    sudo yum install libaio -y
+    sudo yum install libaio-devel -y
+    sudo yum install fio -y
+    ```
+
+4.  Switch the directory.
+
+    ```
+    cd /tmp
+    ```
+
+5.  Run the test commands. For more information about the commands, see the following section.
+
+
+## Commands used to test the performance of cloud disks
+
+For more information about how to test the IOPS of the enhanced SSD \(ESSD\), see [Test the IOPS performance of an enhanced SSD](/intl.en-US/Block Storage/Performance/Test the IOPS performance of an enhanced SSD.md).
+
+-   Random write IOPS:
+
+    ```
+    fio -direct=1 -iodepth=128 -rw=randwrite -ioengine=libaio -bs=4k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Rand_Write_Testing
+    ```
+
+-   Random read IOPS:
+
+    ```
+    fio -direct=1 -iodepth=128 -rw=randread -ioengine=libaio -bs=4k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Rand_Read_Testing
+    ```
+
+-   Sequential write throughput \(write bandwidth\):
+
+    ```
+    fio -direct=1 -iodepth=64 -rw=write -ioengine=libaio -bs=1024k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Write_PPS_Testing
+    ```
+
+-   Sequential read throughput \(read bandwidth\):
+
+    ```
+    fio -direct=1 -iodepth=64 -rw=read -ioengine=libaio -bs=1024k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Read_PPS_Testing
+    ```
+
+-   Random write latency:
+
+    ```
+    fio -direct=1 -iodepth=1 -rw=randwrite -ioengine=libaio -bs=4k -size=1G -numjobs=1 -group_reporting -filename=iotest -name=Rand_Write_Latency_Testing
+    ```
+
+-   Random read latency:
+
+    ```
+    fio -direct=1 -iodepth=1 -rw=randread -ioengine=libaio -bs=4k -size=1G -numjobs=1 -group_reporting -filename=iotest -name=Rand_Read_Latency_Testing
+    ```
+
+
+## Commands used to test the performance of local disks
+
+The following test commands are applicable only to local NVMe SSD disks.
+
+-   Random write IOPS
+
+    ```
+    fio -direct=1 -iodepth=32 -rw=randwrite -ioengine=libaio -bs=4k -numjobs=4 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+-   Random read IOPS
+
+    ```
+    fio -direct=1 -iodepth=32 -rw=randread -ioengine=libaio -bs=4k -numjobs=4 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+-   Sequential write throughput \(write bandwidth\)
+
+    ```
+    fio -direct=1 -iodepth=128 -rw=write -ioengine=libaio -bs=128k -numjobs=1 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+-   Sequential read throughput \(read bandwidth\)
+
+    ```
+    fio -direct=1 -iodepth=128 -rw=read -ioengine=libaio -bs=128k -numjobs=1 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+-   Random write latency
+
+    ```
+    fio -direct=1 -iodepth=1 -rw=randwrite -ioengine=libaio -bs=4k -numjobs=1 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+-   Random read latency
+
+    ```
+    fio -direct=1 -iodepth=1 -rw=randread -ioengine=libaio -bs=4k -numjobs=1 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+-   Sequential write latency
+
+    ```
+    fio -direct=1 -iodepth=1 -rw=write -ioengine=libaio -bs=4k -numjobs=1 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+-   Sequential read latency
+
+    ```
+    fio -direct=1 -iodepth=1 -rw=read -ioengine=libaio -bs=4k -numjobs=1 -time_based=1 -runtime=1000 -group_reporting -filename=/dev/vdx -name=test
+    ```
+
+
+## fio parameter settings
+
+The following table describes the parameter settings in fio commands such as the command used to test the random write IOPS \(randwrite\).
+
+|Parameter setting|Description|
+|:----------------|:----------|
+|-direct=1|Indicates that the I/O buffer is ignored during the test and data is written directly.|
+|-iodepth=128|Indicates that when asynchronous I/O is used, up to 128 I/O requests can be made concurrently.|
+|-rw=randwrite|Indicates that the read/write policy is random writes. Other valid values for rw: -   randread \(random reads\)
+-   read \(sequential reads\)
+-   write \(sequential writes\)
+-   randrw \(random reads and writes\) |
+|-ioengine=libaio|Indicates that libaio \(the Linux-native asynchronous I/O facility\) is used for the test. An application can use I/O in the following ways: -   Synchronous
+
+In synchronous I/O mode, a thread sends a single I/O request at a time and waits until the request is complete. In this case, the iodepth value is always less than 1 for a single thread. You can increase the iodepth value by using multiple concurrent threads. The iodepth value reaches its upper limit when 16 to 32 threads are running concurrently.
+
+-   Asynchronous
+
+In asynchronous I/O mode, a thread uses libaio to send multiple I/O requests at a time and waits for all these requests to be complete. Asynchronous I/O helps reduce the number of interactions and make the interactions more efficient. |
+|-bs=4k|Indicates that the size of each block for one I/O is 4 KiB. The default value is also 4 KiB. -   When IOPS is tested, we recommend that you set bs to a small value such as 4k in this example command.
+-   When throughput is tested, we recommend that you set bs to a large value such as 1024k. |
+|-size=1G|Indicates that the size of the test file is 1 GiB.|
+|-numjobs=1|Indicates that the number of test threads is 1.|
+|-runtime=1000|Indicates that the test duration is 1,000 seconds. If this parameter is not specified, the file of the size specified by -size is written in blocks of the size specified by -bs.|
+|-group\_reporting|Indicates that in the test results, statistics are displayed for a group of threads, not for each individual thread.|
+|-filename=iotest|Indicates that the name of the test file is iotest.|
+|-name=Rand\_Write\_Testing|Indicates that the name of the test task is Rand\_Write\_Testing. You can specify any name you want.|
+
