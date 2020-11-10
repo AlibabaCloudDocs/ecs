@@ -36,5 +36,5 @@ You do not have overdue payments in your account.
 
 After you purchase an SCU, you can find it in the **Creating** state on the **Storage Capacity Units** page. When the status of the SCU changes to **Running**, the SCU begins to offset bills of eligible pay-as-you-go resources in the current region.
 
-![SCU created](../images/p62504.png)
+![SCU created](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8343005061/p62504.png)
 
