@@ -1,78 +1,95 @@
-# Snapshot overview {#concept_qft_2zw_ydb .concept}
+---
+keyword: [Alibaba Cloud, back up, back up data, roll back, disaster recovery]
+---
 
-A snapshot is a stateful data file of a disk or Shared Block Storage at a point in time. A snapshot is commonly used to back up data, restore data, and create custom images.
+# Snapshot overview
 
-**Note:** When you create a snapshot, the I/O performance of Block Storage will degrade by up to 10%, resulting in a transient I/O speed decrease. We recommend that you create snapshots during off-peak hours.
+The Alibaba Cloud snapshot service allows you to create crash-consistent snapshots for all disk categories. Crash-consistent snapshots are an effective solution to disaster recovery and are used to back up data, create custom images, and implement disaster recovery for applications.
 
-## Scenarios {#section_b5r_krq_wgb .section}
+## Scenarios
 
-You can use snapshots in the following scenarios to protect your data:
+You can use snapshots for the following scenarios:
 
--   Disaster recovery and backup: Create snapshots for disks to be used as base data of other disks to implement zone-disaster recovery and geo-disaster recovery. For more information, see [Create a snapshot](reseller.en-US/Snapshots/Use snapshots/Create a snapshot.md#).
--   Version rollback: Roll back disks by using snapshots if system errors occur after an upgrade. For more information, see [Roll back a disk by using a snapshot](reseller.en-US/Snapshots/Use snapshots/Roll back a disk by using a snapshot.md#).
--   Environment duplication: Create an instance that has the same environment as an existing instance by creating a custom image from the system disk snapshot of the existing instance and then create an instance from the custom image. For more information, see [Create a custom image by using a snapshot](../../../../reseller.en-US/Images/Custom image/Create custom image/Create a custom image by using a snapshot.md#) and [Create an instance by using a custom image](../../../../reseller.en-US/Instances/Create an instance/Create an instance by using a custom image.md#).
+-   Disaster recovery and backup: You can create a snapshot for a disk and then use the snapshot to create another disk to implement zone- or geo-disaster recovery.
+-   Environment clone: You can use a system disk snapshot to create a custom image and then use the custom image to create ECS instances with identical environments.
+-   Data development: Snapshots can provide near-real-time production data for applications such as data mining, report queries, and development and testing.
+-   Enhancement of fault tolerance: You can roll a disk back to a previous point in time by using a snapshot to reduce the risk of data loss caused by incorrect operations. Snapshots are suitable for the following scenarios:
+    -   Create snapshots on a regular basis to prevent losses caused by incorrect operations. Incorrect operations include: writing incorrect data to disks, accidentally releasing ECS instances, data errors caused by application errors, and data loss due to hacking.
+    -   Create snapshots before you perform high-risk O&M operations, such as replacing operating systems, upgrading applications, and migrating data.
 
--   Data development: Provide near-real-time data for applications such as data mining, report query, and development and test by creating snapshots of production data.
--   Data recovery and restoration:
-    -   Restore the data on your disks by using snapshots in scenarios such as incorrect data being mistakenly stored on the disk, mistakenly released ECS instances, data errors caused by application errors, or malicious read and write operations.
-    -   Use snapshots to regularly back up critical disk data and eliminate the risk of data loss resulting from incorrect operations, attacks, or viruses.
-    -   Create one or more snapshots when you replace your OS, update your applications, or migrate your service data so that you can restore your data in the event any failure occurs.
+## Snapshot classification
 
-## Snapshot types {#section_f5r_krq_wgb .section}
+Snapshots are classified into normal and local snapshots based on how they are stored. The following table describes the classification of snapshots based on different standards.
 
-Snapshots can be categorized into the following types based on how they are created:
+|Classification standard|Type|Description|Scenario|
+|-----------------------|----|-----------|--------|
+|Storage method|Normal snapshot|A snapshot is stored in an OSS bucket within the same region as the source disk. You can create normal snapshots for disks. Normal snapshots can be created for system disks and data disks.
 
--   Manual snapshot: a disk snapshot that you manually create.
--   Automatic snapshot: a disk snapshot that is created automatically based on an automatic snapshot policy. You create and apply an automatic snapshot policy to a disk. Then ECS will create snapshots automatically for the disk at specified points in time. For information about automatic snapshot policies, see [Automatic snapshot policy overview](reseller.en-US/Snapshots/Automatic snapshot policies/Automatic snapshot policy overview.md#).
+|Normal snapshots are ideal for scenarios that require high disaster recovery capabilities. However, it takes an extended period of time to create normal snapshots.|
+|Local snapshot|A local snapshot is stored in the same storage cluster as the source disk and can be used to perform data backup and disk rollback within seconds. Local snapshots can be created only for enhanced SSDs \(ESSDs\).
 
-Snapshots can also be categorized into the following types based on the portion of data contained within them:
+|-   You can use local snapshots to quickly back up key business systems that contain a large amount of data, such as databases, containers, and SAP High-performance Analytic Appliance \(SAP HANA\).
+-   You can also use local snapshots to back up data before you perform high-risk operations to reduce backup time. High-risk operations include replacing system disks, resizing disks, and updating system patches.
+-   You can use local snapshots in DevOps applications to accelerate the creation of custom images and the startup of ECS instances. |
+|Creation method|Manual snapshot|A manual snapshot is a snapshot that you manually create.
 
--   Full snapshot: the first snapshot of a disk that contains all of the data on the disk at the time of snapshot creation.
--   Incremental snapshot: a disk snapshot created after the initial full snapshot of a disk. An incremental snapshot contains the portion of data that has been changed relative to the preceding snapshot. For more information, see [Snapshot concepts](reseller.en-US/Snapshots/Snapshot concepts.md#).
+|You can create manual snapshots before you perform high-risk operations to enhance fault tolerance.|
+|[Automatic snapshot](/intl.en-US/Snapshots/Automatic snapshot policies/Overview.md)|An automatic snapshot is a snapshot that is created based on an automatic snapshot policy. After you create an automatic snapshot policy and apply it to a disk, ECS automatically creates snapshots for the disk at the points in time specified in the policy.
 
-## Billing {#section_i5r_krq_wgb .section}
+**Note:** All automatic snapshots are normal snapshots.
 
-A snapshot is billed based on the amount of the storage space used by a snapshot. After you create a disk snapshot, you can view the size of the snapshot by using the **Snapshot Chains** feature in the ECS console. You can also view the total size of all snapshots in a region by using the **Snapshot Size** feature in the ECS console.
+|You can use automatic snapshots to back up data and improve the security of your business data.|
+|Creation order|Full snapshot|A full snapshot is the first snapshot created for a disk. This snapshot contains all the data stored on the disk at the time the snapshot was created.
 
-For more information about the billing methods and unit price of snapshot storage space, see [Billing of snapshots](../../../../reseller.en-US/Pricing/Billing of snapshots.md#).
+|N/A.|
+|[Incremental snapshots](/intl.en-US/Snapshots/Incremental snapshots.md)|An incremental snapshot is a snapshot created after the full snapshot. Incremental snapshot contains only the data blocks that have been modified since the last snapshot.
 
-## Service advantages {#section_j5r_krq_wgb .section}
+|N/A.|
+|Encryption|Encrypted snapshot|An encrypted snapshot is a snapshot that was created from an encrypted disk. **Note:** All encrypted snapshots are normal snapshots. For information about the encryption feature, see [Encryption overview](/intl.en-US/Block Storage/Encrypt a disk/Encryption overview.md).
 
-The Alibaba Cloud snapshot service provides high snapshot quotas and flexible snapshot policies. The following table describes the user benefits and typical scenarios of the service.
+|You can create encrypted snapshots to comply with the security standards required by your business.|
+|Unencrypted snapshot|An unencrypted snapshot is a snapshot that was created from an unencrypted disk.|N/A.|
 
-|Item|Description|User benefit|Typical scenario|
-|:---|:----------|:-----------|:---------------|
-|Snapshot quotas|Each disk can have up to 256 manual snapshots and 256 automatic snapshots.|Longer protection cycle with a finer granularity| -   Snapshot for non-critical service data disks are created at 00:00 every day. These snapshots can store backup data of more than 16 months.
--   Snapshots for critical service data disks are created every four hours. These snapshots can store backup data of more than four months.
+## Pricing
 
- |
-|Automatic snapshot policies|In an automatic snapshot policy, you can customize when a snapshot is created, how often a snapshot is created in a week, and how long a snapshot is stored. You can also query the number and other details of the disks that are associated with the automatic snapshot policy.|More flexible protection policies| -   You can select up to 24 different hour-long intervals for which to create an automatic snapshot each day.
--   Snapshots can be created automatically on multiple days each week.
--   Snapshots can be stored for a specified period of time or stored permanently.
+Snapshots are billed based on their sizes. They can be billed on a pay-as-you-go basis. For more information, see [Snapshot](/intl.en-US/Pricing/Billing items/Snapshot billing.md).
 
-**Note:** When the snapshot quota is reached, the system automatically deletes the earliest snapshot.
+**Note:** Local snapshots can be billed only on a pay-as-you-go basis and are not able to have their bills offset by OSS storage plans.
 
+## Limits
 
- |
+For the limits and quotas of snapshots, see the "Snapshot limits" section in [Limits](/intl.en-US/Product Introduction/Limits.md).
 
-## Technical advantages {#section_q5r_krq_wgb .section}
+Local snapshots have the following limits:
 
-The following table describes the advantages of the Alibaba Cloud ECS snapshot service over traditional snapshot services.
+-   Local snapshots can be created only for ESSDs.
+-   A maximum of 10 local snapshots can be retained for an ESSD.
+-   When you use a local snapshot to create a disk, the specified disk size cannot be less than the snapshot size.
+-   You cannot use automatic snapshot policies to create local snapshots.
+-   Local snapshots cannot be created for encrypted disks or local disks.
 
-|Metric|ECS snapshot service|Traditional snapshot service|
-|:-----|:-------------------|:---------------------------|
-|Capacity|Unlimited capacity, ensuring that all of your service data can be protected.|Limited capacity. Only the initially purchased storage capacity is available, and only critical data can be protected.|
-|Scalability|Support for Auto Scaling. You can scale storage devices within seconds.|Lower scalability. Storage scaling is constrained by performance, available capacity, and vendor support.|
-|Security|Support for the encryption service. You can set ECS disk encryption as necessary to encrypt your disk snapshots. However, a non-encrypted snapshot cannot be converted to an encrypted snapshot. Similarly, an encrypted snapshot cannot be converted to a non-encrypted snapshot. For more information, see [ECS disk encryption](reseller.en-US/Block Storage/Block storage/ECS disk encryption.md#).|Encryption attributes and policies rely on the underlying storage logic. If the storage architecture has defects in its security design, created snapshots may not be secure.|
-|Impact on performance|Redirect-on-write \(ROW\) -   The impact of snapshot tasks on storage I/O performance is reduced.
--   Snapshots do not affect your service and can be created at any time without affecting user experience.
+## Benefits
 
- |Copy-on-write \(COW\) or other techniques such as ROW. COW has an impact on the data write capability of the source system.|
+The following table describes the benefits of Alibaba Cloud ECS snapshots compared with snapshots in traditional storage services.
 
-## Related operations {#section_6u2_lk9_x6u .section}
+|Item|Alibaba Cloud ECS snapshot|Traditional storage service snapshot|
+|:---|:-------------------------|:-----------------------------------|
+|Capacity|Unlimited capacity for storing large amounts of business data.|Limited capacity, dependent on the capacity of the storage device.|
+|Scalability|High scalability allows you to extend storage devices to any size within seconds.|Low scalability, dependent on the storage performance, available capacity, and vendor support.|
+|Total cost of ownership \(TCO\)|You only need to pay for the storage space occupied by your snapshots.|High upfront costs for software licenses, reserved storage space, upgrade, and maintenance.|
+|Security|Supports data encryption. If you encrypt a disk, all snapshots created for it afterwards are encrypted. Unencrypted snapshots cannot be directly converted to encrypted snapshots, and encrypted snapshots cannot be directly converted to unencrypted snapshots. For more information, see [Encryption overview](/intl.en-US/Block Storage/Encrypt a disk/Encryption overview.md).|Encryption attributes and policies are subject to the underlying storage logic. If the storage architecture has a security flaw, snapshots created based on this architecture may not be secure.|
+|Impact on performance|Uses redirect-on-write \(ROW\). -   Impacts on the I/O performance of the source disk are reduced.
+-   Snapshots do not affect service availability and can be created at any time without affecting user experience.
 
--   [Create a snapshot](reseller.en-US/Snapshots/Use snapshots/Create a snapshot.md#)
--   [Create a cloud disk by using a snapshot](../../../../reseller.en-US/Block Storage/Block storage/Create a cloud disk/Create a cloud disk by using a snapshot.md#)
--   [Roll back a disk by using a snapshot](reseller.en-US/Snapshots/Use snapshots/Roll back a disk by using a snapshot.md#)
--   [Create a custom image by using a snapshot](../../../../reseller.en-US/Images/Custom image/Create custom image/Create a custom image by using a snapshot.md#)
+|Typically uses copy-on-write \(COW\), but may also use ROW or other methods. COW may affect the data write capabilities of the source system.|
+
+## Operations
+
+-   You can perform the following operations in the ECS console:
+    -   [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)
+    -   [Create a disk from a snapshot](/intl.en-US/Block Storage/Cloud disks/Create a cloud disk/Create a disk from a snapshot.md)
+    -   [Roll back a disk by using a snapshot](/intl.en-US/Snapshots/Use snapshots/Roll back a disk by using a snapshot.md)
+    -   [Create a custom image from a snapshot](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from a snapshot.md)
+    -   [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md)
+-   For information about API operations, see the "Snapshots" section in [List of operations by function](/intl.en-US/API Reference/List of operations by function.md).
 
