@@ -1,5 +1,5 @@
 ---
-keyword: [Aliyun Linux, Windows Server, CentOS, Ubuntu, Debian, CoreOS, Red Hat, OpenSUSE]
+keyword: [Alibaba Cloud Linux, Windows Server, CentOS, Ubuntu, Debian, CoreOS, Red Hat, OpenSUSE]
 ---
 
 # Known issues
@@ -50,7 +50,7 @@ This topic describes known issues of Alibaba Cloud images for different operatin
 
 ## openSUSE 15: Kernel updates may lead to startup hangs
 
--   Problem description: After openSUSE kernel versions are updated to `4.12.14-lp151.28.52-default`, instances may have the issue of startup hangs for some CPU types. These known CPU type is `Intel®Xeon®CPU E5-2682 v4 @ 2.50GHz`. The following code describes the debugging result of the corresponding calltrace:
+-   Problem description: After openSUSE kernel versions are updated to `4.12.14-lp151.28.52-default`, instances may have the issue of startup hangs for some CPU types. The known CPU type is `Intel®Xeon®CPU E5-2682 v4 @ 2.50GHz`. The following code describes the debugging result of the corresponding calltrace:
 
     ```
     [    0.901281] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
@@ -91,9 +91,9 @@ This topic describes known issues of Alibaba Cloud images for different operatin
     ```
 
 
-## CentOS 8.0: The version update of the image in the public image list leads to the change of public image version number of created instances
+## CentOS 8.0: The version update of the public image leads to the change of image version number of created instances
 
--   Problem description: After you connect to an instance created from the centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd public image, you check the system version of the instance, and find that the system version is CentOS 8.1.
+-   Problem description: After you connect to an instance created from the centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd public image, you find that the system version of the instance is CentOS 8.1.
 
     ```
     root@ecshost:~$ lsb\_release -a
@@ -104,19 +104,19 @@ This topic describes known issues of Alibaba Cloud images for different operatin
     Codename:    Core
     ```
 
--   Cause: The centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd public image is in the public image list and was updated with the latest community update package. The image was upgraded and the actual system version is CentOS 8.1.
+-   Cause: The centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd image is in the public image list and was updated by using the latest community update package. The image was upgraded and the actual system version is CentOS 8.1.
 
     ![centos_8_0_x64_20G_alibase_20200218.vhd](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/5763559951/p94918.png)
 
 -   Involved image: centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd.
--   Solution: You can call operations such as [RunInstances](/intl.en-US/API Reference/Instances/RunInstances.md) with `ImageId set to centos_8_0_x64_20G_alibase_20191225.vhd` to create an instance whose system version is CentOS 8.0.
+-   Solution: You can call operations such as [RunInstances](/intl.en-US/API Reference/Instances/RunInstances.md) and set `ImageId` to centos\_8\_0\_x64\_20G\_alibase\_20191225.vhd to create an instance whose system version is CentOS 8.0.
 
 ## Debian 9.6: Classic network-type instances have network configuration issues
 
 -   Problem description: Classic network-type instances created from Debian 9 public images cannot be pinged.
--   Cause: Classic network-type instances created from Debian 9 public images cannot be automatically assigned IP addresses through the Dynamic Host Configuration Protocol \(DHCP\) because the systemd-networkd service is disabled by default in Debian 9.
+-   Cause: Classic network-type instances created from Debian 9 public images cannot be automatically assigned IP addresses by using Dynamic Host Configuration Protocol \(DHCP\) because the systemd-networkd service is disabled by default in Debian 9.
 -   Involved image: debian\_9\_06\_64\_20G\_alibase\_20181212.vhd.
--   Solution: Run the following commands:
+-   Solution: Run the following commands in sequence:
 
     ```
     systemctl enable systemd-networkd 
@@ -130,7 +130,7 @@ This topic describes known issues of Alibaba Cloud images for different operatin
 ## CentOS 6.8: An instance installed with the NFS client fails to respond
 
 -   Problem description: A CentOS 6.8 instance installed with the NFS client fails to respond and must be restarted.
--   Cause: When you use the NFS service on instances whose operating system kernel versions are 2.6.32-696 to 2.6.32-696.10, the NFS client will attempt to end a TCP connection if a glitch occurs due to communication latency. Specifically, if the NFS server is delayed in sending a response to the NFS client, the connection initiated by the NFS client may be stalled in the FIN\_WAIT2 state. Typically, the connection will expire and close a minute after the connection enters the FIN\_WAIT2 state and the NFS client will initiate another connection. However, kernel versions 2.6.32-696 to 2.6.32-696.10 have issues with establishing TCP connections. As a result, the connection will remain in the FIN\_WAIT2 state, the NFS client will be unable to recover the TCP connection, and a new TCP connection cannot be initiated. The requests will hang, and the only way to fix the issue is to restart the instance.
+-   Cause: When you use the NFS service on instances whose operating system kernel versions are 2.6.32-696 to 2.6.32-696.10, the NFS client attempts to end a TCP connection if a glitch occurs due to communication latency. Specifically, if the NFS server is delayed in sending a response to the NFS client, the connection initiated by the NFS client may be stalled in the FIN\_WAIT2 state. Typically, the connection expires and closes one minute after the connection enters the FIN\_WAIT2 state and the NFS client can initiate another connection. However, kernel versions 2.6.32-696 to 2.6.32-696.10 have issues with establishing TCP connections. As a result, the connection remains in the FIN\_WAIT2 state, the NFS client is unable to recover the TCP connection, and a new TCP connection cannot be initiated. The requests hang, and the only way to fix the issue is to restart the instance.
 -   Involved images: centos\_6\_08\_32\_40G\_alibase\_20170710.vhd and centos\_6\_08\_64\_20G\_alibase\_20170824.vhd.
 -   Solution: Run the yum update command to update the kernel to 2.6.32-696.11 or later.
 
@@ -157,15 +157,15 @@ This topic describes known issues of Alibaba Cloud images for different operatin
     -   centos\_7\_02\_64\_20G\_alibase\_20170818.vhd
     -   centos\_7\_03\_64\_20G\_alibase\_20170818.vhd
     -   centos\_7\_04\_64\_20G\_alibase\_201701015.vhd
--   Involved hostnames: If the hostnames of your applications are case-sensitive, the availability of corresponding services may be affected when you restart such instances. The following table describes whether the hostname will change after an instance is restarted.
+-   Involved hostnames: If the hostnames of your applications are case-sensitive, the availability of corresponding services may be affected when you restart such instances. The following table describes whether the hostname changes after an instance is restarted.
 
-    |Current state of hostname|Will the hostname change after an instance restart?|When will the change occur?|Continue reading this section?|
+    |Current state of hostname|Does the hostname change after an instance restart?|When does the change occur?|Continue reading this section?|
     |:------------------------|:--------------------------------------------------|:--------------------------|:-----------------------------|
-    |The hostname contains uppercase letters when you created the instance by using the ECS console or by calling ECS API operations.|Yes|When the instance is restarted for the first time|Yes|
-    |The hostname contains only lowercase letters when you created the instance by using the ECS console or by calling ECS API operations.|No|N/A|No|
+    |The hostname contains uppercase letters when you create the instance by using the ECS console or by calling ECS API operations.|Yes|When the instance is restarted for the first time|Yes|
+    |The hostname contains only lowercase letters when you create the instance by using the ECS console or by calling ECS API operations.|No|N/A|No|
     |The hostname contains uppercase letters, and you modify the hostname after you log on to the instance.|No|N/A|Yes|
 
--   Solution: To retain uppercase letters in the hostname of an instance after you restart the instance, perform the following steps:
+-   Solution: To retain uppercase letters in the hostname of an instance after you restart the instance, perform the following operations:
     1.  Connect to your instance. For more information, see [Connection methods](/intl.en-US/Instance/Connect to instances/Overview.md).
     2.  View the existing hostname.
 
@@ -193,20 +193,20 @@ This topic describes known issues of Alibaba Cloud images for different operatin
 
 -   Problem description: Pip requests occasionally time out or fail.
 -   Involved images: CentOS, Debian, Ubuntu, SUSE, openSUSE, and Alibaba Cloud Linux.
--   Cause: Alibaba Cloud provides three pip source addresses. The default address is mirrors.aliyun.com. To access this address, instances must be able to access the Internet. If your instance is not assigned a public IP address, pip requests will time out.
-    -   The Internet source address \(default\): mirrors.aliyun.com
-    -   The internal source address of VPCs: mirrors.cloud.aliyuncs.com
-    -   The internal source address of the classic network: mirrors.aliyuncs.com
+-   Cause: Alibaba Cloud provides three pip source addresses. The default address is mirrors.aliyun.com. To access this address, instances must be able to access the Internet. If your instance is not assigned with a public IP address, pip requests time out.
+    -   The public source address \(default\): mirrors.aliyun.com
+    -   The internal source address in VPCs: mirrors.cloud.aliyuncs.com
+    -   The internal source address in the classic network: mirrors.aliyuncs.com
 -   Solution: You can solve the problem by using one of the following methods:
     -   Method 1
 
-        Assign a public IP address to your instance by associating an elastic IP address \(EIP\) to your instance. For more information, see [Overview](/intl.en-US/User Guide/Associate an EIP with a cloud instance/Bind an EIP to a secondary ENI/Overview.md).
+        Assign a public IP address to your instance by associating an elastic IP address \(EIP\) with your instance. For more information, see [Overview](/intl.en-US/User Guide/Associate an EIP with a cloud instance/Bind an EIP to a secondary ENI/Overview.md).
 
-        A subscription instance can also be reassigned a public IP address through configuration upgrade or downgrade. For more information, see [Upgrade configurations of subscription instances](/intl.en-US/Instance/Change configurations/Upgrade configurations/Upgrade configurations of subscription instances.md).
+        A subscription instance can also be reassigned with a public IP address by means of configuration upgrade or downgrade. For more information, see [Upgrade the instance types of subscription instances](/intl.en-US/Instance/Change configurations/Change instance types/Upgrade the instance types of subscription instances.md).
 
     -   Method 2
 
-        If a pip request fails, you can run the fix\_pypi.sh script in your ECS instance and retry the pip operation. Specifically, perform the following steps:
+        If a pip request fails, you can run the fix\_pypi.sh script in your ECS instance and retry the pip operation. Specifically, perform the following operations:
 
         1.  Connect to your instance. For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
         2.  Run the following command to obtain the script file:
@@ -219,7 +219,7 @@ This topic describes known issues of Alibaba Cloud images for different operatin
             -   For instances in VPCs, run the `bash fix_pypi.sh "mirrors.cloud.aliyuncs.com"` script.
             -   For instances in the classic network, run the `bash fix_pypi.sh "mirrors.aliyuncs.com"` script.
         4.  Retry the pip operation.
-        The following section describes the content of the fix\_pypi.sh script:
+        The following section describes the fix\_pypi.sh script:
 
         ```
         #! /bin/bash
