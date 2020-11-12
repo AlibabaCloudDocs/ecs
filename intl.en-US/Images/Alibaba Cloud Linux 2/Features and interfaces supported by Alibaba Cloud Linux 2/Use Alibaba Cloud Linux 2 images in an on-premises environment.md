@@ -1,30 +1,30 @@
 # Use Alibaba Cloud Linux 2 images in an on-premises environment
 
-Alibaba Cloud Linux 2 provides local images in various formats that contain the built-in cloud-init package. This topic describes how to use Alibaba Cloud Linux 2 images in an on-premises environment.
+Alibaba Cloud Linux 2 images are available in various formats and have cloud-init built in. These images can be used on premises. This topic describes how to use Alibaba Cloud Linux 2 images in an on-premises environment.
 
-Alibaba Cloud Linux 2 images can only run on Kernel-based Virtual Machines \(KVMs\). Alibaba Cloud Linux 2 images cannot start KVMs directly. You must configure a boot image. In this topic, the local operating system is Linux. Alibaba Cloud Linux 2 is used to create a KVM, and cloud-init is used to initialize the system settings of the KVM. For more information about cloud-init, visit [cloud-init official website - Alibaba Cloud \(AliYun\)](https://cloudinit.readthedocs.io/en/latest/topics/datasources/aliyun.html?spm=a2c4g.11186623.2.24.1bec3fcaonbql3). The NoCloud data source is then used to create local configuration files. After the configuration files are attached to the KVM as a virtual disk, the KVM can be started.
+Alibaba Cloud Linux 2 images can run only on kernel-based virtual machines \(KVMs\). Alibaba Cloud Linux 2 images cannot start KVMs directly. You must configure a boot image. In this topic, the on-premises operating system is CentOS. Alibaba Cloud Linux 2 is used to create a KVM, and cloud-init is used to initialize the system settings of the KVM. For more information about cloud-init, visit [Alibaba Cloud \(AliYun\)](https://cloudinit.readthedocs.io/en/latest/topics/datasources/aliyun.html?spm=a2c4g.11186623.2.24.1bec3fcaonbql3) on the official cloud-init website. The NoCloud data source is then used to create on-premises configuration files. After the configuration files are attached to the KVM as a virtual disk, the KVM can be started.
 
-This topic is applicable to users who are familiar with KVMs.
+This topic is intended for users who are familiar with KVMs.
 
-## Step 1: Download the Alibaba Cloud Linux 2 image to your local computer
+## Step 1: Download an Alibaba Cloud Linux 2 image to your on-premises computer
 
-You can download the Alibaba Cloud Linux 2 image to your local computer from [Alibaba Cloud Linux 2 On-premise Image](https://mirrors.aliyun.com/alinux/image/). Alibaba Cloud Linux 2 images in the VHD or qcow2 format are available.
+You can download an Alibaba Cloud Linux 2 image to your on-premises computer from the [Alibaba Cloud Linux 2 On-premises Image](https://mirrors.aliyun.com/alinux/image/) page. Alibaba Cloud Linux 2 images are available in the VHD or qcow2 format.
 
-## Step 2: Generate the seed.img boot image from your local computer
+## Step 2: Obtain the seed.img boot image from your on-premises computer
 
-You must configure the network, account, and YUM repository of the boot image. Typically, the image name is set to seed.img. You can set another name for the image, but we recommend that you do not.
+You must configure the network, account, and YUM repository for the boot image. Typically, the image is named seed.img. You can change the name of the image, but we recommend that you do not.
 
-**Note:** The seed.img image only contains the configuration files that are required to start cloud-init. The image does not contain Alibaba Cloud Linux 2 system files.
+**Note:** The seed.img image contains only the configuration files that are required to start cloud-init. The image does not contain Alibaba Cloud Linux 2 system files.
 
-You can use one of the following methods to generate the seed.img image:
+You can use one of the following methods to obtain the seed.img image:
 
--   Use the image file prepared by Alibaba Cloud Linux 2 to generate the seed.img image. You can download the image file from [Alibaba Cloud Linux 2 On-premise Image](https://mirrors.aliyun.com/alinux/image/). On the Alibaba Cloud Linux 2 On-premise Image page, click seed.img to download the image.
+-   Go to the [Alibaba Cloud Linux 2 On-premise Image](https://mirrors.aliyun.com/alinux/image/) page and click seed.img to download the seed.img image provided.
 
-    You cannot change the configuration information in the boot image. Therefore, this image file is not ideal for all scenarios. Before you use this method to generate the seed.img image, make sure that you are already familiar with the image file.
+    The configuration information in this image cannot be changed, which makes it less ideal for some scenarios. Make sure that you are already familiar with the image before you download it.
 
--   Use the NoCloud data source to manually generate the seed.img image. Perform the following steps:
+-   Perform the following steps to manually generate the seed.img image based on the NoCloud data source.
 
-1.  In the same local directory, create two configuration files `meta-data` and `user-data`.
+1.  In an on-premises directory, create two configuration files named `meta-data` and `user-data`.
 
     1.  Create a directory named `seed` and go to the directory.
 
@@ -35,7 +35,7 @@ You can use one of the following methods to generate the seed.img image:
 
     2.  Create the `meta-data` configuration file.
 
-        The following example describes the configuration file content. You can modify the configuration as needed.
+        The following example describes the content of the configuration file. You can modify the content.
 
         ```
         #cloud-config
@@ -54,7 +54,7 @@ You can use one of the following methods to generate the seed.img image:
 
     3.  Create the `user-data` configuration file.
 
-        The following example describes the configuration file content. You can modify the configuration as needed.
+        The following example describes the content of the configuration file. You can modify the content.
 
         ```
         #cloud-config
@@ -68,7 +68,7 @@ You can use one of the following methods to generate the seed.img image:
             plain_text_passwd: aliyun
             lock_passwd: false
         
-        # Create the YUM repository for Alibaba Cloud Linux 2.
+        # Create a YUM repository for Alibaba Cloud Linux 2.
         yum_repos:
             base:
                 baseurl: https://mirrors.aliyun.com/alinux/$releasever/os/$basearch/
@@ -95,7 +95,7 @@ You can use one of the following methods to generate the seed.img image:
                 gpgkey: https://mirrors.aliyun.com/alinux/RPM-GPG-KEY-ALIYUN
                 name: Aliyun Linux - $releasever - Plus - mirrors.aliyun.com
         
-        # Using cloud-init or systemd-networkd may cause the steps to fail when you create the meta-data configuration file. The alternative network configurations are as follows:
+        # If you use cloud-init or systemd-networkd to configure the network, configurations specified in meta-data may fail. To avoid this problem, you can use the following network configurations:
         write_files:
           - path: /etc/systemd/network/20-eth0.network
             permissions: 0644
@@ -114,13 +114,13 @@ You can use one of the following methods to generate the seed.img image:
           - systemctl restart systemd-networkd
         ```
 
-2.  Install the `cloud-utils` software package on your local computer.
+2.  Install the `cloud-utils` software package on your on-premises computer.
 
     ```
     yum install -y cloud-utils
     ```
 
-3.  In the `seed` directory, run the following command to generate the `seed.img` image.
+3.  In the `seed` directory, run the following command to generate the `seed.img` image:
 
     ```
     cloud-localds seed.img user-data meta-data
@@ -132,12 +132,12 @@ You can use one of the following methods to generate the seed.img image:
 You can use one of the following methods to start the KVM. Then, use the account information in the `user-data` configuration file to log on to the KVM.
 
 -   Use libvirt to start the KVM.
-    1.  Create a configuration file of the XML format on your local computer. The name of the sample file is `alinux2.xml`. The content of the file is as follows. You can modify the XML-formatted configuration file as needed.
+    1.  Create a configuration file in the XML format on your on-premises computer. The sample file is named `alinux2.xml` and contains the following content: You can modify the XML-formatted configuration file.
 
         ```
         <domain type='kvm'>
             <name>alinux2</name>
-            <memory>1048576</memory> <! -- 1 GB memory. -->
+            <memory>1048576</memory> <! -- 1 GB memory -->
             <vcpu>1</vcpu>
             <os>
                 <type arch='x86_64'>hvm</type>
@@ -149,9 +149,9 @@ You can use one of the following methods to start the KVM. Then, use the account
             <on_crash>restart</on_crash>
             <devices>
                 <emulator>/usr/bin/qemu-kvm</emulator>
-                <disk type='file' device='disk'><! -- Specify the type parameter based on the image format. Set type to qcow2 for the qcow2 format and vhd for the VHD format. -->
-                    <driver name='qemu' type='qcow2' cache='none' dataplane='on' io='native'/> <! -- If you want to create a snapshot of the qcow2 format, you must disable dataplane. -->
-                    <source file='path'/> <! -- Enter the absolute path of the Alinyun Linux 2 image. -->
+                <disk type='file' device='disk'><! -- Specify the type parameter based on the image format. Set type to qcow2 if the image is in the qcow2 format, and set type to vhd if the image is in the VHD format. -->
+                    <driver name='qemu' type='qcow2' cache='none' dataplane='on' io='native'/> <! -- If you want to create a snapshot in the qcow2 format, you must disable dataplane. -->
+                    <source file='path'/> <! -- Enter the absolute path of the Alibaba Cloud Linux 2 image. -->
                     <target dev='vda' bus='virtio'/>
                 </disk>
                 <! -- Add the information of seed.img. -->
@@ -178,14 +178,14 @@ You can use one of the following methods to start the KVM. Then, use the account
         </domain>
         ```
 
-    2.  Run the `virsh` command to start the KVM. The sample command is as follows:
+    2.  Run the `virsh` command to start the KVM. Sample command:
 
         ```
         virsh define alinux2.xml
         virsh start KVMName    # Enter the actual name of the KVM.
         ```
 
--   Run the `qemu-kvm` command line to start the KVM. You must add the following parameter information to the command line. Change the `file` parameter to the actual absolute path of the seed.img image.
+-   Run the `qemu-kvm` command to start the KVM. You must append the following parameter information to the command. Set the `file` parameter to the actual absolute path of the seed.img image.
 
     ```
     -drive file=/path/to/your/seed.img,if=virtio,format=raw
@@ -193,5 +193,5 @@ You can use one of the following methods to start the KVM. Then, use the account
 
     For more information about how to use the libvirt and qemu-kvm commands, visit [Installing Virtualization Packages Manually](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/virtualization_deployment_and_administration_guide/index?spm=a2c63.p38356.879954.8.19345311iQWknm#sect-Installing_virtualization_packages_on_an_existing_Red_Hat_Enterprise_Linux_system-Installing_the_virtualization_packages_with_yum).
 
--   Use the graphical interface \(virt-manager\) to start the KVM. Before you start the KVM, find the configuration file of the KVM on your local computer and add the absolute path of the seed.img image file to the configuration file.
+-   Use the graphical interface \(virt-manager\) to start the KVM. Before you start the KVM, find the configuration file of the KVM on your on-premises computer and add the absolute path of the seed.img image to the configuration file.
 
