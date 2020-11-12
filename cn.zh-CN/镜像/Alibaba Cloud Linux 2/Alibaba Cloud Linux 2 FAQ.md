@@ -27,22 +27,7 @@ Alibaba Cloud Linux 2即为原Aliyun Linux 2，是Aliyun Linux的升级版本。
 
 ## Alibaba Cloud Linux 2的多个镜像之间有何不同？
 
-Alibaba Cloud Linux 2的发布记录请参见[Alibaba Cloud Linux 2发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.md)。Alibaba Cloud Linux 2包括的镜像之间的关系如下：
-
--   Alibaba Cloud Linux 2.1903 LTS 64位：默认标准镜像。
--   Alibaba Cloud Linux 2.1903 64位 快速启动版：基于默认标准镜像与阿里云基础设施进行垂直优化，极大提升实例启动速度，默认运行时与标准镜像完全一致。
-
-    **说明：** 该镜像的内核版本无法修改内核启动参数。
-
--   Alibaba Cloud Linux 2.1903 LTS 64位 AMD版：基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。
-
-    **说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像，实例规格族包括ecs.ebmg6a、ecs.ebmc6a、ecs.ebmr6a。
-
--   Alibaba Cloud Linux 2.1903 64位 可信版：基于默认标准镜像支持阿里云可信实例的镜像版本。
-
-    **说明：** 仅阿里云可信实例可以使用该镜像，实例规格族包括ecs.g6t、ecs.c6t。
-
--   Alibaba Cloud Linux 2.1903 64位 等保2.0三级版：基于默认标准镜像进行等保加固的镜像版本，该镜像符合等保2.0三级安全保护的基本要求。使用说明请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)。
+Alibaba Cloud Linux 2的镜像发布记录请参见[Alibaba Cloud Linux 2发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.md)。Alibaba Cloud Linux 2包括的镜像之间的关系，请参见[Alibaba Cloud Linux 2镜像](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2概述.md)。
 
 ## 如何开始在阿里云上使用Alibaba Cloud Linux 2？
 
