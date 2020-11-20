@@ -32,10 +32,10 @@
  系列I实例默认值：none
 
  其余实例规格族默认值：optimized |
-|StartTime|String|否|2017-08-22T08:45:08Z|查询抢占式实例历史价格的起始时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+|StartTime|String|否|2017-08-22T08:45:08Z|查询抢占式实例历史价格的起始时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为`yyyy-MM-ddTHH:mm:ssZ`。
 
  默认值：空，空代表结束时间前3小时，最大值不得超过指定的结束时间30天。 |
-|EndTime|String|否|2017-08-22T08:45:08Z|查询抢占式实例历史价格的结束时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+|EndTime|String|否|2017-08-22T08:45:08Z|查询抢占式实例历史价格的结束时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为`yyyy-MM-ddTHH:mm:ssZ`。
 
  默认值：空，空表示当前时间。 |
 |OSType|String|否|linux|操作系统的发行平台类型。取值范围：
@@ -60,7 +60,7 @@
 |NetworkType|String|vpc|抢占式实例的网络类型。 |
 |OriginPrice|Float|0.354|按量付费实例部分原价。 |
 |SpotPrice|Float|0.036|抢占式实例价格。 |
-|Timestamp|String|2019-11-19T06:00:00Z|时间格式为`yyyy-MM-ddTHH:MM:SS`的价格时间。 |
+|Timestamp|String|2019-11-19T06:00:00Z|时间格式为`yyyy-MM-ddTHH:mm:ssZ`的价格时间。 |
 |ZoneId|String|cn-hangzhou-c|抢占式实例所属的可用区ID。 |
 
 ## 示例
@@ -165,7 +165,7 @@ https://ecs.aliyuncs.com/?Action=DescribeSpotPriceHistory
 |400|InvalidParams.Offset|%s|指定的参数Offset无效。|
 |400|InvalidInstanceType.ValueNotSupported|%s|该操作暂不支持指定的实例类型。|
 |400|DependencyViolation.IoOptimized|The specified instancetype must be IoOptimized instance.|指定的实例规格必须为I/O优化实例，请您检查实例规格是否正确。|
-|400|InvalidSpotDuration|The specified SpotDuration is not valid.|指定的SpotDuration不合法。|
+|400|InvalidSpotDuration|The specified SpotDuration is not valid.|指定的SpotDuration参数有误。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
