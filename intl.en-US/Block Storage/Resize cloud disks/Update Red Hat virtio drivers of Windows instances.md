@@ -1,5 +1,5 @@
 ---
-keyword: [Alibaba Cloud, ECS, resize a disk, resize, resize a disk on a Window instance]
+keyword: [Alibaba Cloud, ECS, resize a disk, resize, resize a disk on a Windows instance]
 ---
 
 # Update Red Hat virtio drivers of Windows instances
@@ -15,13 +15,13 @@ You can perform the following operations to update the Red Hat virtio drivers of
 
 1.  [Step 1: Check the version of the drivers](#section_mhl_nhy_dhb)
 2.  [Step 2: Download the drivers](#section_93w_k6h_jgz)
-3.  [Step 3: Update the Red Hat virtio drivers](#section_pvf_cr1_qgb)
+3.  [Step 3. Update the Red Hat virtio drivers](#section_pvf_cr1_qgb)
 
 ## Step 1: Check the version of the drivers
 
-You can use one of the following methods to check the version of the drives:
+You can use one of the following methods to check the version of the drivers:
 
--   Method 1: Use the PowerShell script to check the version of the drivers
+-   Method 1: Use the PowerShell script to check the version of the drivers.
     1.  Connect to the Windows instance. For more information, see [Connect to a Windows instance from a local client](/intl.en-US/Instance/Connect to instances/Connect to Windows instances/Connect to a Windows instance from a local client.md).
     2.  Open Command Prompt.
     3.  Enter powershell to access the PowerShell interactive interface.
@@ -31,20 +31,20 @@ You can use one of the following methods to check the version of the drives:
         [System.Diagnostics.FileVersionInfo]::GetVersionInfo("C:\Windows\System32\drivers\viostor.sys")
         ```
 
-        ![Check the version of the drivers](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1182909951/p41813.png)
+        ![Check the version of the drivers](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1182909951/p41813.png)
 
 -   Method 2: Manually check the version of the drivers
     1.  Connect to the Windows instance.
     2.  Go to the C:\\Windows\\System32\\drivers system directory.
     3.  Right-click the viostor.sys file, select **Properties**, and then view the file version on the **Details** tab.
 
-        ![File version](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1182909951/p41818.png)
+        ![File version](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1182909951/p41818.png)
 
 
 Determine whether the requirements of the file version are met based on the query results, and perform corresponding operations.
 
-|Scenario|Red Hat VirtIO SCSI driver version|Operation|
-|--------|----------------------------------|---------|
+|Scenario|Version of the Red Hat virtio-scsi driver|Operation|
+|--------|-----------------------------------------|---------|
 |Resize a disk online|58011 or later|Resize the disk online. For more information, see [Resize disks online for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Linux instances.md).|
 |Earlier than 58011|Proceed to the next step.|
 |Query the serial number of a disk|58015 or later|Query the serial number of the disk. For more information, see [Query the serial number of a disk](/intl.en-US/Block Storage/Cloud disks/Query the serial number of a disk.md).|
@@ -59,11 +59,11 @@ Click [here](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/169
 |win7|Windows Server 2008 R2 and Windows 7|
 |Wlh|Windows Server 2008|
 |Win8|Windows Server 2012 and Windows Server 2012 R2|
-|win10|Windows 10, Windows Server 2016, and Windows Server systems of later versions|
+|win10|Windows 10, Windows Server 2016, Windows Server 2019, and Windows Server systems of later versions|
 |amd64|64-bit|
 |x86|32-bit|
 
-## Step 3: Update the Red Hat virtio drivers
+## Step 3. Update the Red Hat virtio drivers
 
 You can use one of the following methods to update the Red Hat virtio drivers:
 
@@ -92,11 +92,11 @@ You can use one of the following methods to update the Red Hat virtio drivers:
     3.  Restart the operating system of the ECS instance for the driver update to take effect.
 -   Method 2: Manually add the drivers
     1.  Open Device Manager.
-    2.  Right-click **Red Hat VirtIO SCSI controller** under **Storage controllers** and select **Update Driver Software**.
+    2.  Right-click **Red Hat VirtIO SCSI controller** under **Storage controllers** and select **Update Driver Software...**
 
         **Note:** If multiple **Red Hat VirtIO SCSI controller** devices appear, you need to update only one of them.
 
-        ![Update the drivers](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1182909951/p41810.png)
+        ![Update the drivers](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1182909951/p41810.png)
 
     3.  Select **Browse my computer for driver software**.
     4.  Select **Let me pick from a list of device drivers on my computer**.
