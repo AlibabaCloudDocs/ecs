@@ -4,7 +4,7 @@
 
 ## 接口说明
 
-更换换系统盘时，您需要注意：
+更换系统盘时，您需要注意：
 
 -   不支持更换系统盘的云盘类型。
 -   不支持变更系统盘计费方式。
@@ -12,9 +12,14 @@
 
 **说明：** 仅适用于专有网络VPC类型实例：如果ECS实例开启了VPC内实例停机不收费功能，为防止地域内ECS实例库存不足而引起更换系统盘后无法重启实例，您需要在停止实例时关闭停机不收费功能。详情请参见[StopInstance](~~25501~~)。
 
--   被[安全控制](~~25695~~)的ECS实例的`OperationLocks`不能标记为`"LockReason" : "security"`。
+-   ECS实例不能被安全锁定，即实例的`OperationLocks`参数值包含`"LockReason": "security"`。详情请参见[安全锁定时的API行为](~~25695~~)。
 -   系统盘挂载的ECS实例不能有未支付的订单。
 -   您可以通过参数SystemDisk.Size重新指定系统盘的容量大小。
+
+更换系统盘后，建议您通过以下任一方式验证是否更换成功：
+
+-   通过[DescribeDisks](~~25514~~)接口查询新系统盘的状态。如果已挂载实例，则表示更换系统盘的操作已完成。
+-   通过[DescribeInstances](~~25506~~)接口查询更换系统盘的实例的状态。如果返回值`OperationLocks`为空，则表示更换系统盘的操作已完成。
 
 ## 调试
 
@@ -149,13 +154,13 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 |400|InvalidPassword.Malformed|The specified parameter "Password" is not valid.|指定的Password参数不合法。|
 |400|InvalidPasswordParam.Mismatch|The input password should be null when passwdInherit is true.|启用PasswdInherit后，用户名密码应该设置为空。|
 |400|OperationDenied|The specified image contains the snapshot of the data disk,does not support this operation.|包含了数据盘快照的镜像，不支持此操作。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|参数DiskCategory不合法。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的DiskCategory参数有误。|
 |403|OperationDenied.InstanceCreating|The specified instance is creating.|指定的实例已存在。|
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
 |400|OperationDenied|%s|拒绝操作。|
 |400|InvalidKeyPairName.NotFound|The specified KeyPairName does not exist.|指定的KeyPairName不存在。|
-|400|DependencyViolation.IoOptimize|The specified parameter InstanceId is not valid.|指定的实例ID不合法，指定的实例IO优化配置不合法。|
+|400|DependencyViolation.IoOptimize|The specified parameter InstanceId is not valid.|指定的实例IO优化配置不合法。|
 |403|InvalidParameter.NotMatch|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|MissingParameter.Architecture|Architecture should not be null.|参数Architecture不能为空。|
 |400|InvalidArchitecture.Malformed|Architecture is not valid.|您输入的参数Architecture无效，请查看该参数格式是否正确。|
