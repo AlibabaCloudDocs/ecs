@@ -56,7 +56,43 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
         yum install –y redis-3.2.12
         ```
 
-4.  为Redis服务配置默认的DRAM和持久内存大小。
+4.  配置网卡多队列。
+
+    网卡多队列可以帮助Redis应用获得更好的性能。
+
+    1.  下载自动配置脚本ecs\_mq。
+
+        ```
+        wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/ecs_mq/ecs_mq_latest.tgz
+        ```
+
+    2.  解压脚本。
+
+        ```
+        tar -xzf ecs_mq_latest.tgz
+        ```
+
+    3.  更换工作路径。
+
+        ```
+        cd ecs_mq/
+        ```
+
+    4.  运行脚本。
+
+        不同的镜像版本的命令格式不同，例如Alibaba Cloud Linux 2.1903镜像运行`bash install.sh aliyun 2`。
+
+        ```
+        bash install.sh <系统名称> <系统主版本号>
+        ```
+
+    5.  启动服务。
+
+        ```
+        systemctl start ecs_mq
+        ```
+
+5.  为Redis服务配置默认的DRAM和持久内存大小。
 
     **说明：** 为防止其他未经优化的应用（例如Nginx）分配到持久内存的空间地址，引起性能问题，建议您在启动Redis应用时将所有持久内存分配给Redis应用。
 
@@ -158,7 +194,43 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
     make install
     ```
 
-9.  为Redis服务配置默认的DRAM和持久内存大小。
+9.  配置网卡多队列。
+
+    网卡多队列可以帮助Redis应用获得更好的性能。
+
+    1.  下载自动配置脚本ecs\_mq。
+
+        ```
+        wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/ecs_mq/ecs_mq_latest.tgz
+        ```
+
+    2.  解压脚本。
+
+        ```
+        tar -xzf ecs_mq_latest.tgz
+        ```
+
+    3.  更换工作路径。
+
+        ```
+        cd ecs_mq/
+        ```
+
+    4.  运行脚本。
+
+        不同的镜像版本的命令格式不同，例如CentOS 7.6镜像运行`bash install.sh centos 7`。
+
+        ```
+        bash install.sh <系统名称> <系统主版本号>
+        ```
+
+    5.  启动服务。
+
+        ```
+        systemctl start ecs_mq
+        ```
+
+10. 为Redis服务配置默认的DRAM和持久内存大小。
 
     **说明：** 为防止其他未经优化的应用（例如Nginx）分配到持久内存的空间地址，引起性能问题，建议您在启动Redis应用时将所有持久内存分配给Redis应用。
 
