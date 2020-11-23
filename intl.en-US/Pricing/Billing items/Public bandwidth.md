@@ -20,7 +20,7 @@ An ECS instance can access the Internet by using the following methods:
 
 -   NAT gateway
 
-    NAT gateways are Internet gateways that can be purchased independently. For information about the billing details of NAT gateways, see [Billing](/intl.en-US/Pricing/Billing.md).
+    NAT gateways are Internet gateways that can be purchased independently. For information about the billing details of NAT gateways, see [Billing](/intl.en-US/Pricing/Billing overview.md).
 
 
 This topic describes how to use public IP addresses to access the Internet and the billing methods for network usage. After an ECS instance is assigned a public IP address, you can use the instance to access the Internet and receive requests from the Internet. The following table describes the related public bandwidth types.
@@ -41,7 +41,7 @@ Two billing methods for network usage are available: pay-by-bandwidth and pay-by
 -   Pay-by-bandwidth: You are charged based on the bandwidth that you specify. The actual outbound bandwidth does not exceed the specified bandwidth.
 -   Pay-by-traffic: a pay-as-you-go billing method. You are charged for the traffic that you actually used. You must configure a peak bandwidth for outbound traffic to avoid unmanageable fees incurred by outbound traffic bursts.
 
-    **Note:** When the pay-by-traffic billing method is used, the peak inbound and outbound bandwidths indicate the upper limits for bandwidths and are only for reference. In the event of resource contention, the peak bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instance, use the pay-by-bandwidth billing method.
+    **Note:** When the **pay-by-traffic** billing method is used, the peak inbound and outbound bandwidths are both the upper limits of bandwidths and for reference only. In the event of resource contention, these peak bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth** billing method.
 
 
 **Note:** You can also purchase a data transfer plan to offset the network traffic fees. For more information, see [Data Transfer Plan](https://www.alibabacloud.com/help/zh/product/55093.htm).
@@ -68,29 +68,29 @@ The following table describes how network usage is billed. Assume that the insta
 -   Bandwidth value: 2 Mbit/s
 -   Unit price for 2 Mbit/s: USD 6.8 per month
 
-|1 \* 6.8 = 6.8|
+|1 × 6.8 = 6.8|
 |-   Usage period: 1 month
 -   Bandwidth value: 7 Mbit/s
 -   Unit price for 5 Mbit/s: USD 17 per month
 -   Unit price for 6 Mbit/s or higher: USD 11.8 per month
 
-|1 \* \[17 + \(7 - 5\) \* 11.8\] = 40.6|
+|1 × \[17 + \(7 - 5\) × 11.8\] = 40.6|
 |Pay-as-you-go|-   Usage period: 1 month
 -   Bandwidth value: 2 Mbit/s
 -   Unit price for 2 Mbit/s: USD 0.012 per hour
 
-|24 \* 30 \* 0.012 = 8.64|
+|24 × 30 × 0.012 = 8.64|
 |-   Usage period: 1 month
 -   Bandwidth value: 7 Mbit/s
 -   Unit price for 5 Mbit/s: USD 0.03 per hour
 -   Unit price for 6 Mbit/s or higher: USD 0.021 per hour
 
-|24 \* 30 \* \[0.03 + \(7 - 5\) \* 0.021\] = 51.84|
+|24 × 30 × \[0.03 + \(7 - 5\) × 0.021\] = 51.84|
 |Pay-by-traffic|Subscription and pay-as-you-go|-   Consumed traffic: 1 GB
 -   Unit price: USD 0.123 per GB
 -   Usage period: N/A. You are charged based on the traffic that you actually used.
 
-|1 \* 0.123 = 0.123|
+|1 × 0.123 = 0.123|
 
 ## References
 
