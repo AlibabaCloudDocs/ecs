@@ -9,7 +9,7 @@
 -   查询不同类型资源的价格时，必需参数也会相应不同。
     -   参数`ResourceType`的值为`instance`时，您必须同时指定参数`InstanceType`。
     -   参数`ResourceType`的值为`disk`时，您必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。查询`disk`资源的价格时，只返回云盘按量付费的价格，即参数PriceUnit只能取值为Hour。
-    -   参数`ResourceType`的值为`ecsrep`时，表示查询弹性保障服务的价格，支持多种场景。该参数值正在邀测中，详情请提交工单咨询。
+    -   参数`ResourceType`的值为`ecsrep`时，表示查询弹性保障服务的价格。该参数值正在邀测中，详情请提交工单咨询。
     -   查询`bandwidth`资源的价格时，只返回按流量计费（`PayByTraffic`）的价格。
 -   参数`ResourceType`的值为`instance`时，仅支持查询四块以内数据盘的价格。
 -   默认查询付费方式（ChargeType）为按量付费（PostPaid）的价格，您可以通过指定`PriceUnit`参数查询云服务器ECS不同计费周期的价格。
@@ -310,7 +310,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 |403|InvalidDiskCategory.NotSupported|The upgrade operation of instance does not support this category of disk.|实例的升级操作不支持此类磁盘。|
 |400|InstanceDiskCategoryLimitExceed|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|指定的DataDisk.n.Size超出允许范围，或者快照的容量超过了指定磁盘类别的大小限制。|
 |404|DependencyViolation.IoOptimized|The specified instancetype must be IoOptimized instance.|指定的实例规格必须为I/O优化实例，请您检查实例规格是否正确。|
-|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SytemDisk.Size小于镜像文件大小数值。|
+|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
 |404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the minimum size.|指定的SystemDisk.Size低于最小值。|
 |404|InvalidSystemDiskSize.MoreThanMaxSize|The specified parameter SystemDisk.Size is more than the maximum size|指定的SystemDisk.Size超过最大值。|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified vm bandwidth is not valid.|指定的虚拟机带宽无效。|
@@ -320,7 +320,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 |404|InvalidSystemDiskSize.ValueNotSupported|The specified parameter SystemDisk.Size is invalid.|指定的SystemDisk.Size不合法。|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified parameter Bandwidth is not valid.|指定的Bandwidth不合法。|
 |400|InstanceDiskNumber.LimitExceed|The total number of specified disk in an instance exceeds.|实例下磁盘数目超过限制。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的DiskCategory参数有误。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |403|OperationDenied|The resource is out of usage.|该实例不在运行状态，请您启动实例或检查操作是否合理。|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|%s|参数InternetMaxBandwidthOut无效。|
 |400|InvalidDataDiskCategory.ValueNotSupported|%s|指定的数据磁盘类型无效。|
