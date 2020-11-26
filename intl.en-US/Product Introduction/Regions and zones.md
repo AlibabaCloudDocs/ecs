@@ -52,7 +52,7 @@ When you select a region, you must consider the following factors:
 
         In mainland China, we recommend that you select a region that is the closest to the geographical location of your target users to speed up the access. However, in terms of network infrastructure, Border Gateway Protocol \(BGP\) network quality, quality of service \(QoS\), and ease of use and configuration on Elastic Compute Service \(ECS\) instances, Alibaba Cloud regions in mainland China are almost the same. BGP networks ensure fast access to all regions in mainland China.
 
-    -   Outside mainland China
+    -   Outside mainland China   ==> under the "Outside mainland China“ section, it's still telling "In mainland China" ？
 
         In mainland China, we recommend that you select a region that is the closest to the geographical location of your target users to speed up the access. However, in terms of network infrastructure, Border Gateway Protocol \(BGP\) network quality, quality of service \(QoS\), and ease of use and configuration on Elastic Compute Service \(ECS\) instances, Alibaba Cloud regions in mainland China are almost the same. BGP networks ensure fast access to all regions in mainland China.
 
