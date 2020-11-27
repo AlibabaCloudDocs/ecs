@@ -115,6 +115,11 @@ You can click **Privileges** on the **Overview** page of the ECS console, and se
 
 ## Public bandwidth limits
 
+As of November 27, 2020, the peak bandwidth available for you to create ECS instances or change the configurations of ECS instances is subject to throttling policies in your account. To increase the peak bandwidth, submit a ticket. The following throttling policies apply:
+
+-   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+-   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+
 |Item|Limit|Adjustable|
 |:---|:----|:---------|
 |Peak inbound bandwidth|-   If the purchased peak outbound bandwidth is less than or equal to 10 Mbit/s, Alibaba Cloud allocates an inbound bandwidth of 10 Mbit/s.
