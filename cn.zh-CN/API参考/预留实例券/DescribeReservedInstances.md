@@ -48,6 +48,12 @@
  -   No Upfront：零预付
 -   Partial Upfront：部分预付
 -   All Upfront：全预付 |
+|AllocationType|String|否|Normal|分配类型。取值范围：
+
+ -   Normal：查询当前账号下的预留实例券。
+-   Shared：查询当前账号下已经建立主子账号共享的预留实例券。
+
+ 默认值：Normal |
 
 ## 返回数据
 
@@ -58,7 +64,10 @@
 |RequestId|String|E572643C-6A29-49D6-9D4E-6CFA4E063A3E|请求ID。 |
 |ReservedInstances|Array of ReservedInstance| |由ReservedInstance组成的数组格式，返回预留实例券的详细信息。 |
 |ReservedInstance| | | |
-|AllocationStatus|String|null|**说明：** 该参数正在邀测中，暂未开放使用。 |
+|AllocationStatus|String|allocated|当AllocationType值为Shared时，该参数表示预留实例券的分配状态。可能值：
+
+ -   allocated：已分配给其他用户的预留实例券。
+-   beAllocated：被其他用户分配的预留实例券。 |
 |CreationTime|String|2018-12-10T12:07Z|创建时间。 |
 |Description|String|testDescription|描述。 |
 |ExpiredTime|String|2019-12-10T12:07Z|到期时间。 |
