@@ -29,6 +29,7 @@
     -   指定`VSwitchId`时，`SecurityGroupId`和`VSwitchId`必须属于同一个VPC。
     -   `PrivateIpAddress`依赖于`VSwitchId`，不能单独指定`PrivateIpAddress`。同时指定`VSwitchId`和`PrivateIpAddress`时，`PrivateIpAddress`必须包含在交换机的空闲子网网段之内。
 -   **公网带宽**：
+    -   自2020年11月27日起，创建和变配ECS实例时带宽峰值受账户限速策略影响。如需更大带宽峰值，请提交工单。具体限速策略：单个地域下，所有按使用流量计费ECS实例的实际运行带宽峰值总和不大于5 Gbit/s；所有按固定带宽计费ECS实例的实际运行带宽峰值总和不大于50 Gbit/s。
     -   使用`CreateInstance`创建的实例将不会分配公网IP地址，您可以调用[AllocatePublicIpAddress](~~25544~~)自行分配。
     -   `InternetChargeType`和`InternetMaxBandwidthOut`的设置决定带宽费用。
     -   阿里云入网数据流量免费，`InternetMaxBandwidthIn`的值与计费无关。
