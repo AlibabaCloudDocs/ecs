@@ -1,35 +1,35 @@
 ---
-keyword: [配额, 配额不足, ECS配额, ECS配额不足, quota, ECS quota, 限额]
+keyword: [quota, Insufficient quota, ECS quota, insufficient ECS quota, quota, ECS quota, limit]
 ---
 
-# 查看配额（旧版）
+# View quotas \(old version\)
 
-通过ECS管理控制台可以查看您的账号已支持的权益和资源配额。如果某项资源配额无法满足业务需求，请提交工单提升配额。
+This topic describes how to view your current privileges and resource quotas in the ECS console. You can apply to increase your resource quota if the current resource quota is insufficient.
 
-结合您的云服务器的使用情况，您获得的特权项目和资源的配额相应增加或减少。
+Your privileges and resource quotas may change based on the usage of your ECS resources.
 
-**说明：** 部分账号的权益配额功能已升级至新版本。如果您的权益配额页面和本文所述不一致，请参见[查看和提升实例配额](/intl.zh-CN/标签与资源/资源/权益配额/查看和提升配额（新版）.md)。
+**Note:** The privileges and quotas feature of some accounts have been upgraded to the new version. If your Privileges & Quotas page is not consistent with that described in this topic, see [View and increase quotas \(new version\)](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase quotas (new version).md).
 
-1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
+1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  登录[ECS管理控制台](https://partners-intl.console.aliyun.com/#/ecs)。
+2.  Log on to the [ECS console](https://partners-intl.console.aliyun.com/#/ecs).
 
-3.  在**概览**页面的右上角，单击**权益配额**。
+3.  In the upper-right corner of the **Overview** page, click **Privileges**.
 
-    ![qy1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1338819951/p93403.png)
+    ![qy1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4169033951/p93403.png)
 
-4.  在**权益配额**页面中，查看各个地域下的权益和资源配额。
+4.  On the **Privileges & Quotas** page, view the privileges and resource quotas in each region.
 
-    |区域|描述|
-    |--|--|
-    |功能特权|特权项目包括**实时降配**、**复制镜像**和**导出镜像**等，灰色图标表示您未获得该特权项目。|
-    |网络特权|查看该地域是否开通经典网络。|
-    |资源配额限制|切换地域查看具体地域下的特权资源。单击**工单申请**可申请增加资源限额。|
-    |按量实例规格限制|切换地域查看具体地域下可购买的按量实例规格。|
-
-
-**相关文档**  
+    |Section|Description|
+    |-------|-----------|
+    |Privileges|Privileges contain **Downgrade**, **Copy Image**, and **Export Custom Image**. If these items are dimmed, you do not have the privileges.|
+    |Network Privilege|The network privilege indicates whether the classic network is enabled in this region.|
+    |Quotas by Resource Type|You can switch regions to view the privileges and quotas in the specified region. You can click **Apply** to request for increasing a resource quota.|
+    |Type of Available Pay-As-You-Go Instances|You can switch regions to view the available pay-as-you-go instance types in the specified region.|
 
 
-[DescribeAccountAttributes](/intl.zh-CN/API参考/其他接口/DescribeAccountAttributes.md)
+**Related topics**  
+
+
+[DescribeAccountAttributes](/intl.en-US/API Reference/Others/DescribeAccountAttributes.md)
 
