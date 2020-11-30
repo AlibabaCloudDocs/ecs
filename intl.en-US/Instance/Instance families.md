@@ -10,7 +10,7 @@ ECS instances are categorized into different instance families based on their us
 
 **Note:** The available instance families and types vary based on regions. You can go to the [ECS Instance Types Available for Each Region](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) page to view the available instance types in each region.
 
-Enterprise scenarios have high requirements for business stability. Alibaba Cloud ECS instance families are divided into enterprise-level and shared instance families based on whether the instance families are suitable for enterprise scenarios. Enterprise-level instance families offer consistent performance and dedicated resources. In enterprise-level instance families, each vCPU corresponds to a hyperthread of the Intel® Xeon® core. For more information about the differences between enterprise-level and shared instance families, see [Instance FAQ](/intl.en-US/Instance/ECS instance FAQ.md).
+Enterprise scenarios have high requirements for business stability. Alibaba Cloud ECS instance families are divided into enterprise-level and shared instance families based on whether the instance families are suitable for enterprise scenarios. Enterprise-level instance families offer consistent performance and dedicated resources. In enterprise-level instance families, each vCPU corresponds to a hyperthread of the Intel® Xeon® core. For more information about the differences between enterprise-level and shared instance families, see [Instance FAQ](/intl.en-US/Instance/Instance FAQ.md).
 
 You can upgrade or downgrade instance types within an instance family or across instance families. For more information, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Change instance types/Instance families that support instance type changes.md).
 
@@ -36,7 +36,6 @@ Alibaba Cloud ECS instance families are categorized into the following categorie
 -   [c6e, compute optimized instance family with enhanced performance](#c6e)
 -   [c5, compute optimized instance family](#c5)
 -   [r6, memory optimized instance family](#r6)
--   [re6p, persistent memory optimized instance family](#re6p)
 -   [r6a, memory optimized instance family](#r6a)
 -   [r6e, memory optimized instance family with enhanced performance](#r6e)
 -   [re6, high memory instance family](#re6)
@@ -44,7 +43,6 @@ Alibaba Cloud ECS instance families are categorized into the following categorie
 -   [d2c, compute intensive big data instance family](#d2c)
 -   [d2s, storage intensive big data instance family](#d2s)
 -   [d1ne, big data instance family with enhanced network performance](#d1ne)
--   [i3, instance family with local SSDs](#i3)
 -   [i2, instance family with local SSDs](#i2)
 -   [i2g, instance family with local SSDs](#i2g)
 -   [i2ne, instance family with local SSDs](#i2ne)
