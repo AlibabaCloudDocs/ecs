@@ -6,17 +6,38 @@ keyword: [savings plans, pay-as-you-go, discount]
 
 A savings plan is a discount plan that can be applied to offset the bills of pay-as-you-go instances \(excluding preemptible instances\). A combination of savings plans and pay-as-you-go instances is more flexible in use than subscription instances or a combination of reserved instances and pay-as-you-go instances.
 
-## Introduction
+## What is a savings plan?
 
 A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount \(measured in dollars per hour\) of resources over a one- or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan.
 
-When you use a savings plan, your pay-as-you-go instances of each instance type have a regular pay-as-you-go price and a savings plan price. Resource usage within your commitment is charged at the savings plan price. Any resource usage beyond your commitment is charged at the regular pay-as-you-go price.
+When you use a savings plan, your pay-as-you-go instances of each instance type have a regular pay-as-you-go unit price and a savings plan unit price. For more information, see the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page. Resource usage within your commitment is billed based on the savings plan unit price. Any resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
 
-For example, the regular pay-as-you-go price of Instance A is USD 2/hour, and the savings plan price is USD 0.5/hour. You have 25 running Instances A and make a commitment of USD 10/hour. Your hourly bills are calculated based on the following formula: 10 + 2 × \(25 - 10/0.5\) = USD 20. Comparatively, if you do not purchase a savings plan, your hourly bills are 2 × 25 = USD 50.
+For example, assume that Alex has several ecs.g6.xlarge instances in the China \(Shanghai\) region and can use a three-year general-purpose savings plan to obtain the following discounts.
 
-**Note:** The prices used in this example are for demonstration only. For the actual prices, see the [ECS pricing](https://www.alibabacloud.com/product/ecs) and [Discount details](https://usercenter2.aliyun.com/resource/spn/price) pages.
+**Note:** The prices used in this example are for demonstration only. For the actual prices and discounts, see the [ECS pricing](https://www.alibabacloud.com/product/ecs) and pages.
 
-## Plan types
+Assume that the regular pay-as-you-go unit price of the ecs.g6.xlarge instance is `USD 0.155/unit/hour` and a three-year savings plan provides savings of `54.5%` off the pay-as-you-go price for the ecs.g6 instance family in the China \(Shanghai\) region. The savings plan unit price of the ecs.g6.xlarge instances is calculated based on the following formula: `USD 0.155/unit/hour × 0.455 = USD 0.0705/unit/hour`.
+
+If Alex makes a commitment of `USD 0.31/hour`, the savings plan can be applied to offset hourly bills of 4.396 pay-as-you-go ecs.g6.xlarge instances, which is calculated based on the following formula: `0.31/0.0705 = 4.397`.
+
+The following table compares the regular pay-as-you-go prices and the savings plan prices.
+
+|Billing method|The first hour \(assuming that six instances are running\)|The second hour \(assuming that five instances are running\)|The third hour \(assuming that four instances are running\)|
+|--------------|----------------------------------------------------------|------------------------------------------------------------|-----------------------------------------------------------|
+|Total regular pay-as-you-go price without the savings plan|6 × USD 0.155/unit = USD 0.93|5 × USD 0.155/unit = USD 0.775|4 × USD 0.155/unit = USD 0.62|
+|Total price after the savings plan is applied|The instances that exceed the maximum number of instances \(4.397\) that can be offset by the savings plan are billed on the pay-as-you-go basis.USD 0.31 + USD 0.155 × \(6 - 0.31/0.0705\) = USD 0.558
+
+|The instances that exceed the maximum number of instances \(4.397\) that can be offset by the savings plan are billed on the pay-as-you-go basis.USD 0.31 + USD 0.155 × \(5 - 0.31/0.0705\) = USD 0.403
+
+|The total price is calculated based on the commitment because the number of running instances is less than the maximum number of instances \(4.397 instances\) that can be offset by the savings plan.USD 0.31 |
+
+## Make an hourly spend commitment
+
+For each savings plan, you must select hourly spend commitment. Resource usage within your commitment is billed based on the savings plan unit price. Any resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
+
+You can purchase a desired savings plan on the [Savings Plan](https://common-buy-intl.alibabacloud.com/?commodityCode=savingplan_common_public_intl#/buy) page or a savings plan recommended on the [Recommended](https://usercenter2-intl.aliyun.com/resource/spn/recommend) page.
+
+## Savings plan types
 
 Savings plans are available in two types: general purpose and ECS compute. The following table compares the two types of savings plans. ECS compute savings plans are less flexible but offer higher discounts than general purpose savings plans.
 
@@ -25,9 +46,9 @@ Savings plans are available in two types: general purpose and ECS compute. The f
 |Use across services|Can be used across services and supports the following services and resources:-   ECS: instance computing resource \(vCPUs and memory\). system disks, and public bandwidth
 -   Elastic Container Instance \(ECI\): instance computing resources \(vCPUs and memory\)
 
-|Can be used for only the following ECS resources: instance computing resources \(vCPUs and memory\), system disks, and public bandwidth|
-|Region limits|Has no limits on regions|Can be applied only within a single region|
-|Instance limits|Has no limits on instance families, instance sizes, or operating systems|Can be applied only to one instance family at a time but has no limits on the instance sizes or operating systems|
+|Can be used for only the following ECS resources: instance computing resources \(vCPUs and memory\), system disks, and public bandwidth.|
+|Region limits|Has no limits on regions.|Can be applied only within a single region.|
+|Instance limits|Has no limits on instance families, instance sizes, or operating systems.|Can be applied only to one instance family at a time but has no limits on the instance sizes or operating systems.|
 
 ## Scenarios
 
@@ -43,7 +64,7 @@ For more information about instance billing, see [Instances](/intl.en-US/Pricing
 
 ## Billing
 
-Savings plans support three payment options: All Upfront, Partial Upfront, and No Upfront. You can receive different discounts based on the selected payment option of your savings plan. Your savings plans are automatically applied to the usage of your pay-as-you-go instances based on specific rules within the terms of the plans. For more information, see [Billing of savings plans]().
+Savings plans support three payment options: All Upfront, Partial Upfront, and No Upfront. You can receive different discounts based on the selected payment option of your savings plan. Your savings plans are automatically applied to the usage of your pay-as-you-go instances based on specific rules within the terms of the plans. For more information, see [Billing of savings plans](/intl.en-US/Pricing/Billing methods/Savings plans.md).
 
 ## Lifecycle management
 
@@ -71,7 +92,7 @@ The following table describes the limits of savings plans.
 |Limited object|Limited item|Description|
 |--------------|------------|-----------|
 |Savings plan|Maximum number|You can purchase up to 40 savings plans for each account.|
-|Eligible instance|Savings plans cannot be applied to retired Generation I instance families, which include t1, s1, s2, s3, m1, m2, c1, and c2.|
+|Eligible instance|Savings plans cannot be applied to instances of retired Generation I instance families, which include t1, s1, s2, s3, m1, m2, c1, and c2.|
 |Order of application|When multiple discount plans take effect, they are applied in the following order:1.  Reserved instances and resource plans
 2.  Savings plans
 3.  Coupons
@@ -81,7 +102,7 @@ The following table describes the limits of savings plans.
     -   ECS instance computing resources \(vCPUs and memory\)
     -   System disks
     -   Public bandwidth |
-|Instance family|ECS compute savings plans can be applied to only pay-as-you-go instances of compute optimized instance families within a specific region.|
+|Instance family|ECS compute savings plans can be applied only to pay-as-you-go instances of a specific compute optimized instance family within a specific region.|
 
 ## Use across accounts
 
@@ -96,7 +117,7 @@ The following limits apply to the use of savings plans across accounts:
 
 ## References
 
--   [Billing of savings plans]()
--   [t1950747.md\#]()
--   [Instance FAQ](/intl.en-US/Instance/ECS instance FAQ.md)
+-   [Billing of savings plans](/intl.en-US/Pricing/Billing methods/Savings plans.md)
+-   [Purchase and apply savings plans](/intl.en-US/Instance/Instance purchasing options/Savings plans/Purchase and apply savings plans.md)
+-   [Billing FAQ](/intl.en-US/Pricing/Billing FAQ.md)
 
