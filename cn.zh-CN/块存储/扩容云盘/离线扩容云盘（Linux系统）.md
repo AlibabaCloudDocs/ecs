@@ -152,7 +152,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     ![growpart](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6620659951/p135834.png)
 
-    **说明：** 您在执行此步骤时，可能出现报错信息`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。关于如何排查此问题，请参见[\#d6e465](#d6e465)。
+    **说明：** 您在执行此步骤时，可能出现报错信息`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。关于如何排查此问题，请参见本文的常见问题部分。
 
 
 ## 步骤五：扩容文件系统
