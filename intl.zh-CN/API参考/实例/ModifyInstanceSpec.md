@@ -14,6 +14,9 @@
 -   实例状态必须为**已停止**（`Stopped`）时才能变更实例规格。
 -   单次只能升级单项配置，即单次只能修改实例规格，或者只能调整公网带宽大小。
 -   单台实例每成功操作一次，5分钟内不能继续操作。
+-   自2020年11月27日起，创建和变配ECS实例时带宽峰值受账户限速策略影响。如需更大带宽峰值，请提交工单。具体限速策略如下：
+    -   单个地域下，所有按使用流量计费ECS实例的实际运行带宽峰值总和不大于5 Gbit/s。
+    -   单个地域下，所有按固定带宽计费ECS实例的实际运行带宽峰值总和不大于50 Gbit/s。
 
 ## 调试
 
@@ -136,7 +139,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceSpec
 |400|InvalidInstanceStatus.NotStopped|The specified Instance status is not stopped.|指定实例的状态不是已停止。|
 |403|InstanceType.Offline|The specified InstanceType has been offline|您指定的实例规格已下线，请选择其它规格的实例。|
 |400|InvalidAction|Specified action is not valid.|该操作无效。|
-|400|IdempotenceParamNotMatch|There is a idempotence signature mismatch between this and last request.|此请求与上一个请求之间的幂等签名不匹配。|
+|400|IdempotenceParamNotMatch|There is a idempotence signature mismatch between this and last request.|该请求与上一个请求的ClientToken参数一致，但其它请求参数不一致。|
 |400|InvalidClientToken.ValueNotSupported|The ClientToken provided is invalid.|指定的ClientToken不合法。|
 |400|Price.PricePlanResultNotFound|The internetMaxBandwidthIn or internetMaxBandwidthOut provided is invalid.|提供的internetMaxBandwidthIn或internetMaxBandwidthOut无效。|
 |403|InvalidParameter.NotMatch|%s|您输入的参数无效，请检查参数之间是否冲突。|
