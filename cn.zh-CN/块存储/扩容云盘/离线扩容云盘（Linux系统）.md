@@ -39,22 +39,22 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 3.  在顶部菜单栏左上角处，选择地域。
 
-4.  找到需要扩容云盘的实例，单击实例ID进入**实例详情**页面。
+4.  找到需要扩容云盘的实例，单击实例ID。
 
-5.  在左侧导航栏，单击**本实例云盘**。
+5.  在**实例详情**页，单击**云盘**页签。
 
 6.  找到需要扩容的云盘，在**操作**列单击**创建快照**。
 
 7.  在弹出的对话框中，输入快照名称，并按需绑定标签后，单击**确定**。
 
-8.  在左侧导航栏，单击**本实例快照**，查看已创建的快照。
+8.  单击**快照**页签，查看已创建的快照。
 
     当快照的**进度**为**100%**时，表示快照创建完成，您可以执行后续操作。
 
 
 ## 步骤二：在控制台扩容云盘容量并重启（或启动）ECS实例
 
-1.  在**实例详情**页面的左侧导航栏，单击**本实例云盘**。
+1.  在**实例详情**页，单击**云盘**页签。
 
 2.  选择需要扩容的云盘，在**操作**列单击**更多** \> **云盘扩容**。
 
@@ -89,11 +89,15 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 1.  远程登录ECS实例。登录的具体步骤请参见[通过Workbench远程连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过Workbench远程连接Linux实例.md)。
 
-2.  运行命令`fdisk -lu`查看实例的云盘情况。
+2.  运行以下命令查看实例的云盘情况。
 
-    示例以系统盘（/dev/vda1）和数据盘（/dev/vdb1、/vde/vdc1）的三个分区为例，如下图所示。
+    ```
+    fdisk -lu
+    ```
 
-    ![查看云盘分区情况](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9339169951/p135832.png)
+    示例以系统盘（/dev/vda1）和数据盘（/dev/vdb1、/vde/vdc1）的三个分区为例，执行结果如下所示。
+
+    ![查看云盘分区情况](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9339169951/p135832.png)
 
     |序号|分区|说明|
     |--|--|--|
@@ -101,9 +105,15 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
     |②|`/dev/vdb1`|数据盘，**System**取值**Linux**表示为MBR分区。|
     |③|`/dev/vdc1`|数据盘，**System**取值**GPT**表示为GPT分区。|
 
-3.  运行命令`df -Th`确认已有分区的文件系统类型。
+3.  运行以下命令确认已有分区的文件系统类型。
 
-    ![查看文件系统](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6620659951/p135833.png)
+    ```
+    df -Th
+    ```
+
+    执行结果如下所示。
+
+    ![查看文件系统](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6620659951/p135833.png)
 
 
 ## 步骤四：扩容分区
@@ -118,15 +128,31 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
     yum install gdisk -y
     ```
 
-2.  根据不同Linux版本安装growpart工具。
+2.  安装growpart工具。
 
-    -   CentOS 7及以上版本：运行命令`yum install -y cloud-utils-growpart`。
-    -   Debian 9及以上版本、Ubuntu14及以上版本：运行命令`apt install -y cloud-guest-utils`。
-3.  运行命令`growpart /dev/vda 1`扩容分区。
+    -   CentOS 7及以上版本运行以下命令。
 
-    此示例以扩容系统盘为例，`/dev/vda`和`1`之间需要空格分隔。如果需要扩容其他分区，请根据实际情况修改命令。
+        ```
+        yum install -y cloud-utils-growpart
+        ```
 
-    ![growpart](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6620659951/p135834.png)
+    -   Debian 9及以上版本、Ubuntu14及以上版本运行以下命令。
+
+        ```
+        apt install -y cloud-guest-utils
+        ```
+
+3.  运行以下命令扩容分区。
+
+    ```
+    growpart /dev/vda 1
+    ```
+
+    此示例以扩容系统盘为例，`/dev/vda`和`1`之间需要空格分隔。如果需要扩容其他分区，请根据实际情况修改命令。执行结果如下所示。
+
+    ![growpart](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6620659951/p135834.png)
+
+    **说明：** 您在执行此步骤时，可能出现报错信息`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。关于如何排查此问题，请参见[\#d6e465](#d6e465)。
 
 
 ## 步骤五：扩容文件系统
@@ -135,25 +161,39 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 1.  在ECS实例内部，根据查询的文件系统类型，扩容文件系统。
 
-    -   扩容ext\*（例如ext4）文件系统：运行命令`resize2fs /dev/vda1`扩容文件系统。
+    -   扩容ext\*（例如ext4）文件系统：运行以下命令扩容文件系统。
+
+        扩容系统盘/dev/vda1的文件系统。
 
         ```
-        #扩容系统盘/dev/vda1的文件系统
-        resize2fs /dev/vda1
-        
-        #扩容数据盘/dev/vdb1的文件系统
+        resize2fs /dev/vda1    
+        ```
+
+        扩容数据盘/dev/vdb1的文件系统
+
+        ```
         resize2fs /dev/vdb1          
         ```
 
         **说明：** `/dev/vda1`和`/dev/vdb1`都是分区名称，您需要根据实际情况修改。
 
-    -   扩容xfs文件系统：运行命令`xfs_growfs /media/vdc`扩容文件系统。
+    -   扩容xfs文件系统：运行以下命令扩容文件系统。
+
+        ```
+        xfs_growfs /media/vdc
+        ```
 
         **说明：** `/media/vdc`为`/dev/vdc1`的挂载点，您需要根据实际情况修改。
 
-2.  运行命令`df -Th`检查扩容后结果。
+2.  运行以下命令检查扩容后结果。
 
-    ![查看扩容结果](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6620659951/p135835.png)
+    ```
+    df -Th
+    ```
+
+    执行结果如下所示。
+
+    ![查看扩容结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6620659951/p135835.png)
 
     扩容完成后，您需要根据实际情况检查数据是否正常。
 
@@ -166,20 +206,93 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     解决方案：
 
-    1.  运行`LANG=en_US.UTF-8`切换ECS实例的字符编码类型。
+    1.  运行以下命令切换ECS实例的字符编码类型。
+
+        ```
+        LANG=en_US.UTF-8
+        ```
+
     2.  如果问题仍未解决，请您尝试运行`reboot`命令重启ECS实例。
-    3.  如果问题仍未解决，请您尝试运行`localectl set-locale LANG=en_US.UTF-8`命令修改本地化环境变量，然后重启实例。
+    3.  如果重启ECS实例后仍未解决问题，请您尝试运行以下命令修改本地化环境变量，然后再次重启实例。
+
+        ```
+        localectl set-locale LANG=en_US.UTF-8
+        ```
+
+    如果您使用CentOS 8镜像，采用以上方案无法解决问题时，可以尝试使用以下命令修改字符编码类型。
+
+    ```
+    export LANGUAGE=en_US.UTF-8
+    ```
+
 -   问题：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
 
     解决方案：
 
-    1.  运行`uname -a`检查Linux内核是否不低于3.6.0版本。
+    1.  运行`uname -a`检查Linux内核的版本。本文操作适用于Linux内核版本3.6.0及以上的系统。
 
         如果Linux内核低于3.6.0版本，扩容分区操作请参见[扩展低内核版本实例的系统盘分区和文件系统](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux系统盘.md)和[扩展分区和文件系统\_Linux数据盘](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux数据盘.md)。
 
-    2.  根据不同Linux版本安装growpart工具。
-        -   CentOS 7及以上版本：运行命令`yum install -y cloud-utils-growpart`。
-        -   Debian 9及以上版本、Ubuntu14及以上版本：运行命令`apt install -y cloud-guest-utils`。
+    2.  安装growpart工具。
+        -   CentOS 7及以上版本运行以下命令。
+
+            ```
+            yum install -y cloud-utils-growpart
+            ```
+
+        -   Debian 9及以上版本、Ubuntu14及以上版本运行以下命令。
+
+            ```
+            apt install -y cloud-guest-utils
+            ```
+
+
+## 常见问题
+
+-   问题：运行`growpart /dev/vda 1`时，提示`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。
+
+    解决方案：
+
+    1.  运行以下命令切换ECS实例的字符编码类型。
+
+        ```
+        LANG=en_US.UTF-8
+        ```
+
+    2.  如果问题仍未解决，请您尝试运行`reboot`命令重启ECS实例。
+    3.  如果重启ECS实例后仍未解决问题，请您尝试运行以下命令修改本地化环境变量，然后再次重启实例。
+
+        ```
+        localectl set-locale LANG=en_US.UTF-8
+        ```
+
+    如果您使用CentOS 8镜像，采用以上方案无法解决问题时，可以尝试使用以下命令修改字符编码类型。
+
+    ```
+    export LANGUAGE=en_US.UTF-8
+    ```
+
+-   问题：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
+
+    解决方案：
+
+    1.  运行`uname -a`检查Linux内核的版本。本文操作适用于Linux内核版本3.6.0及以上的系统。
+
+        如果Linux内核低于3.6.0版本，扩容分区操作请参见[扩展低内核版本实例的系统盘分区和文件系统](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux系统盘.md)和[扩展分区和文件系统\_Linux数据盘](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux数据盘.md)。
+
+    2.  安装growpart工具。
+        -   CentOS 7及以上版本运行以下命令。
+
+            ```
+            yum install -y cloud-utils-growpart
+            ```
+
+        -   Debian 9及以上版本、Ubuntu14及以上版本运行以下命令。
+
+            ```
+            apt install -y cloud-guest-utils
+            ```
+
 
 ## 其他扩容场景
 
@@ -189,11 +302,11 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 **相关文档**  
 
 
+[扩容云盘常见问题]()
+
 [RebootInstance](/cn.zh-CN/API参考/实例/RebootInstance.md)
 
 [ResizeDisk](/cn.zh-CN/API参考/块存储/ResizeDisk.md)
 
 [AttachDisk](/cn.zh-CN/API参考/块存储/AttachDisk.md)
-
-[云盘常见问题处理]()
 
