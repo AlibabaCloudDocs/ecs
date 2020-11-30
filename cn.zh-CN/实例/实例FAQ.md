@@ -258,7 +258,7 @@ keyword: [购买实例, 企业级实例, GPU实例, 弹性裸金属服务器, �
 
 您也可以使用到货通知功能。
 
-![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2288559951/p48634.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2288559951/p48634.png)
 
 ## 如何选择适合我业务的ECS实例？
 
@@ -360,13 +360,13 @@ Alibaba Cloud Linux 2由阿里云官方提供支持，针对适用持久内存�
 
 ## 购买持久内存型实例后，我如何将持久内存设置为内存使用？
 
-您可以通过工具将持久内存设置为内存使用。具体操作，请参见[t1986683.md\#]()。
+您可以通过工具将持久内存设置为内存使用。具体操作，请参见[配置持久内存的使用方式](/cn.zh-CN/实例/选择实例规格/内存型/配置持久内存的使用方式.md)。
 
 ## 持久内存作为内存使用时，我想用持久内存型实例来运行Redis应用，可以直接部署吗？
 
 Redis应用运行在持久内存型实例上，可以大幅度降低单GiB内存的整体拥有成本（TCO）。但是为了保证性能，您需要对Redis应用做适当的改造，核心思路是数据分层，将非热点数据放在持久内存中，将热点数据放在普通内存中。
 
-为了最大程度降低您的应用改造成本，re6p专门提供了针对Redis应用的规格，通过几行命令即可快速部署Redis应用。具体操作，请参见[在re6p实例上部署Redis应用]()。
+为了最大程度降低您的应用改造成本，re6p专门提供了针对Redis应用的规格，通过几行命令即可快速部署Redis应用。具体操作，请参见[在re6p实例上部署Redis应用](/cn.zh-CN/实例/选择实例规格/内存型/在re6p实例上部署Redis应用.md)。
 
 **说明：** 购买实例时请选择名称为ecs.re6p-redis.<nx\>large的实例规格。
 
@@ -382,7 +382,7 @@ Redis应用运行在持久内存型实例上，可以大幅度降低单GiB内存
 
 ## 购买持久内存型实例后，我如何将持久内存设置为本地SSD盘使用方式？
 
-您可以通过工具将持久内存设置为本地SSD盘使用。具体操作，请参见[t1986683.md\#]()。
+您可以通过工具将持久内存设置为本地SSD盘使用。具体操作，请参见[配置持久内存的使用方式](/cn.zh-CN/实例/选择实例规格/内存型/配置持久内存的使用方式.md)。
 
 ## 我的哪些应用需要更高性能的本地SSD盘？
 
@@ -432,7 +432,7 @@ Redis应用运行在持久内存型实例上，可以大幅度降低单GiB内存
 
 1.  配置持久内存为本地SSD盘使用方式，并挂载磁盘。
 
-    具体操作，请参见[t1986683.md\#]()。
+    具体操作，请参见[配置持久内存的使用方式](/cn.zh-CN/实例/选择实例规格/内存型/配置持久内存的使用方式.md)。
 
 2.  使用磁盘性能测试工具测试磁盘性能。
 
@@ -513,7 +513,7 @@ SCC实例支持包年包月和按周付费。
 
 创建SCC实例时，选择SCC定制版的系统镜像，该镜像支持RDMA RoCE驱动和OFED堆栈。您可以通过IB verbs编程使用RDMA功能或者通过MPI进行RDMA通讯。
 
-![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p50536.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p50536.png)
 
 ## 我没有欠费，为什么抢占式实例被释放了？
 
@@ -609,7 +609,7 @@ SCC实例支持包年包月和按周付费。
 
 您可以在售卖页查看具体实例规格的释放率，同时适用于有保护期实例和无保护期实例。释放率主要由实例规格供需关系和竞价策略决定。
 
-![release-rate](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7724201061/p170286.png)
+![release-rate](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7724201061/p170286.png)
 
 ## 是否会优先释放无保护期抢占式实例？
 
@@ -699,7 +699,7 @@ SCC实例支持包年包月和按周付费。
 
 您的账户下有一个地域级预留实例券，规格为ecs.g5.4xlarge；可以抵扣到1个ecs.g5.4xlarge按量实例；也可以抵扣2个ecs.g5.2xlarge按量实例；或者抵扣4个ecs.g5.xlarge按量实例。
 
-您的账户下有一个1年期地域级预留实例券，规格为ecs.g5.xlarge；可以抵扣1个ecs.g5.xlarge按量实例运行1年的账单；或者抵扣1个ecs.g5.2xlarge按量实例运行半年的账单。
+您的账户下有一个1年期地域级预留实例券，规格为ecs.g5.xlarge；每小时可以抵扣1个ecs.g5.xlarge按量实例的账单，持续1年；或者每小时抵扣1个ecs.g5.2xlarge按量实例账单的50%费用，持续1年。
 
 ## 可用区级的预留实例券支持实例大小灵活性吗？
 
@@ -1022,7 +1022,7 @@ SCC实例支持包年包月和按周付费。
 
     通过本地主机的远程桌面连接Windows操作系统的ECS实例后，无法在系统内调整桌面的分辨率。您需要在远程连接前，通过远程桌面连接工具的显示配置，选择远程桌面的大小。
 
-    ![windows](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9286333061/p175572.png)
+    ![windows](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9286333061/p175572.png)
 
 
 ## 我在堡垒机上无法连接Linux实例，怎么办？
@@ -1125,7 +1125,7 @@ git apply virtio0.95_bar0_memebar.diff
 
 假设您持有以下OSS Bucket，要通过域名www.example.com实现HTTPS访问。
 
-![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p43179.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p43179.png)
 
 1.  创建一台和Bucket位于相同地域的ECS实例。
 
@@ -1197,15 +1197,15 @@ git apply virtio0.95_bar0_memebar.diff
 
 1.  连接FTP服务。
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p43224.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p43224.png)
 
 2.  进入正确的目录，Windows系统无需切换，Linux系统切换至htdocs。
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p49119.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p49119.png)
 
 3.  运行put命令上传。
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p49120.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p49120.png)
 
 
 方式二：通过第三方工具上传
@@ -1215,11 +1215,11 @@ git apply virtio0.95_bar0_memebar.diff
 3.  填写FTP的服务端IP地址、用户名和密码；协议选择标准（FTP），端口选择默认21（或更改为其您所使用的端口），不选择SSH密匙。
 4.  单击**连接**。
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p43228.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p43228.png)
 
 5.  在右侧选择要上传的目录（Windows不需要选择目录，Linux主机选择htdocs目录），然后在左边窗口选择要上传的文件，单击上传即可。
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p43230.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p43230.png)
 
     **说明：** 若安装Yummy FTP时系统提示：您的安全性偏好设置仅允许安装来自Mac App Store和被认可的开发者的应用程序，按以下步骤设置您的电脑。
 
@@ -1228,7 +1228,7 @@ git apply virtio0.95_bar0_memebar.diff
     3.  在**允许从以下位置下载的应用程序**菜单中，选择**任何来源**。
     设置后即可正常安装该软件。
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p43238.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p43238.png)
 
 
 如问题还未解决，请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)。
@@ -1390,7 +1390,7 @@ AliVulfix进程是云盾进行漏洞检测的程序，用于扫描云服务器�
     # netstat -nltp //查看云服务器80端口是否处于监听状态
     ```
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p41861.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p41861.png)
 
 2.  如果未显示80端口信息，说明网站服务没有启动，运行命令手动开启网站服务及相关服务。
 
@@ -1507,7 +1507,7 @@ ECS实例可以访问亚马逊网站，确保您的ECS实例可以正常访问�
 
 ## 我需要增加按量付费的云服务器，如何增加台数？
 
-如果您无法继续购买按量付费实例，可能是因为可购数量达到上限，详情请参见[实例使用限制](/cn.zh-CN/产品简介/使用限制.mdsection_tbg_zdx_wdb)。您也可以在ECS控制台概览页面查看权益配额，具体步骤请参见[查看配额（旧版）](/cn.zh-CN/标签与资源/资源/查看配额（旧版）.md)。
+如果您无法继续购买按量付费实例，可能是因为可购数量达到上限，详情请参见[实例使用限制](/cn.zh-CN/产品简介/使用限制.mdsection_tbg_zdx_wdb)。您也可以在ECS控制台概览页面查看权益配额，具体步骤请参见[查看配额（旧版）]()。
 
 ## 如何查看资源的限额？
 
@@ -1668,7 +1668,7 @@ ECS实例可以访问亚马逊网站，确保您的ECS实例可以正常访问�
 
 您可以在ECS控制台实例列表页面的**付费方式**列查看包年包月实例的到期时间。
 
-**说明：** 如果没有**付费方式**列，则在页面右上方单击![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p53726.png)按钮，勾选**付费方式**，并单击**确定**。
+**说明：** 如果没有**付费方式**列，则在页面右上方单击![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p53726.png)按钮，勾选**付费方式**，并单击**确定**。
 
-![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3288559951/p53728.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3288559951/p53728.png)
 
