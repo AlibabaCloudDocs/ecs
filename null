@@ -8,7 +8,7 @@ keyword: [配额, 配额不足, ECS配额, ECS配额不足, quota, ECS quota, �
 
 结合您的云服务器的使用情况，您获得的特权项目和资源的配额相应增加或减少。
 
-**说明：** 部分账号的权益配额功能已升级至新版本。如果您的权益配额页面和本文所述不一致，请参见[查看和提升实例配额](/cn.zh-CN/标签与资源/资源/权益配额/查看和提升实例配额.md)。
+**说明：** 部分账号的权益配额功能已升级至新版本。如果您的权益配额页面和本文所述不一致，请参见[查看和提升实例配额](/intl.zh-CN/标签与资源/资源/权益配额/查看和提升配额（新版）.md)。
 
 1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
@@ -31,5 +31,5 @@ keyword: [配额, 配额不足, ECS配额, ECS配额不足, quota, ECS quota, �
 **相关文档**  
 
 
-[DescribeAccountAttributes](/cn.zh-CN/API参考/其他接口/DescribeAccountAttributes.md)
+[DescribeAccountAttributes](/intl.zh-CN/API参考/其他接口/DescribeAccountAttributes.md)
 
