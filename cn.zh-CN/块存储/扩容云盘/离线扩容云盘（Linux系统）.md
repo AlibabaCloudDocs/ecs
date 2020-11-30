@@ -247,53 +247,6 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
             ```
 
 
-## 常见问题
-
--   问题：运行`growpart /dev/vda 1`时，提示`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。
-
-    解决方案：
-
-    1.  运行以下命令切换ECS实例的字符编码类型。
-
-        ```
-        LANG=en_US.UTF-8
-        ```
-
-    2.  如果问题仍未解决，请您尝试运行`reboot`命令重启ECS实例。
-    3.  如果重启ECS实例后仍未解决问题，请您尝试运行以下命令修改本地化环境变量，然后再次重启实例。
-
-        ```
-        localectl set-locale LANG=en_US.UTF-8
-        ```
-
-    如果您使用CentOS 8镜像，采用以上方案无法解决问题时，可以尝试使用以下命令修改字符编码类型。
-
-    ```
-    export LANGUAGE=en_US.UTF-8
-    ```
-
--   问题：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
-
-    解决方案：
-
-    1.  运行`uname -a`检查Linux内核的版本。本文操作适用于Linux内核版本3.6.0及以上的系统。
-
-        如果Linux内核低于3.6.0版本，扩容分区操作请参见[扩展低内核版本实例的系统盘分区和文件系统](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux系统盘.md)和[扩展分区和文件系统\_Linux数据盘](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux数据盘.md)。
-
-    2.  安装growpart工具。
-        -   CentOS 7及以上版本运行以下命令。
-
-            ```
-            yum install -y cloud-utils-growpart
-            ```
-
-        -   Debian 9及以上版本、Ubuntu14及以上版本运行以下命令。
-
-            ```
-            apt install -y cloud-guest-utils
-            ```
-
-
 ## 其他扩容场景
 
 -   如果数据盘需要使用新扩容容量创建新的分区，请参见[选项二：新增并格式化MBR分区](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux数据盘.mdsection_gg7_ilv_h3j)或[选项四：新增并格式化GPT分区](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux数据盘.mdsection_4hl_5l7_87s)。
