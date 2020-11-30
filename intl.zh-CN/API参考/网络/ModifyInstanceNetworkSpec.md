@@ -6,6 +6,9 @@
 
 调用该接口时，您需要注意：
 
+-   自2020年11月27日起，创建和变配ECS实例时带宽峰值受账户限速策略影响。如需更大带宽峰值，请提交工单。具体限速策略如下：
+    -   单个地域下，所有按使用流量计费ECS实例的实际运行带宽峰值总和不大于5 Gbit/s。
+    -   单个地域下，所有按固定带宽计费ECS实例的实际运行带宽峰值总和不大于50 Gbit/s。
 -   修改包年包月（PrePaid）实例的带宽配置时，公网出带宽（InternetMaxBandwidthOut）从0 Mbit/s升级到一个非零值时会自动分配一个公网IP。
 -   修改按量付费（PostPaid）实例的带宽配置时，公网出带宽（InternetMaxBandwidthOut）从0 Mbit/s升级到一个非零值时不会自动分配公网IP。您需要调用[AllocatePublicIpAddress](~~25544~~)为实例分配公网IP。
 -   对于经典网络（Classic）类型实例，当公网出带宽（InternetMaxBandwidthOut）从0 Mbit/s升级到一个非零值时，实例必须处于已停止（Stopped）状态。
@@ -32,12 +35,16 @@
 |NetworkChargeType|String|否|PayByTraffic|转换网络计费方式。取值范围：
 
  -   PayByBandwidth：按固定带宽计费。
--   PayByTraffic：按使用流量计费。 |
+-   PayByTraffic：按使用流量计费。
+
+ **说明：** **按使用流量计费**模式下的出入带宽峰值都是带宽上限，不作为业务承诺指标。当出现资源争抢时，带宽峰值可能会受到限制。如果您的业务需要有带宽的保障，请使用**按固定带宽计费**模式。 |
 |AllocatePublicIp|Boolean|否|false|是否分配公网IP地址。
 
  默认值：false |
 |StartTime|String|否|2017-12-05T22:40Z|临时带宽升级开始时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC+0时间，格式为yyyy-MM-ddThh:mmZ。精确到**分钟**（mm）。 |
-|EndTime|String|否|2017-12-06T22Z|临时带宽升级结束时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC+0时间，格式为yyyy-MM-ddThhZ。精确到**小时**（hh）。 |
+|EndTime|String|否|2017-12-06T22Z|临时带宽升级结束时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC+0时间，格式为yyyy-MM-ddThhZ。精确到**小时**（hh）。
+
+ **说明：** 临时升级带宽的结束时间和开始时间的间隔必须大于或等于3小时。 |
 |AutoPay|Boolean|否|true|是否自动支付。取值范围：
 
  -   true：变更带宽配置后，自动扣费。当您将参数Autopay置为true时，您需要确保账户余额充足，如果账户余额不足会生成异常订单，此订单暂时不支持通过ECS控制台支付，只能作废。
@@ -120,7 +127,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceNetworkSpec
 |403|InvalidInstanceStatus|The current status of the instance does not support this operation.|当前实例的状态不支持此操作。|
 |400|InvalidInstance.UnPaidOrder|Unpaid order exists in your account, please complete or cancel the payment in the expense center.|您的账号里有未支付的订单，请处理后重试。|
 |400|OperationDenied|After downgrade, you cannot upgrade or downgrade your instances again in the remaining time of the current billing cycle.|降配后，您将无法在当前结算周期的剩余时间内再次升级或降级实例配置。|
-|400|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的实例付费类型，请确认相关参数是否正确。|
+|400|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的网络计费方式，请确认相关参数是否正确。|
 |400|LastOrderProcessing|The previous order is still processing, please try again later.|订单正在处理中，稍后重试。|
 |400|OperationDenied|The current user does not support this operation.|您使用的账号暂不支持此操作。|
 |403|NAT\_PUBLIC\_IP\_BINDING\_FAILED|Binding nat public ip failed|公网IP绑定网关失败。|
