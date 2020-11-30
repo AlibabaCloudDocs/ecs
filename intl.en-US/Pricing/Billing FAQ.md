@@ -265,7 +265,7 @@ In this example, the actual refundable amount is MYR 40 instead of MYR 100.
 
 ## What is a savings plan?
 
-A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount of resources \(measured in dollars per hour\) over a one or three year period. After you purchase a savings plan, hourly bills of your pay-as-you-go instances will be covered up to the amount of the plan. For more information, see [Overview]().
+A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount of resources \(measured in dollars per hour\) over a one or three year period. After you purchase a savings plan, hourly bills of your pay-as-you-go instances will be covered up to the amount of the plan. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md).
 
 ## What are the advantages of savings plans?
 
@@ -292,7 +292,7 @@ Savings plans are available in two types:
     ECS compute savings plans can be applied only to offset the bills of pay-as-you-go ECS instances. ECS compute savings plans can be applied only within a single region and to a specific instance family regardless of the instance sizes and operating systems.
 
 
-General purpose savings plans are more flexible in use than ECS compute savings plans, but ECS compute savings plans offer higher discounts and cost savings. For more information, see [Plan types](section_mfv_9we_l7w).
+General purpose savings plans are more flexible in use than ECS compute savings plans, but ECS compute savings plans offer higher discounts and cost savings. For more information, see [Plan types](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.mdsection_mfv_9we_l7w).
 
 ## What are the payment options of a savings plan?
 
