@@ -202,7 +202,7 @@ This topic describes the release notes of ECS features.
 |Tags|Tags can be bound to resources when you create the resources.|2018-07-20|All|[Bind a tag](/intl.en-US/Tag & Resource/Tags/Create or bind a tag.md)|
 |Instance families|The ebmc4 compute optimized ECS Bare Metal Instance family is released.|2018-07-18|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Snapshots|The estimated remaining time for creating snapshots is displayed.|2018-07-17|All|[Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)|
-|Account and user privileges|Quota management is supported.|2018-07-15|All|[View quotas \(old version\)](/intl.en-US/Tag & Resource/Resource/View quotas (old version).md)|
+|Account and user privileges|Quota management is supported.|2018-07-15|All|[View quotas \(old version\)]()|
 |ESSDs|The ESSD service is in public preview in Beijing Zone G.|2018-07-14|Beijing Zone G|[Disk overview](/intl.en-US/Block Storage/Block Storage overview/Disk overview.md)|
 |Instance troubleshooting|System logs and screenshots can be viewed.|2018-07-13|All|[System logs and screenshots](/intl.en-US/Deployment & Maintenance/Troubleshoot operation errors/System logs and screenshots.md)|
 |Security groups|You can submit a ticket to modify the maximum numbers of instances and security group rules that can be added to a security group.|2018-07-10|All|[Limits](/intl.en-US/Product Introduction/Limits.md)|
@@ -264,7 +264,7 @@ This topic describes the release notes of ECS features.
 
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
-|Cloud Migration Tool|The Cloud Migration Tool is released.|2017-11-27|All|[Overview of the Cloud Migration tool]()|
+|Cloud Migration Tool|The Cloud Migration Tool is released.|2017-11-27|All|[What is SMC?](/intl.en-US/Product Introduction/What is SMC?.md)|
 |Security group rules|Security group rules can be imported and exported.|2017-11-23|All|[Manage security group rules](/intl.en-US/Security/Security groups/Manage security group rules/Manage security group rules.md)|
 |Subscription instances|The auto-renewal feature can be disabled for subscription instances.|2017-11-23|All|[ModifyInstanceAutoRenewAttribute](/intl.en-US/API Reference/Instances/ModifyInstanceAutoRenewAttribute.md)|
 |Billing methods|API operations used to create and renew weekly subscription instances are released.|2017-11-03|All|[CreateInstance](/intl.en-US/API Reference/Instances/CreateInstance.md)|
