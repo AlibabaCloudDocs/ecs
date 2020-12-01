@@ -274,15 +274,15 @@ keyword: [定价, 计费, 问题, 常见问题, FAQ, 节省计划, 账号, 实�
 
 ## 哪里可以看到节省计划的推荐和购买页面？
 
-您可以直接访问[节省计划购买页面](https://common-buy.aliyun.com/?spm=a2c81.a53620e.app.1.5a1011279HUkI1&commodityCode=savingplan_common_public_cn#/buy)进行购买，也可以访问[节省计划购买推荐页面](https://usercenter2.aliyun.com/resource/spn/recommend)获取推荐建议，系统将基于您选择的参考消费数据、节省计划类型、支付方式等条件，自动为您推荐合适的节省计划。
+您可以直接访问[Savings Plan](https://common-buy-intl.alibabacloud.com/?spm=a2c63.p38356.879954.10.2ed96120enykMx&commodityCode=savingplan_common_public_intl#/buy)进行购买，也可以访问[Recommended](https://usercenter2-intl.aliyun.com/resource/spn/recommend)获取推荐建议，系统将基于您选择的参考消费数据、节省计划类型、支付方式等条件，自动为您推荐合适的节省计划。
 
 ## 如何查询节省计划下的对应折扣？
 
-您可以访问[节省计划价格折扣详情页面](https://usercenter2.aliyun.com/resource/spn/price)进行查询，在该页面设置节省计划的属性，以查看对应的按量折扣。
+您可以访问[Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price)进行查询，在该页面设置节省计划的属性，以查看对应的按量折扣。
 
 ## 如何查询节省计划购买后带来的成本节约？
 
-您可以访问[节省计划总览页面](https://usercenter2.aliyun.com/resource/spn/overview)查看购买节省计划后的成本节约情况，包括累计节省金额、当年节省金额和当月节省金额。
+您可以访问[Savings Plan](https://usercenter2-intl.aliyun.com/resource/spn/overview)查看购买节省计划后的成本节约情况，包括累计节省金额、当年节省金额和当月节省金额。
 
 ## 在同一时间，是否可以有多份处于生效状态的节省计划？
 
