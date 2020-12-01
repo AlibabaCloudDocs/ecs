@@ -33,7 +33,7 @@ For example, assume that you purchased a one-year savings plan with an hourly co
 
 ## Application rules
 
-You can receive different discounts based on your selected payment option for your savings plans within the term. For more information, see the [Discount Details page](https://usercenter2.aliyun.com/resource/spn/price).
+You can receive different discounts based on your selected payment option for your savings plans within the term. For more information, see the [Discount Details page](https://usercenter2-intl.aliyun.com/resource/spn/price).
 
 The discount provided by a savings plan is based on the following factors:
 
