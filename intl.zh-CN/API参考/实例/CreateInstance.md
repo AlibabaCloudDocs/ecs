@@ -294,6 +294,18 @@
  默认值：optional
 
  **说明：** 有关访问实例元数据的模式，请参见[实例元数据访问模式](~~150575~~)。 |
+|PrivatePoolOptions.MatchCriteria|String|否|Open|实例启动的私有池容量选项。弹性保障服务或容量预定服务在生效后会生成私有池容量，供实例启动时选择。取值范围：
+
+ -   Open：开放模式。将自动匹配开放类型的私有池容量。如果没有符合条件的私有池容量，则使用公共池资源启动。该模式下无需设置`PrivatePoolOptions.Id`参数。
+-   Target：指定模式。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。该模式下必须指定私有池ID，即`PrivatePoolOptions.Id`参数为必填项。
+-   None：不使用模式。实例启动将不使用私有池容量。
+
+ 默认值：空
+
+ **说明：** 该参数邀测中，详情请提交工单咨询。 |
+|PrivatePoolOptions.Id|String|否|eap-bp67acfmxazb4\*\*\*\*|私有池ID。即弹性保障服务ID或容量预定服务ID。
+
+ **说明：** 该参数邀测中，详情请提交工单咨询。 |
 
 ## 返回数据
 
@@ -561,6 +573,9 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |400|InvalidHttpPutResponseHopLimit.NotSupported|The specified HttpPutResponseHopLimit not supported, more than 1 and less than 64 is reasonable.|指定的参数HttpPutResponseHopLimit值非法，取值范围必须大于等于1且小于等于64。|
 |400|InvalidPrivateIpAddress.Malformed|Specified private IP address is malformed.|指定的私有IP不合法。|
 |400|InvalidOperation.VpcHasEnabledAdvancedNetworkFeature|The specified vpc has enabled advanced network feature.|该VPC开启了高阶特性，不能创建低规格的ECS。|
+|400|MissingParameter.PrivatePoolOptionsId|The specified PrivatePoolOptions.Id should not be null.|指定的PrivatePoolOptions.Id参数不能为空。|
+|400|Invalid.PrivatePoolOptionsId|The specified PrivatePoolOptions.Id is invalid.|指定的PrivatePoolOptions.Id参数无效。|
+|400|Invalid.PrivatePoolOptionsId|The parameter PrivatePoolOptions.Id should be null when PrivatePoolOptions.MatchCriteria is not Target.|当PrivatePoolOptions.MatchCriteria参数取值不为Target时，PrivatePoolOptions.Id参数需要为空。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
