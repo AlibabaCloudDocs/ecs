@@ -1,6 +1,6 @@
 # DescribeSnapshots
 
-You can call this operation to query all snapshots of an ECS instance or a disk.
+You can call this operation to query the details of one or more snapshots of an ECS instance or a disk.
 
 ## Description
 
@@ -25,7 +25,7 @@ When you call an API operation by using Alibaba Cloud CLI, specify request param
 |PageNumber|Integer|No|1|The number of the page to return. Pages start from page 1.
 
 Default value: 1 |
-|PageSize|Integer|No|10|The number of entries to return on each page. Valid values: 1 to 100
+|PageSize|Integer|No|10|The number of entries to return on each page. Valid values: 1 to 100.
 
 Default value: 10 |
 |SnapshotName|String|No|testSnapshotName|The name of the snapshot. |
@@ -35,7 +35,7 @@ Default value: 10 |
 -   accomplished: The snapshot is created.
 -   failed: The snapshot fails to be created.
 -   all: All snapshot statuses. |
-|SnapshotType|String|No|all|The type of the snapshot. Default value: all. Valid values:
+|SnapshotType|String|No|all|The type of the snapshot. Valid values:
 
 -   auto: automatic snapshot
 -   user: manual snapshot \(also called user-created snapshot\)
@@ -64,7 +64,7 @@ If a single tag is specified to query resources, up to 1,000 resources that are 
 |ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the snapshot belongs. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response. |
 |DryRun|Boolean|No|false|Specifies whether to check the validity of the request without actually making the request. Default value: false. Valid values:
 
--   true: The validity of the request is checked but the request is not made. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+-   true: The validity of the request is checked but the request is not made. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are set. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
 -   false: The validity of the request is checked. If the check succeeds, a 2XX HTTP status code is returned and the request is made. |
 |KMSKeyId|String|No|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|The ID of the KMS key used by the data disk. |
 |Category|String|No|Standard|The category of the snapshot. Valid values:
@@ -89,7 +89,7 @@ If a single tag is specified to query resources, up to 1,000 resources that are 
 |CreationTime|String|2020-08-20T14:52:28Z|The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |Description|String|testDescription|The description of the snapshot. |
 |Encrypted|Boolean|false|Indicates whether the snapshot was encrypted. |
-|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb40826X|The ID of the KMS key used by the data disk. |
+|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb40826X|The KMS key ID corresponding to the data disk. |
 |LastModifiedTime|String|2020-08-25T14:18:09Z|The time when the snapshot was last changed. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |ProductCode|String|jxsc000\*\*\*\*|The product code of the Alibaba Cloud Marketplace image. |
 |Progress|String|100|The progress of the snapshot creation task. Unit: percent \(%\). |
@@ -99,14 +99,14 @@ If a single tag is specified to query resources, up to 1,000 resources that are 
 |SnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot. |
 |SnapshotName|String|testSnapshotName|The name of the snapshot. This parameter is returned only if a snapshot name was specified when the snapshot was being created. |
 |SnapshotSN|String|64472-116742336-61976\*\*\*\*|The serial number of the snapshot. |
-|SnapshotType|String|all|The type of the snapshot. Default value: all. Valid values:
+|SnapshotType|String|all|The type of the snapshot. Valid values:
 
 -   auto: automatic snapshot
 -   user: manual snapshot \(also called user-created snapshot\)
 -   all: all snapshot types |
 |SourceDiskId|String|d-bp67acfmxazb4ph\*\*\*\*|The ID of the source disk. This parameter is retained even after the source disk of the snapshot is released. |
 |SourceDiskSize|String|2000|The capacity of the source disk. Unit: GiB. |
-|SourceDiskType|String|Data|The type of the source disk. Valid values:
+|SourceDiskType|String|Data|The category of the source disk. Valid values:
 
 -   system
 -   data |
@@ -238,12 +238,12 @@ Sample success responses
 |----------------|----------|-------------|-----------|
 |403|InvalidSnapshotIds.Malformed|The amount of specified specified snapshot Ids exceeds the limit.|The error message returned because the specified SnapshotIds parameter is invalid.|
 |404|InvalidFilterKey.NotFound| |The error message returned because the specified start time or end time is invalid.|
-|404|InvalidUsage|The specifed Usage is not valid|The error message returned because the specified Usage parameter is invalid. The valid values are image, disk, image\_disk, or none.|
+|404|InvalidUsage|The specifed Usage is not valid|The error message returned because the specified Usage parameter is invalid. The valid values are image, disk, image\_disk, and none.|
 |404|InvalidSourceDiskType|The specifed SourceDiskType is not valid|The error message returned because the specified SourceDiskType parameter is invalid.|
 |404|InvalidStatus.NotFound|The specified Status is not found|The error message returned because the specified Status parameter does not exist.|
 |404|InvalidSnapshotType.NotFound|The specfied SnapshotType is not found|The error message returned because the specified SnapshotType parameter does not exist.|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|The error message returned because the specified Tag.N.Key and Tag.N.Value parameters do not match.|
-|400|InvalidTagCount|The specified tags are beyond the permitted range.|The error message returned because the number of specified tags exceeds the upper limit.|
+|400|InvalidTagCount|The specified tags are beyond the permitted range.|The error message returned because the maximum number of the specified tags has been reached.|
 |500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
 |404|InvalidSnapshotLinkId.NotFound|The specified snapshot link is not found.|The error message returned because the specified SnapshotLinkId parameter does not exist.|
 
