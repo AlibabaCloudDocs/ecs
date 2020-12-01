@@ -275,15 +275,15 @@ Savings plans support three payment options: All Upfront, Partial Upfront, and N
 
 ## Where do I view the recommendation and purchase pages for a savings plan?
 
-You can purchase savings plans on the [Savings Plan](https://common-buy.aliyun.com/?spm=a2c81.a53620e.app.1.5a1011279HUkI1&commodityCode=savingplan_common_public_cn#/buy) page. You can also go to the [Recommended](https://usercenter2.aliyun.com/resource/spn/recommend) page for recommendations. The system recommends an appropriate savings plan based on your selected historical purchase records, savings plan type, and payment option.
+You can purchase savings plans on the [Savings Plan](https://common-buy-intl.alibabacloud.com/?spm=a2c63.p38356.879954.10.2ed96120enykMx&commodityCode=savingplan_common_public_intl#/buy) page. You can also go to the [Recommended](https://usercenter2-intl.aliyun.com/resource/spn/recommend) page for recommendations. The system recommends an appropriate savings plan based on your selected historical purchase records, savings plan type, and payment option.
 
 ## How do I query the discount offered in a savings plan?
 
-You can go to the [Discount Details](https://usercenter2.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
+You can go to the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
 
 ## How do I query the cost savings brought about by a savings plan?
 
-You can go to the Overview tab on the [Savings Plan](https://usercenter2.aliyun.com/resource/spn/overview) page to view the cost savings brought about by a savings plan, including the total, annual, and monthly saving amounts.
+You can go to the Overview tab on the [Savings Plan](https://usercenter2-intl.aliyun.com/resource/spn/overview) page to view the cost savings brought about by a savings plan, including the total, annual, and monthly saving amounts.
 
 ## Can I have multiple savings plans in effect at the same time?
 
