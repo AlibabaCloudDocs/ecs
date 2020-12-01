@@ -27,6 +27,7 @@
 |华北 6（乌兰察布）|cn-wulanchabu|ecs-vpc.cn-wulanchabu.aliyuncs.com|
 |华南 1（深圳）|cn-shenzhen|ecs-vpc.cn-shenzhen.aliyuncs.com|
 |华南 2（河源）|cn-heyuan|ecs-vpc.cn-heyuan.aliyuncs.com|
+|华南 3（广州）|cn-guangzhou|ecs-vpc.cn-guangzhou.aliyuncs.com|
 |西南 1（成都）|cn-chengdu|ecs-vpc.cn-chengdu.aliyuncs.com|
 |中国（香港）|cn-hongkong|ecs-vpc.cn-hongkong.aliyuncs.com|
 |新加坡|ap-southeast-1|ecs-vpc.ap-southeast-1.aliyuncs.com|
