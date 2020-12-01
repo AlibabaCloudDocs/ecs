@@ -16,7 +16,7 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
 
 ## 在Windows环境中使用密钥对
 
-下面以PuTTYgen为例介绍如何将私钥文件格式从.pem转换为.ppk，并以PuTTY为例介绍如何使用密钥对连接Linux实例。
+本节以PuTTYgen为例介绍如何将私钥文件格式从.pem转换为.ppk，并以PuTTY为例介绍如何使用密钥对连接Linux实例。
 
 1.  下载并安装PuTTYgen和PuTTY。
 
@@ -32,11 +32,11 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
 
     2.  选择**Type of key to generate**为**RSA**，然后单击**Load**。
 
-        ![windows_puttygen_1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1904359951/p51179.png)
+        ![windows_puttygen_1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1904359951/p51179.png)
 
     3.  选择**All Files**。
 
-        ![windows_puttygen_2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1904359951/p5188.png)
+        ![windows_puttygen_2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1904359951/p5188.png)
 
     4.  选择待转换的.pem私钥文件。
 
@@ -58,7 +58,7 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
 
     3.  选择转换好的.ppk私钥文件。
 
-    ![windows_putty_3](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1904359951/p5191.png)
+    ![windows_putty_3](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1904359951/p5191.png)
 
 5.  配置连接Linux实例所需的信息。
 
@@ -72,22 +72,22 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
 
     4.  选择**Connection type**为**SSH**。
 
-    ![windows_putty_4](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1904359951/p5192.png)
+    ![windows_putty_4](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1904359951/p5192.png)
 
 6.  单击**Open**。
 
     当出现以下提示时，说明您已经成功地使用SSH密钥对登录了实例。
 
-    ![windows_putty_5](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1904359951/p51203.png)
+    ![windows_putty_5](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1904359951/p51203.png)
 
 
 ## 在支持SSH命令的环境中使用密钥对（通过命令配置信息）
 
-下面介绍如何在支持SSH命令的环境（例如Linux、Windows下的MobaXterm）中通过命令配置所需信息，并通过SSH命令登录Linux实例。
+本节介绍如何在支持SSH命令的环境（例如Linux、Windows下的MobaXterm）中通过命令配置所需信息，并通过SSH命令登录Linux实例。
 
 1.  找到.pem私钥文件在本地机上的存储路径，例如~/.ssh/ecs.pem。
 
-    此处路径和文件名称仅为示例，请根据实际情况修改。
+    此处路径和文件名称仅为示例，在后续命令中请根据实际情况修改。
 
 2.  运行以下命令修改私钥文件的属性。
 
@@ -116,28 +116,84 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
 
 ## 在支持SSH命令的环境中使用密钥对（通过config文件配置信息）
 
-下面介绍如何在Linux和其他支持SSH命令的环境（例如Windows下的MobaXterm）中通过config配置所需信息，并通过SSH命令连接Linux实例。
+本节介绍如何在支持SSH命令的环境（例如Linux、Windows下的MobaXterm）中通过命令配置所需信息，并通过SSH命令登录Linux实例。
 
-1.  进入用户主目录下的.ssh目录，按照如下方式修改config文件。
+1.  找到.pem私钥文件在本地机上的存储路径，例如~/.ssh/ecs.pem。
 
-    ~/.ssh/ecs.pem为私钥文件在本地机上的存储路径。
+    此处路径和文件名称仅为示例，在后续命令中请根据实际情况修改。
 
-    ```
-    Host ecs    // 输入ECS实例的名称
-    HostName 192.*.*.*   // 输入ECS实例的公网IP地址
-    Port 22   // 输入端口号，默认为22
-    User root   // 输入登录账号
-    IdentityFile ~/.ssh/ecs.pem // 输入.pem私钥文件在本机的地址
-    ```
-
-2.  保存config文件。
-
-3.  重启SSH服务。
-
-4.  运行命令连接至实例。
+2.  运行以下命令修改私钥文件的属性。
 
     ```
-    ssh [ECS实例的名称]
+    chmod 400 [.pem私钥文件在本地机上的存储路径]
+    ```
+
+    示例如下：
+
+    ```
+    chmod 400 ~/.ssh/ecs.pem
+    ```
+
+3.  运行以下命令，进入用户主目录下的.ssh目录，并创建config文件。
+
+    ```
+    cd ~/.ssh
+    vim config
+    ```
+
+4.  在`config`配置文件内，按i进入编辑模式，添加如下配置项。
+
+    ```
+    # 输入ECS实例的别名，用户SSH远程连接。
+    Host ecs
+    # 输入ECS实例的公网IP地址。
+    HostName 121.196.**.**
+    # 输入端口号，默认为22。
+    Port 22
+    # 输入登录账号。
+    User root
+    # 输入.pem私钥文件在本机的地址。
+    IdentityFile ~/.ssh/ecs.pem
+    ```
+
+    如果您有多台ECS实例，也可以通过`config`配置文件，统一进行免密登录的配置。配置两台ECS实例的示例内容如下：
+
+    ```
+    # 输入ECS实例的别名，用户SSH远程连接。
+    Host ecs1
+    # 输入ECS实例的公网IP地址。
+    HostName 121.196.**.**
+    # 输入端口号，默认为22。
+    Port 22
+    # 输入登录账号。
+    User root
+    # 输入.pem私钥文件在本机的地址。
+    IdentityFile ~/.ssh/ecs.pem
+    
+    # 输入ECS实例的别名，用户SSH远程连接。
+    Host ecs2
+    # 输入ECS实例的公网IP地址。
+    HostName 121.196.**.**
+    # 输入端口号，默认为22。
+    Port 22
+    # 输入登录账号。
+    User root
+    # 输入.pem私钥文件在本机的地址。
+    IdentityFile ~/.ssh/ecs.pem
+    ```
+
+    添加完成后，按Ecs键，并输入`:wq`保存config文件。
+
+5.  运行以下命令，重启SSH服务。
+
+    ```
+    service sshd restart
+    ```
+
+6.  运行命令连接至实例。
+
+    ```
+    ssh [ECS实例的别名]
     ```
 
     示例如下：
