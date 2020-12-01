@@ -35,11 +35,11 @@
 -   accomplished：创建成功的快照。
 -   failed：创建失败的快照。
 -   all（默认）：所有快照状态。 |
-|SnapshotType|String|否|all|快照类型。取值范围：
+|SnapshotType|String|否|all|快照创建类型。取值范围：
 
- -   auto：自动快照。
--   user：手动创建的快照。
--   all（默认）：所有快照类型。 |
+ -   auto：自动创建快照。
+-   user：手动创建快照。
+-   all（默认）：所有的快照创建类型。 |
 |Filter.1.Key|String|否|CreationStartTime|查询资源时的筛选键。取值必须为CreationStartTime。 |
 |Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键。取值必须为CreationEndTime。 |
 |Filter.1.Value|String|否|2019-12-13T17:00Z|查询资源时的筛选值。取值必须为资源创建的开始时间（CreationStartTime）的取值。 |
@@ -99,11 +99,11 @@
 |SnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|快照ID。 |
 |SnapshotName|String|testSnapshotName|快照显示名称。如果创建时指定了快照显示名称，则返回。 |
 |SnapshotSN|String|64472-116742336-61976\*\*\*\*|快照序列号。 |
-|SnapshotType|String|all|快照类型。可能值：
+|SnapshotType|String|all|快照创建类型。可能值：
 
- -   auto：自动快照
--   user：手动创建的快照
--   all（默认）：所有快照类型 |
+ -   auto：自动创建快照。
+-   user：手动创建快照。
+-   all（默认）：所有的快照创建类型。 |
 |SourceDiskId|String|d-bp67acfmxazb4ph\*\*\*\*|源云盘ID。如果快照的源云盘已经被释放，该字段仍旧保留。 |
 |SourceDiskSize|String|2000|源云盘容量，单位：GiB。 |
 |SourceDiskType|String|Data|源云盘属性。可能值：
