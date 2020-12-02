@@ -8,7 +8,7 @@ Alibaba Cloud Linux 2在内核版本4.19.81-17.al7.x86\_64开始支持基于成�
 |--|--|-----|
 |cost.qos|可读可写接口，接口文件只存在于blkcg根组。在cgroup v1中，该接口文件完整名称为`blkio.cost.qos`，在cgroup v2中，该接口文件完整名称为`io.cost.qos`。该接口主要实现blk-iocost功能以及基于延迟（latency）权重限制I/O服务质量（Qos）的速率。
 
-当实现blk-iocost功能之后，内核按延迟数值统计以下比例：超过读写延迟`rlat|wlat`的请求占有所有请求的比例。当该比例超过`rlat|wlat`所示百分比时，内核认为设备达到饱和状态，会降低往磁盘发送请求的速率。默认情况下，`rlat|wlat`的值为 0，表示该功能未启用。
+当实现blk-iocost功能之后，内核按延迟数值统计以下比例：超过读写延迟`rlat|wlat`的请求占所有请求的比例。当该比例超过读写延迟百分比`rpct|wpct`时，内核认为设备达到饱和状态，会降低往磁盘发送请求的速率。默认情况下，`rlat|wlat`的值为0，表示该功能未启用。
 
 |每行配置以设备的Major号和Minor号开头（格式为`MAJ:MIN`），后边衔接其他配置项，说明如下。 -   enable：是否开启blk-iocost controller，即开启blk-iocost功能。默认值0为关闭状态，修改值为1时开启功能。
 -   ctrl：控制模式，可选值为`auto`或者`user`。使用`auto`时，内核自动探测设备类型并使用内置参数；使用`user`，则需要输入以下QoS控制参数。
@@ -38,9 +38,9 @@ echo 0 > /sys/block/[$DISK_NAME]/queue/rotational    #[$DISK_NAME]为磁盘名�
 
 ## 示例一
 
-使用cost.qos接口为设备`254：48`开启blk-iocost功能，并且当读写延迟`rlat|wlat`的请求有95%超过5 ms时，认为磁盘饱和。内核将进行磁盘发送请求速率的调整，调整区间为最低降至原速率的50%，最高升至原速率的150%。cgoup v1接口和cgoup v2接口命令分别如下。
+使用cost.qos接口为设备`254：48`开启blk-iocost功能，并且当读写延迟`rlat|wlat`的请求有95%超过5 ms时，认为磁盘饱和。内核将进行磁盘发送请求速率的调整，调整区间为最低降至原速率的50%，最高升至原速率的150%。cgroup v1接口和cgroup v2接口命令分别如下。
 
--   cgoup v1 接口。
+-   cgroup v1 接口。
 
     ```
     echo "254:48 enable=1 ctrl=user rpct=95.00 rlat=5000 wpct=95.00 wlat=5000 min=50.00 max=150.00" > /sys/fs/cgroup/blkio/blkio.cost.qos
@@ -55,7 +55,7 @@ echo 0 > /sys/block/[$DISK_NAME]/queue/rotational    #[$DISK_NAME]为磁盘名�
 
 ## 示例二
 
-使用`cost.model`在设备`254：48`上使用用户输入的`linear`建模参数设置模型。cgoup v1接口和cgoup v2接口命令分别如下。
+使用`cost.model`在设备`254：48`上使用用户输入的`linear`建模参数设置模型。cgroup v1接口和cgroup v2接口命令分别如下。
 
 -   cgroup v1接口。
 
@@ -72,7 +72,7 @@ echo 0 > /sys/block/[$DISK_NAME]/queue/rotational    #[$DISK_NAME]为磁盘名�
 
 ## 示例三
 
-使用`cost.weight`接口将blkcg1的默认权重修改为50，然后设置blkcg1在设备`254:48`上的权重为50，cgoup v1接口和cgoup v2接口命令分别如下。
+使用`cost.weight`接口将blkcg1的默认权重修改为50，然后设置blkcg1在设备`254:48`上的权重为50，cgroup v1接口和cgroup v2接口命令分别如下。
 
 -   cgroup v1接口。
 
