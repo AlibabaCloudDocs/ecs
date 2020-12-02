@@ -1,53 +1,98 @@
-# Copy custom images {#concept_a3m_5dm_xdb .concept}
+---
+keyword: [image, environment deployment, replication, ECS]
+---
 
-This topic describes how to copy a custom image that is under your Alibaba Cloud account. This action enables you to create identical ECS instances across regions, allowing you to implement seamless data backups of the target instances.
+# Copy custom images
 
-## Background information {#section_l4m_ltd_2hb .section}
+This topic describes how to copy a custom image in your Alibaba Cloud account to other regions. This action enables you to create identical ECS instances across regions and back up data of instances.
 
-An image is a regional resource, and a custom image belongs to the region where it is created. The following table lists the different scenarios of using custom images.
+The following table lists various scenarios in which custom images are copied.
 
-|Scenario|Procedure|Description|
-|:-------|:--------|:----------|
-|Copy images across regions under the same account|See [Copy images](#section_copy_image).|When an image is copied, the corresponding snapshot is generated in the target region at the same time. After the copy operation is completed, a new image is generated in the target region, and it has a unique image ID.|
-|Copy images across regions under different accounts|See [Copy images](#section_copy_image) and [Share images](reseller.en-US/Images/Custom image/Share custom images.md#).|An image is copied to the target region and then shared with the target account.|
-|Share images in the same region under different accounts|See [Share images](reseller.en-US/Images/Custom image/Share custom images.md#).|This operation does not create a new image. The shared image still belongs to you.|
+|Business requirement|Procedure|Reference|
+|:-------------------|:--------|---------|
+|Copy images across regions in the same account|1.  [Create a custom image from an instance](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from an instance.md)
+2.  Copy images to a different region.
 
-## Limits {#section_wgf_n2m_xdb .section}
+|1.  [CreateImage](/intl.en-US/API Reference/Images/CreateImage.md)
+2.  [CopyImage](/intl.en-US/API Reference/Images/CopyImage.md) |
+|Copy images across regions in different accounts|1.  [Create a custom image from an instance](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from an instance.md)
+2.  Copy images to a different region.
+3.  [Share or unshare custom images](/intl.en-US/Images/Custom image/Share or unshare custom images.md)
 
-Before you copy a custom image, note the following:
+|1.  [CreateImage](/intl.en-US/API Reference/Images/CreateImage.md)
+2.  [CopyImage](/intl.en-US/API Reference/Images/CopyImage.md)
+3.  [ModifyImageSharePermission](/intl.en-US/API Reference/Images/ModifyImageSharePermission.md) |
+|Share images in the same region across accounts|You can share images without the need to copy images. For more information, see [Share or unshare custom images](/intl.en-US/Images/Custom image/Share or unshare custom images.md)|[ModifyImageSharePermission](/intl.en-US/API Reference/Images/ModifyImageSharePermission.md)|
+|Change the encryption status of a custom image, encrypt a system disk, or encrypt operation system data|Select Encrypt when you copy a custom image. The encryption option in public preview.|[CopyImage](/intl.en-US/API Reference/Images/CopyImage.md)|
 
--   Only custom images can be copied across regions. If you need to copy an image of another type, you need to first use that image to create an instance and then use that instance to create a custom image. Afterwards, you can copy the newly created custom image to the target region.
+Before you copy a custom image, take note of the following items:
 
--   When an image is copied, a corresponding snapshot is generated in the target region at the same time, and then a custom image is generated based on the snapshot. Therefore, data traffic occurs between the source and target regions. Currently, no fees are charged for this traffic. For the latest billing details, see the official Alibaba Cloud website for announcements.
--   The created custom image in the target region has the same configuration as the original custom image. However, the related role authorization and service authorization information is not copied, nor are the settings of [instance user data](../reseller.en-US/Instances/Manage instances/User-defined data/User data.md#).
--   The task completion time depends on the image size, the network transmission speed, and the number of concurrent tasks in the queue.
--   Images with encrypted snapshots cannot be copied across regions.
+-   The following fees may be incurred:
+    -   The copied snapshot consumes snapshot capacity. For more information, see [Billing overview](/intl.en-US/Pricing/Billing overview.md).
 
-## Procedure {#section_copy_image .section}
+        **Note:** When an image is copied, a corresponding snapshot is generated in the destination region. The custom image is generated in the destination region based on this snapshot. The generated snapshots are retained permanently, regardless of the retention period of the snapshots contained in the source image.
 
-1.  Log on to the [ECS console](https://partners-intl.console.aliyun.com/#/ecs).
+    -   Fees for traffic between the two regions. Currently, no fees are charged for this traffic. For the latest billing details, see the announcements on official Alibaba Cloud website.
+-   The time it takes to copy a custom image depends on the image size, network transmission speed, and the number of concurrent tasks in the queue.
+
+    **Note:** To copy a large image such as an image larger than 2 TiB in size across regions, you can first copy the associated snapshots to the destination region and then create a custom image from these snapshots in the destination region. For more information, see [Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md) and [Create a custom image from a snapshot](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from a snapshot.md).
+
+-   The role authorization information, service authorization information, and instance user data of the source image are not copied to the destination image.
+
+## Procedure
+
+1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
+
 2.  In the left-side navigation pane, choose **Instances & Images** \> **Images**.
+
 3.  In the top navigation bar, select a region.
-4.  Select the custom image to be copied. Note that **Type** must be **Custom Image**. Then, in the **Actions** column, click **Copy Image**.
 
-    **Note:** If your custom image is larger than 500 GiB, when you click **Copy Image**, you will be directed to open a ticket to complete the operation.
+4.  On the **Images** page, click the **Custom Images** tab.
 
-5.  In the Copy Image dialog box, verify the ID of the selected image is the target image, and then complete the following configurations:
-    1.  Select the **Target Region**.
-    2.  Enter **Custom Image Name** and **Custom Image Description** that are shown in the target region.
-    3.  Click **OK**.
-6.  \(Optional\) Switch to the target region and check the progress. When 100% is displayed, the image is copied successfully.
+5.  Select the image that you want to copy and click **Copy Image** in the **Actions** column.
 
-    **Note:** If **Progress** is not 100%, **Status** is **Creating**. In this case, you can click **Cancel Copy** to cancel the operation. After the operation is canceled, the image information is removed from the target region.
+    **Note:** If the size of your custom image is larger than 500 GiB, you are directed to submit a ticket to complete the operation when you click **Copy Image**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9699/15665433764607_en-US.png)
+6.  In the **Copy Image** dialog box, perform the following operations:
+
+    1.  Verify the custom image ID.
+
+    2.  In the **Destination Region** drop-down list, select a region. The selected region must be different from the current region.
+
+    3.  Enter the **Custom Image Name** to be displayed in the destination region.
+
+    4.  Enter the **Custom Image Description** to be displayed in the destination region.
+
+    5.  Select **Encrypt** and then select **Default Service CMK** from the drop-down list.
+
+        **Default Service CMK**: The default key generated by Key Management Service \(KMS\).
+
+        **Note:** The encryption feature is in public preview in some regions.
+
+    6.  Click **OK**.
+
+7.  Query the results and manage the tasks.
+
+    1.  In the upper-left corner of the top navigation bar, switch to the destination region and view the copy progress of the custom image.
+
+        When the progress reaches 100%, the image enters the **Available** state, indicating that the task is complete. An image is created in the destination region and has a unique image ID.
+
+    2.  If the **Progress** has not reached 100% and the **Status** is **Creating**, you can cancel the copy task by clicking **Cancel Copy**.
+
+        ![Creating](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8294865061/p6780.png)
 
 
-You can also call the [CopyImage](../reseller.en-US/API Reference/Images/CopyImage.md#) and [CancelCopyImage](../reseller.en-US/API Reference/Images/CancelCopyImage.md#) API actions to perform the preceding operations.
+You can use the copied image to create an instance or change the system disk:
 
-## What to do next {#section_kmp_xfm_xdb .section}
+-   [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md)
+-   [Replace a system disk \(non-public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace a system disk (non-public images).md)
 
-When a copied image is in the **Available** state, you can use it to [create an instance](../reseller.en-US/Quick Start for Entry-Level Users/Step 2. Create an instance.md#) or [change the system disk](../reseller.en-US/Block Storage/Block storage/Change the operating system/Replace the system disk (non-public image).md#).
+**Related topics**  
 
-You can also view the copied snapshot in the target region.
+
+[CopyImage](/intl.en-US/API Reference/Images/CopyImage.md)
+
+[CancelCopyImage](/intl.en-US/API Reference/Images/CancelCopyImage.md)
+
+[Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md)
 
