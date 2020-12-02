@@ -28,6 +28,12 @@
 |PageSize|Integer|否|10|分页查询时设置的每页行数。最大值：100
 
  默认值：10 |
+|NextToken|String|否|caeba0bbb2be03f84eb48b699f0a4883|查询起始标志。由上一次的请求结果中获取。 |
+|MaxResults|Integer|否|10|分页查询时每页行数。
+
+ 最大值：100
+
+ 默认值：10 |
 |SnapshotName|String|否|testSnapshotName|快照名称。 |
 |Status|String|否|all|快照状态。取值范围：
 
@@ -35,11 +41,11 @@
 -   accomplished：创建成功的快照。
 -   failed：创建失败的快照。
 -   all（默认）：所有快照状态。 |
-|SnapshotType|String|否|all|快照类型。取值范围：
+|SnapshotType|String|否|all|快照创建类型。取值范围：
 
- -   auto：自动快照。
--   user：手动创建的快照。
--   all（默认）：所有快照类型。 |
+ -   auto：自动创建快照。
+-   user：手动创建快照。
+-   all（默认）：所有的快照创建类型。 |
 |Filter.1.Key|String|否|CreationStartTime|查询资源时的筛选键。取值必须为CreationStartTime。 |
 |Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键。取值必须为CreationEndTime。 |
 |Filter.1.Value|String|否|2019-12-13T17:00Z|查询资源时的筛选值。取值必须为资源创建的开始时间（CreationStartTime）的取值。 |
@@ -72,12 +78,20 @@
  -   Standard：普通快照
 -   Flash：本地快照
 
+ 原本地快照更替为快照极速可用功能。该参数说明如下：
+
+ -   如果您在2020年12月14日之前使用过本地快照。您可以正常使用该参数。
+-   如果您在2020年12月14日之前未使用过本地快照。您不能使用该参数。
+
+ 更多信息，请参见[12月14日阿里云快照服务升级与新增计费项通知](https://help.aliyun.com/noticelist/articleid/1060755542.html)。
+
  **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。 |
 
 ## 返回数据
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
+|NextToken|String|caeba0bbb2be03f84eb48b699f0a4883|下一个查询起始标志。 |
 |PageNumber|Integer|1|快照列表的页码。 |
 |PageSize|Integer|10|输入时设置的每页行数。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
@@ -85,28 +99,35 @@
 |Snapshot| | | |
 |Category|String|standard|快照类型。
 
- **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。 |
+ **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用参数`InstantAccess`。 |
 |CreationTime|String|2020-08-20T14:52:28Z|创建时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。 |
 |Description|String|testDescription|描述信息。 |
 |Encrypted|Boolean|false|该快照是否加密。 |
-|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb40826X|数据盘对应的KMS密钥ID。 |
+|InstantAccess|Boolean|false|是否开启了快照极速可用功能。可能值：
+
+ -   true：开启。仅ESSD云盘支持开启该功能。
+-   false：关闭。即快照为未开启快照极速可用功能的普通快照。 |
+|InstantAccessRetentionDays|Integer|30|设置快照极速可用功能的保留时间，保留时间到期后快照将自动释放。
+
+ 默认与参数`RetentionDays`的值一致。 |
+|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|数据盘对应的KMS密钥ID。 |
 |LastModifiedTime|String|2020-08-25T14:18:09Z|快照的最后变更时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。 |
 |ProductCode|String|jxsc000\*\*\*\*|从镜像市场继承的产品编号。 |
-|Progress|String|100|快照创建进度，单位为百分比。 |
+|Progress|String|100%|快照创建进度，单位为百分比。 |
 |RemainTime|Integer|38|正在创建的快照剩余完成时间，单位为秒。 |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|资源组ID。 |
 |RetentionDays|Integer|30|自动快照保留天数。 |
 |SnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|快照ID。 |
 |SnapshotName|String|testSnapshotName|快照显示名称。如果创建时指定了快照显示名称，则返回。 |
 |SnapshotSN|String|64472-116742336-61976\*\*\*\*|快照序列号。 |
-|SnapshotType|String|all|快照类型。可能值：
+|SnapshotType|String|all|快照创建类型。可能值：
 
- -   auto：自动快照
--   user：手动创建的快照
--   all（默认）：所有快照类型 |
+ -   auto：自动创建快照。
+-   user：手动创建快照。
+-   all（默认）：所有的快照创建类型。 |
 |SourceDiskId|String|d-bp67acfmxazb4ph\*\*\*\*|源云盘ID。如果快照的源云盘已经被释放，该字段仍旧保留。 |
-|SourceDiskSize|String|2000|源云盘容量，单位：GiB。 |
-|SourceDiskType|String|Data|源云盘属性。可能值：
+|SourceDiskSize|String|40|源云盘容量，单位：GiB。 |
+|SourceDiskType|String|system|源云盘属性。可能值：
 
  -   system
 -   data |
@@ -122,13 +143,13 @@
 |Tag| | | |
 |TagKey|String|TestKey|快照的标签键。 |
 |TagValue|String|TestValue|快照的标签值。 |
-|Usage|String|none|快照是否被用作创建镜像或云盘。可能值：
+|Usage|String|image|快照是否被用作创建镜像或云盘。可能值：
 
  -   image
 -   disk
 -   image\_disk
 -   none |
-|TotalCount|Integer|36|快照总个数。 |
+|TotalCount|Integer|1|快照总个数。 |
 
 ## 示例
 
@@ -160,36 +181,36 @@ https://ecs.aliyuncs.com/?Action=DescribeSnapshots
 
 ```
 <DescribeSnapshotsResponse>
+      <TotalCount>1</TotalCount>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <PageSize>10</PageSize>
+      <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken>
       <PageNumber>1</PageNumber>
-      <PageSize>2</PageSize>
-      <RequestId>659F91C6-1949-43B0-90C4-B6342CA757D5</RequestId>
       <Snapshots>
             <Snapshot>
+                  <Status>accomplished</Status>
+                  <InstantAccess>false</InstantAccess>
+                  <Progress>100%</Progress>
+                  <Usage>image</Usage>
+                  <Description>testDescription</Description>
+                  <Category>standard</Category>
+                  <KMSKeyId>0e478b7a-4262-4802-b8cb-00d3fb40****</KMSKeyId>
+                  <ProductCode>jxsc000****</ProductCode>
+                  <Encrypted>false</Encrypted>
+                  <SnapshotName>testSnapshotName</SnapshotName>
+                  <SourceDiskId>d-bp67acfmxazb4ph****</SourceDiskId>
+                  <SourceStorageType>disk</SourceStorageType>
+                  <SnapshotId>s-bp67acfmxazb4p****</SnapshotId>
+                  <SnapshotSN>64472-116742336-61976****</SnapshotSN>
+                  <SourceDiskSize>40</SourceDiskSize>
                   <CreationTime>2020-08-20T14:52:28Z</CreationTime>
                   <LastModifiedTime>2020-08-25T14:18:09Z</LastModifiedTime>
-                  <Progress>100%</Progress>
-                  <SnapshotId>s-943ypfg****</SnapshotId>
-                  <SnapshotName>auto_20150730_3</SnapshotName>
-                  <SourceDiskId>d-944qyqj****</SourceDiskId>
-                  <SourceDiskSize>20</SourceDiskSize>
-                  <SnapshotType>user</SnapshotType>
+                  <SnapshotType>all</SnapshotType>
                   <SourceDiskType>system</SourceDiskType>
-                  <Status>accomplished</Status>
-                  <Usage>none</Usage>
-            </Snapshot>
-            <Snapshot>
-                  <CreationTime>2015-07-30T05:00:14Z</CreationTime>
-                  <Progress>100%</Progress>
-                  <SnapshotId>s-94osg32****</SnapshotId>
-                  <SnapshotName>auto_20150730_3</SnapshotName>
-                  <SourceDiskId>d-94j355j****</SourceDiskId>
-                  <SourceDiskSize>20</SourceDiskSize>
-                  <SourceDiskType>system</SourceDiskType>
-                  <Status>accomplished</Status>
-                  <Usage>none</Usage>
+                  <Tags>
+            </Tags>
             </Snapshot>
       </Snapshots>
-      <TotalCount>36</TotalCount>
 </DescribeSnapshotsResponse>
 ```
 
@@ -197,38 +218,39 @@ https://ecs.aliyuncs.com/?Action=DescribeSnapshots
 
 ```
 {
-    "PageNumber": 1,
-    "PageSize": 2,
-    "RequestId": "659F91C6-1949-43B0-90C4-B6342CA757D5",
-    "Snapshots": {
-        "Snapshot": [
-            {
-                "CreationTime": "2020-08-20T14:52:28Z",
+	"TotalCount": 1,
+	"RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+	"PageSize": 10,
+	"NextToken": "caeba0bbb2be03f84eb48b699f0a4883",
+	"PageNumber": 1,
+	"Snapshots": {
+		"Snapshot": [
+			{
+				"Status": "accomplished",
+				"InstantAccess": false,
+				"Progress": "100%",
+				"Usage": "image",
+				"Description": "testDescription",
+				"Category": "standard",
+				"KMSKeyId": "0e478b7a-4262-4802-b8cb-00d3fb40****",
+				"ProductCode": "jxsc000****",
+				"Encrypted": false,
+				"SnapshotName": "testSnapshotName",
+				"SourceDiskId": "d-bp67acfmxazb4ph****",
+				"SourceStorageType": "disk",
+				"SnapshotId": "s-bp67acfmxazb4p****",
+				"SnapshotSN": "64472-116742336-61976****",
+				"SourceDiskSize": 40,
+				"CreationTime": "2020-08-20T14:52:28Z",
 				"LastModifiedTime": "2020-08-25T14:18:09Z",
-                "Progress": "100%",
-                "SnapshotId": "s-943ypfg****",
-                "SnapshotName": "auto_20150730_3",
-                "SourceDiskId": "d-944qyqj****",
-                "SourceDiskSize": 20,
-                "SnapshotType": "user",
-                "SourceDiskType": "system",
-                "Status": "accomplished",
-                "Usage": "none"
-            },
-            {
-                "CreationTime": "2015-07-30T05:00:14Z",
-                "Progress": "100%",
-                "SnapshotId": "s-94osg32****",
-                "SnapshotName": "auto_20150730_3",
-                "SourceDiskId": "d-94j355j****",
-                "SourceDiskSize": 20,
-                "SourceDiskType": "system",
-                "Status": "accomplished",
-                "Usage": "none"
-            }
-        ]
-    },
-    "TotalCount": 36
+				"SnapshotType": "all",
+				"SourceDiskType": "system",
+				"Tags": {
+					"Tag": []
+				}
+			}
+		]
+	}
 }
 ```
 
