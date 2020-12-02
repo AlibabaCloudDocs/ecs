@@ -12,6 +12,11 @@ The procedures described in this topic apply only to the following instance type
 
 If you use other operating systems to deploy Redis applications, make sure that the image versions meet the following requirements:
 
+-   Alibaba Cloud Linux 2
+-   CentOS 7.6 or later
+-   Ubuntu 18.10 or later
+-   SUSE Linux 12 SP4 or later
+
 ## Deploy Redis applications on an re6p instance that runs Alibaba Cloud Linux
 
 Alibaba Cloud Linux is specially tuned for Redis applications. Redis applications deployed in community operating systems outperform those deployed on Alibaba Cloud Linux by more than 20%.
