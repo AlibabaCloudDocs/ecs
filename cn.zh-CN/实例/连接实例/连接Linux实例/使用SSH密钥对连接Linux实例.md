@@ -70,12 +70,12 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
 
     当出现以下提示时，说明您已经成功地使用SSH密钥对登录了实例。
 
-    ![windows_putty_5](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1904359951/p51203.png)
+    ![windows_putty_5](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1904359951/p51203.png)
 
 
 以下示例演示如何转换私钥文件格式和使用SSH密钥连接Linux实例。
 
-![使用ssh密钥登录](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1904359951/p97815.gif)
+![使用ssh密钥登录](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1904359951/p97815.gif)
 
 ## 在支持SSH命令的环境中使用密钥对（通过命令配置信息）
 
@@ -178,7 +178,7 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
     IdentityFile ~/.ssh/ecs.pem
     ```
 
-    添加完成后，按Ecs键，并输入`:wq`保存config文件。
+    添加完成后，按Esc键，并输入`:wq`保存config文件。
 
 5.  运行以下命令，重启SSH服务。
 
