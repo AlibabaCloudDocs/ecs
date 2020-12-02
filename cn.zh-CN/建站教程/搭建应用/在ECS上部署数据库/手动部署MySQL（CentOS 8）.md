@@ -44,7 +44,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等建站场�
 
     查看版本结果如下图所示。
 
-    ![mysql 8.0.21](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4826554061/p179478.png)
+    ![mysql 8.0.21](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4826554061/p179478.png)
 
 
 ## 步骤二：配置MySQL
