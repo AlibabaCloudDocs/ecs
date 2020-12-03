@@ -6,7 +6,10 @@ CentOS 6操作系统版本结束了生命周期（EOL），Linux社区已不再�
 
 ![centos 6 error](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3368796061/p187588.png)
 
-您可以通过以下步骤，在CentOS 6操作系统中将源配置切换为`http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/`源。
+您可以通过以下步骤，在CentOS 6操作系统中将源配置按照网络环境不同进行切换。
+
+-   专有网络VPC类型实例需切换为`http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/`源。
+-   经典网络类型实例需切换为`http://mirrors.aliyuncs.com/centos-vault/6.10/`源。
 
 1.  登录CentOS 6系统的ECS实例。
 
@@ -20,31 +23,63 @@ CentOS 6操作系统版本结束了生命周期（EOL），Linux社区已不再�
 
 3.  按i进入编辑模式，修改以下内容切换源。
 
-    ```
-    [base]
-    name=CentOS-6.10
-    enabled=1
-    failovermethod=priority
-    baseurl=http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/os/$basearch/
-    gpgcheck=1
-    gpgkey=http://mirrors.cloud.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
-    
-    [updates]
-    name=CentOS-6.10
-    enabled=1
-    failovermethod=priority
-    baseurl=http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/updates/$basearch/
-    gpgcheck=1
-    gpgkey=http://mirrors.cloud.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
-    
-    [extras]
-    name=CentOS-6.10
-    enabled=1
-    failovermethod=priority
-    baseurl=http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/extras/$basearch/
-    gpgcheck=1
-    gpgkey=http://mirrors.cloud.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
-    ```
+    请根据实例不同的网络类型进行修改，具体内容如下：
+
+    -   专有网络VPC类型实例
+
+        ```
+        [base]
+        name=CentOS-6.10
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/os/$basearch/
+        gpgcheck=1
+        gpgkey=http://mirrors.cloud.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
+        
+        [updates]
+        name=CentOS-6.10
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/updates/$basearch/
+        gpgcheck=1
+        gpgkey=http://mirrors.cloud.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
+        
+        [extras]
+        name=CentOS-6.10
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/extras/$basearch/
+        gpgcheck=1
+        gpgkey=http://mirrors.cloud.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
+        ```
+
+    -   经典网络类型实例
+
+        ```
+        [base]
+        name=CentOS-6.10
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.aliyuncs.com/centos-vault/6.10/os/$basearch/
+        gpgcheck=1
+        gpgkey=http://mirrors.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
+        
+        [updates]
+        name=CentOS-6.10
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.aliyuncs.com/centos-vault/6.10/updates/$basearch/
+        gpgcheck=1
+        gpgkey=http://mirrors.aliyuncs.comm/centos-vault/RPM-GPG-KEY-CentOS-6
+        
+        [extras]
+        name=CentOS-6.10
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.aliyuncs.com/centos-vault/6.10/extras/$basearch/
+        gpgcheck=1
+        gpgkey=http://mirrors.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
+        ```
 
     编辑完成后，按Esc键，并输入`:wq`保存退出文件。
 
