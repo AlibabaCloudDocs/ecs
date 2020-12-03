@@ -51,3 +51,8 @@ CentOS 6操作系统版本结束了生命周期（EOL），Linux社区已不再�
 4.  切换完成后，您可以使用yum install命令安装需要的软件包。
 
 
+**相关文档**  
+
+
+[CentOS Product Specifications](https://wiki.centos.org/About/Product)
+
