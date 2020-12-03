@@ -17,6 +17,8 @@ If you use other operating systems to deploy Redis applications, make sure that 
 -   Ubuntu 18.10 or later
 -   SUSE Linux 12 SP4 or later
 
+**Note:** The reliability of data stored in persistent memory depends on the reliability of persistent memory devices and the physical servers to which these devices are attached. This increases risks of single points of failure. To ensure the reliability of application data, we recommend that you implement data redundancy at the application layer and use cloud disks for long-term data storage.
+
 ## Deploy Redis applications on an re6p instance that runs Alibaba Cloud Linux
 
 Alibaba Cloud Linux is specially tuned for Redis applications. Redis applications deployed in community operating systems outperform those deployed on Alibaba Cloud Linux by more than 20%.
