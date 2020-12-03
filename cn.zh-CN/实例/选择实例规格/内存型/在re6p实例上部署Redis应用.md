@@ -7,6 +7,7 @@ Redis应用运行在持久内存型实例上可以降低单GiB内存的成本，
 -   ecs.re6p-redis.large
 -   ecs.re6p-redis.xlarge
 -   ecs.re6p-redis.2xlarge
+-   ecs.re6p-redis.13xlarge
 
 **说明：** ecs.re6p-redis.<nx\>large是为Redis应用推出的专用实例规格，只支持将持久内存作为内存使用。
 
