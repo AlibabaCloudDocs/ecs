@@ -19,6 +19,8 @@ Persistent memory optimized instances are equipped with large-capacity persisten
 -   Used as memory: You can move some data stored in regular memory to persistent memory, such as non-hotspot data that has lower requirements for access speed. Persistent memory offers large capacity at a low price per GiB and can help reduce the total cost of ownership \(TCO\) per GiB.
 -   Used as local SSDs: Persistent memory can be used as local SSDs to provide ultra-high performance and read/write latency as low as 400 nanoseconds. Therefore, you can choose persistent memory for core application databases that require consistent response time \(RT\). You can replace cache disks with persistent memory to obtain higher IOPS, higher bandwidth, and lower latency. This can improve the business performance of the entire cluster.
 
+**Note:** The reliability of data stored in persistent memory depends on the reliability of persistent memory devices and the physical servers to which these devices are attached. This increases risks of single points of failure. To ensure the reliability of application data, we recommend that you implement data redundancy at the application layer and use cloud disks for long-term data storage.
+
 The following configurations are used in this example:
 
 -   Instance type: ecs.re6p.2xlarge
