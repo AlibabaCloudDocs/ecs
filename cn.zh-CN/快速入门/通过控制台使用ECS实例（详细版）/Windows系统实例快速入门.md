@@ -31,7 +31,7 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
 
     |配置页面|配置项|示例|说明|
     |----|---|--|--|
-    |**基础配置**|**付费模式**|按量付费|按量付费模式操作相对灵活。详情请参见[计费概述](/cn.zh-CN/产品定价/计费项/计费概述.md)。 **说明：** 如果您需要为网站域名备案，必须选择**包年包月**。 |
+    |**基础配置**|**付费模式**|按量付费|按量付费模式操作相对灵活。详情请参见[计费概述](/cn.zh-CN/产品定价/计费概述.md)。 **说明：** 如果您需要为网站域名备案，必须选择**包年包月**。 |
     |**地域与可用区**|    -   地域：华东 1（杭州）
     -   可用区：随机分配
 |实例创建后，无法直接更改地域和可用区，请谨慎选择。|
@@ -56,13 +56,13 @@ EcsQuickStart
 |本文中的实例一律使用EcsQuickStart指代。|
     |**分组设置**|**标签**|ECS:Documentation|有多台实例时，建议添加标签，方便管理。|
 
-3.  单击**下一步：确认订单**。在该页面确认**所选配置**，或者单击编辑图标![编辑-图标](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/8366520061/p77356.png)返回修改配置。
+3.  单击**下一步：确认订单**。在该页面确认**所选配置**，或者单击编辑图标![编辑-图标](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8366520061/p77356.png)返回修改配置。
 
-    ![快速入门-Windows版](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4396958951/p77397.png)
+    ![快速入门-Windows版](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4396958951/p77397.png)
 
 4.  单击**保存为启动模板**，然后设置模板名称和描述。
 
-    ![快速入门-启动模板](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4396958951/p77611.png)
+    ![快速入门-启动模板](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4396958951/p77611.png)
 
     **说明：** 将当前实例所选配置保存为启动模板，方便您下次通过模板一键下单。
 
@@ -72,7 +72,7 @@ EcsQuickStart
 
     实例状态进入**运行中**后表示已成功创建。复制实例的公网IP地址，便于下文连接ECS实例时使用。
 
-    ![instance list](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4396958951/p127225.png)
+    ![instance list](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4396958951/p127225.png)
 
 
 ## 步骤二：添加安全组规则
@@ -81,11 +81,11 @@ EcsQuickStart
 
 1.  单击实例ID，进入实例详情页。
 
-2.  在左侧导航栏，单击**本实例安全组**，然后单击安全组ID，进入安全组详情页。
+2.  单击**安全组**页签，然后单击安全组ID，进入安全组详情页。
 
-3.  在**安全组规则**页面，选择**入方向**页签。
+3.  在**访问规则**区域，选择**入方向**页签。
 
-4.  单击**快速添加**，按以下设置添加安全组规则，未提及的配置保持页面默认选项。
+4.  5.  单击**快速添加**，按以下设置添加安全组规则，未提及的配置保持页面默认选项。
 
     |授权策略|端口范围|授权对象|
     |----|----|----|
@@ -99,9 +99,9 @@ EcsQuickStart
 
     -   **常用端口**处勾选的是ECS实例上运行的应用需开放的端口，例如，[步骤四：配置IIS服务](#IISConfig)时使用的HTTP 80端口。
     -   0.0.0.0/0表示允许全网段设备访问指定的端口。如果您知晓请求端的IP地址，建议设置为具体的IP范围。
-    ![快速入门-Linux版-添加安全组规则](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4396958951/p77063.png)
+    ![快速入门-Linux版-添加安全组规则](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4396958951/p77063.png)
 
-5.  单击**确定**。
+6.  单击**确定**。
 
 
 ## 步骤三：连接ECS实例
@@ -110,11 +110,13 @@ EcsQuickStart
 
 2.  在右侧**操作**列，单击**远程连接**。
 
-3.  在弹出的**登录实例**对话框中，完成登录凭证设置，然后单击**确定**。
+3.  在弹出的**远程连接与命令**对话框中，单击Workbench远程连接对应的**立即登录**。
+
+4.  在弹出的**登录实例**对话框中，完成登录凭证设置，然后单击**确定**。
 
     -   **用户名**：填写administrator。
     -   **密码**：创建ECS实例时，在**登录凭证**处设置的**登录密码**。
-    ![Workbench连接Windows实例](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4396958951/p77413.png)
+    ![Workbench连接Windows实例](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4396958951/p77413.png)
 
     弹出**EcsQuickStart - ECS-Workbench**终端后，连接实例成功。
 
@@ -139,7 +141,7 @@ EcsQuickStart
     http://<实例公网IP地址>
     ```
 
-    ![快速入门-Windows版-测试网站](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5396958951/p77430.png)
+    ![快速入门-Windows版-测试网站](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5396958951/p77430.png)
 
 
 ## 步骤五：（可选）解析网站域名
@@ -182,9 +184,9 @@ EcsQuickStart
 
 账单明细数据延迟一天更新，且不含万网和云通信数据。
 
-1.  在ECS管理控制台顶部工具栏处，选择**费用** \> **用户中心**。
+1.  在ECS管理控制台顶部菜单栏处，选择**费用** \> **用户中心**。
 
-    ![ECS快速入门-查看费用账单](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5396958951/p77367.png)
+    ![ECS快速入门-查看费用账单](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5396958951/p77367.png)
 
 2.  在左侧导航栏，单击**费用账单**，然后单击页面中的**账单明细**页签。
 
