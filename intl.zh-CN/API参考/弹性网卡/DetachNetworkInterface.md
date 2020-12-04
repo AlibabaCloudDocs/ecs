@@ -89,7 +89,7 @@ https://ecs.aliyuncs.com/?Action=DetachNetworkInterface
 |400|Forbidden.RegionId|%s|当前地域暂时没有提供该服务。|
 |400|InvalidParams.EniId|%s|指定的参数EniId无效。|
 |403|InvalidOperation.EniServiceManaged|%s|操作无效。|
-|403|InvalidOperation.EniLinked|%s|由于实例绑定了弹性网卡导致此操作无效。|
+|403|InvalidOperation.EniLinked|%s|实例的当前弹性网卡关联了其他弹性网卡，导致操作无效。需要解除关联后才能从实例解绑。|
 |403|InvalidInstanceId.NotFound|%s|指定的实例不存在，请确认参数InstanceId是否正确。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
