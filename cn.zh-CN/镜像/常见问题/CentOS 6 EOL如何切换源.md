@@ -83,7 +83,43 @@ CentOS 6操作系统版本结束了生命周期（EOL），Linux社区已不再�
 
     编辑完成后，按Esc键，并输入`:wq`保存退出文件。
 
-4.  切换完成后，您可以使用yum install命令安装需要的软件包。
+4.  运行以下命令编辑`epel.repo`文件。
+
+    ```
+    vim /etc/yum.repos.d/epel.repo
+    ```
+
+5.  按i进入编辑模式，修改以下内容切换源。
+
+    请根据实例不同的网络类型进行修改，具体内容如下：
+
+    -   专有网络VPC类型实例
+
+        ```
+        [epel]
+        name=Extra Packages for Enterprise Linux 6 - $basearch
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.cloud.aliyuncs.com/epel-archive/6/$basearch
+        gpgcheck=0
+        gpgkey=http://mirrors.cloud.aliyuncs.com/epel-archive/RPM-GPG-KEY-EPEL-6
+        ```
+
+    -   经典网络类型实例
+
+        ```
+        [epel]
+        name=Extra Packages for Enterprise Linux 6 - $basearch
+        enabled=1
+        failovermethod=priority
+        baseurl=http://mirrors.aliyuncs.com/epel-archive/6/$basearch
+        gpgcheck=0
+        gpgkey=http://mirrors.aliyuncs.com/epel-archive/RPM-GPG-KEY-EPEL-6
+        ```
+
+    编辑完成后，按Esc键，并输入`:wq`保存退出文件。
+
+6.  切换完成后，您可以使用yum install命令安装需要的软件包。
 
 
 **相关文档**  
