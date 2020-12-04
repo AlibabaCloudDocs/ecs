@@ -1,141 +1,109 @@
-# 通过控制台使用实例 RAM 角色 {#concept_v3v_zct_xdb .concept}
+# 授予实例RAM角色
 
-## 使用限制 {#section_x4c_cdt_xdb .section}
+本文介绍了如何在控制台创建、授权实例RAM角色，并将其授予ECS实例。
 
-使用实例 RAM 角色存在如下限制：
+-   您已经开通RAM服务。参见RAM文档[开通方法](/intl.zh-CN/产品定价/计费方法.md)。
+-   待授予实例RAM角色的ECS实例网络类型必须是专有网络VPC。
+-   如果您是通过RAM用户操作本文示例，您需要通过云账号授权RAM用户允许使用实例RAM角色。详细步骤请参见[授权RAM用户使用实例RAM角色](/intl.zh-CN/安全/实例RAM角色/管理实例RAM角色/授权RAM用户使用实例RAM角色.md)。
 
--   只有专有网络 （VPC） 网络类型的 ECS 实例才能使用实例 RAM 角色。
--   一个 ECS 实例一次只能授予一个实例 RAM 角色。
--   当您给 ECS 实例授予了实例 RAM 角色后，并希望在 ECS 实例内部部署的应用程序中访问云产品的 API 时，您需要通过 [ZH-CN\_TP\_9661.md\#](intl.zh-CN/实例/管理实例/使用实例元数据/什么是实例元数据.md#) 获取实例 RAM 角色的临时授权 Token。参阅 [6. （可选）获取临时授权 Token](#Token)。
--   如果您是通过 RAM 用户子账号使用实例 RAM 角色，您需要通过云账号 [7. （可选）授权 RAM 用户使用实例 RAM 角色](#Authorize)。
+-   一台ECS实例一次只能授予一个实例RAM角色。
+-   当您给ECS实例授予了实例RAM角色后，并希望在ECS实例内部部署的应用程序中访问云产品的API时，您需要通过实例元数据获取实例RAM角色的临时授权Token。详细步骤请参见[获取临时授权Token](/intl.zh-CN/安全/实例RAM角色/管理实例RAM角色/获取临时授权Token.md)。
 
-## 前提条件 {#section_z4c_cdt_xdb .section}
+## 操作步骤
 
-您已经开通 RAM 服务，参阅 RAM 文档 [开通方法](../../../../intl.zh-CN/产品定价/开通方法.md#) 开通 RAM 服务。
+本文示例使用云账号在RAM控制台创建一个实例RAM角色，并将其授予ECS实例：
 
-## 1. 创建实例 RAM 角色 {#step2 .section}
+1.  [步骤一：创建实例RAM角色](#section_s9s_ayg_45l)
+2.  [步骤二：为RAM角色授予权限](#section_dpz_sjj_rbj)
+3.  [步骤三：为实例授予RAM角色](#section_xb2_v3o_mtj)
 
-1.  登录 [RAM 控制台](https://ram.console.aliyun.com/#/overview)。
-2.  在导航窗格中，单击 **角色管理**。
-3.  在角色管理页面，单击 **新建角色**。
-4.  在弹窗中：
-    1.  **角色类型** 选择 **服务角色**。
-    2.  **类型信息** 选择 **ECS 云服务器**。
-    3.  输入角色名称及备注，如 EcsRamRoleDocumentTesting。
+## 步骤一：创建实例RAM角色
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9665/15663661095501_zh-CN.png)
+按以下步骤在访问控制RAM控制台创建一个实例RAM角色：
 
-    4.  单击 **确认** 完成新建。
+1.  云账号登录[RAM控制台](https://ram.console.aliyun.com/)。
 
-## 2. 授权实例 RAM 角色 {#section_q1m_sst_xdb .section}
+2.  在左侧导航栏，单击**RAM角色管理**。
 
-1.  登录 [RAM 控制台](https://ram.console.aliyun.com/#/overview)。
-2.  在导航窗格中，单击 **策略管理**。
-3.  在 策略管理 页面，单击 **新建授权策略**。
-4.  在弹窗中：
-    1.  **权限策略模板** 选择 **空白模板**。
-    2.  输入 **授权策略名称** 及 **策略内容**，如 EcsRamRoleDocumentTestingPolicy。
+3.  单击**创建RAM角色**。
 
-        **说明：** 关于如何编写策略内容，您可以参阅 RAM 文档 [Policy 语法结构](../../../../intl.zh-CN/用户指南/（隐藏）旧版用户指南/授权策略语言/Policy 语法结构.md#)。
+4.  当前可信实体类型选择为**阿里云服务**，单击**下一步**。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9665/15663661105502_zh-CN.png)
+    **阿里云服务**用于授权ECS实例访问或管理您的云资源。RAM角色选择**阿里云服务**类型后，支持授予给ECS实例。
 
-    3.  单击 **新建授权策略** 完成授权。
-5.  在导航窗格中，单击 **角色管理**。
-6.  在 角色管理 页面，选择创建好的角色，如 EcsRamRoleDocumentTesting，单击 **授权**。
-7.  输入创建的 **授权策略名称**，如 EcsRamRoleDocumentTestingPolicy。
-8.  单击符号 **\>** 选中策略名，单击 **确认**。
+    ![选择云服务](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6756775061/p183974.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9665/15663661135503_zh-CN.png)
+    **说明：**
 
-
-## 3. 授予实例 RAM 角色 {#section_mpc_cdt_xdb .section}
-
-1.  登录 [ECS管理控制台](https://ecs.console.aliyun.com/?spm=a2c4g.11186623.2.9.FNEORG#/home)。
-2.  在导航窗格中，单击 **实例**。
-3.  选择地域。
-4.  找到要操作的 ECS 实例，选择 **更多** \> **实例设置** \> **授予/收回 RAM 角色**。
-5.  在弹窗中，选择创建好的实例 RAM 角色，如 EcsRamRoleDocumentTesting，单击 **确定** 完成授予。
-
-## 4. （可选）收回实例 RAM 角色 {#section_wn3_bwt_xdb .section}
-
-1.  登录 [ECS管理控制台](https://ecs.console.aliyun.com/?spm=a2c4g.11186623.2.9.FNEORG#/home)。
-2.  在导航窗格中，单击 **实例**。
-3.  选择地域。
-4.  选择一个已经授予 RAM 角色的 ECS 实例，选择 **更多** \> **实例设置** \> **授予/收回 RAM 角色**。
-5.  **操作类型** 选择 **收回**，单击 **确定** 即可收回实例 RAM 角色。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9665/15663661135506_zh-CN.png)
-
-
-## 5. （可选）更换实例 RAM 角色 {#section_wfl_2wt_xdb .section}
-
-1.  登录 [ECS管理控制台](https://ecs.console.aliyun.com/?spm=a2c4g.11186623.2.9.FNEORG#/home)。
-2.  在导航窗格中，单击 **实例**。
-3.  选择地域。
-4.  选择一个已经授予 RAM 角色的 ECS 实例，选择 **更多** \> **实例设置** \> **授予/收回 RAM 角色**。
-5.  **操作类型** 选择 **授予**，在已有 **RAM 角色** 中选择其他实例 RAM 角色，单击 **确定** 即可更换当前 RAM 角色。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9665/15663661145507_zh-CN.png)
-
-
-## 6. （可选）获取临时授权 Token {#Token .section}
-
-您可以获得实例 RAM 角色的临时授权 Token，该临时授权 Token 可以执行实例 RAM 角色的权限和资源，并且该临时授权 Token 会自动周期性地更新。示例：
-
-1.  远程连接并登录到 ECS 实例。
-2.  检索名为 EcsRamRoleDocumentTesting 的实例 RAM 角色的临时授权 Token：
-    -   Linux 实例： 执行命令 `curl http://100.100.100.200/latest/meta-data/Ram/security-credentials/EcsRamRoleDocumentTesting`。
-    -   Windows 实例：参阅 [ZH-CN\_TP\_9661.md\#](intl.zh-CN/实例/管理实例/使用实例元数据/什么是实例元数据.md#)。
-3.  获得临时授权 Token。返回示例如下：
+    如果您的RAM角色选择**阿里云账号**等类型，创建结束后需要在RAM角色的**信任策略管理**页签，单击**修改信任策略**手动添加以下ECS服务授权策略。
 
     ```
-    
-    {
-    "AccessKeyId" : "XXXXXXXXX",
-    "AccessKeySecret" : "XXXXXXXXX",
-    "Expiration" : "2017-11-01T05:20:01Z",
-    "SecurityToken" : "XXXXXXXXX",
-    "LastUpdated" : "2017-10-31T23:20:01Z",
-    "Code" : "Success"
-    }
+    "Service": [
+        "ecs.aliyuncs.com"
+    ]
     ```
 
+5.  选择角色类型为**普通服务角色**。
 
-## 7. （可选）授权 RAM 用户使用实例 RAM 角色 {#Authorize .section}
+6.  输入**角色名称**和**备注**。
 
-**说明：** 当您授权 RAM 用户使用实例 RAM 角色时，您必须授权 RAM 用户对该实例 RAM 角色的 **PassRole** 权限。其中，**PassRole** 决定该 RAM 用户能否直接执行角色策略赋予的权限。
+7.  选择受信服务为**云服务器**。
 
-登录 RAM 控制台，参阅 [为 RAM 用户授权](../../../../intl.zh-CN/快速入门/（隐藏）旧版快速入门/为 RAM 用户授权.md#) 完成授权，授权策略如下所示：
+8.  单击**完成**。
 
-```
 
-{
-"Version": "2016-10-17",
-"Statement": [
-{
-"Effect": "Allow",
-"Action": [
-"ecs: [ECS RAM Action]",
-"ecs: CreateInstance",
-"ecs: AttachInstanceRamRole",
-"ecs: DetachInstanceRAMRole"
-],
-"Resource": "*"
-},
-{
-"Effect": "Allow",
-"Action": "ram:PassRole",
-"Resource": "*"
-}
-]
-}
-```
+配置完成后，在RAM角色的**信任策略管理**页签中，确认是否包含以下ECS服务授权策略。
 
-其中，\[ECS RAM Action\] 表示可授权 RAM 用户的权限，请参阅 [鉴权规则](../../../../intl.zh-CN/API参考/鉴权规则.md#)。
+![ecs服务](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8575775061/p183955.png)
 
-## 参考链接 {#section_bxr_pwt_xdb .section}
+## 步骤二：为RAM角色授予权限
 
--   您也可以 [通过API使用实例RAM角色](intl.zh-CN/安全/实例RAM角色/通过API使用实例RAM角色.md#)。
--   您也许想 [借助实例 RAM 角色访问其它云产品 API](https://www.alibabacloud.com/help/doc-detail/54579.htm)。
+按以下步骤在访问控制RAM控制台授权实例RAM角色一个系统权限或者自定义权限：
+
+1.  云账号登录[RAM控制台](https://ram.console.aliyun.com/)。
+
+2.  （可选）如果您不使用系统权限，可以参见[账号访问控制](/intl.zh-CN/安全/账号访问控制.md)创建自定义权限策略章节创建一个自定义策略。
+
+3.  在左侧导航栏，单击**RAM角色管理**。
+
+4.  在**RAM角色名称**列表下，单击目标RAM角色名称。
+
+5.  在**权限管理**页签下，单击**精确授权**。
+
+6.  选择权限类型为**系统策略**或**自定义策略**。
+
+7.  输入策略名称。
+
+8.  单击**确定**。
+
+9.  单击**关闭**。
+
+
+## 步骤三：为实例授予RAM角色
+
+按以下步骤在ECS控制台为一台ECS实例授予实例RAM角色：
+
+1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
+
+2.  在左侧导航栏，单击**实例与镜像** \> **实例**。
+
+3.  在顶部菜单栏左上角处，选择地域。
+
+4.  找到要操作的ECS实例，选择**更多** \> **实例设置** \> **授予/收回RAM角色**。
+
+5.  在弹窗中，选择创建好的实例RAM角色，单击**确定**完成授予。
+
+
+您也可以在创建ECS实例时，并在**系统配置**页面的**RAM角色**属性中为实例选择已创建好的实例RAM角色。更多详情请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
+
+**相关文档**  
+
+
+[CreateRole](/intl.zh-CN/API参考/API参考（RAM）/角色管理接口/CreateRole.md)
+
+[CreatePolicy](/intl.zh-CN/API参考/API参考（RAM）/权限策略管理接口/CreatePolicy.md)
+
+[AttachPolicyToRole](/intl.zh-CN/API参考/API参考（RAM）/权限策略管理接口/AttachPolicyToRole.md)
+
+[AttachInstanceRamRole](/intl.zh-CN/API参考/实例/AttachInstanceRamRole.md)
 
