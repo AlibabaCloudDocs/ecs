@@ -49,7 +49,7 @@
 
 5.  在**更换专有网络**配置向导页面，按照指引更换ECS实例的专有网络。
 
-    ![更换vpc](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5186649951/p120673.png)
+    ![更换vpc](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5186649951/p120673.png)
 
     1.  在**变更准备**阶段，查看变更前的网络信息和注意事项，单击**下一步**。
 
@@ -62,7 +62,7 @@
     4.  单击**确定**。
 
 
-切换完成后，您可以单击ECS实例ID，在**实例详情**页面的**配置信息**中查看切换后的目标专用网络和虚拟交换机。
+切换完成后，您可以单击ECS实例ID，在**实例详情**页面的**网络信息**中查看切换后的专用网络和虚拟交换机。
 
 **相关文档**  
 
