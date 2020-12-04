@@ -149,7 +149,7 @@ If you do not add rules to the default security group when you create an instanc
     http://<Public IP address of the instance>
     ```
 
-    ![apache](../images/p127217.png)
+    ![apache](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2086707061/p127217.png)
 
 
 ## Step 5: \(Optional\) Resolve domain names
