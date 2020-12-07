@@ -1,14 +1,14 @@
-# 安全锁定时的API行为 {#EcsApi .reference}
+# 安全锁定时的API行为
 
-本文提供了因出现安全风控事件后被锁定资源的 API 调用情况。
+本文介绍了因出现安全风控事件后被锁定资源的API调用情况。
 
-## API 调用情况 {#section_flj_dpg_ydb .section}
+## API调用情况
 
-被安全锁定指的是在 [DescribeInstances](cn.zh-CN/API参考/实例/DescribeInstances.md#) 返回的传出参数中的`OperationLocks`包含了`LockReason: security`。
+被安全锁定指的是在[DescribeInstances](/intl.zh-CN/API参考/实例/DescribeInstances.md)返回的传出参数中的`OperationLocks`包含了`LockReason: security`。
 
-**说明：** 和磁盘有关的行为在`In_use` 的状态下依赖实例的 `OperationLocks`，否则可以忽略实例的 `OperationLocks`。
+**说明：** 和云盘有关的行为在`In_use`的状态下依赖实例的`OperationLocks`，否则可以忽略实例的`OperationLocks`。
 
-下列表中，**正常逻辑** 表示按照接口的正常逻辑执行并返回结果。
+下列表中，**正常逻辑**表示按照接口的正常逻辑执行并返回结果。
 
 |接口|行为|
 |:-|:-|
@@ -19,7 +19,7 @@
 |CreateImage|正常逻辑|
 |CreateInstance|报错|
 |CreateSecurityGroup|正常逻辑|
-|CreateSnapshot|报错（只针对挂载在该实例上的磁盘，In\_use 状态）|
+|CreateSnapshot|报错（只针对挂载在该实例上的云盘，In\_use状态）|
 |DeleteDisk|正常逻辑|
 |DeleteImage|正常逻辑|
 |DeleteInstance|正常逻辑|
@@ -45,10 +45,8 @@
 |ModifyDiskAttribute|正常逻辑|
 |ModifyInstanceAttribute|报错|
 |RebootInstance|报错|
-|ReInitDisk| -   In\_use 状态时，报错
--   其他状态时，正常逻辑
-
- |
+|ReInitDisk|-   In\_use状态时，报错
+-   其他状态时，正常逻辑 |
 |ReplaceSystemDisk|正常逻辑|
 |ResetDisk|报错|
 |RevokeSecurityGroup|正常逻辑|
