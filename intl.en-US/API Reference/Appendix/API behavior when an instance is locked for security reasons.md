@@ -1,25 +1,25 @@
-# API behavior when an instance is locked for security reasons {#EcsApi .reference}
+# API behavior when an instance is locked for security reasons
 
-This topic provides the API request consequence when your resource is frozen due to security concerns.
+This topic describes the API behavior when your resource is locked due to security concerns.
 
-## API request consequence {#section_flj_dpg_ydb .section}
+## API behavior
 
-When a security lock is indicated, the `OperationLocks` in the outgoing parameters returned by the `DescribeInstances` will include `LockReason:security`.
+When `OperationLocks` in the response returned for an instance by the [DescribeInstances](/intl.en-US/API Reference/Instances/DescribeInstances.md) operation contains `LockReason: security`, the instance is locked for security reasons.
 
-**Note:** Disk-related activities in the `In_use` status reference the instance `OperationLocks`. Otherwise, the instance `OperationLocks` may be ignored.
+**Note:** If a disk on the instance is in the `In_use` state, the behavior of API operations related to the disk is subject to the `OperationLocks` settings of the instance. If the disk is in another state, the `OperationLocks` settings can be ignored.
 
-In the following table, "Normal Logic" indicates that the interface is executed and result returned based on the normal logic of the interface.
+In the following table, **Normal logic** indicates that the operation is called and the result is returned.
 
-|Interface|Behavior|
+|Operation|Behavior|
 |:--------|:-------|
 |AllocatePublicIpAddress|Error|
 |AttachDisk|Error|
 |AuthorizeSecurityGroup|Normal logic|
 |CreateDisk|Normal logic|
 |CreateImage|Normal logic|
-|CreateInstance|Normal logic|
+|CreateInstance|Error|
 |CreateSecurityGroup|Normal logic|
-|CreateSnapshot|Error \(Only for disks attached on this instance in the In\_use status\)|
+|CreateSnapshot|Returns an error only when the disk is attached to the instance and is in the In\_use state.|
 |DeleteDisk|Normal logic|
 |DeleteImage|Normal logic|
 |DeleteInstance|Normal logic|
@@ -28,6 +28,7 @@ In the following table, "Normal Logic" indicates that the interface is executed 
 |DescribeAutoSnapshotPolicy|Normal logic|
 |DescribeDisks|Normal logic|
 |DescribeImages|Normal logic|
+|DescribeInstances|Normal logic|
 |DescribeInstanceStatus|Normal logic|
 |DescribeInstanceTypes|Normal logic|
 |DescribeInstanceMonitorData|Normal logic|
@@ -44,10 +45,8 @@ In the following table, "Normal Logic" indicates that the interface is executed 
 |ModifyDiskAttribute|Normal logic|
 |ModifyInstanceAttribute|Error|
 |RebootInstance|Error|
-|ReInitDisk| -   When the disk is in the `In_use`:
--   When the disk is in the other status: Normal Logic
-
- |
+|ReInitDisk|-   Returns an error when the disk is in the In\_use state.
+-   Normal logic when the disk is in another state. |
 |ReplaceSystemDisk|Normal logic|
 |ResetDisk|Error|
 |RevokeSecurityGroup|Normal logic|
