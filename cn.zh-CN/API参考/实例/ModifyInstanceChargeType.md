@@ -148,7 +148,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceChargeType
 |400|InvalidClientToken.ValueNotSupported|The ClientToken provided is invalid.|指定的ClientToken不合法。|
 |400|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的网络计费方式，请确认相关参数是否正确。|
 |403|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|您指定的实例规格不存在，或者您没有权限操作此规格的实例。|
-|403|InstanceType.Offline|%s|实例规格已停售或者供货不足。|
+|403|InstanceType.Offline|%s|实例规格因停售、供货不足等原因，不支持该操作。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |400|ReleaseTimeHaveBeenSet|The specified instance has been set released time.|指定的实例已设置释放时间。|
 |403|InvalidAccountStatus.NotEnoughBalance|Your account does not have enough balance.|账号余额不足，请您先充值再进行该操作。|
