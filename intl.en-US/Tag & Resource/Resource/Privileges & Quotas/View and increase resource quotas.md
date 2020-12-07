@@ -29,7 +29,7 @@ This topic describes how to view quotas for resources such as images, disks, and
 
 2.  On the Calculate Quotas and Request page, enter required information and then click **Submit**.
 
-    ![increase-res-quota](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2416237061/p167165.png)
+    ![increase-res-quota](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9407337061/p167165.png)
 
     The following table describes the information that you must enter.
 
