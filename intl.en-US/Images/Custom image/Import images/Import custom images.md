@@ -4,9 +4,9 @@ When you deploy services to the cloud, you can manually import image files of yo
 
 Before you manually import custom images, make sure that the following requirements are met:
 
--   You fully understand the limits and requirements related to images. For more information, see [Instructions for importing images](/intl.en-US/Images/Custom image/Import images/Instructions for importing images.md), [Customize Linux images](/intl.en-US/Images/Custom image/Import images/Customize Linux images.md), and [Convert the image file format](/intl.en-US/Images/Custom image/Import images/Convert the image file format.md).
--   OSS is activated. For more information, see [Activate OSS](/intl.en-US/Quick Start/Sign up for OSS.md).
--   If you are using a RAM user, use your Alibaba Cloud account to grant permissions to the RAM user by attaching the [AliyunECSImageImportDefaultRole](https://ram.console.aliyun.com/#/role/detail/AliyunECSImageImportDefaultRole/info) policy to the user.
+-   You fully understand the limitations and requirements related to images. For more information, see [Instructions for importing images](/intl.en-US/Images/Custom image/Import images/Instructions for importing images.md), [Customize Linux images](/intl.en-US/Images/Custom image/Import images/Customize Linux images.md) and [Convert the image file format](/intl.en-US/Images/Custom image/Import images/Convert the image file format.md).
+-   Object Storage Service \(OSS\) is activated. For more information, see [Activate OSS](/intl.en-US/Quick Start/Sign up for OSS.md).
+-   If you are using a RAM user, the [AliyunECSImageImportDefaultRole](https://ram.console.aliyun.com/#/role/detail/AliyunECSImageImportDefaultRole/info) policy is attached to the RAM user by your Alibaba Cloud account.
 
 The following table lists the scenarios in which you can import custom images.
 
@@ -31,13 +31,13 @@ Perform the following operations to use Server Migration Center \(SMC\) to gener
 
 3.  In the top navigation bar, select a region.
 
-4.  In the upper-right corner of the **Images** page, choose **Import Image** \> **Auto Import**.
+4.  In the upper-right corner of the **Images** page, click **Online SMC Migration**.
 
-    The **Server Migration Center** console is displayed.
+    You are redirected to the SMC console.
 
 5.  Complete the operations as instructed. For more information, see [Migration process](/intl.en-US/User Guide/Migration process.md).
 
-    After the migration is complete, SMC generates a custom image for your server. The image name starts with `IMAGE_FROM_SMC`.
+    After your server is migrated, SMC generates a custom image for your server. The image name starts with `IMAGE_FROM_SMC`.
 
 
 ## Manual import
@@ -54,45 +54,56 @@ Perform the following operations to manually import a local image to Alibaba Clo
 
 5.  Authorize ECS to access your OSS resources.
 
-    1.  In the upper-right corner of the **Images** page, choose **Import Image** \> **Manually Import**.
+    1.  In the upper-right corner of the **Images** page, click **Import Image**.
 
     2.  In the **Import Image** dialog box, click **Verify** in Step 3 as shown in the following figure.
 
-        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8963559951/p7027.png)
+        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4238037061/p7027.png)
 
-    3.  On the **Cloud Resource Access Authorization** page, `AliyunECSImageImportDefaultRole` and `AliyunECSExportDefaultRole` are automatically selected. Click **Confirm Authorization Policy**.
+    3.  On the **Cloud Resource Access Authorization** page, `AliyunECSImageImportDefaultRole` and `AliyunECSExportDefaultRole` are displayed. Click **Confirm Authorization Policy**.
 
 6.  Import the custom image.
 
-    1.  In the upper-right corner of the **Images** page, choose **Import Image** \> **Manually Import** again.
+    1.  In the upper-right corner of the **Images** page, click **Import Image** again.
 
     2.  In the **Import Image** dialog box, configure the parameters listed in the following table.
 
         |Parameter|Required|Description|
         |---------|--------|-----------|
-        |**Region of Image**|Yes|This parameter is automatically set to the current region. To change the region, close the Import Image dialog box and select another region in the upper-left corner of the top navigation bar. Then, you can choose Import Image \> Manually Import to open the **Import Image** dialog box and continue to configure other parameters.|
+        |**Region of Image**|Yes|This parameter is automatically set to the current region. To change the region, close the Import Image dialog box and select another region in the upper-left corner of the top navigation bar. Then, you can click Import Image to open the **Import Image** dialog box and continue to configure other parameters.|
         |**OSS Object Address**|Yes|Paste the URL of the image object copied from the OSS console. For more information about how to obtain an object URL, see [Download objects](/intl.en-US/Console User Guide/Upload, download, and manage objects/Download objects.md).|
-        |**Image Name**|Yes|Enter a name for the custom image. The name must be 2 to 128 characters in length and must start with a letter. It can contain letters, digits, periods \(.\), underscores \(\_\), colons \(:\), and hyphens \(-\).|
-        |**Operating System**|Yes|Select the operating system of your image. Valid values: **Windows** and **Linux**. If you want to import a non-standard platform image, select **Linux**. |
+        |**Image Name**|Yes|Enter a name for the custom image. The name must be 2 to 128 characters in length, and can contain letters, digits, periods \(.\), underscores \(\_\), colons \(:\), and hyphens \(-\). It must start with a letter.|
+        |**Operating System/Platform**|Yes|        -   Operating System:
+
+Select the operating system of your image. Valid values: **Windows** and **Linux**.
+
+If you want to import a non-standard platform image, select **Linux**.
+
+        -   Platform:
+
+The option depends on the Operating System value that you selected. Select a system platform based on the image to be imported.
+
+            -   Windows: Windows Server 2003, Windows Server 2008, Windows Server 2012, Windows Server 2016, and Windows Server 2019.
+            -   Linux: CentOS, SUSE, openSUSE, Ubuntu, Debian, FreeBSD, CoreOS, Aliyun, Red Hat, Customized Linux, and Others Linux. \([Submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to confirm whether the selected edition is supported.\)
+            -   If your image operating system is a custom edition based on the Linux kernel, [Submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). |
         |**System Disk Size \(GiB\)**|No|Specify the system disk size. Unit: GiB. Valid values: 5 to 500.|
         |**System Architecture**|Yes|Select **x86\_64** for 64-bit operating systems or **i386** for 32-bit operating systems.|
-        |**Platform**|Yes|The option depends on the **Operating System** value that you selected. Select a system platform based on the image to be imported.         -   Windows: Windows Server 2003, Windows Server 2008, Windows Server 2012, Windows Server 2016, and Windows Server 2019.
-        -   Linux: CentOS, SUSE, openSUSE, Ubuntu, Debian, FreeBSD, CoreOS, Aliyun, Red Hat, Customized Linux, and Others Linux. \([Submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to confirm whether the selected edition is supported.\)
-        -   If your image operating system is a custom edition based on the Linux kernel, [Submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). |
-        |**Image Format**|No|The RAW, QCOW2, and VHD formats are supported. We recommend that you use the QCOW2 or VHD format. **Note:** The ISO format is not supported and must be converted to the RAW, VHD, or QCOW2 format. You can also use Packer to create and import a local image. For more information, see [Create and import an on-premises image by using Packer](/intl.en-US/Images/Custom image/Create custom image/Create and import an on-premises image by using Packer.md) and [Alicloud Image Builder parameters used to implement DevOps](/intl.en-US/Best Practices/Best practices for using custom images/Packer: machine images as code/Alicloud Image Builder parameters used to implement DevOps.md). |
-        |**License Type**|No|Select a license type to activate the source operating system after the image is imported. Default value: Auto. Valid values:         -   **BYOL**: the license provided by the source operating system. When this option is selected, make sure that your license key can be used in Alibaba Cloud.
-        -   **Aliyun**: the Alibaba Cloud software license. When this option is selected, the Alibaba Cloud license is applied based on the **Platform** value that you selected.
-        -   **Auto**: the default value. When this option is selected, Alibaba Cloud automatically detects the source operating system and allocates a license. In this mode, the system automatically checks whether an Alibaba Cloud software license exists in your selected **Platform** and then performs the following actions:
-            -   If a license exists, the system allocates the license to the imported image.
-            -   If no license exists, the system switches the license type to **BYOL**. |
-        |**Image Description**|No|Enter a description of the custom image.|
-        |**Add Data Disk Image**|No|Select this option if you want to import an image that contains data of data disks. Supported data disk capacity ranges from 5 GiB to 1,000 GiB in size.|
+        |**Image Format**|No|Valid values: **Automatic Detection**, **RAW**, **QCOW2** and **VHD**.        -   If you do not know the image format, you can select Automatic Detection to allow the system to detect and set the image format.
+        -   If you want to select an image format, we recommend that you select the QCOW2 or VHD format, which has a smaller transmission footprint.
+**Note:** The ISO format is not supported and must be converted to the RAW, VHD, or QCOW2 format. You can also use Packer to create and import a local image. For more information, see [Create and import an on-premises image by using Packer](/intl.en-US/Images/Custom image/Create custom image/Create and import an on-premises image by using Packer.md) and [Alicloud Image Builder parameters used to implement DevOps](/intl.en-US/Best Practices/Best practices for using custom images/Packer: machine images as code/Alicloud Image Builder parameters used to implement DevOps.md). |
+        |**License Type**|No|Select a license type to activate the source operating system after the image is imported. Default value: Auto. Valid values:         -   **BYOL**: the license provided by the source operating system. When this value is selected, make sure that your license key can be used in Alibaba Cloud.
+        -   **Aliyun**: the license allocated by Alibaba Cloud. When this value is selected, a license allocated by Alibaba Cloud is applied based on the Platform value that you selected.
+        -   **Auto**: specifies that Alibaba Cloud automatically detects the source operating system and allocates a license. When this value is selected, the system automatically checks whether a license allocated by Alibaba Cloud exists for your specified system platform and then performs the following actions:
+            -   If a license allocated by Alibaba Cloud exists for the specified system platform, the system allocates the license to the imported image.
+            -   If no license allocated by Alibaba Cloud exists for the specified system platform, the system switches the license type to **BYOL**. |
+        |**Image Description**|No|Enter a description for the custom image.|
+        |**Add Data Disk Image**|No|Select this option if you want to import an image that contains data of data disks. Supported data disk capacity ranges from 5 GiB to 1,000 GiB.|
         |**Resource Group**|No|Specify a resource group for the custom image for easy management.|
         |**Tag**|No|Bind tags to images to classify the images for easy search and batch operations.|
 
     3.  Click **OK**. The system then creates a task to import the custom image.
 
-7.  You can view the task progress in the image list of the destination region. Before the task is complete, you can find the imported custom image or cancel the import task on the Tasks page in the ECS console. For more information, see [Task Logs](https://ecs.console.aliyun.com/#/task/region/).
+7.  You can view the task progress in the image list of the destination region. Before the task is complete, you can find the imported custom image or cancel the import task on the [Tasks](https://ecs.console.aliyun.com/#/task/region/) page in the ECS console.
 
     The amount of time it takes to import a custom image depends on the size of the image and the number of ongoing import tasks in the queue.
 
