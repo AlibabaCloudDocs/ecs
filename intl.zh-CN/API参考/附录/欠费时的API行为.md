@@ -1,12 +1,12 @@
-# 欠费时的API行为 {#EcsApiOverduePayement .reference}
+# 欠费时的API行为
 
-本文提供了因账号欠费或者预付费资源过期时的 API 调用情况。
+本文介绍了因账号欠费或者包年包月资源过期时的API调用情况。
 
-## API 调用情况 {#section_wdr_cng_ydb .section}
+## API调用情况
 
-欠费指在 [DescribeInstances](cn.zh-CN/API参考/实例/DescribeInstances.md#) 或者 [DescribeDisks](cn.zh-CN/API参考/磁盘/DescribeDisks.md#) 返回的传出参数中的 `OperationLocks` 包含了 `LockReason: financial`。
+欠费指在[DescribeInstances](/intl.zh-CN/API参考/实例/DescribeInstances.md)或者[DescribeDisks](/intl.zh-CN/API参考/磁盘/DescribeDisks.md)返回的传出参数中的`OperationLocks`包含了`LockReason: financial`。
 
-下列表中，**正常逻辑** 表示按照接口的正常逻辑执行并返回结果。
+下列表中，**正常逻辑**表示按照接口的正常逻辑执行并返回结果。
 
 |接口|实例欠费|
 |:-|:---|
@@ -50,7 +50,7 @@
 |StartInstance|报错|
 |StopInstance|报错|
 
-|接口|磁盘欠费|
+|接口|云盘欠费|
 |:-|:---|
 |AllocatePublicIpAddress|报错|
 |AttachDisk|报错|
