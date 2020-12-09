@@ -55,27 +55,27 @@ ESSD云盘适用于时延敏感的应用或者I/O密集型业务场景：
 
 -   示例一：张先生在ECS管理控制台上创建ESSD云盘时，选择了20 GiB。则张先生只能选购PL1性能级别的ESSD云盘，对应的IOPS上限为50,000。
 
-    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6953359951/p49959.png)
+    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6953359951/p49959.png)
 
 -   示例二：张先生在ECS管理控制台上创建ESSD云盘时，选择了32,000 GiB。则张先生能选购PL0至PL3性能级别的ESSD云盘，对应的IOPS上限分别为10,000、50,000、100,000和1,000,000。
 
-    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6953359951/p129355.png)
+    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6953359951/p129355.png)
 
 
 ## 实例规格的存储I/O性能
 
-部分全新一代实例规格族的存储I/O性能和实例规格成正比线性关系，以存储增强型实例规格族g5se为例，实例规格越高可获得的存储IOPS和吞吐量越高。更多详情，请参见[存储I/O性能](/intl.zh-CN/块存储/性能/存储I/O性能.md)。
+部分全新一代实例规格族的存储I/O性能和实例规格成正比线性关系，以存储增强型实例规格族g6se为例，实例规格越高可获得的存储IOPS和吞吐量越高。更多详情，请参见[存储I/O性能](/intl.zh-CN/块存储/性能/存储I/O性能.md)。
 
 实例规格与ESSD云盘性能的关系规则如下所示：
 
 -   如果ESSD云盘的性能总和不超过实例规格族所对应的存储I/O能力，实际存储性能以ESSD云盘性能为准。
 -   如果ESSD云盘的性能总和超过了实例规格族所对应的存储I/O能力，实际存储性能以该实例规格对应的存储I/O能力为准。
 
-以存储增强型实例规格族g5se为例，不同规格的实例挂载不同性能级别的ESSD云盘时，实际的存储性能不同。以下为示例。
+以存储增强型实例规格族g6se为例，不同规格的实例挂载不同性能级别的ESSD云盘时，实际的存储性能不同。以下为示例。
 
--   示例一：张先生选择了ecs.g5se.xlarge 16 GiB规格实例，该实例规格最大存储I/O性能为60,000 IOPS。ECS实例仅挂载了1块2,000 GiB，性能级别为PL2的ESSD云盘，对应单盘IOPS最大为100,000。则该ECS实例最大存储IOPS为60,000，无法达到100,000。
--   示例二：张先生选择了ecs.g5se.4xlarge 64 GiB规格实例，该实例规格最大存储I/O性能为230,000 IOPS。ECS实例挂载了3块2,000 GiB，性能级别为PL2的ESSD云盘，对应单盘IOPS最大为100,000，总IOPS最大为300,000。则该ECS实例最大存储IOPS为230,000。
--   示例三：张先生选择了ecs.g5se.4xlarge 64 GiB规格实例，该实例规格最大存储I/O性能为230,000 IOPS。ECS实例仅挂载了1块2,000 GiB，性能级别为PL3的ESSD云盘，对应单盘IOPS最大为101,800。则该ECS实例最大存储IOPS为101,800。
+-   示例一：张先生选择了ecs.g6se.xlarge 16 GiB规格实例，该实例规格最大存储I/O性能为60,000 IOPS。ECS实例仅挂载了1块2,000 GiB，性能级别为PL2的ESSD云盘，对应单盘IOPS最大为100,000。则该ECS实例最大存储IOPS为60,000，无法达到100,000。
+-   示例二：张先生选择了ecs.g6se.4xlarge 64 GiB规格实例，该实例规格最大存储I/O性能为150,000 IOPS。ECS实例挂载了3块2,000 GiB，性能级别为PL2的ESSD云盘，对应单盘IOPS最大为100,000，总IOPS最大为300,000。则该ECS实例最大存储IOPS为150,000。
+-   示例三：张先生选择了ecs.g6se.4xlarge 64 GiB规格实例，该实例规格最大存储I/O性能为150,000 IOPS。ECS实例仅挂载了1块2,000 GiB，性能级别为PL3的ESSD云盘，对应单盘IOPS最大为101,800。则该ECS实例最大存储IOPS为101,800。
 
 ## ESSD支持的实例规格族
 
