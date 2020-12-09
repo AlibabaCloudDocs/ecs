@@ -1,5 +1,5 @@
 ---
-keyword: [disk performance, Elastic Block Storage performance, performance metrics, I/O, ECS]
+keyword: [disk performance, Elastic Block Storage performance, performance, I/O, ECS]
 ---
 
 # Storage I/O performance
@@ -37,9 +37,9 @@ After you create an ECS instance and attach disks to it, the final storage I/O p
 -   Scenario 1: If the total storage performance of the attached disks exceeds the maximum storage I/O performance that the instance type can deliver, the final storage I/O performance of the instance is limited to the maximum storage I/O performance of that instance type.
 -   Scenario 2: If the total storage performance of the attached disks does not exceed the maximum storage I/O performance that the instance type can deliver, the final storage I/O performance of the instance is limited to the total storage I/O performance of the disks.
 
-![Instances and their storage I/O performance](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/2182909951/p73635.png)
+![Instances and their storage I/O performance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2182909951/p73635.png)
 
-For example, the ecs.g6.8xlarge instance type can deliver up to 60,000 IOPS. If a 1,600 GiB PL2 ESSD is attached to an instance of this instance type and the IOPS of the PL2 ESSD is 81,800, the maximum storage IOPS of the instance is still 60,000. For information about the performance levels of ESSDs, see [Enhanced SSDs](/intl.en-US/Block Storage/Block Storage overview/Enhanced SSDs.md).
+For example, the ecs.g6.8xlarge instance type can deliver up to 60,000 IOPS. If a 1,600 GiB PL2 ESSD is attached to an instance of this instance type and the IOPS of the PL2 ESSD is 81,800, the maximum storage IOPS of the instance is still 60,000. For information about the performance levels of ESSDs, see [ESSDs](/intl.en-US/Block Storage/Block Storage overview/ESSDs.md).
 
 When you understand the relationship between instance storage performance and disk storage performance, you can choose instance types and Elastic Block Storage devices based on their performance specifications. This prevents performance bottlenecks caused by improper configurations.
 
@@ -51,173 +51,183 @@ The following tables list the storage I/O performance of the new generation of e
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.hfg7.large|20.0|1.0|125|
-|ecs.hfg7.xlarge|30.0|1.5|187.5|
-|ecs.hfg7.2xlarge|45.0|2.0|250|
-|ecs.hfg7.3xlarge|60.0|2.5|312.5|
-|ecs.hfg7.4xlarge|75.0|3.0|375|
-|ecs.hfg7.6xlarge|90.0|4.0|500|
-|ecs.hfg7.8xlarge|105.0|5.0|625|
-|ecs.hfg7.12xlarge|150.0|8.0|1000|
-|ecs.hfg7.24xlarge|300.0|16.0|2000|
+|ecs.hfg7.large|20|1.0|125|
+|ecs.hfg7.xlarge|30|1.5|187.5|
+|ecs.hfg7.2xlarge|45|2.0|250|
+|ecs.hfg7.3xlarge|60|2.5|312.5|
+|ecs.hfg7.4xlarge|75|3.0|375|
+|ecs.hfg7.6xlarge|90|4.0|500|
+|ecs.hfg7.8xlarge|105|5.0|625|
+|ecs.hfg7.12xlarge|150|8.0|1000|
+|ecs.hfg7.24xlarge|300|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.hfc7.large|20.0|1.0|125|
-|ecs.hfc7.xlarge|30.0|1.5|187.5|
-|ecs.hfc7.2xlarge|45.0|2.0|250|
-|ecs.hfc7.3xlarge|60.0|2.5|312.5|
-|ecs.hfc7.4xlarge|75.0|3.0|375|
-|ecs.hfc7.6xlarge|90.0|4.0|500|
-|ecs.hfc7.8xlarge|105.0|5.0|625|
-|ecs.hfc7.12xlarge|150.0|8.0|1000|
-|ecs.hfc7.24xlarge|300.0|16.0|2000|
+|ecs.hfc7.large|20|1.0|125|
+|ecs.hfc7.xlarge|30|1.5|187.5|
+|ecs.hfc7.2xlarge|45|2.0|250|
+|ecs.hfc7.3xlarge|60|2.5|312.5|
+|ecs.hfc7.4xlarge|75|3.0|375|
+|ecs.hfc7.6xlarge|90|4.0|500|
+|ecs.hfc7.8xlarge|105|5.0|625|
+|ecs.hfc7.12xlarge|150|8.0|1000|
+|ecs.hfc7.24xlarge|300|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.hfr7.large|20.0|1.0|125|
-|ecs.hfr7.xlarge|30.0|1.5|187.5|
-|ecs.hfr7.2xlarge|45.0|2.0|250|
-|ecs.hfr7.3xlarge|60.0|2.5|312.5|
-|ecs.hfr7.4xlarge|75.0|3.0|375|
-|ecs.hfr7.6xlarge|90.0|4.0|500|
-|ecs.hfr7.8xlarge|105.0|5.0|625|
-|ecs.hfr7.12xlarge|150.0|8.0|1000|
-|ecs.hfr7.24xlarge|300.0|16.0|2000|
+|ecs.hfr7.large|20|1.0|125|
+|ecs.hfr7.xlarge|30|1.5|187.5|
+|ecs.hfr7.2xlarge|45|2.0|250|
+|ecs.hfr7.3xlarge|60|2.5|312.5|
+|ecs.hfr7.4xlarge|75|3.0|375|
+|ecs.hfr7.6xlarge|90|4.0|500|
+|ecs.hfr7.8xlarge|105|5.0|625|
+|ecs.hfr7.12xlarge|150|8.0|1000|
+|ecs.hfr7.24xlarge|300|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.g6t.large|20.0|1.0|125|
-|ecs.g6t.xlarge|40.0|1.5|187.5|
-|ecs.g6t.2xlarge|50.0|2.0|250|
-|ecs.g6t.4xlarge|80.0|3.0|375|
-|ecs.g6t.8xlarge|150.0|5.0|625|
-|ecs.g6t.13xlarge|240.0|8.0|1000|
-|ecs.g6t.26xlarge|480.0|16.0|2000|
+|ecs.g6se.large|30|1.5|187.5|
+|ecs.g6se.xlarge|60|2.0|250|
+|ecs.g6se.2xlarge|90|3.0|375|
+|ecs.g6se.4xlarge|150|5.0|625|
+|ecs.g6se.8xlarge|300|10.0|1250|
+|ecs.g6se.13xlarge|500|16.0|2000|
+|ecs.g6se.26xlarge|900|32.0|4000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.c6t.large|20.0|1.0|125|
-|ecs.c6t.xlarge|40.0|1.5|187.5|
-|ecs.c6t.2xlarge|50.0|2.0|250|
-|ecs.c6t.4xlarge|80.0|3.0|375|
-|ecs.c6t.8xlarge|150.0|5.0|625|
-|ecs.c6t.13xlarge|240.0|8.0|1000|
-|ecs.c6t.26xlarge|480.0|16.0|2000|
+|ecs.g6t.large|20|1.0|125|
+|ecs.g6t.xlarge|40|1.5|187.5|
+|ecs.g6t.2xlarge|50|2.0|250|
+|ecs.g6t.4xlarge|80|3.0|375|
+|ecs.g6t.8xlarge|150|5.0|625|
+|ecs.g6t.13xlarge|200|8.0|1000|
+|ecs.g6t.26xlarge|480|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.g6e.large|20.0|1.0|125|
-|ecs.g6e.xlarge|40.0|1.5|187.5|
-|ecs.g6e.2xlarge|50.0|2.0|250|
-|ecs.g6e.4xlarge|80.0|3.0|375|
-|ecs.g6e.8xlarge|150.0|5.0|625|
-|ecs.g6e.13xlarge|240.0|8.0|1000|
-|ecs.g6e.26xlarge|480.0|16.0|2000|
+|ecs.c6t.large|20|1.0|125|
+|ecs.c6t.xlarge|40|1.5|187.5|
+|ecs.c6t.2xlarge|50|2.0|250|
+|ecs.c6t.4xlarge|80|3.0|375|
+|ecs.c6t.8xlarge|150|5.0|625|
+|ecs.c6t.13xlarge|240|8.0|1000|
+|ecs.c6t.26xlarge|480|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.c6e.large|20.0|1.0|125|
-|ecs.c6e.xlarge|40.0|1.5|187.5|
-|ecs.c6e.2xlarge|50.0|2.0|250|
-|ecs.c6e.4xlarge|80.0|3.0|375|
-|ecs.c6e.8xlarge|150.0|5.0|625|
-|ecs.c6e.13xlarge|240.0|8.0|1000|
-|ecs.c6e.26xlarge|480.0|16.0|2000|
+|ecs.g6e.large|20|1.0|125|
+|ecs.g6e.xlarge|40|1.5|187.5|
+|ecs.g6e.2xlarge|50|2.0|250|
+|ecs.g6e.4xlarge|80|3.0|375|
+|ecs.g6e.8xlarge|150|5.0|625|
+|ecs.g6e.13xlarge|240|8.0|1000|
+|ecs.g6e.26xlarge|480|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.r6e.large|20.0|1.0|125|
-|ecs.r6e.xlarge|40.0|1.5|187.5|
-|ecs.r6e.2xlarge|50.0|2.0|250|
-|ecs.r6e.4xlarge|80.0|3.0|375|
-|ecs.r6e.8xlarge|150.0|5.0|625|
-|ecs.r6e.13xlarge|240.0|8.0|1000|
-|ecs.r6e.26xlarge|480.0|16.0|2000|
+|ecs.c6e.large|20|1.0|125|
+|ecs.c6e.xlarge|40|1.5|187.5|
+|ecs.c6e.2xlarge|50|2.0|250|
+|ecs.c6e.4xlarge|80|3.0|375|
+|ecs.c6e.8xlarge|150|5.0|625|
+|ecs.c6e.13xlarge|240|8.0|1000|
+|ecs.c6e.26xlarge|480|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.g6.large|10.0|1.0|125|
-|ecs.g6.xlarge|20.0|1.5|187.5|
-|ecs.g6.2xlarge|25.0|2.0|250|
-|ecs.g6.3xlarge|30.0|2.5|312.5|
-|ecs.g6.4xlarge|40.0|3.0|375|
-|ecs.g6.6xlarge|50.0|4.0|500|
-|ecs.g6.8xlarge|60.0|5.0|625|
-|ecs.g6.13xlarge|100.0|8.0|1000|
-|ecs.g6.26xlarge|200.0|16.0|2000|
+|ecs.r6e.large|20|1.0|125|
+|ecs.r6e.xlarge|40|1.5|187.5|
+|ecs.r6e.2xlarge|50|2.0|250|
+|ecs.r6e.4xlarge|80|3.0|375|
+|ecs.r6e.8xlarge|150|5.0|625|
+|ecs.r6e.13xlarge|240|8.0|1000|
+|ecs.r6e.26xlarge|480|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.c6.large|10.0|1.0|125|
-|ecs.c6.xlarge|20.0|1.5|187.5|
-|ecs.c6.2xlarge|25.0|2.0|250|
-|ecs.c6.3xlarge|30.0|2.5|312.5|
-|ecs.c6.4xlarge|40.0|3.0|375|
-|ecs.c6.6xlarge|50.0|4.0|500|
-|ecs.c6.8xlarge|60.0|5.0|625|
-|ecs.c6.13xlarge|100.0|8.0|1000|
-|ecs.c6.26xlarge|200.0|16.0|2000|
+|ecs.g6.large|10|1.0|125|
+|ecs.g6.xlarge|20|1.5|187.5|
+|ecs.g6.2xlarge|25|2.0|250|
+|ecs.g6.3xlarge|30|2.5|312.5|
+|ecs.g6.4xlarge|40|3.0|375|
+|ecs.g6.6xlarge|50|4.0|500|
+|ecs.g6.8xlarge|60|5.0|625|
+|ecs.g6.13xlarge|100|8.0|1000|
+|ecs.g6.26xlarge|200|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.r6.large|10.0|1.0|125|
-|ecs.r6.xlarge|20.0|1.5|187.5|
-|ecs.r6.2xlarge|25.0|2.0|250|
-|ecs.r6.3xlarge|30.0|2.5|312.5|
-|ecs.r6.4xlarge|40.0|3.0|375|
-|ecs.r6.6xlarge|50.0|4.0|500|
-|ecs.r6.8xlarge|60.0|5.0|625|
-|ecs.r6.13xlarge|100.0|8.0|1000|
-|ecs.r6.26xlarge|200.0|16.0|2000|
+|ecs.c6.large|10|1.0|125|
+|ecs.c6.xlarge|20|1.5|187.5|
+|ecs.c6.2xlarge|25|2.0|250|
+|ecs.c6.3xlarge|30|2.5|312.5|
+|ecs.c6.4xlarge|40|3.0|375|
+|ecs.c6.6xlarge|50|4.0|500|
+|ecs.c6.8xlarge|60|5.0|625|
+|ecs.c6.13xlarge|100|8.0|1000|
+|ecs.c6.26xlarge|200|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.hfg6.large|10.0|1.0|125|
-|ecs.hfg6.xlarge|20.0|1.5|187.5|
-|ecs.hfg6.2xlarge|25.0|2.0|250|
-|ecs.hfg6.3xlarge|30.0|2.5|312.5|
-|ecs.hfg6.4xlarge|40.0|3.0|375|
-|ecs.hfg6.6xlarge|50.0|4.0|500|
-|ecs.hfg6.8xlarge|60.0|5.0|625|
-|ecs.hfg6.10xlarge|100.0|8.0|1000|
-|ecs.hfg6.16xlarge|120.0|10.0|1250|
-|ecs.hfg6.20xlarge|200.0|16.0|2000|
+|ecs.r6.large|10|1.0|125|
+|ecs.r6.xlarge|20|1.5|187.5|
+|ecs.r6.2xlarge|25|2.0|250|
+|ecs.r6.3xlarge|30|2.5|312.5|
+|ecs.r6.4xlarge|40|3.0|375|
+|ecs.r6.6xlarge|50|4.0|500|
+|ecs.r6.8xlarge|60|5.0|625|
+|ecs.r6.13xlarge|100|8.0|1000|
+|ecs.r6.26xlarge|200|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.hfc6.large|10.0|1.0|125|
-|ecs.hfc6.xlarge|20.0|1.5|187.5|
-|ecs.hfc6.2xlarge|25.0|2.0|250|
-|ecs.hfc6.3xlarge|30.0|2.5|312.5|
-|ecs.hfc6.4xlarge|40.0|3.0|375|
-|ecs.hfc6.6xlarge|50.0|4.0|500|
-|ecs.hfc6.8xlarge|60.0|5.0|625|
-|ecs.hfc6.10xlarge|100.0|8.0|1000|
-|ecs.hfc6.16xlarge|120.0|10.0|1250|
-|ecs.hfc6.20xlarge|200.0|16.0|2000|
+|ecs.hfg6.large|10|1.0|125|
+|ecs.hfg6.xlarge|20|1.5|187.5|
+|ecs.hfg6.2xlarge|25|2.0|250|
+|ecs.hfg6.3xlarge|30|2.5|312.5|
+|ecs.hfg6.4xlarge|40|3.0|375|
+|ecs.hfg6.6xlarge|50|4.0|500|
+|ecs.hfg6.8xlarge|60|5.0|625|
+|ecs.hfg6.10xlarge|100|8.0|1000|
+|ecs.hfg6.16xlarge|120|10.0|1250|
+|ecs.hfg6.20xlarge|200|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.hfr6.large|10.0|1.0|125|
-|ecs.hfr6.xlarge|20.0|1.5|187.5|
-|ecs.hfr6.2xlarge|25.0|2.0|250|
-|ecs.hfr6.3xlarge|30.0|2.5|312.5|
-|ecs.hfr6.4xlarge|40.0|3.0|375|
-|ecs.hfr6.6xlarge|50.0|4.0|500|
-|ecs.hfr6.8xlarge|60.0|5.0|625|
-|ecs.hfr6.10xlarge|100.0|8.0|1000|
-|ecs.hfr6.16xlarge|120.0|10.0|1250|
-|ecs.hfr6.20xlarge|200.0|16.0|2000|
+|ecs.hfc6.large|10|1.0|125|
+|ecs.hfc6.xlarge|20|1.5|187.5|
+|ecs.hfc6.2xlarge|25|2.0|250|
+|ecs.hfc6.3xlarge|30|2.5|312.5|
+|ecs.hfc6.4xlarge|40|3.0|375|
+|ecs.hfc6.6xlarge|50|4.0|500|
+|ecs.hfc6.8xlarge|60|5.0|625|
+|ecs.hfc6.10xlarge|100|8.0|1000|
+|ecs.hfc6.16xlarge|120|10.0|1250|
+|ecs.hfc6.20xlarge|200|16.0|2000|
 
 |Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
 |-------------|-----------------------------|------------------------------------|------------------------------------------|
-|ecs.g5se.large|30.0|1.0|125|
-|ecs.g5se.xlarge|60.0|2.0|250|
-|ecs.g5se.2xlarge|120.0|4.0|500|
-|ecs.g5se.4xlarge|230.0|8.0|1000|
-|ecs.g5se.6xlarge|340.0|12.0|1500|
-|ecs.g5se.8xlarge|450.0|15.0|1875|
-|ecs.g5se.16xlarge|900.0|30.0|3750|
-|ecs.g5se.18xlarge|1000.0|32.0|4000|
+|ecs.hfr6.large|10|1.0|125|
+|ecs.hfr6.xlarge|20|1.5|187.5|
+|ecs.hfr6.2xlarge|25|2.0|250|
+|ecs.hfr6.3xlarge|30|2.5|312.5|
+|ecs.hfr6.4xlarge|40|3.0|375|
+|ecs.hfr6.6xlarge|50|4.0|500|
+|ecs.hfr6.8xlarge|60|5.0|625|
+|ecs.hfr6.10xlarge|100|8.0|1000|
+|ecs.hfr6.16xlarge|120|10.0|1250|
+|ecs.hfr6.20xlarge|200|16.0|2000|
+
+|Instance type|Maximum IOPS \(K, 4 KiB I/O\)|Maximum storage bandwidth \(Gbit/s\)|Maximum throughput \(MB/s, 1,024 KiB I/O\)|
+|-------------|-----------------------------|------------------------------------|------------------------------------------|
+|ecs.g5se.large|30|1.0|125|
+|ecs.g5se.xlarge|60|2.0|250|
+|ecs.g5se.2xlarge|120|4.0|500|
+|ecs.g5se.4xlarge|230|8.0|1000|
+|ecs.g5se.6xlarge|340|12.0|1500|
+|ecs.g5se.8xlarge|450|15.0|1875|
+|ecs.g5se.16xlarge|900|30.0|3750|
+|ecs.g5se.18xlarge|1000|32.0|4000|
 
