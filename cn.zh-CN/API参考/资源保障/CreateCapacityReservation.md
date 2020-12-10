@@ -23,7 +23,7 @@
 |Action|String|是|CreateCapacityReservation|系统规定参数。取值：CreateCapacityReservation |
 |InstanceType|String|是|ecs.g6.xlarge|实例规格。目前仅支持为一个实例规格设置容量预定服务。 |
 |InstanceAmount|Integer|是|2|在一个实例规格内，需要预留的实例的总数量。 |
-|RegionId|String|是|cn-hangzhou|容量预定服务所属地域ID。您可以调用[DescribeRegions](~~2560911~~)查看最新的阿里云地域列表。 |
+|RegionId|String|是|cn-hangzhou|容量预定服务所属地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |ZoneId.N|RepeatList|是|cn-hangzhou-h|容量预定服务所属地域下的可用区ID。目前仅支持在一个可用区下创建容量预定服务。 |
 |ClientToken|String|否|0c593ea1-3bea-11e9-b96b-88e9fe637760|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。`ClientToken`只支持ASCII字符，且不能超过64个字符。更多信息，请参见[如何保证幂等性](~~25693~~)。 |
 |PrivatePoolOptions.Name|String|否|crpTestName|容量预定服务的名称。长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以`http://`和`https://`开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。 |
