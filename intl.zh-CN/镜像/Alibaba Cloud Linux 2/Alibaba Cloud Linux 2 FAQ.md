@@ -3,6 +3,7 @@
 本文提供了Alibaba Cloud Linux 2镜像的常见问题与解决方案。
 
 -   [Alibaba Cloud Linux 2与Aliyun Linux有何不同？](#section_imn_fim_626)
+-   [Alibaba Cloud Linux 2的多个镜像之间有何不同？](#section_9bw_q66_hep)
 -   [如何开始在阿里云上使用Alibaba Cloud Linux 2？](#section_ih8_6n8_aty)
 -   [在阿里云ECS中运行Alibaba Cloud Linux 2是否有任何相关成本？](#section_7na_hla_jpe)
 -   [Alibaba Cloud Linux 2支持哪些阿里云ECS实例类型？](#section_dja_kr5_fuo)
@@ -19,14 +20,18 @@
 
 ## Alibaba Cloud Linux 2与Aliyun Linux有何不同？
 
-Alibaba Cloud Linux 2和Aliyun Linux之间的主要区别是：
+Alibaba Cloud Linux 2即为原Aliyun Linux 2，是Aliyun Linux的升级版本。Alibaba Cloud Linux 2和Aliyun Linux之间的主要区别是：
 
 -   Alibaba Cloud Linux 2针对容器场景优化，更好支持云原生应用。
 -   Alibaba Cloud Linux 2附带了更新的Linux内核、及用户态软件包版本。
 
+## Alibaba Cloud Linux 2的多个镜像之间有何不同？
+
+Alibaba Cloud Linux 2的镜像发布记录请参见[Alibaba Cloud Linux 2发布记录](/intl.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.md)。Alibaba Cloud Linux 2包括的镜像之间的关系，请参见[Alibaba Cloud Linux 2镜像](/intl.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2概述.md)。
+
 ## 如何开始在阿里云上使用Alibaba Cloud Linux 2？
 
-阿里云为Alibaba Cloud Linux 2提供了公共镜像，您可以在创建ECS实例时选择**公共镜像** \> **Alibaba Cloud Linux**，并选择Alibaba Cloud Linux 2镜像的版本。
+阿里云为Alibaba Cloud Linux 2提供了公共镜像，您可以在创建ECS实例时，选择公共镜像下的Alibaba Cloud Linux 2镜像的版本。
 
 ## 在阿里云ECS中运行Alibaba Cloud Linux 2是否有任何相关成本？
 
