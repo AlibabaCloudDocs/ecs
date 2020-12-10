@@ -16,7 +16,7 @@
 |--|--|----|---|--|
 |Action|String|是|DescribeCapacityReservationInstances|系统规定参数。取值：DescribeCapacityReservationInstances |
 |PrivatePoolOptions.Id|String|是|crp-bp67acfmxazb4\*\*\*\*|容量预定服务ID。 |
-|RegionId|String|是|cn-hangzhou|容量预定服务所属地域ID。您可以调用[DescribeRegions](~~2560911~~)查看最新的阿里云地域列表。 |
+|RegionId|String|是|cn-hangzhou|容量预定服务所属地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |MaxResults|Integer|否|10|分页查询时每页行数。
 
  最大值：100
