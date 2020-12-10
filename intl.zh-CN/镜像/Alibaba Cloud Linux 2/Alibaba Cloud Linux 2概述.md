@@ -4,7 +4,7 @@ keyword: [阿里云, Alibaba Cloud Linux, ecs, 原生linux]
 
 # Alibaba Cloud Linux 2概述
 
-Alibaba Cloud Linux 2（原Aliyun Linux 2）是新一代阿里云原生Linux操作系统，为云上应用程序提供安全、稳定、高性能的定制化运行环境，并针对云基础设施进行了深度优化，为您打造更好的运行时体验。您可以免费使用Alibaba Cloud Linux 2公共镜像，并免费获得阿里云针对该操作系统的长期支持。
+Alibaba Cloud Linux 2（原Aliyun Linux 2）是阿里云官方操作系统，为云上应用程序提供安全、稳定、高性能的定制化运行环境，并针对云基础设施进行了深度优化，为您打造更好的运行时体验。您可以免费使用Alibaba Cloud Linux 2公共镜像，并免费获得阿里云针对该操作系统的长期支持。
 
 更多详情，请访问[Alibaba Cloud Linux 2产品详情页](https://www.alibabacloud.com/en/products/alinux)。
 
@@ -55,7 +55,9 @@ Alibaba Cloud Linux 2适用于下列场景。
 -   只对实例的初次启动加速，后续启动实例的速度将保持正常水准。
 -   优化加速内存初始化的过程，模块化了启动耗时的鼠标等设备，加速内核引导速度。
 -   使用最新的AliyunInit服务替代了CloudInit服务，降低了操作系统的初始化耗时。
--   目前快速启动版镜像支持的地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）。 |
+-   目前快速启动版镜像支持的地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）。
+
+**说明：** 该镜像的内核版本无法修改内核启动参数。 |
 |Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像，实例规格族包括ecs.ebmg6a、ecs.ebmc6a、ecs.ebmr6a。 |
 |Alibaba Cloud Linux 2.1903 64位 可信版|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像，实例规格族包括ecs.g6t、ecs.c6t。 |
 
