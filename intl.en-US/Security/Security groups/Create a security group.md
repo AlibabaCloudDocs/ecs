@@ -1,55 +1,53 @@
-# Create a security group {#concept_ocl_bvz_xdb .concept}
+---
+keyword: [security group, virtual firewall, network access control]
+---
 
-A security group is a virtual firewall for an ECS instance. This topic describes how to create a security group in the ECS console.
+# Create a security group
 
-## Background {#section_rry_yb1_hgb .section}
+A security group functions as a virtual firewall to control network access of ECS instances. This topic describes how to create a security group in the ECS console.
 
-An ECS instance must belong to one or more security groups. If no security group is created when you create an ECS instance, a default security group will be created. The default security group only has inbound rules configured for the ICMP protocol, SSH port 22, RDP port 3389, HTTP port 80, and HTTPS port 443. For more information, see [Security group overview](../intl.en-US/Security/Security groups/Security group overview.md#). If you do not want the ECS instance to be added to the default security group, you can create a security group as described in this topic.
+A VPC and a vSwitch are created if you want to create a VPC-type security group. For more information, see [Create a VPC](/intl.en-US/VPCs and VSwitches/VPC management/Create a VPC.md).
 
-## Prerequisites {#section_ctl_3vz_xdb .section}
-
-If you want to create a VPC-type security group, confirm that a VPC and a VSwitch have been created. For more information, see [Create a VPC and a VSwitch](../../../../../intl.en-US/User Guide/VPC and subnets/Manage a VPC.md#section_ufw_rhv_rdb).
-
-## Procedure {#section_nyb_kvz_xdb .section}
+Each ECS instance must belong to at least one security group. If no security groups have been created when you create an ECS instance, a default security group is created. The default security group has only inbound rules configured for the ICMP protocol, SSH port 22, RDP port 3389, HTTP port 80, and HTTPS port 443. For more information, see [Overview](/intl.en-US/Security/Security groups/Overview.md). If you do not want the ECS instance to be added to the default security group, you can create a security group as described in this topic.
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
+
 2.  In the left-side navigation pane, choose **Network & Security** \> **Security Groups**.
-3.  Click **Create Security Group**.
-4.  In the Create Security Group dialog box, configure the following parameters:
-    -   **Template**: If the instances in the security group are for Web server deployment, select a suitable template to simplify security group rule configuration.
 
-        |Template|Description|Scenario|
-        |:-------|:----------|--------|
-        |**Web Server Linux**|Inbound traffic to TCP port 80, TCP port 443, TCP port 22, and for the ICMP protocol is allowed by default.|A Web server must be deployed on the Linux instances in the security group.|
-        |**Web Server Windows**|By default, inbound traffic to TCP port 80, TCP port 443, TCP port 3389, and for the ICMP protocol is allowed.|A Web server must be deployed on the Windows instances in the security group.|
-        |**Customize**|After creating a security group, you need to [add security group rules](intl.en-US/Security/Security groups/Add security group rules.md#).|Not for Web server|
+3.  In the top navigation bar, select a region.
 
-    -   **Security Group Name**: specify a valid security group name.
-    -   **Description**: the description of the security group for later management.
-    -   **Security Group Type**:
+4.  Click **Create Security Group**.
 
-        -   Basic Security Group: can be used in scenarios that have higher requirements for refined network control, and prefer multiple ECS instance types and moderate network connections. For more information, see [Security group overview](intl.en-US/Security/Security groups/Security group overview.md#).
-        -   Advanced Security Group: can be used in scenarios that have higher requirements for O&M efficiency, ECS instance specifications, and computing nodes. For more information, see [Advanced security group overview](intl.en-US/Security/Security groups/Advanced security group overview.md#).
-        **Note:** An ECS instance cannot be added to both a basic security group and an advanced security group.
+5.  In the **Create Security Group** dialog box, configure the parameters for the security group.
 
-    -   **Network Type**:
-        -   To create a classic network-type security group, select **Classic**.
-        -   To create a VPC-type security group, select **VPC** and then a specific VPC.
+    |Parameter|Description|
+    |---------|-----------|
+    |Template|Select a suitable template based on the services to be deployed on the ECS instances to make it easy to configure security group rules. Valid values:    -   Web Server Linux: applicable to Linux instances where web services need to be deployed.
+    -   Web Server Windows: applicable to Windows instances where web services need to be deployed.
+    -   Custom: You must add security group rules to the security group after it is created. |
+    |Security Group Name|Specify a security group name.|
+    |Description|Enter a brief description of the security group for future management.|
+    |Security Group Type|Select a security group type.     -   Basic security group: applicable to scenarios with small-scale clusters and moderate network connections.
+    -   Advanced security group: applicable to scenarios with large-scale clusters that require highly efficient O&M.
+For other functional differences between basic and advanced security groups, see [Overview](/intl.en-US/Security/Security groups/Overview.md). |
+    |Network Type|Set the network type of the security group.     -   To create a VPC-type security group, select **VPC**.
+    -   To create a classic network-type security group, select **Classic**. |
+    |VPC|Select the VPC in which your ECS instances reside. This parameter is required only when you set **Network Type** to **VPC**.|
+    |Resource Group|Select a resource group to which to assign the security group to facilitate subsequent O&M.|
+    |Tag|Configure tags for the security group to facilitate subsequent O&M.|
 
-            **Note:** You must select VPC for an advanced security group.
+6.  Click **OK**.
 
-5.  Click **OK**.
 
-## Results {#section_s8e_xyx_fby .section}
+After the security group is created, it is displayed in the security group list.
 
-After the security group is created, a new security group is added to the security group list. If you select a custom template, we recommend that you configure security group rules as prompted on the page.
+![Creation result](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3541472061/p96162.png)
 
-## Related APIs {#section_qj5_221_hgb .section}
+-   You can configure security group rules to allow or deny access to or from the Internet or internal network for ECS instances in a security group. For more information, see [Add security group rules](/intl.en-US/Security/Security groups/Add security group rules.md).
+-   Each ECS instance must belong to at least one security group. You can add an instance to one or more security groups. For more information, see [Add an ECS instance to a security group](/intl.en-US/Security/Security groups/Add an ECS instances to a security group.md).
 
-You can call [CreateSecurityGroup](../intl.en-US/API Reference/Security groups/CreateSecurityGroup.md#) to create a security group.
+**Related topics**  
 
-## Next operations {#section_agj_cwz_xdb .section}
 
--   You can [add security group rules](intl.en-US/Security/Security groups/Add security group rules.md#) to allow or deny access to the public or internal networks from ECS instances in security groups.
--   An ECS instance must belong to one or more security groups. You can [add an instance to one or more security groups](intl.en-US/Security/Security groups/Add an ECS instances to a security group.md#) based on your business needs.
+[CreateSecurityGroup](/intl.en-US/API Reference/Security groups/CreateSecurityGroup.md)
 
