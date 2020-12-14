@@ -42,13 +42,13 @@ Default value: all |
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   cloud\_essd: enhanced SSD \(ESSD\)
--   local\_ssd\_pro: I/O intensive local disk
--   local\_hdd\_pro: throughput intensive local disk
+-   local\_ssd\_pro: I/O-intensive local disk
+-   local\_hdd\_pro: throughput-intensive local disk
 -   ephemeral: retired local disk
 -   ephemeral\_ssd: retired local SSD
 
 Default value: all |
-|Status|String|No|All|The status of the disk. For more information, see [Basic disk status](~~25689~~). Valid values:
+|Status|String|No|All|The status of the disk. For more information, see [Cloud disk status](~~25689~~). Valid values: Valid values:
 
 -   In\_use
 -   Available
@@ -65,11 +65,11 @@ Default value: All |
 -   true: The disk is removable. A removable disk can exist independently and can be attached to or detached from an instance within the same zone.
 -   false: The disk is not removable. A disk that is not removable cannot exist independently or be detached from one instance and then attached to another instance within the same zone.
 
-When the `Portable` property of the following disks is set to `false`, these disks share the same lifecycle with their associated instances:
+When the `Portable` attribute of the following disks is set to `false`, these disks share the same lifecycle with their associated instances:
 
--   Local disk
--   Local SSD
--   Subscription data disk |
+-   Local disks
+-   Local SSDs
+-   Subscription data disks |
 |DeleteWithInstance|Boolean|No|false|Specifies whether the disk is released when its associated instance is released. Valid values:
 
 -   true: The disk is released when its associated instance is released.
@@ -94,15 +94,15 @@ Default value: 10 |
 For more information about how to check the responses returned by this operation, see the preceding "Description" section. |
 |MaxResults|Integer|No|50|The maximum number of entries to return on each page. Valid values: 1 to 500.
 
-Default value: 10. |
+Default value: 10 |
 |DiskName|String|No|testDiskName|The name of the disk. |
-|AutoSnapshotPolicyId|String|No|sp-m5e2w2jutw8bv31\*\*\*\*|The ID of the automatic snapshot policy that is applied to the disk. |
+|AutoSnapshotPolicyId|String|No|sp-m5e2w2jutw8bv31\*\*\*\*|The ID of the automatic snapshot policy applied to the disk. |
 |EnableAutoSnapshot|Boolean|No|true|Specifies whether the automatic snapshot policy feature is enabled for the disk.
 
 -   true: The automatic snapshot policy feature is enabled for the disk.
 -   false: The automatic snapshot policy feature is disabled for the disk.
 
-**Note:** By default, the automatic snapshot policy feature is enabled for created disks. You only need to apply an automatic snapshot policy to a disk before you can use the automatic snapshot policy. |
+**Note:** By default, the automatic snapshot policy feature is enabled for created disks. You need only to apply an automatic snapshot policy to a disk before you can use the automatic snapshot policy. |
 |EnableAutomatedSnapshotPolicy|Boolean|No|false|Specifies whether an automatic snapshot policy is applied to the disk.
 
 -   true: An automatic snapshot policy is applied to the disk.
@@ -121,8 +121,8 @@ Default value: false |
 -   dedicatedhostfinancial: The instance is locked due to overdue payments for the dedicated host. |
 |Filter.1.Key|String|No|CreationStartTime|The key of filter 1 used to query resources. Set the value to CreationStartTime. |
 |Filter.2.Key|String|No|CreationEndTime|The key of filter 2 used to query resources. Set the value to CreationEndTime. |
-|Filter.1.Value|String|No|2017-12-05T22:40:00Z|The value of filter 1 used to query resources. The value must be the beginning of the time range in which to query created resources. |
-|Filter.2.Value|String|No|2017-12-06T22:40:00Z|The value of filter 2 used to query resources. The value must be the end of the time range in which to query created resources. |
+|Filter.1.Value|String|No|2017-12-05T22:40:00Z|The value of filter 1 used to query resources. The value must be the beginning of the time range to query. |
+|Filter.2.Value|String|No|2017-12-06T22:40:00Z|The value of filter 2 used to query resources. The value must be the end of the time range to query. |
 |Tag.N.value|String|No|null|The value of tag N of the disk.
 
 **Note:** We recommend that you use the Tag.N.Value parameter to ensure future compatibility. |
@@ -141,7 +141,7 @@ Default value: false |
 |AdditionalAttributes.N|RepeatList|No|IOPS|Other attribute values. Set the value to IOPS, which indicates the maximum IOPS of the disk. |
 |DryRun|Boolean|No|false|Specifies whether to check the validity of the request without actually making the request. Valid values:
 
--   true: The validity of the request is checked but the request is not made. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+-   true: The validity of the request is checked but the request is not made. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 -   false: The validity of the request is checked. If the check succeeds, a 2XX HTTP status code is returned and the request is made.
 
 Default value: false |
@@ -164,8 +164,8 @@ This parameter is valid only when the value of `Status` is `Available`. |
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   cloud\_essd: ESSD
--   local\_ssd\_pro: I/O intensive local disk
--   local\_hdd\_pro: throughput intensive local disk
+-   local\_ssd\_pro: I/O-intensive local disk
+-   local\_hdd\_pro: throughput-intensive local disk
 -   ephemeral: retired local disk
 -   ephemeral\_ssd: retired local SSD |
 |CreationTime|String|2018-01-01T01:01:22Z|The time when the disk was created. |
@@ -174,7 +174,7 @@ This parameter is valid only when the value of `Status` is `Available`. |
 -   true: The automatic snapshots of the disk are deleted when the disk is released.
 -   false: The automatic snapshots of the disk are retained when the disk is released.
 
-Snapshots created by calling the [CreateSnapshot](~~25524~~) operation or by using the ECS console are retained permanently and not affected by this parameter setting. |
+Snapshots created by calling the [CreateSnapshot](~~25524~~) operation or by using the ECS console are retained and not affected by this parameter. |
 |DeleteWithInstance|Boolean|true|Indicates whether the disk is released when its associated instance is released. Valid values:
 
 -   true: The disk is released when its associated instance is released.
@@ -183,11 +183,11 @@ Snapshots created by calling the [CreateSnapshot](~~25524~~) operation or by usi
 |DetachedTime|String|2018-01-08T01:01:22Z|The time when the disk was detached.
 
 This parameter is valid only when the value of `Status` is `Available`. |
-|Device|String|/dev/xvdb|The device name of the disk on its associated instance, such as /dev/xvdb.
+|Device|String|/dev/xvdb|The device name of the disk on its associated instance. Example: /dev/xvdb.
 
 This parameter has a value only when the value of `Status` is `In_use`.
 
-**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure compatibility. |
 |DiskChargeType|String|PostPaid|The billing method of the disk. Valid values:
 
 -   PrePaid: subscription
@@ -218,7 +218,7 @@ This parameter has a value only when the value of `Status` is `In_use`. |
 |PerformanceLevel|String|PL2|The performance level of the ESSD. Valid values:
 
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
--   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+-   PL2: A single enhanced SSD can deliver up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS. |
 |Portable|Boolean|false|Indicates whether the disk is removable. |
 |ProductCode|String|jxsc000204|The product code in Alibaba Cloud Marketplace. |
@@ -398,7 +398,7 @@ Sample success responses
 |403|InvalidDiskIds.Malformed|The amount of specified disk Ids exceeds the limit.|The error message returned because the specified DiskIds parameter is invalid.|
 |404|InvalidDiskChargeType.NotFound|The DiskChargeType does not exist in our records|The error message returned because the specified DiskChargeType parameter does not exist.|
 |404|InvalidLockReason.NotFound|The specified LockReason is not found|The error message returned because the specified LockReason parameter does not exist.|
-|404|InvalidFilterKey.NotFound| |The error message returned because the specified start time or expiration time is invalid.|
+|404|InvalidFilterKey.NotFound| |The error message returned because the specified start time or end time is invalid.|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|The error message returned because the specified Tag.N.Key and Tag.N.Value parameters do not match.|
 |400|InvalidTagCount|The specified tags are beyond the permitted range.|The error message returned because the number of specified tags exceeds the upper limit.|
 |400|InvalidRegion.NotFound|The specified parameter RegionId is not valid.|The error message returned because the specified RegionId parameter is invalid.|
