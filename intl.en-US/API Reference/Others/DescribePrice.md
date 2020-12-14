@@ -6,13 +6,13 @@ You can call this operation to query the most recent prices of ECS resources. Th
 
 You must [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to apply for using the inquiry feature. Otherwise, the InvalidAction error code is returned.
 
--   The required parameters vary based on types of resources whose prices you are querying.
+-   The required parameters vary with types of resources whose prices you are querying.
     -   When the `ResourceType` parameter is set to `instance`, you must specify the `InstanceType` parameter.
-    -   When the `ResourceType` parameter is set to `disk`, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the ResourceType parameter is set to `disk`, only the pay-as-you-go price of the disk is returned. This means that the PriceUnit parameter can be set to Hour only.
-    -   When the `ResourceType` parameter is set to `ecsrep`, the price of the elasticity assurance is queried. This parameter value is in invitational preview. To set the parameter to this value, submit a ticket.
+    -   When the `ResourceType` parameter is set to `disk`, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the ResourceType parameter is set to `disk`, only pay-as-you-go disk prices are returned. This means that the PriceUnit parameter can be set only to Hour.
+    -   When the `ResourceType` parameter is set to `ecsrep`, the prices of elasticity assurances are queried. This parameter value is in invitational preview. For more information about this parameter value, submit a ticket.
     -   When the ResourceType parameter is set to `bandwidth`, only the pay-by-traffic \(`PayByTraffic`\) price of the bandwidth is returned.
--   When the `ResourceType` parameter is set to `instance`, you can query the prices of up to four data disks.
--   By default, the ChargeType parameter is set to PostPaid. You can specify the `PriceUnit` parameter to query prices of ECS resources that have different billing cycles.
+-   When the `ResourceType` parameter is set to `instance`, the prices of up to four data disks can be queried.
+-   By default, the ChargeType parameter is set to PostPaid. You can specify the `PriceUnit` parameter to query prices of ECS resources with different billing cycles.
 
 ## Debugging
 
@@ -32,7 +32,7 @@ You must [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/cr
 -   ecsrep: queries the most recent prices of elasticity assurances.
 
 Default value: instance. |
-|ImageId|String|No|centos\_7\_05\_64\_20G\_alibase\_20181212.vhd|The ID of the image to be used to create an instance. You can call the [DescribeImages](~~25534~~) operation to query the available images. If you do not specify this parameter, the system queries the prices of Linux images. |
+|ImageId|String|No|centos\_7\_05\_64\_20G\_alibase\_20181212.vhd|The ID of the image used to create the instance. You can call the [DescribeImages](~~25534~~) operation to query the available images. If you do not specify this parameter, the system queries the prices of Linux images. |
 |InstanceType|String|No|ecs.g6.large|The instance type. When the `ResourceType` parameter is set to `instance`, you must specify the InstanceType parameter. For more information, see [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the most recent instance type list. |
 |IoOptimized|String|No|optimized|Specifies whether the instance is I/O optimized. Valid values:
 
@@ -88,7 +88,7 @@ The default value is 40 or the size of the image, depending on whichever is grea
 -   Valid values when DataDisk.1.Category is set to ephemeral\_ssd: 5 to 800 |
 |DataDisk.1.Category|String|No|cloud\_ssd|The category of the first data disk. Valid values:
 
--   cloud: basic disk.
+-   cloud: basic disk
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
@@ -107,7 +107,7 @@ The default value is 40 or the size of the image, depending on whichever is grea
 -   Valid values when DataDisk.2.Category is set to ephemeral\_ssd: 5 to 800 |
 |DataDisk.2.Category|String|No|cloud\_ssd|The category of the second data disk. Valid values:
 
--   cloud: basic disk.
+-   cloud: basic disk
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
@@ -157,8 +157,8 @@ The default value is 40 or the size of the image, depending on whichever is grea
 -   PL3 |
 |Period|Integer|No|1|The billing duration of the ECS instance. Valid values:
 
--   Valid values when PriceUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
--   Valid values when PriceUnit is set to Year: 1, 2, and 3.
+-   Valid values when PriceUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, and 9
+-   Valid values when PriceUnit is set to Year: 1, 2, and 3
 -   Set the value to 1 when PriceUnit is set to Hour.
 
 Default value: 1. |
@@ -167,10 +167,10 @@ Default value: 1. |
 -   Month
 -   Year
 -   Hour |
-|Amount|Integer|No|1|The number of ECS instances that you want to purchase. You can specify this parameter when you want to query the prices of multiple instances that have certain specifications. Valid values: 1 to 1000.
+|Amount|Integer|No|1|The number of ECS instances that you want to purchase. You can specify this parameter when you want to query the prices of multiple instances that have specific specifications. Valid values: 1 to 1000.
 
 Default value: 1. |
-|AssuranceTimes|String|No|Unlimited|The total times that the elasticity assurance can take effect. Set the value to Unlimited, which indicates that the assurance can take effect for unlimited times within its effective duration.
+|AssuranceTimes|String|No|Unlimited|The total number of times that the elasticity assurance can take effect. Set the value to Unlimited, which indicates that the assurance can take effect for unlimited times within its effective duration.
 
 Default value: Unlimited.
 
@@ -195,15 +195,15 @@ Default value: Unlimited.
 |Rule| | | |
 |Description|String|Receive a 15% discount on a 1-year subscription|The description of the pricing rule. |
 |RuleId|Long|587|The ID of the rule. |
-|TradePrice|Float|3712.8|The final transaction price. |
+|TradePrice|Float|3712.8|The transaction price. |
 |DiscountPrice|Float|655.2|The discount. |
 |OriginalPrice|Float|4368|The original price. |
 |ReservedInstanceHourPrice|Float|1|The hourly price of the reserved instance that is of the no-upfront or partial-upfront payment option. |
-|TradePrice|Float|3712.8|The final transaction price, which is equal to the original price minus the discount. |
+|TradePrice|Float|3712.8|The transaction price, which is equal to the original price minus the discount. |
 |Rules|Array of Rule| |Details about the promotion rules. |
 |Rule| | | |
 |Description|String|Receive a 15% discount on a 1-year subscription|The description of the promotion rule. |
-|RuleId|Long|587|The ID of the rule. |
+|RuleId|Long|587|The ID of the promotion. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
 
 ## Examples
@@ -275,13 +275,13 @@ Sample success responses
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
 |400|InvalidInstanceType.ValueUnauthorized|The specified InstanceType is not authorized.|The error message returned because you are not authorized to use the specified instance type.|
-|400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|The error message returned because the specified InstanceType parameter does not exist or you are not authorized to manage instances of this instance type.|
+|400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|The error message returned because the specified instance type does not exist or you are not authorized to manage instances of this instance type.|
 |400|InvalidInternetChargeType.ValueNotSupported|The specified InternetChargeType is not valid.|The error message returned because the specified InternetChargeType parameter is invalid.|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified parameter "InternetMaxBandwidthOut" is not valid.|The error message returned because the specified InternetMaxBandwidthOut parameter is invalid.|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter "SystemDisk.Category" is not valid.|The error message returned because the specified SystemDisk.Category parameter is invalid.|
-|400|InvalidDataDiskSize.ValueNotSupported|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|The error message returned because the specified DataDisk.N.Size parameter or the snapshot capacity exceeds the maximum capacity that is allowed for the specified disk category.|
+|400|InvalidDataDiskSize.ValueNotSupported|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|The error message returned because the specified DataDisk.N.Size parameter is invalid or the snapshot size exceeds the maximum capacity that is allowed for the specified disk category.|
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.n.Category" is not valid.|The error message returned because the specified DataDisk.N.Category parameter is invalid.|
-|400|InvalidParameter.Conflict|The specified image does not support the specified instance type.|The error message returned because the specified image cannot be used for instances of the specified instance type.|
+|400|InvalidParameter.Conflict|The specified image does not support the specified instance type.|The error message returned because the specified image cannot be used for the specified instance type.|
 |403|ImageNotSubscribed|The specified image has not be subscribed.|The error message returned because you have not subscribed to the specified Alibaba Cloud Marketplace image.|
 |403|OperationDenied|The specified Image is disabled or is deleted.|The error message returned because the specified image has been disabled or deleted.|
 |403|InvalidSystemDiskCategory.ValueUnauthorized|The disk category is not authorized.|The error message returned because you are not authorized to use the specified disk category.|
@@ -293,26 +293,26 @@ Sample success responses
 |400|InvalidDiskCategory.Mismatch|The specified disk categories' combination is not supported.|The error message returned because the combination of the specified disk categories is not supported.|
 |403|Forbbiden|User not authorized to operate on the specified resource.|The error message returned because you are not authorized to perform operations on the specified resource.|
 |404|InvalidImageId.NotFound|The specified ImageId does not exist.|The error message returned because the specified image does not exist in this account. Check whether the image ID is correct.|
-|403|InstanceDiskNumLimitExceed|The number of specified disk in an instance exceeds.|The error message returned because the maximum number of disks attached to the instance has been reached.|
+|403|InstanceDiskNumLimitExceed|The number of specified disk in an instance exceeds.|The error message returned because the maximum number of disks that can be attached to the instance has been reached.|
 |403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|The error message returned because the specified image does not support I/O optimized instances.|
-|403|ImageNotSupportInstanceType|The specified image don't support the InstanceType instance.|The error message returned because the specified image does not support this instance type.|
+|403|ImageNotSupportInstanceType|The specified image don't support the InstanceType instance.|The error message returned because the instance type is not supported by the specified image.|
 |400|InvalidIoOptimizedValue.ValueNotSupported|IoOptimized value not supported.|The error message returned because the specified IoOptimized parameter is invalid.|
 |404|IoOptimized.NotSupported|The specified instancetype is not support IoOptimized instance|The error message returned because the specified instance type does not support I/O optimization.|
-|403|InvalidDiskSize.TooSmall|Specified disk size is less than the size of snapshot|The error message returned because the specified disk size is less than the snapshot size.|
-|403|OperationDenied|The type of the disk does not support the operation|The error message returned because the disk category does not support the specified operation.|
+|403|InvalidDiskSize.TooSmall|Specified disk size is less than the size of snapshot|The error message returned because the capacity of the specified disk is smaller than that of the snapshot.|
+|403|OperationDenied|The type of the disk does not support the operation|The error message returned because the operation is not supported by the specified disk category.|
 |404|InvalidInstanceChargeType.NotFound|The InstanceChargeType does not exist in our records|The error message returned because the specified InstanceChargeType parameter does not exist.|
-|400|InvalidPeriod|The specified period is not valid.|The error message returned because the specified Period parameter is invalid.|
-|403|InvalidDiskCategory.Mismatch|The specified disk categories combination is not supported.|The error message returned because the combination of the specified disk categories is not supported.|
+|400|InvalidPeriod|The specified period is not valid.|The error message returned because the specified Period is invalid.|
+|403|InvalidDiskCategory.Mismatch|The specified disk categories combination is not supported.|The error message returned because the combination of specified disk categories is not supported.|
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter " DataDisk.n.Category " is not valid.|The error message returned because the specified DataDisk.N.Category parameter is invalid.|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter " SystemDisk.Category " is not valid.|The error message returned because the specified SystemDisk.Category parameter is invalid.|
-|403|InvalidDiskCategory.NotSupported|The specified disk category is not support the specified instance type.|The error message returned because the specified disk category does not support the instance type.|
+|403|InvalidDiskCategory.NotSupported|The specified disk category is not support the specified instance type.|The error message returned because the specified disk type does not support the instance type.|
 |403|InvalidDiskCategory.NotSupported|The upgrade operation of instance does not support this category of disk.|The error message returned because disks of the specified disk category cannot be upgraded when you upgrade the instance.|
-|400|InstanceDiskCategoryLimitExceed|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|The error message returned because the specified DataDisk.N.Size parameter or the snapshot capacity exceeds the maximum capacity that is allowed for the specified disk category.|
+|400|InstanceDiskCategoryLimitExceed|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|The error message returned because the specified DataDisk.N.Size parameter is invalid or the snapshot size exceeds the maximum capacity that is allowed for the specified disk category.|
 |404|DependencyViolation.IoOptimized|The specified instancetype must be IoOptimized instance.|The error message returned because the specified instance type is not I/O optimized.|
 |404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|The error message returned because the specified system disk size is less than the image size.|
 |404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the minimum size.|The error message returned because the specified system disk size is less than the lower limit.|
 |404|InvalidSystemDiskSize.MoreThanMaxSize|The specified parameter SystemDisk.Size is more than the maximum size|The error message returned because the maximum size of the specified system disk has been reached.|
-|400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified vm bandwidth is not valid.|The error message returned because the specified bandwidth of the instance is invalid.|
+|400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified vm bandwidth is not valid.|The error message returned because the specified bandwidth is invalid.|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter SystemDisk.Category is not valid.|The error message returned because the specified SystemDisk.Category parameter is invalid.|
 |403|InvalidParameter.ResourceOwnerAccount|ResourceOwnerAccount is Invalid.|The error message returned because the specified ResourceOwnerAccount parameter is invalid.|
 |403|RegionUnauthorized|There is no authority to create instance in the specified region.|The error message returned because you are not authorized to create instances in the specified region.|
@@ -327,31 +327,31 @@ Sample success responses
 |400|InvalidParameter.Conflict|%s|The error message returned because a specified parameter is invalid. Check whether the parameter conflicts with another parameter.|
 |400|InvalidInternetChargeType.ValueNotSupported|%s|The error message returned because the specified InternetChargeType parameter is not supported. Check whether the parameter is correct.|
 |400|InvalidInstanceType.ValueNotSupported|%s|The error message returned because the operation is not applicable to the specified instance type.|
-|403|InstanceType.Offline|%s|The error message returned because the instance type is retired or has insufficient resources.|
+|403|InstanceType.Offline|%s|The error message returned because the instance type is retired or resources for the instance types are insufficient.|
 |400|RegionUnauthorized|%s|The error message returned because you are not authorized to perform the operation in the specified region.|
 |500|InternalError|%s|The error message returned because an internal error has occurred.|
 |400|InvalidSystemDiskSize.ValueNotSupported|%s|The error message returned because the specified SystemDisk.Size parameter is invalid.|
 |400|InvalidDataDiskSize.ValueNotSupported|%s|The error message returned because the specified data disk size is invalid.|
 |404|InvalidInstanceType.Missing|The InstanceType parameter that is mandatory for processing the request is not provided.|The error message returned because the InstanceType parameter is not specified.|
-|404|InvalidNetworkType.ValueNotSupported|The specified parameter NetworkType is not valid.|The error message returned because the specified NetworkType parameter is invalid.|
-|404|InvalidDiskCategory.Missing|The DataDisk.1.Category parameter that is mandatory for processing the request is not provided.|The error message returned because the DataDisk.1.Category parameter is not specified.|
+|404|InvalidNetworkType.ValueNotSupported|The specified parameter NetworkType is not valid.|The error message returned because the specified network type is invalid.|
+|404|InvalidDiskCategory.Missing|The DataDisk.1.Category parameter that is mandatory for processing the request is not provided.|The error message returned because the category of the data disk is not specified.|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter "SystemDisk.Size" is not valid.|The error message returned because the specified SystemDisk.Size parameter is invalid.|
 |400|InvalidSystemDiskSize.LessThanImageSize|The specified parameter "SystemDisk.Size" is less than the image size.|The error message returned because the specified system disk size is less than the image size.|
-|400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.Category" is not valid.|The error message returned because the specified DataDisk.Category parameter is invalid.|
+|400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.Category" is not valid.|The error message returned because the specified DataDisk.N.Category parameter is invalid.|
 |400|InvalidDataDiskSize.ValueNotSupported|The specified parameter "DataDisk.Size" is not valid.|The error message returned because the specified DataDisk.Size parameter is invalid.|
 |400|Throttling|Request was denied due to request throttling.|The error message returned because the request is denied due to throttling. Try again later.|
-|400|PriceNotFound|The price of your queried resource is not available now, please try other resources.|The error message returned because the price of the resource cannot be queried for the moment. Try again later.|
-|400|InvalidResourceType.ValueNotSupported|The specified parameter ResourceType is not valid.|The error message returned because the specified ResourceType parameter is invalid.|
-|400|InvalidPriceUnit.ValueNotSupported|The specified parameter PriceUnit is not valid.|The error message returned because the specified PriceUnit parameter is invalid.|
+|400|PriceNotFound|The price of your queried resource is not available now, please try other resources.|The error message returned because the price of the resource cannot be queried. Try again later.|
+|400|InvalidResourceType.ValueNotSupported|The specified parameter ResourceType is not valid.|The error message returned because the specified resource type is invalid.|
+|400|InvalidPriceUnit.ValueNotSupported|The specified parameter PriceUnit is not valid.|The error message returned because the specified pricing unit is invalid.|
 |403|OperationDenied|The specified parameter InstanceNetworkType is not authorized.|The error message returned because the specified instance network type is unauthorized.|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified parameter InternetMaxBandwidthOut is not valid.|The error message returned because the specified InternetMaxBandwidthOut parameter is invalid.|
 |403|InvalidAmount.Malformed|The specified parameter Amount is not valid.|The error message returned because the specified Amount parameter is invalid.|
 |400|EncryptedOption.Conflict|%s|The error message returned because the parameter does not support encrypted disks.|
 |404|Invalid.InstanceId.NotFound|The Instance provided does not exist.|The error message returned because the specified instance does not exist.|
 |403|InvalidDiskSize.TooSmall|Specified system disk size is less than the size of image|The error message returned because the specified system disk size is less than the image size.|
-|404|InvalidMarketImage.NotFound|The specified marketplace image does not exist, please change the imageId and try again.|The error message returned because the specified Alibaba Cloud Marketplace image does not exist. Modify the parameter and try again later.|
+|404|InvalidMarketImage.NotFound|The specified marketplace image does not exist, please change the imageId and try again.|The error message returned because the specified Alibaba Cloud Marketplace image does not exist. Modify the ImageId parameter and try again later.|
 |403|InvalidChargeType.MarketImage|The specified chargeType of marketplace image is invalid|The error message returned because the billing method for the Alibaba Cloud Marketplace image is not supported.|
-|403|InvalidDiskIds.NotFound|Some of the specified disks do not exist.|The error message returned because some specified disk IDs do not exist.|
+|403|InvalidDiskIds.NotFound|Some of the specified disks do not exist.|The error message returned because the specified disk does not exist.|
 |403|InvalidDiskCategory.NotSupported|The specified disk category is not supported.|The error message returned because the specified disk category does not support the current operation.|
 |403|PrePaidInstance.Expired|The prePaid instance has expired.|The error message returned because the subscription instance has expired.|
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|The error message returned because the specified disk is not removable.|
