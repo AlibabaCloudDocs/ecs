@@ -4,7 +4,7 @@ You can call this operation to query the quotas of ECS resources that you can cr
 
 ## Description
 
-After you[register](https://account.alibabacloud.com/register/intl_register.htm) for an Alibaba Cloud account, you can create a specific number of ECS resources in different regions. For more information, see [Limits](~~25412~~).
+After you [register](https://account.alibabacloud.com/register/intl_register.htm) for an Alibaba Cloud account, you can create a specific number of ECS resources in different regions. For more information, see [Limits](~~25412~~).
 
 You can also [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to increase the resource usage quota.
 
