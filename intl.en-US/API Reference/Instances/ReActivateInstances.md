@@ -64,11 +64,11 @@ Sample success responses
 |----------------|----------|-------------|-----------|
 |404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified InstanceId parameter does not exist.|
 |404|InvalidPayType.NotSupport|The specified pre pay instance not support.|The error message returned because subscription instances do not support this operation.|
-|403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|The error message returned because the operation is not supported while the instance is in the current state.|
+|403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|The error message returned because the operation is not supported while the resource is in the current state.|
 |403|InstanceLockedForSecurity|The specified operation is denied as your instance is locked for security reasons.|The error message returned because the operation is not supported while the instance is locked for security reasons.|
 |403|InsufficientBalance|Your account does not have enough balance.|The error message returned because your account balance is insufficient. Add funds to your account and try again.|
 |500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
-|400|ReopenInstance.InstanceStatusNotValid|Instance status is not Expired, ImageExpired or EcsAndImageExpired.|The error message returned because the instance fails to be started. A possible cause is that the instance or image has expired.|
+|400|ReopenInstance.InstanceStatusNotValid|Instance status is not Expired, ImageExpired or EcsAndImageExpired.|The error message returned because the instance fails to be reactivated. A possible cause is that the instance or the image has expired.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
