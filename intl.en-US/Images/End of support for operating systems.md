@@ -22,7 +22,7 @@ The following tables describe the EOL plans of some third-party operating system
 
     |Version|End-of-update date|End-of-maintenance date|
     |-------|------------------|-----------------------|
-    |CentOS 8|2024-05|2029-05-31|
+    |CentOS 8|2021-12|2021-12-31|
     |CentOS 7|Q4 2020|2024-06-30|
     |CentOS 6|2017-05-10|2020-11-30|
     |CentOS 5|2007-04-12|2017-03-31|
