@@ -36,9 +36,9 @@
 -   Target：专用模式。
 
  默认值：Open |
-|StartTime|String|否|Now|容量预定服务的生效方式。目前仅支持设置为立即生效。取值：Now。
+|StartTime|String|否|Now|容量预定服务的生效方式。用于设置非立即生效的指定生效时间或立即生效。目前仅支持设置为立即生效，且参数无需传值。
 
- 默认值：Now |
+ **说明：** 该参数不传值即表示设置为立即生效。 |
 |EndTimeType|String|否|Unlimited|容量预定服务的失效方式。取值范围：
 
  -   Limited：指定时间释放。必须同时指定`EndTime`参数。
