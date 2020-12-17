@@ -5,16 +5,17 @@
 完成创建ECS实例的准备工作：
 
 1.  创建账号，以及完善账号信息。
-    -   注册阿里云账号，并完成实名认证。具体操作，请参见[阿里云账号注册流程](https://help.aliyun.com/knowledge_detail/37195.htm)。
-    -   如果创建按量付费实例，您的阿里云账户余额、代金券和优惠券的总值不得小于100.00元人民币。具体充值操作，请参见[如何充值](https://help.aliyun.com/document_detail/37107.html?spm=a2c4g.11186623.2.5.CscUFl)。
-2.  阿里云提供一个默认的专有网络VPC，如果您不想使用默认专有网络VPC，可以在目标地域创建一个专有网络和交换机。具体操作，请参见[搭建IPv4专有网络](/cn.zh-CN/快速入门/搭建IPv4专有网络.md)。
-3.  阿里云提供一个默认的安全组，如果您不想使用默认安全组，可以在目标地域创建一个安全组。具体操作，请参见[创建安全组](/cn.zh-CN/安全/安全组/创建安全组.md)。
+    -   [注册阿里云账号](https://www.alibabacloud.com/help/doc-detail/50482.htm)。
+    -   [绑定信用卡或PayPal账号](https://www.alibabacloud.com/help/doc-detail/50517.htm)。
+    -   如果您需要购买中国内地地域的ECS实例，必须完成实名认证。更多详情，请参见[实名认证](https://www.alibabacloud.com/help/doc-detail/52595.htm)。
+2.  阿里云提供一个默认的专有网络VPC，如果您不想使用默认专有网络VPC，可以在目标地域创建一个专有网络和交换机。具体操作，请参见[搭建IPv4专有网络](/intl.zh-CN/快速入门/搭建IPv4专有网络.md)。
+3.  阿里云提供一个默认的安全组，如果您不想使用默认安全组，可以在目标地域创建一个安全组。具体操作，请参见[创建安全组](/intl.zh-CN/安全/安全组/创建安全组.md)。
 
 如果您需要使用其它扩展功能，也需要完成相应的准备工作，例如：
 
--   如果创建Linux实例时要绑定SSH密钥对，需要在目标地域创建一个SSH密钥对。具体操作，请参见[创建SSH密钥对](/cn.zh-CN/安全/SSH密钥对/使用SSH密钥对/创建SSH密钥对.md)。
--   如果要设置自定义数据，需要准备实例自定义数据。具体操作，请参见[生成实例自定义数据](/cn.zh-CN/实例/管理实例/使用实例自定义数据/生成实例自定义数据.md)。
--   如果要为ECS实例关联某个角色，需要创建、授权实例RAM角色，并将其授予ECS实例。具体操作，请参见[授予实例RAM角色](/cn.zh-CN/安全/实例RAM角色/授予实例RAM角色.md)。
+-   如果创建Linux实例时要绑定SSH密钥对，需要在目标地域创建一个SSH密钥对。具体操作，请参见[创建SSH密钥对](/intl.zh-CN/安全/SSH密钥对/使用SSH密钥对/创建SSH密钥对.md)。
+-   如果要设置自定义数据，需要准备实例自定义数据。具体操作，请参见[生成实例自定义数据](/intl.zh-CN/实例/管理实例/使用实例自定义数据/生成实例自定义数据.md)。
+-   如果要为ECS实例关联某个角色，需要创建、授权实例RAM角色，并将其授予ECS实例。具体操作，请参见[授予实例RAM角色](/intl.zh-CN/安全/实例RAM角色/授予实例RAM角色.md)。
 
 配备NVIDIA GPU的实例涉及以下驱动：
 
@@ -30,7 +31,7 @@ GPU实例的驱动支持情况如下表所示。
 
 ## 操作步骤
 
-本步骤重点介绍配备NVIDIA GPU的实例相关的配置，如果您想了解其他通用配置，请参见[使用向导创建实例](/cn.zh-CN/实例/创建实例/使用向导创建实例.md)。
+本步骤重点介绍配备NVIDIA GPU的实例相关的配置，如果您想了解其他通用配置，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
 
 1.  前往[实例创建页](https://ecs-buy.aliyun.com/wizard/#/)。
 
@@ -42,12 +43,7 @@ GPU实例的驱动支持情况如下表所示。
 
     -   创建配备vGPU的GPU实例（vgn6i和vgn5i）
         -   **实例**：定位到**异构计算GPU/FPGA/NPU** \> **GPU虚拟化型**，然后按需选择实例规格。
-        -   **镜像**：操作系统类型影响GRID驱动的安装方式，如下所示：
-            -   Windows：在镜像市场中搜索关键词GRID，并选用预装GRID驱动的收费镜像。这些收费镜像带有已经激活License的GRID驱动，不用再手动安装GRID驱动。
-
-                ![windows-grid](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5711243061/p175911.png)
-
-            -   Linux：您需要自行购买GRID License，并在创建实例后手动安装GRID驱动和激活License，具体步骤请参见[在vgn6i和vgn5i实例中安装GRID驱动（Linux）](/cn.zh-CN/实例/选择实例规格/GPU计算型/在vgn6i和vgn5i实例中安装GRID驱动（Linux）.md)。
+        -   **镜像**：目前不提供预装GRID驱动的镜像。您需要自行购买GRID License，并在创建实例后手动安装GRID驱动和激活License。
     -   创建非vGPU的GPU实例
         -   **实例**：定位到**异构计算GPU/FPGA/NPU** \> **GPU计算型**，然后按需选择实例规格。
         -   **镜像**：非vGPU的GPU实例支持安装GPU驱动，安装方式如下所示：
@@ -65,7 +61,7 @@ GPU实例的驱动支持情况如下表所示。
                 -   Alibaba Cloud Linux 64位镜像
                 如果您选择的镜像支持自动安装GPU驱动，选中**自动安装GPU驱动**复选框，并选择GPU驱动、CUDA、cuDNN库版本。如果是新业务系统，建议选择最新的版本。
 
-                选中**自动安装GPU驱动**复选框后，您可以选择是否自动安装GPU云加速器。GPU云加速器提供了飞天AI加速器AIACC（Apsara AI Accelerator），可以帮助您快速搭建高性能分布式深度学习训练系统并加速AI训练性能，更多详情请参见[使用AIACC-Training](/cn.zh-CN/实例/选择实例规格/GPU计算型/使用AIACC-Training.md)。
+                选中**自动安装GPU驱动**复选框后，您可以选择是否自动安装GPU云加速器。GPU云加速器提供了飞天AI加速器AIACC（Apsara AI Accelerator），可以帮助您快速搭建高性能分布式深度学习训练系统并加速AI训练性能，更多详情请参见[使用AIACC-Training](/intl.zh-CN/实例/选择实例规格/GPU计算型/使用AIACC-Training.md)。
 
                 **说明：** CentOS 8、CentOS 6、SUSE Linux、Alibaba Cloud Linux暂时不支持GPU云加速器。
 
@@ -77,21 +73,11 @@ GPU实例的驱动支持情况如下表所示。
 
             -   在镜像市场选择预装了GPU驱动和相关软件的镜像。
 
-                镜像市场提供经严格审核的优质镜像，预装操作系统、应用环境和各类软件，无需配置即可一键部署云服务器。例如以下支持深度学习和机器学习的镜像：
+                镜像市场提供经严格审核的优质镜像，预装操作系统、应用环境和各类软件，无需配置即可一键部署云服务器。例如，NVIDIA GPU Cloud VM Image（虚拟机镜像）是运行针对NVIDIA GPU优化的深度学习框架和HPC应用程序容器的优化环境，更多信息请参见[在GPU实例上部署NGC环境](/intl.zh-CN/最佳实践/GPU实例最佳实践/在GPU实例上部署NGC环境.md)。
 
-                -   如果配备NVIDIA GPU的实例用于机器学习，您可以选择预装RAPIDS加速库的镜像，在镜像市场搜索关键字RAPIDS并选择可用的镜像。目前仅支持Ubuntu16.04。更多信息，请参见[在GPU实例上使用RAPIDS加速图像搜索任务](/cn.zh-CN/最佳实践/GPU实例最佳实践/在GPU实例上使用RAPIDS加速图像搜索任务.md)。
+            -   在在创建实例后手动安装GRID驱动，请参见[手动安装GPU驱动](/intl.zh-CN/实例/选择实例规格/GPU计算型/手动安装GPU驱动.md)。
+            非vGPU的GPU实例也支持安装GRID驱动，但目前不提供预装GRID驱动的镜像。您需要自行购买GRID License，并在创建实例后手动安装GRID驱动和激活License。
 
-                    **说明：** 镜像中预装了NVIDIA RAPIDS机器学习加速库以及TensorFlow、Keras开源深度学习框架，您可以快速使用RAPIDS加速数据准备、机器学习和图像分析任务，并结合深度学习框架进行深度学习训练和推理。
-
-                -   NVIDIA GPU Cloud VM Image（虚拟机镜像）是运行针对NVIDIA GPU优化的深度学习框架和HPC应用程序容器的优化环境，更多信息请参见[在GPU实例上部署NGC环境](/cn.zh-CN/最佳实践/GPU实例最佳实践/在GPU实例上部署NGC环境.md)。
-            -   在在创建实例后手动安装GRID驱动，请参见[手动安装GPU驱动](/cn.zh-CN/实例/选择实例规格/GPU计算型/手动安装GPU驱动.md)。
-            非vGPU的GPU实例也支持安装GRID驱动。操作系统类型影响GRID驱动的安装方式，如下所示：
-
-            -   Windows：在镜像市场中搜索关键词GRID，并选用预装GRID驱动的收费镜像。这些收费镜像带有已经激活License的GRID驱动，不用再手动安装GRID驱动。
-
-                ![windows-grid](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5711243061/p175911.png)
-
-            -   Linux：您需要自行购买GRID License，并在创建实例后手动安装GRID驱动和激活License，具体步骤请参见[在vgn6i和vgn5i实例中安装GRID驱动（Linux）](/cn.zh-CN/实例/选择实例规格/GPU计算型/在vgn6i和vgn5i实例中安装GRID驱动（Linux）.md)。
 3.  完成网络和安全组配置。
 
     在选择配置时，请注意：
@@ -240,13 +226,13 @@ wget -t 10 --timeout=10 $script_download_url && sh ${INSTALL_DIR}/${auto_install
 **相关文档**  
 
 
-[RunInstances](/cn.zh-CN/API参考/实例/RunInstances.md)
+[RunInstances](/intl.zh-CN/API参考/实例/RunInstances.md)
 
-[手动安装GPU驱动](/cn.zh-CN/实例/选择实例规格/GPU计算型/手动安装GPU驱动.md)
+[手动安装GPU驱动](/intl.zh-CN/实例/选择实例规格/GPU计算型/手动安装GPU驱动.md)
 
-[在GPU实例中安装GRID驱动（Linux）](/cn.zh-CN/实例/选择实例规格/GPU计算型/在GPU实例中安装GRID驱动（Linux）.md)
+[在GPU实例中安装GRID驱动（Linux）](/intl.zh-CN/实例/选择实例规格/GPU计算型/在GPU实例中安装GRID驱动（Linux）.md)
 
-[手动卸载GPU驱动](/cn.zh-CN/实例/选择实例规格/GPU计算型/手动卸载GPU驱动.md)
+[手动卸载GPU驱动](/intl.zh-CN/实例/选择实例规格/GPU计算型/手动卸载GPU驱动.md)
 
-[GPU监控](/cn.zh-CN/主机监控/GPU监控.md)
+[GPU监控](/intl.zh-CN/主机监控/GPU监控.md)
 
