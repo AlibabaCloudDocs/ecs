@@ -149,7 +149,7 @@ Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直�
             <on_crash>restart</on_crash>
             <devices>
                 <emulator>/usr/bin/qemu-kvm</emulator>
-                <disk type='file' device='disk'><!-- 请根据镜像格式设置下面的type参数：qcow2对应type='qcow2'、vhd对应type='vpc'。 -->
+                <disk type='file' device='disk'><!-- 请根据镜像格式设置下面的type参数：qcow2对应type='qcow2'、vhd对应type='vhd'。 -->
                     <driver name='qemu' type='qcow2' cache='none' dataplane='on' io='native'/> <!-- 如果要创建qcow2快照，需要关闭dataplane。 -->
                     <source file='path'/> <!-- 填写Alibaba Cloud Linux 2镜像的绝对路径。 -->
                     <target dev='vda' bus='virtio'/>
