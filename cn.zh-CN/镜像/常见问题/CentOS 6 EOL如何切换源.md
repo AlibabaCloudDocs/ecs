@@ -6,10 +6,16 @@ CentOS 6操作系统版本结束了生命周期（EOL），Linux社区已不再�
 
 ![centos 6 error](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3368796061/p187588.png)
 
-您可以通过以下步骤，在CentOS 6操作系统中将源配置按照网络环境不同进行切换。
+您可以通过下文的操作步骤，在CentOS 6操作系统的ECS实例中将源配置按照网络环境不同进行切换。
 
--   专有网络VPC类型实例需切换为`http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/`源。
--   经典网络类型实例需切换为`http://mirrors.aliyuncs.com/centos-vault/6.10/`源。
+-   yum源
+    -   专有网络VPC类型实例需切换为`http://mirrors.cloud.aliyuncs.com/centos-vault/6.10/`源。
+    -   经典网络类型实例需切换为`http://mirrors.aliyuncs.com/centos-vault/6.10/`源。
+-   epel源
+    -   专有网络VPC类型实例需切换为`http://mirrors.cloud.aliyuncs.com/epel-archive/6/`源。
+    -   经典网络类型实例需切换为`http://mirrors.aliyuncs.com/epel-archive/6/`源。
+
+**说明：** 本文主要说明ECS实例中的相关操作与配置。如果您的服务器不是ECS实例，需保证服务器具有公网访问能力，并且源地址`http://mirrors.cloud.aliyuncs.com`需要替换为`http://mirrors.aliyun.com`。例如，切换yum源为`http://mirrors.aliyun.com/centos-vault/6.10/`；切换epel源为`http://mirrors.aliyun.com/epel-archive/6/`。
 
 1.  登录CentOS 6系统的ECS实例。
 
