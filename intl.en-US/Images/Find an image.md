@@ -27,15 +27,19 @@ You can find the image that you want to use on the Images page in the ECS consol
 
 4.  Select an image type.
 
-5.  Select a search item from the drop-down list.
+5.  Select an image family.
+
+    **Note:** You can select an image family only for custom images. By default, all images are displayed.
+
+6.  Select a search item from the drop-down list.
 
     **Note:**
 
     You can select the image name, image ID, or snapshot ID as the search item.
 
-6.  Enter the corresponding value in the search bar.
+7.  Enter the corresponding value in the search bar.
 
-7.  Click the ![Search icon](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1601615061/p162845.png) icon to search for the image.
+8.  Click Search to search for the image.
 
 
 ## Example 1
@@ -52,7 +56,7 @@ Perform the following operations on the Images page:
 
 4.  Enter win in the search bar.
 
-5.  Click the ![Search icon](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1601615061/p162845.png) icon to search for the image.
+5.  Click Search to search for the image.
 
 
 ## Example 2
@@ -69,7 +73,7 @@ Perform the following operations on the Images page:
 
 4.  Enter mysql in the search bar.
 
-5.  Click the ![Search icon](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1601615061/p162845.png) icon to search for the image.
+5.  Click Search to search for the image.
 
 
 ## Example 3
@@ -86,12 +90,12 @@ Perform the following operations on the Images page:
 
 4.  Enter s-2xxxxxxxxxxxxxxxxxxx in the search bar.
 
-5.  Click the ![Search icon](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1601615061/p162845.png) icon to search for the image.
+5.  Click Search to search for the image.
 
 
 ## Find an image by calling an API operation
 
-You can use OpenAPI Explorer or Alibaba Cloud CLI to call the DescribeImages operation to find a specific image. For more information about Alibaba Cloud CLI, see [What is Alibaba Cloud CLI?]() This section describes how to use OpenAPI Explorer to call the API operation and find a specific image.
+You can use OpenAPI Explorer or Alibaba Cloud CLI to call the DescribeImages operation to find a specific image. For more information about Alibaba Cloud CLI, see [What is Alibaba Cloud CLI?](). This section describes how to use OpenAPI Explorer to call the API operation to find a specific image.
 
 1.  Go to [OpenAPI Explorer](https://api.aliyun.com/#/?product=Ecs&api=DescribeImages).
 
@@ -117,7 +121,7 @@ After you find the image, you may want to perform the following operations:
 -   Share the image. For more information, see [Share or unshare custom images](/intl.en-US/Images/Custom image/Share or unshare custom images.md).
 -   Copy the image. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md).
 -   Export the image. For more information, see [Export a custom image](/intl.en-US/Images/Custom image/Export a custom image.md).
--   Delete the image. For more information, see [Delete a custom image](/intl.en-US/Images/Custom image/Delete a custom image.md).
+-   Delete the image. For more information, see [Delete a custom image](/intl.en-US/Images/Custom image/Delete a custom image.md)
 -   Modify the description of the image. For more information, see [Modify custom images](/intl.en-US/Images/Custom image/Modify custom images.md).
 
 **Related topics**  
