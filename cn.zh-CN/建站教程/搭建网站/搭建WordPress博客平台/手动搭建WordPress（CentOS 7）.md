@@ -20,7 +20,7 @@ WordPress是使用PHP语言开发的博客平台，在支持PHP和MySQL数据库
 
 ## 搭建WordPress网站
 
-1.  通过ECS控制台，远程连接部署好LNMP环境的ECS实例，配置WordPress数据库。
+1.  通过ECS控制台，远程连接已部署LNMP环境的ECS实例，配置WordPress数据库。
 
     1.  远程连接ECS实例。
 
@@ -44,7 +44,7 @@ WordPress是使用PHP语言开发的博客平台，在支持PHP和MySQL数据库
 
     4.  创建一个新用户管理WordPress库，提高安全性。
 
-        Mysql在5.7版本后默认安装了密码强度验证插件validate\_password。您可以登录Mysql后查看密码强度规则。
+        MySQL在5.7版本后默认安装了密码强度验证插件validate\_password。您可以登录MySQL后查看密码强度规则。
 
         ```
         show variables like "%password%";
@@ -124,7 +124,7 @@ WordPress是使用PHP语言开发的博客平台，在支持PHP和MySQL数据库
         define('DB_HOST', 'localhost');
         ```
 
-    4.  修改完成后，按下Esc键后，输入`:wq`并回车以保存并关闭配置文件。
+    4.  修改完成后，按下Esc键后，输入`:wq`并回车，保存退出配置文件。
 
 4.  修改Nginx配置文件。
 
@@ -138,13 +138,13 @@ WordPress是使用PHP语言开发的博客平台，在支持PHP和MySQL数据库
 
         在`server`大括号内，将`root`后的内容替换为wordpress根目录。本示例中根目录为/usr/share/nginx/html/wordpress。
 
-        ![nginx配置文件](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6504930061/p103576.png)
+        ![nginx配置文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6504930061/p103576.png)
 
         在`location ~ .php$`大括号内，将`root`后的内容替换为wordpress根目录。
 
-        ![nginx配置文件](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6504930061/p103578.png)
+        ![nginx配置文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6504930061/p103578.png)
 
-        修改完成后按Esc键，输入`:wq`保存并退出配置文件。
+        修改完成后按Esc键，输入`:wq`并回车，保存退出配置文件。
 
     3.  运行以下命令重启Nginx服务。
 
@@ -216,37 +216,66 @@ WordPress是使用PHP语言开发的博客平台，在支持PHP和MySQL数据库
 
 ## 常见问题
 
-问题描述：WordPress中设置固定链接后，跳转页面无法访问。
+-   问题描述：WordPress中设置固定链接后，跳转页面无法访问。
 
-解决方案：网站设置伪静态有利于搜索引擎收录网站。您在对WordPress站点设置固定链接前，需要先在Nginx服务器中设置伪静态规则。操作步骤如下：
+    解决方案：网站设置伪静态有利于搜索引擎收录网站。您在对WordPress站点设置固定链接前，需要先在Nginx服务器中设置伪静态规则。操作步骤如下：
 
-1.  登录搭建WordPress的ECS实例。
-2.  运行以下命令打开Nginx配置文件。
+    1.  登录搭建WordPress的ECS实例。
+    2.  运行以下命令打开Nginx配置文件。
 
-    ```
-    vim /etc/nginx/nginx.conf
-    ```
+        ```
+        vim /etc/nginx/nginx.conf
+        ```
 
-3.  按i键进入编辑模式，在`location /`大括号内，添加如下代码。
+    3.  按i键进入编辑模式，在`location /`大括号内，添加如下代码。
 
-    ```
-    if (-f $request_filename/index.html){
-    rewrite (.*) $1/index.html break;
-    }
-    if (-f $request_filename/index.php){
-    rewrite (.*) $1/index.php;
-    }
-    if (!-f $request_filename){
-    rewrite (.*) /index.php;
-    }
-    ```
+        ```
+        if (-f $request_filename/index.html){
+        rewrite (.*) $1/index.html break;
+        }
+        if (-f $request_filename/index.php){
+        rewrite (.*) $1/index.php;
+        }
+        if (!-f $request_filename){
+        rewrite (.*) /index.php;
+        }
+        ```
 
-    添加完成后按Esc键，并输入`:wq`后回车，保存退出文件。
+        添加完成后按Esc键，并输入`:wq`并回车，保存退出文件。
 
-4.  运行以下命令重启Nginx服务。
+    4.  运行以下命令重启Nginx服务。
 
-    ```
-    systemctl restart nginx
-    ```
+        ```
+        systemctl restart nginx
+        ```
+
+-   问题描述：WordPress中更新版本、上传主题或插件时，提示需要FTP登录凭证或无法创建目录。
+
+    解决方案：
+
+    1.  登录搭建WordPress的ECS实例。
+    2.  运行以下命令打开WordPress配置文件。
+
+        ```
+        vim /usr/share/nginx/html/wordpress/wp-config.php
+        ```
+
+    3.  按i键进入编辑模式，在最下方，添加如下代码。
+
+        ```
+        define("FS_METHOD","direct");
+        define("FS_CHMOD_DIR", 0777);
+        define("FS_CHMOD_FILE", 0777);
+        ```
+
+        添加完成后按Esc键，并输入`:wq`并回车，保存退出文件。
+
+    4.  返回WordPress仪表盘，刷新页面，可解决需要FTP登录凭证的问题。
+
+        如果仍存在无法创建目录的问题，需再次返回ECS实例，运行以下命令，将网站根目录的权限用户更新为Nginx对应的用户，本示例环境中为`nginx`用户。
+
+        ```
+        chown -R nginx /usr/share/nginx/html/wordpress
+        ```
 
 
