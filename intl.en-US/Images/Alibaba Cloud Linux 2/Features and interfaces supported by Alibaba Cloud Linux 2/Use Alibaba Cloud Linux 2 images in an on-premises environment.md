@@ -132,7 +132,7 @@ You can use one of the following methods to obtain the seed.img image:
 You can use one of the following methods to start the KVM. Then, use the account information in the `user-data` configuration file to log on to the KVM.
 
 -   Use libvirt to start the KVM.
-    1.  Create a configuration file in the XML format on your on-premises computer. The sample file is named `alinux2.xml` and contains the following content: You can modify the XML-formatted configuration file.
+    1.  Create a configuration file in the XML format on your on-premises computer. The sample file is named `alinux2.xml` and contains the following content. You can modify the XML-formatted configuration file.
 
         ```
         <domain type='kvm'>
@@ -185,7 +185,7 @@ You can use one of the following methods to start the KVM. Then, use the account
         virsh start KVMName    # Enter the actual name of the KVM.
         ```
 
--   Run the `qemu-kvm` command to start the KVM. You must append the following parameter information to the command. Set the `file` parameter to the actual absolute path of the seed.img image.
+-   Run the `qemu-kvm` command to start the KVM. You must append the following parameter information to the command. Set the `file` parameter to the actual absolute path of the seed.img image:
 
     ```
     -drive file=/path/to/your/seed.img,if=virtio,format=raw
