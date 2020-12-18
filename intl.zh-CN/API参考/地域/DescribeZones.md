@@ -38,13 +38,13 @@ DescribeZones仅查询阿里云提供的可用区列表并返回少量库存信�
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
-|Zones|Array| |数据中心信息Zone组成的集合。 |
+|Zones|Array of Zone| |数据中心信息Zone组成的集合。 |
 |Zone| | | |
 |AvailableDedicatedHostTypes|List|计算型|支持的专有宿主机规格，参数数据类型为List。 |
 |AvailableDiskCategories|List|cloud|支持的磁盘种类集合，参数数据类型为List。 |
 |AvailableInstanceTypes|List|c5|允许创建的实例规格类型，参数数据类型为List。 |
 |AvailableResourceCreation|List|DedicatedHost|允许创建的资源类型集合，参数数据类型为List。 |
-|AvailableResources|Array| |可供创建的具体资源，ResourcesInfo组成的数组。 |
+|AvailableResources|Array of ResourcesInfo| |可供创建的具体资源，ResourcesInfo组成的数组。 |
 |ResourcesInfo| | | |
 |DataDiskCategories|List|cloud\_ssd|数据盘类型，参数数据类型为List。可能值：
 
@@ -163,8 +163,8 @@ https://ecs.aliyuncs.com/?Action=DescribeZones
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist.|指定的地域 ID 不存在。|
-|404|InvalidInstanceChargeType.NotFound|The InstanceChargeType does not exist in our records|指定的实例升降配规格不存在。|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist.|指定的地域ID不存在。|
+|404|InvalidInstanceChargeType.NotFound|The InstanceChargeType does not exist in our records|指定的实例计费方式不存在。|
 |400|InvalidSpotStrategy|The specified SpotStrategy is not valid.|指定的SpotStrategy参数无效。|
 |404|InvalidAcceptLanguage.NotFound|Only Chinese \(zh-CN\), English \(en-US\), and Japanese \(ja\) are allowed.|您选择的语言类型无效，现在只支持中文、英语和日语。|
 
