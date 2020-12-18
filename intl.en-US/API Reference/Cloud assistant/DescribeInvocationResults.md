@@ -1,220 +1,225 @@
-# DescribeInvocationResults {#doc_api_1030544 .reference}
+# DescribeInvocationResults
 
-Views the command output of a cloud assistant command in the specified ECS instance.
+You can call this operation to query the execution results of one or more Cloud Assistant commands on ECS instances.
 
-## Description {#description .section}
+## Description
 
-After you invoke a command, it may not succeed. You can call [DescribeInvocationResults](~~64845~~) to view the command output of command invocation. The command output shall prevail.
+-   After you run a command, it may not succeed. You can call this operation to query the actual execution results.
+-   You can query the execution information within the last two weeks. A maximum of 100,000 pieces of execution information can be retained.
 
-## Debugging {#apiExplorer .section}
+## Debugging
 
-You can use [API Explorer](https://api.aliyun.com/#product=Ecs&api=DescribeInvocationResults) to perform debugging. API Explorer allows you to perform various operations to simplify API usage. For example, you can retrieve APIs, call APIs, and dynamically generate SDK example code.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeInvocationResults&type=RPC&version=2014-05-26)
 
-## Request parameters {#parameters .section}
+## Request parameters
 
-|Name|Type|Required|Example|Description|
-|----|----|--------|-------|-----------|
-|RegionId|String|Yes|cn-hangzhou| The ID of the region. You can call [DescribeRegions](~~25609~~) to view the latest regions of Alibaba Cloud.
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|DescribeInvocationResults|The operation that you want to perform. Set the value to DescribeInvocationResults. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the command. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|InvokeId|String|No|t-hz0jdfwd9f\*\*\*\*|The ID of the execution. You can call the [DescribeInvocations](~~64840~~) operation to query the execution IDs. |
+|InstanceId|String|No|i-bp1i7gg30r52z2em\*\*\*\*|The ID of the instance. |
+|CommandId|String|No|c-hz0jdfwcsr\*\*\*\*|The ID of the command. |
+|InvokeRecordStatus|String|No|Running|The execution status of the command. Valid values:
 
- |
-|Action|String|No|DescribeInvocationResults| The operation that you want to perform. Set the value to DescribeInvocationResults.
+-   Running
+-   Finished
+-   Failed
+-   Stopped |
+|IncludeHistory|Boolean|No|false|Specifies whether to return the historical records of scheduled invocations. Valid values:
 
- |
-|CommandId|String|No|c-4d34302d02424c5c8e10281e3a315a05| The ID of the command.
+-   true: The execution results of scheduled invocations are returned. When this parameter is set to true, the `InvokeId` parameter must be set to the ID of the scheduled invocation.
+-   false: No execution results of scheduled invocations are returned.
 
- |
-|InstanceId|String|No|i-uf614fhehhzmxdqx| The ID of the instance.
+Default value: false. |
+|ContentEncoding|String|No|PlainText|Specifies the encoding method of the `Output` response parameter. Valid values:
 
- |
-|InvokeId|String|No|t-7d2a745b412b4601b2d47f6a768d3a14| The invocation ID of the command. The invocation ID of the command process. You can call [DescribeInvocations](~~64840~~) to view the invocation IDs.
+-   PlainText: returns the original command content and command output.
+-   Base64: returns Base64-encoded command content and command output.
 
- |
-|InvokeRecordStatus|String|No|Finished| The status of the command invocation.
+Default value: Base64. |
+|PageNumber|Long|No|1|The number of the page to return. Pages start from page 1.
 
- |
-|PageNumber|Long|No|1| The current page number. Starting value: 1.
+Default value: 1. |
+|PageSize|Long|No|1|The number of entries to return on each page.
 
- Default value: 1.
+Maximum value: 50.
 
- |
-|PageSize|Long|No|5| The number of entries per page. Maximum value: 50.
+Default value: 10. |
 
- Default value: 10.
+## Response parameters
 
- |
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|Invocation|Struct| |The collection of command execution results. |
+|InvocationResults|Array| |Details about the command execution results. |
+|InvocationResult| | | |
+|CommandId|String|c-hz0jdfwcsr\*\*\*\*|The ID of the command. |
+|Dropped|Integer|0|The size of truncated and discarded text when the size of text in the `Output` field is larger than 24 KB. |
+|ErrorCode|String|InstanceNotExists|The code for the cause why the command fails to be sent or executed. Valid values:
 
-## Response parameters {#resultMapping .section}
+-   Null: The command runs normally.
+-   InstanceNotExists: The instance does not exist or is released.
+-   InstanceReleased: The instance is released while the task is being executed.
+-   InstanceNotRunning: The instance is not running when the task is being created.
+-   CommandNotApplicable: The command is not applicable to the specified instance.
+-   AccountNotExists: The specified account does not exist.
+-   DirectoryNotExists: The specified directory does not exist.
+-   BadCronExpression: The specified cron expression for the execution cycle is invalid.
+-   ClientNotRunning: The Cloud Assistant client is not running.
+-   ClientNotResponse: The Cloud Assistant client is not responding.
+-   ClientIsUpgrading: The Cloud Assistant client is being upgraded.
+-   ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
+-   DeliveryTimeout: The request times out.
+-   ExecutionTimeout: The execution times out.
+-   ExecutionException: An exception occurs when the command is running.
+-   ExecutionInterrupted: The execution is interrupted.
+-   ExitCodeNonzero: The execution is complete but the exit code is not 0. |
+|ErrorInfo|String|the specified instance does not exists|The detailed cause why a command fails to be sent or executed . Valid values:
 
-|Name|Type|Example|Description|
-|----|----|-------|-----------|
-|Invocation| | | The command invocation data.
+-   Null: The command runs normally
+-   the specified instance does not exists
+-   the instance has released when create task
+-   the instance is not running when create task
+-   the command is not applicable
+-   the specified account does not exists
+-   the specified directory does not exists
+-   the cron job expression is invalid
+-   the aliyun service is not running on the instance
+-   the aliyun service in the instance does not response
+-   the aliyun service in the instance is upgrading now
+-   the aliyun service in the instance need upgrade
+-   the command delivery has been timeout
+-   the command execution has been timeout
+-   the command execution got an exception
+-   the command execution has been interrupted
+-   the command execution exit code is not zero |
+|ExitCode|Long|0|The exit code of the command execution.
 
- |
-|└InvocationResults| | | The results of command invocation.
+-   For Linux instances, the exit code is the exit code of the shell process.
+-   For Windows instances, the exit code is the exit code of the batch or PowerShell process. |
+|FinishedTime|String|2019-12-20T06:15:56Z|The time when the command execution was complete. If an execution times out, the completion time of the execution is subject to the value of the TimedOut parameter specified in the [CreateCommand](~~64844~~) operation. |
+|InstanceId|String|i-bp1i7gg30r52z2em\*\*\*\*|The ID of the instance. |
+|InvocationStatus|String|Success|The command execution status on a single instance. Valid values:
 
- |
-|└CommandId|String|c-4d34302d02424c5c8e10281e3a315a05| The ID of the command.
+-   Pending: The system is verifying or sending the command.
+-   Invalid: The specified command type or parameter is invalid.
+-   Aborted: The command fails to be sent. The instance must be in the Running state and the command can be sent within one minute.
+-   Running: The command is running on the instance.
+-   Success:
+    -   One-time invocation: The command execution is complete and the exit code is 0.
+    -   Scheduled invocation: The last execution succeeds, the exit code is 0, and the specified cycle has ended.
+-   Failed:
+    -   One-time invocation: The command execution is complete but the exit code is not 0.
+    -   Scheduled invocation: The last execution is complete, the exit code is not 0, and the specified cycle is about to end.
+-   Error: The execution cannot proceed due to an exception.
+-   Timeout: The execution times out.
+-   Cancelled: The task has been canceled and the command has not been started.
+-   Stopping: The task is being stopped.
+-   Terminated: The command is terminated when it is running.
+-   Scheduled:
+    -   One-time invocation: not applicable.
+    -   Scheduled invocation: The command is waiting to be run. |
+|InvokeId|String|t-hz0jdfwd9f\*\*\*\*|The ID of the command execution. |
+|InvokeRecordStatus|String|Running|The execution status of the command. |
+|Output|String|MTU6MzA6MDEK|The output of the command execution. |
+|Repeats|Integer|0|The number of executions on this instance.
 
- |
-|└ ExitCode|Long|0| The exit code of the command process:
+-   If the execution mode is one-time invocation, the value is 0 or 1.
+-   If the execution mode is scheduled invocation, the value is the number of executions that have occurred. |
+|StartTime|String|2019-12-20T06:15:55Z|The time when the command started to be executed in the instance. |
+|StopTime|String|2020-01-19T09:15:47Z|The time when you called the `StopInvocation` operation to manually stop the command execution. |
+|PageNumber|Long|1|The page number of the returned page. |
+|PageSize|Long|1|The number of entries returned per page. |
+|TotalCount|Long|1|The total number of commands. |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
 
- -   For Linux-based instances, the exit code is the Shell process exit code.
--   For Windows-based instances, the exit code is the Bat or PowerShell process exit code.
-
- |
-|└FinishedTime|String|2018-01-05 15:45:02| The time when the command process is completed. If a command process times out, the command completion time is subject to the TimedOut parameter specified in the [CreateCommand](~~64844~~) operation.
-
- |
-|└InstanceId|String|i-uf614fhehhzmxdqx| The ID of the instance.
-
- |
-|└InvokeId|String|t-7d2a745b412b4601b2d47f6a768d3a14| The invocation ID of the command. The invocation ID of the command process. You can call [DescribeInvocations](~~64840~~) to view the invocation IDs.
-
- |
-|└InvokeRecordStatus|String|Finished| The status of the command invocation.
-
- |
-|└Output|String|MTU6MzA6MDEK| The output of the command invocation, which is Base64-encoded.
-
- |
-|└PageNumber|Long|1| The current page number. Starting value: 1.
-
- Default value: 1.
-
- |
-|└PageSize|Long|5| The number of entries per page. Maximum value: 20.
-
- Default value: 10.
-
- |
-|└TotalCount|Long|5| The total number of commands.
-
- |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E| The ID of the request.
-
- |
-
-## Examples {#demo .section}
+## Examples
 
 Sample requests
 
-``` {#request_demo}
+```
 https://ecs.aliyuncs.com/?Action=DescribeInvocationResults
-&RegionId=cn-hangzhou 
-&InvokeId=t-7d2a745b412b4601b2d47f6a768d3a14
-&InstanceId=i-uf614fhehhzmxdqx
-&CommandId=c-4d34302d02424c5c8e10281e3a315a05
-&InvokeRecordStatus=Finished
-&PageNumber=1 
-&PageSize=5
+&RegionId=cn-hangzhou
+&InstanceId=i-bp1i7gg30r52z2em****
+&PageNumber=1
+&PageSize=1
 &<Common request parameters>
 ```
 
-Successful response examples
+Sample success responses
 
 `XML` format
 
-``` {#xml_return_success_demo}
+```
 <DescribeInvocationResultsResponse>
-    <TotalCount>5</TotalCount>
-    <PageNumber>1</PageNumber> 
-    <PageSize>5</PageSize>
-    <InvocationResults> 
-        <InvocationResult>
-            <FinishedTime>2018-01-05 15:45:02</FinishedTime>
-            <InstanceId>i-uf614fhehhzmxdqw</InstanceId>
-            <Output>MTU6NDU6MDEK</Output>
-	<InvokeRecordStatus> Finished<InvokeRecordStatus>
-            <ExitCode>0</ExitCode>
-        </InvocationResult>
-        <InvocationResult>
-            <FinishedTime>2018-01-05 15:40:02</FinishedTime>
-            <InstanceId>i-uf614fhehhzmxdqw</InstanceId>
-            <Output> </Output>
-<InvokeRecordStatus> Finished<InvokeRecordStatus>
-            <ExitCode>0</ExitCode>
-        </InvocationResult>
-        <InvocationResult>
-            <FinishedTime>2018-01-05 15:30:02</FinishedTime>
-            <InstanceId>i-uf614fhehhzmxdqw</InstanceId>
-            <Output>MTU6MzA6MDEK</Output>
-            <ExitCode>0</ExitCode>
-        </InvocationResult>
-        <InvocationResult>
-            <FinishedTime>2018-01-05 15:20:02</FinishedTime>
-            <InstanceId>i-uf614fhehhzmxdqw</InstanceId>
-            <Output> </Output>
-            <ExitCode>0</ExitCode>
-        </InvocationResult>
-        <InvocationResult>
-            <FinishedTime>2018-01-05 15:15:02</FinishedTime>
-            <InstanceId>i-uf614fhehhzmxdqw</InstanceId>
-            <Output>MTU6MTU6MDEK</Output>
-            <ExitCode>0</ExitCode>
-        </InvocationResult>
-        </InvocationResults>
-<RequestId>"E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId> 
-</DescribeInvocationResultsResponse> 
+      <RequestId>F416C43A-6581-4138-9503-4FBBC4EA1BB7</RequestId>
+      <Invocation>
+            <InvocationResults>
+                  <InvocationResult>
+                        <Dropped>0</Dropped>
+                        <InvocationStatus>Failed</InvocationStatus>
+                        <InstanceId>i-bp1i7gg30r52z2em****</InstanceId>
+                        <ExitCode>1</ExitCode>
+                        <ErrorInfo>the command execution exit code is not zero. </ErrorInfo>
+                        <StartTime>2020-05-11T09:01:40Z</StartTime>
+                        <Repeats>1</Repeats>
+                        <InvokeRecordStatus>Finished</InvokeRecordStatus>
+                        <FinishedTime>2020-05-11T09:01:41Z</FinishedTime>
+                        <Output></Output>
+                        <CommandId>c-hz0jdfwcsr****</CommandId>
+                        <ErrorCode>ExitCodeNonzero</ErrorCode>
+                        <InvokeId>t-hz0jdfwd9f****</InvokeId>
+                        <StopTime></StopTime>
+                  </InvocationResult>
+            </InvocationResults>
+            <TotalCount>5</TotalCount>
+            <PageSize>1</PageSize>
+            <PageNumber>1</PageNumber>
+      </Invocation>
+</DescribeInvocationResultsResponse>
 ```
 
 `JSON` format
 
-``` {#json_return_success_demo}
+```
 {
-	"RequestId":"E69EF3CC-94CD-42E7-8926-F133B86387C0",
-	"Invocation":{
-		"PageNumber":1,
-		"TotalCount":5,
-		"InvocationResults":{
-			"InvocationResult":[
-				{
-					"InvokeRecordStatus":"Finished",
-					"FinishedTime":"2018-01-05 15:45:02",
-					"ExitCode":0,
-					"InstanceId":"i-uf614fhehhzmxdqw",
-					"Output":"MTU6NDU6MDEK"
-				},
-				{
-					"InvokeRecordStatus":"Finished",
-					"FinishedTime":"2018-01-05 15:40:02",
-					"ExitCode":0,
-					"InstanceId":"i-uf614fhehhzmxdqw",
-					"Output":""
-				},
-				{
-					"FinishedTime":"2018-01-05 15:30:02",
-					"ExitCode":0,
-					"InstanceId":"i-uf614fhehhzmxdqw",
-					"Output":"MTU6MzA6MDEK"
-				},
-				{
-					"FinishedTime":"2018-01-05 15:20:02",
-					"ExitCode":0,
-					"InstanceId":"i-uf614fhehhzmd3zj4k74",
-					"Output":""
-				},
-				{
-					"InvokeRecordStatus":"Finished",
-					"FinishedTime":"2018-01-05 15:15:02",
-					"ExitCode":0,
-					"InstanceId":"i-uf614fhehhzmd3zj4k74",
-					"Output":"MTU6MTU6MDEK"
-				}
-			]
-		},
-		"PageSize":5
-	}
+    "RequestId": "F416C43A-6581-4138-9503-4FBBC4EA1BB7",
+    "Invocation": {
+        "InvocationResults": {
+            "InvocationResult": [
+                {
+                    "Dropped": 0,
+                    "InvocationStatus": "Failed",
+                    "InstanceId": "i-bp1i7gg30r52z2em****",
+                    "ExitCode": 1,
+                    "ErrorInfo": "the command execution exit code is not zero.",
+                    "StartTime": "2020-05-11T09:01:40Z",
+                    "Repeats": 1,
+                    "InvokeRecordStatus": "Finished",
+                    "FinishedTime": "2020-05-11T09:01:41Z",
+                    "Output": "",
+                    "CommandId": "c-hz0jdfwcsr****",
+                    "ErrorCode": "ExitCodeNonzero",
+                    "InvokeId": "t-hz0jdfwd9f****",
+                    "StopTime": ""
+                }
+            ]
+        },
+        "TotalCount": 5,
+        "PageSize": 1,
+        "PageNumber": 1
+    }
 }
 ```
 
-## Error codes {#section_fk2_prx_1n4 .section}
+## Error codes
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned when an unknown error occurs.|
-|403|InvalidParam.PageNumber|The specified parameter is invalid.|The error message returned when the specified parameter is invalid.|
-|403|InvalidParam.PageSize|The specified parameter is invalid.|The error message returned when the specified parameter is invalid.|
-|403|InvalidRegionId.CloudAssistant|Current region is not available.|The error message returned when the specified region is unavailable.|
+|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned because an error occurred when the request was being sent. Try again later.|
+|403|InvalidParam.PageNumber|The specified parameter is invalid.|The error message returned because the specified PageNumber parameter is invalid.|
+|403|InvalidParam.PageSize|The specified parameter is invalid.|The error message returned because the specified PageSize parameter is invalid.|
 
-[View error codes](https://error-center.aliyun.com/status/product/Ecs)
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
