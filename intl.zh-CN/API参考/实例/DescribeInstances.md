@@ -6,7 +6,7 @@
 
 -   请求参数的作用类似于一个过滤器，过滤器为逻辑与（AND）关系。如果某一参数为空，则过滤器不起作用。但是参数InstanceIds如果是一个空JSON数组，则视为该过滤器有效，且返回空。
 -   如果您使用的是RAM用户账号或者RAM角色，当用户或者角色缺乏接口权限时，将会返回空列表。您可以在请求中加入`DryRun`参数，判断是否因权限问题导致的空列表现象。
--   通过阿里云CLI调用API时，不同数据类型的请求参数取值必须遵循格式要求，详情请参见[CLI参数格式说明](~~110340~~)。
+-   通过阿里云CLI调用API时，不同数据类型的请求参数取值必须遵循格式要求。更多信息，请参见[CLI参数格式说明](~~110340~~)。
 
 ## 调试
 
@@ -85,7 +85,8 @@
 |AdditionalAttributes.N|RepeatList|否|META\_OPTIONS|其他属性值。N的取值范围：1~20。取值范围：
 
  -   META\_OPTIONS：实例元数据。
--   DDH\_CLUSTER：专有宿主机集群。 |
+-   DDH\_CLUSTER：专有宿主机集群。
+-   NETWORK\_PRIMARY\_ENI\_IP ：主网卡辅助IP。 |
 |HttpEndpoint|String|否|enabled|是否启用实例元数据的访问通道。取值范围：
 
  -   enabled：启用
@@ -93,7 +94,7 @@
 
  默认值：enabled
 
- **说明：** 有关实例元数据的信息，请参见[实例元数据概述](~~49122~~)。 |
+ **说明：** 有关实例元数据的更多信息，请参见[实例元数据概述](~~49122~~)。 |
 |HttpTokens|String|否|optional|访问实例元数据时是否强制使用加固模式（IMDSv2）。取值范围：
 
  -   optional：不强制使用。
@@ -101,7 +102,7 @@
 
  默认值：optional
 
- **说明：** 有关访问实例元数据的模式，请参见[实例元数据访问模式](~~150575~~)。 |
+ **说明：** 有关访问实例元数据模式的更多信息，请参见[实例元数据访问模式](~~150575~~)。 |
 
 ## 返回数据
 
@@ -121,8 +122,8 @@
 |CreationTime|String|2017-12-10T04:04Z|实例创建时间。 |
 |CreditSpecification|String|Standard|修改突发性能实例的运行模式。可能值：
 
- -   Standard：标准模式，实例性能请参见[什么是突发性能实例](~~59977~~)下的性能约束模式章节。
--   Unlimited：无性能约束模式，实例性能请参见[什么是突发性能实例](~~59977~~)下的无性能约束模式章节。 |
+ -   Standard：标准模式。有关实例性能的更多信息，请参见[什么是突发性能实例](~~59977~~)中的性能约束模式章节。
+-   Unlimited：无性能约束模式，有关实例性能的更多信息，请参见[什么是突发性能实例](~~59977~~)中的无性能约束模式章节。 |
 |DedicatedHostAttribute|Struct| |由专有宿主机集群ID（DedicatedHostClusterId）、专有宿主机ID（DedicatedHostId）和名称（DedicatedHostName）组成的宿主机属性数组。 |
 |DedicatedHostClusterId|String|dc-bp67acfmxazb4h\*\*\*\*|专有宿主机集群ID。 |
 |DedicatedHostId|String|dh-bp67acfmxazb4p\*\*\*\*|专有宿主机ID。 |
@@ -156,13 +157,14 @@
 
  -   PayByBandwidth：按带宽计费。
 -   PayByTraffic：按流量计费。 |
-|IpAddress|String|42.112.17.\*\*|弹性公网IP。 |
+|IpAddress|String|42.112.\*\*.\*\*|弹性公网IP。 |
 |IsSupportUnassociate|Boolean|true|是否可以解绑弹性公网IP。 |
-|ExpiredTime|String|2017-12-10T04:04Z|过期时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mm:ssZ。 |
+|ExpiredTime|String|2017-12-10T04:04Z|过期时间。以ISO8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mm:ssZ。更多信息，请参见[ISO8601](~~25696~~)。 |
 |GPUAmount|Integer|4|实例规格附带的GPU数量。 |
 |GPUSpec|String|NVIDIA V100|实例规格附带的GPU类型。 |
 |HostName|String|testHostName|实例主机名。 |
 |HpcClusterId|String|hpc-bp67acfmxazb4p\*\*\*\*|实例所属的HPC集群ID。 |
+|ISP|String|null|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |ImageId|String|m-bp67acfmxazb4p\*\*\*\*|实例运行的镜像ID。 |
 |InnerIpAddress|List|10.170.\*\*.\*\*|实例的内网IP地址。 |
 |InstanceChargeType|String|PostPaid|实例的计费方式。可能值：
@@ -187,7 +189,7 @@
 |KeyPairName|String|testKeyPairName|密钥对名称。 |
 |LocalStorageAmount|Integer|2|实例挂载的本地存储数量。 |
 |LocalStorageCapacity|Long|1000|实例挂载的本地存储容量。 |
-|Memory|Integer|1024|内存大小，单位MiB。 |
+|Memory|Integer|16384|内存大小，单位为MiB。 |
 |MetadataOptions|Struct| |元数据选项集合。 |
 |HttpEndpoint|String|enabled|是否启用实例元数据的访问通道。可能值：
 
@@ -200,9 +202,20 @@
 -   required：强制使用 |
 |NetworkInterfaces|Array of NetworkInterface| |实例包含的弹性网卡集合。 |
 |NetworkInterface| | | |
+|Ipv6Sets|Array of Ipv6Set| |为弹性网卡分配的IPv6地址集合。 |
+|Ipv6Set| | | |
+|Ipv6Address|String|2408:4321:180:1701:94c7:bc38:3bfa:\*\*\*|为弹性网卡指定的IPv6地址。 |
 |MacAddress|String|00:16:3e:32:b4:\*\*|弹性网卡的MAC地址。 |
 |NetworkInterfaceId|String|eni-2zeh9atclduxvf1z\*\*\*\*|弹性网卡的ID。 |
 |PrimaryIpAddress|String|172.17.\*\*.\*\*\*|弹性网卡主私有IP地址。 |
+|PrivateIpSets|Array of PrivateIpSet| |PrivateIpSet组成的集合。 |
+|PrivateIpSet| | | |
+|Primary|Boolean|true|是否是主私网IP地址。 |
+|PrivateIpAddress|String|172.17.\*\*.\*\*|实例的私网IP地址。 |
+|Type|String|Primary|弹性网卡类型。可能值：
+
+ -   Primary：主网卡
+-   Secondary：辅助弹性网卡 |
 |OSName|String|CentOS 7.4 64 位|实例的操作系统名称。 |
 |OSNameEn|String|CentOS 7.4 64 bit|实例操作系统的英文名称。 |
 |OSType|String|linux|实例的操作系统类型，分为Windows Server和Linux两种。可能值：
@@ -219,7 +232,7 @@
 -   Recycling：抢占式实例的待释放锁定状态。
 -   dedicatedhostfinancial：因为专有宿主机欠费导致ECS实例被锁定。
 -   refunded：因退款被锁定。 |
-|PublicIpAddress|List|121.40.61.\*\*\*|实例公网IP地址。 |
+|PublicIpAddress|List|121.40.\*\*.\*\*|实例公网IP地址。 |
 |RdmaIpAddress|List|10.10.10.102|HPC实例的Rdma网络IP。 |
 |Recyclable|Boolean|false|实例是否可以回收。 |
 |RegionId|String|cn-hangzhou|实例所属地域ID。 |
@@ -258,9 +271,9 @@
 |VpcId|String|vpc-2zeuphj08tt7q3brd\*\*\*\*|专有网络VPC ID。 |
 |ZoneId|String|cn-hangzhou-g|实例所属可用区。 |
 |PageNumber|Integer|1|实例列表的页码。 |
-|PageSize|Integer|1|输入时设置的每页行数。 |
+|PageSize|Integer|10|输入时设置的每页行数。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
-|TotalCount|Integer|58|查询到的实例总数。 |
+|TotalCount|Integer|1|查询到的实例总数。 |
 
 ## 示例
 
@@ -280,108 +293,119 @@ PageNumber=1
 
 ```
 <DescribeInstancesResponse>
-      <PageNumber>1</PageNumber>
-      <TotalCount>58</TotalCount>
-      <PageSize>1</PageSize>
-      <RequestId>97935DF1-0289-4AA2-9DD1-72377838B16B</RequestId>
       <Instances>
             <Instance>
-                  <ImageId>centos_7_06_64_20G_alibase_20190711.vhd</ImageId>
-                  <VlanId></VlanId>
+                  <ResourceGroupId>rg-bp67acfmxazb4p****</ResourceGroupId>
+                  <Memory>16384</Memory>
+                  <InstanceChargeType>PostPaid</InstanceChargeType>
+                  <Cpu>8</Cpu>
+                  <OSName>CentOS  7.4 64 位</OSName>
+                  <InstanceNetworkType>vpc</InstanceNetworkType>
+                  <InnerIpAddress>
+            </InnerIpAddress>
+                  <ExpiredTime>2017-12-10T04:04Z</ExpiredTime>
+                  <ImageId>m-bp67acfmxazb4p****</ImageId>
                   <EipAddress>
-                        <IpAddress></IpAddress>
-                        <AllocationId></AllocationId>
-                        <InternetChargeType></InternetChargeType>
+                        <AllocationId>i-bp67acfmxazb4p****</AllocationId>
+                        <IpAddress>42.112.**.**</IpAddress>
+                        <InternetChargeType>PayByTraffic</InternetChargeType>
                   </EipAddress>
-                  <ZoneId>cn-hangzhou-f</ZoneId>
-                  <IoOptimized>true</IoOptimized>
-                  <SerialNumber>51d1353b-22bf-4567-a176-8b3e12e43***</SerialNumber>
-                  <Cpu>2</Cpu>
-                  <Memory>8192</Memory>
-                  <DeviceAvailable>true</DeviceAvailable>
-                  <SecurityGroupIds>
-                        <SecurityGroupId>sg-bp17zljqpohu6j2i****</SecurityGroupId>
-                  </SecurityGroupIds>
-                  <SaleCycle></SaleCycle>
-                  <AutoReleaseTime></AutoReleaseTime>
-                  <ResourceGroupId></ResourceGroupId>
-                  <OSType>linux</OSType>
-                  <OSName>CentOS  7.6 64位</OSName>
-                  <InstanceNetworkType>classic</InstanceNetworkType>
-                  <HostName>iZbp1j4i2jdf3owlheb****</HostName>
-                  <CreationTime>2019-11-11T08:35Z</CreationTime>
+                  <HostName>testHostName</HostName>
                   <Tags>
                         <Tag>
-                              <TagValue>asg-bp1d8uuut40f4qc4****</TagValue>
-                              <TagKey>acs:autoscaling:scalingGroupId</TagKey>
-                        </Tag>
-                        <Tag>
-                              <TagValue>ESS</TagValue>
-                              <TagKey>ESS</TagKey>
+                              <TagKey>TestKey</TagKey>
+                              <TagValue>TestValue</TagValue>
                         </Tag>
                   </Tags>
-                  <EcsCapacityReservationAttr>
-                        <CapacityReservationPreference>none</CapacityReservationPreference>
-                        <CapacityReservationId></CapacityReservationId>
-                  </EcsCapacityReservationAttr>
-                  <RegionId>cn-hangzhou</RegionId>
-                  <DeletionProtection>false</DeletionProtection>
-                  <OperationLocks>
-            </OperationLocks>
-                  <ExpiredTime>2099-12-31T15:59Z</ExpiredTime>
+                  <VlanId></VlanId>
+                  <Status>Running</Status>
+                  <MetadataOptions>
+                        <HttpTokens>optional</HttpTokens>
+                        <HttpEndpoint>enabled</HttpEndpoint>
+                  </MetadataOptions>
+                  <InstanceId>i-bp67acfmxazb4p****</InstanceId>
+                  <StoppedMode>KeepCharging</StoppedMode>
                   <CpuOptions>
-                        <Numa></Numa>
                         <ThreadsPerCore>2</ThreadsPerCore>
-                        <CoreCount>1</CoreCount>
+                        <Numa>2</Numa>
+                        <CoreCount>4</CoreCount>
                   </CpuOptions>
-                  <InnerIpAddress>
-                        <IpAddress>10.80.**.**</IpAddress>
-                  </InnerIpAddress>
-                  <InstanceTypeFamily>ecs.mn4</InstanceTypeFamily>
-                  <InstanceId>i-bp1j4i2jdf3owlhe****</InstanceId>
-                  <InternetMaxBandwidthIn>50</InternetMaxBandwidthIn>
-                  <CreditSpecification></CreditSpecification>
-                  <InternetChargeType>PayByTraffic</InternetChargeType>
-                  <SpotStrategy>NoSpot</SpotStrategy>
-                  <StoppedMode>Not-applicable</StoppedMode>
-                  <InternetMaxBandwidthOut>1</InternetMaxBandwidthOut>
+                  <StartTime>2017-12-10T04:04Z</StartTime>
+                  <DeletionProtection>false</DeletionProtection>
+                  <SecurityGroupIds>
+                        <SecurityGroupId>sg-bp67acfmxazb4p****</SecurityGroupId>
+                  </SecurityGroupIds>
                   <VpcAttributes>
-                        <NatIpAddress></NatIpAddress>
                         <PrivateIpAddress>
-                </PrivateIpAddress>
-                        <VSwitchId></VSwitchId>
-                        <VpcId></VpcId>
+                              <IpAddress>172.17.**.**</IpAddress>
+                        </PrivateIpAddress>
+                        <VpcId>vpc-2zeuphj08tt7q3brd****</VpcId>
+                        <VSwitchId>vsw-2zeh0r1pabwtg6wcs****</VSwitchId>
+                        <NatIpAddress>172.17.**.**</NatIpAddress>
                   </VpcAttributes>
-                  <SpotPriceLimit>0</SpotPriceLimit>
-                  <StartTime>2019-11-11T08:35Z</StartTime>
-                  <InstanceName>ECS-asg-MyFirstScalingGroup</InstanceName>
-                  <Description>ECS</Description>
-                  <OSNameEn>CentOS  7.6 64 bit</OSNameEn>
+                  <InternetChargeType>PayByTraffic</InternetChargeType>
+                  <InstanceName>InstanceNameTest</InstanceName>
+                  <DeploymentSetId></DeploymentSetId>
+                  <InternetMaxBandwidthOut>5</InternetMaxBandwidthOut>
+                  <SerialNumber>51d1353b-22bf-4567-a176-8b3e12e4****</SerialNumber>
+                  <OSType>linux</OSType>
+                  <CreationTime>2017-12-10T04:04Z</CreationTime>
+                  <AutoReleaseTime>2017-12-10T04:04Z</AutoReleaseTime>
+                  <Description>testDescription</Description>
+                  <InstanceTypeFamily>ecs.g5</InstanceTypeFamily>
+                  <DedicatedInstanceAttribute>
+                        <Tenancy>default</Tenancy>
+                        <Affinity>default</Affinity>
+                  </DedicatedInstanceAttribute>
                   <PublicIpAddress>
                         <IpAddress>121.40.**.**</IpAddress>
                   </PublicIpAddress>
-                  <InstanceType>ecs.mn4.large</InstanceType>
-                  <Status>Running</Status>
-                  <MetadataOptions>
-                        <HttpTokens></HttpTokens>
-                        <HttpEndpoint></HttpEndpoint>
-                  </MetadataOptions>
-                  <Recyclable>false</Recyclable>
-                  <ClusterId></ClusterId>
                   <GPUSpec></GPUSpec>
-                  <InstanceChargeType>PostPaid</InstanceChargeType>
-                  <GPUAmount>0</GPUAmount>
+                  <NetworkInterfaces>
+                        <NetworkInterface>
+                              <Type>Primary</Type>
+                              <PrimaryIpAddress>172.17.**.***</PrimaryIpAddress>
+                              <NetworkInterfaceId>eni-2zeh9atclduxvf1z****</NetworkInterfaceId>
+                              <MacAddress>00:16:3e:32:b4:**</MacAddress>
+                              <PrivateIpSets>
+                                    <PrivateIpSet>
+                                          <PrivateIpAddress>172.17.**.**</PrivateIpAddress>
+                                          <Primary>true</Primary>
+                                    </PrivateIpSet>
+                              </PrivateIpSets>
+                        </NetworkInterface>
+                  </NetworkInterfaces>
+                  <SpotPriceLimit>0.98</SpotPriceLimit>
+                  <DeviceAvailable>true</DeviceAvailable>
+                  <SaleCycle>month</SaleCycle>
+                  <InstanceType>ecs.g5.large</InstanceType>
+                  <OSNameEn>CentOS  7.4 64 bit</OSNameEn>
+                  <SpotStrategy>NoSpot</SpotStrategy>
+                  <IoOptimized>true</IoOptimized>
+                  <ZoneId>cn-hangzhou-g</ZoneId>
+                  <ClusterId>c-bp67acfmxazb4p****</ClusterId>
+                  <EcsCapacityReservationAttr>
+                        <CapacityReservationPreference></CapacityReservationPreference>
+                        <CapacityReservationId></CapacityReservationId>
+                  </EcsCapacityReservationAttr>
                   <DedicatedHostAttribute>
-                        <DedicatedHostId></DedicatedHostId>
-                        <DedicatedHostName></DedicatedHostName>
+                        <DedicatedHostId>dh-bp67acfmxazb4p****</DedicatedHostId>
+                        <DedicatedHostName>testDedicatedHostName</DedicatedHostName>
+                        <DedicatedHostClusterId>dc-bp67acfmxazb4h****</DedicatedHostClusterId>
                   </DedicatedHostAttribute>
-                  <DedicatedInstanceAttribute>
-                        <Affinity></Affinity>
-                        <Tenancy></Tenancy>
-                  </DedicatedInstanceAttribute>
-                  <DeploymentSetId></DeploymentSetId>
+                  <GPUAmount>4</GPUAmount>
+                  <OperationLocks>
+            </OperationLocks>
+                  <InternetMaxBandwidthIn>50</InternetMaxBandwidthIn>
+                  <Recyclable>false</Recyclable>
+                  <RegionId>cn-hangzhou</RegionId>
+                  <CreditSpecification></CreditSpecification>
             </Instance>
       </Instances>
+      <TotalCount>1</TotalCount>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <PageSize>10</PageSize>
+      <PageNumber>1</PageNumber>
 </DescribeInstancesResponse>
 ```
 
@@ -389,120 +413,135 @@ PageNumber=1
 
 ```
 {
-	"PageNumber": 1,
-	"TotalCount": 58,
-	"PageSize": 1,
-	"RequestId": "97935DF1-0289-4AA2-9DD1-72377838B16B",
 	"Instances": {
 		"Instance": [
 			{
-				"ImageId": "centos_7_06_64_20G_alibase_20190711.vhd",
-				"VlanId": "",
+				"ResourceGroupId": "rg-bp67acfmxazb4p****",
+				"Memory": 16384,
+				"InstanceChargeType": "PostPaid",
+				"Cpu": 8,
+				"OSName": "CentOS  7.4 64 位",
+				"InstanceNetworkType": "vpc",
+				"InnerIpAddress": {
+					"IpAddress": []
+				},
+				"ExpiredTime": "2017-12-10T04:04Z",
+				"ImageId": "m-bp67acfmxazb4p****",
 				"EipAddress": {
-					"IpAddress": "",
-					"AllocationId": "",
-					"InternetChargeType": ""
+					"AllocationId": "i-bp67acfmxazb4p****",
+					"IpAddress": "42.112.**.**",
+					"InternetChargeType": "PayByTraffic"
 				},
-				"ZoneId": "cn-hangzhou-f",
-				"IoOptimized": true,
-				"SerialNumber": "51d1353b-22bf-4567-a176-8b3e12e43***",
-				"Cpu": 2,
-				"Memory": 8192,
-				"DeviceAvailable": true,
-				"SecurityGroupIds": {
-					"SecurityGroupId": [
-						"sg-bp17zljqpohu6j2i****"
-					]
-				},
-				"SaleCycle": "",
-				"AutoReleaseTime": "",
-				"ResourceGroupId": "",
-				"OSType": "linux",
-				"OSName": "CentOS  7.6 64位",
-				"InstanceNetworkType": "classic",
-				"HostName": "iZbp1j4i2jdf3owlheb****",
-				"CreationTime": "2019-11-11T08:35Z",
+				"HostName": "testHostName",
 				"Tags": {
 					"Tag": [
 						{
-							"TagValue": "asg-bp1d8uuut40f4qc4****",
-							"TagKey": "acs:autoscaling:scalingGroupId"
-						},
-						{
-							"TagValue": "ESS",
-							"TagKey": "ESS"
+							"TagKey": "TestKey",
+							"TagValue": "TestValue"
 						}
 					]
 				},
-				"EcsCapacityReservationAttr": {
-					"CapacityReservationPreference": "none",
-					"CapacityReservationId": ""
+				"VlanId": "",
+				"Status": "Running",
+				"MetadataOptions": {
+					"HttpTokens": "optional",
+					"HttpEndpoint": "enabled"
 				},
-				"RegionId": "cn-hangzhou",
-				"DeletionProtection": false,
-				"OperationLocks": {
-					"LockReason": []
-				},
-				"ExpiredTime": "2099-12-31T15:59Z",
+				"InstanceId": "i-bp67acfmxazb4p****",
+				"StoppedMode": "KeepCharging",
 				"CpuOptions": {
-					"Numa": "",
 					"ThreadsPerCore": 2,
-					"CoreCount": 1
+					"Numa": "2",
+					"CoreCount": 4
 				},
-				"InnerIpAddress": {
-					"IpAddress": [
-						"10.80.**.**"
+				"StartTime": "2017-12-10T04:04Z",
+				"DeletionProtection": false,
+				"SecurityGroupIds": {
+					"SecurityGroupId": [
+						"sg-bp67acfmxazb4p****"
 					]
 				},
-				"InstanceTypeFamily": "ecs.mn4",
-				"InstanceId": "i-bp1j4i2jdf3owlhe****",
-				"InternetMaxBandwidthIn": 50,
-				"CreditSpecification": "",
-				"InternetChargeType": "PayByTraffic",
-				"SpotStrategy": "NoSpot",
-				"StoppedMode": "Not-applicable",
-				"InternetMaxBandwidthOut": 1,
 				"VpcAttributes": {
-					"NatIpAddress": "",
 					"PrivateIpAddress": {
-						"IpAddress": []
+						"IpAddress": [
+							"172.17.**.**"
+						]
 					},
-					"VSwitchId": "",
-					"VpcId": ""
+					"VpcId": "vpc-2zeuphj08tt7q3brd****",
+					"VSwitchId": "vsw-2zeh0r1pabwtg6wcs****",
+					"NatIpAddress": "172.17.**.**"
 				},
-				"SpotPriceLimit": 0,
-				"StartTime": "2019-11-11T08:35Z",
-				"InstanceName": "ECS-asg-MyFirstScalingGroup",
-				"Description": "ECS",
-				"OSNameEn": "CentOS  7.6 64 bit",
+				"InternetChargeType": "PayByTraffic",
+				"InstanceName": "InstanceNameTest",
+				"DeploymentSetId": "",
+				"InternetMaxBandwidthOut": 5,
+				"SerialNumber": "51d1353b-22bf-4567-a176-8b3e12e4****",
+				"OSType": "linux",
+				"CreationTime": "2017-12-10T04:04Z",
+				"AutoReleaseTime": "2017-12-10T04:04Z",
+				"Description": "testDescription",
+				"InstanceTypeFamily": "ecs.g5",
+				"DedicatedInstanceAttribute": {
+					"Tenancy": "default",
+					"Affinity": "default"
+				},
 				"PublicIpAddress": {
 					"IpAddress": [
 						"121.40.**.**"
 					]
 				},
-				"InstanceType": "ecs.mn4.large",
-				"Status": "Running",
-                "MetadataOptions": {
-					"HttpTokens": "",
-					"HttpEndpoint": ""
-				},
-				"Recyclable": false,
-				"ClusterId": "",
 				"GPUSpec": "",
-				"InstanceChargeType": "PostPaid",
-				"GPUAmount": 0,
+				"NetworkInterfaces": {
+					"NetworkInterface": [
+						{
+							"Type": "Primary",
+							"PrimaryIpAddress": "172.17.**.***",
+							"NetworkInterfaceId": "eni-2zeh9atclduxvf1z****",
+							"MacAddress": "00:16:3e:32:b4:**",
+							"PrivateIpSets": {
+								"PrivateIpSet": [
+									{
+										"PrivateIpAddress": "172.17.**.**",
+										"Primary": true
+									}
+								]
+							}
+						}
+					]
+				},
+				"SpotPriceLimit": 0.98,
+				"DeviceAvailable": true,
+				"SaleCycle": "month",
+				"InstanceType": "ecs.g5.large",
+				"OSNameEn": "CentOS  7.4 64 bit",
+				"SpotStrategy": "NoSpot",
+				"IoOptimized": true,
+				"ZoneId": "cn-hangzhou-g",
+				"ClusterId": "c-bp67acfmxazb4p****",
+				"EcsCapacityReservationAttr": {
+					"CapacityReservationPreference": "",
+					"CapacityReservationId": ""
+				},
 				"DedicatedHostAttribute": {
-					"DedicatedHostId": "",
-					"DedicatedHostName": ""
+					"DedicatedHostId": "dh-bp67acfmxazb4p****",
+					"DedicatedHostName": "testDedicatedHostName",
+					"DedicatedHostClusterId": "dc-bp67acfmxazb4h****"
 				},
-				"DedicatedInstanceAttribute": {
-					"Affinity": "",
-					"Tenancy": ""
+				"GPUAmount": 4,
+				"OperationLocks": {
+					"LockReason": []
 				},
-				"DeploymentSetId": ""
+				"InternetMaxBandwidthIn": 50,
+				"Recyclable": false,
+				"RegionId": "cn-hangzhou",
+				"CreditSpecification": ""
 			}
 		]
-	}
+	},
+	"TotalCount": 1,
+	"RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+	"PageSize": 10,
+	"PageNumber": 1
 }
 ```
 
