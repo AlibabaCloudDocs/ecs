@@ -24,7 +24,7 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|JoinSecurityGroup|系统规定参数。取值：JoinSecurityGroup |
-|InstanceId|String|是|i-bp67acfmxazb4p\*\*\*\*|实例ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
+|InstanceId|String|是|i-bp67acfmxazb4p\*\*\*\*|实例ID。 |
 |SecurityGroupId|String|是|sg-bp67acfmxazb4p\*\*\*\*|安全组ID。您可以调用[DescribeSecurityGroups](~~25556~~)查看您可用的安全组。 |
 
 ## 返回数据
