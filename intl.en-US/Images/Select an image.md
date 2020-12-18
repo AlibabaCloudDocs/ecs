@@ -16,7 +16,7 @@ When you select an image, you must consider the following factors:
 
 ## Region
 
-Each image is tied to its region and can only be used to create instances within the same region. For example, if you want to create an instance in China \(Beijing\), only images in the China \(Beijing\) region can be used. For more information about regions, see[Regions and zones](https://www.alibabacloud.com/help/zh/doc-detail/123712.htm).
+Each image is tied to its region and can only be used to create instances within the same region. For example, if you want to create an instance in China \(Beijing\), only images in the China \(Beijing\) region can be used. For more information about regions, see [Regions and zones]().
 
 If you want to use an image that belongs to a different region, you must copy the image to that region. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md).
 
@@ -70,7 +70,7 @@ When you select an operating system, you must consider the following factors:
 
     -   Alibaba Cloud Linux
 
-        Alibaba Cloud Linux is an operating system that provides a safe, stable, and high-performance runtime environment for applications on ECS instances. Alibaba Cloud Linux 2 supports various cloud scenarios and instance types \(excluding instances of the classic network type and non-I/O optimized instances\). For more information, see [Overview of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview of Alibaba Cloud Linux 2.md).
+        Alibaba Cloud Linux is an operating system that provides a safe, stable, and high-performance runtime environment for applications on ECS instances. Alibaba Cloud Linux 2 supports various cloud scenarios and instance types \(excluding instances of the classic network type and non-I/O optimized instances\). For more information, see [Overview](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview.md).
 
     -   Red Hat series
 
@@ -131,6 +131,6 @@ Alibaba Cloud Marketplace images are typically pre-installed with a runtime envi
 
 ## What to do next
 
--   Use an image to create an ECS instance. For more information, see [Create an instance by using the provided wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the provided wizard.md).
+-   Use an image to create an ECS instance. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 -   Use an image to change the operating system. For more information, see [Change the operating system](/intl.en-US/Images/Change the operating system.md).
 
