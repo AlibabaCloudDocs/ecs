@@ -27,6 +27,7 @@
     -   指定`VSwitchId`时，`SecurityGroupId`和`VSwitchId`必须属于同一个VPC。
     -   `PrivateIpAddress`依赖于`VSwitchId`，不能单独指定`PrivateIpAddress`。同时指定`VSwitchId`和`PrivateIpAddress`时，`PrivateIpAddress`必须包含在交换机的空闲子网网段之内。
 -   **公网带宽**：
+    -   自2020年11月27日起，创建和变配ECS实例时带宽峰值受账户限速策略影响。如需更大带宽峰值，请提交工单。具体限速策略：单个地域下，所有按使用流量计费ECS实例的实际运行带宽峰值总和不大于5 Gbit/s；所有按固定带宽计费ECS实例的实际运行带宽峰值总和不大于50 Gbit/s。
     -   使用`CreateInstance`创建的实例将不会分配公网IP地址，您可以调用[AllocatePublicIpAddress](~~25544~~)自行分配。
     -   `InternetChargeType`和`InternetMaxBandwidthOut`的设置决定带宽费用。
     -   阿里云入网数据流量免费，`InternetMaxBandwidthIn`的值与计费无关。
@@ -136,7 +137,8 @@
  默认值：空 |
 |SystemDisk.PerformanceLevel|String|否|PL1|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
 
- -   PL1（默认）：单盘最高随机读写IOPS 5万。
+ -   PL0（默认）：单盘最高随机读写IOPS 1万。
+-   PL1：单盘最高随机读写IOPS 5万。
 -   PL2：单盘最高随机读写IOPS 10万。
 -   PL3：单盘最高随机读写IOPS 100万。
 
@@ -181,7 +183,8 @@
 |DataDisk.N.KMSKeyId|String|否|0e478b7a-4262-4802-b8cb-00d\*\*\*\*|云盘使用的KMS密钥ID。 |
 |DataDisk.N.PerformanceLevel|String|否|PL2|创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
 
- -   PL1（默认）：单盘最高随机读写IOPS 5万。
+ -   PL0：单盘最高随机读写IOPS 1万。
+-   PL1（默认）：单盘最高随机读写IOPS 5万。
 -   PL2：单盘最高随机读写IOPS 10万。
 -   PL3：单盘最高随机读写IOPS 100万。
 
@@ -439,7 +442,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |404|DependencyViolation.IoOptimized|The specified instancetype must be IoOptimized instance.|指定的实例规格必须为I/O优化实例，请您检查实例规格是否正确。|
 |404|PaymentMethodNotFound|No payment method has been registered on the account.|账户尚未注册支付方式。|
 |404|HOSTNAME\_ILLEGAL|hostname is not valid.|指定的主机名不合法。|
-|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SytemDisk.Size小于镜像文件大小数值。|
+|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
 |404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the min size.|指定的系统盘小于最低容量。|
 |404|InvalidSystemDiskSize.MoreThanMaxSize|The specified SystemDisk.Size parameter exceeds the maximum size.|指定的系统盘大小超出最大容量。|
 |404|InvalidDataDiskSnapshotId.NotFound|The specified parameter DataDisk.n.SnapshotId is not valid.|指定的数据盘快照ID不合法。|
@@ -459,7 +462,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |403|InvalidInstanceType.ZoneNotSupported|The specified zone does not support this instancetype.|指定的可用区里不支持指定的InstanceType。|
 |400|InstanceDiskNumber.LimitExceed|The total number of specified disk in an instance exceeds.|实例下磁盘数目超过限制。|
 |400|Account.Arrearage|Your account has an outstanding payment.|您的账号存在未支付的款项。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的DiskCategory参数有误。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |400|InvalidAutoRenewPeriod.ValueNotSupported|The specified autoRenewPeriod is not valid.|指定的参数AutoRenewPeriod不合法。|
 |400|QuotaExceed.AfterpayInstance|The maximum number of Pay-As-You-Go instances is exceeded.|按量付费的实例库存不足，请减少创建数量。|
 |400|InvalidSpotStrategy|The specified SpotStrategy is not valid.|指定的SpotStrategy参数无效。|
