@@ -14,6 +14,7 @@
     -   您可以指定参数`AutoReleaseTime`设置实例自动释放时间。
     -   创建成功后会返回实例ID列表，您可以通过[DescribeInstances](~~25506~~)查询新建实例状态。
     -   创建实例时，默认自动启动实例，直到实例状态变成运行中（`Running`）。
+    -   自2020年11月27日起，创建和变配ECS实例时带宽峰值受账户限速策略影响。如需更大带宽峰值，请提交工单。具体限速策略：单个地域下，所有按使用流量计费ECS实例的实际运行带宽峰值总和不大于5 Gbit/s；所有按固定带宽计费ECS实例的实际运行带宽峰值总和不大于50 Gbit/s。
     -   与[CreateInstance](~~25499~~)相比，通过`RunInstances`创建的实例如果参数`InternetMaxBandwidthOut`的值大于0，则自动为实例分配公网IP。
     -   提交创建任务后，参数不合法或者库存不足的情况下会报错，具体的报错原因参见错误码。
 
@@ -125,9 +126,10 @@
 
  默认值：空 |
 |SystemDisk.Description|String|否|SystemDisk\_Description|系统盘的描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
-|SystemDisk.PerformanceLevel|String|否|PL1|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
+|SystemDisk.PerformanceLevel|String|否|PL0|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
 
- -   PL1（默认）：单盘最高随机读写IOPS 5万
+ -   PL0（默认）：单盘最高随机读写IOPS 1万
+-   PL1：单盘最高随机读写IOPS 5万
 -   PL2：单盘最高随机读写IOPS 10万
 -   PL3：单盘最高随机读写IOPS 100万
 
@@ -174,9 +176,10 @@
 -   false：数据盘不随实例释放。
 
  默认值：true |
-|DataDisk.N.PerformanceLevel|String|否|PL2|创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
+|DataDisk.N.PerformanceLevel|String|否|PL1|创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
 
- -   PL1（默认）：单盘最高随机读写IOPS 5万
+ -   PL0：单盘最高随机读写IOPS 1万
+-   PL1（默认）：单盘最高随机读写IOPS 5万
 -   PL2：单盘最高随机读写IOPS 10万
 -   PL3：单盘最高随机读写IOPS 100万
 
@@ -186,7 +189,7 @@
 
  -   none：非I/O优化
 -   optimized：I/O优化 |
-|NetworkInterface.N.PrimaryIpAddress|String|否|172.16.236.\*\*\*|添加一张辅助弹性网卡并设置主IP地址。N的取值范围为1。
+|NetworkInterface.N.PrimaryIpAddress|String|否|172.16.\*\*.\*\*|添加一张辅助弹性网卡并设置主IP地址。N的取值范围为1。
 
  **说明：** 创建ECS实例时，您最多能添加一张辅助网卡。实例创建成功后，您可以调用[CreateNetworkInterface](~~58504~~)和[AttachNetworkInterface](~~58515~~)添加更多的辅助网卡。
 
@@ -282,7 +285,7 @@
 
  选择包年包月时，您必须确认自己的账号支持信用支付，否则将返回`InvalidPayMethod`的错误提示。 |
 |DeploymentSetId|String|否|ds-bp1brhwhoqinyjd6\*\*\*\*|部署集ID。 |
-|PrivateIpAddress|String|否|10.1.2.1|实例私网IP地址。
+|PrivateIpAddress|String|否|10.1.\*\*.\*\*|实例私网IP地址。
 
  专有网络VPC类型ECS实例设置私网IP地址时，必须从虚拟交换机（`VSwitchId`）的空闲网段中选择。
 
@@ -514,7 +517,7 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 |400|InvalidAutoReleaseTime.Malformed|The specified parameter AutoReleaseTime is not valid.|自动释放格式错误。请您按照ISO8601标准表示，并需要使用UTC时间，格式为：yyyy-MM-ddTHH:mm:ssZ。|
 |400|InvalidPrivateIpAddress.Malformed|The specified parameter PrivateIpAddress is not valid.|指定的PrivateIpAddress不合法。|
 |400|InvalidInnerIpAddress.Malformed|The specified parameter InnerIpAddress is not valid.|指定的InnerIpAddress参数不合法。|
-|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SytemDisk.Size小于镜像文件大小数值。|
+|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
 |404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the min size.|指定的系统盘小于最低容量。|
 |403|OperationDenied|The specified RegionId does not support the creation of the network type ECS instance.|指定的地域ID不支持创建网络类型的ECS实例，请您确认该网络类型在此地域有库存。|
 |400|OperationDenied.NoVlan|The specified parameter "VlanId" is not valid or vlan has not enough IP address.|指定的VlanId不合法，或已超出最大IP地址数限制。|
@@ -540,7 +543,7 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 |403|OperationDenied.NoStock|The resource is out of stock in the specified zone. Please try other types, or choose other regions and zones.|指定的资源在指定可用区中无货。请尝试其他类型，或选择其他可用区和地域。|
 |403|InvalidInstanceType.ZoneNotSupported|The specified zone does not support this instancetype.|指定的可用区里不支持指定的InstanceType。|
 |400|InstanceDiskNumber.LimitExceed|The total number of specified disk in an instance exceeds.|实例下磁盘数目超过限制。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的DiskCategory参数有误。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |400|InvalidSpotStrategy|The specified SpotStrategy is not valid.|指定的SpotStrategy参数无效。|
 |400|InvalidSpotPriceLimit|The specified SpotPriceLimitis not valid.|指定的SpotPriceLimit参数有误。|
 |400|InvalidSpotDuration|The specified SpotDuration is not valid.|指定的SpotDuration参数有误。|
