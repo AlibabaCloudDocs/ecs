@@ -1,10 +1,10 @@
 # DescribeZones
 
-You can call this operation to query zones in a specified region.
+You can call this operation to query zones in a region.
 
 ## Description
 
-Calling this operation only returns a list of zones and some resource inventory information related to each zone. If you want to query instance types and disk categories that are available for purchase in a specified zone, we recommend that you call the [DescribeAvailableResource](~~66186~~) operation.
+When you call this operation, only a list of zones and some resource information related to each zone is returned. If you want to query instance types and disk categories that are available for purchase in a specified zone, we recommend that you call the [DescribeAvailableResource](~~66186~~) operation.
 
 ## Debugging
 
@@ -20,11 +20,11 @@ Calling this operation only returns a list of zones and some resource inventory 
 
 -   PrePaid: subscription
 -   PostPaid: pay-as-you-go |
-|SpotStrategy|String|No|NoSpot|The bidding policy for pay-as-you-go instances. Specify this parameter when the InstanceChargeType parameter is set to PostPaid. For more information, see [Preemptible instances](~~52088~~). Default value: NoSpot. Valid values:
+|SpotStrategy|String|No|NoSpot|The bidding policy for pay-as-you-go instances. You can specify this parameter when the InstanceChargeType parameter is set to PostPaid. For more information, see [Preemptible instances](~~52088~~). Default value: NoSpot. Valid values:
 
 -   NoSpot: applies to regular pay-as-you-go instances.
 -   SpotWithPriceLimit: applies to preemptible instances that have maximum hourly prices.
--   SpotAsPriceGo: applies to pay-as-you-go instances priced at the market price at the time of purchase. |
+-   SpotAsPriceGo: applies to preemptible instances priced at the market price at the time of purchase. |
 |AcceptLanguage|String|No|zh-CN|The natural language that is used to filter responses. For more information, visit [RFC 7231](https://tools.ietf.org/html/rfc7231). Valid values:
 
 -   zh-CN
@@ -38,13 +38,13 @@ Default value: zh-CN. |
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
-|Zones|Array| |An array consisting of Zone data. |
+|Zones|Array of Zone| |An array consisting of Zone data. |
 |Zone| | | |
 |AvailableDedicatedHostTypes|List|Compute type|The supported types of dedicated hosts. The data type of this parameter is List. |
 |AvailableDiskCategories|List|cloud|The supported disk categories. The data type of this parameter is List. |
 |AvailableInstanceTypes|List|c5|The instance types of instances that can be created. The data type of this parameter is List. |
 |AvailableResourceCreation|List|DedicatedHost|The types of the resources that can be created. The data type of this parameter is List. |
-|AvailableResources|Array| |An array consisting of ResourcesInfo data. |
+|AvailableResources|Array of ResourcesInfo| |An array consisting of ResourcesInfo data. |
 |ResourcesInfo| | | |
 |DataDiskCategories|List|cloud\_ssd|The categories of data disks. The data type of this parameter is List. Valid values:
 
@@ -54,9 +54,9 @@ Default value: zh-CN. |
 -   cloud\_essd: enhanced SSD \(ESSD\)
 -   ephemeral\_ssd: local SSD |
 |InstanceGenerations|List|Ⅳ|The generation numbers of instance families. The data type of this parameter is List. |
-|InstanceTypeFamilies|List|\["d1", "d1ne"\]|The set of supported instance families. The data type of this parameter is List. |
-|InstanceTypes|List|\["ecs.g5.large"\]|The instance types of the instances. The data type of this parameter is List. |
-|IoOptimized|Boolean|True|Indicates whether the instance is I/O optimized. |
+|InstanceTypeFamilies|List|\["d1", "d1ne"\]|The collection of supported instance families. The data type of this parameter is List. |
+|InstanceTypes|List|\["ecs.g5.large"\]|The instance types of instances. The data type of this parameter is List. |
+|IoOptimized|Boolean|true|Indicates whether the instance is I/O optimized. |
 |NetworkTypes|List|VPC|The types of the network. The data type of this parameter is List. Valid values:
 
 -   VPC
@@ -69,7 +69,7 @@ Default value: zh-CN. |
 |AvailableVolumeCategories|List|san\_ssd|The categories of available shared storage. The data type of this parameter is List. |
 |DedicatedHostGenerations|List|I|The generation numbers of dedicated hosts. The data type of this parameter is List. |
 |LocalName|String|Hangzhou Zone G|The name of the zone in the local language. |
-|ZoneId|String|cn-hangzhou-b|The ID of the zone. |
+|ZoneId|String|cn-hangzhou-g|The zone ID. |
 
 ## Examples
 
