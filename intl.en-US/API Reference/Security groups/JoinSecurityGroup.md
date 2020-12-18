@@ -17,15 +17,15 @@ When you call this operation, take note of the following items:
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=JoinSecurityGroup&type=RPC&version=2014-05-26)
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer automatically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=JoinSecurityGroup&type=RPC&version=2014-05-26)
 
 ## Request parameters
 
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|JoinSecurityGroup|The operation that you want to perform. Set the value to JoinSecurityGroup. |
-|InstanceId|String|Yes|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
-|SecurityGroupId|String|Yes|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group. You can call the [DescribeSecurityGroups](~~25556~~) operation to view available security groups. |
+|InstanceId|String|Yes|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance. |
+|SecurityGroupId|String|Yes|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group. You can call the [DescribeSecurityGroups](~~25556~~) operation to query available security groups. |
 
 ## Response parameters
 
@@ -71,12 +71,12 @@ Sample success responses
 |403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|The error message returned because the operation is not supported while the resource is in the current state.|
 |403|InstanceLockedForSecurity|The specified operation is denied as your instance is locked for security reasons.|The error message returned because the operation is not supported while the instance is locked for security reasons.|
 |403|SecurityGroupInstanceLimitExceeded|The maximum number of instances in a security group is exceeded.|The error message returned because the maximum number of instances in the specified security group has been reached.|
-|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified instance does not exist. Check whether the instance ID is correct.|
+|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified InstanceId parameter does not exist. Check whether the instance ID is correct.|
 |400|InvalidInstanceId.Mismatch|Specified instance and security group are not in the same VPC.|The error message returned because the specified instance and security group do not belong to the same VPC or one of the following special cases occurs: 1. The security group is of the VPC network type but the instance is not. 2. The instance is of the VPC network type but the security group is not.|
 |403|InvalidInstanceId.AlreadyExists|The specified instance already exists in the specified security group.|The error message returned because the specified instance already exists in the security group.|
 |500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
 |403|SecurityGroupInstanceLimitExceeded|%s|The error message returned because the maximum number of instances in the specified security group has been reached.|
-|403|AclLimitExceed|%s|The error message returned because the value of AccessPoint exceeds the upper limit.|
+|403|AclLimitExceed|%s|The error message returned because the maximum value of AccessPoint has been reached.|
 |403|InstanceSecurityGroupLimitExceeded|%s|The error message returned because the maximum number of security groups to which the instance can be added has been reached.|
 |400|InvalidInstanceId.Malformed|The specified parameter "InstanceId" is not valid.|The error message returned because the specified InstanceId parameter is invalid.|
 
