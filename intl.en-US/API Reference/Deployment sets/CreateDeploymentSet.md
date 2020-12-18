@@ -11,23 +11,15 @@ You can call this operation to create a deployment set in a specified region.
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|CreateDeploymentSet|The operation that you want to perform. Set the value to CreateDeploymentSet. |
-|RegionId|String|Yes|cn-hangzhou|The region ID of the deployment set. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|RegionId|String|Yes|cn-hangzhou|The ID of the region in which to create the deployment set. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |OnUnableToRedeployFailedInstance|String|No|CancelMembershipAndStart|The emergency solution to be used in the following situation: Instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances are failed over from faulty physical machines to normal physical machines. Default value: CancelMembershipAndStart. Valid values:
 
 -   CancelMembershipAndStart: removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
 -   KeepStopped: keeps the instances in the abnormal state and restarts them after ECS resources are replenished. |
 |Description|String|No|testDescription|The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
-|ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value must contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
-|DeploymentSetName|String|No|testDeploymentSetName|The name of the deployment set. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\). |
-|Domain|String|No|null|The deployment domain.
-
-**Note:** We recommend that you use other parameters to ensure future compatibility. |
-|Granularity|String|No|null|The deployment granularity.
-
-**Note:** We recommend that you use other parameters to ensure future compatibility. |
-|Strategy|String|No|null|The deployment strategy.
-
-**Note:** We recommend that you use other parameters to ensure future compatibility. |
+|ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~). |
+|DeploymentSetName|String|No|testDeploymentSetName|The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://. |
+|Strategy|String|No|Availability|The deployment strategy. Set the value to Availability. |
 
 ## Response parameters
 
