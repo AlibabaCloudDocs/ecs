@@ -8,7 +8,7 @@ The billing of instance types refers to the billing of computing resources \(vCP
 
 ## Overview
 
-Instance types are billed based on computing resources, including vCPUs and memory. Prices of an instance type may vary with regions. For more information, see the[Pricing](https://www.alibabacloud.com/product/ecs) tab on the Elastic Compute Service page.
+Instance types are billed based on computing resources, including vCPUs and memory. Prices of an instance type may vary with regions. For more information, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab on the Elastic Compute Service page.
 
 **Note:** If you select an instance type that is equipped with local disks, the price of the instance type includes that of local disks.
 
