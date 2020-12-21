@@ -74,8 +74,6 @@ After the instant access feature is enabled, you are charged for both the storag
 
 After the snapshot is created, choose **Storage & Snapshots** \> **Snapshots** in the left-side navigation pane to check whether instant access takes effect on the new snapshot.
 
-![ia Snapshot creation result](../images/p187919.png)
-
 After the instant access feature is enabled for a snapshot, You can use the snapshot to create a new disk or roll back the original disk without waiting for the snapshot to be created. For more information, see [Create a disk from a snapshot](/intl.en-US/Block Storage/Cloud disks/Create a cloud disk/Create a disk from a snapshot.md) and [Roll back a disk by using a snapshot](/intl.en-US/Snapshots/Use snapshots/Roll back a disk by using a snapshot.md).
 
 ## Disable the instant access feature
