@@ -1,14 +1,14 @@
 # Use the JBD2 optimization interface
 
-JBD2 is the kernel thread of the ext4 file system. It often experiences the shadow \(BH\_Shadow\) state during its use, which can affect the system performance. To solve this problem, Alibaba Cloud Linux 2 provides an interface in the 4.19.81-17.al7 kernel version and later to optimize JBD2. This topic describes the interface.
+JBD2 is the kernel thread of the ext4 file system. It often experiences the shadow \(BH\_Shadow\) state during its use, which can affect the system performance. To solve this problem, Alibaba Cloud Linux 2 provides an interface in version 4.19.81-17.al7 and later of the kernel to optimize JBD2. This topic describes the interface.
 
-ext4 is one of the most common journaling file systems. JBD2 is the kernel thread of ext4 for updating journals and a global resource for the ext4 file system. When the JBD2 kernel thread attempts to obtain access permissions from the cache, the cache page may be in the BH\_Shadow state. In this case, JBD2 waits an extended period of time for the cache page to write back to the disk, which can affect the system performance. To solve this problem, Alibaba Cloud Linux 2 provides the `force_copy` kernel interface to optimize JBD2. The system force copies the cache page to reduce the amount of time that JBD2 waits for the cache page in the BH\_Shadow state to write back to the disk. In addition, Alibaba Cloud Linux 2 provides the `stats` interface to help analyze quality of service \(QoS\) issues related to the file system.
+Ext4 is one of the most common journaling file systems. JBD2 is the kernel thread of ext4 for updating journals and is a global resource for the ext4 file system. When the JBD2 kernel thread attempts to obtain access permissions from the cache, the cache page may be in the BH\_Shadow state. In this case, JBD2 waits an extended period of time for the cache page to write back to the disk, which can affect the system performance. To solve this problem, Alibaba Cloud Linux 2 provides the `force_copy` kernel interface to optimize JBD2. The system forcibly copies the cache page to reduce the amount of time that JBD2 waits for the cache page in the BH\_Shadow state to write back to the disk. In addition, Alibaba Cloud Linux 2 provides the `stats` interface to help analyze quality of service \(QoS\) issues related to the file system.
 
 ## Interface description
 
 |Interface|Description|
 |---------|-----------|
-|force\_copy|The interface file is stored in /proc/fs/jbd2/<device\>-8/force\_copy, where the `device` variable specifies the name of the block storage device. After you enable the force\_copy interface, the system force copies data, which reduces the waiting time of JBD2. **Note:** The interface consumes memory to run. |
+|force\_copy|The interface file is stored in /proc/fs/jbd2/<device\>-8/force\_copy, where the `device` variable specifies the name of the Elastic Block Storage \(EBS\) device. After you enable the force\_copy interface, the system forcibly copies data to reduce the waiting time of JBD2. **Note:** The interface consumes memory to run. |
 |stats|The interface file is stored in /proc/fs/jbd2/<device\>-8/stats. The interface helps determine whether QoS issues in the file system are caused by JBD2.|
 
 ## Examples
@@ -44,7 +44,7 @@ The following examples demonstrate how to implement the `force_copy` and `stats`
     |The fifth field|The latency of the transaction request.|
     |The sixth field|The amount of time that the transaction ran.|
     |The seventh field|The amount of time that the transaction was locked.|
-    |The eighth field|The amount of time that it took to refresh the transaction.|
+    |The eighth field|The amount of time it took to refresh the transaction.|
     |The ninth field|The transaction logging time.|
     |The tenth field|The average transaction commit time.|
     |The eleventh field|The number of handles contained in the transaction.|
