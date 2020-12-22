@@ -15,7 +15,7 @@ ext4作为最常用的日志文件系统之一，更新日志（journal）的内
 
 `force_copy`和`stats`接口示例如下。
 
--   `force_copy`接口默认为关闭状态。将接口设置1为调用该接口；设置0为关闭该接口。
+-   `force_copy`接口默认为关闭状态。将接口设置为1表示调用该接口；设置为0表示关闭该接口。
 
     ```
     echo 1 > /proc/fs/jbd2/nvme0n1-8/force_copy    # 调用接口
