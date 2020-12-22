@@ -8,12 +8,12 @@ This topic provides an overview of public images provided by Alibaba Cloud, incl
 
 ## Types of public images
 
-The following table describes two types of public images provided by Alibaba Cloud. Windows Server and Red Hat Enterprise Linux images cannot be used free of charge. However, you can use other free public images to create ECS instances. For more information, see [Image overview](/intl.en-US/Images/Image overview.md).
+The following table describes two types of public images provided by Alibaba Cloud. Windows Server and Red Hat Enterprise Linux images cannot be used free of charge. However, you can use other free public images to create ECS instances. For more information, see [Image prices](/intl.en-US/Images/Image overview.md).
 
 |Type|Description|Technical support|
 |:---|:----------|:----------------|
-|Alibaba Cloud Linux images|Alibaba Cloud Linux images are custom, proprietary operating systems provided by Alibaba Cloud to create ECS instances. Alibaba Cloud Linux images are fully tested to guarantee their security, stability, and normal startup and operation.|Alibaba Cloud provides technical support for problems that occur when you use Alibaba Cloud Linux images.|
-|Third-party images and open source images|Third-party and open source images are fully tested and released by Alibaba Cloud to guarantee their security, stability, and normal startup and operation. Such images include: -   Windows: Windows Server
+|Alibaba Cloud Linux images|Alibaba Cloud Linux images are custom, proprietary operating systems provided by Alibaba Cloud to create ECS instances. Alibaba Cloud Linux images are fully tested to ensure their security, stability, and normal startup and operation.|Alibaba Cloud provides technical support for problems that occur when you use Alibaba Cloud Linux images.|
+|Third-party images and open source images|Third-party and open source images are fully tested and released by Alibaba Cloud to ensure their security, stability, and normal startup and operation. The following third-party public images are available: -   Windows: Windows Server
 -   Linux: Ubuntu, CentOS, Red Hat Enterprise Linux, Debian, OpenSUSE, SUSE Linux, FreeBSD, and CoreOS
 
 |We recommend that you contact the corresponding operating system vendors or open source communities for technical support. Alibaba Cloud also provides information about image- and system-related problems.|
@@ -29,11 +29,11 @@ Alibaba Cloud Linux is a Linux public image developed by Alibaba Cloud. The foll
 -   Alibaba Cloud Linux 2.1903 64-bit \(Trusted\)
 -   Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)
 
-|A next-generation operating system that supports various Alibaba Cloud instance types including ECS Bare Metal Instance Types. By default, Alibaba Cloud Linux 2 is also equipped with [Alibaba Cloud CLI]() and other software packages.
+|A next-generation operating system that supports various Alibaba Cloud instance types including ECS Bare Metal Instance types. By default, Alibaba Cloud Linux 2 is also equipped with [Alibaba Cloud CLI]() and other software packages.
 
 If you want to replace other Linux distributions with Alibaba Cloud Linux 2, you can select Public Image and then Alibaba Cloud Linux 2 when you create an ECS instance or when you replace the system disk of an ECS instance.
 
-For more information, see [Overview of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview of Alibaba Cloud Linux 2.md) and [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes of Alibaba Cloud Linux 2.md). |
+For more information, see [Overview](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview.md) and [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes of Alibaba Cloud Linux 2.md). |
 
 ## Third-party images and open source images
 
@@ -77,7 +77,7 @@ The asterisks \(\*\*\*\*\) indicate the latest version number of the Semi-Annual
     -   CentOS 6.10 64-bit
     -   CentOS 6.9 64-bit
     -   CentOS 6.8 32-bit
-**Note:** If you are using a 32-bit operating system, you must select an instance types that has a memory of less than or equal to 4 GiB. For more information, see [Select an image](/intl.en-US/Images/Select an image.md). |
+**Note:** If you are using a 32-bit operating system, you must select an instance type that has a memory of less than or equal to 4 GiB. For more information, see [Select an image](/intl.en-US/Images/Select an image.md). |
     |CoreOS|    -   CoreOS 2345.3.0 64-bit
     -   CoreOS 2303.4.0 64-bit
     -   CoreOS 2303.3.0 64-bit
