@@ -76,10 +76,13 @@
 |API|描述|
 |---|--|
 |[CreateElasticityAssurance](/cn.zh-CN/API参考/资源保障/CreateElasticityAssurance.md)|调用CreateElasticityAssurance创建弹性保障服务。|
+|[CreateCapacityReservation](/cn.zh-CN/API参考/资源保障/CreateCapacityReservation.md)|调用CreateCapacityReservation创建容量预定服务。|
 |[DescribeElasticityAssurances](/cn.zh-CN/API参考/资源保障/DescribeElasticityAssurances.md)|调用DescribeElasticityAssurances查询弹性保障服务的详细信息。|
 |[DescribeElasticityAssuranceInstances](/cn.zh-CN/API参考/资源保障/DescribeElasticityAssuranceInstances.md)|调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。|
+|[DescribeCapacityReservationInstances](/cn.zh-CN/API参考/资源保障/DescribeCapacityReservationInstances.md)|调用DescribeCapacityReservationInstances查询容量预定服务已匹配的实例列表。|
 |[DescribeInstanceAttachmentAttributes](/cn.zh-CN/API参考/资源保障/DescribeInstanceAttachmentAttributes.md)|调用DescribeInstanceAttachmentAttributes查询实例匹配的私有池信息。|
 |[ModifyInstanceAttachmentAttributes](/cn.zh-CN/API参考/资源保障/ModifyInstanceAttachmentAttributes.md)|调用ModifyInstanceAttachmentAttributes修改实例的私有池的属性。|
+|[ReleaseCapacityReservation](/cn.zh-CN/API参考/资源保障/ReleaseCapacityReservation.md)|调用ReleaseCapacityReservation释放容量预定服务。|
 
 ## 弹性供应组
 
