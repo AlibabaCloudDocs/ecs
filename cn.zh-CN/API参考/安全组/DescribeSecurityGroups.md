@@ -66,14 +66,14 @@
 |--|--|---|--|
 |PageNumber|Integer|1|当前页码。 |
 |PageSize|Integer|1|每页行数。 |
-|RegionId|String|cn-hangzhou|安全组所属地域ID |
+|RegionId|String|cn-hangzhou|安全组所属地域ID。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
 |SecurityGroups|Array of SecurityGroup| |安全组信息集合。 |
 |SecurityGroup| | | |
-|AvailableInstanceAmount|Integer|0| |
+|AvailableInstanceAmount|Integer|0|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |CreationTime|String|2017-12-05T22:40:00Z|创建时间。按照[ISO8601](~~25696~~)标准表示，并需要使用UTC时间。格式为：yyyy-MM-ddThh:mmZ。 |
-|Description|String|TestDescription|描述信息。 |
-|EcsCount|Integer|0| |
+|Description|String|TestDescription|安全组描述信息。 |
+|EcsCount|Integer|0|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|安全组所在的企业资源组ID。 |
 |SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|安全组ID。 |
 |SecurityGroupName|String|SGTestName|安全组名称。 |
@@ -81,8 +81,8 @@
 
  -   normal：普通安全组
 -   enterprise：企业安全组 |
-|ServiceID|Long|12345678910|弹性网卡对应的虚商ID。 |
-|ServiceManaged|Boolean|true|该弹性网卡的使用者是否为云产品或虚商。 |
+|ServiceID|Long|12345678910|安全组对应的虚商ID。 |
+|ServiceManaged|Boolean|true|安全组的使所有者是否为云产品或虚商。 |
 |Tags|Array of Tag| |安全组的标签。 |
 |Tag| | | |
 |TagKey|String|TestKey|安全组的标签键。 |
