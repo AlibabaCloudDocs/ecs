@@ -27,7 +27,21 @@ Alibaba Cloud Linux 2 was originally called Aliyun Linux 2 and is an upgraded ve
 
 ## What are the differences among Alibaba Cloud Linux 2 images?
 
-For the release notes of Alibaba Cloud Linux 2 images, see [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes of Alibaba Cloud Linux 2.md). For the relationships among Alibaba Cloud Linux 2 images, see the "Images" section in [Images](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview of Alibaba Cloud Linux 2.md).
+For the release notes of Alibaba Cloud Linux 2 images, see [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes of Alibaba Cloud Linux 2.md). Different Alibaba Cloud Linux 2 images have the following relationships:
+
+-   Alibaba Cloud Linux 2.1903 LTS 64-bit: the default standard image version.
+-   Alibaba Cloud Linux 2.1903 64-bit \(Quick Start\): vertically optimized from Alibaba Cloud Linux 2.1903 LTS 64-bit and based on Alibaba Cloud infrastructure. The boot speed of instances created by using images of this version is significantly improved and the default runtime of images of this version is the same as that of the standard version.
+
+    **Note:** The kernel startup parameter of the Quick Start version cannot be modified.
+
+-   Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\): derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create AMD-compatible instances. Only the Unified Extensible Firmware Interface \(UEFI\) boot mode is supported.
+
+    **Note:** Images of this version can be used to create instances of only the following Alibaba Cloud Bare Metal Instance families \(AMD-compatible\): ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a.
+
+-   Alibaba Cloud Linux 2.1903 64-bit \(Trusted\): derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud trusted instances.
+
+    **Note:** Images of this version can be used to create instances of only the following trusted instance families: ecs.g6t and ecs.c6t.
+
 
 ## How do I use Alibaba Cloud Linux 2 in Alibaba Cloud?
 
