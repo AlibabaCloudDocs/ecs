@@ -8,16 +8,16 @@ Alibaba Cloud Linux 2 provides the weight-based throttling feature \(blk-iocost\
 |---------|-----------|------------------|
 |cost.qos|A read/write interface whose file is stored only in the root group of the blkcg. The full name of the file is `blkio.cost.qos` in cgroup v1 and `io.cost.qos` in cgroup v2. This interface provides the blk-iocost feature and limits the I/O quality of service \(QoS\) rate based on the latency weight.
 
-After blk-iocost is enabled, the kernel calculates the proportion of requests that exceed the read or write latency threshold \(`rlat|wlat`\) out of all requests. When the proportion is greater than the read or write latency percentile \(`rpct|wpct`\), the kernel considers the disk to be saturated and reduces the rate at which requests are sent to the disk. By default, the value of `rlat|wlat` is set to 0, indicating that the blk-iocost feature is disabled.
+After blk-iocost is enabled, the kernel calculates the proportion of requests that exceed the read or write latency threshold \(`rlat|wlat`\) out of all requests. When the proportion is greater than the read or write latency percentile \(`rpct|wpct`\), the kernel considers the disk to be saturated and reduces the rate at which requests are sent to the disk. By default, the value of `rlat|wlat` is set to 0, which indicates that the blk-iocost feature is disabled.
 
-|Each line of configuration in the interface file starts with the major number \(MAJ\) and minor number \(MIN\) of the disk in the `MAJ:MIN` format, followed by the following configuration items: -   enable: specifies whether to enable the blk-iocost controller to enable blk-iocost. The default value 0 indicates that blk-iocost is disabled. A value of 1 indicates that blk-iocost is enabled.
+|Each line of configuration in the interface file starts with the major number \(MAJ\) and minor number \(MIN\) of the disk in the `MAJ:MIN` format, followed by the following configuration items: -   enable: specifies whether to enable the blk-iocost controller to enable the blk-iocost feature. The default value 0 indicates that blk-iocost is disabled. A value of 1 indicates that blk-iocost is enabled.
 -   ctrl: the control mode. Valid values: `auto` and `user`. When ctrl is set to `auto`, the kernel automatically detects the disk category and uses built-in parameters. When ctrl is set to `user`, you must specify the following QoS control parameters:
 -   rpct: the read latency percentile. Valid values: 0 to 100.
 -   rlat: the read latency threshold. Unit: microseconds.
 -   wpct: the write latency percentile. Valid values: 0 to 100.
 -   wlat: the write latency threshold. Unit: microseconds.
 -   min: the minimum scaling percentage. Valid values: 1 to 10000.
--   max: maximum scaling percentage. Valid values: 1 to 10000. |
+-   max: the maximum scaling percentage. Valid values: 1 to 10000. |
 |cost.model|A read/write interface whose file is stored only in the root group of the blkcg. The full name of the interface file is `blkio.cost.model` in cgroup v1 and `io.cost.model` in cgroup v2. The interface is used to set the cost model.|Each line of configuration in the interface file starts with the major number \(MAJ\) and minor number \(MIN\) of the disk in the `MAJ:MIN` format, followed by the following configuration items: -   ctrl: the control mode. It specifies whether to allow the user to enter model parameters. Valid values: `auto` and `user`.
 -   model: the model parameter. Valid value: `linear`. You must define the following modeling parameters when model is set to `linear`:
 
@@ -72,7 +72,7 @@ Use `cost.model` to configure a model on the `254:48` disk based on the modeling
 
 ## Example 3
 
-Use `cost.weight` to change the default weight of blkcg1 to 50 and set the weight of blkcg1 on the `254:48` disk to 50. The following commands are used for the cgoup v1 and cgoup v2 interfaces:
+Use `cost.weight` to change the default weight of blkcg1 to 50 and set the weight of blkcg1 on the `254:48` disk to 50. The following commands are used for the cgroup v1 and cgroup v2 interfaces:
 
 -   The command for cgroup v1:
 
@@ -93,7 +93,7 @@ Use `cost.weight` to change the default weight of blkcg1 to 50 and set the weigh
 
 -   iocost monitor script
 
-    The `tools/cgroup/iocost_monitor.py` script in the kernel source code uses the drgn debugger to obtain kernel parameters and then provides the I/O performance monitoring data. For more information about drgn, visit [drgn](https://github.com/osandov/drgn). The script is used in the following manner:
+    The `tools/cgroup/iocost_monitor.py` script in the kernel source code uses the drgn debugger to obtain kernel parameters and then provide the I/O performance monitoring data. For more information about drgn, visit [drgn](https://github.com/osandov/drgn). The script is used in the following manner:
 
     Run the following command to monitor the I/O performance of the vdd disk.
 
@@ -118,7 +118,7 @@ Use `cost.weight` to change the default weight of blkcg1 to 50 and set the weigh
     cat /sys/fs/cgroup/blkio/blkcg1/blkio.cost.stat
     ```
 
-    A command output similar to the following one is returned:
+    Example output:
 
     ```
     254:48 is_active=1 active=50 inuse=50 hweight_active=5957 hweight_inuse=5957 vrate=159571
@@ -140,7 +140,7 @@ Use `cost.weight` to change the default weight of blkcg1 to 50 and set the weigh
         cat /sys/kernel/debug/tracing/trace_pipe
         ```
 
-        A command output similar to the following one is returned:
+        Example output:
 
         ```
             dd-1593  [008] d...   688.565349: iocost_iocg_activate: [vdd:/blkcg1] now=689065289:57986587662878 vrate=137438 period=22->22 vtime=0->57986365150756 weight=50/50 hweight=65536/65536
