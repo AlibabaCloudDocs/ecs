@@ -1,47 +1,86 @@
-# Roll back a disk by using a snapshot {#concept_smh_y2l_xdb .concept}
+---
+keyword: [backup, Alibaba Cloud, data backup, disaster recovery, ]
+---
 
-This topic describes how to roll back a disk by using a snapshot. You can perform a disk rollback when your OS is unresponsive, when an incorrect operation was performed, or when rolling back an application version is required. After you roll back the system disk, the current key pair or password of the corresponding instance is attached automatically.
+# Roll back a disk by using a snapshot
 
-**Warning:** Before you roll back a disk, [create a snapshot](reseller.en-US/Snapshots/Use snapshots/Create a snapshot.md#) of the disk to ensure that you can perform data recovery if needed. Disk rollback is irreversible. Exercise caution when performing this action.
+This topic describes how to roll back a disk by using a snapshot. When the system does not respond or an incorrect operation is performed, you can roll back a disk to a previous version by using its snapshots. Before you roll back a disk, you must have created at least a snapshot of the disk. If you roll back system disks, the current SSH key pairs or usernames and passwords of the instances remain bound to the disks after the disks are rolled back.
 
-## Prerequisites {#section_k4y_dg3_ydb .section}
+Before you roll back a disk by using a snapshot, take note of the following items:
 
--   A snapshot of the disk to be rolled back is created, and no new snapshot is being created for the disk. For more information, see [created a snapshot](reseller.en-US/Snapshots/Use snapshots/Create a snapshot.md#).
+-   A snapshot of the disk to be rolled back is created, and no new snapshot is being created for the disk. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)or [Create a local snapshot](/intl.en-US/Snapshots/Use snapshots/Create a local snapshot.md).
+
+    **Warning:** The rollback operation is irreversible. After a disk is rolled back, the data from the creation of the snapshot to when the disk is rolled back is lost. To avoid data losses caused by incorrect operations, we recommend that you create a snapshot for the current disk before you roll back the disk.
+
 -   The disk has not been released.
--   The disk to be rolled back is attached to an ECS instance, and the corresponding instance is stopped. For more information, see [Attach to an ECS instance](reseller.en-US/Block storage/Block storage/Attach a cloud disk.md#) and [Stop an instance](reseller.en-US/Instances/ECS instance life cycle/Start or stop an instance.md#).
+-   After you replace the system disk, snapshots of the previous system disk cannot be used to roll back the new system disk.
+-   If you use a disk to create a dynamic extended volume or redundant array of independent disks \(RAID\), you must stop all I/O operations on the disk before you roll back the disk.
+-   The disk is attached to an ECS instance and the instance is in the Stopped state. For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md) and [Stop an instance](/intl.en-US/Instance/Manage instances/Stop an instance.md).
 
-    **Note:** 
-
-    -   After you [replace the system disk](../../../../../reseller.en-US/Block storage/Block storage/Change the operating system/Replace the system disk (public image).md#), old system disk snapshots cannot be used to roll back the new system disk.
-    -   Pay-As-You-Go VPC instances may not be restarted in [No fees for stopped VPC instances](../../../../../reseller.en-US/Pricing/No fees for stopped VPC instances.md#) mode after you roll back the disk. We recommend that you disable **No fees for stopped VPC instances** before you stop the instance.
-
-## Procedure {#section_o4y_dg3_ydb .section}
-
-1.  Log on to the [ECS console](https://partners-intl.console.aliyun.com/#/ecs).
-2.  In the left-side navigation pane, click **Instances**.
-3.  Select the target region.
-4.  Locate the instance whose disk you want to roll back, and then click **Manage**.
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9688/155255168739440_en-US.png)
-
-5.  In the left-side navigation pane, click **Instance snapshots**.
-6.  Select the target snapshot, and then click **Roll Back Disk** in the **Actions** column.
-
-    **Note:** Only one disk can be rolled back at a time. When you roll back a disk, other disks attached to the instance are not affected. After the rollback, the entire disk \(rather than a partition or a directory\) recovers to its status at a specified point in time.
-
-7.  In the displayed dialog box, click **OK**.
-
-    **Note:** If you select **Start Instance After Disk Rollback**, the instance is restarted after you roll back the disk.
+    **Note:** A pay-as-you-go instance in a VPC may not be restarted after its disk is rolled back if the No Fees for Stopped Instances \(VPC-Connected\) feature is enabled. We recommend that you select **Retain Instance and Continue Charging After Instance Is Stopped** when you stop the instance.
 
 
-## Related APIs {#section_r4y_dg3_ydb .section}
+## Roll back a disk by using a snapshot
 
-[ResetDisk](../../../../../reseller.en-US/API Reference/Disk/ResetDisk.md#)
+You can roll back a disk from the **Snapshots** or **Instances** page. The following example shows how to roll back a disk from the **Instances** page.
 
-## What to do next {#section_s4y_dg3_ydb .section}
+1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-If you create a snapshot of a disk and then you scale out the disk, you need to log on to the instance to expand the capacity of the file system after disk rollback. For more information, see:
+2.  In the left-side navigation pane, choose **Instances & Images** \> **Instances**.
 
--   [Linux - Resize a data disk](reseller.en-US/Block storage/Block storage/Resize cloud disks/Linux - Resize a data disk.md#).
--   [Windows - Resize a data disk](reseller.en-US/Block storage/Block storage/Resize cloud disks/Windows - Resize a data disk.md#).
+3.  In the top navigation bar, select a region.
+
+4.  Find the instance whose disk you want to roll back the disk and click **Manage** in the **Actions** column.
+
+5.  The **Instance Details** tab appears. Click the **Snapshot** tab.
+
+6.  Find the snapshot and click **Roll Back Disk** in the **Actions** column.
+
+    **Note:** You can roll back only one disk at a time. Other disks that are attached to the instance are not affected. After the disk is rolled back, the disk is restored to the status of the entire disk at a certain point in time, instead of the status of a partition or a directory.
+
+7.  In the dialog box that appears, click **OK**.
+
+    **Note:**
+
+    -   Before you click **OK**, we recommend that you click **Create Snapshot** to back up the latest data.
+    -   If you select **Start Instance Immediately after Rollback**, the instance automatically starts after the disk is rolled back.
+
+## \(Optional\) Synchronize data after a disk is rolled back
+
+If you roll back a disk by using Snapshot A that was created at the point in time T1 and you need to synchronize the data after T1, you can perform the following operations:
+
+![Synchronize data from your RDS instance to your ECS instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7665319951/p40777.png)
+
+1.  Create Snapshot B for the original disk at the point in time T2.
+
+2.  Roll back the original disk by using Snapshot A.
+
+3.  Create a new disk by using Snapshot B.
+
+    For more information, see [Create a disk from a snapshot](/intl.en-US/Block Storage/Cloud disks/Create a cloud disk/Create a disk from a snapshot.md).
+
+4.  Attach the new disk to the same ECS instance.
+
+    For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
+
+5.  Remotely connect to an ECS instance. For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
+
+6.  View the new disk.
+
+    -   Windows instances: The new disk is displayed in the system.
+    -   Linux instances: Run the mount command to mount the new disk.
+7.  Copy useful data from the new disk to the original disk.
+
+8.  Release the new disk.
+
+
+If you resize a disk after you create a snapshot for the disk, the size of the disk is also rolled back after you roll back the disk. To make the disk revert to the size before the rollback, you must log on to the instance to resize the file system again.
+
+-   [Resize partitions and file systems of Linux data disks](/intl.en-US/Best Practices/Block Storage/Resize partitions and file systems of Linux data disks.md)
+-   [Resize disks online for Windows instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Windows instances.md)
+
+**Related topics**  
+
+
+[ResetDisk](/intl.en-US/API Reference/Disk/ResetDisk.md)
 
