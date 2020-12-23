@@ -139,6 +139,8 @@ ECS实例在同地域同可用区内通过内网通信可以获得最低延迟�
     在命令窗口，通过`ipconfig /all`查看网卡信息。您可以查看IP地址、子网掩码、网关、DNS、MAC地址等信息。
 
 
+**说明：** 如果您想要定位ECS实例IP地址对应的地理位置，可以通过[IP地址库](ip.taobao.com)进行查询。
+
 ## 如何禁用ECS实例的公网网卡？
 
 -   Linux实例
@@ -230,7 +232,7 @@ ECS实例在同地域同可用区内通过内网通信可以获得最低延迟�
 2.  选择云产品，找到您想要取消的正在清洗中的IP，单击**查看详情**。
 3.  单击**取消清洗**。
 
-    ![取消清洗](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1286649951/p50257.png)
+    ![取消清洗](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1286649951/p50257.png)
 
 
 ## 怎么申请云服务器ECS反向解析？
