@@ -32,7 +32,7 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
 
     |配置页面|配置项|示例|说明|
     |----|---|--|--|
-    |**基础配置**|**付费模式**|按量付费|按量付费模式操作相对灵活。详情请参见[计费概述](/intl.zh-CN/产品定价/计费项/计费概述.md)。 **说明：** 如果您需要为网站域名备案，必须选择**包年包月**。 |
+    |**基础配置**|**付费模式**|按量付费|按量付费模式操作相对灵活。详情请参见[计费概述](/intl.zh-CN/产品定价/计费概述.md)。 **说明：** 如果您需要为网站域名备案，必须选择**包年包月**。 |
     |**地域与可用区**|    -   地域：华东 1（杭州）
     -   可用区：随机分配
 |实例创建后，无法直接更改地域和可用区，请谨慎选择。|
@@ -44,7 +44,7 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
 |实例启动后，系统盘将完整复制镜像的操作系统和应用数据。|
     |**网络和安全组**|**专有网络**|\[默认\]vpc-bp1opxu1zkhn00g\*\*\*\*\*\*|带**\[默认\]**前缀的资源由ECS控制台自动创建。|
     |**分配公网IPv4地址**|勾选|勾选后，自动分配一个公网IP（v4）地址。|
-    |**带宽计费模式**|按使用流量|**按使用流量**模式只需为所消耗的公网流量付费。详情请参见[公网带宽计费](/intl.zh-CN/产品定价/计费项/公网带宽计费方式.md)。|
+    |**带宽计费模式**|按使用流量|**按使用流量**模式只需为所消耗的公网流量付费。详情请参见[公网带宽计费](/intl.zh-CN/产品定价/计费项/公网带宽计费.md)。|
     |**峰值带宽**|2 Mbps|无。|
     |**安全组**|    -   安全组：\[默认\]sg-bp1bhjjsoiyx44\*\*\*\*\*\*
     -   安全组规则：勾选ICMP协议、SSH 22、RDP 3389、HTTP 80和HTTPS 443端口
@@ -57,9 +57,9 @@ EcsQuickStart
 |本文中的实例一律使用EcsQuickStart指代。|
     |**分组设置**|**标签**|ECS:Documentation|有多台实例时，建议添加标签，方便管理。|
 
-3.  单击**下一步：确认订单**。在该页面确认**所选配置**，或者单击编辑图标![编辑-图标](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/8366520061/p77356.png)返回修改配置。
+3.  单击**下一步：确认订单**。在该页面确认**所选配置**，或者单击编辑图标![编辑-图标](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8366520061/p77356.png)返回修改配置。
 
-    ![快速入门-Windows版](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4396958951/p77397.png)
+    ![快速入门-Windows版](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4396958951/p77397.png)
 
 4.  单击**保存为启动模板**，然后设置模板名称和描述。
 
@@ -78,7 +78,7 @@ EcsQuickStart
 
 1.  单击实例ID，进入实例详情页。
 
-2.  在左侧导航栏，单击**本实例安全组**，然后单击安全组ID，进入安全组详情页。
+2.  单击**安全组**页签，然后单击安全组ID，进入安全组详情页。
 
 3.  在**安全组规则**页面，选择**入方向**页签。
 
@@ -111,7 +111,7 @@ EcsQuickStart
 
 5.  在管理终端界面的左上角，选择**发送远程命令** \> **CTRL+ALT+DELETE**。
 
-    ![CTRL+ALT+DELETE](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5396958951/p65866.png)
+    ![CTRL+ALT+DELETE](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5396958951/p65866.png)
 
 6.  进入Windows实例的登录界面，完成登录凭证设置。
 
@@ -134,7 +134,7 @@ EcsQuickStart
     http://<实例公网IP地址>
     ```
 
-    ![快速入门-Windows版-测试网站](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5396958951/p77430.png)
+    ![快速入门-Windows版-测试网站](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5396958951/p77430.png)
 
 
 ## 步骤五：（可选）解析网站域名
@@ -143,7 +143,7 @@ EcsQuickStart
 
 1.  注册域名。
 
-    详情请参见[注册通用域名](/intl.zh-CN/域名注册/注册域名.md)。
+    详情请参见[注册通用域名](/intl.zh-CN/域名注册/注册通用域名.md)。
 
 2.  如果域名指向的网站托管在阿里云中国内地地域的节点服务器，您需要备案域名。
 
@@ -171,11 +171,11 @@ EcsQuickStart
 
 ## 步骤七：查看费用账单
 
-1.  在ECS管理控制台顶部工具栏处，选择**费用** \> **用户中心**。
+1.  在ECS管理控制台顶部菜单栏处，选择**费用** \> **用户中心**。
 
-2.  在左侧导航栏，选择**消费总览** \> **实例消费明细**。
+2.  在左侧导航栏，选择**消费总览** \> **消费总览**，然后单击页面中的**账单明细**页签。
 
-3.  在**搜索条件**处，设置为**实例ID**，然后输入EcsQuickStart对应的实例ID，并回车开始搜索。
+3.  在**实例名称**处，输入本文的示例实例名称EcsQuickStart，并回车开始搜索。
 
 
 -   了解云服务器ECS在售的实例规格族：[实例规格族](/intl.zh-CN/实例/实例规格族.md)
