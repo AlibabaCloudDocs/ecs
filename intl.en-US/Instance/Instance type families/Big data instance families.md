@@ -29,17 +29,17 @@ Common features of big data instances:
 When you use big data instances, take note of the following items:
 
 -   Instances with local SSDs do not support changes in instance types, bandwidth, and billing methods, and do not support failover.
--   The associations of instances to local disks are fixed. The number and capacity of local disks of an instance are based on the instance type. Instances with local SSDs are bound to their local disks. You cannot attach additional local disks to these instances or detach local disks from these instances and attach the disks to another instance.
+-   The number and capacity of local disks of an instance vary with the instance type. Instances with local SSDs are bound to their local disks. You cannot attach additional local disks to these instances or detach local disks from these instances and attach the disks to another instance.
 -   You cannot create snapshots for local disks. If you need to create an image for the system disk and data disks of an instance with local SSDs, we recommend that you create an image by using the snapshots of both the system disk and data disks \(data disks must be non-local disks\).
 -   You cannot create images that contain system disks and data disks based on instance IDs.
 -   You can attach a standard SSD to an instance with local SSDs. The capacity of the standard SSD is scalable.
--   Local disks are attached to a single physical server, which increases risks of single points of failure \(SPOFs\). The reliability of data stored on local disks depends on the reliability of the physical server.
+-   Local disks are attached to a single physical server, which increases the risks of single points of failure \(SPOFs\). The durability of data stored on local disks is based on the reliability of the physical server.
 
-    **Warning:** For example, data stored on local disks may be lost when a hardware failure occurs. We recommend that you store only temporary data on local disks.
+    **Warning:** For example, data stored on local disks may be lost when hardware failures occur. We recommend that you store only temporary data on local disks.
 
     -   To ensure data availability, we recommend that you implement data redundancy at the application layer. You can use deployment sets to distribute ECS instances across multiple physical servers to achieve high availability and disaster recovery. For more information, see [Create a deployment set](/intl.en-US/Elasticity/Deployment sets/Create a deployment set.md).
-    -   If your applications do not have data reliability architectures, we recommend that you use cloud disks or the backup service in your ECS instances for data reliability. For more information, see [Disk overview](/intl.en-US/Block Storage/Block Storage overview/Disk overview.md) or [What is Hybrid Backup Recovery?](/intl.en-US/Product Introduction/What is Hybrid Backup Recovery?.md)
--   Operations on an instance with local SSDs may affect the data stored on the local disks. For more information, see [Impacts of instance operations on the data stored on local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
+    -   If your applications do not have data reliability architectures, we recommend that you use cloud disks or the backup service in your ECS instances for data reliability. For more information, see [Cloud disks](/intl.en-US/Block Storage/Block Storage overview/Cloud disks.md) or [What is Hybrid Backup Recovery?](/intl.en-US/Product Introduction/What is Hybrid Backup Recovery?.md).
+-   Operations on an instance with local SSDs may affect the data stored on the local disks. For more information, see [Impacts of instance operations on data stored on local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
 
 ## Best practices for mounting a file system to a big data instance
 
@@ -58,8 +58,6 @@ You must initialize the inode table when you mount a file system such as ext4 fo
 4.  Run the mount command in batches.
 
 ## d2c, compute intensive big data instance family
-
-d2c is in invitational preview. To use d2c,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
