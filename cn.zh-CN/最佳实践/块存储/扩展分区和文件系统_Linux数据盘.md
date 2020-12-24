@@ -34,8 +34,8 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
     本示例中，原有的数据盘空间已做分区/dev/vdb1。
 
-    -   如果`"System"="Linux"`，说明数据盘使用的是MBR分区表格式。
-    -   如果`"System"="GPT"`，说明数据盘使用的是GPT分区表格式。
+    -   如果`System`为`Linux`，说明数据盘使用的是MBR分区表格式。
+    -   如果`System`为`GPT`，说明数据盘使用的是GPT分区表格式。
     ```
     [root@ecshost ~]# fdisk -lu /dev/vdb
     Disk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
@@ -66,9 +66,21 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 3.  运行以下命令确认文件系统的状态。
 
-    -   ext\*文件系统：`e2fsck -n /dev/vdb1`
-    -   xfs文件系统：`xfs_repair -n /dev/vdb1`
+    -   ext\*文件系统：
+
+        ```
+        e2fsck -n /dev/vdb1
+        ```
+
+    -   xfs文件系统：
+
+        ```
+        xfs_repair -n /dev/vdb1
+        ```
+
     **说明：** 本示例中，文件系统状态为clean，表示文件系统状态正常。如果状态不是clean，请排查并修复。
+
+    示例结果如下所示。
 
     ```
     [root@ecshost ~]# e2fsck -n /dev/vdb1
@@ -84,11 +96,11 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 |扩容场景|相关操作|
 |----|----|
-|数据盘已分区并创建文件系统|-   如果您需要扩展数据盘已有的MBR分区，请参见[选项一：扩展已有MBR分区](#section_vvb_gcs_bhm)。
--   如果新增空间用于增加新的MBR分区，请参见[选项二：新增并格式化MBR分区](#section_gg7_ilv_h3j)。
--   如果您需要扩展数据盘已有的GPT分区，请参见[选项三：扩展已有GPT分区](#section_oi9_qp8_f04)。
--   如果新增空间用于增加新的GPT分区，请参见[选项四：新增并格式化GPT分区](#section_4hl_5l7_87s)。 |
-|全新数据盘，未分区，未创建文件系统|在控制台扩容数据盘空间后，请参见[分区并格式化数据盘](/cn.zh-CN/块存储/云盘基础操作/分区格式化数据盘/Linux格式化数据盘.md)或者[分区格式化大于2 TiB数据盘](/cn.zh-CN/块存储/云盘基础操作/分区格式化数据盘/分区格式化大于2 TiB数据盘.md)。|
+|数据盘已分区并创建文件系统|-   如果您需要扩展数据盘已有的MBR分区，请参见[\#section\_vvb\_gcs\_bhm](#section_vvb_gcs_bhm)。
+-   如果新增空间用于增加新的MBR分区，请参见[\#section\_gg7\_ilv\_h3j](#section_gg7_ilv_h3j)。
+-   如果您需要扩展数据盘已有的GPT分区，请参见[\#section\_oi9\_qp8\_f04](#section_oi9_qp8_f04)。
+-   如果新增空间用于增加新的GPT分区，请参见[\#section\_4hl\_5l7\_87s](#section_4hl_5l7_87s)。 |
+|全新数据盘，未分区，未创建文件系统|在控制台扩容数据盘空间后，请参见[Linux格式化数据盘](/cn.zh-CN/块存储/云盘基础操作/分区格式化数据盘/Linux格式化数据盘.md)或者[分区格式化大于2 TiB数据盘](/cn.zh-CN/块存储/云盘基础操作/分区格式化数据盘/分区格式化大于2 TiB数据盘.md)。|
 |数据盘是裸设备，已创建文件系统，未分区|在控制台扩容数据盘空间后，请参见[选项五：扩容裸设备文件系统](#section_f88_ax7_y8i)。|
 |数据盘未挂载到实例上|挂载数据盘到实例后，参见本文档的操作步骤完成扩容。|
 
@@ -117,8 +129,7 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
         本示例中，分区/dev/vdb1的起始扇区是2048，结束扇区是41943039。
 
         ```
-        [root@ecshost ~]# fdisk -lu /dev/vdb
-        Disk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
+        [root@ecshost ~]# fdisk -lu /dev/vdbDisk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
         Units = sectors of 1 * 512 = 512 bytes
         Sector size (logical/physical): 512 bytes / 512 bytes
         I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -131,11 +142,31 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
     2.  查看数据盘的挂载路径，根据返回的文件路径卸载分区，直至完全卸载已挂载的分区。
 
+        查看挂载（mount）信息。
+
         ```
-        [root@ecshost ~]# mount \| grep "/dev/vdb"
+        mount | grep "/dev/vdb"
+        ```
+
+        取消挂载（umount）数据盘。
+
+        ```
+        umount /dev/vdb1
+        ```
+
+        查看操作结果。
+
+        ```
+        mount | grep "/dev/vdb"
+        ```
+
+        示例结果如下所示。
+
+        ```
+        [root@ecshost ~]# mount | grep "/dev/vdb"
         /dev/vdb1 on /mnt type ext4 (rw,relatime,data=ordered)
         [root@ecshost ~]# umount /dev/vdb1
-        [root@ecshost ~]# mount \| grep "/dev/vdb"
+        [root@ecshost ~]# mount | grep "/dev/vdb"
         ```
 
     3.  使用fdisk工具删除旧分区。
@@ -147,9 +178,10 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
         3.  输入d：删除分区。
         4.  输入p：确认分区已删除。
         5.  输入w：保存修改并退出。
+        以下为删除旧分区的命令行交互示例。
+
         ```
-        [root@ecshost ~]# fdisk -u /dev/vdb
-        Welcome to fdisk (util-linux 2.23.2).
+        [root@ecshost ~]# fdisk -u /dev/vdbWelcome to fdisk (util-linux 2.23.2).
         Changes will remain in memory only, until you decide to write them.
         Be careful before using the write command.
         Command (m for help): p
@@ -190,7 +222,7 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
             **警告：** 新分区的起始位置必须和旧分区的起始位置相同，结束位置必须大于旧分区的结束位置，否则会导致扩容失败。具体问题与解决方案请参见[使用fdisk扩容新分区起始位置无法与扩容前保持一致](https://help.aliyun.com/knowledge_detail/147323.html)。
 
         7.  输入w：保存修改并退出。
-        本示例中，将/dev/vdb1由20GiB扩容到40GiB。
+        以下为扩容分区的命令行交互示例。本示例中，将/dev/vdb1由20GiB扩容到40GiB。
 
         ```
         [root@ecshost ~]# fdisk -u /dev/vdb
@@ -221,53 +253,74 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
         Syncing disks.
         ```
 
-    5.  通知内核更新分区表。
+    5.  运行以下任一命令通知内核更新分区表。
 
-        运行`partprobe /dev/vdb`或者`partx -u /dev/vdb1`，通知内核数据盘的分区表已经修改，需要同步更新。
+        ```
+        partprobe /dev/vdb
+        ```
 
-    6.  运行`lsblk /dev/vdb`确保分区表已经增加。
+        ```
+        partx -u /dev/vdb1
+        ```
 
-    7.  运行`e2fsck -f /dev/vdb1`再次检查文件系统，确认扩容分区后的文件系统状态为clean。
+    6.  运行以下命令确保分区表已经增加。
+
+        ```
+        lsblk /dev/vdb
+        ```
+
+    7.  运行以下命令再次检查文件系统，确认扩容分区后的文件系统状态为clean。
+
+        ```
+        e2fsck -f /dev/vdb1
+        ```
+
+        **说明：** 如果运行命令后未显示文件系统状态为clean，您可以尝试用`e2fsck -n /dev/vdb1`检查。
 
 2.  扩容文件系统。
 
     -   ext\*文件系统（例如ext3和ext4）：依次运行以下命令调整ext\*文件系统大小并重新挂载分区。
 
+        调整ext\*文件系统大小。
+
         ```
-        [root@ecshost ~]# resize2fs /dev/vdb1
-        resize2fs 1.43.5 (04-Aug-2017)
-        Resizing the filesystem on /dev/vdb1 to 7864320 (4k) blocks.
-        The filesystem on /dev/vdb1 is now 7864320 blocks long.
-        [root@ecshost ~]# mount /dev/vdb1 /mnt
+        resize2fs /dev/vdb1
+        ```
+
+        分区挂载到/mnt。
+
+        ```
+        mount /dev/vdb1 /mnt
         ```
 
     -   xfs文件系统：依次运行以下命令先重新挂载分区，再调整xfs文件系统大小。
 
-        **说明：** 新版xfs\_growfs根据挂载点识别待扩容设备，例如`xfs_growfs /mnt`。您可以运行`xfs_growfs --help`查看不同版本xfs\_growfs的使用方法。
+        分区挂载到/mnt。
 
         ```
-        [root@ecshost ~]# mount /dev/vdb1 /mnt/
-        [root@ecshost ~]# xfs\_growfs /mnt
-        meta-data=/dev/vdb1              isize=512    agcount=4, agsize=1310720 blks
-                 =                       sectsz=512   attr=2, projid32bit=1
-                 =                       crc=1        finobt=0 spinodes=0
-        data     =                       bsize=4096   blocks=5242880, imaxpct=25
-                 =                       sunit=0      swidth=0 blks
-        naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-        log      =internal               bsize=4096   blocks=2560, version=2
-                 =                       sectsz=512   sunit=0 blks, lazy-count=1
-        realtime =none                   extsz=4096   blocks=0, rtextents=0
-        data blocks changed from 5242880 to 7864320
+        mount /dev/vdb1 /mnt
         ```
+
+        调整xfs文件系统大小。
+
+        ```
+        xfs_growfs /mnt
+        ```
+
+        **说明：** 新版xfs\_growfs根据挂载点识别待扩容设备，例如`xfs_growfs /mnt`。您可以运行`xfs_growfs --help`查看不同版本xfs\_growfs的使用方法。
 
 
 ## 选项二：新增并格式化MBR分区
 
 如果新增空间用于增加新的MBR分区，按照以下步骤在实例中完成扩容：
 
-1.  运行`fdisk -u /dev/vdb`命令新建分区。
+1.  运行以下命令新建分区。
 
-    本示例中，为新增的20GiB新建分区，作为/dev/vdb2使用。
+    ```
+    fdisk -u /dev/vdb
+    ```
+
+    以下为新建分区的命令行交互示例。本示例中，为新增的20GiB新建分区，作为/dev/vdb2使用。
 
     ```
     [root@ecshost ~]# fdisk -u /dev/vdb
@@ -307,7 +360,13 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
     Syncing disks.
     ```
 
-2.  运行命令`lsblk /dev/vdb`查看分区。
+2.  运行以下命令查看分区。
+
+    ```
+    lsblk /dev/vdb
+    ```
+
+    示例结果如下所示。
 
     ```
     [root@ecshost ~]# lsblk /dev/vdb
@@ -317,42 +376,50 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
     └─vdb2 253:18   0  20G  0 part
     ```
 
-3.  格式化新的分区。
+3.  运行以下命令创建文件系统。
 
-    -   创建ext4文件系统：`mkfs.ext4 /dev/vdb2`。
+    -   创建ext4文件系统：
 
         ```
-        [root@ecshost ~]# mkfs.ext4 /dev/vdb2
-        Filesystem label=
-        OS type: Linux
-        Block size=4096 (log=2)
-        Fragment size=4096 (log=2)
-        Stride=0 blocks, Stripe width=0 blocks
-        1310720 inodes, 5242880 blocks
-        262144 blocks (5.00%) reserved for the super user
-        First data block=0
-        Maximum filesystem blocks=2153775104
-        160 block groups
-        32768 blocks per group, 32768 fragments per group
-        8192 inodes per group
-        Superblock backups stored on blocks:
-                32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
-                4096000
-        
-        Allocating group tables: done
-        Writing inode tables: done
-        Creating journal (32768 blocks): done
-        Writing superblocks and filesystem accounting information: done
-        [root@ecshost ~]# blkid /dev/vdb2
-        /dev/vdb2: UUID="e3f336dc-d534-4fdd-****-b6ff1a55bdbb" TYPE="ext4"
+        mkfs.ext4 /dev/vdb2
         ```
 
-    -   创建ext3文件系统：`mkfs.ext3 /dev/vdb2`。
-    -   创建xfs文件系统：`mkfs.xfs -f /dev/vdb2`。
-    -   创建btrfs文件系统：`mkfs.btrfs /dev/vdb2`。
-4.  运行`mount /dev/vdb2 /mnt`挂载分区。
+    -   创建xfs文件系统：
 
-5.  运行`df -h`查看目前数据盘空间和使用情况。
+        ```
+        mkfs.xfs -f /dev/vdb2
+        ```
+
+    -   创建btrfs文件系统：
+
+        ```
+        mkfs.btrfs /dev/vdb2
+        ```
+
+4.  运行以下命令查看文件系统信息。
+
+    ```
+    blkid /dev/vdb2
+    ```
+
+    示例结果如下所示。
+
+    ```
+    [root@ecshost ~]# blkid /dev/vdb2
+    /dev/vdb2: UUID="e3f336dc-d534-4fdd-****-b6ff1a55bdbb" TYPE="ext4"
+    ```
+
+5.  运行以下命令挂载分区。
+
+    ```
+    mount /dev/vdb2 /mnt
+    ```
+
+6.  运行以下命令查看目前数据盘空间和使用情况。
+
+    ```
+    df -h
+    ```
 
     显示新建文件系统的信息，表示挂载成功。
 
@@ -375,28 +442,60 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 1.  查看数据盘的挂载路径，根据返回的文件路径卸载分区，直至完全卸载已挂载的分区。
 
+    查看挂载（mount）信息。
+
     ```
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    mount | grep "/dev/vdb"
+    ```
+
+    取消挂载（umount）数据盘。
+
+    ```
+    umount /dev/vdb1
+    ```
+
+    查看操作结果。
+
+    ```
+    mount | grep "/dev/vdb"
+    ```
+
+    示例结果如下所示。
+
+    ```
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     /dev/vdb1 on /mnt type ext4 (rw,relatime,data=ordered)
     [root@ecshost ~]# umount /dev/vdb1
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     ```
 
 2.  使用Parted工具为现有GPT分区分配容量。
 
-    1.  运行`parted /dev/vdb`命令进入parted分区工具。
+    1.  运行以下命令进入Parted分区工具。
 
-        如需查看parted工具使用说明，运行`help`命令。
+        ```
+        parted /dev/vdb
+        ```
 
-    2.  运行`print`查看分区信息，并记录现有分区的分区号和起始扇区的值。
+        如需查看Parted工具使用说明，运行`help`命令。
+
+    2.  运行以下命令查看分区信息，并记录现有分区的分区号和起始扇区的值。
+
+        ```
+        print
+        ```
 
         若界面提示`Fix/Ignore/Cancel?`和`Fix/Ignore?`，均输入Fix即可。
 
         本示例中，现有分区大小为1TiB，分区号（即`Number`的值）为`1`，起始扇区（即`Start`）的值为`1049kB`。
 
-        ![resize-gpt-start](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4475688951/p70886.png)
+        ![resize-gpt-start](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4475688951/p70886.png)
 
-    3.  运行`rm <分区号>`命令删除现有分区。
+    3.  运行以下命令删除现有分区。
+
+        ```
+        rm <分区号>
+        ```
 
         本示例中，现有分区的分区号为`1`，因此命令为：
 
@@ -404,7 +503,11 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
         rm 1
         ```
 
-    4.  运行`mkpart primary <原分区的起始扇区> <容量分配百分比>`命令重新创建主分区。
+    4.  运行以下命令重新创建主分区。
+
+        ```
+        mkpart primary <原分区的起始扇区> <容量分配百分比>
+        ```
 
         本示例中，原分区的起始扇区为`1049kB`，且要将扩容后的总容量（即3TiB）全部分配给该分区，因此命令为：
 
@@ -412,15 +515,23 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
         mkpart primary 1049kB 100%
         ```
 
-    5.  运行`print`命令查看新分区是否创建成功。
+    5.  运行以下命令查看新分区是否创建成功。
+
+        ```
+        print
+        ```
 
         如下图所示，新的GPT分区仍为1号分区，容量已变更为3TiB。
 
-        ![GPT分区结果](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5475688951/p71219.png)
+        ![GPT分区结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5475688951/p71219.png)
 
-    6.  运行`quit`退出Parted分区工具。
+    6.  运行以下命令退出Parted分区工具。
 
-    完整的示例代码如下：
+        ```
+        quit
+        ```
+
+    以下为命令行交互示例。
 
     ```
     [root@ecshost ~]# parted /dev/vdb
@@ -461,7 +572,13 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
     Information: You may need to update /etc/fstab.
     ```
 
-3.  运行`fsck -f /dev/vdb1`确认文件系统一致性。
+3.  运行以下命令确认文件系统一致性。
+
+    ```
+    fsck -f /dev/vdb1
+    ```
+
+    示例结果如下所示。
 
     ```
     [root@ecshost ~]# fsck -f /dev/vdb1
@@ -477,31 +594,48 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 4.  扩展分区对应的文件系统并重新挂载分区。
 
-    -   ext\*文件系统（例如ext3和ext4）：依次运行以下命令调整新分区的ext\*文件系统大小并重新挂载分区。
+    -   ext\*文件系统（例如ext3和ext4）：
+
+        运行以下命令调整新分区的ext\*文件系统大小。
 
         ```
-        [root@ecshost ~]# resize2fs /dev/vdb1
-        resize2fs 1.43.5 (04-Aug-2017)
-        Resizing the filesystem on /dev/vdb1 to 805305856 (4k) blocks.
-        The filesystem on /dev/vdb1 is now 805305856 blocks long.
-        [root@ecshost ~]# mount /dev/vdb1 /mnt
+        resize2fs /dev/vdb1
         ```
 
-    -   xfs文件系统：依次运行以下命令先重新挂载分区再调整xfs文件系统大小。
+        运行以下命令重新挂载分区。
+
+        ```
+        mount /dev/vdb1 /mnt
+        ```
+
+    -   xfs文件系统：
+
+        运行以下命令重新挂载分区。
+
+        ```
+        mount /dev/vdb1 /mnt
+        ```
+
+        运行以下命令调整xfs文件系统大小。
+
+        ```
+        xfs_growfs /mnt
+        ```
 
         **说明：** 新版xfs\_growfs根据挂载点识别待扩容设备，例如`xfs_growfs /mnt`。您可以运行`xfs_growfs --help`查看不同版本xfs\_growfs的使用方法。
-
-        ```
-        [root@ecshost ~]# mount /dev/vdb1 /mnt/
-        [root@ecshost ~]# xfs\_growfs /mnt
-        ```
 
 
 ## 选项四：新增并格式化GPT分区
 
 如果新增空间用于增加新的分区并希望使用GPT分区格式，按照以下步骤在实例中完成扩容。示例采用一块32 TiB的数据盘，已有一个4.8TiB的分区/dev/vdb1，此次新建了一个/dev/vdb2分区。
 
-1.  使用fdisk工具查看数据盘中已有分区的信息。
+1.  运行以下命令查看数据盘中已有分区的信息。
+
+    ```
+    fdisk -l
+    ```
+
+    示例结果如下所示。
 
     ```
     [root@ecshost ~]# fdisk -l
@@ -527,11 +661,19 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
      1         2048  10307921919    4.8T  Microsoft basic mnt                    
     ```
 
-2.  使用parted工具创建新分区并分配容量。
+2.  使用Parted工具创建新分区并分配容量。
 
-    1.  运行`parted /dev/vdb`进入分区工具。
+    1.  运行以下命令进入Parted工具。
 
-    2.  运行`print free`查看数据盘待分配的容量，记录已有分区的扇区位置和容量。
+        ```
+        parted /dev/vdb
+        ```
+
+    2.  运行以下命令查看数据盘待分配的容量，记录已有分区的扇区位置和容量。
+
+        ```
+        print free
+        ```
 
         示例中/dev/vdb1的起始位置为1049KB，结束扇区为5278GB，容量为5278GiB。
 
@@ -549,14 +691,27 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
                 5278GB  35.2TB  29.9TB  Free Space                    
         ```
 
-    3.  运行`mkpart <分区名称> <起始扇区> <容量分配百分比>`。
-
-        示例新建了一个名为test的/dev/vdb2分区，起始扇区为上一个分区的结束扇区，并将所有新增空间分配给该分区。
-
-    4.  运行`print`查看容量（Size）是否发生变化。
+    3.  运行以下命令设置起始扇区和分配容量。
 
         ```
-        (parted) mkpart test 5278GB 100%
+        mkpart <分区名称> <起始扇区> <容量分配百分比>
+        ```
+
+        以下示例新建了一个名为test的/dev/vdb2分区，起始扇区为上一个分区的结束扇区，并将所有新增空间分配给该分区。
+
+        ```
+        mkpart test 5278GB 100%
+        ```
+
+    4.  运行以下命令查看容量（Size）是否发生变化。
+
+        ```
+        print
+        ```
+
+        示例结果如下所示。
+
+        ```
         (parted) print
         Model: Virtio Block Device (virtblk)
         Disk /dev/vdb: 35.2TB
@@ -569,14 +724,38 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
          2      5278GB  35.2TB  29.9TB               test                    
         ```
 
-    5.  运行`quit`退出parted分区工具。
+    5.  运行以下命令退出Parted工具。
+
+        ```
+        quit
+        ```
 
 3.  为新分区创建文件系统。
 
-    -   创建ext4文件系统：`mkfs.ext4 /dev/vdb2`。
-    -   创建ext3文件系统：`mkfs.ext3 /dev/vdb2`。
-    -   创建xfs文件系统：`mkfs.xfs -f /dev/vdb2`。
-    -   创建btrfs文件系统：`mkfs.btrfs /dev/vdb2`。
+    -   创建ext4文件系统：
+
+        ```
+        mkfs.ext4 /dev/vdb2
+        ```
+
+    -   创建ext3文件系统：
+
+        ```
+        mkfs.ext3 /dev/vdb2
+        ```
+
+    -   创建xfs文件系统：
+
+        ```
+        mkfs.xfs -f /dev/vdb2
+        ```
+
+    -   创建btrfs文件系统：
+
+        ```
+        mkfs.btrfs /dev/vdb2
+        ```
+
     示例中创建了一个xfs文件系统，如下所示。
 
     ```
@@ -592,7 +771,13 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
     realtime =none                   extsz=4096   blocks=0, rtextents=0               
     ```
 
-4.  运行`fdisk -l`查看分区容量变化。
+4.  运行以下命令查看分区容量变化。
+
+    ```
+    fdisk -l
+    ```
+
+    示例结果如下所示。
 
     ```
     [root@ecshost ~]# fdisk -l
@@ -619,7 +804,13 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
      2  10307921920  68719474687   27.2T  Microsoft basic test  
     ```
 
-5.  运行blkid查看存储设备的文件系统类型。
+5.  运行以下命令查看存储设备的文件系统类型。
+
+    ```
+    blkid
+    ```
+
+    示例结果如下所示。
 
     ```
     [root@ecshost ~]# blkid
@@ -631,7 +822,7 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 6.  挂载新分区。
 
     ```
-    [root@ecshost ~]# mount /dev/vdb2 /mnt
+    mount /dev/vdb2 /mnt
     ```
 
 
@@ -641,16 +832,36 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 1.  查看数据盘的挂载路径，根据返回的文件路径卸载。
 
+    查看挂载（mount）信息。
+
     ```
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    mount | grep "/dev/vdb"
+    ```
+
+    取消挂载（umount）数据盘。
+
+    ```
+    umount /dev/vdb
+    ```
+
+    查看操作结果。
+
+    ```
+    mount | grep "/dev/vdb"
+    ```
+
+    示例结果如下所示。
+
+    ```
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     /dev/vdb on /mnt type ext4 (rw,relatime,data=ordered)
     [root@ecshost ~]# umount /dev/vdb
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     ```
 
 2.  根据文件系统的类型，执行不同的扩容命令。
 
-    -   ext\*：使用root权限执行resize2fs命令扩容文件系统，例如：
+    -   ext\*：使用root权限执行resize2fs命令扩容文件系统。
 
         ```
         resize2fs /dev/vdb
@@ -658,19 +869,11 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
     -   xfs：使用root权限执行xfs\_growfs命令扩容文件系统。
 
+        ```
+        xfs_growfs /mnt
+        ```
+
         **说明：** 新版xfs\_growfs根据挂载点识别待扩容设备，例如`xfs_growfs /mnt`。您可以运行`xfs_growfs --help`查看不同版本xfs\_growfs的使用方法。
-
-        -   新版xfs\_growfs
-
-            ```
-            xfs_growfs /mnt
-            ```
-
-        -   未更新版xfs\_growfs
-
-            ```
-            xfs_growfs /dev/vdb
-            ```
 
 3.  将云盘挂载至挂载点。
 
@@ -680,7 +883,11 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 4.  运行`df -h`查看数据盘扩容结果。
 
-    显示容量完成扩充，表示扩容成功。
+    ```
+    df -h
+    ```
+
+    以下示例显示容量完成扩充，表示扩容成功。
 
     ```
     [root@ecshost ~]# df -h
@@ -697,6 +904,8 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 **相关文档**  
 
+
+[在线扩容云盘（Linux系统）](/cn.zh-CN/块存储/扩容云盘/在线扩容云盘（Linux系统）.md)
 
 [在线扩容云盘（Windows系统）](/cn.zh-CN/块存储/扩容云盘/在线扩容云盘（Windows系统）.md)
 
