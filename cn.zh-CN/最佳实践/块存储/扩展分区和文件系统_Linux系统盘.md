@@ -20,8 +20,7 @@
         运行`yum install <package\_name\>`命令安装工具，示例如下。
 
         ```
-        yum install cloud-utils-growpart
-        yum install xfsprogs
+        yum install cloud-utils-growpart xfsprogs -y
         ```
 
     -   Ubuntu 14、Ubuntu 16、Ubuntu 18、Debian 9
@@ -29,8 +28,7 @@
         运行`apt install <package\_name\>`命令安装工具，示例如下。
 
         ```
-        apt install cloud-guest-utils
-        apt install xfsprogs
+        apt install cloud-guest-utils xfsprogs -y
         ```
 
     -   Debian 8、OpenSUSE 42.3、OpenSUSE 13.1、SUSE Linux Enterprise Server 12 SP2
@@ -138,7 +136,7 @@
         示例命令表示为扩容系统盘的/dev/vda1分区的文件系统。其中根目录（/）为/dev/vda1的挂载点。
 
         ```
-        [root@ecshost ~]# xfs\_growfs /
+        [root@ecshost ~]# xfs_growfs /
         meta-data=/dev/vda1              isize=512    agcount=13, agsize=1310656 blks
                  =                       sectsz=512   attr=2, projid32bit=1
                  =                       crc=1        finobt=1, sparse=1, rmapbt=0
@@ -277,7 +275,7 @@
         示例命令表示为扩容系统盘的/dev/vda1分区的文件系统。其中根目录（/）为/dev/vda1的挂载点。
 
         ```
-        [root@ecshost ~]# xfs\_growfs /
+        [root@ecshost ~]# xfs_growfs /
         ```
 
         **说明：** 不同版本的xfs\_growfs命令可能存在差异，请运行`xfs_growfs --help`查看对应的命令。
