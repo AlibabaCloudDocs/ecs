@@ -1013,8 +1013,6 @@ Instance types
 
 ## d2c, compute intensive big data instance family
 
-d2c is in invitational preview. To use d2c,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
 Features
 
 -   I/O optimized.
