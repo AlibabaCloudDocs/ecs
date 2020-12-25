@@ -60,7 +60,7 @@ Both savings plans and reserved instances can be applied to offset the bills of 
 |You want to deploy your instances in multiple regions.|A reserved instance can be used only within a single region.|
 |You want to make it simple to select resources in the budgeting phase.|Requires an estimate of the approximate usage range but not details about the instance family or operating system.|Requires details about the region, instance family, and operating system.|
 
-For more information about instance billing, see [Instances](/intl.en-US/Pricing/Billing items/Instances.md).
+For more information about instance billing, see [t1937440.md\#](/intl.en-US/Pricing/Billing items/Instance types.md).
 
 ## Billing
 
