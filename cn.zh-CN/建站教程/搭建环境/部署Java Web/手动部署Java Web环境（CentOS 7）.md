@@ -19,8 +19,6 @@
 
 
 
-
-
 ## 步骤一：下载源代码
 
 1.  下载[Apache Tomcat](https://mirrors.aliyun.com/apache/tomcat/tomcat-8/)。
@@ -56,7 +54,7 @@
 
     1.  运行systemctl status firewalld命令查看当前防火墙的状态。
 
-        ![查看防火墙状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7712359951/p32172.png)
+        ![查看防火墙状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7712359951/p32172.png)
 
         -   如果防火墙的状态参数是inactive，则防火墙为关闭状态。
         -   如果防火墙的状态参数是active，则防火墙为开启状态。本示例中防火墙为开启状态，因此需要关闭防火墙。
@@ -74,7 +72,7 @@
 
     1.  运行命令getenforce查看SELinux的当前状态。
 
-        ![查看SELinux状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7712359951/p21065.png)
+        ![查看SELinux状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7712359951/p21065.png)
 
         -   如果SELinux状态参数是Disabled， 则SELinux为关闭状态。
         -   如果SELinux状态参数是Enforcing，则SELinux为开启状态。本示例中SELinux为开启状态，因此需要关闭SELinux。
@@ -164,7 +162,7 @@
 
     返回结果如图所示，表示JDK已经安装成功。
 
-    ![jdk180241](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5012649951/p97228.png)
+    ![jdk180241](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5012649951/p97228.png)
 
 
 ## 步骤四：安装Apache Tomcat
@@ -274,10 +272,10 @@
 
     1.  运行以下命令下载Tomcat自启动脚本。
 
-        **说明：** 该脚本来源于社区，仅供参考。阿里云对其可靠性以及操作可能带来的潜在影响，不做任何暗示或其他形式的承诺。
+        **说明：** 该脚本来源于社区，仅供参考。阿里云对其可靠性以及操作可能带来的潜在影响，不做任何暗示或其他形式的承诺。如果您运行wget命令下载失败，您可以通过浏览器访问`https://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init`直接获取脚本内容。
 
         ```
-        wget http://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init
+        wget https://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init
         ```
 
     2.  运行以下命令重命名Tomcat-init。
@@ -317,7 +315,7 @@
 
     返回页面如下图所示，表示安装成功。
 
-    ![返回结果](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9012649951/p12137.png)
+    ![返回结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9012649951/p12137.png)
 
 
 Tomcat可用后，建议您为ECS实例的公网IP地址绑定域名，配置网站等。
