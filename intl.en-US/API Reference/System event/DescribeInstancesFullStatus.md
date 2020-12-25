@@ -1,301 +1,242 @@
-# DescribeInstancesFullStatus {#DescribeInstancesFullStatus .reference}
+# DescribeInstancesFullStatus
 
-Describes the full status information of the specified instance. The full status information includes the instance status and the instance event status, while the instance status is the life cycle status of the instance and the instance event is the health status of the maintenance event. For more details, see instance life cycle, and instance system events.
+You can call this operation to query the full status information of one or more ECS instances. The full status information includes the instance status and the status of an instance system event. The instance status is the lifecycle status of an instance. The status of an instance system event is the health status of a maintenance event.
 
-## Description {#section_rcq_354_ydb .section}
+## Description
 
-After you call the interface, information including the status of the scheduled events \(Scheduled\) and the status of the specified instance is returned.
+The response includes the instance status and the instance system events in the Scheduled state.
 
-If a period is specified, all the events in the period are queried.
+If a period is specified, all the events within the period are queried.
 
-## Request parameters {#RequestParameter .section}
+## Debugging
 
-|Name|Type|Required|Description|
-|:---|:---|:-------|:----------|
-|Action|String|Yes|The name of this interface. Value: DescribeInstancesFullStatus.|
-|RegionId|String|Yes|ID of the region where the instance belongs. For more information, see Regions and zones, or call [DescribeRegions](reseller.en-US/API Reference/Regions/DescribeRegions.md#) to obtain the latest region list.|
-|InstanceId.N|String|No|Instance ID. Value range of N: \[1, 100\]. For example, `InstanceId. 1="i-instance1", 2="i-instance2"`......|
-|EventId.N|String|No|Event ID. Value range of N: \[1, 100\]. For example, `EventId. 1="e-xhskHun1256xxxx"`, `EventId. 2="e-xhskHun1257xxxx"`......|
-|Status|String|No|Lifecycle status of the instance. Optional values:-   Starting
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeInstancesFullStatus&type=RPC&version=2014-05-26)
+
+## Request parameters
+
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|DescribeInstancesFullStatus|The operation that you want to perform. Set the value to DescribeInstancesFullStatus. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|InstanceId.N|RepeatList|No|i-bp67acfmxazb4p\*\*\*\*|The ID of instance N. Valid values of N: 1 to 100. Specify multiple values in the repeated list format. |
+|EventId.N|RepeatList|No|e-bp1hygp5b04o56l0\*\*\*\*|The ID of system event N. Valid values of N: 1 to 100. Specify multiple values in the repeated list format. |
+|Status|String|No|Running|The lifecycle status of the instance. Valid values:
+
+-   Starting
 -   Running
--   Stopped
+-   Stopped |
+|HealthStatus|String|No|Maintaining|The health status of the instance. Valid values:
 
-|
-|HealthStatus|String|No|Health status of the instance. Optional values:-   Impaired: The instance performance is damaged.
--   Warning: The performance of instance may be degraded because of maintenance or technical issues.
--   Maintaining: The instance is in maintenance.
--   Initializing: The instance is in initialization.
--   InsufficientData: The event details cannot be determined because of insufficient data.
--   NotApplicable: Not applicable.
+-   Impaired: The instance is impaired.
+-   Warning: The instance performance may be degraded due to maintenance or technical issues.
+-   Maintaining: The instance is undergoing maintenance.
+-   Initializing: The instance is being initialized.
+-   InsufficientData: The status cannot be determined due to insufficient data.
+-   NotApplicable: The parameter is not applicable.
 
-|
-|InstanceEventType.N|String|No|One or more instance event types. Value range of N: \[1, 30\], the events must be displayed in the similar format of InstanceEventType.1="Reboot", InstanceEventType.2="SystemFailure.Reboot"... Optional values: SystemMaintenance.Reboot: The instance restarts because of maintenance. SystemFailure.Reboot: The instance restarts due to a system failure. InstanceFailure.Reboot: The instance restarts due to instance failure. `Instanceeventtype. 1="Reboot"`, `InstanceEventType. 2="SystemFailure.Reboot"`...... Scope of value:-   SystemMaintenance.Reboot: Reboot due to system maintenance instance.
--   SystemFailure.Reboot: Restart due to system error instance.
--   InstanceFailure.Reboot: Restart due to instance error.
--   InstanceExpiration.Stop: Subscription instances stop due to expiration.
--   InstanceExpiration.Delete: Subscription instances are released after several days of expiration.
--   AccountUnbalanced.Stop: Pay-As-You-Go instances stop due to expiration.
--   AccountUnbalanced.Delete: Pay-As-You-Go instances are released after several days of expiration.
+All the values are case-sensitive. |
+|InstanceEventType.N|RepeatList|No|InstanceExpiration.Stop|The type of system event N. Valid values of N: 1 to 30. Specify multiple values in the repeated list format. Valid values:
 
-|
-|EventType|String|No|Instance event type. `EventType` is effective only when the InstanceEventType.N is not specified. Optional values:-   SystemMaintenance.Reboot: Reboot due to system maintenance instance.
--   SystemFailure.Reboot: Restart due to system error instance.
--   InstanceFailure.Reboot: Restart due to instance error.
--   InstanceExpiration.Stop: Subscription instances stop due to expiration.
--   InstanceExpiration.Delete: Subscription instances are released after several days of expiration.
--   AccountUnbalanced.Stop: Pay-As-You-Go instances stop due to expiration.
--   AccountUnbalanced.Delete: Pay-As-You-Go instances are released after several days of expiration.
+-   SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+-   SystemFailure.Reboot: The instance is restarted due to a system failure.
+-   InstanceFailure.Reboot: The instance is restarted due to an instance failure.
+-   InstanceExpiration.Stop: The instance is stopped due to subscription expiration.
+-   InstanceExpiration.Delete: The instance is released due to subscription expiration.
+-   AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to overdue payments.
+-   AccountUnbalanced.Delete: The pay-as-you-go instance is released due to overdue payments. |
+|EventType|String|No|InstanceExpiration.Stop|The type of the system event. This parameter takes effect only when the InstanceEventType.N parameter is not specified. Valid values:
 
-|
-|NotBefore.Start|String|No|Queries the start time of the scheduled event execution time. The time format follows the [ISO8601](../reseller.en-US/API Reference/Appendix/ISO 8601 Time Format.md#) standard, and the UTC time is used. The format is yyyy-MM-ddTHH:mm:ssZ.|
-|NotBefore.End|String|No|Queries the end time of the scheduled event execution time. The time format follows the [ISO8601](../reseller.en-US/API Reference/Appendix/ISO 8601 Time Format.md#) standard, and the UTC time is used. The format is yyyy-MM-ddTHH:mm:ssZ.|
-|EventPublishTime.Start|String|No|Queries the start time of the event release time. The time format follows the [ISO8601](../reseller.en-US/API Reference/Appendix/ISO 8601 Time Format.md#) standard, and the UTC time is used. The format is yyyy-MM-ddTHH:mm:ssZ.|
-|EventPublishTime.End|String|No|Queries the end time of the event release time. The time format follows the [ISO8601](../reseller.en-US/API Reference/Appendix/ISO 8601 Time Format.md#) standard, and the UTC time is used. The format is yyyy-MM-ddTHH:mm:ssZ.|
-|PageNumber|Integer|No|Page number of the query result. The value must be a positive integer.Default value: 1.
+-   SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+-   SystemFailure.Reboot: The instance is restarted due to a system failure.
+-   InstanceFailure.Reboot: The instance is restarted due to an instance failure.
+-   InstanceExpiration.Stop: The instance is stopped due to subscription expiration.
+-   InstanceExpiration.Delete: The instance is released due to subscription expiration.
+-   AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to overdue payments.
+-   AccountUnbalanced.Delete: The pay-as-you-go instance is released due to overdue payments. |
+|NotBefore.Start|String|No|2017-12-07T00:00:00Z|The start time of the scheduled event execution. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
+|NotBefore.End|String|No|2017-11-30T00:00:00Z|The end time of the scheduled event execution. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
+|EventPublishTime.Start|String|No|2017-11-30T00:00:00Z|The start time of the period during which a system event is published. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
+|EventPublishTime.End|String|No|2017-12-07T00:00:00Z|The end time of the period during which a system event is published. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
+|PageNumber|Integer|No|1|The number of the page to return. Pages start from page 1.
 
-|
-|PageSize|Integer|No|Page size of the query result. Value range: \[1, 100\].Default value: 10.
+Default value: 1. |
+|PageSize|Integer|No|10|The number of entries to return on each page. Valid values: 1 to 100.
 
-|
+Default value: 10. |
 
-## Response parameters {#ResponseParameter .section}
+## Response parameters
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|TotalCount|Integer|Total number of the status of the instance.|
-|Pagenumber|Integer|Page number of the status list of the instance.|
-|Pagesize|Integer|Size of each page.|
-|Instancefullstatusset|Array of [`InstanceFullStatusType`](#)|Array of full instance status.|
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|InstanceFullStatusSet|Array of InstanceFullStatusType| |Details about the instance full status data. |
+|InstanceFullStatusType| | | |
+|HealthStatus|Struct| |The health status of the instance. |
+|Code|Integer|64|The code of the health status. |
+|Name|String|Warning|The name of the health status. |
+|InstanceId|String|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance. |
+|ScheduledSystemEventSet|Array of ScheduledSystemEventType| |Details about the scheduled system events. |
+|ScheduledSystemEventType| | | |
+|EventCycleStatus|Struct| |The status of the system event. |
+|Code|Integer|24|The code of the system event status. |
+|Name|String|Scheduled|The name of the system event status. |
+|EventId|String|e-bp1hygp5b04o56l0\*\*\*\*|The ID of the instance event. |
+|EventPublishTime|String|2017-11-30T06:32:31Z|The time when the system event was published. The time is displayed in UTC. |
+|EventType|Struct| |The type of the system event. Valid values: |
+|Code|Integer|1|The code of the system event type. |
+|Name|String|SystemMaintenance.Reboot|The name of the system event type. |
+|ExtendedAttribute|Struct| |The extended attribute of system events for instances that have local disks attached. |
+|Device|String|/dev/vdb|The device name of the local disk. |
+|DiskId|String|d-bp67acfmxazb4p\*\*\*\*|The ID of the local disk. |
+|InactiveDisks|Array of InactiveDisk| |Details about the inactive cloud disks or local disks that have been released but must be removed. |
+|InactiveDisk| | | |
+|CreationTime|String|2018-07-27T13:53:25Z|The time when the disk was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
+|DeviceCategory|String|cloud\_ssd|The category of the disk. Valid values:
 
-**InstanceFullStatusType** 
+-   cloud: basic disk.
+-   cloud\_efficiency: ultra disk
+-   cloud\_ssd: standard SSD
+-   cloud\_essd: enhanced SSD \(ESSD\)
+-   local\_ssd\_pro: I/O intensive local disk
+-   local\_hdd\_pro: throughput intensive local disk
+-   ephemeral: retired local disk
+-   ephemeral\_ssd: retired local SSD |
+|DeviceSize|String|80|The size of the disk. Unit: GiB. |
+|DeviceType|String|system|The type of the disk. Valid values:
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|InstanceId|String|Instance ID.|
-|Scheduledsystemeventset|Array of [`ScheduledSystemEventType`](#)|Array of scheduled events.|
-|Status. Code|Integer|Code of the instance lifecycle status.|
-|Status. Name|String|Name of the instance lifecycle status.|
-|Healthstatus. Code|Integer|Code of the health status.|
-|Healthstatus. Name|String|Name of the health status.|
+-   system: system disk
+-   data: data disk |
+|ReleaseTime|String|2019-07-27T13:53:25Z|The time when the disk was released. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
+|ImpactLevel|String|100|The level of the system event impact. |
+|NotBefore|String|2017-12-07T00:00:00Z|The scheduled execution time of the system event. The time is displayed in UTC. |
+|Reason|String|A simulated event.|The reason for scheduling the system event. |
+|Status|Struct| |The lifecycle status of the instance. |
+|Code|Integer|1|The code of the instance lifecycle status. |
+|Name|String|Running|The name of the instance lifecycle status. |
+|PageNumber|Integer|1|The page number of the returned page. |
+|PageSize|Integer|1|The number of entries returned per page. |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
+|TotalCount|Integer|2|The total number of the returned entries. |
 
- **ScheduledSystemEventType** 
+## Examples
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|EventId|String|Instance event ID.|
-|EventCycleStatus.Code|Integer|Code of event status.|
-|EventCycleStatus.Name|String|Name of event status.|
-|EventType.Code|Integer|Code of event type.|
-|EventType.Name|String|Code of event type.|
-|Eventpublishtime|String|Event release time. The time format follows the [ISO8601](../reseller.en-US/API Reference/Appendix/ISO 8601 Time Format.md#) standard, and the UTC time is used. The format is yyyy-MM-ddTHH:mm:ssZ.|
-|NotBefore|String|Scheduled time of event execution. The time format follows the [ISO8601](../reseller.en-US/API Reference/Appendix/ISO 8601 Time Format.md#) standard, and the UTC time is used. The format is yyyy-MM-ddTHH:mm:ssZ.|
-
-## Examples { .section}
-
-**Request example** 
+Sample requests
 
 ```
 https://ecs.aliyuncs.com/?Action=DescribeInstancesFullStatus
 &RegionId=cn-hangzhou
-&<Common Request Parameters>
+&InstanceId.1=i-bp67acfmxazb4p****
+&EventId.1=e-bp1hygp5b04o56l0****
+&Status=Running
+&HealthStatus=Maintaining
+&InstanceEventType.1=InstanceExpiration.Stop
+&EventType=InstanceExpiration.Stop
+&NotBefore.Start=2017-12-07T00:00:00Z
+&NotBefore.End=2017-11-30T00:00:00Z
+&EventPublishTime.Start=2017-11-30T00:00:00Z
+&EventPublishTime.End=2017-12-07T00:00:00Z
+&PageNumber=1
+&PageSize=1
+&<Common request parameters>
 ```
 
-**Success response example** 
+Sample success responses
 
-**XML format**
+`XML` format
 
 ```
 <DescribeInstancesFullStatusResponse>
-    <? xml version="1.0" encoding="UTF-8" ? >
-    <InstanceFullStatusSet>
-        <InstanceFullStatusType>
-            <InstanceId>i-instance1</InstanceId>
-            <Status>
-                <Code>1</Code>
-                <Name>Running</Name>
-            </Status>
-            <HealthStatus>
-                <Code>0</Code>
-                <Name>Maintaining</Name>
-            </HealthStatus>
-            <ScheduledSystemEventSet>
-                <ScheduledSystemEventType>
-                    <EventId>e-event1</EventId>
-                    <EventCycleStatus>
-                        <Code>24</Code>
-                        <Name>Scheduled</Name>
-                    </EventCycleStatus>
-                    <EventType>
+      <TotalCount>1</TotalCount>
+      <RequestId>7EBCB534-1CE5-46E7-92A6-507B1654CC03</RequestId>
+      <PageSize>10</PageSize>
+      <PageNumber>1</PageNumber>
+      <InstanceFullStatusSet>
+            <InstanceFullStatusType>
+                  <Status>
                         <Code>1</Code>
-                        <Name>SystemMaintenance.Reboot</Name>
-                    </EventType>
-                    <EventPublishTime>2017-11-30T06:32:31Z</EventPublishTime>
-                    <NotBefore>2017-12-01T06:32:31Z</NotBefore>
-                </ScheduledSystemEventType>
-                <ScheduledSystemEventType>
-                    <EventId>e-event2</EventId>
-                    <EventCycleStatus>
-                        <Code>24</Code>
-                        <Name>Scheduled</Name>
-                    </EventCycleStatus>
-                    <EventType>
-                        <Code>34</Code>
-                        <Name>InstanceExpiration.Stop</Name>
-                    </EventType>
-                    <EventPublishTime>2017-11-30T00:00:00Z</EventPublishTime>
-                    <NotBefore>2017-12-07T00:00:00Z</NotBefore>
-                </ScheduledSystemEventType>
-            </ScheduledSystemEventSet>
-        </InstanceFullStatusType>
-        <InstanceFullStatusType>
-            <InstanceId>i-instance2</InstanceId>
-            <Status>
-                <Code>1</Code>
-                <Name>Running</Name>
-            </Status>
-            <HealthStatus>
-                <Code>64</Code>
-                <Name>Warning</Name>
-            </HealthStatus>
-            <ScheduledSystemEventSet>
-                <ScheduledSystemEventType>
-                    <EventId>e-event3</EventId>
-                    <EventCycleStatus>
-                        <Code>24</Code>
-                        <Name>Scheduled</Name>
-                    </EventCycleStatus>
-                    <EventType>
-                        <Code>65</Code>
-                        <Name>SystemFailure.Reboot</Name>
-                    </EventType>
-                    <EventPublishTime>2017-11-30T06:32:31Z</EventPublishTime>
-                    <NotBefore>2017-12-01T06:32:31Z</NotBefore>
-                </ScheduledSystemEventType>
-            </ScheduledSystemEventSet>
-        </InstanceFullStatusType>
-    </InstanceFullStatusSet>
-    <PageSize>10</PageSize>
-    <PageNumber>1</PageNumber>
-    <TotalCount>2</TotalCount>
-    <RequestId>AAC49D3E-ED6F-4F00-XXXX-377C551B1DD4</RequestId>
+                        <Name>Running</Name>
+                  </Status>
+                  <InstanceId>i-bp19cx17f2yx****</InstanceId>
+                  <HealthStatus>
+                        <Code>64</Code>
+                        <Name>Warning</Name>
+                  </HealthStatus>
+                  <ScheduledSystemEventSet>
+                        <ScheduledSystemEventType>
+                              <EventCycleStatus>
+                                    <Code>24</Code>
+                                    <Name>Scheduled</Name>
+                              </EventCycleStatus>
+                              <EventPublishTime>2020-04-24T07:09:37Z</EventPublishTime>
+                              <EventType>
+                                    <Code>65</Code>
+                                    <Name>SystemFailure.Reboot</Name>
+                              </EventType>
+                              <ExtendedAttribute></ExtendedAttribute>
+                              <EventId>e-bp1hygp5b04o56l0****</EventId>
+                              <NotBefore>2020-04-24T10:32:31Z</NotBefore>
+                              <Reason>A simulated event. </Reason>
+                        </ScheduledSystemEventType>
+                  </ScheduledSystemEventSet>
+            </InstanceFullStatusType>
+      </InstanceFullStatusSet>
 </DescribeInstancesFullStatusResponse>
 ```
 
- **JSON format** 
+`JSON` format
 
 ```
 {
-  "InstanceFullStatusSet": {
-    "InstanceFullStatusType": [
-      {
-        "InstanceId": "i-instance1",
-        "Status": {
-          "Code": 1,
-          "Name": "Running"
-        },
-        "HealthStatus": {
-          "Code": 0,
-          "Name": "Maintaining"
-        },
-        "ScheduledSystemEventSet": {
-          "ScheduledSystemEventType": [
+    "TotalCount": 1,
+    "RequestId": "7EBCB534-1CE5-46E7-92A6-507B1654CC03",
+    "PageSize": 10,
+    "PageNumber": 1,
+    "InstanceFullStatusSet": {
+        "InstanceFullStatusType": [
             {
-              "EventId": "e-event1",
-              "EventCycleStatus": {
-                "Code": 24,
-                "Name": "Scheduled"
-              },
-              "EventType": {
-                "Code": 1,
-                "Name": "SystemMaintenance.Reboot"
-              },
-              "EventPublishTime": "2017-11-30T06:32:31Z",
-              "NotBefore": "2017-12-01T06:32:31Z"
-            },
-            {
-              "EventId": "e-event2",
-              "EventCycleStatus": {
-                "Code": 24,
-                "Name": "Scheduled"
-              },
-              "EventType": {
-                "Code": 34,
-                "Name": "InstanceExpiration.Stop"
-              },
-              "EventPublishTime": "2017-11-30T00:00:00Z",
-              "NotBefore": "2017-12-07T00:00:00Z"
+                "Status": {
+                    "Code": 1,
+                    "Name": "Running"
+                },
+                "InstanceId": "i-bp19cx17f2yx****",
+                "HealthStatus": {
+                    "Code": 64,
+                    "Name": "Warning"
+                },
+                "ScheduledSystemEventSet": {
+                    "ScheduledSystemEventType": [
+                        {
+                            "EventCycleStatus": {
+                                "Code": 24,
+                                "Name": "Scheduled"
+                            },
+                            "EventPublishTime": "2020-04-24T07:09:37Z",
+                            "EventType": {
+                                "Code": 65,
+                                "Name": "SystemFailure.Reboot"
+                            },
+                            "ExtendedAttribute": {},
+                            "EventId": "e-bp1hygp5b04o56l0****",
+                            "NotBefore": "2020-04-24T10:32:31Z",
+                            "Reason": "A simulated event."
+                        }
+                    ]
+                }
             }
-          ]
-        }
-      },
-      {
-        "InstanceId": "i-instance2",
-        "Status": {
-          "Code": 1,
-          "Name": "Running"
-        },
-        "HealthStatus": {
-          "Code": 64,
-          "Name": "Warning"
-        },
-        "ScheduledSystemEventSet": {
-          "ScheduledSystemEventType": [
-            {
-              "EventId": "e-event3",
-              "EventCycleStatus": {
-                "Code": 24,
-                "Name": "Scheduled"
-              },
-              "EventType": {
-                "Code": 65,
-                "Name": "SystemFailure.Reboot"
-              },
-              "EventPublishTime": "2017-11-30T06:32:31Z",
-              "NotBefore": "2017-12-01T06:32:31Z"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "PageSize": 10,
-  "PageNumber": 1,
-  "TotalCount": 2,
-  "RequestId": "AAC49D3E-ED6F-4F00-XXXX-377C551B1DD4"
+        ]
+    }
 }
 ```
 
-**Error response example** 
+## Error codes
 
-**XML format**
+|HTTP status code|Error code|Error message|Description|
+|----------------|----------|-------------|-----------|
+|404|MissingParameter|%s|The error message returned because a required parameter is not specified.|
+|403|InvalidParameter|%s|The error message returned because a specified parameter is invalid.|
+|403|InvalidParameter.TimeEndBeforeStart|%s|The error message returned because the specified parameter is invalid. Check whether the end time is earlier than the start time.|
+|403|OperationDenied.NotInWhiteList|%s|The error message returned because you are not authorized to perform this operation. Try again when you are in the whitelist.|
+|403|InstanceIdLimitExceeded|%s|The error message returned because the value set for N in the InstanceId.N parameter is more than 100.|
+|403|EventIdLimitExceeded|%s|The error message returned because more than 100 system event IDs are specified.|
 
-```
-<Error>
-    <RequestId>C38E0D94-C18B-44F3-8C05-6E35BE334088</RequestId>
-    <HostId>ecs.aliyuncs.com</HostId>
-    <Code>InstanceIdLimitExceeded</Code>
-    <Message>The amount of InstanceId specified exceeds limit 100.</Message>
-</Error>
-```
-
- **JSON format** 
-
-```
-{
-    "RequestId": "1A8B4B27-8B2D-XXXX-XXXX-0F64DBE4C213",
-    "HostId": "ecs.aliyuncs.com"
-    "Code": "InstanceIdLimitExceeded"
-    "Message": "The amount of InstanceId specified exceeds limit 100."
-}
-```
-
-## Error codes {#ErrorCode .section}
-
-|Error code| Error message|HTTP status code|Description|
-|:---------|:-------------|:---------------|:----------|
-|InvalidParameter|The Parameter provided is not valid.|403|The specified parameter is invalid.|
-|EventIdLimitExceeded|The amount of EventId specified exceeds limit 100.|403|The number of the specified `EventId` cannot be greater than 100.|
-|InstanceIdLimitExceeded|The amount of InstanceId specified exceeds limit 100.|403|The number of the specified `InstanceId` cannot be greater than 100.|
-|MissingParameter|The input parameter that is required for processing this request is not supplied.|403|You must specify the required parameter.|
-|InternalError|The request processing has failed due to some unknown error,exception or failure.|500|Internal error, please try again later.|
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
