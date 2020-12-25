@@ -1,121 +1,117 @@
-# CreateCommand {#doc_api_1105959 .reference}
+# CreateCommand
 
-Creates a cloud assistant command.
+You can call this operation to create a Cloud Assistant command.
 
-## Description {#description .section}
+## Description
 
 -   You can create commands of the following types:
-    -   Bat scripts for Windows-based instances \(RunBatScript\)
-    -   PowerShell scripts for Windows-based instances \(RunPowerShellScript\)
-    -   Shell scripts for Linux-based instances \(RunShellScript\)
--   You can specify the TimeOut parameter to set the maximum timeout period for command invocations on ECS instances. When a command invocation times out, the [cloud assistant client](~~64921~~) will force the command process to stop.
-    -   For one-time invocation: After an invocation times out, the state of the command invocation \([InvokeRecordStatus](~~64845~~)\) on the specified ECS instance becomes Failed.
-    -   For periodic invocation:
-        -   The timeout period of periodic invocation is effective for every invocation record.
-        -   After an invocation times out, the state of the invocation record \([InvokeRecordStatus](~~64845~~)\) becomes Failed.
-        -   The timeout of last invocation does not affect the next invocation.
--   You can use the WorkingDir parameter to specify the invocation path of the command. For Linux-based instances, the default path is /root. For Windows-based instances, the default path is the one where the cloud assistant client process is located, such as C:\\ProgramData\\aliyun\\assist\\$\(version\).
--   You can enable variables in a script by setting EnableParameter to true. Cloud assistant supports the format of `{{&(parameter)}}` in the CommandContent parameter, while you run the script via the InvokeCommand method, you can enter the value of variables. Imagine that you create a script of `echo {{name}}`, then you can set the Parameter to <name,Jack\> and the like in the InvokeCommand method, in the actual invocation, the cloud assistant uses `echo Jack`.
+    -   RunBatScript: bat commands for Windows instances
+    -   RunPowerShellScript: PowerShell commands for Windows instances
+    -   RunShellScript: shell commands for Linux instances
+-   You can specify the TimeOut parameter to set the maximum timeout period for command executions on ECS instances. When a command execution times out, the Cloud Assistant client forces the execution to stop by canceling the process ID \(PID\) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
+    -   One-time invocation: After an execution times out, the state of the execution \([InvokeRecordStatus](~~64845~~)\) on the specified ECS instance becomes Failed.
+    -   Scheduled invocation:
+        -   The timeout period of a scheduled invocation command is effective for every execution record.
+        -   After an execution times out, the status of the execution \([InvokeRecordStatus](~~64845~~)\) becomes Failed.
+        -   The timeout of previous execution does not affect the current execution.
+-   You can create up to 100 Cloud Assistant commands in a region. You can also [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to increase the service quota.
+-   You can use the WorkingDir parameter to specify the execution path of the command. For Linux instances, the default execution path of the command is the home directory of the root user, which is `/root`. For Windows instances, the default execution path of the command is the directory where the Cloud Assistant client process resides, such as C:\\Windows\\System32.
+-   You can enable the custom parameter feature on a Cloud Assistant command by setting EnableParameter to true when you create the command. When you set the CommandContent parameter, you can use the \{\{parameter\}\} format to indicate a custom parameter. Then, when you call the [InvokeCommand](~~64841~~) operation, you can enter the key-value pair of the custom parameter. For example, assume that you create a command named `echo {{name}}`. When you call the InvokeCommand operation, you can set Parameters to `<name, Jack>`. The custom parameter automatically changes the command to a new one. Therefore, the `echo Jack` command is actually run on the instance.
 
-## Debugging {#apiExplorer .section}
+## Debugging
 
-You can use [API Explorer](https://api.aliyun.com/#product=Ecs&api=CreateCommand) to perform debugging. API Explorer allows you to perform various operations to simplify API usage. For example, you can retrieve APIs, call APIs, and dynamically generate SDK example code.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=CreateCommand&type=RPC&version=2014-05-26)
 
-## Request parameters {#parameters .section}
+## Request parameters
 
-|Name|Type|Required|Example|Description|
-|----|----|--------|-------|-----------|
-|CommandContent|String|Yes|ZWNobyAxMjM=| The Base64-encoded content of the command. When you specify the Type parameter, you must specify this parameter. The parameter value must be Base64-encoded for transmission, and the size of the script after the Base64 encoding cannot exceed 16 KB.
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|CreateCommand|The operation that you want to perform. Set the value to CreateCommand. |
+|CommandContent|String|Yes|ZWNobyAxMjM=|The Base64-encoded content of the command.
 
- |
-|Name|String|Yes|Test| The name of the command, which supports all the character sets. It can be a maximum of 128 characters in length.
+-   The parameter value must be Base64-encoded and cannot exceed 16 KB in size after encoding.
+-   The command content can be specified by using custom parameters. To enable the custom parameters feature, you must set `EnableParameter` to true.
+    -   Custom parameters must be specified in the `{{}}` format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+    -   The number of custom parameters cannot exceed 20.
+    -   A custom parameter name can contain only letters, digits, underscores \(\_\), and hyphens \(-\). It is case-insensitive.
+    -   Each custom parameter name cannot exceed 64 bytes. |
+|Name|String|Yes|testName|The name of the command, which supports all character sets. It can be up to 128 characters in length. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the command. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|Type|String|Yes|RunShellScript|The command type. Valid values:
 
- |
-|RegionId|String|Yes|cn-hangzhou| The ID of the region. You can call [DescribeRegions](~~25609~~) to view the latest regions of Alibaba Cloud.
+-   RunBatScript: bat commands for Windows instances.
+-   RunPowerShellScript: PowerShell commands for Windows instances.
+-   RunShellScript: shell commands for Linux instances. |
+|Description|String|No|testDescription|The description of the command, which supports all character sets. It can be up to 512 characters in length. |
+|WorkingDir|String|No|/root/|The execution path of the command in the ECS instance.
 
- |
-|Type|String|Yes|RunShellScript| The type of the command. Valid values:
+Default value:
 
- -   RunBatScript: Bat script for Windows-based instances
--   RunPowerShellScript: PowerShell script for Windows-based instances
--   RunShellScript: Shell script for Linux-based instances
+-   For Linux instances, the default value is the home directory of the root user, which is the `/root` directory.
+-   For Windows instances, the default value is the directory where the Cloud Assistant client process resides, such as `C:\Windows\System32`. |
+|Timeout|Long|No|60|The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. When a command that you created cannot be run, the command times out. When a command execution times out, the Cloud Assistant client forces the command process to stop by canceling the PID of the command.
 
- |
-|Action|String|No|CreateCommand| The operation that you want to perform. Set the value to CreateCommand.
+Default value: 60. |
+|EnableParameter|Boolean|No|false|Specifies whether to use custom parameters in the command to be created.
 
- |
-|Description|String|No|Test1| The description of the command, which supports all character sets. It can be a maximum of 512 characters in length.
+Default value: false. |
 
- |
-|EnableParameter|Boolean|No|false|Whether to use variables in a script or not. Default value: false.|
-|Timeout|Long|No|3600| The value of the invocation timeout period of a command on ECS instances. Unit: seconds. When the command fails to run, the invocation times out, and the cloud assistant client forces to terminate the command process afterward.
+## Response parameters
 
- Default value: 3600.
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|CommandId|String|c-7d2a745b412b4601b2d47f6a768d\*\*\*\*|The ID of the command. |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
 
- |
-|WorkingDir|String|No|/home/| The directory where the created command runs on the ECS instances. Default value:
-
- -   For Linux-based instances, the default path is /root.
--   For Windows-based instances, the default path is the one where the cloud assistant client process is located, such as C:\\ProgramData\\aliyun\\assist\\$\(version\).
-
- |
-
-## Response parameters {#resultMapping .section}
-
-|Name|Type|Example|Description|
-|----|----|-------|-----------|
-|CommandId|String|c-7d2a745b412b4601b2d47f6a768d3a14| The ID of the command.
-
- |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E| The ID of the request.
-
- |
-
-## Examples {#demo .section}
+## Examples
 
 Sample requests
 
-``` {#request_demo}
+```
 https://ecs.aliyuncs.com/?Action=CreateCommand
-&CommandContent=ZWNobyAxMjM= 
-&Name=test
-&RegionId=cn-hangzhou 
-&Type=RunShellScript 
-&Description=Test1
-&WorkingDir=/home/
-&Timeout=3600
+&CommandContent=ZWNobyB7e25hbWV9fSA=
+&Name=testName
+&RegionId=cn-hangzhou
+&Type=RunShellScript
+&Description=testDescription
+&WorkingDir=/root/
+&Timeout=60
+&EnableParameter=true
 &<Common request parameters>
 ```
 
-Successful response examples
+Sample success responses
 
 `XML` format
 
-``` {#xml_return_success_demo}
+```
 <CreateCommandResponse>
-  <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId> 
-  <CommandId>c-7d2a745b412b4601b2d47f6a768d3a14</CommandId>
+      <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
+      <CommandId>c-7d2a745b412b4601b2d47f6a768d****</CommandId>
 </CreateCommandResponse>
 ```
 
 `JSON` format
 
-``` {#json_return_success_demo}
+```
 {
-	"RequestId":"E69EF3CC-94CD-42E7-8926-F133B86387C0",
-	"CommandId":"c-7d2a745b412b4601b2d47f6a768d3a14"
+    "RequestId": "E69EF3CC-94CD-42E7-8926-F133B86387C0",
+    "CommandId": "c-7d2a745b412b4601b2d47f6a768d****"
 }
 ```
 
-## Error codes {#section_y1o_u9a_ges .section}
+## Error codes
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned when an unknown error occurs.|
-|403|InvalidCmdType.NotFound|The specified command type does not exist.|The error message returned when the specified command type does not exist.|
-|403|CmdName.ExceedLimit|The length of the command name exceeds the upper limit.|The error message returned when the command name exceeds the maximum length. Use a shorter command name.|
-|403|CmdDesc.ExceedLimit|The length of the command description exceeds the upper limit.|The error message returned when the command description exceeds the maximum length. Use a shorter command description.|
-|403|CmdCount.ExceedQuota|The total number of commands in the current region exceeds the quota.|The error message returned when the number of cloud assistant commands in the region exceeds the upper limit.|
+|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned because an error occurred when the request was being sent. Try again later.|
+|403|InvalidCmdType.NotFound|The specified command type does not exist.|The error message returned because the specified Type parameter does not exist.|
+|403|CmdName.ExceedLimit|The length of the command name exceeds the upper limit.|The error message returned because the maximum length of the command name has been reached.|
+|403|CmdDesc.ExceedLimit|The length of the command description exceeds the upper limit.|The error message returned because the maximum length of the command description has been reached.|
+|403|CmdCount.ExceedQuota|The total number of commands in the current region exceeds the quota.|The error message returned because the maximum number of Cloud Assistant commands in the current region has been reached.|
+|403|CmdParam.EmptyKey|You must specify the parameter names.|The error message returned because some required parameters are not specified.|
+|403|CmdParam.InvalidParamName|Invalid parameter name. The name can contain only lowercase letters \(a to z\), uppercase letters \(A to Z\), numbers \(0 to 9\), hyphens \(-\), and underscores \(\_\).|The error message returned because the custom parameter name is invalid. A custom parameter name can contain only letters, digits, underscores \(\_\), and hyphens \(-\).|
+|403|CmdParamName.ExceedLimit|The maximum length of a parameter name is exceeded.|The error message returned because the maximum length of the custom parameter name has been reached.|
 
-[View error codes](https://error-center.aliyun.com/status/product/Ecs)
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
