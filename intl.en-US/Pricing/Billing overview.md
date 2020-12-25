@@ -4,88 +4,72 @@ keyword: [prepaid, subscription, weekly subscription, pay-as-you-go, billable re
 
 # Billing overview
 
-This topic describes items related to ECS billing, such as billable resources, billing methods, and payment methods.
+This topic describes the billing items of ECS and billing methods of ECS resources.
 
-The price of an ECS resource may vary by region. For more information about ECS resource prices, see [Pricing](https://www.alibabacloud.com/product/ecs).
+The price of an ECS resource may vary with regions. For more information about ECS resource prices, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab on the Elastic Compute Service page.
 
-## Billable resources
+## Billable items
 
-ECS comprises the following major components: instances, images, Block Storage devices, snapshots, security groups, and networks. For more information, see [What is ECS?](/intl.en-US/Product Introduction/What is ECS?.md)
+An ECS instance includes the computing resources \(vCPUs and memory\), image, and Elastic Block Storage \(EBS\) devices. The following table describes the billable ECS resources.
 
-The following table describes billable ECS resources.
+|Resource|Description|Billing method|Reference|
+|--------|-----------|--------------|---------|
+|Computing resource \(vCPUs and memory\)|You are charged based on the instance type that you choose. The instance type determines the number of vCPUs and the size of memory that you can use.|-   Subscription
+-   Pay-as-you-go
+-   Pay-as-you-go and reserved instances
+-   Preemptible instances
 
-|Resource|Description|
-|--------|-----------|
-|ECS instance|You are billed based on the instance type that you choose. The instance type determines the number of vCPUs and the size of memory that you can use. **Note:** If you select an instance type that is equipped with local disks, the price of the instance type includes the price of local disks. |
-|Image|Images are classified into the following types: -   Public image
-    -   Windows Server: The price is subject to the instance type that you choose. For more information, see the buy page.
-    -   Red Hat Enterprise Linux: You are charged for these images. For more information, see the buy page.
-    -   Other images: free of charge.
--   Alibaba Cloud Marketplace image: Prices are determined by the image providers.
--   Custom image
-    -   If a custom image is derived from a free public image or an Alibaba Cloud Marketplace image, you are charged for the snapshot used to create the custom image. Snapshots are charged based on storage space usage.
-    -   If a custom image is obtained from a paid public image or an Alibaba Cloud Marketplace image, you are charged for the snapshot used to create the custom image. Snapshots are billed based on storage space usage. If you use a custom image to create an ECS instance, you are also charged for the image.
--   Shared image
-    -   If a shared image is derived from a free public image or an Alibaba Cloud Marketplace image, the shared image is free of charge.
-    -   If a shared image is derived from a paid public image or an Alibaba Cloud Marketplace image, you are also charged for the shared image when you use it to create an ECS instance. If you never use the image, you are not charged. |
-|Block Storage device|Alibaba Cloud provides the following types of Block Storage devices: -   Cloud disks: Cloud disks are billed based on their storage capacity. You can use cloud disks as system disks or data disks.
--   Local disks: Local disks are billed based on their storage capacity. You can use local disks only as data disks. Local disks cannot be purchased separately. Local disks created together with an ECS instance have the same billing method as the ECS instance.
+|[Instance types](/intl.en-US/Pricing/Billing items/Instance types.md)|
+|Image|The image fees are determined based on the image type and your usage.|-   Subscription
+-   Pay-as-you-go
+-   Pay-as-you-go and reserved instances
 
-Instance families that are equipped with local disks include d1ne, d1, i2, i2g, i1, and gn5. For information about instance families, see [Instance families](/intl.en-US/Instance/Instance families.md). |
-|Public bandwidth|An ECS instance can access the Internet through the following methods: -   Use the public IP address allocated by the system. You are not charged to retain public IP addresses. You are charged only for public bandwidth. For more information, see [Billing methods of public bandwidth](/intl.en-US/Pricing/Billing items/Billing methods of public bandwidth.md).
--   Use the elastic IP address \(EIP\). EIP is an independent service. For more information, see [Billing overview](/intl.en-US/Pricing/Billing.md).
--   Use the NAT gateway. NAT Gateway is an independent service. For more information, see [Billing method](/intl.en-US/Pricing/Billing.md). |
-|Snapshot|Snapshots are billed based on the storage space usage.|
+|[Images](/intl.en-US/Pricing/Billing items/Images.md)|
+|EBS device \(cloud disk or local disk\)|The disk fees are determined based on the disk capacity and duration of use.**Note:** Local disks must be created together with instances and cannot be purchased separately. Prices of local disks are included in those of the instances to which the local disks are attached.
+
+|-   Subscription
+-   Pay-as-you-go
+-   Storage capacity units \(SCUs\)
+
+|[Elastic Block Storage devices](/intl.en-US/Pricing/Billing items/Elastic Block Storage devices.md)|
+|Public bandwidth|If you use a public IP address to access the Internet, you are charged only for the outbound public bandwidth.**Note:** You can also use an elastic IP address \(EIP\) or NAT gateway to access the Internet. For more information about the billing, see [EIP Billing](/intl.en-US/Pricing/Billing.md) or [NAT Billing](/intl.en-US/Pricing/Billing overview.md).
+
+|-   Pay-by-bandwidth
+-   Pay-by-traffic
+
+|[Public bandwidth](/intl.en-US/Pricing/Billing items/Public bandwidth.md)|
+|Snapshot|The snapshot fees are determined based on the snapshot size and storage duration.|-   Pay-as-you-go
+-   SCUs
+
+|[Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md)|
 
 ## Billing methods
 
-ECS instances support the following billing methods: subscription and pay-as-you-go.
+ECS resources support the subscription and pay-as-you-go billing methods. You can combine different billing methods based on the ECS resource types to reduce costs. For more information, see [Billing overview](/intl.en-US/Pricing/Billing methods/Billing overview.md).
 
--   Subscription: a billing method that allows you to pay for an instance upfront to use for the subscription period. The subscription billing method is suited for common services without traffic spikes, such as web services. For more information, see [Subscription](/intl.en-US/Pricing/Billing methods/Subscription.md).
--   Pay-as-you-go: a billing method that allows you to use an instance and pay afterwards for the resources it uses. The pay-as-you-go billing method is suited for scenarios with traffic spikes, such as temporary scaling, interim testing, and scientific computing. For more information, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
+If your current billing methods cannot meet your business requirements after you purchase ECS resources, you can change the billing methods of the resources. The following table describes ECS resources whose billing methods can be changed.
 
-For more information about the difference between subscription and pay-as-you-go, see [Comparison of billing methods](/intl.en-US/Pricing/Billing methods/Comparison of billing methods.md).
+|ECS resource|Description|Reference|
+|------------|-----------|---------|
+|ECS instance|When you change the billing method of an ECS instance, the billing method of its computing resources \(vCPU and memory\) and system disk is also changed.-   You can change the billing method of an ECS instance from subscription to pay-as-you-go. This allows you to recover some costs and use the instance in a more flexible manner.
 
-|Resource|Billing method|
-|--------|--------------|
-|ECS instance|-   Subscription
--   Pay-as-you-go
+**Note:** The availability of this feature is determined based on your ECS resource usage.
 
-If you plan to make a long-term commitment with pay-as-you-go ECS instances, you can purchase reserved instances to offset your bills. This method is more flexible and cost-effective. For more information, see [Reserved instance overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Reserved instance overview.md). For the billing details of reserved instances, see [Reserved instance billing](/intl.en-US/Pricing/Billing methods/Reserved instance billing.md).
+-   You can change the billing method of an ECS instance from pay-as-you-go to subscription. This allows you to obtain some discounts.
 
--   Preemptible instance
+|-   [Change the billing method of an instance from subscription to pay-as-you-go](/intl.en-US/Pricing/Change the billing method/Change the billing method of an instance from subscription to pay-as-you-go.md)
+-   [Change the billing method of an instance from pay-as-you-go to subscription](/intl.en-US/Pricing/Change the billing method/Change the billing method of an instance from pay-as-you-go to subscription.md) |
+|Cloud disk|-   The billing method of data disks that are attached to a subscription instance can be changed separately.
+-   The billing method of the system disk and data disks that are attached to a pay-as-you-go instance must be changed together with that of the instance.
 
-Preemptible instances are a type of on-demand instances that reduce overall ECS instance costs. Preemptible instances may be reclaimed. You can use auto provisioning groups to alleviate the instability caused by preemptible instances being reclaimed. For more information, see [Auto Provisioning overview](/intl.en-US/Elasticity/Manage auto provisioning groups/Auto Provisioning overview.md). |
-|Image|-   Subscription
--   Pay-as-you-go
+|-   [Change the billing method of a disk](/intl.en-US/Pricing/Change the billing method/Change the billing method of a subscription disk.md)
+-   [Change the billing method of an instance from subscription to pay-as-you-go](/intl.en-US/Pricing/Change the billing method/Change the billing method of an instance from subscription to pay-as-you-go.md)
+-   [Change the billing method of an instance from pay-as-you-go to subscription](/intl.en-US/Pricing/Change the billing method/Change the billing method of an instance from pay-as-you-go to subscription.md) |
+|Public bandwidth|For an instance that uses a public IP address, you can change its billing method for network usage by upgrading or downgrading the configurations of the instance.|[Change the billing method for network usage](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Change the billing method for network usage.md)|
 
-Images can be used only along with ECS instances. Windows reserved instances can be used to offset image bills. |
-|Disk|-   Subscription
--   Pay-as-you-go
+## Renewal management
 
-The billing methods of cloud disks depend on how they are created.
-
--   Cloud disks created along with an ECS instance have the same billing method as the ECS instance.
--   Cloud disks created for a subscription ECS instance use the subscription billing method.
--   Cloud disks created on the Disks page of the ECS console support only pay-as-you-go.
--   Cloud disks created from snapshots support only pay-as-you-go.
-
-You can change the billing methods of your cloud disks. For more information, see [Change billing methods of disks](/intl.en-US/Block Storage/Cloud disks/Change billing methods of disks.md). |
-|Public bandwidth|If your ECS instance accesses the Internet by using a public IP address, one of the following billing methods is used: -   Pay-by-bandwidth
-
-Fees are calculated based on the bandwidth that you specified. You can select the pay-by-bandwidth billing method for ECS instances that use the following billing methods:
-
-    -   Subscription
-    -   Pay-as-you-go
--   Pay-by-traffic
-
-You are billed on an hourly basis based on the amount of traffic that your instance consumed.
-
-
-You can enable public bandwidth when you create an ECS instance, or enable public bandwidth by using the configuration upgrade or downgrade feature after you create an ECS instance. For more information, see [Billing methods of public bandwidth](/intl.en-US/Pricing/Billing items/Billing methods of public bandwidth.md). |
-|Snapshot|Pay-as-you-go
-
-For more information, see [Snapshot billing](/intl.en-US/Pricing/Billing items/Snapshot billing.md). |
+When a subscription instance expires, the services provided by the instance may be affected. If you want to continue to use the instance, you must renew it within the specified period. Otherwise, instance resources such as vCPUs, memory, and disks are released and data stored in them is lost permanently. For more information about renewal, see [Renewal overview](/intl.en-US/Pricing/Renew instances/Renewal overview.md).
 
 ## Payment methods
 
@@ -94,16 +78,18 @@ You can use the following methods to pay for ECS resources:
 -   Bank card
 -   PayPal
 
-    Alibaba Cloud pre-authorizes your PayPal account after your pay-as-you-go resources start incurring fees.
+    Alibaba Cloud pre-authorizes your PayPal account after your pay-as-you-go resources start to incur fees.
 
 -   Paytm \(India\)
 
-    Only for users in India. Alibaba Cloud pre-authorizes your Paytm account after your pay-as-you-go resources start incurring fees.
+    Only for users in India. Alibaba Cloud pre-authorizes your Paytm account after your pay-as-you-go resources start to incur fees.
 
 
 **Note:** Coupons are used to pay for your resource usage before bills are issued. No actual payments are involved.
 
 Before you purchase ECS resources, you must bind a bank card, PayPal account, or Paytm \(India\) account to your Alibaba Cloud account. For more information, see [Add a payment method](https://www.alibabacloud.com/help/doc-detail/50517.htm) in *Account Management*.
 
-If you want to purchase ECS resources in mainland China, you must complete real-name verification. For more information, see the *How can I complete real-name registration* section in [Real-name verification FAQ](https://www.alibabacloud.com/help/doc-detail/52595.htm) in *Account Management*.
+If you want to purchase ECS resources in mainland China, you must complete real-name verification. For more information, see the *How can I complete real-name registration?* section in [Real-name registration FAQs](https://www.alibabacloud.com/help/doc-detail/52595.htm) of *Account Management*.
+
+After you purchase and use ECS resources, you can view the bills and consumption details. For more information, see [View consumption details](/intl.en-US/Pricing/View consumption details.md).
 
