@@ -1,71 +1,63 @@
-# InstallCloudAssistant {#doc_api_1031584 .reference}
+# InstallCloudAssistant
 
-Installs the cloud assistant client on one or more instances.
+You can call this operation to install the Cloud Assistant client on one or more instances. You must restart the instances for the installed Cloud Assistant client to take effect.
 
-## Debugging {#apiExplorer .section}
+## Debugging
 
-You can use [API Explorer](https://api.aliyun.com/#product=Ecs&api=InstallCloudAssistant) to perform debugging. API Explorer allows you to perform various operations to simplify API usage. For example, you can retrieve APIs, call APIs, and dynamically generate SDK example code.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=InstallCloudAssistant&type=RPC&version=2014-05-26)
 
-## Request parameters {#parameters .section}
+## Request parameters
 
-|Name|Type|Required|Example|Description|
-|----|----|--------|-------|-----------|
-|InstanceId.N|RepeatList|Yes|i-bp1iudwa5b1tqaxxxxxx| The ID of the instance. Valid values of N: 1 to 20.
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|InstallCloudAssistant|The operation that you want to perform. Set the value to InstallCloudAssistant.
 
- |
-|RegionId|String|Yes|cn-hangzhou| The ID of the region where the instance is located. You can call [DescribeRegions](~~25609~~) to view the latest regions of Alibaba Cloud.
+**Note:** After you call the InstallCloudAssistant and [RebootInstance](~~25502~~) operations in sequence, the Cloud Assistant client takes effect. |
+|InstanceId.N|RepeatList|Yes|i-bp1iudwa5b1tqa\*\*\*\*|The ID of instance N. Valid values of N: 1 to 50. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 
- |
-|Action|String|No|InstallCloudAssistant| The operation that you want to perform. Set the value to InstallCloudAssistant.
+## Response parameters
 
-**Note:** After you call InstallCloudAssistant and [RebootInstance](~~25502~~) in sequence, the cloud assistant client takes effect.
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
 
- |
-
-## Response parameters {#resultMapping .section}
-
-|Name|Type|Example|Description|
-|----|----|-------|-----------|
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E| The ID of the request.
-
- |
-
-## Examples {#demo .section}
+## Examples
 
 Sample requests
 
-``` {#request_demo}
+```
 https://ecs.aliyuncs.com/?Action=InstallCloudAssistant
-&InstanceId.1=i-bp11f7trr4hbi1******
-&InstanceId.2=i-bp1iudwa5b1tqa******
-&RegionId=cn-hangzhou 
+&InstanceId.1=i-bp11f7trr4hbi1****
+&InstanceId.2=i-bp1iudwa5b1tqa****
+&RegionId=cn-hangzhou
 &<Common request parameters>
 ```
 
-Successful response examples
+Sample success responses
 
 `XML` format
 
-``` {#xml_return_success_demo}
+```
 <InstallCloudAssistantResponse>
-  <RequestId>928E2273-5715-46B9-A730-238DC996A533</RequestId>
+      <RequestId>928E2273-5715-46B9-A730-238DC996A533</RequestId>
 </InstallCloudAssistantResponse>
 ```
 
 `JSON` format
 
-``` {#json_return_success_demo}
+```
 {
-	"RequestId":"928E2273-5715-46B9-A730-238DC996A533"
+    "RequestId": "928E2273-5715-46B9-A730-238DC996A533"
 }
 ```
 
-## Error codes {#section_qgd_cno_rcb .section}
+## Error codes
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned when an unknown error occurs.|
-|404|InvalidInstance.NotFound|The specified instance does not exist.|The error message returned when the specified instance does not exist.|
+|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned because an error occurred when the request was being sent. Try again later.|
+|404|InvalidInstance.NotFound|The specified instance does not exist.|The error message returned because the specified instance does not exist.|
 
-[View error codes](https://error-center.aliyun.com/status/product/Ecs)
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
