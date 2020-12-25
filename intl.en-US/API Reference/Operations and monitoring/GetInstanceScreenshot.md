@@ -1,92 +1,81 @@
-# GetInstanceScreenshot {#doc_api_999429 .reference}
+# GetInstanceScreenshot
 
-Obtains screenshot information of an instance.
+You can call this operation to obtain screenshots of an instance.
 
-## Description {#description .section}
+## Description
 
-The system returns an instance screenshot in JPG format, encoded in Base64. However, you must decode the screenshot yourself. We recommend that you use this operation for troubleshooting and diagnosis, and take note of the following points:
+ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
 
 -   The instance must be in the Running state.
--   For [phased-out instance types](~~55263~~), you cannot obtain screenshot information.
+-   For instances of the retired instance types, you cannot obtain the screenshot information. For more information, see [Retired instance types](~~55263~~).
+-   If you call this operation in the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
 
-## Debugging {#apiExplorer .section}
+## Debugging
 
-You can use [API Explorer](https://api.aliyun.com/#product=Ecs&api=GetInstanceScreenshot) to perform debugging. API Explorer allows you to perform various operations to simplify API usage. For example, you can retrieve APIs, call APIs, and dynamically generate SDK example code.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=GetInstanceScreenshot&type=RPC&version=2014-05-26)
 
-## Request parameters {#parameters .section}
+## Request parameters
 
-|Name|Type|Required|Example|Description|
-|----|----|--------|-------|-----------|
-|InstanceId|String|Yes|i-myInstance| The ID of the instance.
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|GetInstanceScreenshot|The operation that you want to perform. Set the value to GetInstanceScreenshot. |
+|InstanceId|String|Yes|i-bp1gbz20g229bvu5\*\*\*\*|The ID of the instance. |
+|RegionId|String|Yes|cn-shenzhen|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|WakeUp|Boolean|No|false|Specifies whether to wake up the instance that is in sleep mode.
 
- |
-|RegionId|String|Yes|cn-shenzhen| The ID of the region where the instance is located. You can call [DescribeRegions](~~25609~~) to view the latest regions of Alibaba Cloud.
+Default value: false. |
 
- |
-|Action|String|No|GetInstanceScreenshot| The operation that you want to perform. Set the value to GetInstanceScreenshot.
+## Response parameters
 
- |
-|WakeUp|Boolean|No|false| Indicates whether to wake up instances in sleep mode.
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|InstanceId|String|i-bp1gbz20g229bvu5\*\*\*\*|The ID of the instance. |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
+|Screenshot|String|iVBORw0KGgoA...AAABJRU5ErkJggg==|The JPG-formatted instance screenshot, which is encoded in Base64. |
 
- Default value: false.
-
- |
-
-## Response parameters {#resultMapping .section}
-
-|Name|Type|Example|Description|
-|----|----|-------|-----------|
-|InstanceId|String|i-myInstance| The ID of the instance.
-
- |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E| The ID of the request.
-
- |
-|Screenshot|String|iVBORw0KGgoA... AAABJRU5ErkJggg==| The JPG format instance screenshot, which is encoded in Base64.
-
- |
-
-## Examples {#demo .section}
+## Examples
 
 Sample requests
 
-``` {#request_demo}
+```
 http://ecs-cn-hangzhou.example.com/?Action=GetInstanceScreenshot
-&InstanceId=i-myInstance
+&InstanceId=i-bp1gbz20g229bvu5****
 &RegionId=cn-shenzhen
 &WakeUp=false
 &<Common request parameters>
 ```
 
-Successful response examples
+Sample success responses
 
 `XML` format
 
-``` {#xml_return_success_demo}
+```
 <GetInstanceScreenshotResponse>
-  <RequestId>22A1933F-AD02-4560-A6A7-53CF2231D942</RequestId>
-  <InstanceId>i-j5e42sbbthlokka11ech</InstanceId>
-  <Screenshot>iVBORw0KGgoA... AAABJRU5ErkJggg==</Screenshot>
+      <RequestId>22A1933F-AD02-4560-A6A7-53CF2231D942</RequestId>
+      <InstanceId>i-bp1gbz20g229bvu5****</InstanceId>
+      <Screenshot>iVBORw0KGgoA...AAABJRU5ErkJggg==</Screenshot>
 </GetInstanceScreenshotResponse>
 ```
 
 `JSON` format
 
-``` {#json_return_success_demo}
+```
 {
-	"Screenshot":"iVBORw0KGgoA... AAABJRU5ErkJggg==",
-	"InstanceId":"i-j5e42sbbthlokka11ech",
-	"RequestId":"22A1933F-AD02-4560-A6A7-53CF2231D942"
+    "RequestId": "22A1933F-AD02-4560-A6A7-53CF2231D942",
+    "InstanceId": "i-bp1gbz20g229bvu5****",
+    "Screenshot": "iVBORw0KGgoA...AAABJRU5ErkJggg=="
 }
 ```
 
-## Error codes {#section_o24_hy0_k69 .section}
+## Error codes
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|400|MissingParameter|%s|The error message returned when a required parameter is not specified.|
-|404|InvalidParameter|%s|The error message returned when the parameter format is invalid.|
-|405|IncorrectInstanceStatus|%s|The error message returned when the specified resource is in a state that does not support the current operation.|
+|400|MissingParameter|%s|The error message returned because a required parameter is not specified.|
+|404|InvalidParameter|%s|The error message returned because a specified parameter is invalid.|
+|405|IncorrectInstanceStatus|%s|The error message returned because this operation is not supported while the instance is in the current state.|
+|405|NotSupported|%s|The error message returned because the operation is invalid.|
+|429|Throttling|%s|The error message returned because the request is denied due to request throttling.|
 
-[View error codes](https://error-center.aliyun.com/status/product/Ecs)
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
