@@ -1,232 +1,215 @@
-# DescribeCommands {#doc_api_1030541 .reference}
+# DescribeCommands
 
-Views the cloud assistant commands that you have created. If you only specify the Action and RegionId parameters, the system queries all available commands by default.
+You can call this operation to query the Cloud Assistant commands that you have created. If you specify only the Action and RegionId parameters, all available commands are queried.
 
-## Debugging {#apiExplorer .section}
+## Debugging
 
-You can use [API Explorer](https://api.aliyun.com/#product=Ecs&api=DescribeCommands) to perform debugging. API Explorer allows you to perform various operations to simplify API usage. For example, you can retrieve APIs, call APIs, and dynamically generate SDK example code.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer automatically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeCommands&type=RPC&version=2014-05-26)
 
-## Request parameters {#parameters .section}
+## Request parameters
 
-|Name|Type|Required|Example|Description|
-|----|----|--------|-------|-----------|
-|RegionId|String|Yes|cn-hangzhou| The ID of the region. You can call [DescribeRegions](~~25609~~) to view the latest regions of Alibaba Cloud.
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|DescribeCommands|The operation that you want to perform. Set the value to DescribeCommands. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the command. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|CommandId|String|No|c-7d2a745b412b4601b2d47f6a768d\*\*\*\*|The ID of the command. |
+|Name|String|No|testName|The name of the command. Partial command names are not supported. |
+|Description|String|No|testDescription|The description of the command. |
+|Type|String|No|RunShellScript|The command type. Valid values:
 
- |
-|Action|String|No|DescribeCommands| The operation that you want to perform. Set the value to DescribeCommands.
+-   RunBatScript: batch commands for Windows instances.
+-   RunPowerShellScript: PowerShell commands for Windows instances.
+-   RunShellScript: shell commands for Linux instances. |
+|ContentEncoding|String|No|PlainText|The encoding method of the `CommandContent` and `Output` response parameters. Valid values:
 
- |
-|CommandId|String|No|c-7d2a745b412b4601b2d47f6a768d3a14| The ID of the command.
+-   PlainText: returns the original command content and command output.
+-   Base64: returns Base64-encoded command content and command output.
 
- |
-|Description|String|No|test| The description of the command.
+Default value: Base64. |
+|PageNumber|Long|No|1|The number of the page to return. Pages start from page 1.
 
- |
-|Name|String|No|Test1| The name of the command. Partial command names are not supported.
+Default value: 1. |
+|PageSize|Long|No|10|The number of entries to return on each page. Maximum value: 50.
 
- |
-|PageNumber|Long|No|1| The current page number. Starting value: 1.
+Default value: 10. |
 
- Default value: 1.
+## Response parameters
 
- |
-|PageSize|Long|No|10| The number of entries per page. Maximum value: 50.
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|Commands|Array| |Details about the commands. |
+|Command| | | |
+|CommandContent|String|Y2QgL3Jvb3Q=|The Base64-encoded command content. |
+|CommandId|String|c-7d2a745b412b4601b2d47f6a768d\*\*\*\*|The ID of the command. |
+|CreationTime|String|2018-01-05T15:45:02Z|The time when the command was created. |
+|Description|String|testDescription|The description of the command. |
+|EnableParameter|Boolean|true|Indicates whether the custom parameter feature was enabled for the command. |
+|InvokeTimes|Integer|3|The number of tasks created by running the command. |
+|Name|String|testName|The name of the command. |
+|ParameterNames|List|\['parameter1','parameter2'\]|A list of custom parameter names which are parsed from the command content specified when the command was being created. If the custom parameter feature is not enabled, an empty list is returned. |
+|Timeout|Long|3600|The timeout duration. |
+|Type|String|RunShellScript|The type of the command. |
+|WorkingDir|String|/home/|The directory path for command execution. |
+|PageNumber|Long|1|The page number of the returned page. |
+|PageSize|Long|10|The number of entries returned per page. |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
+|TotalCount|Long|5|The total number of commands. |
 
- Default value: 10
-
- |
-|Type|String|No|RunShellScript| The type of the command. Valid values:
-
- -   RunBatScript: Bat script for Windows-based instances
--   RunPowerShellScript: PowerShell script for Windows-based instances
--   RunShellScript: Shell script for Linux-based instances
-
- |
-
-## Response parameters {#resultMapping .section}
-
-|Name|Type|Example|Description|
-|----|----|-------|-----------|
-|Commands| | | An array of CommandSetType data.
-
- |
-|└ CommandContent|String|Y2QgL3Jvb3Q=| The content of the command, which is Base64-encoded.
-
- |
-|└CommandId|String|c-7d2a745b412b4601b2d47f6a768d3a14| The ID of the command.
-
- |
-|└Description|String|test| The description of the command.
-
- |
-|└Name|String|Test1| The name of the command.
-
- |
-|└Timeout|Long|3600| The timeout period.
-
- |
-|└Type|String|RunShellScript| The type of the command.
-
- |
-|└WorkingDir|String|/home/| The directory path for command invocation.
-
- |
-|PageNumber|Long|1| The page number of the command list.
-
- |
-|PageSize|Long|10| The number of entries per page.
-
- |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E| The ID of the request.
-
- |
-|TotalCount|Long|5| The total number of commands.
-
- |
-
-## Examples {#demo .section}
+## Examples
 
 Sample requests
 
-``` {#request_demo}
+```
 https://ecs.aliyuncs.com/?Action=DescribeCommands
-&RegionId=cn-hangzhou 
-&CommandId=c-7d2a745b412b4601b2d47f6a768d3a14
-&Name=Test1
-&Description=test 
-&Type=RunShellScript
-&PageNumber=1 
-&PageSize=10 
+&RegionId=cn-hangzhou
+&CommandId=c-7d2a745b412b4601b2d47f6a768d****
+&PageNumber=1
+&PageSize=10
 &<Common request parameters>
 ```
 
-Successful response examples
+Sample success responses
 
 `XML` format
 
-``` {#xml_return_success_demo}
+```
 <DescribeCommandsResponse>
-    <TotalCount>5</TotalCount>
-    <Commands>
-        <Command>
-                <Name>Test</Name>
-                <WorkingDir></WorkingDir>
-                <CommandContent>ZWNobyAxMjM=</CommandContent>
-                <Timeout>3600</Timeout>
-                <Type>RunShellScript</Type>
-                <CommandId>c-7d2a745b412b4601b2d47f6a768d3a14</CommandId>
-                <Description>test</Description> 
-        </Command>
-        <Command>
-                <Name>Test1</Name>
-                <WorkingDir></WorkingDir>
-                <CommandContent>Y2QgL3Jvb3Q=</CommandContent>
-                <Timeout>3600</Timeout>
-                <Type>RunShellScript</Type>
-                <CommandId>c-7d2a745b412b4601b2d47f6a768d3a15</CommandId>
-                <Description>test1</Description>
-        </Command>
-        <Command>
-                <Name>Test2</Name>
-                <WorkingDir></WorkingDir>
-                <CommandContent>eXVtIHVwZGF0ZQ==</CommandContent>
-                <Timeout>3600</Timeout>
-                <Type>RunShellScript</Type>
-                <CommandId>c-7d2a745b412b4601b2d47f6a768d3a16</CommandId>
-                <Description>test2</Description>
-        </Command>
-        <Command>
-                <Name>Test3</Name>
-                <WorkingDir></WorkingDir>
-                <CommandContent>c2VydmljZSBuZ2lueCByZWxvYWQ=</CommandContent>
-                <Timeout>3600</Timeout>
-                <Type>RunShellScript</Type>
-                <CommandId>c-7d2a745b412b4601b2d47f6a768d3a17</CommandId>
-                <Description>test3</Description>
-        </Command>
-        <Command>
-                <Name>Test4</Name>
-                <WorkingDir></WorkingDir>
-                <CommandContent>bHM=</CommandContent>
-                <Timeout>120</Timeout>
-                <Type>RunShellScript</Type>
-                <CommandId>c-7d2a745b412b4601b2d47f6a768d3a18</CommandId>
-                <Description>test4</Description>
-        </Command>
-    <PageNumber>1</PageNumber> 
-    <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId> 
-    <PageSize>10</PageSize> 
+      <TotalCount>5</TotalCount>
+      <Commands>
+            <Command>
+                  <Name>testName</Name>
+                  <WorkingDir></WorkingDir>
+                  <CommandContent>ZWNobyAxMjM=</CommandContent>
+                  <Timeout>3600</Timeout>
+                  <Type>RunShellScript</Type>
+                  <CommandId>c-7d2a745b412b4601b2d47f6a768d****</CommandId>
+                  <Description>testDescription</Description>
+                  <EnableParameter>false</EnableParameter>
+            </Command>
+            <Command>
+                  <Name>Test1</Name>
+                  <WorkingDir></WorkingDir>
+                  <CommandContent>Y2QgL3Jvb3Q=</CommandContent>
+                  <Timeout>3600</Timeout>
+                  <Type>RunShellScript</Type>
+                  <CommandId>c-7d2a745b412b4601b2d47f6a768d****</CommandId>
+                  <Description>test1</Description>
+                  <EnableParameter>false</EnableParameter>
+            </Command>
+            <Command>
+                  <Name>Test2</Name>
+                  <WorkingDir></WorkingDir>
+                  <CommandContent>eXVtIHVwZGF0ZQ==</CommandContent>
+                  <Timeout>3600</Timeout>
+                  <Type>RunShellScript</Type>
+                  <CommandId>c-7d2a745b412b4601b2d47f6a768d****</CommandId>
+                  <Description>test2</Description>
+            </Command>
+            <Command>
+                  <Name>Test3</Name>
+                  <WorkingDir></WorkingDir>
+                  <CommandContent>c2VydmljZSBuZ2lueCByZWxvYWQ=</CommandContent>
+                  <Timeout>3600</Timeout>
+                  <Type>RunShellScript</Type>
+                  <CommandId>c-7d2a745b412b4601b2d47f6a768d****</CommandId>
+                  <Description>test3</Description>
+                  <EnableParameter>false</EnableParameter>
+            </Command>
+            <Command>
+                  <Name>Test4</Name>
+                  <WorkingDir></WorkingDir>
+                  <CommandContent>ZWNobyB7e25hbWV9fSA=</CommandContent>
+                  <Timeout>3600</Timeout>
+                  <Type>RunShellScript</Type>
+                  <CommandId>c-7d2a745b412b4601b2d47f6a768d****</CommandId>
+                  <Description>test4</Description>
+                  <EnableParameter>true</EnableParameter>
+                  <ParameterNames>name</ParameterNames>
+            </Command>
+      </Commands>
+      <PageNumber>1</PageNumber>
+      <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
+      <PageSize>10</PageSize>
 </DescribeCommandsResponse>
 ```
 
 `JSON` format
 
-``` {#json_return_success_demo}
+```
 {
-	"PageNumber":1,
-	"TotalCount":5,
-	"PageSize":10,
-	"RequestId":"E69EF3CC-94CD-42E7-8926-F133B86387C0",
-	"Commands":{
-		"Command":[
-			{
-				"Name":"Test",
-				"Description":"test",
-				"Timeout":3600,
-				"CommandContent": "ZWNobyAxMjM=",
-				"Type":"RunShellScript",
-				"CommandId":"c-7d2a745b412b4601b2d47f6a768d3a14",
-				"WorkingDir":""
-			},
-			{
-				"Name":"Test1",
-				"Description":"test1",
-				"Timeout":3600,
-				"CommandContent":"Y2QgL3Jvb3Q=",
-				"Type":"RunShellScript",
-				"CommandId":"c-7d2a745b412b4601b2d47f6a768d3a15",
-				"WorkingDir":""
-			},
-			{
-				"Name":"Test2",
-				"Description":"test2",
-				"Timeout":3600,
-				"CommandContent":"eXVtIHVwZGF0ZQ==",
-				"Type":"RunShellScript",
-				"CommandId":"c-7d2a745b412b4601b2d47f6a768d3a16",
-				"WorkingDir":""
-			},
-			{
-				"Name":"Test3",
-				"Description":"test3",
-				"Timeout":3600,
-				"CommandContent":"c2VydmljZSBuZ2lueCByZWxvYWQ=",
-				"Type":"RunShellScript",
-				"CommandId":"c-7d2a745b412b4601b2d47f6a768d3a17",
-				"WorkingDir":""
-			},
-			{
-				"Name":"Test4",
-				"Description":"test4",
-				"Timeout":3600,
-				"CommandContent":"bHM=",
-				"Type":"RunShellScript",
-				"CommandId":"c-7d2a745b412b4601b2d47f6a768d3a18",
-				"WorkingDir":""
-			}
-		]
-	}
+    "TotalCount": 5,
+    "Commands": {
+        "Command": [
+            {
+                "Name": "testName",
+                "WorkingDir": "",
+                "CommandContent": "ZWNobyAxMjM=",
+                "Timeout": 3600,
+                "Type": "RunShellScript",
+                "CommandId": "c-7d2a745b412b4601b2d47f6a768d****",
+                "Description": "testDescription",
+                "EnableParameter": false,
+                "ParameterNames": []
+            },
+            {
+                "Name": "Test1",
+                "WorkingDir": "",
+                "CommandContent": "Y2QgL3Jvb3Q=",
+                "Timeout": 3600,
+                "Type": "RunShellScript",
+                "CommandId": "c-7d2a745b412b4601b2d47f6a768d****",
+                "Description": "test1",
+                "EnableParameter": false,
+                "ParameterNames": []
+            },
+            {
+                "Name": "Test2",
+                "WorkingDir": "",
+                "CommandContent": "eXVtIHVwZGF0ZQ==",
+                "Timeout": 3600,
+                "Type": "RunShellScript",
+                "CommandId": "c-7d2a745b412b4601b2d47f6a768d****",
+                "Description": "test2"
+            },
+            {
+                "Name": "Test3",
+                "WorkingDir": "",
+                "CommandContent": "c2VydmljZSBuZ2lueCByZWxvYWQ=",
+                "Timeout": 3600,
+                "Type": "RunShellScript",
+                "CommandId": "c-7d2a745b412b4601b2d47f6a768d****",
+                "Description": "test3",
+                "EnableParameter": false,
+                "ParameterNames": []
+            },
+            {
+                "Name": "Test4",
+                "WorkingDir": "",
+                "CommandContent": "ZWNobyB7e25hbWV9fSA=",
+                "Timeout": 3600,
+                "Type": "RunShellScript",
+                "CommandId": "c-7d2a745b412b4601b2d47f6a768d****",
+                "Description": "test4",
+                "EnableParameter": true,
+                "ParameterNames": [
+                    "name"
+                ]
+            }
+        ]
+    },
+    "PageNumber": 1,
+    "RequestId": "E69EF3CC-94CD-42E7-8926-F133B86387C0",
+    "PageSize": 10
 }
 ```
 
-## Error codes {#section_uv0_fp7_o5w .section}
+## Error codes
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned when an unknown error occurs.|
-|403|InvalidParam.PageNumber|The specified parameter is invalid.|The error message returned when the specified parameter is invalid.|
-|403|InvalidParam.PageSize|The specified parameter is invalid.|The error message returned when the specified parameter is invalid.|
-|403|InvalidRegionId.CloudAssistant|Current region is not available.|The error message returned when the specified region is unavailable.|
+|500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned because an error occurred when the request was sent. Try again later.|
+|403|InvalidParam.PageNumber|The specified parameter is invalid.|The error message returned because the specified PageNumber parameter is invalid.|
+|403|InvalidParam.PageSize|The specified parameter is invalid.|The error message returned because the specified PageSize parameter is invalid.|
 
-[View error codes](https://error-center.aliyun.com/status/product/Ecs)
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
