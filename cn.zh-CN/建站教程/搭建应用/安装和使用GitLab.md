@@ -47,6 +47,8 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
     sudo yum install -y curl policycoreutils-python openssh-server
     ```
 
+    **说明：** 本教程中示例场景的操作系统为CentOS 7.2 64位。如果您使用CentOS 8系统的ECS实例， 运行以上命令将出现找不到依赖包`policycoreutils-python`的问题，原因是CentOS 8的软件源中没有包含该依赖包。该依赖包不影响部署GitLab，您可以忽略该问题继续运行下文中的命令。
+
 2.  设置SSH开机自启动并启动SSH服务。
 
     ```
@@ -70,7 +72,7 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
 
     1.  运行命令`vim /etc/postfix/main.cf`打开main.cf文件，找到下图内容：
 
-        ![set_inet](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9512649951/p38837.png)
+        ![set_inet](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9512649951/p38837.png)
 
     2.  按i进入编辑模式。
 
@@ -98,7 +100,7 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
 
     返回页面如下图所示，表示环境搭建成功，并且您需要设置新密码。
 
-    ![gitlab1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9512649951/p92789.png)
+    ![gitlab1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9512649951/p92789.png)
 
 
 ## 使用GitLab
@@ -107,11 +109,11 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
 
     在浏览器的地址栏中，输入ECS服务器的公网IP即可进入GitLab的登录界面，首次登录使用用户名`root`，密码为首次访问GitLab时设置的新密码。
 
-    ![gl2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9512649951/p92794.png)
+    ![gl2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9512649951/p92794.png)
 
     登录成功后界面如下。
 
-    ![gl3](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9512649951/p92797.png)
+    ![gl3](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9512649951/p92797.png)
 
 2.  创建Project。
 
@@ -121,7 +123,7 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
         yum install git
         ```
 
-        ![install_git](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9512649951/p12262.png)
+        ![install_git](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9512649951/p12262.png)
 
     2.  生成密钥文件。
 
@@ -131,7 +133,7 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
         ssh-keygen
         ```
 
-        ![密钥](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9512649951/p12263.png)
+        ![密钥](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9512649951/p12263.png)
 
         使用如下命令查看公钥文件id\_rsa.pub中的内容。在下一步操作中，您需要粘贴该内容到GitLab服务器的SSH-key的配置文件中。
 
@@ -139,27 +141,27 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
         cat .ssh/id_rsa.pub
         ```
 
-        ![公钥](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9512649951/p12264.png)
+        ![公钥](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9512649951/p12264.png)
 
     3.  在GitLab的主页中新建一个Project。
 
-        ![new_project](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12265.png)
+        ![new_project](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12265.png)
 
-        ![new_project_2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12274.png)
+        ![new_project_2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12274.png)
 
     4.  添加ssh key，导入步骤2中生成的密钥文件内容。
 
-        ![import-sshkey-1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12266.png)
+        ![import-sshkey-1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12266.png)
 
-        ![import-sshkey-2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12275.png)
+        ![import-sshkey-2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12275.png)
 
         ssh key添加完成后，如下图所示。
 
-        ![import-ssh-key-complete](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12267.png)
+        ![import-ssh-key-complete](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12267.png)
 
     5.  保存项目地址，该地址在进行克隆操作时需要用到。
 
-        ![项目地址](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12268.png)
+        ![项目地址](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12268.png)
 
 3.  简单配置。
 
@@ -181,7 +183,7 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
         git clone git@iZxxxxxxxxxxxxxxxxx3Z:root/test.git
         ```
 
-        ![简单配置](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12269.png)
+        ![简单配置](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12269.png)
 
 4.  上传文件。
 
@@ -203,7 +205,7 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
         cp /root/test.sh ./ 
         ```
 
-        ![上传文件](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12270.png)
+        ![上传文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12270.png)
 
     4.  将test.sh文件加入到索引中。
 
@@ -223,10 +225,10 @@ GitLab是Ruby开发的自托管的Git项目仓库，可通过Web界面访问公�
         git push -u origin master
         ```
 
-        ![文件同步命令](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12271.png)
+        ![文件同步命令](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12271.png)
 
         在网页中查看上传的test.sh文件已经同步到GitLab中。
 
-        ![文件同步结果](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0612649951/p12272.png)
+        ![文件同步结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0612649951/p12272.png)
 
 
