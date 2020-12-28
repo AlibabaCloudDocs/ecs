@@ -147,7 +147,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     ![growpart](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6620659951/p135834.png)
 
-    **说明：** 您在执行此步骤时，可能出现报错信息`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。关于如何排查此问题，请参见[常见问题](#section_kfi_mol_f1r)。
+    **说明：** 您在执行此步骤时，可能出现报错信息`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。关于如何排查此问题，请参见本文的常见问题部分。
 
 
 ## 步骤五：扩容文件系统
@@ -213,24 +213,35 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     解决方案：
 
-    1.  运行以下命令切换ECS实例的字符编码类型。
+    1.  运行`locale`命令查看ECS实例的字符编码类型，将非en\_US.UTF-8的字符编码类型切换成en\_US.UTF-8。
+        1.  运行以下命令，切换字符编码类型。
 
-        ```
-        LANG=en_US.UTF-8
-        ```
+            ```
+            LANG=en_US.UTF-8
+            ```
+
+        2.  如果问题仍未解决，运行以下命令，切换字符编码类型。
+
+            ```
+            export LC_ALL=en_US.UTF-8
+            ```
+
+        3.  如果问题仍未解决，运行以下命令，切换字符编码类型。
+
+            ```
+            localectl set-locale LANG=en_US.UTF-8
+            ```
+
+        4.  如果您使用CentOS 8镜像，采用以上方案无法解决问题时，运行以下命令，切换字符编码类型。
+
+            ```
+            export LANGUAGE=en_US.UTF-8
+            ```
 
     2.  如果问题仍未解决，请您尝试运行`reboot`命令重启ECS实例。
-    3.  如果重启ECS实例后仍未解决问题，请您尝试运行以下命令修改本地化环境变量，然后再次重启实例。
+    **说明：**
 
-        ```
-        localectl set-locale LANG=en_US.UTF-8
-        ```
-
-    如果您使用CentOS 8镜像，采用以上方案无法解决问题时，可以尝试使用以下命令修改字符编码类型。
-
-    ```
-    export LANGUAGE=en_US.UTF-8
-    ```
+    当您通过切换字符编码，成功完成扩容分区后，建议您按需切回原有字符编码。
 
 -   问题：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
 
