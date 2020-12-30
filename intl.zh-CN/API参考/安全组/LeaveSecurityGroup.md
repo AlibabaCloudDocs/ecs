@@ -1,6 +1,6 @@
 # LeaveSecurityGroup
 
-调用LeaveSecurityGroup将一台ECS实例移出指定的安全组。
+调用LeaveSecurityGroup将一台ECS实例或一个弹性网卡移出指定的安全组。
 
 ## 接口说明
 
@@ -10,6 +10,7 @@
 
 -   移出安全组之前，实例必须处于**已停止**（Stopped）或者**运行中**（Running）状态。
 -   一台实例必须至少加入一个安全组，当该实例只加入了一个安全组时，则LeaveSecurityGroup请求会失败。
+-   不支持同时将实例和弹性网卡移出一个安全组，即参数`InstanceId`和`NetworkInterfaceId`不能同时传值。
 
 ## 调试
 
@@ -20,8 +21,17 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|LeaveSecurityGroup|系统规定参数。取值：LeaveSecurityGroup |
-|InstanceId|String|是|i-bp67acfmxazb4p\*\*\*\*|实例ID。 |
 |SecurityGroupId|String|是|sg-bp67acfmxazb4p\*\*\*\*|安全组ID。 |
+|InstanceId|String|否|i-bp67acfmxazb4p\*\*\*\*|实例ID。
+
+ **说明：** 当该参数传入值时，`NetworkInterfaceId`必须为空。 |
+|NetworkInterfaceId|String|否|eni-bp13kd656hxambfe\*\*\*\*|弹性网卡ID。
+
+ **说明：** 当该参数传入值时，`InstanceId`必须为空。 |
+|RegionId|String|否|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。
+
+ -   实例移出安全组的操作可以不指定地域ID。
+-   弹性网卡移出安全组的操作必须指定弹性网卡所在的地域ID。 |
 
 ## 返回数据
 
@@ -70,6 +80,11 @@ https://ecs.aliyuncs.com/?Action=LeaveSecurityGroup
 |403|InstanceNotInSecurityGroup|The instance not in the group.|指定的实例不在安全组内。|
 |504|RequestTimeout|The request encounters an upstream server timeout.|上游服务器超时，请求被拒绝。|
 |400|InvalidInstanceId.Malformed|The specified parameter "InstanceId" is not valid.|指定的参数InstanceId格式有误。|
+|404|InvalidEniId.NotFound|%s|指定的弹性网卡ID不存在。|
+|400|MissingParameter.RegionId|The specified RegionId should not be null.|RegionId是必选参数。|
+|403|InvalidOperation.EniServiceManaged|%s|操作无效。|
+|403|InvalidOperation.InvalidEniType|%s|当前弹性网卡的类型不支持此操作。|
+|400|InvalidOperation.InvalidEniState|%s|弹性网卡当前的状态不支持此操作。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
