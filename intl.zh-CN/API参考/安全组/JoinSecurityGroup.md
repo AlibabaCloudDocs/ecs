@@ -1,6 +1,6 @@
 # JoinSecurityGroup
 
-调用JoinSecurityGroup将一台ECS实例加入到指定的安全组。
+调用JoinSecurityGroup将一台ECS实例或一个弹性网卡加入到指定的安全组。
 
 ## 接口说明
 
@@ -14,6 +14,7 @@
 -   每个普通安全组最多能管理2000台实例，企业安全组最多能管理65536台实例。
 -   您的安全组和实例必须属于同一个阿里云地域。
 -   您的安全组和实例的网络类型必须相同。如果网络类型为专有网络VPC，则安全组和实例必须属于同一个VPC。
+-   不支持同时将实例和弹性网卡加入一个安全组，即参数`InstanceId`和`NetworkInterfaceId`不能同时传值。
 
 ## 调试
 
@@ -24,8 +25,17 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|JoinSecurityGroup|系统规定参数。取值：JoinSecurityGroup |
-|InstanceId|String|是|i-bp67acfmxazb4p\*\*\*\*|实例ID。 |
 |SecurityGroupId|String|是|sg-bp67acfmxazb4p\*\*\*\*|安全组ID。您可以调用[DescribeSecurityGroups](~~25556~~)查看您可用的安全组。 |
+|InstanceId|String|否|i-bp67acfmxazb4p\*\*\*\*|实例ID。
+
+ **说明：** 当该参数传入值时，`NetworkInterfaceId`必须为空。 |
+|NetworkInterfaceId|String|否|eni-bp13kd656hxambfe\*\*\*\*|弹性网卡ID。
+
+ **说明：** 当该参数传入值时，`InstanceId`必须为空。 |
+|RegionId|String|否|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。
+
+ -   实例加入安全组的操作可以不指定地域ID。
+-   弹性网卡加入安全组的操作必须指定弹性网卡所在的地域ID。 |
 
 ## 返回数据
 
@@ -79,6 +89,13 @@ https://ecs.aliyuncs.com/?Action=JoinSecurityGroup
 |403|AclLimitExceed|%s|AccessPoint已超出限额值。|
 |403|InstanceSecurityGroupLimitExceeded|%s|实例绑定的安全组数量达到最大限制。|
 |400|InvalidInstanceId.Malformed|The specified parameter "InstanceId" is not valid.|指定的参数InstanceId格式有误。|
+|404|InvalidEniId.NotFound|%s|指定的弹性网卡ID不存在。|
+|403|InvalidOperation.InvalidEniType|%s|当前弹性网卡的类型不支持此操作。|
+|400|InvalidOperation.InvalidEniState|%s|弹性网卡当前的状态不支持此操作。|
+|403|InvalidOperation.VpcMismatch|%s|您的操作无效，请确认该操作中的VPC与其它参数是否匹配。|
+|400|NotBelongUser|%s|您没有权限操作此资源，请检查操作的资源是否正确。|
+|400|MissingParameter.RegionId|The specified RegionId should not be null.|RegionId是必选参数。|
+|403|InvalidOperation.EniServiceManaged|%s|操作无效。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
