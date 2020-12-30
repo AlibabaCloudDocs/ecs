@@ -6,7 +6,7 @@ You can call this operation to query the details of one or more snapshots of an 
 
 You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
 
-When you call an API operation by using Alibaba Cloud CLI, specify request parameter values of different data types in required formats. For more information, see [CLI parameter formats](~~110340~~).
+When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [CLI parameter formats](~~110340~~).
 
 ## Debugging
 
@@ -17,7 +17,7 @@ When you call an API operation by using Alibaba Cloud CLI, specify request param
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|DescribeSnapshots|The operation that you want to perform. Set the value to DescribeSnapshots. |
-|RegionId|String|Yes|cn-hangzhou|The ID of the region. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|RegionId|String|Yes|cn-hangzhou|The ID of the region to which the disk belongs. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |InstanceId|String|No|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance. |
 |DiskId|String|No|d-bp67acfmxazb4p\*\*\*\*|The ID of the disk. |
 |SnapshotLinkId|String|No|sp-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot chain. |
@@ -28,14 +28,20 @@ Default value: 1 |
 |PageSize|Integer|No|10|The number of entries to return on each page. Valid values: 1 to 100.
 
 Default value: 10 |
+|NextToken|String|No|caeba0bbb2be03f84eb48b699f0a4883|The token used to start the query. Obtain the NextToken value from the response of the previous request. |
+|MaxResults|Integer|No|10|The number of entries to return on each page.
+
+Valid values: 1 to 100.
+
+Default value: 10 |
 |SnapshotName|String|No|testSnapshotName|The name of the snapshot. |
 |Status|String|No|all|The status of the snapshot. Default value: all. Valid values:
 
 -   progressing: The snapshot is being created.
 -   accomplished: The snapshot is created.
 -   failed: The snapshot fails to be created.
--   all: All snapshot statuses. |
-|SnapshotType|String|No|all|The type of the snapshot. Valid values:
+-   all: all snapshot statuses. |
+|SnapshotType|String|No|all|The type of the snapshot. Default value: all. Valid values:
 
 -   auto: automatic snapshot
 -   user: manual snapshot \(also called user-created snapshot\)
@@ -72,12 +78,18 @@ If a single tag is specified to query resources, up to 1,000 resources that are 
 -   Standard: normal snapshot
 -   Flash: local snapshot
 
+The local snapshot feature is replaced by the instant access feature. When you specify this parameter, take noe of the following items:
+
+-   If you have used local snapshots before December 14, 2020, you can continue to use this parameter.
+-   If you have not used local snapshots before December 14, 2020, you cannot use this parameter.
+
 **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
 
 ## Response parameters
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
+|NextToken|String|caeba0bbb2be03f84eb48b699f0a4883|The token used to start the next query. |
 |PageNumber|Integer|1|The page number of the returned page. |
 |PageSize|Integer|10|The number of entries returned per page. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
@@ -85,28 +97,35 @@ If a single tag is specified to query resources, up to 1,000 resources that are 
 |Snapshot| | | |
 |Category|String|standard|The category of the snapshot.
 
-**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess`parameter to ensure future compatibility. |
 |CreationTime|String|2020-08-20T14:52:28Z|The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |Description|String|testDescription|The description of the snapshot. |
 |Encrypted|Boolean|false|Indicates whether the snapshot was encrypted. |
-|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb40826X|The KMS key ID corresponding to the data disk. |
+|InstantAccess|Boolean|false|Indicates whether the instant access feature is enabled. Valid values:
+
+-   true: The instant access feature was enabled. This feature can be enabled only for enhanced SSDs \(ESSDs\).
+-   false: The instant access feature was disabled. The snapshot is a normal snapshot for which the instant access feature is disabled. |
+|InstantAccessRetentionDays|Integer|30|Indicates the retention period of the instant access feature. After the retention per iod ends, the snapshot is automatically released.
+
+By default, the value of this parameter is the same as that of `RetentionDays`. |
+|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|The ID of the KMS key used by the data disk. |
 |LastModifiedTime|String|2020-08-25T14:18:09Z|The time when the snapshot was last changed. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |ProductCode|String|jxsc000\*\*\*\*|The product code of the Alibaba Cloud Marketplace image. |
-|Progress|String|100|The progress of the snapshot creation task. Unit: percent \(%\). |
+|Progress|String|100%|The progress of the snapshot creation task. Unit: percent \(%\). |
 |RemainTime|Integer|38|The remaining time required to create the snapshot. Unit: seconds. |
-|ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group. |
+|ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the snapshot belongs. |
 |RetentionDays|Integer|30|The number of days that an automatic snapshot can be retained. |
 |SnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot. |
-|SnapshotName|String|testSnapshotName|The name of the snapshot. This parameter is returned only if a snapshot name was specified when the snapshot was being created. |
+|SnapshotName|String|testSnapshotName|The name of the snapshot. This parameter is returned only if a snapshot name was specified when the snapshot was created. |
 |SnapshotSN|String|64472-116742336-61976\*\*\*\*|The serial number of the snapshot. |
-|SnapshotType|String|all|The type of the snapshot. Valid values:
+|SnapshotType|String|all|The type of the snapshot. Default value: all. Valid values:
 
 -   auto: automatic snapshot
 -   user: manual snapshot \(also called user-created snapshot\)
 -   all: all snapshot types |
 |SourceDiskId|String|d-bp67acfmxazb4ph\*\*\*\*|The ID of the source disk. This parameter is retained even after the source disk of the snapshot is released. |
-|SourceDiskSize|String|2000|The capacity of the source disk. Unit: GiB. |
-|SourceDiskType|String|Data|The category of the source disk. Valid values:
+|SourceDiskSize|String|40|The capacity of the source disk. Unit: GiB. |
+|SourceDiskType|String|system|The category of the source disk. Valid values:
 
 -   system
 -   data |
@@ -122,13 +141,13 @@ If a single tag is specified to query resources, up to 1,000 resources that are 
 |Tag| | | |
 |TagKey|String|TestKey|The tag key of the snapshot. |
 |TagValue|String|TestValue|The tag value of the snapshot. |
-|Usage|String|none|Indicates whether the snapshot was used to create images or disks. Valid values:
+|Usage|String|image|Indicates whether the snapshot has been used to create images or disks. Valid values:
 
 -   image
 -   disk
 -   image\_disk
 -   none |
-|TotalCount|Integer|36|The total number of snapshots. |
+|TotalCount|Integer|1|The total number of snapshots. |
 
 ## Examples
 
@@ -160,36 +179,36 @@ Sample success responses
 
 ```
 <DescribeSnapshotsResponse>
+      <TotalCount>1</TotalCount>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <PageSize>10</PageSize>
+      <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken>
       <PageNumber>1</PageNumber>
-      <PageSize>2</PageSize>
-      <RequestId>659F91C6-1949-43B0-90C4-B6342CA757D5</RequestId>
       <Snapshots>
             <Snapshot>
+                  <Status>accomplished</Status>
+                  <InstantAccess>false</InstantAccess>
+                  <Progress>100%</Progress>
+                  <Usage>image</Usage>
+                  <Description>testDescription</Description>
+                  <Category>standard</Category>
+                  <KMSKeyId>0e478b7a-4262-4802-b8cb-00d3fb40****</KMSKeyId>
+                  <ProductCode>jxsc000****</ProductCode>
+                  <Encrypted>false</Encrypted>
+                  <SnapshotName>testSnapshotName</SnapshotName>
+                  <SourceDiskId>d-bp67acfmxazb4ph****</SourceDiskId>
+                  <SourceStorageType>disk</SourceStorageType>
+                  <SnapshotId>s-bp67acfmxazb4p****</SnapshotId>
+                  <SnapshotSN>64472-116742336-61976****</SnapshotSN>
+                  <SourceDiskSize>40</SourceDiskSize>
                   <CreationTime>2020-08-20T14:52:28Z</CreationTime>
                   <LastModifiedTime>2020-08-25T14:18:09Z</LastModifiedTime>
-                  <Progress>100%</Progress>
-                  <SnapshotId>s-943ypfg****</SnapshotId>
-                  <SnapshotName>auto_20150730_3</SnapshotName>
-                  <SourceDiskId>d-944qyqj****</SourceDiskId>
-                  <SourceDiskSize>20</SourceDiskSize>
-                  <SnapshotType>user</SnapshotType>
+                  <SnapshotType>all</SnapshotType>
                   <SourceDiskType>system</SourceDiskType>
-                  <Status>accomplished</Status>
-                  <Usage>none</Usage>
-            </Snapshot>
-            <Snapshot>
-                  <CreationTime>2015-07-30T05:00:14Z</CreationTime>
-                  <Progress>100%</Progress>
-                  <SnapshotId>s-94osg32****</SnapshotId>
-                  <SnapshotName>auto_20150730_3</SnapshotName>
-                  <SourceDiskId>d-94j355j****</SourceDiskId>
-                  <SourceDiskSize>20</SourceDiskSize>
-                  <SourceDiskType>system</SourceDiskType>
-                  <Status>accomplished</Status>
-                  <Usage>none</Usage>
+                  <Tags>
+            </Tags>
             </Snapshot>
       </Snapshots>
-      <TotalCount>36</TotalCount>
 </DescribeSnapshotsResponse>
 ```
 
@@ -197,38 +216,39 @@ Sample success responses
 
 ```
 {
+    "TotalCount": 1,
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+    "PageSize": 10,
+    "NextToken": "caeba0bbb2be03f84eb48b699f0a4883",
     "PageNumber": 1,
-    "PageSize": 2,
-    "RequestId": "659F91C6-1949-43B0-90C4-B6342CA757D5",
     "Snapshots": {
         "Snapshot": [
             {
+                "Status": "accomplished",
+                "InstantAccess": false,
+                "Progress": "100%",
+                "Usage": "image",
+                "Description": "testDescription",
+                "Category": "standard",
+                "KMSKeyId": "0e478b7a-4262-4802-b8cb-00d3fb40****",
+                "ProductCode": "jxsc000****",
+                "Encrypted": false,
+                "SnapshotName": "testSnapshotName",
+                "SourceDiskId": "d-bp67acfmxazb4ph****",
+                "SourceStorageType": "disk",
+                "SnapshotId": "s-bp67acfmxazb4p****",
+                "SnapshotSN": "64472-116742336-61976****",
+                "SourceDiskSize": 40,
                 "CreationTime": "2020-08-20T14:52:28Z",
                 "LastModifiedTime": "2020-08-25T14:18:09Z",
-                "Progress": "100%",
-                "SnapshotId": "s-943ypfg****",
-                "SnapshotName": "auto_20150730_3",
-                "SourceDiskId": "d-944qyqj****",
-                "SourceDiskSize": 20,
-                "SnapshotType": "user",
+                "SnapshotType": "all",
                 "SourceDiskType": "system",
-                "Status": "accomplished",
-                "Usage": "none"
-            },
-            {
-                "CreationTime": "2015-07-30T05:00:14Z",
-                "Progress": "100%",
-                "SnapshotId": "s-94osg32****",
-                "SnapshotName": "auto_20150730_3",
-                "SourceDiskId": "d-94j355j****",
-                "SourceDiskSize": 20,
-                "SourceDiskType": "system",
-                "Status": "accomplished",
-                "Usage": "none"
+                "Tags": {
+                    "Tag": []
+                }
             }
         ]
-    },
-    "TotalCount": 36
+    }
 }
 ```
 
