@@ -4,6 +4,14 @@
 
 ## 接口说明
 
+原本地快照更替为快照极速可用功能。参数说明如下：
+
+-   如果您在2020年12月14日之前使用过本地快照。您可以正常使用参数`Category`和`InstantAccess`，但需要注意：
+    -   参数`Category`和`InstantAccess`不能同时传值。
+    -   参数`Category`和`InstantAccess`均不传值时，默认创建普通快照。
+-   如果您在2020年12月14日之前未使用过本地快照。您只能使用参数`InstantAccess`，不能使用参数`Category`。
+
+
 以下场景中，您无法为指定的云盘创建快照：
 
 -   云盘保留的手动快照数达到了256份。
@@ -43,7 +51,7 @@
  -   Standard：普通快照
 -   Flash：本地快照
 
- **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。 |
+ **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用参数`InstantAccess`。该参数和参数`InstantAccess`不能同时传值。更多信息，请参见接口说明。 |
 |ClientToken|String|否|123e4567-e89b-12d3-a456-426655440000|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。更多详情，请参见[如何保证幂等性](~~25693~~)。 |
 |Tag.N.value|String|否|null|快照的标签值。
 
@@ -54,6 +62,15 @@
 |Tag.N.Key|String|否|TestKey|快照的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。 |
 |Tag.N.Value|String|否|TestValue|快照的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。 |
 |ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|快照所在的企业资源组ID。 |
+|InstantAccess|Boolean|否|false|是否开启快照极速可用功能。取值范围：
+
+ -   true：开启。仅ESSD云盘支持开启该功能。
+-   false：关闭。即创建普通快照。
+
+ 默认值：false
+
+ **说明：** 该参数和参数`Category`不能同时传值。更多信息，请参见接口说明。 |
+|InstantAccessRetentionDays|Integer|否|1|设置快照极速可用功能的保留时间，保留时间到期后快照将自动释放。该参数在`InstantAccess=true`时生效。单位：天。取值范围：1~65535。默认与参数`RetentionDays`的值一致。 |
 
 ## 返回数据
 
@@ -128,8 +145,8 @@ https://ecs.aliyuncs.com/?Action=CreateSnapshot
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键不合法。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值不合法。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |403|IdempotentProcessing|The previous idempotent request\(s\) is still processing.|先前的幂等请求仍在处理中，请稍后重试。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
 
