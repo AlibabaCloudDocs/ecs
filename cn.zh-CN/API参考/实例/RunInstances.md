@@ -141,7 +141,6 @@
  -   cloud\_efficiency：20~32768
 -   cloud\_ssd：20~32768
 -   cloud\_essd：20~32768
--   ephemeral\_ssd：5~800
 -   cloud：5~2000
 
  该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。 |
@@ -152,7 +151,6 @@
 
  -   cloud\_efficiency：高效云盘
 -   cloud\_ssd：SSD云盘
--   ephemeral\_ssd：本地SSD盘
 -   cloud\_essd：ESSD云盘
 -   cloud：普通云盘。
 
@@ -363,6 +361,12 @@
 -   None：不使用模式。实例启动将不使用私有池容量。
 
  默认值：空
+
+ 以下任一场景，实例启动的私有池容量选项只能取值`None`或不传值。
+
+ -   创建抢占式实例。
+-   创建经典网络类型的ECS实例。
+-   在专有宿主机DDH上创建ECS实例。
 
  **说明：** 该参数邀测中，详情请提交工单咨询。 |
 |PrivatePoolOptions.Id|String|否|eap-bp67acfmxazb4\*\*\*\*|私有池ID。即弹性保障服务ID或容量预定服务ID。
