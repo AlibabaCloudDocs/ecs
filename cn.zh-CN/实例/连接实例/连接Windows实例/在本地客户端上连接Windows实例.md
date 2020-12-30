@@ -1,78 +1,80 @@
-# 在本地客户端上连接Windows实例 {#concept_n31_wyx_wdb .task}
+# 在本地客户端上连接Windows实例
 
 本文介绍如何通过本地客户端连接Windows实例。
 
 在远程连接Windows实例之前，请确保已完成以下操作：
 
--   实例状态必须为**运行中**。如果实例不在运行中，必须启动实例。具体步骤，请参见[启动实例](cn.zh-CN/实例/管理实例/启动和停止实例.md#) 。
--   实例已经设置登录密码。如果未设置或密码丢失，必须重置实例密码。具体步骤，请参见[重置实例登录密码](cn.zh-CN/实例/管理实例/重置实例登录密码.md#)。
+-   实例状态必须为**运行中**。如果实例不在运行中，必须启动实例。具体步骤，请参见[启动实例](/cn.zh-CN/实例/管理实例/启动实例.md) 。
+-   实例已经设置登录密码。如果未设置或密码丢失，必须重置实例密码。具体步骤，请参见[重置实例登录密码](/cn.zh-CN/实例/管理实例/重置实例登录密码.md)。
 -   实例能访问公网：
-    -   专有网络（VPC）下，在创建实例时购买带宽从而分配到一个公网 IP 地址，或者在创建实例后绑定一个弹性公网IP地址。具体操作，请参见[绑定一个弹性公网 IP 地址](../../../../cn.zh-CN/快速入门/搭建IPv4专有网络.md#section_ux1_cmw_rdb)。
+    -   专有网络（VPC）下，在创建实例时购买带宽从而分配到一个公网 IP 地址，或者在创建实例后绑定一个弹性公网IP地址。具体操作，请参见[绑定一个弹性公网 IP 地址](/cn.zh-CN/快速入门/搭建IPv4专有网络.md)。
     -   经典网络下，您的实例必须分配了公网IP地址。以下是获取公网IP地址的方法：
         -   无论是包年包月实例还是按量计费实例，您在创建实例时购买了带宽即会被分配一个公网IP地址。
-        -   如果您在创建包年包月实例时未设置带宽，可以升级带宽来获取公网IP地址。具体操作，请参见[升级带宽](cn.zh-CN/实例/升降配实例/升降配方式汇总.md#)。
--   实例所在的安全组必须添加以下安全组规则（具体操作，请参见[添加安全组规则](../../../../cn.zh-CN/安全/安全组/添加安全组规则.md#)。）：
+        -   如果您在创建包年包月实例时未设置带宽，可以升级带宽来获取公网IP地址。具体操作，请参见[升级带宽](/cn.zh-CN/实例/升降配实例/升降配方式概述.md)。
+-   实例所在的安全组必须添加以下安全组规则。具体操作，请参见[添加安全组规则](/cn.zh-CN/安全/安全组/添加安全组规则.md)。
 
-    |网络类型|网卡类型|规则方向|授权策略|协议类型|端口范围|授权类型|授权对象|优先级|
-    |----|----|----|----|----|----|----|----|---|
-    |VPC|不需要配置|入方向|允许|RDP\(3389\)|3389/3389|地址段访问|0.0.0.0/0|1|
-    |经典网络|公网|
+    |网络类型|规则方向|授权策略|端口范围|授权对象|优先级|
+    |----|----|----|----|----|---|
+    |VPC|入方向|允许|RDP\(3389\)|0.0.0.0/0|1|
+    |经典网络|公网入方向|
 
 
-## 操作方式 {#section_hhp_msm_d7h .section}
+## 操作方式
 
 根据本地设备的操作系统不同，您可以用不同的远程连接软件连接 Windows 实例：
 
--   [本地设备使用 Windows 操作系统](#)
--   [本地设备使用 Linux 操作系统](#)
--   [本地设备使用Mac OS操作系统（首次连接）](#)
--   [本地设备使用Mac OS操作系统（非首次连接）](#)
--   [本地设备使用Android或iOS系统](#)
+-   [本地设备使用 Windows 操作系统](#windows)
+-   [本地设备使用 Linux 操作系统](#linux)
+-   [本地设备使用Mac OS操作系统（首次连接）](#macOS2)
+-   [本地设备使用Mac OS操作系统（非首次连接）](#macOS3)
+-   [本地设备使用Android或iOS系统](#mobile)
 
-## 本地设备使用Windows操作系统 {#windows .section}
+## 本地设备使用Windows操作系统
 
 如果本地设备使用Windows操作系统，您可以使用Windows自带的远程桌面连接工具MSTSC连接Windows实例。
 
 **说明：** 具体操作，您也可以观看视频：[小助手系列之如何远程连接Windows实例](https://help.aliyun.com/document_detail/62303.html?spm=a2c4g.11186623.2.14.PAoDa5)。
 
-1.  选择以下任一方式启动**远程桌面连接**（MSTSC）： 
+1.  选择以下任一方式启动**远程桌面连接**（MSTSC）：
+
     -   选择 **开始** \> **附件** \> **远程桌面连接**。
     -   单击**开始**图标，在搜索框里中输入mstsc后按回车键确认。
     -   按快捷键**Win**（Windows 徽标键）+**R**启动运行对话框，输入mstsc后按回车键。
-2.  在远程桌面连接对话框中，依次执行如下操作。 
-    1.  单击**显示选项**。 
+2.  在远程桌面连接对话框中，依次执行如下操作。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867895258_zh-CN.png)
+    1.  单击**显示选项**。
 
     2.  输入实例的公网IP地址或EIP地址。
-    3.  输入用户名，默认为Administrator。 
 
-        **说明：** 如果您希望下次登录时不再手动输入用户名和密码，可以选择**允许我保存凭据**。
+    3.  输入用户名，默认为Administrator。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867895259_zh-CN.png)
+        如果您希望下次登录时不再手动输入用户名和密码，可以选择**允许我保存凭据**。
 
-    4.  如果您希望将本地文件拷贝到实例中，您可以设置通过远程桌面共享本地电脑资源：单击**本地资源**选项卡，然后选择任一操作。 
+    4.  如果您希望将本地文件拷贝到实例中，您可以设置通过远程桌面共享本地电脑资源：单击**本地资源**选项卡，然后选择任一操作。
+
         -   如果您需要从本地直接复制文字信息到实例中，选择**剪贴板**。
         -   如果您需要从本地复制文件到实例中，单击**详细信息**，选择驱动器后再选择文件存放的盘符。
 
-            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867895260_zh-CN.png)
-
-            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867895261_zh-CN.png)
-
-    5.  如果您对远程桌面窗口的大小有特定的需求，可以选择**显示**选项卡，再调整窗口大小。一般选择全屏。 
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867895262_zh-CN.png)
+    5.  如果您对远程桌面窗口的大小有特定的需求，可以选择**显示**选项卡，再调整窗口大小。一般选择全屏。
 
     6.  单击**连接**。
 
-## 本地设备使用Linux操作系统 {#linux .section}
 
-如果本地设备使用Linux操作系统，您可以使用远程连接工具连接Windows实例。这里以rdesktop为例说明。
+以下示例演示了如何使用**远程桌面连接**工具远程连接Windows实例。
+
+![远程桌面连接](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1014359951/p128787.gif)
+
+## 本地设备使用Linux操作系统
+
+如果本地设备使用Linux操作系统，您可以使用远程连接工具连接Windows实例。本步骤以rdesktop为例。
 
 1.  下载并启动rdesktop。
-2.  运行以下命令连接Windows实例。将示例中的参数改为您自己的参数。 
 
-    ``` {#codeblock_d1l_4l1_59a}
+2.  运行以下命令连接Windows实例。
+
+    以下命令为示例，请根据实际情况替换参数。
+
+    ```
     rdesktop -u administrator -p password -f -g 1024*720 192.168.1.1 -r clipboard:PRIMARYCLIPBOARD -r disk:sunray=/home/yz16184
     ```
 
@@ -88,80 +90,20 @@
     |-d|域名，例如域名为INC，那么参数就是`-d inc`。|
     |-r|多媒体重新定向。例如：     -   开启声音：`-r sound`。
     -   使用本地的声卡：`-r sound : local`。
-    -   开启 U 盘：`-r disk:usb=/mnt/usbdevice`。
- |
+    -   开启 U 盘：`-r disk:usb=/mnt/usbdevice`。 |
     |-r clipboard:PRIMARYCLIPBOARD|实现本地设备Linux系统和Windows实例之间直接复制粘贴文字。支持复制粘贴中文。|
     |-r disk:sunray=/home/yz16184|指定本地设备Linux系统上的一个目录映射到Windows实例上的硬盘， 这样就可以不再依赖Samba或者FTP传送文件。|
 
 
-## 本地设备使用Mac OS操作系统（首次连接） {#macOS2 .section}
+## 本地设备使用Mac OS操作系统
 
-从Mac OS上连接Windows实例时，您必须在Mac App Store先下载并安装Microsoft Remote Desktop Connection for Mac。如果只有中国Apple账号，您可以下载微软官方提供的Microsoft Remote Desktop for Mac Beta版，该软件只适用于Mac OS 10.10及以上版本系统。下载链接为：[HockeyApp](https://rink.hockeyapp.net/apps/5e0c144289a51fca2d3bfa39ce7f2b06/?spm=a2c4g.11186623.2.16.PAoDa5)。
+关于如何在Mac OS操作系统中连接Windows实例，请参见[微软官网文档](https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)。
 
-这部分内容以Microsoft Remote Desktop for Mac Beta版（以下简称为MRD Beta）为例说明如何从Mac OS上连接Windows实例。
+## 本地设备使用Android或iOS系统
 
-您首次在Mac OS上使用MRD Beta连接Windows实例时，请按以下步骤操作：
+关于如何使用移动设备远程连接您的Windows实例，请参见[在移动设备上连接Windows实例](/cn.zh-CN/实例/连接实例/连接Windows实例/在移动设备上连接Windows实例.md)。
 
-1.  启动MRD Beta。
-2.  单击**Get started**。 
+## 常见问题
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867905291_zh-CN.png)
-
-3.  在Quick connect对话框，输入Windows实例的公网IP地址或EIP地址，并单击**Connect**。
-4.  在弹出对话框中，输入登录信息。 
-    -   User Name：输入administrator。Windows实例的默认用户名是administrator。
-    -   Password：输入实例登录密码。
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867905295_zh-CN.png)
-
-5.  在弹出的对话框中，单击**Continue**。 
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867905296_zh-CN.png)
-
-
-至此，您已经成功登录Windows实例桌面。
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867915297_zh-CN.png)
-
-## 本地设备使用Mac OS操作系统（非首次连接） {#macOS3 .section}
-
-第二次及以后在Mac OS上使用MRD Beta连接Windows实例时，请按以下步骤操作：
-
-1.  启动MRD Beta。
-2.  单击**Add desktop**，并在弹出的Add Desktop对话框中，设置PC Name并选择以后连接的方式（User Account），并单击**Save**。 
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867915298_zh-CN.png)
-
-3.  选中实例图标。 
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867915300_zh-CN.png)
-
-4.  在工具栏里，单击**![](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/25435/intl_zh/1509777290006/Setting_icon.png)** \> **Connect**。 
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867915301_zh-CN.png)
-
-5.  在弹出对话框中，输入登录信息。 
-    -   User Name：输入administrator。Windows实例的默认用户名是administrator。
-    -   Password：输入实例登录密码。
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867925302_zh-CN.png)
-
-6.  在弹出对话框中，单击**Continue**。 
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867925303_zh-CN.png)
-
-
-至此，您已经成功登录Windows实例桌面。
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15656867925304_zh-CN.png)
-
-## 本地设备使用Android或iOS系统 {#mobile .section}
-
-如果要使用移动设备远程连接您的Windows实例，您可以使用app。
-
-具体的操作描述，请参见[在移动设备上连接Windows实例](cn.zh-CN/实例/连接实例/连接Windows实例/在移动设备上连接Windows实例.md#)。
-
-[无法连接Windows实例](https://help.aliyun.com/document_detail/50982.html?spm=a2c4g.11186623.2.20.PAoDa5)
-
-[登录Windows实例报错：The function requested is not supported（出现身份验证错误，要求的函数不受支持）](https://help.aliyun.com/knowledge_detail/71931.html)
+无法连接实例时，您可以自行排查，详情请参见[远程连接FAQ]()和[GuestOS常见问题与修复方案](https://help.aliyun.com/document_detail/175789.html)。
 
