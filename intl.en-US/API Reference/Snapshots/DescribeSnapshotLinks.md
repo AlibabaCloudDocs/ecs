@@ -1,190 +1,168 @@
-# DescribeSnapshotLinks {#doc_api_999634 .reference}
+# DescribeSnapshotLinks
 
-Queries the snapshot chains of one or more disks. A snapshot chain is a chain of all the snapshots of a disk, and a disk corresponds to a chain of snapshots, so the snapshot chain ID is the disk ID.
+You can call this operation to query the snapshot chains of one or more disks. A snapshot chain is a chain of all the snapshots created for a disk. A disk corresponds to a chain of snapshots.
 
-## Description {#description .section}
+## Description
 
-When you call this operation, note that:
+When you call this operation, take note of the following items:
 
--   Request parameters such as RegionId, DiskIds, and InstanceId act as filtering conditions and have a Boolean AND relationship.
--   If no parameters are specified, no filtering conditions are applied. If the DiskIds and SnapshotLinkIds parameters are empty JSON arrays \(\[\]\), the filtering conditions are regarded as effective and a blank result will be returned.
+-   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
+-   Only the specified parameters are used as filter conditions. If both `DiskIds` and `SnapshotLinkIds` are set to empty JSON arrays, they are regarded as valid filter conditions and an empty response is returned.
 
-## Debugging {#apiExplorer .section}
+## Debugging
 
-You can use [API Explorer](https://api.aliyun.com/#product=Ecs&api=DescribeSnapshotLinks) to perform debugging. API Explorer allows you to perform various operations to simplify API usage. For example, you can retrieve APIs, call APIs, and dynamically generate SDK example code.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeSnapshotLinks&type=RPC&version=2014-05-26)
 
-## Request parameters {#parameters .section}
+## Request parameters
 
-|Name|Type|Required|Example|Description|
-|----|----|--------|-------|-----------|
-|RegionId|String|Yes|cn-hangzhou| The ID of the region to which the disk belongs. You can call [DescribeRegions](~~25609~~) to view the latest regions of Alibaba Cloud.
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|DescribeSnapshotLinks|The operation that you want to perform. Set the value to DescribeSnapshotLinks. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the disk. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|InstanceId|String|No|i-bp1h6jmbefj2cyqs\*\*\*\*|The ID of the instance. |
+|DiskIds|String|No|\["d-bp1d6tsvznfghy7y\*\*\*\*", "d-bp1ippxbaql9zet7\*\*\*\*", ... "d-bp1ib7bcz07lcxa9\*\*\*\*"\]|The IDs of the disks. The value is a JSON array that consists of up to 100 disk IDs. Separate multiple disk IDs with commas \(,\). |
+|SnapshotLinkIds|String|No|\["sl-bp1grgphbcc9brb5\*\*\*\*", "sl-bp1c4izumvq0i5bs\*\*\*\*", ... "sl-bp1akk7isz866dds\*\*\*\*"\]|The IDs of the snapshot chains. The value is a JSON array that consists of up to 100 snapshot chain IDs. Separate multiple snapshot chain IDs with commas \(,\). |
+|PageNumber|Integer|No|1|The number of the page to return. Pages start from page 1.
 
- |
-|Action|String|No|DescribeSnapshotLinks| The operation that you want to perform. Set the value to DescribeSnapshotLinks.
+Default value: 1 |
+|PageSize|Integer|No|50|The number of entries to return on each page. Valid values: 1 to 100.
 
- |
-|DiskIds|String|No|\["d-xxxxxxxxx", "d-yyyyyyyyy", … "d-zzzzzzzzz"\]| The IDs of the disks to be queried. You can specify a maximum of 100 disk IDs at a time. The parameter value is an array of disk IDs separated with commas \(,\).
+Default value: 10. |
 
- |
-|InstanceId|String|No|i-instanceid1| The ID of the instance.
+## Response parameters
 
- |
-|PageNumber|Integer|No|1| The page number that you query in the disk status list. Starting value: 1.
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|PageNumber|Integer|1|The page number of the returned page. |
+|PageSize|Integer|50|The number of entries returned per page. |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
+|SnapshotLinks|Array of SnapshotLink| |Details about the snapshot chains. |
+|SnapshotLink| | | |
+|Category|String|standard|The category of the snapshot.
 
- Default value: 1.
+**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess`parameter to ensure future compatibility. |
+|InstanceId|String|i-bp1h6jmbefj2cyqs\*\*\*\*|The ID of the instance. |
+|InstanceName|String|testInstanceName|The name of the instance. |
+|InstantAccess|Boolean|false|Indicates whether the instant access feature is enabled. Valid values:
 
- |
-|PageSize|Integer|No|10| The number of entries per page. Valid values: 1 to 50.
+-   true: The instant access feature is enabled. This feature can be enabled only for enhanced SSDs \(ESSDs\).
+-   false: The instant access feature is disabled The snapshot is a normal snapshot for which the instant access feature is disabled. |
+|RegionId|String|cn-hangzhou|The ID of the region in which the source disk of the snapshot chain is located. |
+|SnapshotLinkId|String|sl-2ze0y1jwzpb1geqx\*\*\*\*|The ID of the snapshot chain. |
+|SourceDiskId|String|d-bp1d6tsvznfghy7y\*\*\*\*|The ID of the source disk. This parameter is retained even if the source disk is deleted. |
+|SourceDiskName|String|testSourceDiskName|The name of the source disk. |
+|SourceDiskSize|Integer|40|The capacity of the source disk. Unit: GiB. |
+|SourceDiskType|String|data|The category of the source disk. Valid values:
 
- Default value: 10.
+-   system: system disk
+-   data: data disk |
+|TotalCount|Integer|1|The total number of snapshots. |
+|TotalSize|Long|2097152|The total capacity of all snapshots in the snapshot chain. Unit: byte. |
+|TotalCount|Integer|9|The total number of snapshot chains. |
 
- |
-|SnapshotLinkIds|String|No|\["p-xxxxxxxxx", "p-yyyyyyyyy", … "p-zzzzzzzzz"\]| The IDs of the snapshot chains to be queried. You can specify a maximum of 100 snapshot chain IDs at a time. The parameter value is an array of snapshot chain IDs separated with commas \(,\).
-
- |
-
-## Response parameters {#resultMapping .section}
-
-|Name|Type|Example|Description|
-|----|----|-------|-----------|
-|PageNumber|Integer|1| The page number that you query in the snapshot chain list.
-
- |
-|PageSize|Integer|10| The number of entries per page.
-
- |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E| The ID of the request.
-
- |
-|SnapshotLinks| | | A set of snapshot chains.
-
- |
-|└InstanceId|String|i-instanceid1| The ID of the instance.
-
- |
-|└ InstanceName|String|FinanceJoshua| The name of the instance.
-
- |
-|└RegionId|String|cn-hangzhou| The ID of the region to which the source disk of the snapshot chain belongs.
-
- |
-|└ SnapshotLinkId|String|p-2ze0y1jwzpb1geqxkroq| The ID of the snapshot chain.
-
- |
-|└ SourceDiskId|String|d-diskid1| The ID of the source disk. This parameter is retained even after the source disk of the snapshot is deleted.
-
- |
-|└ SourceDiskName|String|FinanceJoshua| The name of the source disk.
-
- |
-|└ SourceDiskSize|Integer|40| The size of the source disk. Unit: GiB.
-
- |
-|└ SourceDiskType|String|cloud\_ssd| The type of the source disk. Valid values:
-
- -   cloud: basic disk
--   cloud\_efficiency: ultra disk
--   cloud\_ssd: SSD
--   ephemeral\_ssd: local SSD
--   cloud\_essd: ESSD
-
- |
-|└TotalCount|Integer|1| The total number of snapshots.
-
- |
-|└ TotalSize|Integer|2097152| The size of all snapshots in a snapshot chain. Unit: Byte.
-
- |
-|TotalCount|Integer|9| The total number of snapshot chains.
-
- |
-
-## Examples {#demo .section}
+## Examples
 
 Sample requests
 
-``` {#request_demo}
+```
 https://ecs.aliyuncs.com/?Action=DescribeSnapshotLinks
 &RegionId=cn-hangzhou
-&InstanceId=i-instanceid1
-&DiskIds=["d-xxxxxxxxx", "d-yyyyyyyyy", … "d-zzzzzzzzz"]
-&SnapshotLinkIds=["p-xxxxxxxxx", "p-yyyyyyyyy", … "p-zzzzzzzzz"]
+&InstanceId=i-bp1h6jmbefj2cyqs****
+&DiskIds=["d-bp1d6tsvznfghy7y****", "d-bp1ippxbaql9zet7****", ... "d-bp1ib7bcz07lcxa9****"]
+&SnapshotLinkIds=["sl-bp1grgphbcc9brb5****", "sl-bp1c4izumvq0i5bs****", ... "sl-bp1akk7isz866dds****"]
 &PageNumber=1
 &PageSize=10
 &<Common request parameters>
 ```
 
-Successful response examples
+Sample success responses
 
 `XML` format
 
-``` {#xml_return_success_demo}
+```
 <DescribeSnapshotLinksResponse>
-  <SnapshotLinks>
-    <SnapshotLink>
-      <SnapshotLinkId>d-25okbh2pj</SnapshotLinkId>
-      <SourceDiskId>d-25okbh2pj</SourceDiskId>
-      <SourceDiskType>data</SourceDiskType>
-      <SourceDiskSize>20</SourceDiskSize>
-      <RegionId> cn-beijing-btc-a01</RegionId>
-      <TotalCount>1</TotalCount>
-      <TotalSize>2097152</TotalSize>
-    </SnapshotLink>
-    <SnapshotLink>
-      <SnapshotLinkId>d-2ze0y1jwzpb1geqxkroq</SnapshotLinkId>
-      <SourceDiskId>d-2ze0y1jwzpb1geqxkroq</SourceDiskId>
-      <SourceDiskType>system</SourceDiskType>
-      <SourceDiskSize>40</SourceDiskSize>
-      <RegionId> cn-beijing-btc-a01</RegionId>
-      <TotalCount>1</TotalCount>
-      <TotalSize>2097152</TotalSize>
-    </SnapshotLink>
-  </SnapshotLinks>
-  <PageNumber>1</PageNumber>
-  <PageSize>2</PageSize>
-  <TotalCount>9</TotalCount>
-  <RequestId>ED5CF6DD-71CA-462C-9C94-A61A78A01479</RequestId>
+      <SnapshotLinks>
+            <SnapshotLink>
+                  <InstanceName>testInstanceName1</InstanceName>
+                  <TotalCount>1</TotalCount>
+                  <Category>standard</Category>
+                  <SourceDiskSize>40</SourceDiskSize>
+                  <InstanceId>i-bp1dh0xo8nucqe1o****</InstanceId>
+                  <SnapshotLinkId>sl-bp1hgvjgqo3wn8u7****</SnapshotLinkId>
+                  <SourceDiskName>testSourceDiskName1</SourceDiskName>
+                  <RegionId></RegionId>
+                  <SourceDiskType>system</SourceDiskType>
+                  <TotalSize>3806330880</TotalSize>
+                  <SourceDiskId>d-bp149tb0mqn0boy6****</SourceDiskId>
+            </SnapshotLink>
+            <SnapshotLink>
+                  <InstanceName>testInstanceName2</InstanceName>
+                  <TotalCount>1</TotalCount>
+                  <Category>standard</Category>
+                  <InstanceId>i-bp1c84ts5f4b6t6z****</InstanceId>
+                  <SnapshotLinkId>sl-bp163h35n7endbpv****</SnapshotLinkId>
+                  <SourceDiskName>testSourceDiskName2</SourceDiskName>
+                  <RegionId></RegionId>
+                  <TotalSize>2709520384</TotalSize>
+                  <SourceDiskType>data</SourceDiskType>
+                  <SourceDiskId>d-bp1cl4hqnh0i2u5h****</SourceDiskId>
+            </SnapshotLink>
+      </SnapshotLinks>
+      <PageNumber>1</PageNumber>
+      <PageSize>2</PageSize>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <TotalCount>9</TotalCount>
 </DescribeSnapshotLinksResponse>
 ```
 
 `JSON` format
 
-``` {#json_return_success_demo}
+```
 {
-	"PageNumber":1,
-	"TotalCount":9,
-	"PageSize":2,
-	"RequestId":"ACD9BBB0-A9D1-46D7-9630-B7A69889E110",
-	"SnapshotLinks":{
-		"SnapshotLink":[
-			{
-				"TotalCount":1,
-				"SourceDiskType":"data",
-				"SourceDiskId":"d-25okbh2pj",
-				"RegionId":"cn-beijing-btc-a01",
-				"SourceDiskSize":20,
-				"SnapshotLinkId":"d-25okbh2pj",
-				"TotalSize":2097152
-			},
-			{
-				"TotalCount":1,
-				"SourceDiskType":"data",
-				"SourceDiskId":"d-2ze0y1jwzpb1geqxkroq",
-				"RegionId":"cn-beijing-btc-a01",
-				"SourceDiskSize":40,
-				"SnapshotLinkId":"d-2ze0y1jwzpb1geqxkroq",
-				"TotalSize":2097152
-			}
-		]
-	}
+    "SnapshotLinks": {
+        "SnapshotLink": [
+            {
+                "InstanceName": "testInstanceName1",
+                "TotalCount": 1,
+                "Category": "standard",
+                "SourceDiskSize": 40,
+                "InstanceId": "i-bp1dh0xo8nucqe1o****",
+                "SnapshotLinkId": "sl-bp1hgvjgqo3wn8u7****",
+                "SourceDiskName": "testSourceDiskName1",
+                "RegionId": "",
+                "SourceDiskType": "system",
+                "TotalSize": 3806330880,
+                "SourceDiskId": "d-bp149tb0mqn0boy6****"
+            },
+            {
+                "InstanceName": "testInstanceName2",
+                "TotalCount": 1,
+                "Category": "standard",
+                "InstanceId": "i-bp1c84ts5f4b6t6z****",
+                "SnapshotLinkId": "sl-bp163h35n7endbpv****",
+                "SourceDiskName": "testSourceDiskName2",
+                "RegionId": "",
+                "TotalSize": 2709520384,
+                "SourceDiskType": "data",
+                "SourceDiskId": "d-bp1cl4hqnh0i2u5h****"
+            }
+        ]
+    },
+    "PageNumber": 1,
+    "PageSize": 1,
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+    "TotalCount": 2
 }
 ```
 
-## Error codes {#section_0jt_1m3_4ra .section}
+## Error codes
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|400|InvalidDiskIds|The specified diskIds is invalid.|The error message returned when the specified value of the DiskIds parameter is invalid.|
+|400|InvalidRegionId|The specified regionId is invalid.|The error message returned because the specified RegionId parameter is invalid.|
+|400|InvalidSnapshotLinkIds|The specified snapshotLinkIds is invalid.|The error message returned because the specified SnapshotLinkIds parameter is invalid.|
+|400|InvalidDiskIds|The specified diskIds is invalid.|The error message returned because the specified DiskIds parameter is invalid.|
+|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the error persists, submit a ticket.|
 
-[View error codes](https://error-center.aliyun.com/status/product/Ecs)
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
