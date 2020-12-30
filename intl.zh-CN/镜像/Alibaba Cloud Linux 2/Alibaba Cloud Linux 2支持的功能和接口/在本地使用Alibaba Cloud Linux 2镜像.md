@@ -148,7 +148,7 @@ Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直�
             <on_reboot>restart</on_reboot>
             <on_crash>restart</on_crash>
             <devices>
-                <emulator>/usr/bin/qemu-kvm</emulator>
+                <emulator>/usr/bin/qemu-kvm</emulator><!-- 请根据不同的操作系统设置对应的kvm路径。例如：Ubuntu对应的kvm路径是/usr/bin/kvm -->
                 <disk type='file' device='disk'><!-- 请根据镜像格式设置下面的type参数：qcow2对应type='qcow2'、vhd对应type='vhd'。 -->
                     <driver name='qemu' type='qcow2' cache='none' dataplane='on' io='native'/> <!-- 如果要创建qcow2快照，需要关闭dataplane。 -->
                     <source file='path'/> <!-- 填写Alibaba Cloud Linux 2镜像的绝对路径。 -->
@@ -179,6 +179,8 @@ Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直�
         ```
 
     2.  使用`virsh`命令启动虚拟机，命令示例如下。
+
+        **说明：** libvirt工具默认使用普通用户启动，请确认镜像文件及所在路径对普通用户是否具有相应的操作权限。
 
         ```
         virsh define alinux2.xml
