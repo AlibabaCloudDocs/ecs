@@ -1,6 +1,6 @@
 # DescribeAvailableResource
 
-You can call this operation to query resources in a zone. For example, you can query available resources in a zone before you create ECS instances \(RunInstances\) or before you modify instance specifications \(ModifyInstanceSpec\).
+You can call this operation to query resources in a zone. For example, you can query available resources in a zone before you create ECS instances \(RunInstances\) or before you modify instance types \(ModifyInstanceSpec\).
 
 ## Description
 
@@ -8,9 +8,9 @@ Values for the `DestinationResource` parameter have dependencies. When you selec
 
 -   Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
 -   Examples:
-    -   If you set `DestinationResource` to `DataDisk`, you must specify the `IoOptimized`, `InstanceType`, `SystemDiskCategory`, and `DataDiskCategory` parameters.
+    -   If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter.
     -   If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
-    -   If you want to query the ecs.g5.large resources in all zones of the China \(Hangzhou\) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
+    -   If you want to query the available ecs.g5.large resources in all zones of the China \(Hangzhou\) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
     -   If you want to query the zones where ecs.g5.large resources are available within the China \(Hangzhou\) region, you must set RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
 
 ## Debugging
@@ -25,18 +25,18 @@ Values for the `DestinationResource` parameter have dependencies. When you selec
 |DestinationResource|String|Yes|InstanceType|The resource type to be queried. Valid values:
 
 -   Zone: zone
--   IoOptimized: I/O optimzied
+-   IoOptimized: I/O optimized
 -   InstanceType: instance type
 -   SystemDisk: system disk
 -   DataDisk: data disk
 -   Network: network type
 -   ddh: dedicated host
 
-For more information about how to set the DestinationResource parameter, see the preceding Description section. |
+For more information about how to set the DestinationResource parameter, see the "Description" section in this topic. |
 |RegionId|String|Yes|cn-hangzhou|The region ID. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |ZoneId|String|No|cn-hangzhou-e|The zone ID.
 
-This parameter is empty by default. When this parameter is empty, the system returns resources that match the other criteria of all zones within the region specified by `RegionId`. |
+This parameter is empty by default. When this parameter is empty, the system returns resources that match the other filter conditions of all zones within the region specified by `RegionId`. |
 |InstanceChargeType|String|No|PrePaid|The billing method of the resource. For more information, see [Billing overview](~~25398~~). Valid values:
 
 -   PrePaid: subscription
@@ -45,19 +45,19 @@ This parameter is empty by default. When this parameter is empty, the system ret
 Default value: PostPaid. |
 |SpotStrategy|String|No|NoSpot|The preemption policy for the preemptible or pay-as-you-go instance. Valid values:
 
--   NoSpot: applies to regular pay-as-you-go instances.
--   SpotWithPriceLimit: applies to preemptible instances that have maximum hourly prices.
--   SpotAsPriceGo: applies to preemptible instances priced at the market price at the time of purchase.
+-   NoSpot: The instance is a regular pay-as-you-go instance.
+-   SpotWithPriceLimit: The instance is created with a maximum hourly price.
+-   SpotAsPriceGo: The instance is of the market price at the time of purchase.
 
 Default value: NoSpot.
 
 This parameter takes effect only when the InstanceChargeType parameter is set to PostPaid. |
 |IoOptimized|String|No|optimized|Specifies whether the instance is I/O optimized. Valid values:
 
--   none
--   optimized
+-   none: non-I/O optimized
+-   optimized: I/O optimized
 
-Default value: optimized |
+Default value: optimized. |
 |DedicatedHostId|String|No|dh-bp165p6xk2tlw61e\*\*\*\*|The ID of the dedicated host. |
 |InstanceType|String|No|ecs.g5.large|The instance type. For more information, see [Instance type families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the most recent instance type list.
 
@@ -68,7 +68,7 @@ When the DestinationResource parameter is set to SystemDisk or DataDisk, the Ins
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
--   cloud\_essd: ESSD
+-   cloud\_essd: enhanced SSD \(ESSD\)
 
 When DestinationResource is set to SystemDisk, InstanceType, or DataDisk, the SystemDiskCategory parameter is optional.
 
@@ -86,11 +86,11 @@ Default value: cloud\_efficiency. |
 -   classic |
 |Cores|Integer|No|2|The number of vCPU cores of the instance type. For more information, see [Instance type families](~~25378~~).
 
-This parameter takes effect only when the DestinationResource parameter is set to InstanceType. |
+The Cores parameter takes effect only when the DestinationResource parameter is set to InstanceType. |
 |Memory|Float|No|8.0|The memory size of the instance type. Unit: GiB. For more information, see [Instance type families](~~25378~~).
 
 The Memory parameter takes effect only when the DestinationResource parameter is set to InstanceType. |
-|ResourceType|String|No|instance|The type of the resource. Valid values:
+|ResourceType|String|No|instance|The resource type. Valid values:
 
 -   instance: ECS instance
 -   disk: cloud disk
@@ -101,11 +101,11 @@ The Memory parameter takes effect only when the DestinationResource parameter is
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
-|AvailableZones|Array| |An array consisting of zones. |
+|AvailableZones|Array of AvailableZone| |An array consisting of zones. |
 |AvailableZone| | | |
-|AvailableResources|Array| |An array consisting of available resource types. |
+|AvailableResources|Array of AvailableResource| |An array consisting of available resource types. |
 |AvailableResource| | | |
-|SupportedResources|Array| |An array consisting of available resource types. |
+|SupportedResources|Array of SupportedResource| |An array consisting of available resource types. |
 |SupportedResource| | | |
 |Max|Integer|2|The maximum number of resources of a specific type that can be created. No value is returned when this parameter is empty. |
 |Min|Integer|1|The minimum value of resources of a specific type that can be created. No value is returned when the parameter is empty. |
@@ -121,7 +121,7 @@ The Memory parameter takes effect only when the DestinationResource parameter is
 -   ClosedWithoutStock: Resources are sold out and will not be replenished.We recommend that you use resources in sufficient stock. |
 |Unit|String|null|The unit of the resource type. No value is returned when the parameter is empty. |
 |Value|String|ecs.d1ne.xlarge|The value of the resource. |
-|Type|String|InstanceType|The type of the resource. Valid values:
+|Type|String|InstanceType|The types of the resources. Valid values:
 
 -   Zone: zone
 -   IoOptimized: I/O optimized
@@ -234,8 +234,8 @@ Sample success responses
 |404|Invalid.IoOptimized|The specified IoOptimized is not valid.|The error message returned because the specified IoOptimized parameter is invalid.|
 |404|Invalid.NetworkCategory|The specified NetworkCategory is not valid.|The error message returned because the specified NetworkCategory parameter is invalid.|
 |404|Invalid.SpotStrategy|The specified SpotStrategy is not valid.|The error message returned because the specified SpotStrategy parameter is invalid.|
-|403|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|The error message returned because the specified dedicated host does not exist.|
-|404|Invalid.NetworkType|The specified NetworkType is not valid.|The error message returned because the specified NetworkCategory parameter is invalid.|
+|403|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|The error message returned because the specified DedicatedHostId parameter does not exist.|
+|404|Invalid.NetworkType|The specified NetworkType is not valid.|The error message returned because the specified NetworkType parameter is invalid.|
 |404|InvalidResourceId.NotFound|The specified ResourceId is not found in our records|The error message returned because the specified ResourceId parameter is invalid. Check whether the resource exists.|
 |403|InvalidParam.TypeAndCpuMem.Conflict|The specified 'InstanceType' and 'Cores','Memory' are not blank at the same time.|The error message returned because none of the InstanceType, Cores, and Memory parameters are specified.|
 |403|InvalidParam.Cores|The specified parameter 'Cores' should be empty|The error message returned because the Cores parameter is specified.|
