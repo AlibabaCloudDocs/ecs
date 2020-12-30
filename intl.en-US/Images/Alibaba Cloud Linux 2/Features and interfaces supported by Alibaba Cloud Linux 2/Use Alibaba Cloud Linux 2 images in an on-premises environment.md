@@ -2,7 +2,7 @@
 
 Alibaba Cloud Linux 2 images are available in various formats and have cloud-init built in. These images can be used on premises. This topic describes how to use Alibaba Cloud Linux 2 images in an on-premises environment.
 
-Alibaba Cloud Linux 2 images can run only on kernel-based virtual machines \(KVMs\). Alibaba Cloud Linux 2 images cannot start KVMs directly. You must configure a boot image. In this topic, the on-premises operating system is CentOS. Alibaba Cloud Linux 2 is used to create a KVM, and cloud-init is used to initialize the system settings of the KVM. For more information about cloud-init, visit [Alibaba Cloud \(AliYun\)](https://cloudinit.readthedocs.io/en/latest/topics/datasources/aliyun.html?spm=a2c4g.11186623.2.24.1bec3fcaonbql3) on the official cloud-init website. The NoCloud data source is then used to create on-premises configuration files. After the configuration files are attached to the KVM as a virtual disk, the KVM can be started.
+Alibaba Cloud Linux 2 images can run only on kernel-based virtual machines \(KVMs\). Alibaba Cloud Linux 2 images cannot directly start KVMs. You must configure a boot image. In this topic, the on-premises operating system is CentOS. Alibaba Cloud Linux 2 is used to create a KVM, and cloud-init is used to initialize the system settings of the KVM. For more information about cloud-init, visit [Alibaba Cloud \(AliYun\)](https://cloudinit.readthedocs.io/en/latest/topics/datasources/aliyun.html?spm=a2c4g.11186623.2.24.1bec3fcaonbql3) on the official cloud-init website. The NoCloud data source is used to create on-premises configuration files. After the configuration files are attached to the KVM as a virtual disk, the KVM can be started.
 
 This topic is intended for users who are familiar with KVMs.
 
@@ -18,11 +18,11 @@ You must configure the network, account, and YUM repository for the boot image. 
 
 You can use one of the following methods to obtain the seed.img image:
 
--   Go to the [Alibaba Cloud Linux 2 On-premise Image](https://mirrors.aliyun.com/alinux/image/) page and click seed.img to download the seed.img image provided.
+-   Go to the [Alibaba Cloud Linux 2 On-premise Image](https://mirrors.aliyun.com/alinux/image/) page and click seed.img to download the seed.img image.
 
-    The configuration information in this image cannot be changed, which makes it less ideal for some scenarios. Make sure that you are already familiar with the image before you download it.
+    The configuration information in this image cannot be modified, which makes it less ideal for some scenarios. Make sure that you are already familiar with the image before you download it.
 
--   Perform the following steps to manually generate the seed.img image based on the NoCloud data source.
+-   Perform the following operations to manually generate the seed.img image based on the NoCloud data source.
 
 1.  In an on-premises directory, create two configuration files named `meta-data` and `user-data`.
 
@@ -132,12 +132,12 @@ You can use one of the following methods to obtain the seed.img image:
 You can use one of the following methods to start the KVM. Then, use the account information in the `user-data` configuration file to log on to the KVM.
 
 -   Use libvirt to start the KVM.
-    1.  Create a configuration file in the XML format on your on-premises computer. The sample file is named `alinux2.xml` and contains the following content. You can modify the XML-formatted configuration file.
+    1.  Create a configuration file in the XML format on your on-premises computer. The sample file is named `alinux2.xml` and contains the following content: You can modify the XML-formatted configuration file.
 
         ```
         <domain type='kvm'>
             <name>alinux2</name>
-            <memory>1048576</memory> <! -- 1 GB memory -->
+            <memory>1048576</memory> <! -- 1 GB of memory -->
             <vcpu>1</vcpu>
             <os>
                 <type arch='x86_64'>hvm</type>
@@ -148,8 +148,8 @@ You can use one of the following methods to start the KVM. Then, use the account
             <on_reboot>restart</on_reboot>
             <on_crash>restart</on_crash>
             <devices>
-                <emulator>/usr/bin/qemu-kvm</emulator>
-                <disk type='file' device='disk'><! -- Specify the type parameter based on the image format. Set type to qcow2 if the image is in the qcow2 format, and set type to vhd if the image is in the VHD format. -->
+                <emulator>/usr/bin/qemu-kvm</emulator><! -- Configure a KVM path based on the operating system. For example, the KVM path for Ubuntu is /usr/bin/kvm -->
+                <disk type='file' device='disk'><! -- Specify the type parameter based on the image format. Set type to qcow2 if the image is in the QCOW2 format, and set type to vhd if the image is in the VHD format. -->
                     <driver name='qemu' type='qcow2' cache='none' dataplane='on' io='native'/> <! -- If you want to create a snapshot in the qcow2 format, you must disable dataplane. -->
                     <source file='path'/> <! -- Enter the absolute path of the Alibaba Cloud Linux 2 image. -->
                     <target dev='vda' bus='virtio'/>
@@ -180,12 +180,14 @@ You can use one of the following methods to start the KVM. Then, use the account
 
     2.  Run the `virsh` command to start the KVM. Sample command:
 
+        **Note:** By default, libvirt is started by a common user. Make sure that common users have the permissions to manage image files and their paths.
+
         ```
         virsh define alinux2.xml
         virsh start KVMName    # Enter the actual name of the KVM.
         ```
 
--   Run the `qemu-kvm` command to start the KVM. You must append the following parameter information to the command. Set the `file` parameter to the actual absolute path of the seed.img image:
+-   Run the `qemu-kvm` command to start the KVM. You must append the following parameter information to the command. Set the `file` parameter to the actual absolute path of the seed.img image.
 
     ```
     -drive file=/path/to/your/seed.img,if=virtio,format=raw
