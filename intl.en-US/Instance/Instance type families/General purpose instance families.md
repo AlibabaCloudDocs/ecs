@@ -171,7 +171,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
 -   Supports I/O optimization.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
