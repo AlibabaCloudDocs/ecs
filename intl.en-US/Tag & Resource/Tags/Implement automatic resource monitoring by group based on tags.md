@@ -1,8 +1,8 @@
 # Implement automatic resource monitoring by group based on tags
 
-You can bind a tag to multiple ECS instances that run the same business. Then, you can use the application groups feature of Cloud Monitor to configure smart tag synchronization for these instances. Cloud Monitor automatically assigns the ECS instances that are bound with the same tag to the same application group to implement automatic resource monitoring by group. In ECS, only ECS instances support this feature.
+You can bind a tag to multiple ECS instances that run the same business. Then, you can use the application groups feature of Cloud Monitor to configure smart tag synchronization for these instances. Cloud Monitor automatically assigns the ECS instances that are bound with the same tag to the same application group to implement automatic resource monitoring by group. In ECS, this feature can be applied only to ECS instances.
 
-The application groups feature of Cloud Monitor allows you to manage alarm rules and view monitoring data by group. This makes management less complex. For more information, see [Application groups](/intl.en-US/Quick Start/Application groups.md). In this topic, ECS instances that are automatically created in a scaling group are bound with the `testKey:testValue` tag. Then, Cloud Monitor uses the configuration rules of the application group to identify and assign the ECS instances to the application group based on the tag.
+The application groups feature of Cloud Monitor allows you to manage alert rules and view monitoring data by group. This makes management less complex. For more information, see [t6125.md\#](/intl.en-US/Quick Start/Application group.md). In this topic, ECS instances that are automatically created in a scaling group are bound with the `testKey:testValue` tag. Then, Cloud Monitor uses the configuration rules of the application group to identify and assign the ECS instances to the application group based on the tag.
 
 You can use one of the following methods to automatically monitor resources by group based on tags.
 
@@ -17,36 +17,38 @@ You can create instances that are bound with the same tag or bind a tag to exist
 
 2.  Create a scaling group.
 
-    Select a multi-zone scaling policy to implement high-availability auto scaling. For more information, see [Create a scaling group](/intl.en-US/Scaling Group/Scaling group/Create a scaling group.md).
+    For more information, see [Create a scaling group](/intl.en-US/Scaling Group/Scaling group/Create a scaling group.md). In this example:
 
-    ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p81641.png)
+    -   Specify **Multi-zone Scaling Policy** to implement high-availability auto scaling.
+    -   Set **Minimum Number of Instances** to 4.
+    ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p81641.png)
 
 3.  Create a scaling configuration.
 
-    Make sure that the `testKey:testValue` tag is bound to the scaling configuration. For more information, see [Create a scaling configuration](/intl.en-US/Scaling Group/Instance Configuration Source/Create a scaling configuration.md).
+    For more information, see [Create a scaling configuration](/intl.en-US/Scaling Group/Instance Configuration Source/Create a scaling configuration.md). You must bind the `testKey:testValue` tag on the **System Configurations** page.
 
-    ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p81642.png)
+    ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p81642.png)
 
-4.  Go to the details page of the created scaling group. click **Instances** to view the ECS instances that are automatically created in the scaling group.
+4.  Go to the scaling group details page, click the **Instances** tab, and then view the ECS instances that are automatically created in the scaling group.
 
-    ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p81643.png)
+    ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p81643.png)
 
 
 ## Step 2: Create a Cloud Monitor application group
 
 1.  Log on to the [Cloud Monitor console](https://cms-intl.console.aliyun.com).
 
-2.  Create a Cloud Monitor application group. For more information, see [Create an application group](/intl.en-US/Application groups/Create an application group.md).
+2.  Create a Cloud Monitor application group. For more information, see [t6144.md\#](/intl.en-US/Application groups/Create an application group.md).
 
     In this example, select **Smart tag synchronization creation** as the creation method, and add the `testKey:testValue` tag to the matching rule to create an application group. Then, the instances that are bound with this tag are assigned to the created application group.
 
     1.  Select **Smart tag synchronization creation** as the creation method.
 
-        ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p81647.png)
+        ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p81647.png)
 
     2.  In the Match Rule section, set Resource Tag Key to `testKey` and specify the Tag Value parameter. You can set a tag value range. In this example, the tag value range is **Contain**`testValue`.
 
-        ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p81650.png)
+        ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p81650.png)
 
 
 ## Step 3: View monitoring information about the ECS instances
@@ -61,13 +63,13 @@ Method 1: View the monitoring information about the ECS instances based on their
 
 3.  In the search bar, select **Resource tags**, and enter `testKey` to search for the application group.
 
-    ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p81654.png)
+    ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p81654.png)
 
 4.  Click `testKey-testValue-53** / 22******` in the Group Name / Group ID column to view the resources in the group.
 
     The automatically created ECS instances in the scaling group are automatically assigned to the application group.
 
-    ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p81657.png)
+    ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p81657.png)
 
 
 Method 2: View the monitoring information about the ECS instances in the ECS console.
@@ -80,17 +82,17 @@ Method 2: View the monitoring information about the ECS instances in the ECS con
 
 4.  On the **Tags** tab of the **Tags** page, click **Custom Tags**.
 
-    On the **All Custom Tags** page, click **Enable** in the **Automatically Create Cloud Monitoring Application Groups** column to create a Cloud Monitor application group. In the Automatically Create Cloud Monitoring Application Groups column, **Enabled** is displayed with a green check mark for the tags for which application group are created.
+    On the **All Custom Tags** page, click **Enable** in the **Automatically Create Cloud Monitoring Application Groups** column to create a Cloud Monitor application group. In the Automatically Create Cloud Monitoring Application Groups column, **Enable** is displayed with a green check mark for the tags for which application group are created.
 
-    ![tag1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4539803061/p101995.png)
+    ![tag1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4539803061/p101995.png)
 
 5.  Enter `testKey` in the search box to search for the testKey:testValue tag.
 
 6.  Click **View Monitoring Information** in the **Cloud Monitoring Application Group** column.
 
-    ![tag2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/5539803061/p101996.png)
+    ![tag2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5539803061/p101996.png)
 
-    Go to the **CloudMonitor** tab to view the monitoring, alarm, and event information about the ECS instances in the application group that correspond to this key.
+    Go to the **ClouMonitor** tab to view the monitoring, alert, and event information about the ECS instances in the application group that correspond to this key.
 
 
 Monitor ECS instances in real time by using Cloud Monitor. For more information, see [Overview](/intl.en-US/Quick Start/Overview.md).
