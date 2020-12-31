@@ -58,7 +58,7 @@ Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following
 -   Images of this version are available in the following regions: China \(Hangzhou\), China \(Shenzhen\), China \(Beijing\), China \(Zhangjiakou\), and China \(Hong Kong\).
 
 **Note:** The kernel startup parameters of the quick start version cannot be modified. |
-|Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)|This image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud AMD-compatible instances. This image version supports only the Unified Extensible Firmware Interface \(UEFI\) boot mode.**Note:** Images of this version can be used to create instances of only the following Alibaba Cloud Bare Metal Instance families \(AMD-compatible\): ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a. |
+|Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)|This image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud ECS AMD-compatible instances. This image version supports only the Unified Extensible Firmware Interface \(UEFI\) boot mode.**Note:** Images of this version can be used to create instances of only the following Alibaba Cloud ECS Bare Metal Instance families \(AMD-compatible\): ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a. |
 |Alibaba Cloud Linux 2.1903 64-bit \(Trusted\)|The image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud trusted instances.**Note:** Images of this version can be used to create instances of only the following trusted instance families: ecs.g6t and ecs.c6t. |
 
 ## Billing
