@@ -62,7 +62,6 @@
 |UserData|String|否|ZWNobyBoZWxsbyBlY3Mh|实例自定义数据，需要以Base64编码。
 
  编码前，原始数据不能超过16KB。建议不要明文传入敏感信息，例如密码和私钥等。如果必须传入敏感信息，建议您加密后再以Base64编码传入，在实例内部以同样的方式解密。 |
-|Recyclable|Boolean|否|false|实例是否可以回收。 |
 |CreditSpecification|String|否|Standard|修改突发性能实例的运行模式。取值范围：
 
  -   Standard：标准模式，实例性能请参见[什么是突发性能实例](~~59977~~)下的性能约束模式章节。
