@@ -1,12 +1,15 @@
 ---
-keyword: [eol, unpublishing declaration, Alibaba Cloud, ECS]
+keyword: [EOL, unpublishing declaration, Alibaba Cloud, ECS]
 ---
 
 # End of support for operating systems
 
-Due to reasons such as product lifecycle, third-party support, and evolution of open-source projects, Alibaba Cloud may stop providing technical support for some services after a period of time since the release of the services. You can learn more about the technical support plans of services or software to update the services or software to general availability \(GA\) versions in a timely manner. When you use ECS, you must pay attention to the lifecycle plans of image operating systems. These plans are published in the official website of the operating systems.
+Due to reasons such as product lifecycle, third-party support, and evolution of open-source projects, Alibaba Cloud may stop providing technical support for some services after a period of time since the release of the services. You can learn more about the technical support plans of services or software to update the services or software to general availability \(GA\) versions in a timely manner. When you use ECS, you must pay attention to the lifecycle plans of operating systems contained in images from which instances are created. These plans are published in the official website of the operating systems.
 
-**Note:** When an operating system version comes to the end-of-life \(EOL\), Alibaba Cloud will stop providing support for the ECS instances that use the operating system version.
+**Note:** When an operating system version comes to the end-of-life \(EOL\), Alibaba Cloud stops providing support for the ECS instances that use the operating system version.
+
+-   Alibaba Cloud Linux 2 is an operating system provided by Alibaba Cloud. Before Alibaba Cloud Linux 2 comes to EOL, Alibaba Cloud provides technical support for any problems that you occur when you use Alibaba Cloud Linux 2.
+-   If you are using a third-party operating system, contact the operating system vendors or open source communities for technical support. Alibaba Cloud also provides information about image- and system-related problems. If a third party vendor stops supporting or maintaining an operating system, Alibaba Cloud also stops providing corresponding technical assistance.
 
 ## EOL plan of Alibaba Cloud Linux 2
 
@@ -22,7 +25,7 @@ The following tables describe the EOL plans of some third-party operating system
 
     |Version|End-of-update date|End-of-maintenance date|
     |-------|------------------|-----------------------|
-    |CentOS 8|2021-12|2021-12-31|
+    |CentOS 8|2024-05|2029-05-31|
     |CentOS 7|Q4 2020|2024-06-30|
     |CentOS 6|2017-05-10|2020-11-30|
     |CentOS 5|2007-04-12|2017-03-31|
