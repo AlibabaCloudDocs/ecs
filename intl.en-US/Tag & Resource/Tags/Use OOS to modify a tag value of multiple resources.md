@@ -1,5 +1,5 @@
 ---
-keyword: [OOS, OOS, modify a tag value, OOS template]
+keyword: [OOS, Operation Orchestration Service, modify tag value, OOS template]
 ---
 
 # Use OOS to modify a tag value of multiple resources
@@ -13,9 +13,9 @@ In this topic, a custom template is created in OOS. This template can be used to
 **Note:**
 
 -   You can use the OOS custom template to modify a tag value for up to 1,000 resources at a time. If the number of resources is greater than 1,000, you must execute the template multiple times.
--   You can use the OOS custom template to modify the tag values of any resources that support tagging in the same region. You can modify the API operations in the template to make it applicable to various resources. For more information about resources that support tagging, see [Overview](/intl.en-US/Tag & Resource/Tags/Overview.md). For information about the resources that OOS supports, see [List of supported cloud services](https://www.alibabacloud.com/help/doc-detail/120682.htm).
+-   You can use the OOS custom template to modify the tag values of any resources that support tagging in the same region. You can modify the API operations in the template to make it applicable to various resources. For more information about resources that support tagging, see [Overview](/intl.en-US/Tag & Resource/Tags/Overview.md).For information about the resources that OOS supports, see [List of supported cloud services](https://www.alibabacloud.com/help/doc-detail/120682.htm).
 
-## Step 1: Create a custom template
+## Step 1: Create a template
 
 You can perform the following steps to create an OOS custom template to modify a tag value of multiple resources.
 
@@ -31,11 +31,11 @@ You can perform the following steps to create an OOS custom template to modify a
 
 6.  In the **Basic Information** section on the right of the Create Template page, enter a template name in the Template Name field and add tags.
 
-7.  Click the **JSON** tab and write code in the code editor. Sample code:
+7.  Click the **JSON** tab and write code in the code editor. The following code provides an example:
 
     ```
     {
-        "Description": "Modify a tag value of multiple resources at a time",
+        "Description": "Modify a tag value for multiple resources",
         "FormatVersion": "OOS-2019-06-01",
         "Parameters": {
             "operateId": {
@@ -68,7 +68,8 @@ You can perform the following steps to create an OOS custom template to modify a
                 "Name": "DescribeInstances_ECS",
                 "Action": "ACS::ExecuteAPI",
                 "Description": {
-                    "en": "Filter ECS instances by tag"
+                    "zh-cn": "Filter ECS instances by tag",
+                    "en": "filter ecs instances by tags"
                 },
                 "Properties": {
                     "Service": "ECS",
@@ -94,7 +95,8 @@ You can perform the following steps to create an OOS custom template to modify a
                 "Name": "TagResources_ECS_Instances",
                 "Action": "ACS::ExecuteAPI",
                 "Description": {
-                    "en": "Update the tag of ECS instances"
+                    "zh-cn": "Update the tag of ECS instances",
+                    "en": "tag ecs instances"
                 },
                 "Properties": {
                     "Service": "ECS",
@@ -126,7 +128,7 @@ You can perform the following steps to create an OOS custom template to modify a
 8.  Click **Create Template**.
 
 
-## Step 2: Execute the custom template
+## Step 2: Execute the template
 
 You can perform the following steps to execute the template created in Step 1 to modify a tag value of multiple resources.
 
@@ -138,12 +140,12 @@ You can perform the following steps to execute the template created in Step 1 to
 
 4.  In the Parameter Settings step, configure parameters and click **Next: OK**.
 
-    You must configure the following parameters in this step:
+    The following section describes the parameters.
 
-    -   operateId: the operation ID, which is used to identify an operation. You can enter an operation ID.
-    -   tagKey: the current tag key. In this example, the current tag key is `TagKey`.
-    -   tagValue: the current tag value. In this example, the current tag value is `OldTagValue`.
-    -   newTagValue: the new tag value. In this example, the new tag value is `NewTagValue`.
+    -   operateId: the operation ID, which is used to identify each operation. You can customize an operation ID.
+    -   tagKey: the key of the tag whose value you want to modify, which is `TagKey` in this example.
+    -   tagValue: the tag value to be modified, which is `OldTagValue` in this example.
+    -   newTagValue: the new tag value, which is `NewTagValue` in this example.
 5.  Click **Create**. The execution details page appears. You can view the execution results.
 
     **Note:** If the execution fails, you can check the logs for the cause of the failure and make adjustments accordingly.
