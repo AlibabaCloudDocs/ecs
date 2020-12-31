@@ -75,7 +75,7 @@ Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
 -   Compute:
     -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:2.
@@ -123,7 +123,7 @@ Instance types
 
 Features
 
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
