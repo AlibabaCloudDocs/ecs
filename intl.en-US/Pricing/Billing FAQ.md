@@ -1,5 +1,5 @@
 ---
-keyword: [pricing, billing, question, commonly asked questions, FAQ, account, instance, image, custom image, commercial availability of Alibaba Cloud Marketplace images, subscription Alibaba Cloud Marketplace image, Block Storage, snapshot, network, P2V Cloud Migration tool]
+keyword: [pricing, billing, questions, frequently asked questions, FAQ, savings plan, account, instance, image, custom image, Alibaba Cloud Marketplace commercial use, Subscription Alibaba Cloud Marketplace image, Elastic Block Storage, snapshot, network, P2V Cloud Migration tool]
 ---
 
 # Billing FAQ
@@ -13,24 +13,24 @@ This topic provides answers to commonly asked questions about ECS billing.
     -   [How is the refundable amount for an instance configuration downgrade calculated?](#refund)
     -   [Why is the actual refundable amount for an instance configuration downgrade less than that I expected?](#section_u5j_66n_sji)
 -   FAQ about instance billing
-    -   FAQ about savings plans
+    -   Savings plans
         -   [What is a savings plan?](#section_trr_ifq_t3s)
-        -   [What are the advantages of savings plans?](#section_525_hle_wd8)
-        -   [What is the hourly commitment of a savings plan?](#section_us3_7im_6tg)
-        -   [What are the types of savings plans?](#section_23b_eme_jr9)
-        -   [What are the payment options of a savings plan?](#section_sgy_l50_me3)
-        -   [Where do I view the recommendation and purchase pages for a savings plan?](#section_osd_7nn_kiz)
-        -   [How do I query the discount offered in a savings plan?](#section_y7z_nsh_uer)
-        -   [How do I query the cost savings brought about by a savings plan?](#section_6pv_zug_pgu)
-        -   [Can I have multiple savings plans in effect at the same time?](#section_x5o_0gb_uz8)
-        -   [Can I purchase reserved instances if I have purchased savings plans?](#section_49c_com_vlh)
-        -   [Do savings plans provide resource reservations?](#section_kq2_wcx_jol)
-        -   [Do savings plans provide discounts for preemptible instances?](#section_mas_0vj_d5s)
-        -   [What happens if my savings plans expire?](#section_9ak_75a_1tn)
+        -   [What are the advantages of savings plans?](#section_0lb_kci_5hh)
+        -   [What is the hourly commitment of a savings plan?](#section_39p_uqh_u7o)
+        -   [What are the types of savings plans?](#section_892_s28_1sh)
+        -   [What are the payment options of a savings plan?](#section_p2i_nra_m3x)
+        -   [Where do I view the recommendation and purchase pages for a savings plan?](#section_s06_i0g_5se)
+        -   [How do I query the discount offered in a savings plan?](#section_tok_kjt_2ye)
+        -   [How do I query the cost savings brought about by a savings plan?](#section_4ly_tbq_eqk)
+        -   [Can I have multiple savings plans in effect at the same time?](#section_vxf_h21_zwr)
+        -   [Can I purchase reserved instances if I have purchased savings plans?](#section_1mg_cb0_hp6)
+        -   [Do savings plans provide resource reservations?](#section_1d9_hns_3ih)
+        -   [Do savings plans provide discounts for preemptible instances?](#section_5uy_2xk_3n0)
+        -   [What happens if my savings plans expire?](#section_pwh_w92_83p)
     -   Billing of subscription instances
         -   [What can I do if the billing method of an instance cannot be changed from subscription to pay-as-you-go?](#section_eqx_j6c_n19)
     -   Billing of pay-as-you-go instances
-        -   [How is the billable time of a pay-as-you-go instance calculated? For example, if I create a pay-as-you-go ECS instance at 2019-12-12 01:30:00 and release it at 2019-12-12 02:00:00, is the instance billed for a period of half an hour or an hour?](#section_yly_fqs_5wh)
+        -   [How is the billable time of a pay-as-you-go instance calculated? For example, if I create a pay-as-you-go ECS instance at 01:30:00 of December 12, 2019 and release it at 02:00:00 of December 12, 2019, is the instance billed for a period of half an hour or an hour?](#section_yly_fqs_5wh)
         -   [Will I still be charged for a pay-as-you-go instance after it is stopped either manually or due to an overdue payment?](#section_3u7_7sa_56q)
         -   [What can I do if an order to change the billing method of an instance from pay-as-you-go to subscription cannot be placed?](#section_byo_s8j_sva)
         -   [How long after an order is paid does it take to change the billing method of the corresponding instances from pay-as-you-go to subscription?](#section_rsw_jya_q3n)
@@ -50,7 +50,6 @@ This topic provides answers to commonly asked questions about ECS billing.
         -   [Can I release ECS instances on my own?](#section_8e6_x1p_ch4)
         -   [When I try to change the billing method of a disk in an ECS instance, an error message is returned indicating that I have already changed the billing method of the disk three times. What does this mean?](#section_uiw_o96_c0k)
         -   [Why has a pay-as-you-go bill been generated for my instance? What are the charges on the bill?](#section_yk7_8r8_8g9)
-        -   [Why am I unable to change the billing method of an instance from pay-as-you-go to subscription?](#section_2bu_739_jyz)
         -   [Why am I unable to change the billing method of an instance from subscription to pay-as-you-go?](#section_rzg_62t_xq0)
 -   FAQ about image billing
     -   Billing of public images
@@ -80,7 +79,7 @@ This topic provides answers to commonly asked questions about ECS billing.
         -   [Can a subscription image be converted to a pay-as-you-go image?](#section_l8h_x3l_gxw)
         -   [Can I replace a subscription image with an image of another type or vice versa? How are fees calculated?](#section_gna_w0n_odz)
         -   [Will I be charged when I use a custom image created based on a subscription image? How will the created custom image be affected if the subscription image expires?](#section_qih_xuj_v4g)
--   FAQ about Block Storage billing
+-   FAQ about billing of Elastic Block Storage \(EBS\) devices
     -   [How is an enhanced SSD \(ESSD\) billed?](#section_2hn_vx7_4rt)
     -   [How do I purchase a standard SSD? What are the pricing options for I/O optimized instances and standard SSDs?](#section_gvg_7ni_aoz)
     -   [How is a separately purchased pay-as-you-go data disk billed?](#section_r7r_ux5_0ko)
@@ -108,7 +107,7 @@ This topic provides answers to commonly asked questions about ECS billing.
 You may be unable to purchase pay-as-you-go instances due to one of the following reasons:
 
 -   You have not passed real-name verification. To purchase ECS instances in a region inside mainland China, you must pass [real-name verification](https://www.alibabacloud.com/help/doc-detail/52595.htm).
--   The number of vCPUs to be consumed by the selected pay-as-you-go instance type exceeds the relative remaining vCPU-based quota of your account.
+-   The number of vCPUs to be consumed by the selected pay-as-you-go instance type exceeds the remaining vCPU quota for the instance type in your account.
 -   Resources of the selected instance type are not available for purchase within the selected region. Try again later or go to the [ECS Instance Types Available for Each Region](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) page to view instance types available in each region.
 
 ## How are invoices issued for pay-as-you-go instances?
@@ -240,19 +239,19 @@ In this example, the actual refundable amount is MYR 40 instead of MYR 100.
 
 ## What is a savings plan?
 
-A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount of resources \(measured in dollars per hour\) over a one or three year period. After you purchase a savings plan, hourly bills of your pay-as-you-go instances will be covered up to the amount of the plan. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md).
+A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount of resources \(measured in dollars per hour\) over a one- or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md).
 
 ## What are the advantages of savings plans?
 
 Savings plans have the following advantages:
 
 -   Flexible in price and payment: Savings plans are available for purchase for as little as one cent and have no price limits. Savings plans can be paid in installments to minimize the impact on your cash flow.
--   Cost effective: Savings plans can significantly reduce your costs and provide discounts on pay-as-you-go resources as great as 76% off.
+-   Cost effective: Savings plans can significantly reduce your costs and provide discounts on pay-as-you-go resources as great as 77% off.
 -   Easy to manage: A single savings plan can be applied to pay-as-you-go ECS and ECI instances across regions, instance types, and accounts.
 
 ## What is the hourly commitment of a savings plan?
 
-When you purchase a savings plan, you commit to a duration and an expense amount. The hourly commitment is the minimum amount of resources \(measured in dollars\) that you commit to use per hour. The hourly bills within this amount are calculated based on the discount of the plan and can be offset by the plan. If an hourly bill is less than your hourly commitment, you must pay 50% of your hourly commitment when you select the Partial Upfront payment option for your savings plan, or 100% of your hourly commitment when you select the No Upfront payment option.
+When you purchase a savings plan, you commit to a duration and an expense amount. The hourly commitment is the minimum amount of resources \(measured in dollars\) that you commit to use per hour. The hourly bills within this amount are calculated based on the discount of the plan and can be offset by the plan. If an hourly bill is less than your hourly commitment, you must pay 50% of your hourly commitment when you select the Partial Upfront payment option for your savings plan, or 100% of your hourly commitment when you select the No Upfront payment option. For information about how to select an appropriate hourly commitment, see [Purchase and apply savings plans](/intl.en-US/Instance/Instance purchasing options/Savings plans/Purchase and apply savings plans.md).
 
 ## What are the types of savings plans?
 
@@ -275,15 +274,15 @@ Savings plans support three payment options: All Upfront, Partial Upfront, and N
 
 ## Where do I view the recommendation and purchase pages for a savings plan?
 
-You can purchase savings plans on the [Savings Plan](https://common-buy-intl.alibabacloud.com/?spm=a2c63.p38356.879954.10.2ed96120enykMx&commodityCode=savingplan_common_public_intl#/buy) page. You can also go to the [Recommended](https://usercenter2-intl.aliyun.com/resource/spn/recommend) page for recommendations. The system recommends an appropriate savings plan based on your selected historical purchase records, savings plan type, and payment option.
+You can purchase savings plans on the [Savings Plan](https://common-buy.aliyun.com/?spm=a2c81.a53620e.app.1.5a1011279HUkI1&commodityCode=savingplan_common_public_cn#/buy) page. You can also go to the [Recommended](https://usercenter2.aliyun.com/resource/spn/recommend) page for recommendations. The system recommends an appropriate savings plan based on your selected historical purchase records, savings plan type, and payment option.
 
 ## How do I query the discount offered in a savings plan?
 
-You can go to the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
+You can go to the [Discount Details](https://usercenter2.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
 
 ## How do I query the cost savings brought about by a savings plan?
 
-You can go to the Overview tab on the [Savings Plan](https://usercenter2-intl.aliyun.com/resource/spn/overview) page to view the cost savings brought about by a savings plan, including the total, annual, and monthly saving amounts.
+You can go to the Overview tab on the [Savings Plan](https://usercenter2.aliyun.com/resource/spn/overview) page to view the cost savings brought about by a savings plan, including the total, annual, and monthly saving amounts.
 
 ## Can I have multiple savings plans in effect at the same time?
 
@@ -315,9 +314,9 @@ You may be unable to change the billing method of an instance from subscription 
 
 If one of the preceding errors is reported, adjust the instance accordingly. If the problem persists, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 
-## How is the billable time of a pay-as-you-go instance calculated? For example, if I create a pay-as-you-go ECS instance at 2019-12-12 01:30:00 and release it at 2019-12-12 02:00:00, is the instance billed for a period of half an hour or an hour?
+## How is the billable time of a pay-as-you-go instance calculated? For example, if I create a pay-as-you-go ECS instance at 01:30:00 of December 12, 2019 and release it at 02:00:00 of December 12, 2019, is the instance billed for a period of half an hour or an hour?
 
-Pay-as-you-go instances are billed at increments of one second. Payments are made at the top of each hour. The billable time of pay-as-you-go instances is automatically calculated. For example, if you create a pay-as-you-go instance at 2019-12-12 01:30:00 and release it at 2019-12-12 02:00:00, the hour from 01:00:00 to 02:00:00 is a billing cycle. The billable time is 1,800 seconds, which is calculated based on the following formula: \(30 minutes\) × 60 = 1800 seconds.
+Pay-as-you-go instances are billed at increments of one second. Payments are made at the top of each hour. The billable time of pay-as-you-go instances is automatically calculated. For example, if you create a pay-as-you-go instance at 01:30:00 of December 12, 2019 and release it at 02:00:00 of December 12, 2019, the hour from 01:00:00 to 02:00:00 is a billing cycle. The billable time is 1,800 seconds, which is calculated based on the following formula: \(30 minutes\) × 60 = 1800 seconds.
 
 ## Am I still charged for a pay-as-you-go instance after it is stopped either manually or due to an overdue payment?
 
@@ -361,7 +360,7 @@ An order is created when you change the billing method of your instance from pay
 
 The pay-as-you-go instance that you want to change must meet the following requirements:
 
--   The instance type of the instance is not retired. For more information, see [Phased-out instance types](/intl.en-US/Instance/Phased-out instance types.md).
+-   The instance type of the instance is not retired. For more information, see [Retired instance types](/intl.en-US/Instance/Retired instance types.md).
 -   The instance is not a preemptible instance.
 -   No unpaid orders related to the instance exist.
 
@@ -409,7 +408,7 @@ When an instance enters the No Fees for Stopped Instances \(VPC-Connected\) stat
 
 ## When I called the StartInstance operation to start an instance in the No Fees for Stopped Instances \(VPC-Connected\) state, an OperationDenied.NoStock error was reported. Why?
 
-When an instance enters the No Fees for Stopped Instances \(VPC-Connected\) state, its compute resources are recycled. If the inventory of resources is insufficient, an OperationDenied.NoStock error is reported when you attempt to start the instance. We recommend that you try again later.
+When an instance enters the No Fees for Stopped Instances \(VPC-Connected\) state, its compute resources are recycled. If available resources are insufficient, an OperationDenied.NoStock error is reported when you attempt to start the instance. We recommend that you try again later.
 
 ## I set Stop Mode of an instance to No Charges After Instance Is Stopped. The instance was stopped and entered the No Fees for Stopped Instances \(VPC-Connected\) state. When I restarted this instance, its public IP address changed. How do I prevent the IP address from changing?
 
@@ -423,7 +422,7 @@ To retain the original public IP address, you can convert this IP address to an 
 
 Yes, you can manually release or schedule the automatic release of pay-as-you-go instances. However, you cannot release subscription instances on your own.
 
-If you have further questions, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+If the problem persists, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 ## When I attempt to change the billing method of a disk in an ECS instance, an error message is returned indicating that I have already changed the billing method three times. What does this mean?
 
@@ -434,23 +433,12 @@ Each ECS instance can have its configurations downgraded a maximum of three time
 You can copy your instance ID and perform the following steps to view the bill details:
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
-2.  In the top navigation bar, choose **Billing** \> **User Center**.
-3.  In the left-side navigation pane, choose **Spending Summary** \> **Instance Spending Detail**.
+2.  In the top navigation bar, choose **Expenses** \> **User Center**.
+3.  In the left-side navigation pane, choose **Spending Summary** \> **Spending Summary**.
 4.  Set the search criteria and click Search.
 
     ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5291909951/p55292.png)
 
-
-## Why am I unable to change the billing method of an instance from pay-as-you-go to subscription?
-
-The billing method of instances of the following instance types cannot be changed from pay-as-you-go to subscription:
-
--   Instance types of Generation One: t1, s1, s2, s3, m1, m2, c1, and c2
--   Instance types in the n1, n2, and e3 instance families
-
-**Note:** For more information about the preceding instance types, see [Phased-out instance types](/intl.en-US/Instance/Phased-out instance types.md).
-
-If your pay-as-you-go instances are not of the preceding instance types, make sure that the instances meet the requirements to change their billing method to subscription. For more information, see [Change the billing method of an instance from pay-as-you-go to subscription](/intl.en-US/Pricing/Change the billing method/Change the billing method of an instance from pay-as-you-go to subscription.md).
 
 ## Why am I unable to change the billing method of an instance from subscription to pay-as-you-go?
 
@@ -474,7 +462,7 @@ You must perform the following operations to copy a custom image:
 You may be charged the following fees for the preceding operations:
 
 -   Fees for traffic between the two regions. Alibaba Cloud does not charge you for cross-region traffic. For the latest billing details, see the official Alibaba Cloud website for announcements.
--   The new snapshot \(snapshot copy\) consumes snapshot storage space in the destination region. Snapshots are billed based on the storage space used. For more information, see [Snapshot](/intl.en-US/Pricing/Billing items/Snapshot billing.md).
+-   The new snapshot \(snapshot copy\) consumes snapshot storage space in the destination region. Snapshots are billed based on the storage space used. For more information, see [Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
 
 ## I am creating an ECS instance. Why is the total instance cost displayed when I select a custom image higher than that displayed when I select a public image?
 
@@ -588,7 +576,7 @@ Enhanced SSDs support both subscription and pay-as-you-go billing methods. For m
 
 ## How do I purchase a standard SSD? What are the pricing options for I/O optimized instances and standard SSDs?
 
-For pricing details, see the [Pricing](https://www.alibabacloud.com/product/ecs) page.
+For fore information about pricing, see the [Pricing](https://www.alibabacloud.com/product/ecs) page.
 
 ## How is a separately purchased pay-as-you-go data disk billed?
 
@@ -635,7 +623,7 @@ We recommend that you use Alibaba Cloud Security services such as Server Guard t
 
 Yes, you can select the pay-by-traffic billing method for network usage when you purchase a subscription instance. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 
-For more information about the pay-by-traffic billing method, see the [ECS pricing](https://www.alibabacloud.com/product/ecs) page.
+For more information about the pay-by-traffic billing method, see the Network Traffic tab on the Pricing tab of the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs) page.
 
 ## How am I charged when I select the pay-by-traffic billing method for network usage?
 
@@ -645,7 +633,7 @@ Pay-by-traffic is a pay-as-you-go billing method in which fees are charged based
 
 Yes, you can change the billing method for network usage of a subscription instance from pay-by-bandwidth to pay-by-traffic by using the bandwidth downgrade feature. However, you can make this change only a limited number of times. For more information, see [Modify the bandwidth configurations of subscription instances](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth configurations of subscription instances.md).
 
-You can also use the renewal and downgrade feature to change the billing method for network usage. The new configurations do not take effect until the next subscription duration starts. For more information, see [Downgrade the configurations of an instance during renewal](/intl.en-US/Pricing/Renew instances/Downgrade the configurations of an instance during renewal.md).
+You can also use the renewal and configuration downgrade feature to change the billing method for network usage. The new configurations do not take effect until the next subscription duration starts. For more information, see [Downgrade the configurations of an instance during renewal](/intl.en-US/Pricing/Renew instances/Downgrade the configurations of an instance during renewal.md).
 
 ## Can I adjust the peak traffic bandwidth for an ECS instance at any time?
 
@@ -655,7 +643,7 @@ If you downgraded the configurations of a subscription instance when you renewed
 
 ## If the pay-by-traffic billing method is used for a subscription instance, can the instance continue to use the public bandwidth service when a payment becomes overdue due to insufficient account balance?
 
-Overdue payments do not affect the running of subscription instances, but do cause the pay-by-traffic public bandwidth service to be stopped, preventing the instances from accessing the Internet. You can continue to use the public bandwidth service only after you settle the overdue payment. To keep the service running properly, make sure that your account balance is sufficient.
+Overdue payments do not affect the running of subscription instances, but do cause the pay-by-traffic public bandwidth service to be stopped, preventing the instances from accessing the Internet. You can continue to use the public bandwidth service only after you settle the overdue payment. To keep services running properly, make sure that your account balance is sufficient.
 
 ## If the pay-by-traffic billing method is used for a subscription instance, will I be notified when a payment becomes overdue in my account?
 
@@ -671,5 +659,5 @@ If the public bandwidth service was stopped due to an overdue payment, the servi
 
 ## How is traffic priced after I change the billing method for network usage of a subscription instance from pay-by-bandwidth to pay-by-traffic?
 
-When you change the billing method for network usage of your subscription instance from pay-by-bandwidth to pay-by-traffic, you are billed for network usage based on the actual volume of traffic. Payments are settled at the top of each hour. For pricing details, see the [ECS pricing](https://www.alibabacloud.com/zh/product/ecs#pricing) page.
+When you change the billing method for network usage of your subscription instance from pay-by-bandwidth to pay-by-traffic, you are billed for network usage based on the actual volume of traffic. Payments are settled every hour on the hour. For pricing details, seethe Network Traffic tab on the [Pricing](https://www.alibabacloud.com/zh/product/ecs#pricing) tab of the Elastic Compute Service page.
 
