@@ -8,8 +8,8 @@ Instance RAM roles have the following limits:
 
 -   Instance RAM roles are applicable only to VPC-type ECS instances.
 -   Only one instance RAM role can be bound to an ECS instance at a time.
--   If you want to access the APIs of other Alibaba Cloud services from applications within an ECS instance that is bound with an instance RAM role, you must obtain a temporary authorization token of the instance RAM role through the instance metadata. For more information, see [Obtain a temporary authorization token](#Token).
--   If you want to use an instance RAM role of a RAM user, you must use the Alibaba Cloud account to authorize the RAM user to use an instance RAM role. For more information, see [Authorize a RAM user to use an instance RAM role](#Authorize).
+-   If you have bound an instance RAM role to an ECS instance and want to access the APIs of other Alibaba Cloud services from applications deployed on the instance, you must obtain a temporary authorization token of the instance RAM role by using the instance metadata. For more information, see [Obtain a temporary authorization token](#Token).
+-   If you want to use an instance RAM role as a RAM user, you must use the Alibaba Cloud account to authorize the RAM user to use the instance RAM role. For more information, see [Authorize a RAM user to use an instance RAM role](#Authorize).
 
 ## Procedure
 
@@ -24,9 +24,9 @@ Perform the following operations to use an instance RAM role by calling API oper
 
 ## Step 1: Create an instance RAM role
 
-Call the [CreateRole](/intl.en-US/API Reference (RAM)/Role management APIs/CreateRole.md) operation to create an instance RAM role.
+Call the [CreateRole](/intl.en-US/API Reference/API Reference (RAM)/Role management APIs/CreateRole.md) operation to create an instance RAM role.
 
-Set the RoleName parameter. For example, set this parameter to EcsRamRoleDocumentTesting.
+Set theRoleName parameter. For example, set this parameter to EcsRamRoleDocumentTesting.
 
 Set the AssumeRolePolicyDocument parameter based on the following policy:
 
@@ -49,9 +49,7 @@ Set the AssumeRolePolicyDocument parameter based on the following policy:
 
 ## Step 2: Authorize the instance RAM role
 
-Perform the following operations to authorize the instance RAM role:
-
-1.  Call the [CreatePolicy](/intl.en-US/API Reference (RAM)/Policy management APIs/CreatePolicy.md) operation to create an authorization policy.
+1.  Call the [CreatePolicy](/intl.en-US/API Reference/API Reference (RAM)/Policy management APIs/CreatePolicy.md) operation to create an authorization policy.
 
     Configure the following parameters:
 
@@ -74,7 +72,7 @@ Perform the following operations to authorize the instance RAM role:
          }
         ```
 
-2.  Call the [AttachPolicyToRole](/intl.en-US/API Reference (RAM)/Policy management APIs/AttachPolicyToRole.md) operation to authorize the role policy.
+2.  Call the [AttachPolicyToRole](/intl.en-US/API Reference/API Reference (RAM)/Policy management APIs/AttachPolicyToRole.md) operation to authorize the role policy.
 
     Configure the following parameters:
 
@@ -93,7 +91,7 @@ Configure the following parameters:
 
 ## \(Optional\) Step 4: Unbind the instance RAM role
 
-Call the [DetachInstanceRamRole](/intl.en-US/API Reference/Instances/DetachInstanceRamRole.md) operation to unbind the instance RAM role.
+Call the [DettachInstanceRamRole](/intl.en-US/API Reference/Instances/DetachInstanceRamRole.md) operation to unbind the instance RAM role.
 
 Configure the following parameters:
 
@@ -107,9 +105,9 @@ You can obtain a temporary authorization token for an instance RAM role. With th
 Query the temporary authorization token of the instance RAM role named EcsRamRoleDocumentTesting.
 
 -   Linux instance: Run the `curl http://100.100.100.200/latest/meta-data/Ram/security-credentials/EcsRamRoleDocumentTesting` command.
--   Windows instance: For more information, see [Metadata](/intl.en-US/Instance/Manage instances/Metadata/Metadata.md).
+-   Windows instance: For more information, see [Metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview.md).
 
-Obtain the temporary authorization token. The sample responses are as follow:
+Obtain the temporary authorization token. Sample response:
 
 ```
 {
@@ -124,9 +122,7 @@ Obtain the temporary authorization token. The sample responses are as follow:
 
 ## \(Optional\) Step 6: Authorize a RAM user to use the instance RAM role
 
-Perform the following operations to authorize a RAM user to use the instance RAM role:
-
-**Note:** When you authorize a RAM user to use an instance RAM role, you must grant the PassRole permission to the RAM user on the instance RAM role. Without the PassRole permission, the RAM user cannot exercise the permissions specified in role policies.
+**Note:** When you authorize a RAM user to use an instance RAM role, you must grant the RAM user the PassRole permission on the instance RAM role. If the RAM user does not have the PassRole permission, the RAM user cannot exercise the permissions specified in role policies.
 
 1.  Log on to the [RAM console](https://ram.console.aliyun.com/#/overview).
 
@@ -165,13 +161,13 @@ Perform the following operations to authorize a RAM user to use the instance RAM
 
 [Use RAM roles to access other Alibaba Cloud services](/intl.en-US/Best Practices/Use RAM roles to access other Alibaba Cloud services.md)
 
-[CreateRole](/intl.en-US/API Reference (RAM)/Role management APIs/CreateRole.md)
+[CreateRole](/intl.en-US/API Reference/API Reference (RAM)/Role management APIs/CreateRole.md)
 
-[ListRoles](/intl.en-US/API Reference (RAM)/Role management APIs/ListRoles.md)
+[ListRoles](/intl.en-US/API Reference/API Reference (RAM)/Role management APIs/ListRoles.md)
 
-[CreatePolicy](/intl.en-US/API Reference (RAM)/Policy management APIs/CreatePolicy.md)
+[CreatePolicy](/intl.en-US/API Reference/API Reference (RAM)/Policy management APIs/CreatePolicy.md)
 
-[AttachPolicyToRole](/intl.en-US/API Reference (RAM)/Policy management APIs/AttachPolicyToRole.md)
+[AttachPolicyToRole](/intl.en-US/API Reference/API Reference (RAM)/Policy management APIs/AttachPolicyToRole.md)
 
 [AttachInstanceRamRole](/intl.en-US/API Reference/Instances/AttachInstanceRamRole.md)
 
