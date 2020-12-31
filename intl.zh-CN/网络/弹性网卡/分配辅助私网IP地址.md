@@ -56,7 +56,7 @@ keyword: [多私网IP, 弹性网卡, 绑定弹性网卡, ecs, 阿里云]
     -   手动分配：手动输入辅助私网IP地址，取值在**IPv4 私网网段**内即可。
     **说明：** 完成1个IP地址的分配后，您可以再次单击**分配新 IP**进行分配。
 
-    ![输入辅助私网IP地址](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2645459951/p47047.png)
+    ![输入辅助私网IP地址](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2645459951/p47047.png)
 
 6.  单击**确定**完成分配。
 
@@ -100,12 +100,16 @@ keyword: [多私网IP, 弹性网卡, 绑定弹性网卡, ecs, 阿里云]
 
         您可以为同一网卡适配器重复添加多个IP地址。
 
-        ![添加IP地址](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3645459951/p47049.png)
+        ![添加IP地址](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3645459951/p47049.png)
 
     2.  在**默认网关**区域，单击**添加**，输入查询获取的**默认网关**。
 
 9.  单击**确定**。
 
+
+**说明：**
+
+如果Windows实例配置辅助私网IP地址后无法访问公网，请参见[为什么我的Windows实例设置辅助私网IP后，无法访问公网环境？](/intl.zh-CN/网络/网络FAQ.md)。
 
 ## 为Linux实例配置辅助私网IP地址
 
