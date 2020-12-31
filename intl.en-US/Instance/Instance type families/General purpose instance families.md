@@ -121,7 +121,7 @@ Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
 -   Compute:
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
