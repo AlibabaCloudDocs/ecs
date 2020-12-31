@@ -310,15 +310,15 @@ Linux其他较重要的配置文件如下：
 
 1.  ECS实例数据盘未分区，如下图所示。
 
-    ![数据盘未分区](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9173559951/p49584.png)
+    ![数据盘未分区](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9173559951/p49584.png)
 
 2.  使用自定义镜像创建的ECS实例中，未注释掉/etc/fstab中的磁盘挂载条目，如下图所示。
 
-    ![磁盘挂载条目](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0273559951/p49589.png)
+    ![磁盘挂载条目](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0273559951/p49589.png)
 
 3.  实例启动时，会按照/etc/fstab文件中的配置挂载磁盘，但由于数据盘未分区导致挂载失败，如下图所示。
 
-    ![挂载磁盘](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0273559951/p49591.png)
+    ![挂载磁盘](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0273559951/p49591.png)
 
 
 不用注释磁盘挂载条目的情况：一般只有在创建ECS实例时，选择了数据盘且数据盘是通过已分区、已格式化的数据盘快照生成。
@@ -459,7 +459,7 @@ Linux其他较重要的配置文件如下：
 
 如果镜像市场镜像在目标地域存在，则您可以复制基于该镜像创建的自定义镜像到目标地域。否则，复制时，会出现如下错误信息。
 
-![复制基于云市场镜像创建的镜像](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0273559951/p69663.png)
+![复制基于云市场镜像创建的镜像](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0273559951/p69663.png)
 
 ## 中国内地以外的地域迁移数据到中国内地地域有什么方法？
 
@@ -534,7 +534,7 @@ Linux其他较重要的配置文件如下：
 
         -   Windows操作系统场景
 
-            Windows客户端访问许可（[Client Access License，简称CAL](https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/rds-client-access-license)）不适用于许可证移动性，所以无法在共享硬件环境下使用已经拥有的Windows许可证。您需要将Windows部署在独享的物理环境中，可以使用阿里云的专有宿主机或弹性裸金属服务器，详情请参见[专有宿主机产品文档](/intl.zh-CN/产品简介/什么是专有宿主机DDH.md)和[弹性裸金属服务器产品文档](/intl.zh-CN/实例/选择实例规格/弹性裸金属服务器（神龙）/弹性裸金属服务器概述.md)。
+            Windows客户端访问许可（[Client Access License，简称CAL](https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/rds-client-access-license)）不适用于许可证移动性，所以无法在共享硬件环境下使用已经拥有的Windows许可证。您需要将Windows部署在独享的物理环境中，可以使用阿里云的专有宿主机或弹性裸金属服务器，详情请参见[专有宿主机产品文档](/intl.zh-CN/产品简介/什么是专有宿主机DDH.md)和[弹性裸金属服务器产品文档](/intl.zh-CN/实例/选择实例规格/弹性裸金属服务器/弹性裸金属服务器概述.md)。
 
             对于此类ECS实例，阿里云不提供KMS、WSUS服务及对软件的技术支持，您可以联系微软获取软件技术支持。
 
@@ -860,7 +860,7 @@ Ubuntu某些版本（例如Ubuntu 18.04）的ECS实例中，启动安骑士进�
 
 ## ECS实例使用操作系统需要付费吗？
 
-使用公共镜像Windows Server和Red Hat需付费，计费与实例规格大小有关，其余公共镜像均免费。其他类型镜像的费用详情，请参见[t9572.md\#section\_nyg\_r5w\_ydb](/intl.zh-CN/镜像/镜像概述.md)。
+使用公共镜像Windows Server和Red Hat需付费，计费与实例规格大小有关，其余公共镜像均免费。其他类型镜像的费用详情，请参见[镜像概述](/intl.zh-CN/镜像/镜像概述.md)。
 
 ## 我能自己安装或者升级操作系统吗？
 
@@ -981,7 +981,7 @@ ECS实例间迁移步骤如下：
 
             默认使用阿里云`options`配置`options timeout:2 attempts:3 rotate single-request-reopen`。
 
-            ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0273559951/p46335.png)
+            ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0273559951/p46335.png)
 
         -   如果存在`options`配置：
             -   不存在`single-request-reopen`配置，则在`options`配置中追加该项。
