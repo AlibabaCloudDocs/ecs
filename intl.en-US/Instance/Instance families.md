@@ -2216,7 +2216,7 @@ ebmgn6e is in invitational preview. To use ebmgn6e, [submit a ticket](https://wo
 
 Features
 
--   Provides flexible and powerful software-defined compute based on the X-Dragon architecture.
+-   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Uses NVIDIA V100 \(32 GB NVLink\) GPU processors.
@@ -2248,7 +2248,7 @@ Instance types
 
 Features
 
--   Provides flexible and powerful software-defined compute based on the X-Dragon architecture.
+-   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Uses NVIDIA V100 GPU processors.
@@ -2280,7 +2280,7 @@ Instance types
 
 Features
 
--   Provides flexible and powerful software-defined compute based on the X-Dragon architecture.
+-   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Is an instance family in which all instances are I/O optimized.
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
@@ -2317,7 +2317,7 @@ ebmc6a is in invitational preview. To use ebmc6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:2.
@@ -2347,7 +2347,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
@@ -2414,7 +2414,7 @@ ebmg6a is in invitational preview. To use ebmg6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:4.
@@ -2445,7 +2445,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
@@ -2515,7 +2515,7 @@ ebmr6a is in invitational preview. To use ebmr6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:8.
@@ -2546,7 +2546,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
@@ -3325,7 +3325,7 @@ Instance types of e4
 |Specification|Description|
 |-------------|-----------|
 |Local storage|Local storage, also called cache disks or local disks, refers to the disks attached to the physical servers where ECS instances are hosted. Local storage provides temporary block storage for instances. Local storage capacity is measured in GiB. Data stored on local disks may be lost when the compute resources \(vCPUs and memory\) of an instance are released or when an instance is failed over to a normal physical server upon a physical server failure. For more information, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).|
-|Bandwidth|The maximum bandwidth in one direction. Inbound bandwidth and outbound bandwidth are calculated separately. **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
+|Bandwidth|The maximum sum of inbound and outbound bandwidth. **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
 |Packet forwarding rate|The maximum sum of inbound and outbound packet forwarding rates. For information about how to test the packet forwarding rate, see [Test network performance](https://www.alibabacloud.com/help/faq-detail/55757.htm). **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load and image version. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
 |Connections|Connections, also called sessions, are the process of establishing connections and transferring data between a client and a server. A connection is uniquely defined by the network communication quintuple that consists of a source IP address, a destination IP address, a source port, a destination port, and a protocol. Connections of an ECS instance include TCP, UDP, and ICMP connections.|
 |NIC queues|The maximum number of NIC queues that the primary NIC of an instance supports. If your instance type is not a member of an ECS Bare Metal Instance family, the maximum number of NIC queues supported by a secondary NIC is the same as that supported by the primary NIC.|
