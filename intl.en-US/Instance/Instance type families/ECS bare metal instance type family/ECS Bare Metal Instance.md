@@ -103,7 +103,7 @@ ebmg6a is in invitational preview. To use ebmg6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:4.
@@ -134,7 +134,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
@@ -204,7 +204,7 @@ ebmc6a is in invitational preview. To use ebmc6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:2.
@@ -234,7 +234,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
@@ -301,7 +301,7 @@ ebmr6a is in invitational preview. To use ebmr6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:8.
@@ -332,7 +332,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation X-Dragon architecture.
+-   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
@@ -546,7 +546,7 @@ ebmgn6e is in invitational preview. To use ebmgn6e, [submit a ticket](https://wo
 
 Features
 
--   Provides flexible and powerful software-defined compute based on the X-Dragon architecture.
+-   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Uses NVIDIA V100 \(32 GB NVLink\) GPU processors.
@@ -578,7 +578,7 @@ Instance types
 
 Features
 
--   Provides flexible and powerful software-defined compute based on the X-Dragon architecture.
+-   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Uses NVIDIA V100 GPU processors.
@@ -610,7 +610,7 @@ Instance types
 
 Features
 
--   Provides flexible and powerful software-defined compute based on the X-Dragon architecture.
+-   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Is an instance family in which all instances are I/O optimized.
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
@@ -822,5 +822,5 @@ Instance types
 
 ## Billing methods
 
-ECS Bare Metal Instance supports pay-as-you-go and subscription billing methods. For more information, see [Billing overview](/intl.en-US/Pricing/Billing methods/Billing overview.md).
+ECS Bare Metal Instance supports pay-as-you-go and subscription billing methods. For more information, see [Billing method overview](/intl.en-US/Pricing/Billing methods/Billing method overview.md).
 
