@@ -23,7 +23,7 @@ Secondary private IP addresses are suitable for the following scenarios:
 When you assign secondary private IP addresses, take note of the following limits:
 
 -   Each security group of the VPC type can contain a maximum of 2,000 private IP addresses. This quota is shared among all primary and secondary ENIs in the security group.
--   You can assign a maximum of 20 private IP addresses to an ENI. The actual number depends on the instance type of the instance to which the ENI is bound.
+-   You can assign a maximum of 20 private IP addresses to an ENI. The actual number depends on the status of the ENI and the instance type of the instance to which the ENI is bound.
     -   If the ENI is in the **Available** state, you can assign a maximum of 10 private IP addresses to the ENI.
     -   If the ENI is in the **Bound** state, the number of private IP addresses that can be assigned to the ENI is subject to the instance type of the instance.
 
@@ -31,14 +31,14 @@ When you assign secondary private IP addresses, take note of the following limit
 
 This section applies to both primary and secondary ENIs.
 
-1.  In the ECS console, assign a secondary private IP address to an ENI. For more information, see [Assign secondary private IP addresses](#section_bam_ihj_gsy).
+1.  In the ECS console, assign secondary private IP addresses to an ENI. For more information, see the [Assign secondary private IP addresses](#section_bam_ihj_gsy) section in this topic.
 
-2.  In the instance to which the ENI is bound, configure the assigned secondary private IP address.
+2.  In the instance to which the ENI is bound, configure the assigned secondary private IP addresses.
 
-    **Note:** If the ENI is a secondary ENI and is not bound to an instance, bind the ENI to an instance and configure the assigned secondary private IP address in the instance. For more information, see [Bind an ENI](/intl.en-US/Network/Elastic Network Interfaces/Bind an ENI.md).
+    **Note:** If the ENI is a secondary ENI and is not bound to an instance, bind the ENI to an instance and configure the assigned secondary private IP addresses in the instance. For more information, see [Bind an ENI](/intl.en-US/Network/Elastic Network Interfaces/Bind an ENI.md).
 
-    -   For Windows instances, see [Configure a secondary private IP address in a Windows instance](#section_y4b_krk_ggb).
-    -   For Linux instances, see [Configure a secondary private IP address in a Linux instance](#section_b2x_hlb_3gb).
+    -   For Windows instances, see [Configure secondary private IP addresses in a Windows instance](#section_y4b_krk_ggb).
+    -   For Linux instances, see [Configure secondary private IP addresses in a Linux instance](#section_b2x_hlb_3gb).
 
 ## Assign secondary private IP addresses
 
@@ -48,7 +48,7 @@ This section applies to both primary and secondary ENIs.
 
 3.  In the top navigation bar, select a region.
 
-4.  On the Network Interfaces page, find the ENI to which you want to assign a secondary private IP address, and then click **Manage Secondary Private IP Address** in the **Actions** column.
+4.  On the Network Interfaces page, find the ENI to which you want to assign secondary private IP addresses, and then click **Manage Secondary Private IP Address** in the **Actions** column.
 
 5.  In the Manage Secondary Private IP Address dialog box, click **Assign New IP**.
 
@@ -56,14 +56,14 @@ This section applies to both primary and secondary ENIs.
     -   Manual-assign: Manually enter secondary private IP addresses within the range of **IPv4 Private CIDR Block**.
     **Note:** After an IP address is assigned, you can click **Assign New IP** again to assign another private IP address.
 
-    ![Enter secondary private IP addresses](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/6059039951/p47047.png)
+    ![Enter secondary private IP addresses](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6059039951/p47047.png)
 
 6.  Click **OK**.
 
 
 **Note:** After you complete automatic assignment of secondary private IP addresses, click **Manage Secondary Private IP Address** in the **Actions** column corresponding to the ENI to view the assigned secondary private IP addresses.
 
-## Configure a secondary private IP address in a Windows instance
+## Configure secondary private IP addresses in a Windows instance
 
 1.  Remotely connect to an ECS instance. For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
 
@@ -96,18 +96,22 @@ This section applies to both primary and secondary ENIs.
 
 8.  In the **Advanced TCP/IP Settings** dialog box, set IP addresses.
 
-    1.  In the **IP addresses** section, click **Add...** and enter the assigned IP address in the **IP address** field and the queried subnet mask in the **Subnet mask** field.
+    1.  In the **IP addresses** section, click **Add...** and enter one of the assigned IP addresses in the **IP address** field and the obtained subnet mask in the **Subnet mask** field.
 
         You can add multiple IP addresses to the same adapter.
 
-        ![Add IP addresses](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/9087467951/p47049.png)
+        ![Add IP addresses](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9087467951/p47049.png)
 
-    2.  In the **Default gateways** section, click **Add...** and enter the queried subnet mask in the **Subnet mask** field.
+    2.  In the **Default gateways** section, click **Add...** and enter the obtained subnet mask in the **Subnet mask** field.
 
 9.  Click **OK**.
 
 
-## Configure a secondary private IP address in a Linux instance
+**Note:**
+
+If a secondary private IP address is configured for a Windows instance and the instance cannot connect to the Internet, see [After I configure a secondary private IP address for a Windows instance, the instance cannot connect to the Internet. Why?](/intl.en-US/Network/Network FAQ.md).
+
+## Configure secondary private IP addresses in a Linux instance
 
 In the following example, the eth0 primary ENI is used. If you are using a secondary ENI, modify the ENI ID.
 
@@ -129,7 +133,7 @@ In the following example, the eth0 primary ENI is used. If you are using a secon
 
     **Note:** If some Linux distributions do not support the `ifconfig` command, you can run the `ip addr show` command.
 
-3.  Configure a secondary private IP address based on the operating system of your instance.
+3.  Configure secondary private IP addresses based on the operating system of your instance.
 
     -   RHEL series: CentOS 6, CentOS 7, Red Hat 6, Red Hat 7, or Alibaba Cloud Linux 2
         1.  Open the network configuration file.
