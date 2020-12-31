@@ -72,7 +72,7 @@ r6a is in invitational preview. To use r6a,[submit a ticket](https://workorder-i
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   Compute:
     -   Uses 2.6 GHz AMD EPYC TM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:8.
@@ -119,7 +119,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads. In addition, improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of X-Dragon chips.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. In addition, improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
@@ -164,7 +164,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 
