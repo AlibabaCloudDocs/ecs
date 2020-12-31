@@ -10,10 +10,10 @@
 
 -   实例规格：ecs.c6.large
 -   操作系统：Alibaba Cloud Linux 2.1903 LTS 64位
--   JDK版本：JDK 1.8.0\_252
--   Tomcat版本：8.5.56
+-   JDK版本：JDK 1.8.0\_262
+-   Tomcat版本：8.5.59
 
-    **说明：** 本示例中，使用Tomcat 8.5.56版本为例。源代码版本会不断升级，您可以获取合适的安装包版本。
+    **说明：** 本示例中，使用Tomcat 8.5.59版本为例。源代码版本会不断升级，您可以获取合适的安装包版本。
 
 
 ## 步骤一：准备工作
@@ -28,7 +28,7 @@
 
     1.  运行systemctl status firewalld命令查看当前防火墙的状态。
 
-        ![查看防火墙状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7712359951/p32172.png)
+        ![查看防火墙状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7712359951/p32172.png)
 
         -   如果防火墙的状态参数是inactive，则防火墙为关闭状态。
         -   如果防火墙的状态参数是active，则防火墙为开启状态。本示例中防火墙为开启状态，因此需要关闭防火墙。
@@ -46,7 +46,7 @@
 
     1.  运行命令getenforce查看SELinux的当前状态。
 
-        ![查看SELinux状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7712359951/p21065.png)
+        ![查看SELinux状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7712359951/p21065.png)
 
         -   如果SELinux状态参数是Disabled， 则SELinux为关闭状态。
         -   如果SELinux状态参数是Enforcing，则SELinux为开启状态。本示例中SELinux为开启状态，因此需要关闭SELinux。
@@ -104,9 +104,9 @@
     本示例中版本信息如下所示。
 
     ```
-    openjdk version "1.8.0_252"
-    OpenJDK Runtime Environment (build 1.8.0_252-b09)
-    OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)
+    openjdk version "1.8.0_262"
+    OpenJDK Runtime Environment (build 1.8.0_262-b10)
+    OpenJDK 64-Bit Server VM (build 25.262-b10, mixed mode)
     ```
 
 4.  配置环境变量。
@@ -124,7 +124,7 @@
         **说明：** `JAVA_HOME`值为当前JDK安装的路径。本示例中，运行命令cd /usr/lib/jvm/进入`jvm`路径下，然后运行ls查看JDK安装后文件的路径。
 
         ```
-        JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.1.al7.x86_64
+        JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.1.al7.x86_64
         PATH=$PATH:$JAVA_HOME/bin
         CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
         export JAVA_HOME CLASSPATH PATH
@@ -144,7 +144,7 @@
 1.  运行以下命令下载Tomcat 8安装包。
 
     ```
-    wget https://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v8.5.56/bin/apache-tomcat-8.5.56.tar.gz
+    wget https://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v8.5.59/bin/apache-tomcat-8.5.59.tar.gz
     ```
 
     **说明：** Tomcat下载地址会更新。新版本的下载地址，请访问[Tomcat官网](https://tomcat.apache.org/)获取。
@@ -152,13 +152,13 @@
 2.  解压Tomcat 8安装包。
 
     ```
-    tar -zxvf apache-tomcat-8.5.56.tar.gz
+    tar -zxvf apache-tomcat-8.5.59.tar.gz
     ```
 
 3.  移动Tomcat所在目录。
 
     ```
-    mv apache-tomcat-8.5.56 /usr/local/tomcat/
+    mv apache-tomcat-8.5.59 /usr/local/tomcat/
     ```
 
 4.  将文件的所属用户设置为www。
@@ -252,10 +252,10 @@
 
     1.  运行以下命令下载Tomcat自启动脚本文件。
 
-        **说明：** 该脚本来源于社区，仅供参考。阿里云对其可靠性以及操作可能带来的潜在影响，不做任何暗示或其他形式的承诺。
+        **说明：** 该脚本来源于社区，仅供参考。阿里云对其可靠性以及操作可能带来的潜在影响，不做任何暗示或其他形式的承诺。如果您运行wget命令下载失败，您可以通过浏览器访问`https://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init`直接获取脚本内容。
 
         ```
-        wget http://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init
+        wget https://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init
         ```
 
     2.  运行以下命令重命名Tomcat-init。
@@ -275,7 +275,7 @@
         **说明：** 脚本中JDK的路径信息必须与您安装的JDK路径保持一致，否则Tomcat会启动失败。
 
         ```
-        sed -i 's@^export JAVA_HOME=.*@export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.1.al7.x86_64@' /etc/init.d/tomcat
+        sed -i 's@^export JAVA_HOME=.*@export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.1.al7.x86_64@' /etc/init.d/tomcat
         ```
 
 8.  运行以下命令设置Tomcat开机自启动。
@@ -306,6 +306,6 @@
 
     返回页面如下图所示，表示安装成功。
 
-    ![返回结果](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9012649951/p12137.png)
+    ![返回结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9012649951/p12137.png)
 
 
