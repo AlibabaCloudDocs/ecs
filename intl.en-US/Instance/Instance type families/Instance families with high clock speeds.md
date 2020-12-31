@@ -21,7 +21,7 @@ This topic describes the features of instance families with high clock speeds an
 
 Features
 
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports enhanced SSDs \(ESSDs\) and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -66,7 +66,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -125,7 +125,7 @@ Instance types
 
 Features
 
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -171,7 +171,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high storage I/O performance based on large compute capacity.
@@ -232,7 +232,7 @@ Instance types
 
 Features
 
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -276,7 +276,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high storage I/O performance based on large compute capacity.
