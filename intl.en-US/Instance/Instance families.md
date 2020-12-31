@@ -130,7 +130,7 @@ For information about retired instance families, see [Retired instance types](/i
 
 Features
 
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the X-Dragon architecture.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the SHENLONG architecture.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 
@@ -229,7 +229,7 @@ g6a is in invitational preview. To use g6a, [submit a ticket](https://workorder-
 
 Features
 
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the X-Dragon architecture.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the SHENLONG architecture.
 -   Compute:
     -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
@@ -282,7 +282,7 @@ Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation X-Dragon architecture. g6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of X-Dragon chips.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
 -   Compute:
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
@@ -332,7 +332,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation X-Dragon architecture. g6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of X-Dragon chips.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
 -   Supports I/O optimization.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
@@ -528,7 +528,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 
@@ -579,7 +579,7 @@ c6a is in invitational preview. To use c6a, [submit a ticket](https://workorder-
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   Compute:
     -   Uses 2.6 GHz AMD EPYC TM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:2.
@@ -630,7 +630,7 @@ Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of X-Dragon chips.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
 -   Compute:
     -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:2.
@@ -678,7 +678,7 @@ Instance types
 
 Features
 
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of X-Dragon chips.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
@@ -762,7 +762,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 
@@ -859,7 +859,7 @@ r6a is in invitational preview. To use r6a,[submit a ticket](https://workorder-i
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   Compute:
     -   Uses 2.6 GHz AMD EPYC TM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:8.
@@ -906,7 +906,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads. In addition, improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of X-Dragon chips.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. In addition, improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
@@ -1280,7 +1280,7 @@ Instance types
 
 Features
 
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports enhanced SSDs \(ESSDs\) and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -1325,7 +1325,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -1384,7 +1384,7 @@ Instance types
 
 Features
 
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -1430,7 +1430,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high storage I/O performance based on large compute capacity.
@@ -1491,7 +1491,7 @@ Instance types
 
 Features
 
--   Uses the third-generation X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
@@ -1535,7 +1535,7 @@ Instance types
 
 Features
 
--   Uses the X-Dragon architecture to provide predictable and consistent high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high storage I/O performance based on large compute capacity.
