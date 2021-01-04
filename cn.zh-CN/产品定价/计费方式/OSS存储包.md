@@ -12,13 +12,13 @@ keyword: [快照计费, 存储包]
 
 存储包根据地域、规格（容量）和购买时长进行计费，支持的地域、规格和时长如下图所示。详细价格请参见[存储包价格](https://www.aliyun.com/price/product?spm=5176.8064714.694085.pricedetail2222.308e14ceu4kW4A#/oss/detail)。
 
-![预付费存储包](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4650309951/p140032.png)
+![预付费存储包](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4650309951/p140032.png)
 
 ## 使用限制
 
 使用存储包时，请注意以下事项：
 
--   OSS存储包支持抵扣普通快照，但不支持抵扣本地快照。
+-   OSS存储包支持抵扣普通快照。
 -   不支持叠加使用存储包，同地域、同类型的存储包在同一时段内只能购买一次。
 
     如果您需要更高规格或更长周期的存储包，可以升级或续费存储包。
@@ -29,7 +29,7 @@ keyword: [快照计费, 存储包]
 
 -   使用后不支持退订。
 
-更多关于存储包的信息，请参见[存储包概述](/cn.zh-CN/计量计费/计费方式/包年包月/包年包月概述.md)。
+更多关于存储包的信息，请参见[存储包概述](/cn.zh-CN/计量计费/计费方式/包年包月（资源包）/资源包介绍.md)。
 
 ## 购买
 
@@ -37,7 +37,7 @@ keyword: [快照计费, 存储包]
 
 下图为在ECS管理控制台上购买存储包的示例，所在地域为华东 1（杭州）。购买地址请参见[购买OSS存储包](https://ecs.console.aliyun.com/#/snapshot/region/cn-hangzhou)。
 
-![在ECS管理控制台上购买预付费存储包](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7375259951/p21086.png)
+![在ECS管理控制台上购买预付费存储包](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7375259951/p21086.png)
 
 **相关文档**  
 
