@@ -25,8 +25,7 @@
 
 -   [本地设备使用 Windows 操作系统](#windows)
 -   [本地设备使用 Linux 操作系统](#linux)
--   [本地设备使用Mac OS操作系统（首次连接）](#macOS2)
--   [本地设备使用Mac OS操作系统（非首次连接）](#macOS3)
+-   [本地设备使用Mac OS操作系统](#macOS1)
 -   [本地设备使用Android或iOS系统](#mobile)
 
 ## 本地设备使用Windows操作系统
