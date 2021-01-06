@@ -1,20 +1,15 @@
 # ModifyDiskSpec
 
-调用ModifyDiskSpec变更一块云盘类型，或者修改一块ESSD云盘的性能级别。
+调用ModifyDiskSpec修改一块ESSD云盘的性能级别。
 
 ## 接口说明
 
-调用该接口完成以下操作时，您需要注意：
+修改ESSD云盘性能级别，您需要注意：
 
--   修改ESSD云盘性能级别：
-    -   包年包月ESSD云盘仅支持升级性能级别。
-    -   按量付费ESSD云盘支持升级和降低性能级别，但不支持降配到PL0。
-    -   ESSD云盘的状态必须是**使用中**（In\_Use）状态或者**待挂载**（Available）状态。
-    -   若ESSD云盘已挂载到ECS实例上，实例必须处于**运行中**（Running）状态或者**已停止**（Stopped）状态，ECS实例不能处于过期或者账号欠费状态。
-    -   由于ESSD云盘性能级别受容量限制，如果您无法升级性能级别，可以扩容（[ResizeDisk](~~25522~~)）后重新操作。更多详情，请参见[ESSD云盘](~~122389~~)。
--   变更一块云盘类型的注意事项，请参见[变更云盘类型](~~161980~~)中的限制条件章节。
-
-调用接口后，新的云盘类型立即生效，阿里云按照新的云盘类型及云盘性能级别单价计算消费账单。
+-   包年包月ESSD云盘仅支持升级性能级别，按量付费ESSD云盘支持升级和降低性能级别。
+-   ESSD云盘的状态必须是**使用中**（In\_Use）状态或者**待挂载**（Available）状态。
+-   若ESSD云盘已挂载到ECS实例上，实例必须处于**运行中**（Running）状态或者**已停止**（Stopped）状态，ECS实例不能处于过期或者账号欠费状态。
+-   由于ESSD云盘性能级别受容量限制，如果您无法升级性能级别，可以扩容（[ResizeDisk](~~25522~~)）后重新操作。更多详情，请参见[ESSD云盘](~~122389~~)。
 
 ## 调试
 
@@ -26,15 +21,6 @@
 |--|--|----|---|--|
 |Action|String|是|ModifyDiskSpec|系统规定参数。取值：ModifyDiskSpec |
 |DiskId|String|是|d-bp131n0q38u3a4zi\*\*\*\*|云盘的ID。 |
-|DiskCategory|String|否|cloud\_essd|变更一块云盘的类型。取值范围：
-
- -   cloud\_essd：ESSD云盘
--   cloud\_ssd：SSD云盘
--   cloud\_efficiency：高效云盘
-
- 默认值：空，表示不变配云盘。
-
- **说明：** 以上有效取值按云盘性能降序排列。如果指定的云盘是包年包月云盘，则不允许降配云盘。 |
 |PerformanceLevel|String|否|PL2|修改一块ESSD云盘的性能级别。取值范围：
 
  -   PL1（默认）：单盘最高随机读写IOPS 5万。
@@ -50,9 +36,7 @@
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
-|TaskId|String|t-bp67acfmxazb4p\*\*\*\*|变配云盘的任务ID。
-
- **说明：** 如果您只修改了一块ESSD云盘的性能级别，则不会返回该参数。 |
+|TaskId|String|null|**说明：** 该参数正在邀测中，暂未开放使用。 |
 
 ## 示例
 
@@ -71,8 +55,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 
 ```
 <ModifyDiskSpecResponse>
-      <TaskId>t-bp67acfmxazb4p****</TaskId>
-      <RequestId>5B38289D-88AB-42BD-B021-12FC6942F099</RequestId>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
 </ModifyDiskSpecResponse>
 ```
 
@@ -80,8 +63,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 
 ```
 {
-  "TaskId": "t-bp67acfmxazb4p****",
-  "RequestId": "5B38289D-88AB-42BD-B021-12FC6942F099"
+	"RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 }
 ```
 
@@ -98,8 +80,6 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 |403|OperationDenied|The type of the disk does not support the operation.|此磁盘种类不支持指定的操作。|
 |400|InvalidPerformanceLevel.Malformed|The specified parameter PerformanceLevel is not valid.|指定的参数PerformanceLevel无效。|
 |403|OperationDenied.PerformanceLevelNotMatch|The specified PerformanceLevel and disk size do not match.|指定的性能等级与磁盘大小不匹配。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的DiskCategory参数有误。|
-|403|OperationDenied.NoStock|The requested resource is sold out in the specified zone; try other types of resources or other regions and zones.|库存不足。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
