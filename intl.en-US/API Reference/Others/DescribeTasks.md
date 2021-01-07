@@ -11,15 +11,24 @@ You can call this operation to query the progress of one or more asynchronous ta
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|DescribeTasks|The operation that you want to perform. Set the value to DescribeTasks. |
-|RegionId|String|Yes|cn-hangzhou|The region ID. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
-|PageNumber|Integer|No|1|The number of the page to return. Pages start from page 1. Default value: 1. |
-|PageSize|Integer|No|2|The number of entries to return on each page. Valid values: 1 to 100. Default value: 10. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the task. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|PageNumber|Integer|No|1|The number of the page to return.
+
+Pages start from page 1.
+
+Default value: 1. |
+|PageSize|Integer|No|2|The number of entries to return on each page.
+
+Maximum value: 100.
+
+Default value: 10. |
 |TaskIds|String|No|t-bp1hvgwromzv32iq\*\*\*\*,t-bp179lofu2pv768w\*\*\*\*|The IDs of the tasks. You can specify up to 100 tasks at a time. Separate multiple tasks IDs with commas \(,\). |
 |TaskAction|String|No|ImportImage|The name of the operation that generates the task. Valid values:
 
 -   ImportImage
 -   ExportImage
--   RedeployInstance |
+-   RedeployInstance
+-   ModifyDiskSpec |
 |TaskStatus|String|No|Finished|The status of the task. Valid values:
 
 -   Finished
@@ -28,9 +37,9 @@ You can call this operation to query the progress of one or more asynchronous ta
 
 This parameter is empty by default.
 
-**Note:** The system only retrieves tasks in the Finished, Processing, and Failed states, and ignores other values. |
-|StartTime|String|No|2015-11-23T15:10:00Z|The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
-|EndTime|String|No|2015-11-23T15:16:00Z|The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
+**Note:** The system only retrieves tasks in the Finished, Processing, and Failed states and ignores other values. |
+|StartTime|String|No|2015-11-23T15:10:00Z|The beginning of the creation time range to be queried. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
+|EndTime|String|No|2015-11-23T15:16:00Z|The end of the creation time range to be queried. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
 
 ## Response parameters
 
@@ -38,12 +47,12 @@ This parameter is empty by default.
 |---------|----|-------|-----------|
 |PageNumber|Integer|1|The page number of the returned page. |
 |PageSize|Integer|2|The number of entries returned per page. |
-|RegionId|String|cn-hangzhou|The region ID. |
+|RegionId|String|cn-hangzhou|The region ID of the task. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
 |TaskSet|Array of Task| |Details about the tasks. |
 |Task| | | |
-|CreationTime|String|2015-11-24T12:50Z|The time when the task was created. |
-|FinishedTime|String|2015-11-24T12:50Z|The time when the task was complete. |
+|CreationTime|String|2015-11-24T12:50Z|The time when the disk was created. |
+|FinishedTime|String|2015-11-24T12:50Z|The time when the task is completed. |
 |SupportCancel|String|true|Indicates whether the task can be canceled. |
 |TaskAction|String|IMPORT\_IMAGE|The name of the task. |
 |TaskId|String|t-bp1hvgwromzv32iq\*\*\*\*|The ID of the task. |
@@ -137,7 +146,7 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|400|MissingParameter|An input parameter "RegionId" that is mandatory for processing the request is not supplied.|The error message returned because the RegionId parameter is not specified.|
+|400|MissingParameter|An input parameter "RegionId" that is mandatory for processing the request is not supplied.|The error message returned because the required RegionId parameter is not specified.|
 |400|InvalidRegionId.NotFound|The specified RegionId does not exist.|The error message returned because the specified RegionId parameter does not exist.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
