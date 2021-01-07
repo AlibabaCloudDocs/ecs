@@ -1,6 +1,6 @@
 # DescribeTaskAttribute
 
-调用DescribeTaskAttribute查询异步任务的详细信息。目前，可以查询的异步任务有导入镜像（ImportImage）和导出镜像（ExportImage）两种。
+调用DescribeTaskAttribute查询异步任务的详细信息。目前，可以查询的异步任务有导入镜像（ImportImage）、导出镜像（ExportImage）及变更云盘类型（ModifyDiskSpec）。
 
 ## 调试
 
