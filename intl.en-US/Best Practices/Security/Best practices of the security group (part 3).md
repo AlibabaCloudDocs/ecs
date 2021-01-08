@@ -1,10 +1,10 @@
-# Best practices of the security group \(part 3\) {#concept_53141_zh .concept}
+# Best practices of the security group \(part 3\)
 
 In practice, all instances may be placed in the same security group, thus reducing the configuration workload in the initial period. In the long run, however, interactions of the business systems will become complicated and uncontrollable. When you modify a security group, you will be unable to clearly identify the impact scope of adding or removing a rule.
 
 Rational planning and differentiation of security groups makes it easy to adjust your systems, sort out the services provided by the applications, and arrange applications at different layers. We recommend that you plan different security groups and set different security group rules for different businesses.
 
-## Distinguish between different security groups {#section_qnq_y3l_gfb .section}
+## Distinguish between different security groups
 
 -   **Use different security groups for ECS instances on the Internet and those on the intranet**
 
@@ -52,19 +52,19 @@ Rational planning and differentiation of security groups makes it easy to adjust
     By creating different security groups, you can restrict the access domains of applications and avoid interoperability between the production environment and testing environment. Also, you can create different security groups for different test environments, thus avoiding interference between test environments and improving development efficiency.
 
 
-## Only assign Internet addresses to subnets or instances that require Internet access {#section_fcd_yq2_2fb .section}
+## Only assign Internet addresses to subnets or instances that require Internet access
 
 Whether it is a classic network or a VPC, rational allocation of Internet addresses facilitates Internet management of the system and reduces the risk of attack. For VPCs, we recommend that you place the IP segments of instances requiring Internet access onto several dedicated VSwitches \(subnet CIDR\) when creating a VSwitch. This facilitates auditing and differentiation and helps avoid accidental Internet access.
 
-Most distributed applications have different layers and groups. For ECS instances that offer no Internet access, try your best not to provide Internet addresses for them. If there are multiple instances that provide Internet access, we recommend you to configure the [Server Load Balancer](../../../../intl.en-US/Product Introduction/What is Server Load Balancer?.md#) to distribute traffic of Internet services, thus improving system availability and avoiding a single point of failure.
+Most distributed applications have different layers and groups. For ECS instances that offer no Internet access, try your best not to provide Internet addresses for them. If there are multiple instances that provide Internet access, we recommend you to configure the [Server Load Balancer](/intl.en-US/Classic Load Balancer/Product Introduction/What is SLB?.md) to distribute traffic of Internet services, thus improving system availability and avoiding a single point of failure.
 
-For ECS instances that require no Internet access, try your best not to assign Internet addresses to them. In VPCs, when your ECS instances need to access the Internet, we recommend you to use the [NAT gateway](../../../../intl.en-US/Product Introduction/What is NAT Gateway.md#) to provide Internet proxy services for ECS instances without Internet addresses in the VPC. By simply configuring the corresponding SNAT rules, you can enable a specific CIDR segment or subnet to access the Internet. For specific configurations, see [SNAT](../../../../intl.en-US/User Guide/Manage an SNAT table.md#). In this way, exposure of services to the Internet can be avoided after Elastic IP \(EIP\) addresses are allocated when only outbound access is required.
+For ECS instances that require no Internet access, try your best not to assign Internet addresses to them. In VPCs, when your ECS instances need to access the Internet, we recommend you to use the [NAT gateway](/intl.en-US/Product Introduction/What is NAT Gateway?.md) to provide Internet proxy services for ECS instances without Internet addresses in the VPC. By simply configuring the corresponding SNAT rules, you can enable a specific CIDR segment or subnet to access the Internet. For specific configurations, see [Create a SNAT entry to access the Internet](/intl.en-US/User Guide/Create a SNAT entry to access the Internet.md). In this way, exposure of services to the Internet can be avoided after Elastic IP \(EIP\) addresses are allocated when only outbound access is required.
 
-## Minimum principle {#section_gcd_yq2_2fb .section}
+## Minimum principle
 
 A security group should work as a whitelist. Therefore, try your best to open and expose as few ports as possible, and allocate as few Internet addresses as possible. Although allocating Internet addresses or binding EIPs makes it easy to access online instances for troubleshooting, it exposes the entire instance to the Internet after all. A safer policy is to manage IP addresses by using the Jump Server.
 
-## Use the Jump Server {#section_hcd_yq2_2fb .section}
+## Use the Jump Server
 
 As the Jump Server has much higher permissions, relevant operations should be well recorded and audited through tools. In addition, it is recommended to choose a dedicated VSwitch for the Jump Server in VPCs, providing the corresponding EIP or NAT port forwarding tables to it.
 
@@ -72,7 +72,7 @@ First, create a dedicated security group SG\_BRIDGE by enabling the correspondin
 
 After that, you can add the Jumper Server instance to that security group. In order for that Jumper Server to access other appropriate instances, you can configure appropriate group authorization. For example, add a rule for SG\_CURRENT, allowing SG\_BRIDGE to access certain ports and protocols.
 
-When you use the Jumper Server for SSH communication, it is recommended to use the [SSH key pair](../../../../intl.en-US/Security/Key pairs/SSH key pair overview.md#) for logon, instead of the password.
+When you use the Jumper Server for SSH communication, it is recommended to use the [SSH key pair](/intl.en-US/Security/Key pairs/Overview.md) for logon, instead of the password.
 
 In summary, reasonable planning of security groups makes it easy for you to expand the applications and makes your system more secure.
 
