@@ -14,7 +14,7 @@ When you use a savings plan, your pay-as-you-go instances of each instance type 
 
 For example, assume that Alex has several ecs.g6.xlarge instances in the China \(Shanghai\) region and can use a three-year general-purpose savings plan to obtain the following discounts.
 
-**Note:** The prices used in this example are for demonstration only. For the actual prices and discounts, see the[Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page and the[Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page.
+**Note:** The prices used in this example are for demonstration only. For the actual prices and discounts, see the[Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page and the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page.
 
 Assume that the regular pay-as-you-go unit price of an ecs.g6.xlarge instance is `USD 0.155/instance/hour` and a three-year savings plan provides savings of `54.5%` off the pay-as-you-go price for the ecs.g6 instance family in the China \(Shanghai\) region. The savings plan unit price of the ecs.g6.xlarge instances is calculated based on the following formula: `USD 0.155/instance/hour × 0.455 = USD 0.0705/instance/hour`.
 
@@ -35,7 +35,7 @@ The following table compares the regular pay-as-you-go prices and the savings pl
 
 For each savings plan, you must select hourly spend commitment. Resource usage within your commitment is billed based on the savings plan unit price. Any resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
 
-You can purchase a desired savings plan on the[Savings Plan](https://common-buy-intl.alibabacloud.com/?commodityCode=savingplan_common_public_intl#/buy) page or purchase a recommended savings plan on the[Recommended](https://usercenter2-intl.aliyun.com/resource/spn/recommend) page.
+You can purchase a desired savings plan on the [Savings Plan](https://common-buy-intl.alibabacloud.com/?commodityCode=savingplan_common_public_intl#/buy) page or purchase a recommended savings plan on the [Recommended](https://usercenter2-intl.aliyun.com/resource/spn/recommend) page.
 
 ## Savings plan types
 
