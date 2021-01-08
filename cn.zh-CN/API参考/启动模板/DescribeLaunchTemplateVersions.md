@@ -50,6 +50,12 @@
  **说明：** 该参数即将停止使用，为提高代码兼容性，建议您尽量不要使用该参数。 |
 |DiskName|String|testDiskName|数据盘名称。 |
 |Encrypted|String|false|数据盘是否加密。 |
+|PerformanceLevel|String|PL1|创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。当`Category=cloud_essd`时该参数有返回值。可能值：
+
+ -   PL0：单盘最高随机读写IOPS 1万。
+-   PL1：单盘最高随机读写IOPS 5万。
+-   PL2：单盘最高随机读写IOPS 10万。
+-   PL3：单盘最高随机读写IOPS 100万。 |
 |Size|Integer|2000|数据盘大小。 |
 |SnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|数据盘使用的快照ID。 |
 |Description|String|testInstanceDescription|实例描述。 |
@@ -65,20 +71,31 @@
 |InternetMaxBandwidthOut|Integer|100|公网出带宽最大值。 |
 |IoOptimized|String|none|是否为I/O优化实例。 |
 |KeyPairName|String|testKeyPairName|密钥对名称。 |
-|NetworkInterfaces|Array of NetworkInterface| |弹性网卡的属性集合。 |
+|NetworkInterfaces|Array of NetworkInterface| |辅助弹性网卡的属性集合。 |
 |NetworkInterface| | | |
-|Description|String|testNetworkInterfacesDescription|弹性网卡描述信息。 |
-|NetworkInterfaceName|String|testNetworkInterfaceName|弹性网卡名称。 |
-|PrimaryIpAddress|String|203.0.113.2|主私有IP地址。 |
-|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|所属的安全组ID必须是同一个VPC下的安全组。 |
+|Description|String|testNetworkInterfacesDescription|辅助弹性网卡描述信息。 |
+|NetworkInterfaceName|String|testNetworkInterfaceName|辅助弹性网卡名称。 |
+|PrimaryIpAddress|String|203.0.\*.\*|辅助弹性网卡的主私有IP地址。 |
+|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|辅助弹性网卡所属的安全组ID。必须是同一个VPC下的安全组。
+
+ **说明：** SecurityGroupId和SecurityGroupIds不会同时返回值。 |
+|SecurityGroupIds|List|\["sg-bp15ed6xe1yxeycg7\*\*\*\*"\]|辅助弹性网卡加入的一个或多个安全组。
+
+ **说明：** SecurityGroupId和SecurityGroupIds不会同时返回值。 |
 |VSwitchId|String|vsw-bp67acfmxazb4p\*\*\*\*|弹性网卡所属的虚拟交换机ID。 |
 |NetworkType|String|vpc|网络类型。 |
 |PasswordInherit|Boolean|true|是否继承原镜像里设置的用户名密码。 |
 |Period|Integer|1|购买资源的时长。 |
+|PrivateIpAddress|String|10.1.\*\*.\*\*|实例私网IP地址。 |
 |RamRoleName|String|testRamRoleName|实例RAM角色名称。 |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|启动模板所在的企业资源组ID。 |
 |SecurityEnhancementStrategy|String|active|是否开启安全加固。 |
-|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|安全组ID。 |
+|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|实例的安全组ID。
+
+ **说明：** `SecurityGroupId`和`SecurityGroupIds`不会同时返回值。 |
+|SecurityGroupIds|List|\["sg-bp15ed6xe1yxeycg7\*\*\*\*"\]|实例加入的一个或多个安全组。
+
+ **说明：** `SecurityGroupId`和`SecurityGroupIds`不会同时返回值。 |
 |SpotDuration|Integer|1|抢占式实例的保留时长，单位为小时。可能值：0~6
 
  -   保留时长2~6正在邀测中，如需开通请提交工单。
@@ -86,11 +103,18 @@
 |SpotPriceLimit|Float|0.98|设置实例的每小时最高价格。 |
 |SpotStrategy|String|NoSpot|按量付费实例的竞价策略。 |
 |SystemDisk.Category|String|cloud\_ssd|系统盘种类。 |
+|SystemDisk.DeleteWithInstance|Boolean|true|系统盘是否随实例释放。 |
 |SystemDisk.Description|String|testSystemDiskDescription|系统盘描述。 |
 |SystemDisk.DiskName|String|testSystemDiskName|系统盘名称。 |
 |SystemDisk.Iops|Integer|30000|系统盘每秒I/O次数。
 
  **说明：** 该参数即将停止使用，为提高代码兼容性，请尽量使用其他参数。 |
+|SystemDisk.PerformanceLevel|String|PL0|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。当`SystemDisk.Category=cloud_essd`时该参数有返回值。可能值：
+
+ -   PL0：单盘最高随机读写IOPS 1万。
+-   PL1：单盘最高随机读写IOPS 5万。
+-   PL2：单盘最高随机读写IOPS 10万。
+-   PL3：单盘最高随机读写IOPS 100万。 |
 |SystemDisk.Size|Integer|80|系统盘大小，单位为GiB。 |
 |Tags|Array of InstanceTag| |实例的标签。 |
 |InstanceTag| | | |
@@ -126,47 +150,89 @@ https://ecs.aliyuncs.com/?Action=DescribeLaunchTemplateVersions
 `XML` 格式
 
 ```
-<DescribeLaunchTemplateVersionsResponse>
-      <PageNumber>1</PageNumber>
+<DescribeLaunchTemplateVersionsResponse> 
       <TotalCount>1</TotalCount>
       <PageSize>10</PageSize>
       <RequestId>3989ED0C-20A1-4351-A127-2067FF8390AX</RequestId>
+      <PageNumber>1</PageNumber>
       <LaunchTemplateVersionSets>
             <LaunchTemplateVersionSet>
-                  <LaunchTemplateId>lt-bp16jovvln1cgaaqg****</LaunchTemplateId>
-                  <CreateTime>2018-10-17T07:36:22Z</CreateTime>
-                  <CreatedBy>1234567890</CreatedBy>
-                  <ModifiedTime>2018-10-17T07:36:22Z</ModifiedTime>
-                  <LaunchTemplateData>
-                        <ImageId>centos_7_04_64_20G_alibase_201701015.vhd</ImageId>
-                        <SecurityGroupId>sg-bp1azkttqpldxgte****</SecurityGroupId>
-                        <Description>testDescription</Description>
-                        <NetworkInterfaces>
-                </NetworkInterfaces>
-                        <DataDisks>
-                </DataDisks>
-                        <SecurityEnhancementStrategy>Active</SecurityEnhancementStrategy>
-                        <ZoneId>random</ZoneId>
-                        <ImageOwnerAlias>system</ImageOwnerAlias>
-                        <InternetChargeType>PayByTraffic</InternetChargeType>
-                        <VSwitchId>vsw-bp1s5fnvk4gn2tws0****</VSwitchId>
-                        <VpcId>vpc-bp1opxu1zkhn00gzv****</VpcId>
-                        <HostName>LocalHost</HostName>
-                        <InstanceType>ecs.g5.large</InstanceType>
-                        <IoOptimized>true</IoOptimized>
-                        <Tags>
-                </Tags>
-                        <NetworkType>vpc</NetworkType>
-                        <InternetMaxBandwidthOut>5</InternetMaxBandwidthOut>
-                        <SystemDisk.Size>40</SystemDisk.Size>
-                        <InstanceChargeType>PostPaid</InstanceChargeType>
-                        <SystemDisk.Category>cloud_efficiency</SystemDisk.Category>
-                        <InstanceName>testInstanceName</InstanceName>
-                  </LaunchTemplateData>
-                  <VersionNumber>1</VersionNumber>
-                  <DefaultVersion>true</DefaultVersion>
-                  <VersionDescription>testVersionDescription</VersionDescription>
                   <LaunchTemplateName>testLaunchTemplateName</LaunchTemplateName>
+                  <CreatedBy>1234567890</CreatedBy>
+                  <VersionDescription>testVersionDescription</VersionDescription>
+                  <ModifiedTime>2018-05-14T14:18:00Z</ModifiedTime>
+                  <DefaultVersion>true</DefaultVersion>
+                  <CreateTime>2018-05-14T14:18:00Z</CreateTime>
+                  <LaunchTemplateId>lt-bp67acfmxazb4p****</LaunchTemplateId>
+                  <VersionNumber>1</VersionNumber>
+            </LaunchTemplateVersionSet>
+            <LaunchTemplateVersionSet>
+                  <LaunchTemplateData>
+                        <ImageOwnerAlias>system</ImageOwnerAlias>
+                        <PrivateIpAddress>10.1.**.**</PrivateIpAddress>
+                        <Description>testInstanceDescription</Description>
+                        <ResourceGroupId>rg-bp67acfmxazb4p****</ResourceGroupId>
+                        <DataDisks>
+                              <DataDisk>
+                                    <SnapshotId>s-bp67acfmxazb4p****</SnapshotId>
+                                    <Description>testDiskDescription</Description>
+                                    <Category>cloud_ssd</Category>
+                                    <PerformanceLevel>PL1</PerformanceLevel>
+                                    <Device>/dev/xvda</Device>
+                                    <Encrypted>false</Encrypted>
+                                    <Size>2000</Size>
+                                    <DeleteWithInstance>true</DeleteWithInstance>
+                                    <DiskName>testDiskName</DiskName>
+                              </DataDisk>
+                        </DataDisks>
+                        <UserData>SGVsbG9FQ1M=</UserData>
+                        <InstanceChargeType>Postpaid</InstanceChargeType>
+                        <SpotDuration>1</SpotDuration>
+                        <SystemDisk.DiskName>testSystemDiskName</SystemDisk.DiskName>
+                        <SystemDisk.Size>80</SystemDisk.Size>
+                        <SystemDisk.PerformanceLevel>PL0</SystemDisk.PerformanceLevel>
+                        <RamRoleName>testRamRoleName</RamRoleName>
+                        <NetworkType>vpc</NetworkType>
+                        <NetworkInterfaces>
+                              <NetworkInterface>
+                                    <NetworkInterfaceName>testNetworkInterfaceName</NetworkInterfaceName>
+                                    <PrimaryIpAddress>203.0.*.*</PrimaryIpAddress>
+                                    <Description>testNetworkInterfacesDescription</Description>
+                                    <SecurityGroupId>sg-bp67acfmxazb4p****</SecurityGroupId>
+                                    <VSwitchId>vsw-bp67acfmxazb4p****</VSwitchId>
+                              </NetworkInterface>
+                        </NetworkInterfaces>
+                        <SystemDisk.DeleteWithInstance>true</SystemDisk.DeleteWithInstance>
+                        <ImageId>m-bp67acfmxazb4p****</ImageId>
+                        <SpotPriceLimit>0.98</SpotPriceLimit>
+                        <SystemDisk.Category>cloud_ssd</SystemDisk.Category>
+                        <InstanceType>ecs.g5.large</InstanceType>
+                        <SpotStrategy>NoSpot</SpotStrategy>
+                        <HostName>testHostName</HostName>
+                        <Tags>
+                              <InstanceTag>
+                                    <Value>TestValue</Value>
+                                    <Key>TestKey</Key>
+                              </InstanceTag>
+                        </Tags>
+                        <PasswordInherit>true</PasswordInherit>
+                        <KeyPairName>testKeyPairName</KeyPairName>
+                        <SystemDisk.Iops>30000</SystemDisk.Iops>
+                        <IoOptimized>none</IoOptimized>
+                        <SystemDisk.Description>testSystemDiskDescription</SystemDisk.Description>
+                        <ZoneId>cn-hangzhou-g</ZoneId>
+                        <VSwitchId>vsw-bp67acfmxazb4p****</VSwitchId>
+                        <SecurityGroupId>sg-bp67acfmxazb4p****</SecurityGroupId>
+                        <Period>1</Period>
+                        <InternetChargeType>PayByTraffic</InternetChargeType>
+                        <InstanceName>testInstanceName</InstanceName>
+                        <EnableVmOsConfig>false</EnableVmOsConfig>
+                        <InternetMaxBandwidthOut>100</InternetMaxBandwidthOut>
+                        <InternetMaxBandwidthIn>5</InternetMaxBandwidthIn>
+                        <VpcId>v-bp67acfmxazb4p****</VpcId>
+                        <SecurityEnhancementStrategy>active</SecurityEnhancementStrategy>
+                        <AutoReleaseTime>2018-05-14T14:18:00Z</AutoReleaseTime>
+                  </LaunchTemplateData>
             </LaunchTemplateVersionSet>
       </LaunchTemplateVersionSets>
 </DescribeLaunchTemplateVersionsResponse>
@@ -176,50 +242,95 @@ https://ecs.aliyuncs.com/?Action=DescribeLaunchTemplateVersions
 
 ```
 {
-    "PageNumber": 1,
-    "TotalCount": 1,
-    "PageSize": 10,
-    "RequestId": "3989ED0C-20A1-4351-A127-2067FF8390AX",
+    "TotalCount": "1", 
+    "PageSize": "10", 
+    "RequestId": "3989ED0C-20A1-4351-A127-2067FF8390AX", 
+    "PageNumber": "1", 
     "LaunchTemplateVersionSets": {
         "LaunchTemplateVersionSet": [
             {
-                "LaunchTemplateId": "lt-bp16jovvln1cgaaqg****",
-                "CreateTime": "2018-10-17T07:36:22Z",
-                "CreatedBy": "1234567890",
-                "ModifiedTime": "2018-10-17T07:36:22Z",
+                "LaunchTemplateName": "testLaunchTemplateName", 
+                "CreatedBy": "1234567890", 
+                "VersionDescription": "testVersionDescription", 
+                "ModifiedTime": "2018-05-14T14:18:00Z", 
+                "DefaultVersion": "true", 
+                "CreateTime": "2018-05-14T14:18:00Z", 
+                "LaunchTemplateId": "lt-bp67acfmxazb4p****", 
+                "VersionNumber": "1"
+            }, 
+            {
                 "LaunchTemplateData": {
-                    "ImageId": "centos_7_04_64_20G_alibase_201701015.vhd",
-                    "SecurityGroupId": "sg-bp1azkttqpldxgte****",
-                    "Description": "testDescription",
-                    "NetworkInterfaces": {
-                        "NetworkInterface": []
-                    },
+                    "ImageOwnerAlias": "system", 
+                    "PrivateIpAddress": "10.1.**.**", 
+                    "Description": "testInstanceDescription", 
+                    "ResourceGroupId": "rg-bp67acfmxazb4p****", 
                     "DataDisks": {
-                        "DataDisk": []
-                    },
-                    "SecurityEnhancementStrategy": "Active",
-                    "ZoneId": "random",
-                    "ImageOwnerAlias": "system",
-                    "InternetChargeType": "PayByTraffic",
-                    "VSwitchId": "vsw-bp1s5fnvk4gn2tws0****",
-                    "VpcId": "vpc-bp1opxu1zkhn00gzv****",
-                    "HostName": "LocalHost",
-                    "InstanceType": "ecs.g5.large",
-                    "IoOptimized": "true",
+                        "DataDisk": [
+                            {
+                                "SnapshotId": "s-bp67acfmxazb4p****", 
+                                "Description": "testDiskDescription", 
+                                "Category": "cloud_ssd", 
+                                "PerformanceLevel": "PL1", 
+                                "Device": "/dev/xvda", 
+                                "Encrypted": "false", 
+                                "Size": "2000", 
+                                "DeleteWithInstance": "true", 
+                                "DiskName": "testDiskName"
+                            }
+                        ]
+                    }, 
+                    "UserData": "SGVsbG9FQ1M=", 
+                    "InstanceChargeType": "Postpaid", 
+                    "SpotDuration": "1", 
+                    "SystemDisk.DiskName": "testSystemDiskName", 
+                    "SystemDisk.Size": "80", 
+                    "SystemDisk.PerformanceLevel": "PL0", 
+                    "RamRoleName": "testRamRoleName", 
+                    "NetworkType": "vpc", 
+                    "NetworkInterfaces": {
+                        "NetworkInterface": [
+                            {
+                                "NetworkInterfaceName": "testNetworkInterfaceName", 
+                                "PrimaryIpAddress": "203.0.*.*", 
+                                "Description": "testNetworkInterfacesDescription", 
+                                "SecurityGroupId": "sg-bp67acfmxazb4p****", 
+                                "VSwitchId": "vsw-bp67acfmxazb4p****"
+                            }
+                        ]
+                    }, 
+                    "SystemDisk.DeleteWithInstance": "true", 
+                    "ImageId": "m-bp67acfmxazb4p****", 
+                    "SpotPriceLimit": "0.98", 
+                    "SystemDisk.Category": "cloud_ssd", 
+                    "InstanceType": "ecs.g5.large", 
+                    "SpotStrategy": "NoSpot", 
+                    "HostName": "testHostName", 
                     "Tags": {
-                        "InstanceTag": []
-                    },
-                    "NetworkType": "vpc",
-                    "InternetMaxBandwidthOut": 5,
-                    "SystemDisk.Size": 40,
-                    "InstanceChargeType": "PostPaid",
-                    "SystemDisk.Category": "cloud_efficiency",
-                    "InstanceName": "testInstanceName"
-                },
-                "VersionNumber": 1,
-                "DefaultVersion": true,
-                "VersionDescription": "testVersionDescription",
-                "LaunchTemplateName": "testLaunchTemplateName"
+                        "InstanceTag": [
+                            {
+                                "Value": "TestValue", 
+                                "Key": "TestKey"
+                            }
+                        ]
+                    }, 
+                    "PasswordInherit": "true", 
+                    "KeyPairName": "testKeyPairName", 
+                    "SystemDisk.Iops": "30000", 
+                    "IoOptimized": "none", 
+                    "SystemDisk.Description": "testSystemDiskDescription", 
+                    "ZoneId": "cn-hangzhou-g", 
+                    "VSwitchId": "vsw-bp67acfmxazb4p****", 
+                    "SecurityGroupId": "sg-bp67acfmxazb4p****", 
+                    "Period": "1", 
+                    "InternetChargeType": "PayByTraffic", 
+                    "InstanceName": "testInstanceName", 
+                    "EnableVmOsConfig": "false", 
+                    "InternetMaxBandwidthOut": "100", 
+                    "InternetMaxBandwidthIn": "5", 
+                    "VpcId": "v-bp67acfmxazb4p****", 
+                    "SecurityEnhancementStrategy": "active", 
+                    "AutoReleaseTime": "2018-05-14T14:18:00Z"
+                }
             }
         ]
     }
