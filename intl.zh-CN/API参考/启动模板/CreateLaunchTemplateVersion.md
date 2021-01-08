@@ -24,7 +24,9 @@
 
  **说明：** 该参数即将被弃用，为提高兼容性，请尽量使用其他参数。 |
 |InstanceType|String|否|ecs.g5.large|实例的资源规格。更多详情，请参见[实例规格族](~~25378~~)，也可以调用[DescribeInstanceTypes](~~25620~~)接口获得最新的规格表。 |
-|SecurityGroupId|String|否|sg-bp15ed6xe1yxeycg\*\*\*\*|指定新创建实例所属于的安全组ID。同一个安全组内的实例之间可以互相访问。 |
+|SecurityGroupId|String|否|sg-bp15ed6xe1yxeycg\*\*\*\*|指定新创建实例所属于的安全组ID。同一个安全组内的实例之间可以互相访问。
+
+ **说明：** 不支持同时指定`SecurityGroupId`和`SecurityGroupIds.N`。 |
 |VpcId|String|否|vpc-bp12433upq1y5scen\*\*\*\*|专有网络VPC ID。 |
 |VSwitchId|String|否|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|创建VPC类型实例时需要指定虚拟交换机ID。 |
 |InstanceName|String|否|testInstanceName|实例名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。 |
@@ -42,15 +44,31 @@
 |ZoneId|String|否|cn-hangzhou-g|实例所属的可用区ID。 |
 |SystemDisk.Category|String|否|cloud\_ssd|系统盘的云盘种类。取值范围：
 
- -   cloud：普通云盘
--   cloud\_efficiency：高效云盘
--   cloud\_ssd：SSD云盘
--   cloud\_essd：ESSD云盘 |
+ -   cloud：普通云盘。
+-   cloud\_efficiency：高效云盘。
+-   cloud\_ssd：SSD云盘。
+-   cloud\_essd：ESSD云盘。您可以通过参数`SystemDisk.PerformanceLevel`设置云盘的性能等级。
+
+ 已停售的实例规格且非I/O优化实例默认值为cloud，否则默认值为cloud\_efficiency。 |
 |SystemDisk.Size|Integer|否|40|系统盘大小，单位为GiB。取值范围：20~500
 
  该参数的取值必须大于或者等于max\{20, ImageSize\}。 |
 |SystemDisk.DiskName|String|否|cloud\_ssdSystem|系统盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。 |
 |SystemDisk.Description|String|否|testSystemDiskDescription|系统盘描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
+|SystemDisk.PerformanceLevel|String|否|PL0|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
+
+ -   PL0（默认）：单盘最高随机读写IOPS 1万
+-   PL1：单盘最高随机读写IOPS 5万
+-   PL2：单盘最高随机读写IOPS 10万
+-   PL3：单盘最高随机读写IOPS 100万
+
+ 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。 |
+|SystemDisk.DeleteWithInstance|Boolean|否|true|系统盘是否随实例释放。取值范围：
+
+ -   true：随实例释放
+-   false：不随实例释放
+
+ 默认值：true |
 |DataDisk.N.Size|Integer|否|2000|第n个数据盘的容量大小，n的取值范围为1~16，内存单位为GiB。取值范围：
 
  -   cloud：5~2000
@@ -67,30 +85,40 @@
  -   cloud：普通云盘
 -   cloud\_efficiency：高效云盘
 -   cloud\_ssd：SSD云盘
--   cloud\_essd：ESSD云盘 |
+-   cloud\_essd：ESSD云盘
+
+ I/O优化实例的默认值为cloud\_efficiency，非I/O优化实例的默认值为cloud。 |
 |DataDisk.N.Encrypted|String|否|false|数据盘是否加密。 |
 |DataDisk.N.DiskName|String|否|testDataDiskName|数据盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。 |
 |DataDisk.N.Description|String|否|testDataDiskDescription|实例描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
-|DataDisk.N.DeleteWithInstance|Boolean|否|true|表示数据盘是否随实例释放。 |
+|DataDisk.N.DeleteWithInstance|Boolean|否|true|表示数据盘是否随实例释放。取值范围：
+
+ -   true：随实例释放
+-   false：不随实例释放
+
+ 默认值：true |
+|DataDisk.N.PerformanceLevel|String|否|PL1|创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
+
+ -   PL0：单盘最高随机读写IOPS 1万
+-   PL1（默认）：单盘最高随机读写IOPS 5万
+-   PL2：单盘最高随机读写IOPS 10万
+-   PL3：单盘最高随机读写IOPS 100万
+
+ 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。 |
 |IoOptimized|String|否|optimized|是否为I/O优化实例。取值范围：
 
  -   none：非I/O优化
 -   optimized：I/O优化 |
-|NetworkInterface.N.PrimaryIpAddress|String|否|192.168.\*\*.\*\*|弹性网卡的主私有IP地址。
+|NetworkInterface.N.PrimaryIpAddress|String|否|192.168.\*\*.\*\*|辅助弹性网卡的主私有IP地址。`NetworkInterface.N`的N取值不能大于1。 |
+|NetworkInterface.N.VSwitchId|String|否|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|辅助弹性网卡所属的虚拟交换机ID。实例与辅助弹性网卡必须在同一VPC的同一可用区中，可以分属于不同交换机。`NetworkInterface.N`的N取值不能大于1。 |
+|NetworkInterface.N.SecurityGroupId|String|否|sg-bp15ed6xe1yxeycg\*\*\*\*|辅助弹性网卡所属安全组的ID。辅助弹性网卡的安全组和实例的安全组必须在同一个VPC下。`NetworkInterface.N`的N取值不能大于1。
 
- **说明：** 弹性网卡相关请求参数`NetworkInterface.N`的N取值不能大于1。 |
-|NetworkInterface.N.VSwitchId|String|否|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|弹性网卡所属的虚拟交换机ID。实例与弹性网卡必须在同一VPC的同一可用区中，可以分属于不同交换机。
+ **说明：** 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。 |
+|NetworkInterface.N.NetworkInterfaceName|String|否|testNetworkInterfaceName|辅助弹性网卡名称。`NetworkInterface.N`的N取值不能大于1。 |
+|NetworkInterface.N.Description|String|否|testNetworkInterfaceDescription|辅助弹性网卡描述信息。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。`NetworkInterface.N`的N取值不能大于1。 |
+|NetworkInterface.N.SecurityGroupIds.N|RepeatList|否|sg-bp67acfmxazb4p\*\*\*\*|辅助弹性网卡加入的一个或多个安全组。安全组和辅助弹性网卡必须在同一个专有网络VPC中。`SecurityGroupIds.N`的N取值范围与辅助弹性网卡能够加入安全组配额有关。更多信息，请参见[使用限制](~~25412~~)。`NetworkInterface.N`的N取值不能大于1。
 
- **说明：** 弹性网卡相关请求参数`NetworkInterface.N`的N取值不能大于1。 |
-|NetworkInterface.N.SecurityGroupId|String|否|sg-bp15ed6xe1yxeycg\*\*\*\*|弹性网卡所属安全组的ID。弹性网卡的安全组和实例的安全组必须在同一个VPC下。
-
- **说明：** 弹性网卡相关请求参数`NetworkInterface.N`的N取值不能大于1。 |
-|NetworkInterface.N.NetworkInterfaceName|String|否|testNetworkInterfaceName|弹性网卡名称。
-
- **说明：** 弹性网卡相关请求参数`NetworkInterface.N`的N取值不能大于1。 |
-|NetworkInterface.N.Description|String|否|testNetworkInterfaceDescription|弹性网卡描述信息。长度为2~256个英文或中文字符，不能以http://和https://开头。
-
- **说明：** 弹性网卡相关请求参数`NetworkInterface.N`的N取值不能大于1。 |
+ **说明：** 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。 |
 |InstanceChargeType|String|否|PrePaid|实例的计费方式。取值范围：
 
  -   PrePaid：包年包月。选择该类计费方式时，您必须确认自己的账号支持信用支付，否则将返回`InvalidPayMethod`的错误提示。
@@ -104,7 +132,7 @@
  -   PayByBandwidth：按固定带宽计费
 -   PayByTraffic：按使用流量计费
 
- **按使用流量计费**的出带宽峰值100Mbit/s是带宽上限。当出现资源争抢时，该带宽峰值可能会受到限制。如果您的业务需要有带宽的保障，请使用**按固定带宽计费**的模式。 |
+ **说明：** **按使用流量计费**模式下的出入带宽峰值都是带宽上限，不作为业务承诺指标。当出现资源争抢时，带宽峰值可能会受到限制。如果您的业务需要有带宽的保障，请使用**按固定带宽计费**模式。 |
 |EnableVmOsConfig|Boolean|否|false|是否启用实例操作系统配置。 |
 |NetworkType|String|否|vpc|实例网络类型。取值范围：
 
@@ -140,6 +168,12 @@
 -   Deactive：不启用安全加固，对所有镜像类型生效。 |
 |Tag.N.Key|String|否|TestKey|实例、块存储和主网卡的标签键。N的取值范围：1~5。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以aliyun和acs:开头，不能包含http://或者https://。 |
 |Tag.N.Value|String|否|TestValue|实例、块存储和主网卡的标签值。N的取值范围：1~5。一旦传入该值，可以为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。 |
+|SecurityGroupIds.N|RepeatList|否|sg-bp15ed6xe1yxeycg7\*\*\*\*|实例加入的一个或多个安全组。N的取值范围与实例能够加入安全组配额有关。更多信息，[使用限制](~~25412~~)。
+
+ **说明：** 不支持同时指定`SecurityGroupId`和`SecurityGroupIds.N`。 |
+|PrivateIpAddress|String|否|10.1.\*\*.\*\*|实例私网IP地址。
+
+ 专有网络VPC类型ECS实例设置私网IP地址时，必须从虚拟交换机（`VSwitchId`）的空闲网段中选择。 |
 
 ## 返回数据
 
@@ -186,6 +220,7 @@ https://ecs.aliyuncs.com/?Action=CreateLaunchTemplateVersion
 &NetworkInterface.1.SecurityGroupId=sg-bp15ed6xe1yxeycg****
 &NetworkInterface.1.NetworkInterfaceName=testNetworkInterfaceName
 &NetworkInterface.1.Description=testNetworkInterfaceDescription
+&PrivateIpAddress=10.1.**.**
 &InstanceChargeType=PrePaid
 &Period=1
 &InternetChargeType=PayByTraffic
@@ -231,9 +266,11 @@ https://ecs.aliyuncs.com/?Action=CreateLaunchTemplateVersion
 |400|MissingParameter|%s|缺失参数，请检查参数是否完整。|
 |400|InvalidParameter|%s|无效的参数。|
 |400|InvalidDescription.Malformed|The specified parameter "Description" is not valid.|指定的资源描述格式不合法。长度为2-256个字符，不能以http://和https://开头。|
-|403|InnerServiceFailed|%s|内部服务调用失败。|
 |400|InvalidUserData.SizeExceeded|%s|您设置的数据大小超过了允许的最大值。|
 |400|InvalidUserData.Base64FormatInvalid|%s|您设置的数据格式不正确，请选择规定的格式数据。|
+|404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
+|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|400|InvalidHostName.Malformed|The specified parameter "HostName" is not valid.|指定的HostName格式不合法。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
