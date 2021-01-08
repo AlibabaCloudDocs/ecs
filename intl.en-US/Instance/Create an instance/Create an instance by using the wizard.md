@@ -87,7 +87,7 @@ If you need other extended features, you must complete corresponding preparation
         -   **Classic**: If you purchase an ECS instance for the first time after 12:00 on June 16, 2016 \(UTC+8\), you can no longer select the classic network.
     2.  Configure the public bandwidth.
 
-        -   To assign a public IP address to the instance, you must select **Assign Public IP Address**. Then, select **Pay-By-Traffic** or **Pay-By-Bandwidth** as the billing method for network usage and specify the bandwidth. The public IP addresses assigned in this manner cannot be disassociated from the instance. For more information about the billing methods for network usage, see [Billing methods of public bandwidth](/intl.en-US/Pricing/Billing items/Billing methods of public bandwidth.md).
+        -   To assign a public IP address to the instance, you must select **Assign Public IP Address**. Then, select **Pay-By-Traffic** or **Pay-By-Bandwidth** as the billing method for network usage and specify the bandwidth. The public IP addresses assigned in this manner cannot be disassociated from the instance. For more information about the billing methods for network usage, see [Billing methods of public bandwidth](/intl.en-US/Pricing/Billing items/Public bandwidth.md).
         -   If your instance does not need to access the Internet or your VPC-type instance uses an elastic IP address \(EIP\) to access the Internet, you do not need to assign a public IP address. You can associate an EIP with or disassociate an EIP from an instance at any time.
     3.  Select a security group.
 
@@ -97,7 +97,7 @@ If you need other extended features, you must complete corresponding preparation
 
         If the instance type that you selected supports ENIs, you can add an ENI and specify a VSwitch.
 
-        **Note:** By default, the added ENI is released together with the instance. You can unbind the ENI from the instance by using the [ECS console](/intl.en-US/Network/Elastic Network Interfaces/Detach an ENI from an instance.md) or by calling the [DetachNetworkInterface](/intl.en-US/API Reference/Elastic network interfaces/DetachNetworkInterface.md) operation.
+        **Note:** By default, the added ENI is released together with the instance. You can unbind the ENI from the instance by using the [ECS console](/intl.en-US/Network/Elastic Network Interfaces/Unbind an ENI.md) or by calling the [DetachNetworkInterface](/intl.en-US/API Reference/Elastic network interfaces/DetachNetworkInterface.md) operation.
 
 4.  Click **Next: System Configurations** and complete the following configurations:
 
@@ -133,7 +133,7 @@ If you need other extended features, you must complete corresponding preparation
 
         You can select **Random DDH Supporting Automatic Deployment / AutoPlacement** or specify a dedicated host.
 
-        Dedicated hosts are flexible and elastic and provide you with exclusive access to their resources. For more information, see [Features](/intl.en-US/Product Introduction/Features.md).
+        Dedicated hosts are flexible and elastic and provide you with exclusive access to their resources. For more information, see [Features](/intl.en-US/Product Introduction/Features/Features.md).
 
 6.  Confirm the order.
 
