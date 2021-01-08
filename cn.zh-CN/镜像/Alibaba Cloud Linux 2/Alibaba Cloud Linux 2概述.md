@@ -23,9 +23,8 @@ Alibaba Cloud Linux 2适用于下列场景。
 与其他Linux系统相比，Alibaba Cloud Linux 2具有以下优势。
 
 -   阿里云官方为Alibaba Cloud Linux 2提供长期免费的软件维护和技术支持。
--   深度优化，与阿里云基础设施的结合。持续提高系统启动速度、运行时性能及稳定性。
--   为云上应用程序环境提供Linux社区的最新增强功能。
--   通过更新的Linux内核、用户态软件及工具包提供更丰富的操作系统特性。
+-   与阿里云基础设施的结合优化，持续提升系统的启动速度、运行时的性能。此外，Alibaba Cloud Linux 2经过海量阿里巴巴经济体应用打磨，提供了最佳的稳定性体验。
+-   通过更新Linux内核、用户态软件及工具包，为云上应用程序环境提供Linux社区的最新操作系统增强功能。
 -   精简内核，减少潜在安全隐患。提供安全漏洞监控与修复策略，持续保证系统安全。
 
 ## Alibaba Cloud Linux 2特性
@@ -58,7 +57,7 @@ Alibaba Cloud Linux 2适用于下列场景。
 -   目前快速启动版镜像支持的地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）。
 
 **说明：** 该镜像的内核版本无法修改内核启动参数。 |
-|Alibaba Cloud Linux 2.1903 64位 等保2.0三级版|aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20200925.vhd|基于默认标准镜像进行等保加固的镜像版本，该镜像符合等保2.0三级安全保护的基本要求。使用说明请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)。|
+|Alibaba Cloud Linux 2.1903 64位 等保2.0三级版|aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20200925.vhd|基于默认标准镜像进行等保加固的镜像版本，该镜像符合等保2.0三级安全保护的基本要求。使用说明请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux等保2.0三级版镜像/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)。|
 |Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20200904.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像，实例规格族包括ecs.ebmg6a、ecs.ebmc6a、ecs.ebmr6a。 |
 |Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20200904.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像，实例规格族包括ecs.g6t、ecs.c6t。 |
 
