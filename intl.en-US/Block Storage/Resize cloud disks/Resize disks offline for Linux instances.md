@@ -152,7 +152,7 @@ When you view the disk partitions, you can find that the partitions and file sys
 
     ![growpart](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5082909951/p135834.png)
 
-    **Note:** When you perform this step, the `unexpected output in sfdisk --version [sfdisk, from util-linux 2.23.2]` error may be prompted. For information about how to troubleshoot the error ,see [\#d6e459](#d6e459).
+    **Note:** When you perform this step, the `unexpected output in sfdisk --version [sfdisk, from util-linux 2.23.2]` error may be prompted. For information about how to troubleshoot the error ,see FAQ.
 
 
 ## Step 5: Resize file systems
@@ -199,53 +199,6 @@ This step describes how to resize the file system of a partition within an ECS i
 
     -   If the file systems are resized and the business programs in the instance can run properly, the resizing operation is complete.
     -   If the file systems fail to be resized, use the snapshot that you created in Step 1 to roll back the disk.
-
-## FAQ
-
--   Problem description: When the `growpart /dev/vda 1` command is run, the `unexpected output in sfdisk --version [sfdisk, from util-linux 2.23.2]` error is prompted.
-
-    Solution:
-
-    1.  Run the following command to change the character encoding type of the ECS instance:
-
-        ```
-        LANG=en_US.UTF-8
-        ```
-
-    2.  If the problem persists, run the `reboot` command to restart the ECS instance.
-    3.  If the problem persists after the instance is restarted, run the following command to modify the local environment variable, and then restart the instance again:
-
-        ```
-        localectl set-locale LANG=en_US.UTF-8
-        ```
-
-    If you are using a CentOS 8 image and the preceding solution cannot solve the problem, run the following command to change the character encoding type:
-
-    ```
-    export LANGUAGE=en_US.UTF-8
-    ```
-
--   Problem description: When the `growpart /dev/vda 1` command is run, the `-bash: growpart: command not found` error is prompted.
-
-    Solution:
-
-    1.  Run the `uname -a` command to check the version of the Linux kernel. The procedure described in this topic applies to Linux kernel 3.6.0 and later.
-
-        If the version of the Linux kernel is earlier than 3.6.0, you can extend partitions of a disk on the instance. For more information, see [Procedure for instances with kernels earlier than 3.6.0](/intl.en-US/Best Practices/Block Storage/Resize partitions and file systems of Linux system disks.md) and [Resize partitions and file systems of Linux data disks](/intl.en-US/Best Practices/Block Storage/Resize partitions and file systems of Linux data disks.md).
-
-    2.  Install the growpart tool.
-        -   Run the following command if the instance runs a CentOS 7 or later operating system:
-
-            ```
-            yum install -y cloud-utils-growpart
-            ```
-
-        -   Run the following command if the instance runs a Debian 9 or later operating system or a Ubuntu 14 or later operating system:
-
-            ```
-            apt install -y cloud-guest-utils
-            ```
-
 
 ## FAQ
 
