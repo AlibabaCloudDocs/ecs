@@ -152,7 +152,7 @@ When you view the disk partitions, you can find that the partitions and file sys
 
     ![growpart](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5082909951/p135834.png)
 
-    **Note:** When you perform this step, the `unexpected output in sfdisk --version [sfdisk, from util-linux 2.23.2]` error may be prompted. For information about how to troubleshoot the error ,see FAQ.
+    **Note:** When you perform this step, the `unexpected output in sfdisk --version [sfdisk, from util-linux 2.23.2]` error may be prompted. For information about how to troubleshoot the error, see FAQ.
 
 
 ## Step 5: Resize file systems
