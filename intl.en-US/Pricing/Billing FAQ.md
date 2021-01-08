@@ -525,7 +525,7 @@ No, you cannot purchase a subscription image separately.
 
 You can use one of the following methods to purchase a subscription image:
 
--   When you create an ECS instance, set Billing Method to **Subscription**, select an **Alibaba Cloud Marketplace** image, and then specify a subscription duration by setting Duration.
+-   When you create an instance, set Billing Method to **Subscription**, select an **Alibaba Cloud Marketplace** image, and then specify a subscription duration by setting Duration.
 
     **Note:** In this case, you must pay for both the instance and the image. The instance is created on successful payment for both the image and instance.
 
