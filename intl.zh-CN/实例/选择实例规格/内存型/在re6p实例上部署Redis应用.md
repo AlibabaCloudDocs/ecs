@@ -7,6 +7,7 @@ Redis应用运行在持久内存型实例上可以降低单GiB内存的成本，
 -   ecs.re6p-redis.large
 -   ecs.re6p-redis.xlarge
 -   ecs.re6p-redis.2xlarge
+-   ecs.re6p-redis.13xlarge
 
 **说明：** ecs.re6p-redis.<nx\>large是为Redis应用推出的专用实例规格，只支持将持久内存作为内存使用。
 
@@ -56,7 +57,43 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
         yum install –y redis-3.2.12
         ```
 
-4.  为Redis服务配置默认的DRAM和持久内存大小。
+4.  配置网卡多队列。
+
+    网卡多队列可以帮助Redis应用获得更好的性能。
+
+    1.  下载自动配置脚本ecs\_mq。
+
+        ```
+        wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/ecs_mq/ecs_mq_latest.tgz
+        ```
+
+    2.  解压脚本。
+
+        ```
+        tar -xzf ecs_mq_latest.tgz
+        ```
+
+    3.  更换工作路径。
+
+        ```
+        cd ecs_mq/
+        ```
+
+    4.  运行脚本。
+
+        不同的镜像版本的命令格式不同，例如Alibaba Cloud Linux 2.1903镜像运行`bash install.sh aliyun 2`。
+
+        ```
+        bash install.sh <系统名称> <系统主版本号>
+        ```
+
+    5.  启动服务。
+
+        ```
+        systemctl start ecs_mq
+        ```
+
+5.  为Redis服务配置默认的DRAM和持久内存大小。
 
     **说明：** 为防止其他未经优化的应用（例如Nginx）分配到持久内存的空间地址，引起性能问题，建议您在启动Redis应用时将所有持久内存分配给Redis应用。
 
@@ -65,18 +102,21 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
     -   端口号6379、DRAM=4 GiB、持久内存32 GiB
 
         ```
+        export MEMKIND_DAX_KMEM_NODES=1
         redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
         ```
 
     -   端口号6379、DRAM=2 GiB、持久内存32 GiB
 
         ```
+        export MEMKIND_DAX_KMEM_NODES=1
         redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
         ```
 
     -   端口号6379、DRAM=0 GiB、持久内存32 GiB
 
         ```
+        export MEMKIND_DAX_KMEM_NODES=1
         redis-server /etc/redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
         ```
 
@@ -111,7 +151,7 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
     yum -y groupinstall 'Development Tools'
     ```
 
-    **说明：** Development Tools包括gcc编译器、autoreconf编译工具等。
+    **说明：** Development Tools包括gcc编译器等工具。
 
 4.  下载Redis安装包。
 
@@ -122,18 +162,13 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
 
 5.  下载并安装为Redis应用使能持久内存的patch。
 
+    关于如何下载并安装更多Redis版本对应patch，请参见[下载使能持久内存的patch](#section_7l0_0ys_dm0)。
+
     ```
-    wget https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.diff -O redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
+    wget https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff -O redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
     cd redis-4.0.14
     git apply --ignore-whitespace ../redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
     ```
-
-    目前支持的patch如下所示：
-
-    -   [https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.diff](https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.diff)
-    -   [https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0-devel.diff](https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0-devel.diff)
-    -   [https://github.com/redis/redis/compare/3.2.12...memKeyDB:3.2.diff](https://github.com/redis/redis/compare/3.2.12...memKeyDB:3.2.diff)
-    **说明：** 如果您有其他版本的支持需求，请[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
 
 6.  安装memkind。
 
@@ -163,7 +198,43 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
     make install
     ```
 
-9.  为Redis服务配置默认的DRAM和持久内存大小。
+9.  配置网卡多队列。
+
+    网卡多队列可以帮助Redis应用获得更好的性能。
+
+    1.  下载自动配置脚本ecs\_mq。
+
+        ```
+        wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/ecs_mq/ecs_mq_latest.tgz
+        ```
+
+    2.  解压脚本。
+
+        ```
+        tar -xzf ecs_mq_latest.tgz
+        ```
+
+    3.  更换工作路径。
+
+        ```
+        cd ecs_mq/
+        ```
+
+    4.  运行脚本。
+
+        不同的镜像版本的命令格式不同，例如CentOS 7.6镜像运行`bash install.sh centos 7`。
+
+        ```
+        bash install.sh <系统名称> <系统主版本号>
+        ```
+
+    5.  启动服务。
+
+        ```
+        systemctl start ecs_mq
+        ```
+
+10. 为Redis服务配置默认的DRAM和持久内存大小。
 
     **说明：** 为防止其他未经优化的应用（例如Nginx）分配到持久内存的空间地址，引起性能问题，建议您在启动Redis应用时将所有持久内存分配给Redis应用。
 
@@ -187,4 +258,33 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
         redis-server redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
         ```
 
+
+## 下载使能持久内存的patch
+
+替换示例命令中的下载地址以及文件名中对应的版本号即可，例如下载Redis 6.0.5适用的patch的命令如下：
+
+```
+wget https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0.5-devel.diff -O redis_6.0.5_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
+```
+
+目前支持的patch的下载地址如下所示：
+
+-   Redis 6.0版本
+    -   [https://github.com/redis/redis/compare/6.0.9...memKeyDB:6.0.9-devel.diff](https://github.com/redis/redis/compare/6.0.9...memKeyDB:6.0.9-devel.diff)
+    -   [https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0.5-devel.diff](https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0.5-devel.diff)
+    -   [https://github.com/redis/redis/compare/6.0.3...memKeyDB:6.0.3-devel.diff](https://github.com/redis/redis/compare/6.0.3...memKeyDB:6.0.3-devel.diff)
+    -   [https://github.com/redis/redis/compare/6.0.0...memKeyDB:6.0.0-devel.diff](https://github.com/redis/redis/compare/6.0.0...memKeyDB:6.0.0-devel.diff)
+-   Redis 5.0版本
+    -   [https://github.com/redis/redis/compare/5.0.9...memKeyDB:5.0.9-devel.diff](https://github.com/redis/redis/compare/5.0.9...memKeyDB:5.0.9-devel.diff)
+    -   [https://github.com/redis/redis/compare/5.0.2...memKeyDB:5.0.2-devel.diff](https://github.com/redis/redis/compare/5.0.2...memKeyDB:5.0.2-devel.diff)
+    -   [https://github.com/redis/redis/compare/5.0.0...memKeyDB:5.0.0-devel.diff](https://github.com/redis/redis/compare/5.0.0...memKeyDB:5.0.0-devel.diff)
+-   Redis 4.0版本
+    -   [https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff](https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff)
+    -   [https://github.com/redis/redis/compare/4.0.9...memKeyDB:4.0.9-devel.diff](https://github.com/redis/redis/compare/4.0.9...memKeyDB:4.0.9-devel.diff)
+    -   [https://github.com/redis/redis/compare/4.0.2...memKeyDB:4.0.2-devel.diff](https://github.com/redis/redis/compare/4.0.2...memKeyDB:4.0.2-devel.diff)
+    -   [https://github.com/redis/redis/compare/4.0.0...memKeyDB:4.0.0-devel.diff](https://github.com/redis/redis/compare/4.0.0...memKeyDB:4.0.0-devel.diff)
+-   Redis 3.0版本
+    -   [https://github.com/redis/redis/compare/3.2.12...memKeyDB:3.2.diff](https://github.com/redis/redis/compare/3.2.12...memKeyDB:3.2.diff)
+
+**说明：** 如果您有其他版本的支持需求，请[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
 
