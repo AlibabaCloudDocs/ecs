@@ -30,13 +30,13 @@ keyword: [分区, 分区格式化, 大于2 TiB, 数据盘, parted, GPT]
 
 2.  在运行窗口输入diskmgmt.msc并单击**确定**，打开磁盘管理。
 
-    ![磁盘管理](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3163359951/p111279.png)
+    ![磁盘管理](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3163359951/p111279.png)
 
 3.  找到需要分区格式化的磁盘（本示例中为**磁盘 1**）。磁盘状态显示为**脱机**。
 
 4.  右击**磁盘 1**周边空白处，单击**联机**。
 
-    ![联机](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3163359951/p111280.png)
+    ![联机](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3163359951/p111280.png)
 
     联机后，**磁盘 1**的状态显示为**没有初始化**。
 
@@ -44,33 +44,33 @@ keyword: [分区, 分区格式化, 大于2 TiB, 数据盘, parted, GPT]
 
 6.  在初始化磁盘对话框里，选择**磁盘 1**，并选择磁盘分区形式为**GPT**。
 
-    ![GPT分区](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3163359951/p111271.png)
+    ![GPT分区](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3163359951/p111271.png)
 
 7.  在磁盘管理窗口，右键单击**磁盘 1**的**未分配**区域，选择**新建简单卷**，创建一个4 TiB的NTFS格式的卷。
 
-    ![新建简单卷](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p111281.png)
+    ![新建简单卷](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p111281.png)
 
 8.  在新建简单卷向导中，单击**下一步**，并完成以下操作。
 
     1.  指定卷大小：指定简单卷大小。如果您只要创建一个主区，使用默认值。单击**下一步**。您也可以把**磁盘 1**分成多个分区来使用。
 
-        **说明：** NTFS卷上的最大尺寸，理论上，NTFS的最大卷包含2 64 -1个簇。实际上，WinXP Pro中，NTFS卷的最大限制是2 32 -1个簇。例如，如果是64 KiB的簇，那NTFS卷的最大尺寸就是约256 TiB。如果选择4 KiB的簇，那NTFS卷的最大尺寸就是约16 TiB。NTFS会根据磁盘的容量来自动选择簇的大小。
+        **说明：** NTFS卷上的最大尺寸，理论上，NTFS的最大卷包含2 64-1个簇。实际上，WinXP Pro中，NTFS卷的最大限制是2 32-1个簇。例如，如果是64 KiB的簇，那NTFS卷的最大尺寸就是约256 TiB。如果选择4 KiB的簇，那NTFS卷的最大尺寸就是约16 TiB。NTFS会根据磁盘的容量来自动选择簇的大小。
 
-        ![新建简单卷向导](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p111283.png)
+        ![新建简单卷向导](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p111283.png)
 
     2.  分配驱动器号和路径：选择一个驱动器号（即盘符），例如D。单击**下一步**。
 
-        ![分配磁盘号](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p111285.png)
+        ![分配磁盘号](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p111285.png)
 
     3.  格式化分区：选择格式化设置，包括文件系统、分配单元大小和卷标，确认是否**执行快速格式化**和**启用文件和文件夹压缩**。例如，选择**执行快速格式化**。单击**下一步**。
 
-        ![设置卷](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p111287.png)
+        ![设置卷](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p111287.png)
 
     4.  开始创建新简单卷：当向导对话框里显示已经完成新简单卷的创建时，单击**完成**，关闭新建简单卷向导。
 
     格式化分区完成后，**磁盘管理**中**磁盘 4**的状态如下图所示。
 
-    ![状态良好](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p111289.png)
+    ![状态良好](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p111289.png)
 
 
 ## 更换Windows数据盘分区格式
@@ -85,35 +85,35 @@ keyword: [分区, 分区格式化, 大于2 TiB, 数据盘, parted, GPT]
 
 3.  右键单击一个简单卷，在弹出菜单中，选择**删除卷**。
 
-    ![删除卷](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p4433.png)
+    ![删除卷](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p4433.png)
 
 4.  右键单击磁盘周边的空白区，在弹出菜单中，选择**转换成GPT磁盘**。
 
 5.  在磁盘管理窗口，右键单击磁盘的**未分配**区域，选择**新建简单卷**，创建一个3 TiB的NTFS格式的卷。
 
-    ![新建简单卷](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p4434.png)
+    ![新建简单卷](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p4434.png)
 
 6.  在新建简单卷向导中，单击**下一步**，并完成以下操作。
 
     1.  指定卷大小：指定简单卷大小。如果您只要创建一个主区，使用默认值。单击**下一步**。您也可以把**磁盘 2**分成多个分区来使用。
 
-        ![向导](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p4435.png)
+        ![向导](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p4435.png)
 
-        **说明：** NTFS卷上的最大尺寸，理论上，NTFS的最大卷包含2 64 -1个簇。实际上，WinXP Pro中，NTFS卷的最大限制是2 32 -1个簇。例如，如果是64 KiB的簇，那NTFS卷的最大尺寸就是约256 TiB。如果选择4 KiB的簇，那NTFS卷的最大尺寸就是约16 TiB。NTFS会根据磁盘的容量来自动选择簇的大小。
+        **说明：** NTFS卷上的最大尺寸，理论上，NTFS的最大卷包含2 64-1个簇。实际上，WinXP Pro中，NTFS卷的最大限制是2 32-1个簇。例如，如果是64 KiB的簇，那NTFS卷的最大尺寸就是约256 TiB。如果选择4 KiB的簇，那NTFS卷的最大尺寸就是约16 TiB。NTFS会根据磁盘的容量来自动选择簇的大小。
 
     2.  分配驱动器号和路径：选择一个驱动器号（即盘符），例如E，单击**下一步**。
 
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p4436.png)
+        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p4436.png)
 
     3.  格式化分区：选择格式化设置，包括文件系统、分配单元大小和卷标，确认是否**执行快速格式化**和**启用文件和文件夹压缩**。例如，选择**执行快速格式化**。单击**下一步**。
 
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p4437.png)
+        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p4437.png)
 
     4.  开始创建新简单卷：当向导对话框里显示已经完成新简单卷的创建时，单击**完成**，关闭新建简单卷向导。
 
     格式化分区完成后，**磁盘管理**中**磁盘 4**的状态如下图所示。
 
-    ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p6088.png)
+    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p6088.png)
 
 
 ## 分区格式化Linux数据盘
@@ -213,7 +213,7 @@ keyword: [分区, 分区格式化, 大于2 TiB, 数据盘, parted, GPT]
 
     Parted工具分区结果如下所示。
 
-    ![parted分区](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/8108182061/p174095.png)
+    ![parted分区](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8108182061/p174095.png)
 
 4.  运行以下命令，使系统重读分区表。
 
@@ -261,11 +261,15 @@ keyword: [分区, 分区格式化, 大于2 TiB, 数据盘, parted, GPT]
 
     如果返回结果里出现新建文件系统的信息，说明挂载成功，您可以使用新的文件系统了。
 
-    ![查看df结果](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4439182061/p174102.png)
+    ![查看df结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4439182061/p174102.png)
 
 9.  （推荐）在/etc/fstab文件中写入新分区信息，启动开机自动挂载分区。
 
     1.  运行以下命令，备份etc/fstab。
+
+        ```
+        cp /etc/fstab /etc/fstab.bak
+        ```
 
     2.  运行以下命令，向/etc/fstab里写入新分区信息。
 
@@ -306,7 +310,7 @@ mkfs.ext4: Size of device /dev/vdb too big to be expressed in 32 bits using a bl
 
     运行结果如下所示。
 
-    ![查询版本](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4163359951/p4439.png)
+    ![查询版本](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4163359951/p4439.png)
 
     如果当前版本低于1.42，按以下步骤安装软件。
 
