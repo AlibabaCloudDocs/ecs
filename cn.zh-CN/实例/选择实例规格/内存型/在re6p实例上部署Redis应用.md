@@ -151,7 +151,7 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
     yum -y groupinstall 'Development Tools'
     ```
 
-    **说明：** Development Tools包括gcc编译器、autoreconf编译工具等。
+    **说明：** Development Tools包括gcc编译器等工具。
 
 4.  下载Redis安装包。
 
