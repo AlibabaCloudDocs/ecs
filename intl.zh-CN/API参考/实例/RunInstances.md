@@ -57,9 +57,7 @@
 |VSwitchId|String|否|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|虚拟交换机ID。如果您创建的是VPC类型ECS实例，必须指定虚拟交换机ID，且安全组和虚拟交换机在同一个专有网络VPC中。 |
 |InstanceName|String|否|k8s-node-\[1,4\]-alibabacloud|实例名称。长度为2~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（\_）、点号（.）或者连字符（-）。默认值为实例的`InstanceId`。
 
- **说明：** 创建多台ECS实例时，您可以使用`UniqueSuffix`为这些实例设置不同的实例名称。您也可以使用`name_prefix[begin_number,bits]name_suffix`的命名格式设置有序的实例名称，例如，设置`InstanceName`取值为`k8s-node-[1,4]-alibabacloud`，则第一台ECS实例的实例名称为`k8s-node-0001-alibabacloud` 。详情请参见[API FAQ](~~122617#howToAddSequentialSuffix~~)。
-
- 当实例名称或主机名称不设置命名后缀`name_suffix`，即命名格式为`name_prefix[begin_number,bits]`时，`UniqueSuffix`不生效。例如，当`InstanceName`取值为`instance-[99,3]`，`UniqueSuffix`取值为`true`时，生效的实例名称为`instance099`，而不是`instance099001`。 |
+ 创建多台ECS实例时，您可以批量设置有序的实例名称。具体操作，请参见[批量设置有序的实例名称或主机名称](~~196048~~)。 |
 |Description|String|否|Instance\_Description|实例的描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
 |InternetMaxBandwidthIn|Integer|否|10|公网入带宽最大值，单位为Mbit/s。取值范围：
 
@@ -74,15 +72,17 @@
 -   Windows实例：字符长度为2~15，不支持点号（.），不能全是数字。允许大小写英文字母、数字和短横线（-）。
 -   其他类型实例（Linux等）：字符长度为2~64，支持多个点号（.），点之间为一段，每段允许大小写英文字母、数字和短横线（-）。
 
- **说明：** 创建多台ECS实例时，您可以使用`UniqueSuffix`为这些实例设置不同的主机名称。您也可以使用`name_prefix[begin_number,bits]name_suffix`的命名格式设置有序的主机名称，例如，设置`HostName`取值为`k8s-node-[1,4]-ecshost`，则第一台ECS实例的主机名称为`k8s-node-0001-ecshost`。详情请参见[API FAQ](~~122617#howToAddSequentialSuffix~~)。
-
- 当实例名称或主机名称不设置命名后缀`name_suffix`，即命名格式为`name_prefix[begin_number,bits]`时，`UniqueSuffix`不生效。例如，当`InstanceName`取值为`instance-[99,3]`，`UniqueSuffix`取值为`true`时，生效的实例名称为`instance099`，而不是`instance099001`。 |
-|UniqueSuffix|Boolean|否|true|是否为`HostName`和`InstanceName`添加有序后缀，有序后缀从001开始递增，最大不能超过999。例如，`LocalHost001`，`LocalHost002`和`MyInstance001`，`MyInstance002`。取值范围：
+ 创建多台ECS实例时，您可以批量设置有序的主机名。具体操作，请参见[批量设置有序的实例名称或主机名称](~~196048~~)。 |
+|UniqueSuffix|Boolean|否|true|当创建多台实例时，是否为`HostName`和`InstanceName`自动添加有序后缀。有序后缀从001开始递增，最大不能超过999。取值范围：
 
  -   true：添加
 -   false：不添加
 
- 默认值：false |
+ 默认值：false
+
+ 当`HostName`或`InstanceName`按照指定排序格式设置，未设置命名后缀`name_suffix`，即命名格式为`name_prefix[begin_number,bits]`时，`UniqueSuffix`不生效，名称仅按照指定顺序排序。
+
+ 更多信息，请参见[批量设置有序的实例名称或主机名称](~~196048~~)。 |
 |Password|String|否|EcsV587!|实例的密码。长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号中的三类字符。特殊符号可以是：
 
  ```
@@ -140,7 +140,6 @@
  -   cloud\_efficiency：20~32768
 -   cloud\_ssd：20~32768
 -   cloud\_essd：20~32768
--   ephemeral\_ssd：5~800
 -   cloud：5~2000
 
  该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。 |
@@ -151,7 +150,6 @@
 
  -   cloud\_efficiency：高效云盘
 -   cloud\_ssd：SSD云盘
--   ephemeral\_ssd：本地SSD盘
 -   cloud\_essd：ESSD云盘
 -   cloud：普通云盘。
 
@@ -356,10 +354,26 @@
 
  默认值：空
 
+ 以下任一场景，实例启动的私有池容量选项只能取值`None`或不传值。
+
+ -   创建抢占式实例。
+-   创建经典网络类型的ECS实例。
+-   在专有宿主机DDH上创建ECS实例。
+
  **说明：** 该参数邀测中，详情请提交工单咨询。 |
 |PrivatePoolOptions.Id|String|否|eap-bp67acfmxazb4\*\*\*\*|私有池ID。即弹性保障服务ID或容量预定服务ID。
 
  **说明：** 该参数邀测中，详情请提交工单咨询。 |
+|SchedulerOptions.DedicatedHostClusterId|String|否|dc-bp12wlf6am0vz9v2\*\*\*\*|指定ECS实例所属的专有宿主机集群，系统会自动选择该专有宿主机集群中的一台专有宿主机部署ECS实例。
+
+ **说明：** 仅在`Tenancy`设置为`host`时生效。
+
+ 在您同时指定了专有宿主机（`DedicatedHostId`）和专有宿主机集群（`SchedulerOptions.DedicatedHostClusterId`）时：
+
+ -   如果专有宿主机属于专有宿主机集群，则优先将ECS实例部署在指定的专有宿主机上。
+-   如果专有宿主机不属于专有宿主机集群，则ECS实例创建失败。
+
+ 您可以通过[DescribeDedicatedHostClusters](~~184145~~)查询专有宿主机集群ID列表。 |
 
 ## 返回数据
 
@@ -556,7 +570,7 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的网络计费方式，请确认相关参数是否正确。|
 |400|InvalidInstanceType.ValueNotSupported|%s|该操作暂不支持指定的实例类型。|
-|403|InstanceType.Offline|%s|实例规格已停售或者供货不足。|
+|403|InstanceType.Offline|%s|实例规格因停售、供货不足等原因，不支持该操作。|
 |400|RegionUnauthorized|%s|该地域未被授权。|
 |400|Zone.NotOnSale|%s|该可用区暂时关闭了售卖。|
 |400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
