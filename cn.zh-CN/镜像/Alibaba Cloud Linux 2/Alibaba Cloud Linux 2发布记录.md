@@ -15,6 +15,24 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 
 |镜像ID|发布时间|发布内容|
 |----|----|----|
+|aliyun\_2\_1903\_x64\_20G\_alibase\_20201231.vhd|2020-12-31|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本，兼容最新CentOS 7.9版本，修复软件包安全漏洞
+-   新增并默认开启update-motd服务
+-   默认开启rhel-loadmodules服务
+-   增加vring\_force\_dma\_api启动参数
+-   内核更新：
+    -   版本更新至kernel-4.19.91-22.al7
+    -   修复内核缺陷及重要安全漏洞
+    -   同步社区最新的ext4文件系统，增强稳定性
+    -   默认开启RAID支持
+    -   增加Dragonfly Enclaves特性支持
+    -   增加Intel IceLake PMU Topdown性能调试支持
+    -   优化增强IO\_Uring Buffer读能力
+    -   优化增强blk-throttle
+    -   增加SM2国密算法支持以及SM2-with-SM3的标准X509格式证书支持
+    -   增加blk-mq batch request支持
+    -   增加PCIe Error recover特性支持
+    -   优化Swap，大大提升内存超卖稳定性
+    -   增加Alibaba Cloud Linux容器增强技术支持 |
 |aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20200925.vhd|2020-09-25|-   新增`Alibaba Cloud Linux 2.1903 LTS 64位 等保2.0三级版`镜像
 -   该镜像是根据*GB/T22239-2019信息安全技术网络安全等级保护基本要求*进行等保加固的镜像，您使用本镜像无需额外配置即可满足以下等保合规要求：
 
@@ -23,7 +41,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
     -   安全审计
     -   入侵防范
     -   恶意代码防范
-详情请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)
+详情请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux等保2.0三级版镜像/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)
 
 -   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20200904.vhd版本制作
 -   内核版本：kernel-4.19.91-21.al7
@@ -60,7 +78,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20200324.vhd|2020-03-24|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本，兼容最新CentOS 7.8版本，修复软件包安全漏洞
 -   新增支持通过yum获取安全漏洞（CVE）更新
 -   正式发布Alibaba Cloud Linux 2的LTS版本，并更新/etc/alinux-release为Aliyun Linux release 2.1903 LTS \(Hunting Beagle\)
--   默认打开tuned服务
+-   默认开启tuned服务
 -   内核更新：
     -   版本更新至kernel-4.19.91-18.al7
     -   增加NVMe设备支持
