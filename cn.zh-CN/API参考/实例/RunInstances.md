@@ -372,6 +372,16 @@
 |PrivatePoolOptions.Id|String|否|eap-bp67acfmxazb4\*\*\*\*|私有池ID。即弹性保障服务ID或容量预定服务ID。
 
  **说明：** 该参数邀测中，详情请提交工单咨询。 |
+|SchedulerOptions.DedicatedHostClusterId|String|否|dc-bp12wlf6am0vz9v2\*\*\*\*|指定ECS实例所属的专有宿主机集群，系统会自动选择该专有宿主机集群中的一台专有宿主机部署ECS实例。
+
+ **说明：** 仅在`Tenancy`设置为`host`时生效。
+
+ 在您同时指定了专有宿主机（`DedicatedHostId`）和专有宿主机集群（`SchedulerOptions.DedicatedHostClusterId`）时：
+
+ -   如果专有宿主机属于专有宿主机集群，则优先将ECS实例部署在指定的专有宿主机上。
+-   如果专有宿主机不属于专有宿主机集群，则ECS实例创建失败。
+
+ 您可以通过[DescribeDedicatedHostClusters](~~184145~~)查询专有宿主机集群ID列表。 |
 
 ## 返回数据
 
