@@ -72,6 +72,9 @@
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |DiskId|String|d-bp131n0q38u3a4zi\*\*\*\*|云盘ID。 |
+|OrderId|String|20413515388\*\*\*\*|生成的订单ID。
+
+ **说明：** 仅在创建包年包月云盘时会返回订单ID。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
 
 ## 示例
@@ -110,7 +113,7 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 ```
 {
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-    "DiskId": "d-bp131n0q38u3a4zi****"
+    "DiskId": "d-bp131n0q38u3a4zi****",
 }
 ```
 
@@ -141,7 +144,7 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 |403|InvalidDiskSize.NotSupported|disk size is not supported.|磁盘大小不合法。|
 |400|InvalidDiskCategory.NotSupported|The specified disk category is not support.|不支持的磁盘种类。|
 |400|Account.Arrearage|Your account has an outstanding payment.|您的账号存在未支付的款项。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|参数DiskCategory不合法。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |403|InvalidAccountStatus.NotEnoughBalance|Your account does not have enough balance.|账号余额不足，请您先充值再进行该操作。|
 |403|InvalidAccountStatus.SnapshotServiceUnavailable|Snapshot service has not been opened yet.|快照服务未开通，操作无法执行。|
 |400|InvalidDataDiskCategory.ValueNotSupported|%s|指定的数据磁盘类型无效。|
@@ -165,18 +168,19 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 |403|QuotaExceed.PostPaidDisk|Living postPaid disks quota exceeded.|按量付费磁盘数量已超出允许数量。|
 |403|InvalidRegion.NotSupport|The specified region does not support byok.|该地域不支持BYOK。|
 |403|UserNotInTheWhiteList|The user is not in byok white list.|您不在byok白名单中，请加入白名单后重试。|
-|400|InvalidParameter.EncryptedIllegal|The specified parameter Encrypted must be true when kmsKeyId is not empty.|设置参数KmsKeyId后，您必须开启加密属性。|
+|400|InvalidParameter.EncryptedIllegal|The specified parameter Encrypted must be true when kmsKeyId is not empty.|设置参数KMSKeyId后，您必须开启加密属性。|
 |404|InvalidParameter.KMSKeyId.NotFound|The specified KMSKeyId does not exist.|指定的参数KMSKeyId不存在。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |403|SecurityRisk.3DVerification|We have detected a security risk with your default credit or debit card. Please proceed with verification via the link in your email.|我们检测到您的默认信用卡或借记卡存在安全风险。请通过电子邮件中的链接进行验证。|
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键不合法。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值不合法。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |404|InvalidInstanceId.NotFound|The InstanceId provided does not exist in our records.|指定的实例不存在，请您检查实例ID是否正确。|
 |403|InvalidStatus.Upgrading|The instance is upgrading; please try again later.|实例正在升级，请稍后重试。|
 |400|InvalidPerformanceLevel.Malformed|The specified parameter PerformanceLevel is not valid.|指定的参数PerformanceLevel无效。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
 |404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
+|403|OperationDenied.SnapshotNotAllowed|The specified snapshot is not allowed to create disk.|指定的快照不支持创建磁盘。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
