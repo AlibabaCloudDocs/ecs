@@ -74,6 +74,9 @@
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |DiskId|String|d-bp131n0q38u3a4zi\*\*\*\*|云盘ID。 |
+|OrderId|String|20413515388\*\*\*\*|生成的订单ID。
+
+ **说明：** 仅在创建包年包月云盘时会返回订单ID。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
 
 ## 示例
@@ -112,7 +115,7 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 ```
 {
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-    "DiskId": "d-bp131n0q38u3a4zi****"
+    "DiskId": "d-bp131n0q38u3a4zi****",
 }
 ```
 
@@ -179,6 +182,7 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 |400|InvalidPerformanceLevel.Malformed|The specified parameter PerformanceLevel is not valid.|指定的参数PerformanceLevel无效。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
 |404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
+|403|OperationDenied.SnapshotNotAllowed|The specified snapshot is not allowed to create disk.|指定的快照不支持创建磁盘。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
