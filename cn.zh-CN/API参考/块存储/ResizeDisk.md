@@ -39,6 +39,9 @@
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
+|OrderId|String|20413515388\*\*\*\*|生成的订单ID。
+
+ **说明：** 仅在扩容包年包月云盘时会返回订单ID。 |
 |RequestId|String|F3CD6886-D8D0-4FEE-B93E-1B73239673DE|请求ID。 |
 
 ## 示例
@@ -59,6 +62,7 @@ https://ecs.aliyuncs.com/?Action=ResizeDisk
 
 ```
 <ResizeDiskResponse>
+      <OrderId>20413515388****</OrderId>
       <RequestId>F3CD6886-D8D0-4FEE-B93E-1B73239673DE</RequestId>
 </ResizeDiskResponse>
 ```
@@ -67,6 +71,7 @@ https://ecs.aliyuncs.com/?Action=ResizeDisk
 
 ```
 {
+    "OrderId": "20413515388****",
     "RequestId": "F3CD6886-D8D0-4FEE-B93E-1B73239673DE"
 }
 ```
