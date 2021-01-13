@@ -51,6 +51,9 @@
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
+|OrderId|String|20413515388\*\*\*\*|生成的订单ID。
+
+ **说明：** 仅在变更或修改包年包月云盘时会返回订单ID。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
 |TaskId|String|t-bp67acfmxazb4p\*\*\*\*|变配云盘的任务ID。
 
@@ -73,8 +76,9 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 
 ```
 <ModifyDiskSpecResponse>
-      <TaskId>t-bp67acfmxazb4p****</TaskId>
-      <RequestId>5B38289D-88AB-42BD-B021-12FC6942F099</RequestId>
+    <TaskId>t-bp67acfmxazb4p****</TaskId>
+    <RequestId>5B38289D-88AB-42BD-B021-12FC6942F099</RequestId>
+    <OrderId>20413515388****</TaskId>
 </ModifyDiskSpecResponse>
 ```
 
@@ -83,7 +87,8 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 ```
 {
   "TaskId": "t-bp67acfmxazb4p****",
-  "RequestId": "5B38289D-88AB-42BD-B021-12FC6942F099"
+  "RequestId": "5B38289D-88AB-42BD-B021-12FC6942F099",
+  "OrderId": "20413515388****"
 }
 ```
 
@@ -100,7 +105,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 |403|OperationDenied|The type of the disk does not support the operation.|此磁盘种类不支持指定的操作。|
 |400|InvalidPerformanceLevel.Malformed|The specified parameter PerformanceLevel is not valid.|指定的参数PerformanceLevel无效。|
 |403|OperationDenied.PerformanceLevelNotMatch|The specified PerformanceLevel and disk size do not match.|指定的性能等级与磁盘大小不匹配。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的DiskCategory参数有误。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |403|OperationDenied.NoStock|The requested resource is sold out in the specified zone; try other types of resources or other regions and zones.|库存不足。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
