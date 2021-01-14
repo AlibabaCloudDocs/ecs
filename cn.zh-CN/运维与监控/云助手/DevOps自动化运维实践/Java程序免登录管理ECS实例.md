@@ -202,61 +202,61 @@ keyword: [Java使用云助手, 云助手SDK示例, Java管理ECS]
     }
     ```
 
-    返回结果如下所示，通过InvokeInstances，您可以查看命令的运行状态和结果。更多信息，请参见[DescribeInvocations](/cn.zh-CN/API参考/云助手/DescribeInvocations.md)。
 
-    ```
-    {
-        "requestId": "42837BE9-1230-4E66-A21C-EC11C24221A3",
-        "totalCount": 1,
-        "pageNumber": 1,
-        "pageSize": 10,
-        "invocations": [{
-            "invokeId": "t-hz0b22o6******",
+返回结果如下所示，通过InvokeInstances，您可以查看命令的运行状态和结果。更多信息，请参见[DescribeInvocations](/cn.zh-CN/API参考/云助手/DescribeInvocations.md)。
+
+```
+{
+    "requestId": "42837BE9-1230-4E66-A21C-EC11C24221A3",
+    "totalCount": 1,
+    "pageNumber": 1,
+    "pageSize": 10,
+    "invocations": [{
+        "invokeId": "t-hz0b22o6******",
+        "creationTime": "2021-01-07T10:11:03Z",
+        "commandId": "c-hz0179jxlag****",
+        "commandType": "RunShellScript",
+        "commandName": "cmd-2021-01-07",
+        "commandContent": "******",
+        "frequency": "",
+        "timed": false,
+        "invokeStatus": "PartialFailed",
+        "invocationStatus": "PartialFailed",
+        "parameters": "{}",
+        "username": "",
+        "invokeInstances": [{
+            "instanceId": "i-bp11entzst4xwyb******",
+            "repeats": 1,
+            "instanceInvokeStatus": "Finished",
+            "invocationStatus": "Success",
+            "output": "******",
+            "exitCode": 0,
+            "dropped": 0,
+            "errorCode": "",
+            "errorInfo": "",
             "creationTime": "2021-01-07T10:11:03Z",
-            "commandId": "c-hz0179jxlag****",
-            "commandType": "RunShellScript",
-            "commandName": "cmd-2021-01-07",
-            "commandContent": "******",
-            "frequency": "",
-            "timed": false,
-            "invokeStatus": "PartialFailed",
-            "invocationStatus": "PartialFailed",
-            "parameters": "{}",
-            "username": "",
-            "invokeInstances": [{
-                "instanceId": "i-bp11entzst4xwyb******",
-                "repeats": 1,
-                "instanceInvokeStatus": "Finished",
-                "invocationStatus": "Success",
-                "output": "******",
-                "exitCode": 0,
-                "dropped": 0,
-                "errorCode": "",
-                "errorInfo": "",
-                "creationTime": "2021-01-07T10:11:03Z",
-                "startTime": "2021-01-07T10:11:04Z",
-                "stopTime": "",
-                "finishTime": "2021-01-07T10:11:05Z",
-                "updateTime": "2021-01-07T10:11:05Z"
-            }, {
-                "instanceId": "i-bp1ida94x2133l******",
-                "repeats": 1,
-                "instanceInvokeStatus": "Failed",
-                "invocationStatus": "Timeout",
-                "output": "******",
-                "dropped": 49259,
-                "errorCode": "ExecutionTimeout",
-                "errorInfo": "the command execution has been timeout.",
-                "creationTime": "2021-01-07T10:11:03Z",
-                "startTime": "2021-01-07T10:11:04Z",
-                "stopTime": "",
-                "finishTime": "2021-01-07T10:12:04Z",
-                "updateTime": "2021-01-07T10:12:04Z"
-            }]
+            "startTime": "2021-01-07T10:11:04Z",
+            "stopTime": "",
+            "finishTime": "2021-01-07T10:11:05Z",
+            "updateTime": "2021-01-07T10:11:05Z"
+        }, {
+            "instanceId": "i-bp1ida94x2133l******",
+            "repeats": 1,
+            "instanceInvokeStatus": "Failed",
+            "invocationStatus": "Timeout",
+            "output": "******",
+            "dropped": 49259,
+            "errorCode": "ExecutionTimeout",
+            "errorInfo": "the command execution has been timeout.",
+            "creationTime": "2021-01-07T10:11:03Z",
+            "startTime": "2021-01-07T10:11:04Z",
+            "stopTime": "",
+            "finishTime": "2021-01-07T10:12:04Z",
+            "updateTime": "2021-01-07T10:12:04Z"
         }]
-    }
-    ```
-
+    }]
+}
+```
 
 **相关文档**  
 
