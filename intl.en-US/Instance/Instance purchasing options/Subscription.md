@@ -1,97 +1,153 @@
-# Subscription {#subs_china .concept}
+---
+keyword: [subscription, expiration of ECS resources, data retention, subscription, refund, weekly subscription, billable resources]
+---
 
-For the Subscription billing method, you can use resources only after you have paid for them.
+# Subscription
 
-**Note:** All the charging rules described in this article is for reference purpose only. For more information, please contact your service provider.
+Subscription is a billing method that allows you to use resources only after you pay for them. You can reserve resources in advance and reduce costs with discounted rates by using the subscription billing method. This topic describes the billing rules for subscription ECS resources.
 
-## Applicable resources {#section_ilw_jv2_zdb .section}
+## Overview
 
-Currently, Subscription billing is used for the following ECS resources:
+Before you use subscription resources, you must create a subscription instance. The following figure shows the subscription duration options that you can choose for your instance.
 
--   ECS instances, including CPU configuration and memory capacity
--   Images
--   System disks and/or data disks
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9790359951/p54963.png)
 
-If you create an ECS instance that uses Subscription billing, the **Instance Cost** displayed in the lower right of the instance creation page is the total cost of the three resources listed.
+When you create a subscription instance, resources are billed separately to generate the total price. You can use the subscription resources only after you pay the total price. For more information about how prices are calculated, see [Billing](#section_oqg_bdk_0r1).
 
-## Payment methods {#section_kx5_l2m_42b .section}
+After a subscription instance is created, you can change its configurations or resize subscription cloud disks attached to the instance. For more information, see [Overview of instance upgrade and downgrade](/intl.en-US/Instance/Change configurations/Overview of instance upgrade and downgrade.md) and [Overview](/intl.en-US/Block Storage/Resize cloud disks/Overview.md).
 
-Credits are used to pay for the resources of the Subscription billing method.
+After a subscription instance expires, you can renew your instance to continue to use it. For more information, see [Renewal overview](/intl.en-US/Pricing/Renew instances/Renewal overview.md).
 
-## Billing period {#section_mlw_jv2_zdb .section}
+## Applicable resources
 
-Resources in Subscription mode are billed on a monthly basis. The billing period is based on the UTC+8 time zone. It starts from the resource activation time and ends at 00:00:00 on the second day after one month or one year.
+When you create an ECS instance, you must configure the computing resources \(vCPUs and memory\), Elastic Block Storage \(EBS\) devices, image, and network type. The following table describes the ECS resources that support the subscription billing method.
 
-For example, if you activate an ECS instance in Monthly Subscription mode at 13:23:56 March 12, 2017, the first billing cycle for the instance ends at 00:00:00 April 13, 2017.
+|Resource|Description|
+|--------|-----------|
+|Computing resource \(vCPUs and memory\)|When you create an ECS instance, you must specify whether to use the subscription billing method.|
+|Image|The image that you selected when you create a subscription instance also uses the subscription billing method.|
+|Cloud disk|Cloud disks created along with subscription instances also use the subscription billing method. After a subscription instance is created, you can create subscription disks for the instance or attach pay-as-you-go disks that are separately created to the instance. For more information, see [Create a subscription disk]() and [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md). |
+|Public bandwidth \(pay-by-bandwidth\)|If you select pay-by-bandwidth as the billing method for network usage when you create a subscription instance, the bandwidth is also billed on a subscription basis. For more information, see [Public bandwidth](/intl.en-US/Pricing/Billing items/Public bandwidth.md).|
 
-The price unit varies depending on the resource. The following table lists the price units for various resources.
+You can view the total price of the preceding resources in the lower-left part of the instance buy page, as shown in the following figure.
 
-|Resource|Price unit|
-|:-------|:---------|
-|ECS instance|USD/month|
-|Image|USD/month|
-|System disk|USD/\(GiB\*month\)|
-|Data disk|USD/\(GiB\*month\)|
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9790359951/p54970.png)
 
-To continue using a resource after the billing period has ended, you can renew your ECS instance at the end of a billing period. For more information about the renewal procedure, see [Manual renewal](reseller.en-US/Pricing/Renew instances/Manual renewal.md#) or [Auto-renewal](reseller.en-US/Pricing/Renew instances/Auto-renewal.md#).
+-   **Total** indicates the total price of the following resources:
+    -   Computing resource \(vCPUs and memory\)
+    -   Cloud disk
+    -   Public bandwidth \(pay-by-bandwidth\)
 
-## Status changes after expiration {#section_qlw_jv2_zdb .section}
+        **Note:** If you select pay-by-traffic as the billing method for network usage, the total price does not include the price for public bandwidth. For more information, see [Public bandwidth](/intl.en-US/Pricing/Billing items/Public bandwidth.md).
 
-The status of a Subscription instance after it expires will change depending on whether the auto-renewal feature is enabled.
+-   **Marketplace Image Fees** indicates that you selected a paid Alibaba Cloud Marketplace image.
 
--   **Auto-renewal disabled**
+You can use the ECS [TCO Calculator](https://cart.alibabacloud.com/calculator) to analyze your cloud migration costs.
 
-    If auto-renewal is disabled, and a Subscription instance is not renewed at the end of the billing period, it goes out of service within the 24 hours from 00:00:00 on the expiration day to 00:00:00 the next day. The status changes of related resources are shown in the following table.
+## Billing
 
-    |Period|ECS instances and images|System disks|Data disks|Internet IP addresses|Snapshots|
-    |:-----|:-----------------------|:-----------|:---------|:--------------------|:--------|
-    |On the expiration day|Out of service\*, and images are disabled.|Out of service, but data is retained.|Out of service, but data on cloud disks, local disks, or shared block storage devices is retained.| For an instance of the Classic network type: If an Internet IP address is assigned, it is retained.
+The billing cycle of a subscription instance is the time commitment you made when you purchased the instance \(based on UTC+8:00\). The cycle starts from the time when the purchased subscription resource is activated or renewed \(accurate to seconds\) and ends at 00:00:00 the next day after the expiration date.
 
- For a VPC-Connected ECS instance: If an Internet IP address is assigned, it is retained. If an EIP address is bound, it is retained.
+Assume that you created a subscription instance at 13:00:00 on August 9, 2019. Related resources include the computing resources \(vCPUs and memory\), image, and cloud disk \(system disk\). You select a subscription duration of one month and manually renew the instance with another one-month commitment. The following billing cycles apply:
 
- |Retained.|
-    |15 days after expiration|Released automatically|Released along with the instance, and data cannot be recovered.| By default, cloud disks are released along with the instance and data on them cannot be recovered. If you have set the cloud disks not to be released along with the instance, the disks stop working.
+-   The first billing cycle is from 13:00:00 on August 9, 2019 to 00:00:00 on September 10, 2019.
+-   The second billing cycle is from 00:00:00 on September 10, 2019 to 00:00:00 on October 10, 2019.
 
- Local disks are released along with the instance and data on them cannot be recovered.
+ECS resources are billed separately. You must pay for the resources before you can use them. You can calculate the total price based on the configurations that you choose. The following table describes the formulas used to calculate the fee of each ECS resource.
 
- Shared block storage is detached automatically from the instance.
+|Resource|Formula|Unit price|
+|:-------|-------|----------|
+|Computing resource \(vCPUs and memory\)|Unit price of an instance type × Subscription duration|For more information, see the **Instance** section on the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page. **Note:** Local disks are tied to specific instance types. The prices of local disks are included in the prices of corresponding instance types. |
+|Image|Unit price of an image × Subscription duration|You can obtain the price on the buy page or in Alibaba Cloud Marketplace.|
+|Cloud disk \(system disk\)|Unit price of a disk × Disk capacity × Subscription duration|For more information, see **System Cloud Disk Fee** of the **Storage** section on the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page.**Note:** The price for a pay-as-you-go disk on the page is displayed in the USD/100 GiB/hour format. Divide it by 100 to obtain the unit price per GiB. |
+|Cloud disk \(data disk\)|Unit price of a disk × Disk capacity × Subscription duration|For more information, see **Data Cloud Disk Fee** of the **Storage** section on the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page.**Note:** The price for a pay-as-you-go disk on the page is displayed in the USD/100 GiB/hour format. Divide it by 100 to obtain the unit price per GiB. |
+|Public bandwidth \(pay-by-bandwidth\)|Unit price of bandwidth × Bandwidth value × Subscription duration For more information, see [Public bandwidth](/intl.en-US/Pricing/Billing items/Public bandwidth.md).
 
- | For an instance of the Classic network type: If an Internet IP address is assigned, it is released.
+|A tiered billing model is used for bandwidth. You can select a bandwidth value on the buy page to view the changes in fees.|
 
- For a VPC-Connected ECS instance: If an Internet IP address is assigned, it is retained. If an EIP address is bound, it is unbound from the instance.
+Assume that you created a subscription instance in China \(Qingdao\) with a subscription duration of three months. The following figure shows the process for calculating the price of the subscription instance.
 
- |Automatic snapshots are automatically deleted, but those manually created are retained. Manual snapshots are not affected.|
+**Note:** The price in the preceding figure is for reference only. For more information about the actual price, see the links in the preceding table.
 
-    \* When an instance is **Out of service**, you cannot connect to it, the website deployed on the instance cannot be accessed, and your business operations may be affected.
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9790359951/p54971.png)
 
-    **Note:** You cannot enable the auto-renewal feature for an instance after it expires.
+## Changes in resource status after an instance expires
 
--   **Auto-renewal enabled**
+**Note:** After an ECS instance expires, the instance may be stopped. The system sends you notifications for renewing the instance. In this case, renew your instance to ensure service availability. If you still have problems, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
-    If auto-renewal is enabled for an instance, but it fails to be renewed in the specified period, the status changes of the related resources are shown in the following table.
+If the auto-renewal feature is not enabled for a subscription instance, the instance stops providing services at some point from 00:00:00 on the expiration date to 00:00:00 on the next day.
 
-    |Period| ECS instances and images|System disks|Data disks|Internet IP addresses|Snapshots|
-    |:-----|:------------------------|:-----------|:---------|:--------------------|:--------|
-    |Within 15 days of expiration|Running properly\*.|Running properly.|Running properly.|Retained.|Retained.|
-    |15 days after expiration|The instance goes out of service\*\* at any time within the 24 hours from 00:00:00 on the 15th day after expiration to 00:00:00 the next day.|Out of service, but data is retained.|Out of service, but data is retained.| For an instance of the Classic network type: If an Internet IP address is assigned, it is released.
+**Note:** You cannot enable the auto-renewal feature for an expired subscription instance.
 
- For a VPC-Connected ECS instance: If an Internet IP address is assigned, it is retained. If an EIP address is bound, it is retained.
+The following table describes the resource status of an ECS instance after the instance expires.
 
- |Retained.|
-    |30 days after expiration|Automatically released.|Released along with the instance, and data cannot be recovered.| By default, the cloud disks are released along with the instance. If you set them not to be released along with the instance, they stop working.
+|Resource|Within 15 days after the instance expires|More than 15 days after the instance expires|
+|--------|-----------------------------------------|--------------------------------------------|
+|Computing resource \(vCPUs and memory\)|The computing resources \(vCPUs and memory\) are retained, but the instance stops providing services. **Note:** After an ECS instance is stopped, you cannot connect to the instance or access websites deployed on the instance, and service errors may occur.
 
- Local disks are released along with the instance.
+|The computing resources \(vCPUs and memory\) are released.|
+|Image|The image is unavailable.|The image is unavailable.|
+|EBS|-   Cloud disks and data stored on them are retained, but the cloud disks cannot be used.
+-   Local disks and data stored on them are retained, but the local disks cannot be used.
 
- Shared block storage is automatically detached.
+|-   Subscription disks are released and data stored on them cannot be restored.
 
- | For an instance of the Classic network type: If an Internet IP address is assigned, it is released.
+**Note:** If you manually attach a pay-as-you-go cloud disk to a subscription instance and do not set the release mode to Release with Instance, the pay-as-you-go cloud disk stops working.
 
- For a VPC-Connected ECS instance: If an Internet IP address is assigned, it is released. If an EIP address is bound, it is unbound from the instance.
+-   Local disks are released and data stored on them cannot be restored. |
+|Public IP address|-   In the classic network: The public IP address is retained.
+-   In a VPC:
+    -   The public IP address is retained.
+    -   The elastic IP address \(EIP\) associated with the instance remains unchanged.
 
- |Automatic snapshots are automatically deleted, but those that are manually created are retained.|
+|-   In the classic network: The public IP address is released.
+-   In a VPC:
+    -   The public IP address is released.
+    -   The EIP is disassociated from the instance. |
 
-    \* **Running properly** means you can start and stop the instance properly and connect to the instance by using the **Management Terminal** in the console or other remote connection methods.
+If the auto-renewal feature is enabled for a subscription instance but the instance fails to be renewed, the instance stops providing services at some point from 00:00:00 on the 15th day after it expires to 00:00:00 on the 16th day after it expires.
 
-    \*\* When an instance is **Out of service**, you cannot connect to it, the website deployed on the instance cannot be accessed, and your business operations may be affected.
+The following table describes the resource status of an ECS instance after the instance expires.
 
+|Resource|Within 15 days after the instance expires|More than 15 days after the instance expires|More than 30 days after the instance expires|
+|--------|-----------------------------------------|--------------------------------------------|--------------------------------------------|
+|Computing resource \(vCPUs and memory\)|The computing resources \(vCPUs and memory\) are retained, and the instance works properly. **Note:** When an ECS instance works properly, you can start or stop the instance, and connect to the instance by using management terminals or other connection methods.
+
+|The computing resources \(vCPUs and memory\) are retained, but the instance stops providing services. **Note:** After an ECS instance is stopped, you cannot connect to the instance or access websites deployed on the instance, and service errors may occur.
+
+|The computing resources \(vCPUs and memory\) are released.|
+|Image|The image is available.|The image is unavailable.|The image is unavailable.|
+|EBS|-   Cloud disks and data stored on them are retained. The cloud disks can work properly.
+-   Local disks and data stored on them are retained. The local disks can work properly.
+
+|-   Cloud disks and data stored on them are retained, but the cloud disks cannot be used.
+-   Local disks and data stored on them are retained, but the local disks cannot be used.
+
+|-   Subscription disks are released and data stored on them cannot be restored.
+
+**Note:** If you manually attach a pay-as-you-go cloud disk to a subscription instance and do not set the release mode to Release with Instance, the pay-as-you-go cloud disk stops working.
+
+-   Local disks are released and data stored on them cannot be restored. |
+|Public IP address|-   In the classic network: The public IP address is retained.
+-   In a VPC:
+    -   The public IP address is retained.
+    -   The EIP associated with the instance remains unchanged.
+
+|-   In the classic network: The public IP address is retained.
+-   In a VPC:
+    -   The public IP address is retained.
+    -   The EIP associated with the instance remains unchanged.
+
+|-   In the classic network: The public IP address is released.
+-   In a VPC:
+    -   The public IP address is released.
+    -   The EIP is disassociated from the instance. |
+
+After the instance expires, a **Data Storage** button is displayed in the **Actions** column of the **Instances** page. Before the instance is released, you can create a custom image from the instance or create snapshots to back up the data stored on the disks.
+
+![Data Storage](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5959480061/p141155.png)
+
+## Overdue payments
+
+If you have overdue payments in your account, subscription ECS resources can be used properly, but you cannot purchase or renew instances, or upgrade their configurations.
 
