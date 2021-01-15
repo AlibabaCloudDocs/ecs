@@ -81,6 +81,8 @@
 |[DescribeElasticityAssuranceInstances](/cn.zh-CN/API参考/资源保障/DescribeElasticityAssuranceInstances.md)|调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。|
 |[DescribeCapacityReservationInstances](/cn.zh-CN/API参考/资源保障/DescribeCapacityReservationInstances.md)|调用DescribeCapacityReservationInstances查询容量预定服务已匹配的实例列表。|
 |[DescribeInstanceAttachmentAttributes](/cn.zh-CN/API参考/资源保障/DescribeInstanceAttachmentAttributes.md)|调用DescribeInstanceAttachmentAttributes查询实例匹配的私有池信息。|
+|[ModifyElasticityAssurance](/cn.zh-CN/API参考/资源保障/ModifyElasticityAssurance.md)|调用ModifyElasticityAssurance修改一个弹性保障服务的名称与描述信息。|
+|[ModifyCapacityReservation](/cn.zh-CN/API参考/资源保障/ModifyCapacityReservation.md)|调用ModifyCapacityReservation修改一个容量预定服务的部分信息，包括容量预定服务的名称、描述信息、失效方式以及预留的实例总数量。|
 |[ModifyInstanceAttachmentAttributes](/cn.zh-CN/API参考/资源保障/ModifyInstanceAttachmentAttributes.md)|调用ModifyInstanceAttachmentAttributes修改实例的私有池的属性。|
 |[ReleaseCapacityReservation](/cn.zh-CN/API参考/资源保障/ReleaseCapacityReservation.md)|调用ReleaseCapacityReservation释放容量预定服务。|
 
@@ -192,6 +194,7 @@
 |[DeleteDeploymentSet](/cn.zh-CN/API参考/部署集/DeleteDeploymentSet.md)|调用DeleteDeploymentSet删除一个部署集。|
 |[ModifyDeploymentSetAttribute](/cn.zh-CN/API参考/部署集/ModifyDeploymentSetAttribute.md)|调用ModifyDeploymentSetAttribute修改一个部署集的名称和描述信息。|
 |[DescribeDeploymentSets](/cn.zh-CN/API参考/部署集/DescribeDeploymentSets.md)|调用DescribeDeploymentSets查询一个或多个部署集的属性列表。|
+|[DescribeDeploymentSetSupportedInstanceTypeFamily](/cn.zh-CN/API参考/部署集/DescribeDeploymentSetSupportedInstanceTypeFamily.md)|调用DescribeDeploymentSetSupportedInstanceTypeFamily查询支持部署集的实例规格族。|
 
 ## SSH密钥对
 
@@ -271,6 +274,8 @@
 |[DescribeCloudAssistantStatus](/cn.zh-CN/API参考/云助手/DescribeCloudAssistantStatus.md)|调用DescribeCloudAssistantStatus查询一台或者多台实例是否安装了云助手客户端。|
 |[InstallCloudAssistant](/cn.zh-CN/API参考/云助手/InstallCloudAssistant.md)|调用InstallCloudAssistant为一台或多台实例安装云助手客户端。|
 |[RunCommand](/cn.zh-CN/API参考/云助手/RunCommand.md)|调用RunCommand新建一份Shell、PowerShell或者Bat类型的云助手脚本，然后在一台或多台ECS实例中执行该脚本。|
+|[SendFile](/cn.zh-CN/API参考/云助手/SendFile.md)|调用SendFile向一台或多台ECS实例下发远程文件。|
+|[DescribeSendFileResults](/cn.zh-CN/API参考/云助手/DescribeSendFileResults.md)|调用DescribeSendFileResults查询云助手下发文件列表及状态。|
 
 ## 高性能集群
 
