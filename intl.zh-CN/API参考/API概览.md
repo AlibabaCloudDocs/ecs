@@ -43,6 +43,10 @@
 |API|描述|
 |---|--|
 |[AllocateDedicatedHosts](/intl.zh-CN/API参考/专有宿主机/AllocateDedicatedHosts.md)|调用AllocateDedicatedHosts创建一台或多台按量付费或者包年包月专有宿主机。专有宿主机是单租户独享的物理机资源，您可以在专有宿主机上自行创建ECS实例和获取物理服务器属性等信息。|
+|[CreateDedicatedHostCluster](/intl.zh-CN/API参考/专有宿主机/CreateDedicatedHostCluster.md)|调用CreateDedicatedHostCluster创建一个专有宿主机集群。|
+|[DescribeDedicatedHostClusters](/intl.zh-CN/API参考/专有宿主机/DescribeDedicatedHostClusters.md)|调用DescribeDedicatedHostClusters查询一个或多个专有宿主机集群的详细信息。|
+|[ModifyDedicatedHostClusterAttribute](/intl.zh-CN/API参考/专有宿主机/ModifyDedicatedHostClusterAttribute.md)|调用ModifyDedicatedHostClusterAttribute修改一台专有宿主机集群的部分信息，包括专有宿主机集群的名称、描述信息、属性等。|
+|[DeleteDedicatedHostCluster](/intl.zh-CN/API参考/专有宿主机/DeleteDedicatedHostCluster.md)|调用DeleteDedicatedHostCluster删除一个专有宿主机集群。|
 |[RenewDedicatedHosts](/intl.zh-CN/API参考/专有宿主机/RenewDedicatedHosts.md)|调用RenewDedicatedHosts续费一台或者多台包年包月专有宿主机。|
 |[ReleaseDedicatedHost](/intl.zh-CN/API参考/专有宿主机/ReleaseDedicatedHost.md)|调用ReleaseDedicatedHost释放一台按量付费专有宿主机。|
 |[RedeployDedicatedHost](/intl.zh-CN/API参考/专有宿主机/RedeployDedicatedHost.md)|调用RedeployDedicatedHost执行专有宿主机的故障迁移。|
@@ -174,6 +178,7 @@
 |[DeleteDeploymentSet](/intl.zh-CN/API参考/部署集/DeleteDeploymentSet.md)|调用DeleteDeploymentSet删除一个部署集。|
 |[ModifyDeploymentSetAttribute](/intl.zh-CN/API参考/部署集/ModifyDeploymentSetAttribute.md)|调用ModifyDeploymentSetAttribute修改一个部署集的名称和描述信息。|
 |[DescribeDeploymentSets](/intl.zh-CN/API参考/部署集/DescribeDeploymentSets.md)|调用DescribeDeploymentSets查询一个或多个部署集的属性列表。|
+|[DescribeDeploymentSetSupportedInstanceTypeFamily](/intl.zh-CN/API参考/部署集/DescribeDeploymentSetSupportedInstanceTypeFamily.md)|调用DescribeDeploymentSetSupportedInstanceTypeFamily查询支持部署集的实例规格族。|
 
 ## SSH密钥对
 
@@ -251,6 +256,8 @@
 |[DescribeCloudAssistantStatus](/intl.zh-CN/API参考/云助手/DescribeCloudAssistantStatus.md)|调用DescribeCloudAssistantStatus查询一台或者多台实例是否安装了云助手客户端。|
 |[InstallCloudAssistant](/intl.zh-CN/API参考/云助手/InstallCloudAssistant.md)|调用InstallCloudAssistant为一台或多台实例安装云助手客户端。|
 |[RunCommand](/intl.zh-CN/API参考/云助手/RunCommand.md)|调用RunCommand新建一份Shell、PowerShell或者Bat类型的云助手脚本，然后在一台或多台ECS实例中执行该脚本。|
+|[SendFile](/intl.zh-CN/API参考/云助手/SendFile.md)|调用SendFile向一台或多台ECS实例下发远程文件。|
+|[DescribeSendFileResults](/intl.zh-CN/API参考/云助手/DescribeSendFileResults.md)|调用DescribeSendFileResults查询云助手下发文件列表及状态。|
 
 ## 高性能集群
 
