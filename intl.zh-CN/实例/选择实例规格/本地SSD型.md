@@ -46,8 +46,6 @@ keyword: [阿里云, ecs, 服务器, 弹性计算]
 
 ## 本地SSD型实例规格族i3
 
-该实例规格族正在邀测中，如需使用，请[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
-
 i3的特点如下：
 
 -   处理器：2.5 GHz主频的Intel ® Xeon ® Platinum 8269CY（Cascade Lake ），睿频3.2 GHz，计算性能稳定
