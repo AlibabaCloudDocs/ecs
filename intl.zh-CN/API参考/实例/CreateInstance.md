@@ -39,12 +39,9 @@
     -   同一个安全组内的实例内网可以相互访问。不同安全组之间默认隔离，不可相互访问，但是可以授权访问。更多详情，请参见[AuthorizeSecurityGroup](~~25554~~)和[AuthorizeSecurityGroupEgress](~~25560~~)。
 -   **存储**：
     -   根据您指定的镜像，实例被分配一个相应大小的系统盘。系统盘容量必须大于或者等于`max{20, ImageSize}`。系统盘的种类请参见`SystemDisk.Category`参数描述。
-    -   当系统盘是普通云盘（`cloud`）、高效云盘（`cloud_efficiency`）或SSD云盘（`cloud_ssd`）时，数据盘不能是本地SSD盘（`ephemeral_ssd`）。
-    -   I/O优化实例的系统盘只能选择高效云盘（`cloud_efficiency`）及SSD云盘（`cloud_ssd`）。
+    -   I/O优化实例的系统盘只能选择ESSD云盘（`cloud_essd`）、SSD云盘（`cloud_ssd`）及高效云盘（`cloud_efficiency`）。
     -   不同类型云盘的数据盘最大容量不同。详情请参见`DataDisk.N.Size`参数描述。
     -   一台实例最多添加16块数据盘。数据盘挂载点由系统默认顺序分配，/dev/xvdb开始到/dev/xvdz。
-    -   数据盘选择本地SSD盘（`ephemeral_ssd`）时，系统盘必须同时为本地SSD盘。不包括系统盘，一台实例的本地SSD盘总容量不超过1TiB。
-    -   本地SSD盘（`ephemeral_ssd`）必须在创建实例时指定，实例创建完成后不能再添加。
 -   **自定义数据**：若实例满足使用[实例自定义数据](~~49121~~)的限制，您可传入UserData信息。UserData以Base64的方式编码。因为传输API请求时，不会加密您设置的`UserData`，建议不要以明文方式传入机密的信息，例如密码和私钥等。如果必须传入，建议加密后，然后以Base64的方式编码后再传入，在实例内部以同样的方式反解密。
 -   **其他**：在阿里云CLI及SDK中使用API时，部分带英文句号（.）的入参需要去掉英文句号（.）再使用。例如，使用`SystemDiskCategory`表示入参`SystemDisk.Category`。
 
@@ -123,10 +120,10 @@
  默认值：max\{40, ImageSize\} |
 |SystemDisk.Category|String|否|cloud\_ssd|系统盘的云盘种类。取值范围：
 
- -   cloud\_efficiency：高效云盘
--   cloud\_ssd：SSD云盘
--   cloud：普通云盘
--   ephemeral\_ssd：本地SSD盘
+ -   cloud\_essd：ESSD云盘，您可以通过参数`SystemDisk.PerformanceLevel`设置云盘的性能等级。
+-   cloud\_efficiency：高效云盘。
+-   cloud\_ssd：SSD云盘。
+-   cloud：普通云盘。
 
  已停售的实例规格且非I/O优化实例默认值为cloud，否则默认值为cloud\_efficiency。 |
 |SystemDisk.DiskName|String|否|SystemDiskName|系统盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。
@@ -148,7 +145,6 @@
  -   cloud\_efficiency：20~32768
 -   cloud\_ssd：20~32768
 -   cloud\_essd：20~32768
--   ephemeral\_ssd：5~800
 -   cloud：5~2000
 
  该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。 |
@@ -160,7 +156,6 @@
 
  -   cloud\_efficiency：高效云盘
 -   cloud\_ssd：SSD云盘
--   ephemeral\_ssd：本地SSD盘
 -   cloud\_essd：ESSD云盘
 -   cloud：普通云盘
 
@@ -305,6 +300,12 @@
 
  默认值：空
 
+ 以下任一场景，实例启动的私有池容量选项只能取值`None`或不传值。
+
+ -   创建抢占式实例。
+-   创建经典网络类型的ECS实例。
+-   在专有宿主机DDH上创建ECS实例。
+
  **说明：** 该参数邀测中，详情请提交工单咨询。 |
 |PrivatePoolOptions.Id|String|否|eap-bp67acfmxazb4\*\*\*\*|私有池ID。即弹性保障服务ID或容量预定服务ID。
 
@@ -315,8 +316,9 @@
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |InstanceId|String|i-bp67acfmxazb4p\*\*\*\*|实例ID。 |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
+|OrderId|String|1234567890|订单ID。该参数只有创建包年包月ECS实例（请求参数`InstanceChargeType=PrePaid`）时有返回值。 |
 |TradePrice|Float|0.165|订单成交价。 |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
 
 ## 示例
 
@@ -338,8 +340,10 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 
 ```
 <CreateInstanceResponse>
-      <RequestId>04F0F334-1335-436C-A1D7-6C044FE73368</RequestId>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
       <InstanceId>i-bp67acfmxazb4p****</InstanceId>
+      <OrderId>1234567890</OrderId>
+      <TradePrice>0.165</TradePrice>
 </CreateInstanceResponse>
 ```
 
@@ -347,8 +351,10 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 
 ```
 {
-    "RequestId": "04F0F334-1335-436C-A1D7-6C044FE73368",
-    "InstanceId": "i-bp67acfmxazb4p****"
+	"RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+	"InstanceId": "i-bp67acfmxazb4p****",
+	"OrderId": "1234567890",
+	"TradePrice": "0.165"
 }
 ```
 
@@ -481,7 +487,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的网络计费方式，请确认相关参数是否正确。|
 |400|InvalidInstanceType.ValueNotSupported|%s|该操作暂不支持指定的实例类型。|
-|403|InstanceType.Offline|%s|实例规格已停售或者供货不足。|
+|403|InstanceType.Offline|%s|实例规格因停售、供货不足等原因，不支持该操作。|
 |400|RegionUnauthorized|%s|该地域未被授权。|
 |500|InternalError|%s|内部错误。|
 |400|Zone.NotOnSale|%s|该可用区暂时关闭了售卖。|
