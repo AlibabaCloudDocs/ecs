@@ -132,6 +132,8 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
     -   [为什么ECS默认没有启用虚拟内存或Swap说明？](#section_m02_5j5_qf2)
     -   [如何在公共镜像中开启kdump？](#section_kwb_4l4_a16)
     -   [RHEL（Red Hat Enterprise Linux）镜像中如何获取dump文件？](#section_a8i_3s9_rc8)
+    -   [如何在RedHat 8.1系统的ECS实例中开启kdump？](#section_boi_ntx_xq0)
+    -   [如何解决RedHat 8.1/8.2镜像在弹性裸金属服务器实例规格族的ECS实例下启动慢的问题？](#section_lns_how_l2p)
     -   [Linux镜像如何开启或关闭Meltdown与Spectre安全漏洞补丁？](#section_mf9_75m_jnp)
     -   [如何检查与修复CentOS 7实例和Windows实例IP地址缺失问题？](#section_29l_kc7_8hw)
     -   [ECS实例启动时报错“UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY.”，怎么办？](#section_1qr_p2r_fp0)
@@ -373,7 +375,7 @@ Linux其他较重要的配置文件如下：
 
 -   方式二：通过控制台在不同地域手动克隆ECS服务器。
     1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
-    2.  选择需要克隆的ECS实例，对系统盘和数据盘分别创建快照。具体请参见[创建普通快照](/intl.zh-CN/快照/使用快照/创建普通快照.md)。
+    2.  选择需要克隆的ECS实例，对系统盘和数据盘分别创建快照。具体请参见[创建一个云盘快照](/intl.zh-CN/快照/使用快照/创建一个云盘快照.md)。
 
         **说明：** 为保证数据一致性，请在实例状态为**已停止**时创建快照。
 
@@ -1099,6 +1101,19 @@ Swap分区或虚拟内存文件，是在系统物理内存不够用的时候，�
 ## RHEL（Red Hat Enterprise Linux）镜像中如何获取dump文件？
 
 当前部分RHEL镜像默认未开启kdump，您可以提交工单获取dump文件。请注意，通过提交工单获取dump文件时，内存大于16 GiB的实例规格可能出现无法获取dump文件的情况，详情请以工单内信息为准。
+
+## 如何在RedHat 8.1系统的ECS实例中开启kdump？
+
+RedHat 8.1 v1版本镜像中kdump服务默认未开启。如果您需要使用kdump，请运行以下命令开启kdump服务。
+
+```
+systemctl enable kdump
+systemctl start kdump
+```
+
+## 如何解决RedHat 8.1/8.2镜像在弹性裸金属服务器实例规格族的ECS实例下启动慢的问题？
+
+在弹性裸金属服务器实例规格族的ECS实例中，RedHat 8.1/8.2镜像相较于RedHat 7镜像启动时长多1~2分钟。为解决该问题，您可以在RedHat 8.1/8.2系统的/boot/grub2/grubenv文件中，将内核启动参数`console=ttyS0 console=ttyS0,115200n8`修改为`console=tty0 console=ttyS0,115200n8`，然后重启服务器使配置生效。
 
 ## Linux镜像如何开启或关闭Meltdown与Spectre安全漏洞补丁？
 
