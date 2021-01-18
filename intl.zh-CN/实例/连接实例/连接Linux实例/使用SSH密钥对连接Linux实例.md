@@ -182,7 +182,7 @@ SSH密钥对是一种安全便捷的登录认证方式。在Windows环境和支�
     IdentityFile ~/.ssh/ecs.pem
     ```
 
-    添加完成后，按Ecs键，并输入`:wq`保存config文件。
+    添加完成后，按Esc键，并输入`:wq`保存config文件。
 
 5.  运行以下命令，重启SSH服务。
 
