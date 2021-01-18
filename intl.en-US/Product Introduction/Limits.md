@@ -179,11 +179,11 @@ As of November 27, 2020, the maximum bandwidth available for you to create ECS i
 |:-----------|:----|:---------|
 |Quota for deployment sets in an account|You can view the resource quota in the ECS console. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|Apply for a quota increase in the ECS console. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|
 |Quota for instances that can be contained in a deployment set|A maximum of seven instances are allowed in each zone. The number of instances allowed in a deployment set within a region is calculated by using the following formula: 7 × Number of zones in the region.|None|
-|Instance types that support deployment sets|-   c6、g6、r6、c5、g5、ic5、r5
--   hfc6、hfg6、hfr6、hfc5、hfg5
--   d2、d2s、d2c、d1、d1ne
--   i2、i2g、i1
--   se1ne、sn1ne、sn2ne
+|Instance types that support deployment sets|-   c6, g6, r6, c5, g5, ic5, r5
+-   hfc6, hfg6, hfr6, hfc5, hfg5
+-   d2, d2s, d2c, d1, d1ne
+-   i2, i2g, i1
+-   se1ne, sn1ne, sn2ne
 
 |None|
 
