@@ -6,7 +6,7 @@ You can call this operation to query all monitoring data about traffic on a seco
 
 The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. A portion may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and is in the Available state, monitoring data about traffic on the ENI cannot be obtained. When you call this operation, take note of the following items:
 
--   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: \(EndTime − StartTime\)/Period.
+-   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: \(EndTime - StartTime\)/Period.
 -   You can only query the monitoring data within the past 30 days. If the value of the StartTime parameter is earlier than 30 days from the time when you call this operation, an error is returned.
 
 ## Debugging
