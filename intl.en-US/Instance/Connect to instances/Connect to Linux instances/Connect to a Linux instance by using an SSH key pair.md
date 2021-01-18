@@ -20,7 +20,7 @@ The following section describes how to convert the format of a private key file 
 
 1.  Download and install PuTTYgen and PuTTY.
 
-    Download PuTTY and PuTTYgen from the following URLs:
+    Download PuTTYgen and PuTTY from the following URLs:
 
     -   [PuTTYgen](https://the.earth.li/~sgtatham/putty/latest/w64/puttygen.exe)
     -   [PuTTY](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
@@ -76,7 +76,7 @@ The following section describes how to convert the format of a private key file 
 
 6.  Click **Open**.
 
-    If the following message appears, you have logged on to the instance by using the SSH key pair.
+    If the following message appears, you are logged on to the instance by using the SSH key pair.
 
     ![windows_putty_5](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7847597851/p51203.png)
 
@@ -182,7 +182,7 @@ The following section describes how to use commands to configure the required pa
     IdentityFile ~/.ssh/ecs.pem
     ```
 
-    After the configuration items are added, press the Ecs key and enter `:wq` to save the config file.
+    After the configuration items are added, press the Esc key and enter `:wq` to save the config file.
 
 5.  Run the following command to restart the SSH service:
 
