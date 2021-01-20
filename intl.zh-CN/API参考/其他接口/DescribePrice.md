@@ -158,7 +158,7 @@
 |Period|Integer|否|1|云服务器ECS的计费时长。取值范围：
 
  -   当参数PriceUnit取值为Month时：1~9
--   当参数PriceUnit取值为Year时：1~3
+-   当参数PriceUnit取值为Year时：1~5
 -   当参数PriceUnit取值为Hour时：1
 
  默认值：1 |
@@ -224,7 +224,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribePriceResponse>
@@ -246,7 +246,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 </DescribePriceResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -327,7 +327,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的网络计费方式，请确认相关参数是否正确。|
 |400|InvalidInstanceType.ValueNotSupported|%s|该操作暂不支持指定的实例类型。|
-|403|InstanceType.Offline|%s|实例规格已停售或者供货不足。|
+|403|InstanceType.Offline|%s|实例规格因停售、供货不足等原因，不支持该操作。|
 |400|RegionUnauthorized|%s|该地域未被授权。|
 |500|InternalError|%s|内部错误。|
 |400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
