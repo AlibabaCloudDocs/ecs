@@ -1,6 +1,6 @@
 # DescribeInstanceTypes
 
-You can call this operation to query the details of one or more instance types.
+You can call the DescribeInstanceTypes operation to query all instance types provided by ECS. You can also query information about a specified instance type.
 
 ## Description
 
@@ -20,6 +20,7 @@ To use special instance types, [submit a ticket](https://workorder-intl.console.
 |InstanceTypeFamily|String|No|ecs.g6|The instance family to which the instance type belongs. For information about valid values, see [DescribeInstanceTypeFamilies](~~25621~~).
 
  For more information, see [Instance families](~~25378~~). |
+|InstanceTypes.N|RepeatList|No|ecs.g6.large|Instance type N. Valid values of N: 1 to 10. If this parameter is not specified, information about all instance types is queried. |
 
 ## Response parameters
 
@@ -41,8 +42,8 @@ To use special instance types, [submit a ticket](https://workorder-intl.console.
 |InstanceBandwidthTx|Integer|1024000|The maximum outbound internal bandwidth. Unit: Kbit/s. |
 |InstanceFamilyLevel|String|EnterpriseLevel|The level of the instance family. Valid values:
 
- -   EntryLevel
--   EnterpriseLevel
+ -   EntryLevel.
+-   EnterpriseLevel.
 -   CreditEntryLevel. For more information, see [Burstable instance families](~~59977~~). |
 |InstancePpsRx|Long|300000|The inbound packet forwarding rate over the internal network. Unit: pps. |
 |InstancePpsTx|Long|300000|The outbound packet forwarding rate over the internal network. Unit: pps. |
@@ -55,7 +56,7 @@ To use special instance types, [submit a ticket](https://workorder-intl.console.
  -   local\_hdd\_pro: local SATA HDDs attached to instances of the d1ne or d1 instance family
 -   local\_ssd\_pro: local NVMe SSDs attached to instances of the i2, i2g, i1, ga1, or gn5 instance family |
 |MaximumQueueNumberPerEni|Integer|8|The maximum number of queues per ENI. |
-|MemorySize|Float|8.0|The memory size. Unit: GiB. |
+|MemorySize|Float|8.0|The amount of memory. Unit: GiB. |
 |PrimaryEniQueueNumber|Integer|4|The default number of queues supported by the primary ENI. |
 |SecondaryEniQueueNumber|Integer|4|The default number of queues supported by the secondary ENI. |
 |TotalEniQueueQuantity|Integer|128|The maximum number of ENI queues that the instance type supports. |
