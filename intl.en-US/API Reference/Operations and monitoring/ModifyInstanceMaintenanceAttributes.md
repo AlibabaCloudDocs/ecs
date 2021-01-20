@@ -1,12 +1,10 @@
 # ModifyInstanceMaintenanceAttributes
 
-You can call this operation to modify a specific maintenance property of one or more instances.
+You can call this operation to modify the maintenance properties of one or more instances.
 
 ## Description
 
-The operation is used to modify the maintenance policy of instances, which contains the following two maintenance properties:
-
-**Note:** The maintenance window is a feature to be extended and cannot be used for the moment.
+The operation is used to modify the maintenance policy of an instance. The maintenance policy consists of the following maintenance properties:
 
 -   Maintenance window: the time period that you specify for O&M.
 -   Maintenance action: the policy that you specify in response to instance shutdown.
@@ -22,17 +20,13 @@ The operation is used to modify the maintenance policy of instances, which conta
 |Action|String|Yes|ModifyInstanceMaintenanceAttributes|The operation that you want to perform. Set the value to ModifyInstanceMaintenanceAttributes. |
 |RegionId|String|Yes|cn-hangzhou|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |InstanceId.N|RepeatList|No|i-bp67acfmxazb4ph\*\*\*\*|The ID of instance N. Valid values of N: 1 to 100. |
-|MaintenanceWindow.N.StartTime|String|No|02:00:00|The start time of maintenance window N. The valid values of this parameter must be integer hours. Both minute and second must be set to 00. Set the value of N to 1.
-
-**Note:** This parameter is a feature to be extended and cannot be used for the moment. |
-|MaintenanceWindow.N.EndTime|String|No|18:00:00|The end time of maintenance window N. The valid values of this parameter must be integer hours. Both minute and second must be set to 00. MaintenanceWindow.N.StartTime and MaintenanceWindow.N.EndTime must be specified at the same time, and the value of MaintenanceWindow.N.EndTime must be 1 to 23 hours later than the value of MaintenanceWindow.N.StartTime. Set the value of N to 1.
-
-**Note:** This parameter is a feature to be extended and cannot be used for the moment. |
+|MaintenanceWindow.N.StartTime|String|No|02:00:00|The start time of maintenance window N. The time must be on the hour at exactly 0 minute and 0 second. The MaintenanceWindow.N.StartTime and MaintenanceWindow.N.EndTime parameters must be specified at the same time. The MaintenanceWindow.N.Endtime value must be 1 to 23 hours later than the MaintenanceWindow.N.StartTime value. Specify the time in the `HH:mm:ss` format. The time must be in UTC + 8. Set the value of N to 1. |
+|MaintenanceWindow.N.EndTime|String|No|18:00:00|The end time of maintenance window N. The time must be on the hour at exactly 0 minute and 0 second. The MaintenanceWindow.N.StartTime and MaintenanceWindow.N.EndTime parameters must be specified at the same time. The MaintenanceWindow.N.Endtime value must be 1 to 23 hours later than the MaintenanceWindow.N.StartTime value. Specify the time in the `HH:mm:ss` format. The time must be in UTC + 8. Set the value of N to 1. |
 |ActionOnMaintenance|String|No|AutoRecover|The maintenance action. Valid values:
 
--   Stop: The instance is stopped.
--   AutoRecover: The instance is automatically recovered.
--   AutoRedeploy: Failover is performed, which may cause damage to the data disk. |
+ -   Stop: stops the instance.
+-   AutoRecover: automatically recovers the instance.
+-   AutoRedeploy: fails the instance over, which may cause damage to the data disks attached to the instance. |
 
 ## Response parameters
 
@@ -65,14 +59,14 @@ Sample success responses
 
 ```
 {
-    "RequestId": "E69FF3CC-94DD-42EF-8836-F33C45EDF9945ED"
+	"RequestId": "E69FF3CC-94DD-42EF-8836-F33C45EDF9945ED"
 }
 ```
 
 ## Error codes
 
-|HTTP status code|Error code|Error message|Description|
-|----------------|----------|-------------|-----------|
+|HttpCode|Error code|Error message|Description|
+|--------|----------|-------------|-----------|
 |404|InvalidInstanceId.NotFound|%s|The error message returned because the specified instance does not exist.|
 |403|InvalidParameter|%s|The error message returned because a specified parameter is invalid.|
 |403|OperationDenied.NotInWhiteList|%s|The error message returned because you are not authorized to perform this operation. Try again when you are in the whitelist.|
