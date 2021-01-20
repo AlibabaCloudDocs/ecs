@@ -1,6 +1,6 @@
 # DescribeInstanceTypes
 
-调用DescribeInstanceTypes查询云服务器ECS提供的实例规格资源。
+调用DescribeInstanceTypes查询云服务器ECS提供的所有实例规格的信息，也可以查询指定实例规格的信息。
 
 ## 接口说明
 
@@ -20,6 +20,7 @@ DescribeInstanceTypes仅查询实例规格的配置和性能信息。如果您�
 |InstanceTypeFamily|String|否|ecs.g6|实例规格所属的规格族。取值请参见[DescribeInstanceTypeFamilies](~~25621~~)。
 
  更多详情，请参见[实例规格族](~~25378~~)。 |
+|InstanceTypes.N|RepeatList|否|ecs.g6.large|指定的实例规格。N的取值范围：1~10。当该参数不传值时，默认查询所有实例规格的信息。 |
 
 ## 返回数据
 
