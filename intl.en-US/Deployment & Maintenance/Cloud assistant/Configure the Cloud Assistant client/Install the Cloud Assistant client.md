@@ -6,16 +6,16 @@ keyword: [Cloud Assistant, remote command, O&M plug-in, Alibaba Cloud, ECS]
 
 The Cloud Assistant client is used to run Cloud Assistant commands on ECS instances. This topic describes how to install the Cloud Assistant client.
 
--   You must use the account of an administrator to install and use the Cloud Assistant client. The administrator username is root for Linux instances, and system for Windows instances.
--   Before you install the Cloud Assistant client, make sure that your instance type and operating system support Cloud Assistant. For more information, see the "Limits" section in [Overview](/intl.en-US/Deployment & Maintenance/Cloud assistant/Overview.md).
+-   You must install and use the Cloud Assistant client as an administrator. The administrator username is root for Linux instances, and system for Windows instances.
+-   Before you install the Cloud Assistant client, ensure that your instance type and operating system support Cloud Assistant. For more information, see the "Limits" section in [Overview](/intl.en-US/Deployment & Maintenance/Cloud assistant/Overview.md).
 
-By default, ECS instances created from public images after December 1, 2017 are pre-installed with the Cloud Assistant client. For ECS instances created on and before December 1, 2017, you must manually install the Cloud Assistant client.
+The Cloud Assistant client is installed by default on all ECS instances that are created from public images on and after December 1, 2017. For ECS instances created on and before December 1, 2017, you must manually install the Cloud Assistant client.
 
 This topic describes three installation methods:
 
--   [Download and install the client on Windows instances](#section_e5n_k2x_ydb). To use this method, you must connect to the Windows Server instance.
--   [Download and install the client on Linux instances](#section_anv_mzg_1zr). To use this method, you must connect to the Linux instance.
--   [Use Alibaba Cloud CLI to install the client on Windows or Linux instances](#section_qkk_yt2_ngb): This method applies to both Windows Server instances and Linux instances. To use this method, you do not need to connect to the instance but you must install Alibaba Cloud Command Line Interface \(CLI\) first. For more information about how to install Alibaba Cloud CLI in different operating systems, see the following topics:
+-   [Download and install the client on Windows instances](#section_e5n_k2x_ydb): You must establish a remote connection to the Windows Server instance.
+-   [Download and install the client on Linux instances](#section_anv_mzg_1zr): You must establish a remote connection to the Linux instance.
+-   [Use Alibaba Cloud CLI to install the client on Windows or Linux instances](#section_qkk_yt2_ngb): You can use this method for both Windows Server instances and Linux instances. To use this method, you do not need to connect to the instance but you must install Alibaba Cloud Command Line Interface \(CLI\) first. For more information about how to install Alibaba Cloud CLI in different operating systems, see the following topics:
     -   [Windows]()
     -   [Linux]()
     -   [MacOS]()
@@ -63,7 +63,7 @@ This topic describes three installation methods:
 
 4.  If the instance is in the classic network, create a file named region-id in the installation directory. Do not add extensions such as .txt or .conf to the file. Enter the region ID of the instance such as cn-hangzhou in the region-id file.
 
-    **Note:** In Windows, you must clear the **Hide extensions for known file types** option to check whether the region-id file has an extension.
+    **Note:** In Windows, you must clear the Hide extensions for known file types option to check whether the region-id file has an extension.
 
 
 ## Download and install the client on Linux instances
@@ -72,7 +72,7 @@ This topic describes three installation methods:
 
 2.  Select one of the following methods to install the Cloud Assistant client based on the operating system of your instance:
 
-    -   Install the client by using an RPM package. This method is applicable to operating systems such as CentOS, Red Hat Enterprise Linux \(RHEL\), and SUSE Linux.
+    -   Install the client by using an RPM package. This method is applicable to operating systems such as Alibaba Cloud Linux, CentOS, Red Hat Enterprise Linux \(RHEL\), and SUSE Linux.
         1.  Download the RPM package for a specific version of the Cloud Assistant client from one of the following links:
 
             -   Public link for the latest version:
@@ -242,7 +242,7 @@ This topic describes three installation methods:
 
     3.  create a file named region-id in the installation directory. Do not add extensions such as .txt or .conf to the file. Enter the region ID of the instance such as cn-hangzhou in the region-id file.
 
-        **Note:** In Windows, you must clear the **Hide extensions for known file types** option to check whether the region-id file has an extension.
+        **Note:** In Windows, you must clear the Hide extensions for known file types option to check whether the region-id file has an extension.
 
 
 **References**  
@@ -256,7 +256,7 @@ This topic describes three installation methods:
 
 [RebootInstance](/intl.en-US/API Reference/Instances/RebootInstance.md)
 
-[Regions and zones](https://www.alibabacloud.com/help/doc-detail/123712.htm)
+[Regions and zones]()
 
 [Alibaba Cloud GitHub repository](https://github.com/aliyun/aliyun_assist_client)
 
