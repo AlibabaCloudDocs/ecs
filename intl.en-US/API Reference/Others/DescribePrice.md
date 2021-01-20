@@ -158,7 +158,7 @@ The default value is 40 or the size of the image, depending on whichever is grea
 |Period|Integer|No|1|The billing duration of the ECS instance. Valid values:
 
 -   Valid values when PriceUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, and 9
--   Valid values when PriceUnit is set to Year: 1, 2, and 3
+-   Valid values when PriceUnit is set to Year: 1, 2, 3, 4, and 5
 -   Set the value to 1 when PriceUnit is set to Hour.
 
 Default value: 1. |
