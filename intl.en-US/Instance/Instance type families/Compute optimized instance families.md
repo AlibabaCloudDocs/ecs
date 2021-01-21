@@ -20,8 +20,6 @@ This topic describes the features of compute optimized instance families of ECS 
 
 ## c6a, compute optimized instance family
 
-c6a is in invitational preview. To use c6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
 Features
 
 -   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
@@ -42,7 +40,7 @@ Features
 -   Network:
     -   Provides an ultra-high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
--   Scenarios:
+-   Applies to the following scenarios:
     -   Video encoding and decoding
     -   Scenarios where large volumes of packets are received and transmitted
     -   Web frontend servers
@@ -51,8 +49,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|ENIs \(including one primary ENI\)|IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-------------------------|------------------------------|:------------------------------|:-----------|:---------------------------------|----------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|-------------------------|------------------------------|:------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
 |ecs.c6a.large|2|4.0|None|1.0|10.0|900|Yes|2|12.5|1.0|
 |ecs.c6a.xlarge|4|8.0|None|1.5|10.0|1,000|Yes|3|20|1.5|
 |ecs.c6a.2xlarge|8|16.0|None|2.5|10.0|1,600|Yes|4|30|2.0|
@@ -69,13 +67,11 @@ Instance types
 
 ## c6t, security-enhanced compute optimized instance family
 
-c6t is in invitational review.
-
 Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6t improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of SHENLONG chips.
 -   Compute:
     -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:2.
@@ -93,18 +89,18 @@ Features
 -   Network:
     -   Provides an ultra-high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
--   Scenarios:
+-   Applies to the following scenarios:
     -   Scenarios that require high security and enhanced trust, such as financial services, government affairs, and enterprise services
     -   Scenarios where large volumes of packets are received and transmitted, such as bullet screen and re-transmission of telecommunication information
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
-    -   High-performance scientific and engineering applications.
+    -   High-performance scientific and engineering applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|TPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|--------------------|:------------------------------|-----------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|----------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|TPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|--------------------|:------------------------------|-----------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c6t.large|2|4.0|None|A burstable bandwidth of up to 10.0|900|Yes|Yes|Up to 250|2|3|6|20|1.0|
 |ecs.c6t.xlarge|4|8.0|None|A burstable bandwidth of up to 10.0|1,000|Yes|Yes|Up to 250|4|4|15|40|1.5|
 |ecs.c6t.2xlarge|8|16.0|None|A burstable bandwidth of up to 10.0|1,600|Yes|Yes|Up to 250|8|4|15|50|2.0|
@@ -123,7 +119,7 @@ Instance types
 
 Features
 
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6e improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of SHENLONG chips.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
@@ -145,12 +141,12 @@ Features
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
-    -   High-performance scientific and engineering applications.
+    -   High-performance scientific and engineering applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|--------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|----------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|--------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c6e.large|2|4.0|None|A burstable bandwidth of up to 10.0|900|Yes|Up to 250|2|3|6|20|1.0|
 |ecs.c6e.xlarge|4|8.0|None|A burstable bandwidth of up to 10.0|1,000|Yes|Up to 250|4|4|15|40|1.5|
 |ecs.c6e.2xlarge|8|16.0|None|A burstable bandwidth of up to 10.0|1,600|Yes|Up to 250|8|4|15|50|2.0|
@@ -193,12 +189,12 @@ Features
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
-    -   High-performance scientific and engineering applications.
+    -   High-performance scientific and engineering applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|----------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c6.large|2|4.0|None|1.0|3.0|300|Yes|Up to 250|2|2|6|10|1|
 |ecs.c6.xlarge|4|8.0|None|1.5|5.0|500|Yes|Up to 250|4|3|10|20|1.5|
 |ecs.c6.2xlarge|8|16.0|None|2.5|8.0|800|Yes|Up to 250|8|4|10|25|2|
@@ -232,7 +228,7 @@ Features
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
-    -   High-performance scientific and engineering applications.
+    -   High-performance scientific and engineering applications
 
 Instance types
 
@@ -298,7 +294,7 @@ Features
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
-    -   High-performance scientific and engineering applications.
+    -   High-performance scientific and engineering applications
 
 Instance types
 
