@@ -8,7 +8,7 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
 
 1.  已创建快照备份数据。
 
-    为防止操作失误导致数据丢失，建议您操作前使用快照备份数据。具体操作请参见[创建普通快照](/cn.zh-CN/快照/使用快照/创建普通快照.md)。
+    为防止操作失误导致数据丢失，建议您操作前使用快照备份数据。具体操作请参见[创建一个云盘快照](/cn.zh-CN/快照/使用快照/创建一个云盘快照.md)。
 
 2.  已在控制台上扩容云盘。
 
@@ -129,7 +129,8 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
         本示例中，分区/dev/vdb1的起始扇区是2048，结束扇区是41943039。
 
         ```
-        [root@ecshost ~]# fdisk -lu /dev/vdbDisk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
+        [root@ecshost ~]# fdisk -lu /dev/vdb
+        Disk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
         Units = sectors of 1 * 512 = 512 bytes
         Sector size (logical/physical): 512 bytes / 512 bytes
         I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -181,7 +182,8 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, 块存储]
         以下为删除旧分区的命令行交互示例。
 
         ```
-        [root@ecshost ~]# fdisk -u /dev/vdbWelcome to fdisk (util-linux 2.23.2).
+        [root@ecshost ~]# fdisk -u /dev/vdb
+        Welcome to fdisk (util-linux 2.23.2).
         Changes will remain in memory only, until you decide to write them.
         Be careful before using the write command.
         Command (m for help): p
