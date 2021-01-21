@@ -40,8 +40,8 @@ Features
     -   Provides an ultra-high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
 -   Applies to the following scenarios:
-    -   I/O-intensive scenarios, such as medium and large OLTP core databases
-    -   Medium and large NoSQL databases
+    -   I/O-intensive scenarios, such as large and medium-sized OLTP core databases
+    -   Large and medium-sized NoSQL databases
     -   Search and real-time log analytics
     -   Traditional large enterprise-level commercial software, such as SAP
 
@@ -64,15 +64,13 @@ Instance types
 
 ## g6a, general purpose instance family
 
-g6a is in invitational preview. To use g6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
 Features
 
 -   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the SHENLONG architecture.
 -   Compute:
     -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Allows you to enable or disable Hyper-Threading.
+    -   Allows you to enable or disable hyper-threading.
 
         **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
@@ -115,22 +113,20 @@ Instance types
 
 ## g6t, security-enhanced general purpose instance family
 
-g6t is in invitational preview.
-
 Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the SHENLONG architecture. g6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
 -   Compute:
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Allows you to enable or disable Hyper-Threading.
+    -   Allows you to enable or disable hyper-threading.
 
         **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Storage:
-    -   Supports I/O optimization.
+    -   Is an instance family in which all instances are I/O optimized.
     -   Supports ESSDs only.
     -   Provides high storage I/O performance based on large computing capacity.
 
@@ -140,8 +136,8 @@ Features
     -   Provides an ultra-high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
 -   Applies to the following scenarios:
-    -   Scenarios such as financial services, government affairs, and enterprise services that require high security and enhanced trust
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are received and transmitted
+    -   Scenarios that require high security and enhanced trust, such as financial services, government affairs, and enterprise services
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
     -   Game servers
@@ -171,8 +167,8 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the third-generation SHENLONG architecture. g6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of chips.
--   Supports I/O optimization.
+-   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the SHENLONG architecture. g6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
+-   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
 
@@ -184,12 +180,12 @@ Features
 
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
--   Allows you to enable or disable Hyper-Threading.
+-   Allows you to enable or disable hyper-threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Applies to the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are received and transmitted
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
     -   Game servers
@@ -225,12 +221,12 @@ Features
 
     **Note:** The maximum performance of disks varies with instance families. A single instance of this instance family can deliver up to 200,000 IOPS. For higher storage I/O performance, we recommend that you use g6se.
 
--   Provides high storage I/O performance based on large compute capacity.
+-   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Offers a CPU-to-memory ratio of 1:4.
--   Allows you to enable or disable Hyper-Threading.
+-   Allows you to enable or disable hyper-threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
@@ -238,11 +234,11 @@ Features
 
     **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
 
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+-   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
 -   Supports instance type changes to c6 or r6.
 -   Applies to the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are received and transmitted
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
     -   Game servers
@@ -262,7 +258,7 @@ Instance types
 |ecs.g6.6xlarge|24|96.0|None|7.5|10.0|1,500|Yes|450|12|8|20|50|4|
 |ecs.g6.8xlarge|32|128.0|None|10.0|None|2,000|Yes|600|16|8|20|60|5|
 |ecs.g6.13xlarge|52|192.0|None|12.5|None|3,000|Yes|900|32|7|20|100|8|
-|ecs.g6.26xlarge|104|384.0|None|25.0|None|6,000|Yes|1,800|32|15|20|20.0|16|
+|ecs.g6.26xlarge|104|384.0|None|25.0|None|6,000|Yes|1,800|32|15|20|200|16|
 
 **Note:**
 
@@ -283,10 +279,10 @@ Features
 
     **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
 
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
 -   Applies to the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are received and transmitted
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Small and medium-sized database systems, caches, and search clusters
     -   Data analysis and computing
@@ -325,7 +321,7 @@ Features
 
 -   Applies to the following scenarios:
     -   DPDK applications
-    -   Network intensive scenarios such as NFV or SD-WAN, mobile Internet, on-screen video comments, and telecom data forwarding
+    -   Network-intensive scenarios such as NFV or SD-WAN, mobile Internet, on-screen video comments, and telecom data forwarding
     -   Small and medium-sized database systems, caches, and search clusters
     -   Enterprise-level applications of various types and sizes
     -   Big data analysis and machine learning
@@ -355,10 +351,10 @@ Features
 -   Supports standard SSDs and ultra disks only.
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Provides an ultra-high packet forwarding rate.
--   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) or Platinum 8163 \(Skylake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel ® Xeon ® E5-2682 v4 \(Broadwell\) or Platinum 8163 \(Skylake\) processors for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
 -   Applies to the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are received and transmitted
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Small and medium-sized database systems, caches, and search clusters
     -   Data analysis and computing
