@@ -2,7 +2,7 @@
 
 除ECS管理控制台外，您还能通过API管理ECS实例。阿里云提供了多语言版本SDK来封装API。本文基于Python语言介绍如何通过API查询ECS实例。
 
-查询ECS实例相关信息的完整代码示例请参见[完整代码](#section_pxa_ljn_dg5)，代码示例解析请参见：
+查询ECS实例相关信息的完整代码示例，请参见[完整代码](#section_pxa_ljn_dg5)。代码示例解析，请参见：
 
 -   [查询当前账号支持的地域列表](#section_jdo_nr8_xi4)
 -   [查询指定地域下的ECS实例](#section_ryw_4wu_d4a)
@@ -13,11 +13,11 @@
 
 按以下步骤获取RAM用户AccessKey：
 
-1.  创建RAM用户。具体步骤请参见[创建RAM用户](/intl.zh-CN/用户管理/创建RAM用户.md)。
+1.  创建RAM用户。具体操作，请参见[创建RAM用户](/intl.zh-CN/用户管理/创建RAM用户.md)。
 
-2.  获取RAM用户AccessKey。具体步骤请参见[创建AccessKey](https://www.alibabacloud.com/help/doc-detail/53045.htm)。
+2.  获取RAM用户AccessKey。具体操作，请参见[创建AccessKey]()。
 
-3.  为RAM用户授权，授予RAM用户管理云服务器服务（ECS）的权限。具体步骤请参见[为RAM用户授权](/intl.zh-CN/用户管理/为RAM用户授权.md)。
+3.  为RAM用户授权，授予RAM用户**管理云服务器服务\(ECS\)的权限**（`AliyunECSFullAccess`）。具体操作，请参见[为RAM用户授权](/intl.zh-CN/用户管理/为RAM用户授权.md)。
 
 
 ## 安装ECS Python SDK
@@ -67,7 +67,7 @@ def hello_aliyun_regions():
         assert response is not None
         assert region_list is not None
         result = map(_print_region_id, region_list)
-        logging.info("region list: %s", result)
+        logging.info("region list: %s", list(result))
 
 # output the instance owned in current region.
 def list_instances():
@@ -76,7 +76,7 @@ def list_instances():
     if response is not None:
         instance_list = response.get('Instances').get('Instance')
         result = map(_print_instance_id, instance_list)
-        logging.info("current region include instance %s", result)
+        logging.info("current region include instance %s", list(result))
 
 def _print_instance_id(item):
     instance_id = item.get('InstanceId')
@@ -110,9 +110,12 @@ if __name__ == '__main__':
 **说明：** AccessKey ID和AccessKey Secret是RAM用户访问阿里云ECS服务API的密钥，具有该账户完全的权限，请妥善保管，避免泄露。
 
 ```
+import json
+import logging
 from aliyunsdkcore import client
 from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest
 from aliyunsdkecs.request.v20140526.DescribeRegionsRequest import DescribeRegionsRequest
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s', datefmt='%a %d %b %Y %H:%M:%S')
 clt = client.AcsClient('<accessKeyId>', '<accessSecret>', '<region-Id>')
 ```
 
@@ -126,7 +129,7 @@ def hello_aliyun_regions():
     assert response is not None
     assert region_list is not None
     result = map(_print_region_id, region_list)
-    logging.info("region list: %s", result)
+    logging.info("region list: %s", list(result))
 def _print_region_id(item):
     region_id = item.get("RegionId")
     return region_id
@@ -145,7 +148,7 @@ hello_aliyun_regions()
 在命令行运行`python hello_ecs_api.py`会得到当前支持的Region列表。输出示例如下：
 
 ```
-[u'cn-shenzhen', u'ap-southeast-1', u'cn-qingdao', u'cn-beijing', u'cn-shanghai', u'us-east-1', u'cn-hongkong', u'me-east-1', u'ap-southeast-2', u'cn-hangzhou', u'eu-central-1', u'ap-northeast-1', u'us-west-1']
+region list: ['cn-qingdao', 'cn-beijing', 'cn-zhangjiakou', 'cn-huhehaote', 'cn-wulanchabu', 'cn-hangzhou', 'cn-shanghai', 'cn-shenzhen', 'cn-heyuan', 'cn-guangzhou', 'cn-chengdu', 'cn-hongkong', 'ap-northeast-1', 'ap-southeast-1', 'ap-southeast-2', 'ap-southeast-3', 'ap-southeast-5', 'ap-south-1', 'us-east-1', 'us-west-1', 'eu-west-1']
 ```
 
 ## 查询指定地域下的ECS实例
@@ -159,17 +162,27 @@ def list_instances():
     if response is not None:
         instance_list = response.get('Instances').get('Instance')
         result = map(_print_instance_id, instance_list)
-        logging.info("current region include instance %s", result)
+        logging.info("current region include instance %s", list(result))
 def _print_instance_id(item):
     instance_id = item.get('InstanceId')
     return instance_id
+def _send_request(request):
+    request.set_accept_format('json')
+    try:
+        response_str = clt.do_action(request)
+        logging.info(response_str)
+        response_detail = json.loads(response_str)
+        return response_detail
+    except Exception as e:
+        logging.error(e)
+list_instances()
 ```
 
 输出结果示例如下：
 
 ```
-current region include instance [u'i-bp165p6xk2tmdhj0****', u'i-bp1a01zbqmsun5odo****'']
+current region include instance ['i-bp165p6xk2tmdhj0****', 'i-bp1a01zbqmsun5odo****'']
 ```
 
-更多查询资源的API请参见[API概览](/intl.zh-CN/API参考/API概览.md)。例如，您可以尝试查询磁盘列表（[DescribeDisks](/intl.zh-CN/API参考/磁盘/DescribeDisks.md)），替换入参对象为DescribeDisksRequest并定制相关变量即可。
+更多查询资源的API，请参见[API概览](/intl.zh-CN/API参考/API概览.md)。例如，您可以尝试查询磁盘列表（[DescribeDisks](/intl.zh-CN/API参考/磁盘/DescribeDisks.md)），替换入参对象为DescribeDisksRequest并定制相关变量即可。
 
