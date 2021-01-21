@@ -125,7 +125,3 @@ fstab支持使用云盘分区名（例如/dev/vdb1）或UUID标识文件系统�
 
 配置完成后，您后续如果重启ECS实例，系统将自动挂载数据盘。
 
-## 常见问题
-
-[Linux实例的/etc/fstab文件配置错误导致系统启动异常](https://help.aliyun.com/knowledge_detail/41460.html)
-
