@@ -34,8 +34,6 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
 
 
-
-
 ## 步骤一：准备编译环境
 
 1.  远程连接Linux实例。
@@ -44,7 +42,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
     1.  运行systemctl status firewalld命令查看当前防火墙的状态。
 
-        ![查看防火墙状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7712359951/p32172.png)
+        ![查看防火墙状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7712359951/p32172.png)
 
         -   如果防火墙的状态参数是inactive，则防火墙为关闭状态。
         -   如果防火墙的状态参数是active，则防火墙为开启状态。本示例中防火墙为开启状态，因此需要关闭防火墙。
@@ -62,7 +60,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
     1.  运行getenforce命令查看SELinux的当前状态。
 
-        ![查看SELinux状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7712359951/p21065.png)
+        ![查看SELinux状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7712359951/p21065.png)
 
         -   如果SELinux状态参数是Disabled，则SELinux为关闭状态。
         -   如果SELinux状态参数是Enforcing，则SELinux为开启状态。本示例中SELinux为开启状态，因此需要关闭SELinux。
@@ -78,6 +76,8 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
 
 ## 步骤二：安装Nginx
+
+**说明：** 本教程只提供一个版本的Nginx作为示例，如果您需要安装其他版本的Nginx，请参见[常见问题](#section_0ho_omf_0ct)。
 
 1.  运行以下命令安装Nginx。
 
@@ -223,7 +223,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
         添加配置信息后，如下图所示。
 
-        ![nginx-configuration](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7902649951/p69697.png)
+        ![nginx-configuration](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7902649951/p69697.png)
 
     4.  按下Esc键后，输入:wq并回车以保存并关闭配置文件。
 
@@ -325,7 +325,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
         网站根目录是您在nginx.conf文件中`location ~ .php$`大括号内配置的`root`值，如下图所示。
 
-        ![lnmp-root-dir](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7902649951/p69633.png)
+        ![lnmp-root-dir](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7902649951/p69633.png)
 
         本教程配置的网站根目录为/usr/share/nginx/html，因此命令为：
 
@@ -364,8 +364,10 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
     返回结果如下图所示，表示LNMP环境部署成功。
 
-    ![LNMP部署成功](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7902649951/p44922.png)
+    ![LNMP部署成功](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7902649951/p44922.png)
 
+
+## 后续步骤
 
 测试访问LNMP平台成功后，建议您运行以下命令将phpinfo.php文件删除，消除安全隐患。
 
@@ -378,4 +380,69 @@ rm -rf <网站根目录>/phpinfo.php   #将<网站根目录>替换为您在nginx
 ```
 rm -rf /usr/share/nginx/html/phpinfo.php
 ```
+
+## 常见问题
+
+如何使用其它版本的Nginx服务器？
+
+1.  使用浏览器访问[Nginx开源社区](http://nginx.org/en/download.html)获取对应的Nginx版本的下载链接。
+
+    请根据您的个人需求，选择对应的Nginx版本。本章节以Nginx 1.8.1为例。
+
+2.  远程连接需要部署LNMP环境的ECS实例。
+3.  运行wget命令下载Nginx 1.8.1。
+
+    您可以通过Nginx开源社区直接获取对应版本的安装包URL，然后通过`wget URL`的方式将Nginx安装包下载至ECS实例。例如，Nginx 1.8.1的下载命令如下：
+
+    ```
+    wget http://nginx.org/download/nginx-1.8.1.tar.gz
+    ```
+
+4.  运行以下命令，安装Nginx相关依赖。
+
+    ```
+    yum install -y gcc-c++
+    yum install -y pcre pcre-devel
+    yum install -y zlib zlib-devel
+    yum install -y openssl openssl-devel
+    ```
+
+5.  运行以下命令，解压Nginx 1.8.1安装包，然后进入Nginx所在的文件夹。
+
+    ```
+    tar zxvf nginx-1.8.1.tar.gz
+    cd nginx-1.8.1
+    ```
+
+6.  依次运行以下命令，编译源码。
+
+    ```
+    ./configure \
+     --user=nobody \
+     --group=nobody \
+     --prefix=/usr/local/nginx \
+     --with-http_stub_status_module \
+     --with-http_gzip_static_module \
+     --with-http_realip_module \
+     --with-http_sub_module \
+     --with-http_ssl_module
+    ```
+
+    ```
+    make && make install
+    ```
+
+7.  运行以下命令，进入Nginx的sbin目录，然后启动Nginx。
+
+    ```
+    cd /usr/local/nginx/sbin/
+    ./nginx
+    ```
+
+8.  在本地主机中，使用浏览器访问`ECS实例公网IP`。
+
+    出现如下图所示的页面，表示Nginx已成功安装并启动。
+
+    ![nginx](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7825911161/p228426.png)
+
 
