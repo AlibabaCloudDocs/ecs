@@ -21,7 +21,7 @@ This topic describes the features of ECS instance families with local SSDs and l
 
 Instances with local SSDs provide high I/O performance. They are suitable for scenarios that impose high demands on storage I/O performance and high availability architecture at the application level. For example, they are suitable for NoSQL databases, massively parallel processing \(MPP\) data warehouses, and distributed file systems.
 
-Instances with local SSDs are suitable for enterprises that provide online services such as online gaming, e-commerce, live video streaming, and media. Instances with local SSDs can satisfy the high requirements of I/O-intensive applications that require low latency and high I/O performance of Elastic Block Storage \(EBS\) devices.
+Instances with local SSDs are suitable for enterprises that provide online services such as online gaming, e-commerce, live video streaming, and media. Instances with local SSDs can satisfy the high requirements of I/O-intensive applications for low latency and high I/O performance of Elastic Block Storage \(EBS\) devices.
 
 Instances with local SSDs have the following features:
 
@@ -32,28 +32,28 @@ Instances with local SSDs have the following features:
 When you use instances with local SSDs, take note of the following items:
 
 -   Instances with local SSDs do not support changes in instance types, bandwidth, and billing methods, and do not support failover.
--   The number and capacity of local disks of an instance vary with the instance type. Instances with local SSDs are bound to their local disks. You cannot attach additional local disks to these instances or detach local disks from these instances and attach the disks to another instance.
--   You cannot create snapshots for local disks. If you need to create an image for the system disk and data disks of an instance with local SSDs, we recommend that you create an image by using the snapshots of both the system disk and data disks \(data disks must be non-local disks\).
+-   The number and capacity of local disks of an instance vary with the instance type. Instances with local SSDs are bound to their local disks. You cannot attach additional local disks to these instances or detach local disks from these instances and attach the disks to other instances.
+-   You cannot create snapshots for local disks. If you want to create an image for the system disk and data disks of an instance with local SSDs, we recommend that you create an image by using the snapshots of both the system disk and data disks \(data disks must be non-local disks\).
 -   You cannot create images that contain system disks and data disks based on instance IDs.
 -   You can attach a standard SSD to an instance with local SSDs. The capacity of the standard SSD is scalable.
--   Local disks are attached to a single physical server, which increases risks of single points of failure \(SPOFs\). The reliability of data stored on local disks depends on the reliability of the physical server.
+-   Local disks are attached to a single physical server, which increases the risks of single points of failure \(SPOFs\). The durability of data stored on local disks is based on the reliability of the physical server.
 
-    **Warning:** For example, data stored on local disks may be lost when a hardware failure occurs. We recommend that you store only temporary data on local disks.
+    **Warning:** For example, data stored on local disks may be lost when hardware failures occur. We recommend that you store only temporary data on local disks.
 
     -   To ensure data availability, we recommend that you implement data redundancy at the application layer. You can use deployment sets to distribute ECS instances across multiple physical servers to achieve high availability and disaster recovery. For more information, see [Create a deployment set](/intl.en-US/Elasticity/Deployment sets/Create a deployment set.md).
-    -   If your applications do not have data reliability architectures, we recommend that you use cloud disks or the backup service in your ECS instances for data reliability. For more information, see [Disk overview](/intl.en-US/Block Storage/Block Storage overview/Disk overview.md) or [What is Hybrid Backup Recovery?](/intl.en-US/Product Introduction/What is Hybrid Backup Recovery?.md)
--   Operations on an instance with local SSDs may affect the data stored on the local disks. For more information, see [Impacts of instance operations on the data stored on local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
+    -   If your applications do not have data reliability architectures, we recommend that you use cloud disks or the backup service in your ECS instances for data reliability. For more information, see [Cloud disks](/intl.en-US/Block Storage/Block Storage overview/Cloud disks.md) or [What is Hybrid Backup Recovery?](/intl.en-US/Product Introduction/What is Hybrid Backup Recovery?.md).
+-   Operations on an instance with local SSDs may affect the data stored on the local SSDs. For more information, see [Impacts of instance operations on data stored on local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
 
 ## i3, instance family with local SSDs
 
-i3 is in invitational preview. To use i3,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+i3 is in invitational preview. To use i3, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
-Features:
+Features
 
--   Uses 2.5 GHz Intel ® Xeon® Platinum 8269CY \(Cascade Lake\) processors with a maximum turbo frequency of 3.2 GHz for consistent computing performance.
--   Attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency, and allows damaged disks to be isolated online.
+-   Uses 2.5 GHz Intel ® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency, and allows damaged disks to be isolated online.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports enhanced SSDs \(ESSDs\).
+-   Supports enhanced SSDs \(ESSDs\) only.
 -   Provides high network performance based on large computing capacity.
 -   Applies to the following scenarios:
     -   Online transaction processing \(OLTP\) and high-performance relational databases
@@ -64,12 +64,12 @@ Instance types
 
 |Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
 |:------------|:---|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.i3.xlarge|4|32.0|1 \* 894|1.5|10|1,000|Yes|25|4|4|15|40|1.5|
-|ecs.i3.2xlarge|8|64.0|1 \* 1788|2.5|10|1,600|Yes|25|8|4|15|50|2.0|
-|ecs.i3.4xlarge|16|128.0|2 \* 1788|5.0|10|3,000|Yes|30|8|8|30|80|3.0|
-|ecs.i3.8xlarge|32|256.0|4 \* 1788|10.0|None|6,000|Yes|60|16|8|30|150|5.0|
-|ecs.i3.13xlarge|52|384.0|6 \* 1788|16.0|None|9,000|Yes|90|32|7|30|240|8.0|
-|ecs.i3.26xlarge|104|768.0|12 \* 1788|32.0|None|24,000|Yes|180|32|15|30|480|16.0|
+|ecs.i3.xlarge|4|32.0|1 \* 894|1.5|10|1,000|Yes|250|4|4|15|40|1.5|
+|ecs.i3.2xlarge|8|64.0|1 \* 1788|2.5|10|1,600|Yes|250|8|4|15|50|2.0|
+|ecs.i3.4xlarge|16|128.0|2 \* 1788|5.0|10|3,000|Yes|300|8|8|30|80|3.0|
+|ecs.i3.8xlarge|32|256.0|4 \* 1788|10.0|None|6,000|Yes|600|16|8|30|150|5.0|
+|ecs.i3.13xlarge|52|384.0|6 \* 1788|16.0|None|9,000|Yes|900|32|7|30|240|8.0|
+|ecs.i3.26xlarge|104|768.0|12 \* 1788|32.0|None|24,000|Yes|1,800|32|15|30|480|16.0|
 
 **Note:**
 
@@ -83,7 +83,7 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Offers a CPU-to-memory ratio of 1:8, which is designed for high-performance databases.
 -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors.
 -   Provides high network performance based on large computing capacity.
@@ -115,7 +115,7 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
 -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors.
 -   Provides high network performance based on large computing capacity.
@@ -147,7 +147,7 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Provides a bandwidth of up to 20 Gbit/s.
 -   Offers a CPU-to-memory ratio of 1:8, which is designed for high-performance databases.
 -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors.
@@ -181,7 +181,7 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Provides a bandwidth of up to 20 Gbit/s.
 -   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
 -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors.
@@ -212,12 +212,12 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
 -   Uses 2.5 GHz Intel ® Xeon ® E5-2682 v4 \(Broadwell\) processors.
 -   Provides high network performance based on large computing capacity.
 -   Applies to the following scenarios:
-    -   Online transaction processing \(OLTP\) and high-performance relational databases
+    -   OLTP and high-performance relational databases
     -   NoSQL databases such as Cassandra and MongoDB
     -   Search scenarios that use solutions such as Elasticsearch
 
