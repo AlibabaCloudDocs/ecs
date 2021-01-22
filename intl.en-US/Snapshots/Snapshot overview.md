@@ -52,11 +52,9 @@ Snapshots are classified into normal and local snapshots based on how they are s
 
 ## Pricing
 
-Snapshots are billed based on their sizes. They can be billed on a pay-as-you-go basis. For more information, see [Snapshot](/intl.en-US/Pricing/Billing items/Snapshot billing.md).
+Snapshots are billed based on their sizes. They can be billed on a pay-as-you-go basisand have their bills offset storage capacity units \(SCUs\). For more information, see [Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
 
-**Note:** Local snapshots can be billed only on a pay-as-you-go basis and are not able to have their bills offset by OSS storage plans.
-
-## Limits
+## Service limits
 
 For the limits and quotas of snapshots, see the "Snapshot limits" section in [Limits](/intl.en-US/Product Introduction/Limits.md).
 
