@@ -110,7 +110,7 @@ We recommend that you use an account other than root user to remotely access the
 
         **Note:** When you create an account, the password must meet the requirements. The password must be 8 to 30 characters in length, and must contain uppercase letters, lowercase letters, digits, and special characters. Special characters include
 
-        `()` ~! @ # $ % ^ & * - + = | {} [] : ; ' < > , . ? /`
+        `()` ~! @ # $ % ^ & * - + = | { } [ ] : ; ' < > , . ? /`
 
 2.  Remotely access MySQL by using the `dms` account.
 
