@@ -10,7 +10,7 @@ Before you roll back a disk by using a snapshot, take note of the following item
 
 -   A snapshot of the disk to be rolled back is created, and no new snapshot is being created for the disk. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)or [Create a local snapshot](/intl.en-US/Snapshots/Use snapshots/Create a local snapshot.md).
 
-    **Warning:** The rollback operation is irreversible. After a disk is rolled back, the data from the creation of the snapshot to when the disk is rolled back is lost. To avoid data losses caused by incorrect operations, we recommend that you create a snapshot for the current disk before you roll back the disk.
+    **Warning:** The rollback operation is irreversible. After a disk is rolled back, the data that you added, deleted, or changed from the creation of the snapshot to the time when the disk is rolled back is lost. To avoid data losses caused by incorrect operations, we recommend that you create a snapshot for the current disk before you roll back the disk.
 
 -   The disk has not been released.
 -   After you replace the system disk, snapshots of the previous system disk cannot be used to roll back the new system disk.
@@ -30,9 +30,9 @@ You can roll back a disk from the **Snapshots** or **Instances** page. The follo
 
 3.  In the top navigation bar, select a region.
 
-4.  Find the instance whose disk you want to roll back the disk and click **Manage** in the **Actions** column.
+4.  Find the instance whose disk you want to roll back and click **Manage** in the **Actions** column.
 
-5.  The **Instance Details** tab appears. Click the **Snapshot** tab.
+5.  Click the **Snapshot** tab on the **Instance Details** page.
 
 6.  Find the snapshot and click **Roll Back Disk** in the **Actions** column.
 
@@ -47,9 +47,9 @@ You can roll back a disk from the **Snapshots** or **Instances** page. The follo
 
 ## \(Optional\) Synchronize data after a disk is rolled back
 
-If you roll back a disk by using Snapshot A that was created at the point in time T1 and you need to synchronize the data after T1, you can perform the following operations:
+If you roll back a disk by using Snapshot A that was created at the point in time T1 and you need to synchronize the data that you added, deleted, and changed after T1, you can perform the following operations.
 
-![Synchronize data from your RDS instance to your ECS instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7665319951/p40777.png)
+![Synchronize data](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7665319951/p40777.png)
 
 1.  Create Snapshot B for the original disk at the point in time T2.
 
@@ -74,10 +74,10 @@ If you roll back a disk by using Snapshot A that was created at the point in tim
 8.  Release the new disk.
 
 
-If you resize a disk after you create a snapshot for the disk, the size of the disk is also rolled back after you roll back the disk. To make the disk revert to the size before the rollback, you must log on to the instance to resize the file system again.
-
--   [Resize partitions and file systems of Linux data disks](/intl.en-US/Best Practices/Block Storage/Resize partitions and file systems of Linux data disks.md)
--   [Resize disks online for Windows instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Windows instances.md)
+-   After a disk is rolled back, the host configuration file and the configuration data such as the hostname, SSH, password, network, system source, and clock source are initialized. You must reconfigure the information.
+-   If you resize a disk after you create a snapshot for the disk, the size of the disk is also rolled back after you roll back the disk. To make the disk revert to the size before the rollback, you must log on to the instance to resize the file system again.
+    -   [Resize partitions and file systems of Linux data disks](/intl.en-US/Best Practices/Block Storage/Resize partitions and file systems of Linux data disks.md)
+    -   [Resize disks online for Windows instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Windows instances.md)
 
 **Related topics**  
 
