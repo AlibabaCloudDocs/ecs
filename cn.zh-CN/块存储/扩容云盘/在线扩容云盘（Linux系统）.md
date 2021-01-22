@@ -46,7 +46,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-2.  在左侧导航栏，单击**实例与镜像** \> **实例**。
+2.  在左侧导航栏，选择**实例与镜像** \> **实例**。
 
 3.  在顶部菜单栏左上角处，选择地域。
 
@@ -94,7 +94,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
     fdisk -lu
     ```
 
-    示例以系统盘（/dev/vda1）和数据盘（/dev/vdb1、/vde/vdc1）的三个分区为例，执行结果如下所示。
+    示例以系统盘（/dev/vda1）和数据盘（/dev/vdb1、/dev/vdc1）的三个分区为例，执行结果如下所示。
 
     ![查看云盘分区情况](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9339169951/p135832.png)
 
