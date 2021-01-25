@@ -681,7 +681,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0910, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
 |Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
--   English version: None
+-   English version: none
 
 |2020-04-16|-   Updated to include the KB4549947 and KB4549949 operating system patches released in April 2020.
 -   Added disk drives for the Windows Recovery mode.
