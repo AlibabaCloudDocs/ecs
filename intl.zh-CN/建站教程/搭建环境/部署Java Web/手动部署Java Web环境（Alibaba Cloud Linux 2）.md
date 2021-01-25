@@ -252,10 +252,10 @@
 
     1.  运行以下命令下载Tomcat自启动脚本文件。
 
-        **说明：** 该脚本来源于社区，仅供参考。阿里云对其可靠性以及操作可能带来的潜在影响，不做任何暗示或其他形式的承诺。
+        **说明：** 该脚本来源于社区，仅供参考。阿里云对其可靠性以及操作可能带来的潜在影响，不做任何暗示或其他形式的承诺。如果您运行wget命令下载失败，您可以通过浏览器访问`https://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init`直接获取脚本内容。
 
         ```
-        wget http://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init
+        wget https://raw.githubusercontent.com/oneinstack/oneinstack/master/init.d/Tomcat-init
         ```
 
     2.  运行以下命令重命名Tomcat-init。
