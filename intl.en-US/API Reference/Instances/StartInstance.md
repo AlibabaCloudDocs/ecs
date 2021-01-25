@@ -74,7 +74,7 @@ Sample success responses
 |500|InstanceNotReady|The specified instance is not ready for use|The error message returned because the specified instance cannot be connected for the moment. Try again later.|
 |500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
 |403|DiskError|IncorrectDiskStatus.|The error message returned because the status of the specified disk is invalid.|
-|403|InstanceExpired|The postPaid instance has been expired.Please ensure your account have enough balance.|The error message returned because the pay-as-you-go instance has expired. Make sure that your account balance is sufficient.|
+|403|InstanceExpired|The postPaid instance has been expired. Please ensure your account have enough balance.|The error message returned because the pay-as-you-go instance has expired. Make sure that your account balance is sufficient.|
 |403|InstanceExpired|The prePaid instance has been expired.|The error message returned because the subscription instance has expired.|
 |403|InstanceNotReady|The specified instance is not ready for use.|The error message returned because the operation is not supported while the resource is in the current state. Try again later.|
 |403|DiskInArrears|The specified operation is denied as your disk has expired.|The error message returned because the disk has expired due to overdue payments.|
