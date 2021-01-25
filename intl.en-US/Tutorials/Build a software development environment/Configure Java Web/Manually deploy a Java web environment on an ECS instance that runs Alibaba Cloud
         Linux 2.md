@@ -22,7 +22,7 @@ The following instance type and software versions are used in this topic. The op
 
     In this example, traffic on SSH port 22 and HTTP port 8080 is allowed.
 
-2.  Connect to the instance. For more information, see[Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+2.  Connect to the instance. For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
 
 3.  Disable the firewall.
 
