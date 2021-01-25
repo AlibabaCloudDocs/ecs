@@ -8,22 +8,22 @@ A savings plan is a discount plan that can be applied to offset the bills of pay
 
 ## What is a savings plan?
 
-A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount\(measured in US dollars per hour\) of resources over a one-year or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan.
+A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount \(measured in USD/hour\) of resources over a one-year or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan.
 
 When you use a savings plan, your pay-as-you-go instances of each instance type have a regular pay-as-you-go unit price and a savings plan unit price. For more information, see the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page. Resource usage within your commitment is billed based on the savings plan unit price. Resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
 
 For example, assume that Alex has several ecs.g6.xlarge instances in the China \(Shanghai\) region and can use a three-year general-purpose savings plan to obtain the following discounts.
 
-**Note:** The prices used in this example are for demonstration only. For the actual prices and discounts, see the[Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page and the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page.
+**Note:** The prices used in this example are for demonstration only. For the actual prices and discounts, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page and the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page.
 
-Assume that the regular pay-as-you-go unit price of an ecs.g6.xlarge instance is `USD 0.155/instance/hour` and a three-year savings plan provides savings of `54.5%` off the pay-as-you-go price for the ecs.g6 instance family in the China \(Shanghai\) region. The savings plan unit price of the ecs.g6.xlarge instances is calculated based on the following formula: `USD 0.155/instance/hour × 0.455 = USD 0.0705/instance/hour`.
+Assume that the regular pay-as-you-go unit price of ecs.g6.xlarge instances is `USD 0.155/instance/hour` and a three-year savings plan provides savings of `54.5%` off the pay-as-you-go price for the ecs.g6 instance family in the China \(Shanghai\) region. The savings plan unit price of the ecs.g6.xlarge instances is calculated based on the following formula: `USD 0.155/instance/hour × 0.455 = USD 0.0705/instance/hour`.
 
 If Alex makes a commitment of `USD 0.31/hour`, the savings plan can be applied to offset hourly bills of 4.397 pay-as-you-go ecs.g6.xlarge instances, which is calculated based on the following formula: `0.31/0.0705 = 4.397`.
 
 The following table compares the regular pay-as-you-go prices and the savings plan prices.
 
-|Billing method|The first hour \(assuming that six instances are running\)|The second hour \(assuming that five instances are running\)|The third hour \(assuming that four instances are running\)|
-|--------------|----------------------------------------------------------|------------------------------------------------------------|-----------------------------------------------------------|
+|Billing method|The first hour \(based on the assumption that six instances are running\)|The second hour \(based on the assumption that five instances are running\)|The third hour \(based on the assumption that four instances are running\)|
+|--------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------|
 |Total regular pay-as-you-go price without the savings plan|6 × 0.155 = USD 0.93|5 × 0.155 = USD 0.775|4 × 0.155 = USD 0.62|
 |Total price after the savings plan is applied|The instances that exceed the maximum number of instances \(4.397 instances\) to which the savings plans can be applied are billed on the pay-as-you-go basis.0.31 + 0.155 × \(6 - 0.31/0.0705\) = USD 0.558
 
@@ -31,9 +31,9 @@ The following table compares the regular pay-as-you-go prices and the savings pl
 
 |The total price is calculated based on the commitment because the number of running instances is less than the maximum number of instances \(4.397 instances\) to which the savings plans can be applied.USD 0.31 |
 
-## Make an hourly spend commitment
+## Select an hourly commitment
 
-For each savings plan, you must select hourly spend commitment. Resource usage within your commitment is billed based on the savings plan unit price. Any resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
+For each savings plan, you must select an hourly commitment. Resource usage within your commitment is billed based on the savings plan unit price. Resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
 
 You can purchase a desired savings plan on the [Savings Plan](https://common-buy-intl.alibabacloud.com/?commodityCode=savingplan_common_public_intl#/buy) page or purchase a recommended savings plan on the [Recommended](https://usercenter2-intl.aliyun.com/resource/spn/recommend) page.
 
@@ -48,7 +48,7 @@ Savings plans are available in two types: general-purpose and ECS compute. The f
 
 |Can be used for only the following ECS resources: instance computing resources \(vCPUs and memory\), system disks, and public bandwidth.|
 |Region limits|Has no limits on regions.|Can be applied only within a single region.|
-|Instance limits|Has no limits on instance families, instance sizes, or operating systems.|Can be applied only to one instance family at a time but has no limits on the instance sizes or operating systems.|
+|Instance limits|Has no limits on instance families, instance sizes, or operating systems.|Can be applied only to specific instance families. You can choose to place an order by instance family set. In this case, this savings plan type can be applied to all instance families in the set. You can also place an order by instance family. In this case, this savings plan type can be applied only to the specified instance family.Has no limits on instance sizes or operating systems. |
 
 ## Scenarios
 
@@ -70,7 +70,7 @@ Savings plans support three payment options: All Upfront, Partial Upfront, and N
 
 The following rules apply to the lifecycle management of savings plans:
 
--   Taking effect and expiration
+-   Entry into effect and expiration
 
     When a savings plan is purchased, the savings plan immediately takes effect on the hour of purchase. Savings plans take effect and expire on the hour.
 
@@ -108,7 +108,7 @@ The following table describes the limits of savings plans.
 
 ## Use across accounts
 
-If you want to centralize the financial relationships of multiple Alibaba Cloud accounts, you can use the corporate finance feature in the User Center. The corporate finance feature allows you to establish trusteeship between multiple Alibaba Cloud accounts. You can use the main account to pay bills of linked accounts. After a trusteeship is established between multiple accounts, you can share savings plans in the main account to offset the bills of pay-as-you-go instances in the linked accounts.
+If you want to centrally manage the financial relationships of multiple Alibaba Cloud accounts, you can use the corporate finance feature in the User Center. The corporate finance feature allows you to establish trusteeship between multiple Alibaba Cloud accounts. You can use the main account to pay bills of linked accounts. After a trusteeship is established between multiple accounts, you can share savings plans in the main account to offset the bills of pay-as-you-go instances in the linked accounts.
 
 **Note:** In corporate finance, the main account and linked accounts are independent Alibaba Cloud accounts that are used to grant financial management permissions. The relationships between these accounts are different from those between regular Alibaba Cloud accounts and RAM users.
 
