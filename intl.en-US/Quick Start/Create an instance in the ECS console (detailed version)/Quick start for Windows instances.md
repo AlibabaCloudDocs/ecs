@@ -149,7 +149,7 @@ Direct access to IIS by using the public IP address of the instance may degrade 
 
 3.  Resolve the domain name to point to the public IP address of the instance.
 
-    Domain name resolution is a prerequisite for using domain names to access your website. For more information about the procedures, see[Add and manage records](https://www.alibabacloud.com/help/doc-detail/58131.htm).
+    Domain name resolution is a prerequisite for using domain names to access your website. For more information about the procedures, see [Add and manage records](https://www.alibabacloud.com/help/doc-detail/58131.htm).
 
 4.  Use the resolved domain name to access IIS. Example: https://ecs-quickstarts.info.
 
