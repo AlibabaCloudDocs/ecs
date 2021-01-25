@@ -10,7 +10,7 @@ A savings plan is a discount plan that can be applied to offset the bills of pay
 
 A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount\(measured in US dollars per hour\) of resources over a one-year or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan.
 
-When you use a savings plan, your pay-as-you-go instances of each instance type have a regular pay-as-you-go unit price and a savings plan unit price.For more information, see the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page. Resource usage within your commitment is billed based on the savings plan unit price. Resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
+When you use a savings plan, your pay-as-you-go instances of each instance type have a regular pay-as-you-go unit price and a savings plan unit price. For more information, see the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page. Resource usage within your commitment is billed based on the savings plan unit price. Resource usage beyond your commitment is billed at the regular pay-as-you-go unit price.
 
 For example, assume that Alex has several ecs.g6.xlarge instances in the China \(Shanghai\) region and can use a three-year general-purpose savings plan to obtain the following discounts.
 
