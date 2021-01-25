@@ -18,7 +18,7 @@ ECS provides the following benefits:
 -   ECS comes with a performance monitoring framework and active O&M system.
 -   A standardized API is provided to improve ease-of-use and applicability.
 
-For more benefits, see [Benefits of ECS](/intl.en-US/Product Introduction/Benefits of ECS.md) and [Scenarios](/intl.en-US/Product Introduction/Scenarios.md).
+For more benefits, see [Benefits of ECS](/intl.en-US/Product Introduction/Benefits.md) and [Scenarios](/intl.en-US/Product Introduction/Scenarios.md).
 
 ## Architecture
 
@@ -52,7 +52,7 @@ After you register an Alibaba Cloud account, you can create, use, or release ECS
     -   [Alibaba Cloud CLI](): a flexible and scalable management tool based on Alibaba Cloud APIs. You can use CLI to encapsulate Alibaba Cloud native APIs to develop custom features.
     -   [OpenAPI Explorer](https://api.aliyun.com/): allows you to retrieve API operations, call API operations, and dynamically generate SDK sample code.
     -   [Alibaba Cloud SDK](https://www.alibabacloud.com/support/developer-resources): SDKs for a variety of programming languages such as Java, Python, and PHP are provided.
--   [Resource Orchestration Service \(ROS\)](): automatically creates and configures Alibaba Cloud resources based on user-defined templates.
+-   [Resource Orchestration Service \(ROS\)](/intl.en-US/Product Introduction/What is ROS?.md): automatically creates and configures Alibaba Cloud resources based on user-defined templates.
 -   [Terraform](/intl.en-US/Elasticity/Terraform/What is Terraform?.md): an open source tool that uses configuration files to call computing resources of Alibaba Cloud and other platforms that support Terraform. Terraform also implements version control.
 
 ## Deployment suggestions
@@ -73,7 +73,7 @@ Before you purchase an ECS instance, consider the following factors:
 
 -   Security solutions
 
-    You can use ECS security groups to control inbound and outbound access policies and the port listening status of ECS instances. For applications deployed on ECS instances, Alibaba Cloud provides Anti-DDoS Basic for free.You can also use Alibaba Cloud Security. For example:
+    You can use ECS security groups to control inbound and outbound access policies and the port listening status of ECS instances. For applications deployed on ECS instances, Alibaba Cloud provides Anti-DDoS Basic for free. You can also use Alibaba Cloud Security. For example:
 
     -   You can use Anti-DDoS Pro to ensure the stability and reliability of source sites. For more information, see [What is Anti-DDoS Pro](/intl.en-US/Anti-DDoS Pro Service (Old)/Product Introduction/What is Anti-DDoS Pro.md).
     -   Security Center can be used to safeguard the security of ECS instances. For more information, see [What is Security Center?](/intl.en-US/Product Introduction/What is Security Center?.md)
