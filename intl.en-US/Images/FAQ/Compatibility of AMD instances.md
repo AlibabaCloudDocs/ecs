@@ -35,5 +35,5 @@ The following table lists the operating system versions that support AMD Rome pr
 **Related topics**  
 
 
-[](/intl.en-US/Images/Public image/Release notes.md)
+[Release notes](/intl.en-US/Images/Public image/Release notes.md)
 
