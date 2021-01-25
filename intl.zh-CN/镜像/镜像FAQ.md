@@ -354,7 +354,7 @@ Linux其他较重要的配置文件如下：
 3.  启动docker-registry。
 
     ```
-     DOCKER_REGISTRY_CONFIG=［your_config_path］ gunicorn -k gevent -b 0.0.0.0:5000 -w 1 docker_registry.wi:application
+     DOCKER_REGISTRY_CONFIG=[your_config_path] gunicorn -k gevent -b 0.0.0.0:5000 -w 1 docker_registry.wi:application
     ```
 
 
