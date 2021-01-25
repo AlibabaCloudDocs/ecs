@@ -51,7 +51,7 @@ This parameter is empty by default, which indicates that the snapshot will not b
 -   Standard: normal snapshot
 -   Flash: local snapshot
 
-**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess`parameter to ensure future compatibility. This parameter and the `InstantAccess` parameter cannot be specified at the same time. For more information, see the "Description" section in this topic. |
+**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess` parameter to ensure future compatibility. This parameter and the `InstantAccess` parameter cannot be specified at the same time. For more information, see the "Description" section in this topic. |
 |ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
 |Tag.N.value|String|No|null|The value of tag N to be bound to the snapshot.
 
