@@ -15,7 +15,7 @@ You can call this operation to modify the billing method of dedicated hosts.
 |RegionId|String|Yes|cn-hangzhou|The region ID of the dedicated host. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |Period|Integer|No|1|The renewal period of the subscription instance. Valid values:
 
--   When `PeriodUnit`is set to Week, valid values of `Period` are 1, 2, 3, and 4.
+-   When `PeriodUnit` is set to Week, valid values of `Period` are 1, 2, 3, and 4.
 -   When `PeriodUnit` is set to Month, valid values of `Period` are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60. |
 |PeriodUnit|String|No|Month|The unit of the renewal duration \(`Period`\). Valid values:
 
