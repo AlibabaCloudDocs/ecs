@@ -97,7 +97,7 @@ The local snapshot feature is replaced by the instant access feature. When you s
 |Snapshot| | | |
 |Category|String|standard|The category of the snapshot.
 
-**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess`parameter to ensure future compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess` parameter to ensure future compatibility. |
 |CreationTime|String|2020-08-20T14:52:28Z|The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |Description|String|testDescription|The description of the snapshot. |
 |Encrypted|Boolean|false|Indicates whether the snapshot was encrypted. |
