@@ -320,5 +320,5 @@ Alibaba Cloud ICP Filing System can help you simplify the ICP filing procedure. 
 
 ## Step 6: Resolve the domain name to the IP address of the instance
 
-You must resolve the domain name to the IP address of the ECS instance, so users can visit your website by using the domain name. For more information, see[Configure the DNS settings for a domain name](https://www.alibabacloud.com/help/doc-detail/58131.htm).
+You must resolve the domain name to the IP address of the ECS instance, so users can visit your website by using the domain name. For more information, see [Configure the DNS settings for a domain name](https://www.alibabacloud.com/help/doc-detail/58131.htm).
 
