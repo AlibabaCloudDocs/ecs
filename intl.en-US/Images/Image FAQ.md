@@ -352,7 +352,7 @@ Start docker-registry that supports Alibaba Cloud OSS. You can download docker-r
 3.  Start Docker registry.
 
     ```
-     DOCKER_REGISTRY_CONFIG=［your_config_path］ gunicorn -k gevent -b 0.0.0.0:5000 -w 1 docker_registry.wi:application
+     DOCKER_REGISTRY_CONFIG=[your_config_path] gunicorn -k gevent -b 0.0.0.0:5000 -w 1 docker_registry.wi:application
     ```
 
 
@@ -429,7 +429,7 @@ All Alibaba Cloud regions support copying custom images.
 
 When you copy a custom image across regions, the image file is transmitted from one region to another. The amount of time it takes to copy a custom image depends on the network transmission speed and the number of transmission tasks in the queue.
 
-To copy a large image such as an image larger than 2 TiB in size across regions, you can first copy the associated snapshots to the destination region and then create a custom image from these snapshots in the destination region. This procedure takes less time than the procedure to copy the image directly. For more information, see [Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md) and [Create a custom image from a snapshot](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from a snapshot.md). For snapshot charges, see[Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
+To copy a large image such as an image larger than 2 TiB in size across regions, you can first copy the associated snapshots to the destination region and then create a custom image from these snapshots in the destination region. This procedure takes less time than the procedure to copy the image directly. For more information, see [Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md) and [Create a custom image from a snapshot](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from a snapshot.md). For snapshot charges, see [Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
 
 ## How am I charged when I copy a custom image?
 
@@ -534,7 +534,7 @@ When you import custom images, you can select one of the following license types
 
         -   Windows operating systems
 
-            Windows [client access licenses \(CALs\)](https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/rds-client-access-license) do not support License Mobility. Therefore, existing Windows licenses cannot be used within shared hardware environments. You must deploy Windows operating systems within a dedicated physical environment, which can be an Alibaba Cloud dedicated host or an ECS bare metal instance. For more information, see the [dedicated host documentation](/intl.en-US/Product Introduction/What is DDH?.md) and [ECS bare metal instance documentation](/intl.en-US/Instance/Instance type families/ECS Bare Metal Instance family/ECS Bare Metal Instance.md).
+            Windows [client access licenses \(CALs\)](https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/rds-client-access-license) do not support License Mobility. Therefore, existing Windows licenses cannot be used within shared hardware environments. You must deploy Windows operating systems within a dedicated physical environment, which can be an Alibaba Cloud dedicated host or an ECS bare metal instance. For more information, see the [dedicated host documentation](/intl.en-US/Product Introduction/What is DDH?.md) and [ECS bare metal instance documentation](/intl.en-US/Instance/Instance type families/ECS Bare Metal Instance family/Overview.md).
 
             For this kind of ECS instances, Alibaba Cloud does not provide KMS, WSUS, or software technical support. You can contact Microsoft for software technical support.
 
@@ -945,7 +945,7 @@ You can perform the following steps to migrate data from one ECS instance to ano
     **Note:** If you want to replace the image of the destination instance, make sure that the original image does not contain any data disk snapshots.
 
 
-If the preceding steps are not applicable, see [Migrate your instance within Alibaba Cloud ECS]().
+If the preceding steps are not applicable, see [Migrate data between Alibaba Cloud VMs]().
 
 ## Can ECS instances in different VPCs communicate with each other?
 
