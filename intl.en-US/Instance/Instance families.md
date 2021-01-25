@@ -16,7 +16,7 @@ You can upgrade or downgrade instance types within an instance family or across 
 
 For information about how to choose instance families based on scenarios, see [Best practices for instance type selection](/intl.en-US/Best Practices/Best practices for instance type selection.md).
 
-Alibaba Cloud ECS instance families are categorized into the following categories based on the system architecture and usage scenarios:
+Alibaba Cloud ECS instance families are divided into the following categories based on the system architecture and usage scenarios.
 
 |Enterprise-level computing instance families based on the x86 architecture|
 |--------------------------------------------------------------------------|
@@ -36,7 +36,6 @@ Alibaba Cloud ECS instance families are categorized into the following categorie
 -   [c6e, compute optimized instance family with enhanced performance](#c6e)
 -   [c5, compute optimized instance family](#c5)
 -   [r6, memory optimized instance family](#r6)
--   [re6p, persistent memory optimized instance family](#re6p)
 -   [r6a, memory optimized instance family](#r6a)
 -   [r6e, memory optimized instance family with enhanced performance](#r6e)
 -   [re6, high memory instance family](#re6)
@@ -44,7 +43,6 @@ Alibaba Cloud ECS instance families are categorized into the following categorie
 -   [d2c, compute intensive big data instance family](#d2c)
 -   [d2s, storage intensive big data instance family](#d2s)
 -   [d1ne, big data instance family with enhanced network performance](#d1ne)
--   [i3, instance family with local SSDs](#i3)
 -   [i2, instance family with local SSDs](#i2)
 -   [i2g, instance family with local SSDs](#i2g)
 -   [i2ne, instance family with local SSDs](#i2ne)
@@ -798,57 +796,6 @@ Instance types
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## re6p, persistent memory optimized instance family
-
-For answers to commonly asked questions about persistent memory optimized instances, see [Instance FAQ](/intl.en-US/Instance/Instance FAQ.md).
-
-Features
-
--   Uses Intel ®OptaneTM persistent memory.
-
-    **Note:** The reliability of data stored in persistent memory depends on the reliability of persistent memory devices and the physical servers to which these devices are attached. This increases risks of single points of failure. To ensure the reliability of application data, we recommend that you implement data redundancy at the application layer and use cloud disks for long-term data storage.
-
--   Supports configuring different usage modes of persistent memory on some instance types. You can use the persistent memory as memory or local SSDs.
-
-    **Note:** For more information, see [Configure the usage mode of persistent memory](/intl.en-US/Instance/Instance type families/Memory optimized instance families/Configure the usage mode of persistent memory.md).
-
--   Provides the ecs.re6p-redis.<nx\>large instances types for Redis applications.
-
-    Instance types exclusively for Redis are in invitational preview. To use these instance types, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
-    **Note:** ecs.re6p-redis.<nx\>large instance types are exclusively provided for Redis applications. By default, the persistent memory of the dedicated instance type is used as memory. You cannot re-configure the persistent memory of a dedicated instance type as a local SSD. For more information about how to deploy an Redis application, see [Deploy Redis applications on re6p instances](/intl.en-US/Instance/Instance type families/Memory optimized instance families/Deploy Redis applications on re6p instances.md).
-
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
--   Is an instance family in which all instances are I/O optimized.
--   Supports enhanced SSDs \(ESSDs\), standard SSDs, and ultra disks.
--   Supports VPCs only.
--   Applies to the following scenarios:
-    -   Redis and other NoSQL databases such as Cassandra and MongoDB
-    -   Structured databases such as MySQL
-    -   I/O-intensive applications such as e-commerce, online games, and media applications
-    -   Elasticsearch
-    -   Live video streaming, instant messaging, and room-based online games
-    -   High-performance relational databases and online transaction processing \(OLTP\) systems
-
-Instance types
-
-|Instance type|vCPU|DRAM \(GiB\)|AEP memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-----------|------------------|---------------------|-------------------------|------------------------------|:------------------------------|------------|-----------------|----------|:---------------------------------|---------------|-------------------------|
-|ecs.re6p.large|2|8.0|31.5|None|1.0|3.0|300|Yes|Up to 250|2|2|10|1.0|
-|ecs.re6p.xlarge|4|16.0|63.0|None|1.5|5.0|500|Yes|Up to 250|4|3|20|1.5|
-|ecs.re6p.2xlarge|8|32.0|126.0|None|2.5|10.0|800|Yes|Up to 250|8|4|25|2.0|
-|ecs.re6p.13xlarge|52|192.0|756.0|None|12.5|None|3,000|Yes|900|32|7|100|8.0|
-|ecs.re6p.26xlarge|104|384.0|1512.0|None|25.0|None|6,000|Yes|1,800|32|15|200|16,0|
-|ecs.re6p-redis.large|2|8.0|31.5|None|1.0|3.0|300|Yes|Up to 250|2|2|10|1.0|
-|ecs.re6p-redis.xlarge|4|16.0|63.0|None|1.5|5.0|500|Yes|Up to 250|4|3|20|1.5|
-|ecs.re6p-redis.2xlarge|8|32.0|126.0|None|2.5|10.0|800|Yes|Up to 250|8|4|25|2.0|
-|ecs.re6p-redis.13xlarge|52|192.0|756.0|None|12.5|None|3,000|Yes|900|32|7|100|8.0|
-
-**Note:**
-
--   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
-
 ## r6a, memory optimized instance family
 
 Features
@@ -1107,39 +1054,6 @@ Instance types
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
-
-## i3, instance family with local SSDs
-
-i3 is in invitational preview. To use i3, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
-Features
-
--   Uses 2.5 GHz Intel ® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
--   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency, and allows damaged disks to be isolated online.
--   Is an instance family in which all instances are I/O optimized.
--   Supports enhanced SSDs \(ESSDs\) only.
--   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
-    -   Online transaction processing \(OLTP\) and high-performance relational databases
-    -   NoSQL databases such as Cassandra and MongoDB
-    -   Search scenarios that use solutions such as Elasticsearch
-
-Instance types
-
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.i3.xlarge|4|32.0|1 \* 894|1.5|10|1,000|Yes|250|4|4|15|40|1.5|
-|ecs.i3.2xlarge|8|64.0|1 \* 1788|2.5|10|1,600|Yes|250|8|4|15|50|2.0|
-|ecs.i3.4xlarge|16|128.0|2 \* 1788|5.0|10|3,000|Yes|300|8|8|30|80|3.0|
-|ecs.i3.8xlarge|32|256.0|4 \* 1788|10.0|None|6,000|Yes|600|16|8|30|150|5.0|
-|ecs.i3.13xlarge|52|384.0|6 \* 1788|16.0|None|9,000|Yes|900|32|7|30|240|8.0|
-|ecs.i3.26xlarge|104|768.0|12 \* 1788|32.0|None|24,000|Yes|1,800|32|15|30|480|16.0|
-
-**Note:**
-
--   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
--   For more information about the performance metrics of local SSDs, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
 
 ## i2, instance family with local SSDs
 
@@ -3319,7 +3233,7 @@ Instance types of e4
 |Specification|Description|
 |-------------|-----------|
 |Local storage|Local storage, also called cache disks or local disks, refers to the disks attached to the physical servers where ECS instances are hosted. Local storage provides temporary block storage for instances. Local storage capacity is measured in GiB. Data stored on local disks may be lost when the compute resources \(vCPUs and memory\) of an instance are released or when an instance is failed over to a normal physical server upon a physical server failure. For more information, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).|
-|Bandwidth|The maximum sum of inbound and outbound bandwidth. **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
+|Bandwidth|The maximum sum of inbound and outbound bandwidth values. **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
 |Packet forwarding rate|The maximum sum of inbound and outbound packet forwarding rates. For information about how to test the packet forwarding rate, see [Test network performance](https://www.alibabacloud.com/help/faq-detail/55757.htm). **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load and image version. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
 |Connections|Connections, also called sessions, are the process of establishing connections and transferring data between a client and a server. A connection is uniquely defined by the network communication quintuple that consists of a source IP address, a destination IP address, a source port, a destination port, and a protocol. Connections of an ECS instance include TCP, UDP, and ICMP connections.|
 |NIC queues|The maximum number of NIC queues that the primary NIC of an instance supports. If your instance type is not a member of an ECS Bare Metal Instance family, the maximum number of NIC queues supported by a secondary NIC is the same as that supported by the primary NIC.|
