@@ -4,12 +4,12 @@ keyword: [release note, released updates, ECS, Linux, Windows]
 
 # Release notes
 
-This topic describes the updates to the features of ECS public images in the order in which they were released.
+This topic describes the updates to the features of ECS public images in order of release date.
 
 ## Background information
 
 -   Unless otherwise stated, the released updates apply to all Alibaba Cloud regions where ECS is provided.
--   Public images are applicable to most instance families. Some instance families can use only the specified public images. For more information, see the following sections:
+-   Public images are applicable to most instance families. Some instance families can use only specific public images. For more information, see the following sections:
     -   [Trusted images](#section_ta4_ich_flj)
     -   [AMD images](#section_in3_bba_8af)
 
@@ -76,14 +76,14 @@ This topic describes the updates to the features of ECS public images in the ord
     -   Updated to include the latest operating system patches.
     -   Added the EPEL source and Chinese Simplified \(zh-CN\) language pack.
     -   Enabled IPv6 by default.
--   Known issue: The system version of ECS instances created from the centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd public image is CentOS 8.1. For more information, see [CentOS 8.0: The version update of the public image leads to the change of image version number of created instances](/intl.en-US/Images/Public image/Known issues.md). |
+-   Known issue: The system version of ECS instances created from the centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd public image is CentOS 8.1. For more information about this issue, see [CentOS 8.0: The version update of the public image leads to the change of image version number of created instances](/intl.en-US/Images/Public image/Known issues.md). |
 |CentOS 7.7|centos\_7\_7\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 3.10.0-1062.12.1.el7.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 6.10|centos\_6\_10\_x64\_20G\_alibase\_20200214.vhd|2020-02-14|-   Kernel version: 2.6.32-754.27.1.el6.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 6.10|centos\_6\_10\_x64\_20G\_alibase\_20200103.vhd|2020-01-03|-   Kernel version: 2.6.32-754.25.1.el6.x86\_64.
 -   Changes: updated to include the latest operating system patches.
--   Applicable regions: China \(Beijing\), US \(Virginia\), China \(Hong Kong\), China \(Zhangjiakou-Beijing Winter Olympics\), China \(Hohhot\), China \(Hangzhou\), China \(Qingdao\), China \(Chengdu\), and Singapore \(Singapore\). |
+-   Applicable regions: China \(Beijing\), US \(Virginia\), China \(Hong Kong\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Qingdao\), China \(Chengdu\), and Singapore. |
 |CentOS 7.7|centos\_7\_7\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 3.10.0-1062.9.1.el7.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 8.0|centos\_8\_0\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.18.0-80.11.2.el8\_0.x86\_64.
@@ -95,7 +95,7 @@ This topic describes the updates to the features of ECS public images in the ord
 |CentOS 6.10|centos\_6\_10\_x64\_20G\_alibase\_20191223.vhd|2019-12-25|-   Kernel version: 2.6.32-754.24.3.el6.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 7.7|centos\_7\_7\_64\_20G\_alibase\_20191008.vhd|2019-10-8|-   Kernel version: 3.10.0-1062.1.2.el7.x86\_64.
--   Changes: released a new version. |
+-   Changes: new release. |
 |CentOS 7.6|centos\_7\_06\_64\_20G\_alibase\_20190711.vhd|2019-7-11|-   Kernel version: 3.10.0-957.21.3.el7.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 6.10|centos\_6\_10\_64\_20G\_alibase\_20190709.vhd|2019-7-9|-   Kernel version: 2.6.32-754.17.1.el6.x86\_64.
@@ -114,7 +114,7 @@ This topic describes the updates to the features of ECS public images in the ord
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Upgraded the cloud-init version.
-    -   Enabled the chrony time synchronization service.
+    -   Enabled the chrony \(time synchronization\) service.
     -   Disabled password authentication by default.
     -   Set GRUB\_TIMEOUT to 1. |
 
@@ -134,15 +134,15 @@ This topic describes the updates to the features of ECS public images in the ord
 -   Changes: updated to include the latest patches. |
 |Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.9.0-13-amd64.
 -   Changes: updated to include the latest patches. |
-|Debian 10.5|debian\_10\_5\_x64\_20G\_alibase\_20200819.vhd|2020-08-19|-   Kernel version: 4.19.0-10-amd64
+|Debian 10.5|debian\_10\_5\_x64\_20G\_alibase\_20200819.vhd|2020-08-19|-   Kernel version: 4.19.0-10-amd64.
 -   Changes:
     -   Updated to include the latest patches.
     -   Updated NIC configurations and configured DHCP for eight NICs by default. |
-|Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20200819.vhd|2020-08-19|-   Kernel version: 4.9.0-13-amd64
+|Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20200819.vhd|2020-08-19|-   Kernel version: 4.9.0-13-amd64.
 -   Changes:
     -   Updated to include the latest patches.
     -   Updated NIC configurations and configured DHCP for eight NICs by default. |
-|Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20200730.vhd|2020-07-30|-   Kernel version: 4.9.0-13-amd64
+|Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20200730.vhd|2020-07-30|-   Kernel version: 4.9.0-13-amd64.
 -   Changes:
     -   Updated to include the latest patches.
     -   Enabled IPv6 by default. |
@@ -185,7 +185,7 @@ This topic describes the updates to the features of ECS public images in the ord
 |Debian 8.11|11\_64\_20G\_alibase\_20190311.vhd|2019-3-11|-   Kernel version: 3.16.0-7-amd64.
 -   Changes:
     -   Updated to include the latest operating system patches.
-    -   Fixed invalid apt source configurations in Debian 8.9. |
+    -   Fixed invalid APT source configurations in Debian 8.9. |
 |Debian 9.8|debian\_9\_08\_64\_20G\_alibase\_20190225.vhd|2019-2-25|-   Kernel version: 4.9.0-8-amd64.
 -   Changes: updated to include the latest operating system patches. |
 |Debian 9.6|debian\_9\_06\_64\_20G\_alibase\_20190103.vhd|2019-1-3|-   Kernel version: 4.9.0-8-amd64.
@@ -194,7 +194,7 @@ This topic describes the updates to the features of ECS public images in the ord
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Upgraded the cloud-init version.
-    -   Enabled the chrony time synchronization service.
+    -   Enabled the chrony \(time synchronization\) service.
     -   Set GRUB\_TIMEOUT to 1.
 -   Known issues: [classic network configuration issues](/intl.en-US/Images/Public image/Known issues.md). |
 
@@ -209,7 +209,7 @@ This topic describes the updates to the features of ECS public images in the ord
 |FreeBSD 11.2|freebsd\_11\_02\_64\_30G\_alibase\_20190806.vhd|2019-8-6|-   Kernel version: 11.2-RELEASE.
 -   Changes:
     -   Fixed the clock offset issue.
-    -   Fixed the error that causes the 30 GiB system disk to fail to be created. |
+    -   Fixed the error that causes the failure to create a 30 GiB system disk. |
 
 ## Ubuntu
 
@@ -243,7 +243,7 @@ This topic describes the updates to the features of ECS public images in the ord
 -   Changes: updated to include the latest patches. |
 |Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.4.0-184-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release.
 -   Kernel version: 5.4.0-31-generic. |
 |Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 4.4.0-179-generic.
 -   Changes: updated to include the latest operating system patches. |
@@ -275,8 +275,8 @@ This topic describes the updates to the features of ECS public images in the ord
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu 18.04|ubuntu\_18\_04\_64\_20G\_alibase\_20190509.vhd|2019-5-9|-   Kernel version: 4.15.0-48-generic.
 -   Changes:
-    -   Upgraded cloud-init to speed up boot.
-    -   Updated to the latest operating system patches. |
+    -   Upgraded cloud-init to speed up boot time.
+    -   Updated to include the latest operating system patches. |
 |Ubuntu 16.04|ubuntu\_16\_04\_64\_20G\_alibase\_20190301.vhd|2019-3-1|-   Kernel version: 4.4.0-142-generic.
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu 18.04|ubuntu\_18\_04\_64\_20G\_alibase\_20190223.vhd|2019-2-23|-   Kernel version: 4.15.0-45-generic.
@@ -285,7 +285,7 @@ This topic describes the updates to the features of ECS public images in the ord
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Upgraded the cloud-init version.
-    -   Enabled the chrony time synchronization service.
+    -   Enabled the chrony \(time synchronization\) service.
     -   Set GRUB\_TIMEOUT to 1. |
 
 ## CoreOS
@@ -318,15 +318,15 @@ This topic describes the updates to the features of ECS public images in the ord
 -   Updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
 |Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
--   Updated to include the latest patches. |
+-   Changes: updated to include the latest patches. |
 |Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200818.vhd|2020-08-18|-   Kernel version: 5.3.18-lp152.33-default.
--   Updated to include the latest patches. |
+-   Changes: updated to include the latest patches. |
 |Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 5.3.18-lp152.20.7-default.
--   Updated to include the latest patches. |
+-   Changes: updated to include the latest patches. |
 |Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200623.vhd|2020-06-23|-   Kernel version: 4.12.14-lp151.28.52-default.
 -   Changes: updated to include the latest patches. |
 |Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200520.vhd|2020-05-20|-   Kernel version: 4.12.14-lp151.28.48-default.
--   Updated to include the latest patches. |
+-   Changes: updated to include the latest patches. |
 |Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.12.14-lp151.28.48-default.
 -   Changes:
     -   Enabled IPv6 by default.
@@ -346,7 +346,7 @@ This topic describes the updates to the features of ECS public images in the ord
 |:------|--------|------------|:----------|
 |SUSE Linux Enterprise Server 15 SP2|sles\_15\_sp2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel.
--   Fixed the bsc\#1176925 vulnerability in the Linux kernel and the issue of failed startup for instances of the hfg6 instance family. |
+-   Fixed the bsc\#1176925 vulnerability in the Linux kernel and the issue of failed startup for hfg6 instances. |
 |SUSE Linux Enterprise Server 12 SP5|sles\_12\_sp5\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
 |SUSE Linux Enterprise Server 15 SP2|sles\_15\_sp2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|Updated to include the latest patches.|
@@ -367,7 +367,7 @@ This topic describes the updates to the features of ECS public images in the ord
 |SUSE Linux Enterprise Server 12 SP4|sles\_12\_sp4\_x64\_20G\_alibase\_20200319.vhd|2020-03-19|Updated to include the latest patches.|
 |SUSE Linux Enterprise Server 12 SP4|sles\_12\_sp4\_x64\_20G\_alibase\_20200227.vhd|2020-02-27|Updated to include the latest patches.|
 |SUSE Linux Enterprise Server 15 SP1|sles\_15\_sp1\_x64\_20G\_alibase\_20200218.vhd|2020-02-18|Updated to include the latest patches.|
-|SUSE Linux Enterprise Server 15 SP1|sles\_15\_sp1\_x64\_20G\_alibase\_20200107.vhd|2020-01-07|Released a new version.|
+|SUSE Linux Enterprise Server 15 SP1|sles\_15\_sp1\_x64\_20G\_alibase\_20200107.vhd|2020-01-07|New release.|
 
 ## Trusted images
 
@@ -379,12 +379,12 @@ Trusted images are applicable only to the following instance families and dedica
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
 |CentOS 7.8|centos\_7\_8\_tpm\_x64\_20G\_alibase\_20200810.vhd|2020-08-10|-   Released CentOS 7.8 trusted images.
--   Installed the following GRUB 2 and TPM-related RPM packages on trusted images:
-    -   grub2 \(trust-customized version\)
+-   Installed with GRUB 2 and TPM, to which the following RPM packages are related:
+    -   grub2 \(trusted customized version\)
     -   tpm2-abrmd
     -   tpm2-tss
     -   tpm2-tools
--   GRUB 2 packages are trust-customized. To enable trusted boot, we recommend that you do not upgrade GRUB 2 on your own. |
+-   GRUB 2 packages are trusted and customized. To enable trusted boot, we recommend that you do not upgrade GRUB 2 on your own. |
 
 ## AMD images
 
@@ -393,7 +393,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
 |Ubuntu 20.04|ubuntu\_20\_04\_amd\_x64\_20G\_alibase\_20200820.vhd|2020-08-20|-   Released Ubuntu 20.04 AMD images.
--   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Guangzhou\), Singapore \(Singapore\), China \(Hangzhou\), and China \(Chengdu\). |
+-   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Guangzhou\), Singapore, China \(Hangzhou\), and China \(Chengdu\). |
 |Ubuntu 18.04|ubuntu\_18\_04\_amd\_x64\_20G\_alibase\_20200804.vhd|2020-08-04|-   Released Ubuntu 18.04 AMD images.
 -   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Shanghai\), China \(Hangzhou\), and China \(Chengdu\). |
 
@@ -401,91 +401,96 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20201217.vhd
+-   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20201217.vhd
+
+|2020-12-17|-   Updated to include the KB4592484 operating system patch released in December 2020.
+-   Fixed the CVE-2020-17096 and CVE-2020-16996 vulnerabilities. |
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20201120.vhd
 
 |2020-11-20|-   Updated to include the KB4586845, KB4585212, and KB4566425 operating system patches released in November 2020.
 -   Fixed the CVE-2020-17051, CVE-2020-17087, and CVE-2020-17042 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20201015.vhd
 
 |2020-10-15|-   Updated to include the KB4580347 and KB4578976 operating system patches released in October 2020.
 -   Fixed the CVE-2020-16911 and CVE-2020-16891 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200914.vhd
 
 |2020-09-14|-   Updated to include the KB4577066, KB4576486, and KB4566425 operating system patches released in September 2020.
 -   Fixed the CVE-2020-0718, CVE-2020-0922, CVE-2020-1319, CVE-2020-1285, CVE-2020-1508, CVE-2020-0836, CVE-2020-1012, and CVE-2020-0878 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200814.vhd
 
 |2020-08-14|-   Updated to include the KB4571703 and KB4569753 operating system patches released in August 2020.
 -   Fixed the CVE-2020-1472, CVE-2020-1464, CVE-2020-1554, CVE-2020-1509, CVE-2020-1567, and CVE-2020-1380 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200723.vhd
 
 |2020-07-23|Updated to include the KB4566425, KB4565541, and KB4565635 operating system patches released in July 2020.|
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200615.vhd
 
 |2020-06-15|-   Updated to include the KB4561666 operating system patch released in June 2020.
 -   Fixed the CVE-2020-1301, CVE-2020-1239, CVE-2020-1300, CVE-2020-1281, and CVE-2020-1260 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200516.vhd
 
 |2020-05-16|-   Updated to include the KB4556846 operating system patch released in May 2020.
 -   Fixed the CVE-2020-1153, CVE-2020-1112, CVE-2020-1174, and CVE-2020-1062 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200416.vhd
 
 |2020-04-16|-   Updated to include the KB4550961 operating system patch released in April 2020.
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200314.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200314.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200314.vhd
 
 |2020-03-14|-   Updated to include the operating system patches released in March 2020.
 -   Fixed the CVE-2020-0684, CVE-2020-0881, and CVE-2020-0787 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200213.vhd
 
 |2020-02-13|-   Updated to include the operating system patches released in February 2020.
 -   Fixed the CVE-2020-0738, CVE-2020-0689, CVE-2020-0681, CVE-2020-0683, CVE-2020-0686, CVE-2020-0674, and CVE-2020-0706 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win201202r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win201202r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20200116.vhd
 
 |2020-01-16|-   Updated to include the operating system patches released in January 2020.
 -   Fixed the CVE-2020-0609, CVE-2020-0625, CVE-2020-0611, and CVE-2020-0640 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20191218.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20191218.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20191218.vhd
 
 |2019-12-18|Updated to include the security patches released in December 2019.|
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20191012.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20191012.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20191012.vhd
 
 |2019-10-12|Updated to include the security patches released in October 2019.|
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190816.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190816.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20190816.vhd
 
 |2019-8-16|-   Updated to include the operating system patches released in August 2019.
 -   Fixed the CVE-2019-1181 and CVE-2019-1182 vulnerabilities. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190718.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190718.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
 -   Upgraded .NET Framework to version 4.8. |
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190523.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190523.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20190523.vhd
 
 |2019-5-23|Updated to include the operating system patches released in May 2019.|
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190318.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190318.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20190318.vhd
 
 |2019-3-18|Updated to include the operating system patches released in March 2019.|
-|Windows Server 2012 R2 Datacenter Edition|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20181220.vhd
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20181220.vhd
 
-|2018-12-20|-   Updated to include the latest security patch KB4471320. You must update Windows clients by using the latest patches to establish RDP connections.
+|2018-12-20|-   Updated to include the KB4471320 security patch released in December, 2018. You must update Windows clients with the latest patches to establish RDP connections.
 -   Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
@@ -493,91 +498,96 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20201217.vhd
+-   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20201217.vhd
+
+|2020-12-17|-   Updated to include the KB4592440 operating system patch released in December 2020.
+-   Fixed the CVE-2020-17096, CVE-2020-16996, and CVE-2020-17095 vulnerabilities. |
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20201120.vhd
 
 |2020-11-20|-   Updated to include the KB4586830, KB4585207, and KB4576750 operating system patches released in November 2020.
 -   Fixed the CVE-2020-17051, CVE-2020-17087, CVE-2020-17042, and CVE-2020-17058 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20201015.vhd
 
 |2020-10-15|-   Updated to include the KB4580346 and KB4578969 operating system patches released in October 2020.
 -   Fixed the CVE-2020-16911, CVE-2020-16891, CVE-2020-16909, and CVE-2020-16885 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200914.vhd
 
 |2020-09-14|-   Updated to include the KB4577015, KB4576479, and KB4576750 operating system patches released in September 2020.
 -   Fixed the CVE-2020-0718, CVE-2020-0922, CVE-2020-1319, CVE-2020-1285, CVE-2020-1508, CVE-2020-0836, CVE-2020-1012, CVE-2020-0878, CVE-2020-1129, and CVE-2020-0908 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200814.vhd
 
 |2020-08-14|-   Updated to include the KB4571694 and KB4569746 operating system patches released in August 2020.
 -   Fixed the CVE-2020-1472, CVE-2020-1464, CVE-2020-1554, CVE-2020-1509, CVE-2020-1567, and CVE-2020-1380 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200723.vhd
 
 |2020-07-23|Updated to include the KB4565628, KB4486129, KB4565912, and KB4565511 operating system patches released in July 2020.|
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200615.vhd
 
 |2020-06-15|-   Updated to include the KB4561616 operating system patch released in June 2020.
 -   Fixed the CVE-2020-1301, CVE-2020-1239, CVE-2020-1300, CVE-2020-1281, and CVE-2020-1260 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200516.vhd
 
 |2020-05-16|-   Updated to include the KB4556813 operating system patch released in May 2020.
 -   Fixed the CVE-2020-1153, CVE-2020-1112, CVE-2020-1174, CVE-2020-1126, and CVE-2020-1062 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200416.vhd
 
 |2020-04-16|-   Updated to include the KB4550929 and KB4550994 operating system patches released in April 2020.
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200314.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200314.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200314.vhd
 
 |2020-03-14|-   Updated to include the operating system patches released in March 2020.
 -   Fixed the CVE-2020-0684, CVE-2020-0801, CVE-2020-0881, and CVE-2020-0787 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200213.vhd
 
 |2020-02-13|-   Updated to include the operating system patches released in February 2020.
 -   Fixed the CVE-2020-0738, CVE-2020-0689, CVE-2020-0681, CVE-2020-0683, CVE-2020-0686, CVE-2020-0674, and CVE-2020-0706 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20200116.vhd
 
 |2020-01-16|-   Updated to include the operating system patches released in January 2020.
 -   Fixed the CVE-2020-0609, CVE-2020-0601, CVE-2020-0625, CVE-2020-0611, and CVE-2020-0640 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20191220.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20191220.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20191224.vhd
 
 |2019-12-24|Updated to include the security patches released in December 2019.|
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20191012.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20191012.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20191012.vhd
 
 |2019-10-12|Updated to include the security patches released in October 2019.|
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190816.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190816.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20190816.vhd
 
 |2019-8-16|-   Updated to include the operating system patches released in August 2019.
 -   Fixed the CVE-2019-1181 and CVE-2019-1182 vulnerabilities. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190718.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190718.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
 -   Upgraded .NET Framework to version 4.8. |
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190523.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190523.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20190523.vhd
 
 |2019-5-23|Updated to include the operating system patches released in May 2019.|
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190318.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190318.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20190318.vhd
 
 |2019-3-18|Updated to include the operating system patches released in March 2019.|
-|Windows Server 2016 Datacenter Edition|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20181220.vhd
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20181220.vhd
 
-|2018-12-20|-   Updated to include the security patch KB4471321 released in December 2018. You must update Windows clients with the latest patches to establish RDP connections.
+|2018-12-20|-   Updated to include the KB4471321 security patch released in December 2018. You must update Windows clients with the latest patches to establish RDP connections.
 -   Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
@@ -585,154 +595,164 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201120.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201217.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201217.vhd
+
+|2020-12-17|-   Updated to include the KB4592440 operating system patch released in December 2020.
+-   Fixed the CVE-2020-17096, CVE-2020-16996, and CVE-2020-17095 vulnerabilities. |
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20201217.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20201217.vhd
+
+|2020-12-17|-   Updated to include the KB4592440 operating system patch released in December 2020.
+-   Fixed the CVE-2020-17096, CVE-2020-16996, and CVE-2020-17095 vulnerabilities. |
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201120.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201120.vhd
 
 |2020-11-20|-   Updated to include the KB4586793, KB4580979, and KB4587735 operating system patches released in November 2020.
 -   Fixed the CVE-2020-17051, CVE-2020-17087, CVE-2020-17042, and CVE-2020-17058 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20201120.vhd
 
 |2020-11-20|-   Updated to include the KB4586793, KB4580979, and KB4587735 operating system patches released in November 2020.
 -   Fixed the CVE-2020-17051, CVE-2020-17087, CVE-2020-17042, and CVE-2020-17058 vulnerabilities. |
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201015.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201015.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201015.vhd
 
 |2020-10-15|-   Updated to include the KB4577668, KB4577667, and KB4578973 operating system patches released in October 2020.
 -   Fixed the CVE-2020-16911, CVE-2020-16891, CVE-2020-16909, CVE-2020-16885, and CVE-2020-16898 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20201015.vhd
 
 |2020-10-15|-   Updated to include the KB4577668, KB4577667, and KB4578973 operating system patches released in October 2020.
 -   Fixed the CVE-2020-16911, CVE-2020-16891, CVE-2020-16909, CVE-2020-16885, and CVE-2020-16898 vulnerabilities. |
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200914.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200914.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200914.vhd
 
 |2020-09-14|-   Updated to include the KB4570333, KB4576483, and KB4570332 operating system patches released in September 2020.
 -   Fixed the CVE-2020-0718, CVE-2020-0922, CVE-2020-1319, CVE-2020-1285, CVE-2020-1508, CVE-2020-0836, CVE-2020-1012, CVE-2020-0878, CVE-2020-1129, and CVE-2020-0908 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200914.vhd
 
 |2020-09-14|-   Updated to include the KB4570333, KB4576483, and KB4570332 operating system patches released in September 2020.
 -   Fixed the CVE-2020-0718, CVE-2020-0922, CVE-2020-1319, CVE-2020-1285, CVE-2020-1508, CVE-2020-0836, CVE-2020-1012, CVE-2020-0878, CVE-2020-1129, and CVE-2020-0908 vulnerabilities. |
-|Windows Server 2019 with Container Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200814.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200814.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200814.vhd
 
 |2020-08-14|-   Updated to include the KB4565349, KB4566424, and KB4569750 operating system patches released in August 2020.
 -   Fixed the CVE-2020-1472, CVE-2020-1464, CVE-2020-1554, CVE-2020-1509, CVE-2020-1567, and CVE-2020-1380 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200814.vhd
 
 |2020-08-14|-   Updated to include the KB4565349, KB4566424, and KB4569750 operating system patches released in August 2020.
 -   Fixed the CVE-2020-1472, CVE-2020-1464, CVE-2020-1554, CVE-2020-1509, CVE-2020-1567, and CVE-2020-1380 vulnerabilities. |
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200723.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200723.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200723.vhd
 
 |2020-07-23|Updated to include the KB4558998, KB4558997, and KBKB4565632 operating system patches released in July 2020.|
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200723.vhd
 
 |2020-07-23|Updated to include the KB4558998, KB4558997, and KBKB4565632 operating system patches released in July 2020.|
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200615.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200615.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200615.vhd
 
 |2020-06-15|-   Updated to include the KB4561608 operating system patch released in June 2020.
 -   Fixed the CVE-2020-1301, CVE-2020-1286, CVE-2020-1292, CVE-2020-1239, CVE-2020-1300, CVE-2020-1281, and CVE-2020-1260 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200615.vhd
 
 |2020-06-15|-   Updated to include the KB4561608 operating system patch released in June 2020.
 -   Fixed the CVE-2020-1301, CVE-2020-1286, CVE-2020-1292, CVE-2020-1239, CVE-2020-1300, CVE-2020-1281, and CVE-2020-1260 vulnerabilities. |
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200516.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200516.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200516.vhd
 
 |2020-05-16|-   Updated to include the KB4551853 operating system patch released in May 2020.
 -   Added the Docker runtime environment. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200516.vhd
 
 |2020-05-16|-   Updated to include the KB4551853 operating system patch released in May 2020.
 -   Fixed the CVE-2020-1153, CVE-2020-1112, CVE-2020-1174, CVE-2020-1126, CVE-2020-1118, and CVE-2020-1062 vulnerabilities. |
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200416.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200416.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200416.vhd
 
 |2020-04-16|-   Updated to include the KB4549947 and KB4549949 operating system patches released in April 2020.
 -   Added the Docker runtime environment.
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0910, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
--   English version: none
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
+-   English version: 无
 
 |2020-04-16|-   Updated to include the KB4549947 and KB4549949 operating system patches released in April 2020.
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0910, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
-|Windows Server 2019 Datacenter with Containers Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200314.vhd
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200314.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200314.vhd
 
 |2020-03-14|-   Updated to include the operating system patches released in March 2020.
 -   Added the Docker runtime environment.
 -   Fixed the CVE-2020-0684, CVE-2020-0801, CVE-2020-0881, and CVE-2020-0787 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200314.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200314.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200314.vhd
 
 |2020-03-14|-   Updated to include the operating system patches released in March 2020.
 -   Fixed the CVE-2020-0684, CVE-2020-0801, CVE-2020-0881, and CVE-2020-0787 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alidocker\_20200225.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alidocker\_20200225.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alidocker\_20200225.vhd
 
-|2020-02-25|-   Updated to include the operating system patches released in February 2020
+|2020-02-25|-   Updated to include the operating system patches released in February 2020.
 -   Added the Docker runtime environment.
 -   Fixed the CVE-2020-0738, CVE-2020-0689, CVE-2020-0681, CVE-2020-0683, CVE-2020-0686, CVE-2020-0674, and CVE-2020-0706 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200213.vhd
 
 |2020-02-13|-   Updated to include the operating system patches released in February 2020.
 -   Fixed the CVE-2020-0738, CVE-2020-0689, CVE-2020-0681, CVE-2020-0683, CVE-2020-0686, CVE-2020-0674, and CVE-2020-0706 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20200116.vhd
 
 |2020-01-16|-   Updated to include the operating system patches released in January 2020.
 -   Fixed the CVE-2020-0609, CVE-2020-0601, CVE-2020-0625, CVE-2020-0611, and CVE-2020-0640 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_1809\_x624\_dtc\_zh-cn\_40G\_alibase\_20191220.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x624\_dtc\_zh-cn\_40G\_alibase\_20191220.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20191220.vhd
 
 |2019-12-20|Updated to include the security patches released in December 2019.|
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20191012.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20191012.vhd
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20191012.vhd
 
-|2019-10-12|Updated to include the latest security patches.|
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190816.vhd
+|2019-10-12|Updated to include the security patches released in October 2019.|
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190816.vhd
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190816.vhd
 
 |2019-8-16|-   Updated to include the operating system patches released in August 2019.
 -   Fixed the CVE-2019-1181 and CVE-2019-1182 vulnerabilities. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190718.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190718.vhd
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
 -   Upgraded .NET Framework to version 4.8. |
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190528.vhd
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190528.vhd
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190528.vhd
 
-|2019-5-28|Updated to include the latest operating system patches.|
-|Windows Server 2019 Datacenter Edition|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190318.vhd
+|2019-5-28|Updated to include the operating system patches released in May 2019.|
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190318.vhd
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190318.vhd
 
-|2019-3-18|Released a new version.|
+|2019-3-18|New release.|
 
 ## Windows Server Version 1809
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server Version 1809 Datacenter Edition|-   Chinese version: winsvr\_64\_dtcC\_1809\_zh-cn\_40G\_alibase\_20190528.vhd
+|Windows Server Version 1809 Datacenter|-   Chinese version: winsvr\_64\_dtcC\_1809\_zh-cn\_40G\_alibase\_20190528.vhd
 -   English version: winsvr\_64\_dtcC\_1809\_en-us\_40G\_alibase\_20190528.vhd
 
-|2019-5-28|Updated to include the latest operating system patches.|
-|Windows Server Version 1809 Datacenter Edition|-   Chinese version: winsvr\_64\_dtcC\_1809\_zh-cn\_40G\_alibase\_20190318.vhd
+|2019-5-28|Updated to include the operating system patches released in May 2019.|
+|Windows Server Version 1809 Datacenter|-   Chinese version: winsvr\_64\_dtcC\_1809\_zh-cn\_40G\_alibase\_20190318.vhd
 -   English version: winsvr\_64\_dtcC\_1809\_en-us\_40G\_alibase\_20190318.vhd
 
 |2019-3-18|Updated to include the operating system patches released in March 2019.|
-|Windows Server Version 1809 Datacenter Edition|-   Chinese version: winsvr\_64\_dtcC\_1809\_zh-cn\_40G\_alibase\_20181222.vhd
+|Windows Server Version 1809 Datacenter|-   Chinese version: winsvr\_64\_dtcC\_1809\_zh-cn\_40G\_alibase\_20181222.vhd
 -   English version: winsvr\_64\_dtcC\_1809\_en-us\_40G\_alibase\_20181222.vhd
 
 |2018-12-22|-   Updated to include the KB4483235 patch released in December 2018.
@@ -742,16 +762,16 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server Version 1903 Datacenter Edition|-   Chinese version: winsvr\_64\_dtcC\_1903\_zh-cn\_40G\_alibase\_20191012.vhd
+|Windows Server Version 1903 Datacenter|-   Chinese version: winsvr\_64\_dtcC\_1903\_zh-cn\_40G\_alibase\_20191012.vhd
 -   English version: winsvr\_64\_dtcC\_1903\_en-us\_40G\_alibase\_20191012.vhd
 
 |2019-10-12|Updated to include the security patches released in October 2019.|
-|Windows Server Version 1903 Datacenter Edition|-   Chinese version: winsvr\_64\_dtcC\_1903\_zh-cn\_40G\_alibase\_20190816.vhd
+|Windows Server Version 1903 Datacenter|-   Chinese version: winsvr\_64\_dtcC\_1903\_zh-cn\_40G\_alibase\_20190816.vhd
 -   English version: winsvr\_64\_dtcC\_1903\_en-us\_40G\_alibase\_20190816.vhd
 
 |2019-8-16|-   Updated to include the operating system patches released in August 2019.
 -   Fixed the CVE-2019-1181 and CVE-2019-1182 vulnerabilities. |
-|Windows Server Version 1903 Datacenter Edition|-   Chinese version: winsvr\_64\_dtcC\_1903\_zh-cn\_40G\_alibase\_20190718.vhd
+|Windows Server Version 1903 Datacenter|-   Chinese version: winsvr\_64\_dtcC\_1903\_zh-cn\_40G\_alibase\_20190718.vhd
 -   English version: winsvr\_64\_dtcC\_1903\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
@@ -761,63 +781,63 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server Version 1909 Datacenter with Containers Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200723.vhd
+|Windows Server Version 1909 Datacenter with Containers|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200723.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200723.vhd
 
 |2020-07-23|Updated to include the KB4565483, KB4565554, and KB4565633 operating system patches released in July 2020.|
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200723.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20200723.vhd
 
 |2020-07-23|Updated to include the KB4565483, KB4565554, and KB4565633 operating system patches released in July 2020.|
-|Windows Server Version 1909 Datacenter with Containers Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200615.vhd
+|Windows Server Version 1909 Datacenter with Containers|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200615.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200615.vhd
 
 |2020-06-15|-   Updated to include the KB4560960 operating system patch released in June 2020.
 -   Fixed the CVE-2020-1301, CVE-2020-1286, CVE-2020-1292, CVE-2020-1248, CVE-2020-1239, CVE-2020-1300, and CVE-2020-1281 vulnerabilities. |
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200615.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20200615.vhd
 
 |2020-06-15|-   Updated to include the KB4560960 operating system patch released in June 2020.
 -   Fixed the CVE-2020-1301, CVE-2020-1286, CVE-2020-1292, CVE-2020-1248, CVE-2020-1239, CVE-2020-1300, and CVE-2020-1281 vulnerabilities. |
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200516.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20200516.vhd
 
 |2020-05-16|-   Updated to include the KB4556799 operating system patch released in May 2020.
 -   Fixed the CVE-2020-1153, CVE-2020-1112, CVE-2020-1174, CVE-2020-1126, and CVE-2020-1118 vulnerabilities. |
-|Windows Server Version 1909 Datacenter with Containers Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200516.vhd
+|Windows Server Version 1909 Datacenter with Containers|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200516.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200516.vhd
 
 |2020-05-16|-   Updated to include the KB4556799 operating system patch released in May 2020.
 -   Added the Docker runtime environment. |
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20200416.vhd
 
 |2020-04-16|-   Updated to include the KB4549951 and KB4552152 operating system patches released in April 2020.
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0910, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
-|Windows Server Version 1909 Datacenter with Containers Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200416.vhd
+|Windows Server Version 1909 Datacenter with Containers|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200416.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200416.vhd
 
 |2020-04-16|-   Updated to include the KB4549951 and KB4552152 operating system patches released in April 2020.
 -   Added the Docker runtime environment.
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0910, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200315.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200315.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20200315.vhd
 
 |2020-03-15|-   Updated to include the operating system patches released in March 2020.
 -   Fixed the CVE-2020-0684, CVE-2020-0801, CVE-2020-0881, CVE-2020-0787, and CVE-2020-0796 vulnerabilities. |
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200213.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20200213.vhd
 
 |2020-02-13|-   Updated to include the operating system patches released in February 2020.
 -   Fixed the CVE-2020-0738, CVE-2020-0689, CVE-2020-0681, CVE-2020-0683, CVE-2020-0686, CVE-2020-0674, and CVE-2020-0706 vulnerabilities. |
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20200116.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20200116.vhd
 
 |2020-01-16|-   Updated to include the operating system patches released in January 2020.
 -   Fixed the CVE-2020-0601, CVE-2020-0625, and CVE-2020-0611 vulnerabilities. |
-|Windows Server Version 1909 Datacenter Edition|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20191219.vhd
+|Windows Server Version 1909 Datacenter|-   Chinese version: wincore\_1909\_x64\_dtc\_zh-cn\_40G\_alibase\_20191219.vhd
 -   English version: wincore\_1909\_x64\_dtc\_en-us\_40G\_alibase\_20191219.vhd
 
 |2019-12-19|Updated to include the security patches released in December 2019.|
@@ -826,42 +846,52 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server Version 2004 Datacenter with Containers Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201120.vhd
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201217.vhd
+-   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201217.vhd
+
+|2020-12-17|-   Updated to include the KB4592438 and KB4593175 operating system patches released in December 2020.
+-   Fixed the CVE-2020-17096, CVE-2020-16996, and CVE-2020-17095 vulnerabilities. |
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20201217.vhd
+-   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20201217.vhd
+
+|2020-12-17|-   Updated to include the KB4592438 and KB4593175 operating system patches released in December 2020.
+-   Fixed the CVE-2020-17096, CVE-2020-16996, and CVE-2020-17095 vulnerabilities. |
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201120.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201120.vhd
 
 |2020-11-20|-   Updated to include the KB4586781, KB4580419, and KB4586864 operating system patches released in November 2020.
 -   Fixed the CVE-2020-17051, CVE-2020-17087, CVE-2020-17042, and CVE-2020-17058 vulnerabilities. |
-|Windows Server Version 2004 Datacenter Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20201120.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20201120.vhd
 
 |2020-11-20|-   Updated to include the KB4586781, KB4580419, and KB4586864 operating system patches released in November 2020.
 -   Fixed the CVE-2020-17051, CVE-2020-17087, CVE-2020-17042, and CVE-2020-17058 vulnerabilities. |
-|Windows Server Version 2004 Datacenter with Containers Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201015.vhd
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201015.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201015.vhd
 
 |2020-10-15|-   Updated to include the KB4579311 and KB4578968 operating system patches released in October 2020.
 -   Fixed the CVE-2020-16911, CVE-2020-16891, CVE-2020-16909, CVE-2020-16885, and CVE-2020-16898 vulnerabilities. |
-|Windows Server Version 2004 Datacenter Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20201015.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20201015.vhd
 
 |2020-10-15|-   Updated to include the KB4579311 and KB4578968 operating system patches released in October 2020.
 -   Fixed the CVE-2020-16911, CVE-2020-16891, CVE-2020-16909, CVE-2020-16885, and CVE-2020-16898 vulnerabilities. |
-|Windows Server Version 2004 Datacenter with Containers Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200914.vhd
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200914.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200914.vhd
 
 |2020-09-14|-   Updated to include the KB4571756, KB4576478, and KB4577266 operating system patches released in September 2020.
 -   Fixed the CVE-2020-0718, CVE-2020-0922, CVE-2020-1319, CVE-2020-1285, CVE-2020-1508, CVE-2020-0836, CVE-2020-1012, CVE-2020-0878, CVE-2020-1129, and CVE-2020-0908 vulnerabilities. |
-|Windows Server Version 2004 Datacenter Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20200914.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20200914.vhd
 
 |2020-09-14|-   Updated to include the KB4571756, KB4576478, and KB4577266 operating system patches released in September 2020.
 -   Fixed the CVE-2020-0718, CVE-2020-0922, CVE-2020-1319, CVE-2020-1285, CVE-2020-1508, CVE-2020-0836, CVE-2020-1012, CVE-2020-0878, CVE-2020-1129, and CVE-2020-0908 vulnerabilities. |
-|Windows Server Version 2004 with Container Datacenter Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200814.vhd
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20200814.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20200814.vhd
 
 |2020-08-14|-   Updated to include the KB4566782, KB4570334, and KB4569745 operating system patches released in August 2020.
 -   Fixed the CVE-2020-1472, CVE-2020-1464, CVE-2020-1554, CVE-2020-1509, CVE-2020-1567, and CVE-2020-1380 vulnerabilities. |
-|Windows Server Version 2004 Datacenter Edition|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20200814.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20200814.vhd
 
 |2020-08-14|-   Updated to include the KB4566782, KB4570334, and KB4569745 operating system patches released in August 2020.
@@ -873,30 +903,30 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_sp1\_x64\_ent\_zh-cn\_40G\_alibase\_20200116.vhd
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_sp1\_x64\_ent\_zh-cn\_40G\_alibase\_20200116.vhd
 -   English version: win2008r2\_sp1\_x64\_ent\_en-us\_40G\_alibase\_20200116.vhd
 
 |2020-01-16|-   Updated to include the operating system patches released in January 2020.
 -   Fixed the CVE-2020-0625, CVE-2020-0611, and CVE-2020-0640 vulnerabilities. |
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_sp1\_x64\_ent\_zh-cn\_40G\_alibase\_20191218.vhd
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_sp1\_x64\_ent\_zh-cn\_40G\_alibase\_20191218.vhd
 -   English version: win2008r2\_sp1\_x64\_ent\_en-us\_40G\_alibase\_20191220.vhd
 
 |2019-12-20|Updated to include the security patches released in December 2019.|
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20191012.vhd
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20191012.vhd
 -   English version: win2008r2\_64\_ent\_sp1\_en-us\_40G\_alibase\_20191012.vhd
 
-|2019-10-12|Updated to include the latest security patches.|
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190816.vhd
+|2019-10-12|Updated to include the security patches released in October 2019.|
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190816.vhd
 -   English version: win2008r2\_64\_ent\_sp1\_en-us\_40G\_alibase\_20190816.vhd
 
 |2019-8-16|-   Updated to include the operating system patches released in August 2019.
 -   Fixed the CVE-2019-1181 and CVE-2019-1182 vulnerabilities. |
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190816.vhd
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190816.vhd
 -   English version: win2008r2\_64\_ent\_sp1\_en-us\_40G\_alibase\_20190816.vhd
 
 |2019-8-16|-   Updated to include the operating system patches released in August 2019.
 -   Fixed the CVE-2019-1181 and CVE-2019-1182 vulnerabilities. |
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190718.vhd
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190718.vhd
 -   English version: win2008r2\_64\_ent\_sp1\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
@@ -904,18 +934,18 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2008 Standard Edition SP2|-   Chinese version: win2008\_32\_std\_sp2\_zh-cn\_40G\_alibase\_20190517.vhd
 -   English version: none
 
-|2019-5-17|-   Updated to include the latest operating system patches.
+|2019-5-17|-   Updated to include the operating system patches released in May 2019.
 -   Fixed the CVE-2019-0708 remote code execution vulnerability in Microsoft Windows Remote Desktop Services. |
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190515.vhd
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190515.vhd
 -   English version: win2008r2\_64\_ent\_sp1\_en-us\_40G\_alibase\_20190515.vhd
 
-|2019-5-15|-   Updated to include the latest operating system patches released in May 2019.
+|2019-5-15|-   Updated to include the operating system patches released in May 2019.
 -   Fixed the CVE-2019-0708 remote code execution vulnerability in Microsoft Windows Remote Desktop Services. |
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190318.vhd
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20190318.vhd
 -   English version: win2008r2\_64\_ent\_sp1\_en-us\_40G\_alibase\_20190318.vhd
 
-|2019-3-18|Updated to include the latest operating system patches.|
-|Windows Server 2008 R2 Enterprise Edition|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20181220.vhd
+|2019-3-18|Updated to include the operating system patches released in March 2019.|
+|Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: none
 
 |2018-12-20|-   Updated to include the KB4471318 security patch released in December 2018. You must update Windows clients with the latest patches to establish RDP connections.
