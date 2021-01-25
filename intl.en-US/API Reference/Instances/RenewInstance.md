@@ -24,7 +24,7 @@ When you call this operation, take note of the following items:
 |InstanceId|String|Yes|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance. |
 |Period|Integer|Yes|1|The renewal period of the subscription instance. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host. Valid values:
 
--   If `PeriodUnit` is set to `Month`, the valid values of `Period`are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, and 60. |
+-   If `PeriodUnit` is set to `Month`, the valid values of `Period` are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, and 60. |
 |PeriodUnit|String|No|Month|The unit of the renewal period. Default value: Month. Valid value:
 
 -   Month |
