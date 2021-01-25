@@ -359,7 +359,7 @@ Linux其他较重要的配置文件如下：
 3.  启动docker-registry。
 
     ```
-     DOCKER_REGISTRY_CONFIG=［your_config_path］ gunicorn -k gevent -b 0.0.0.0:5000 -w 1 docker_registry.wi:application
+     DOCKER_REGISTRY_CONFIG=[your_config_path] gunicorn -k gevent -b 0.0.0.0:5000 -w 1 docker_registry.wi:application
     ```
 
 
@@ -380,7 +380,7 @@ Linux其他较重要的配置文件如下：
 
 -   方式二：通过控制台在不同地域手动克隆ECS服务器。
     1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
-    2.  选择需要克隆的ECS实例，对系统盘和数据盘分别创建快照。具体请参见[创建一个云盘快照（普通快照）](/cn.zh-CN/快照/使用快照/创建一个云盘快照（普通快照）.md)。
+    2.  选择需要克隆的ECS实例，对系统盘和数据盘分别创建快照。具体请参见[创建一个云盘快照](/cn.zh-CN/快照/使用快照/创建一个云盘快照.md)。
 
         **说明：** 为保证数据一致性，请在实例状态为**已停止**时创建快照。
 
