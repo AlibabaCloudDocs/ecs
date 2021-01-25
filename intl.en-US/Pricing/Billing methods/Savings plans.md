@@ -4,15 +4,15 @@ keyword: [savings plans, pay-as-you-go, instance billing method, discount]
 
 # Savings plans
 
-A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount of resources \(measured in dollars per hour\) over a one- or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan. This topic describes the billing methods and application rules of savings plans.
+A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount \(measured in USD/hour\) of resources over a one-year or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan. This topic describes the billing methods and application rules of savings plans.
 
 ## Billing methods
 
-When you purchase a savings plan, you make a commitment to use a consistent amount of resources \(measured in dollars per hour\) over a one- or three-year period. After you purchase the savings plan, hourly bills of your pay-as-you-go instances are covered up to the amount of the plan. Savings plans must be used in conjunction with pay-as-you-go instances. Savings plans cannot be used separately. For more information, see [Overview]().
+When you purchase a savings plan, you make a commitment to use a consistent amount of resources \(measured in USD/hour\) over a one-year or three-year period. After you purchase the savings plan, hourly bills of your pay-as-you-go instances are covered up to the amount of the plan. Savings plans must be used in conjunction with pay-as-you-go instances. Savings plans cannot be used separately. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md).
 
-Your usage commitment is made on an hourly basis. A one- or three-year commitment can be calculated based on the following formula: Hourly commitment × 24 hours × 365 days × Duration.
+Your usage commitment is made on an hourly basis. A one-year or three-year commitment can be calculated based on the following formula: Hourly commitment × 24 hours × 365 days × Duration.
 
-**Note:** When you select the hourly commitment, use the savings plan discount price for calculation. For more information about the hourly commitment, see [Purchase and apply savings plans]().
+**Note:** When you select the hourly commitment, use the savings plan discount price for calculation. For more information about the hourly commitment, see [Purchase and apply savings plans](/intl.en-US/Instance/Instance purchasing options/Savings plans/Purchase and apply savings plans.md).
 
 Savings plans support the following payment options:
 
@@ -20,7 +20,7 @@ Savings plans support the following payment options:
 -   Partial Upfront: Partial payment \(about 50% of the full amount\) is required upfront at purchase. The remainder is paid on an hourly basis for the duration of the term.
 -   No Upfront: No upfront payment is required at purchase. The total fee is paid on an hourly basis for the duration of the term.
 
-    **Note:** In different payment options, the total fee required is the same, but you can obtain different discounts. The more you pay upfront, the greater the discount you can obtain and the more pay-as-you-go bills your savings plan can offset. Whether you can use the No Upfront payment option is based on your ECS usage. If you want to use the No Upfront payment option, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+    **Note:** In different payment options, the total fee required is the same, but you can obtain different discounts. The more you pay upfront, the greater the discount you can obtain and the more pay-as-you-go bills your savings plan can offset. Your ECS usage determines whether you can use the No Upfront payment option. If you want to use the No Upfront payment option, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 
 For example, assume that you purchased a one-year savings plan with an hourly commitment of USD 0.1/hour, and the total fee is calculated based on the following formula: USD 0.1/hour × 24 hours × 365 days = USD 876. Payments based on the three payment options are made in the following ways:
@@ -33,9 +33,13 @@ For example, assume that you purchased a one-year savings plan with an hourly co
 
 ## Application rules
 
-You can receive different discounts based on your selected payment option for your savings plans within the term. For more information, see the [Discount Details page](https://usercenter2-intl.aliyun.com/resource/spn/price).
+You can receive different discounts based on your selected payment option for your savings plans within the term. For more information, see the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page.
 
 The discount provided by a savings plan is based on the following factors:
+
+-   The type of the saving plan
+
+    ECS compute savings plans offer higher discounts than general-purpose savings plans.
 
 -   The term of the savings plan
 
@@ -51,13 +55,13 @@ The discount provided by a savings plan is based on the following factors:
 
 Savings plans can be applied to offset the bills of your pay-as-you-go instances based on the following rules:
 
--   If you have both general purpose and ECS compute savings plans, the ECS compute savings plan is applied first.
--   If your pay-as-you-go instances are billed based on a discount higher than that of your savings plans, the higher discount is applied first and the discounted charges are covered by your commitment of your savings plans.
--   If you have different types of savings plans with different discounts \(for example, you have a one-year plan and a three-year plan, or you have an All Upfront savings plan, a Partial Upfront savings plan, and a No Upfront savings plan\), the plans take effect in the order in which they were purchased.
+-   If you have both general-purpose and ECS compute savings plans, the ECS compute savings plan is applied first.
+-   If your pay-as-you-go instances are billed based on a discount higher than that of your savings plans, the higher discount is applied first and the discounted charges are covered by your commitment of the savings plans.
+-   If you have different types of savings plans with different discounts, the plans take effect in the order in which they were purchased. For example, you have a one-year plan and a three-year plan, or you have an All Upfront savings plan, a Partial Upfront savings plan, and a No Upfront savings plan.
 
 ## Examples
 
-The following table provides examples of how savings plans apply in common scenarios. The unit prices and discounts listed in the table are only examples. For actual prices and discounts, see the ECS pricing and Discount Details pages.
+The following table provides examples of how savings plans apply in common scenarios. The unit prices and discounts listed in the table are only examples. The actual prices and discounts on the Pricing tab of the Elastic Compute Service page and the Discount Details page shall prevail.
 
 |Pay-as-you-go instance|Savings plan|Hourly bill|
 |----------------------|------------|-----------|
@@ -81,8 +85,8 @@ The following table provides examples of how savings plans apply in common scena
 -   Savings plan price of Instance A: USD 0.4/hour
 -   Savings plan price of Instance B: USD 0.8/hour
 
-|-   Amount applicable for Instances A: 15 × 0.4 = USD 6
--   Instances B to which the remainder of the savings plan applies: \(10 - 6\)/0.8 = 5
+|-   Amount applicable to Instances A: 15 × 0.4 = USD 6
+-   Number of Instances B to which the remainder of the savings plan applies: \(10 - 6\)/0.8 = 5
 -   Pay-as-you-go amount: \(10 - 5\) × 1.2 = USD 6
 -   Total: 10 + 6 = USD 16
 
@@ -91,6 +95,6 @@ The following table provides examples of how savings plans apply in common scena
 ## References
 
 -   [Billing FAQ](/intl.en-US/Pricing/Billing FAQ.md)
--   [Overview]()
--   [Purchase and apply savings plans]()
+-   [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md)
+-   [Purchase and apply savings plans](/intl.en-US/Instance/Instance purchasing options/Savings plans/Purchase and apply savings plans.md)
 
