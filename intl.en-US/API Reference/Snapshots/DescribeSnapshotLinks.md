@@ -40,7 +40,7 @@ Default value: 10. |
 |SnapshotLink| | | |
 |Category|String|standard|The category of the snapshot.
 
-**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess`parameter to ensure future compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use the `InstantAccess` parameter to ensure future compatibility. |
 |InstanceId|String|i-bp1h6jmbefj2cyqs\*\*\*\*|The ID of the instance. |
 |InstanceName|String|testInstanceName|The name of the instance. |
 |InstantAccess|Boolean|false|Indicates whether the instant access feature is enabled. Valid values:
