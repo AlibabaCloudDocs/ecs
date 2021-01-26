@@ -13,9 +13,7 @@
 -   修改按量付费（PostPaid）实例的带宽配置时，公网出带宽（InternetMaxBandwidthOut）从0 Mbit/s升级到一个非零值时不会自动分配公网IP。您需要调用[AllocatePublicIpAddress](~~25544~~)为实例分配公网IP。
 -   对于经典网络（Classic）类型实例，当公网出带宽（InternetMaxBandwidthOut）从0 Mbit/s升级到一个非零值时，实例必须处于已停止（Stopped）状态。
 -   升级带宽后，默认自动扣费。您需要确保支付方式余额充足，否则会生成异常订单，此时只能作废订单。如果您的账户余额不足，可以将参数AutoPay置为false，此时会生成正常的未支付订单，您可以登录ECS管理控制台支付。
--   每台包年包月实例降低公网带宽的次数不能超过三次，即价格差退款不会超过三次。
 -   修改带宽配置前后的价格差退款会退还到您的原付费方式中，已使用的代金券不退回。
--   单个实例每成功操作一次，五分钟内不能继续操作。
 
 ## 调试
 
@@ -74,7 +72,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceNetworkSpec
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyInstanceNetworkSpecResponse>
@@ -83,7 +81,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceNetworkSpec
 </ModifyInstanceNetworkSpecResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -132,6 +130,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceNetworkSpec
 |400|OperationDenied|The current user does not support this operation.|您使用的账号暂不支持此操作。|
 |403|NAT\_PUBLIC\_IP\_BINDING\_FAILED|Binding nat public ip failed|公网IP绑定网关失败。|
 |403|InvalidInstance.EipNotSupport|The specified instance with eip is not supported, please unassociate eip first.|已绑定EIP的实例不支持该操作，请先解绑此EIP。|
+|403|OperationDenied.UnpaidOrder|The specified instance has unpaid order.|指定的实例ID已存在未支付订单，您可以登录ECS管理控制台支付。|
 |403|InvalidNetworkType.ValueNotSupported|The specified parameter NetworkType is not valid.|指定的网络类型不合法。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|该资源目前的状态不支持此操作。|
