@@ -1,8 +1,6 @@
 # DescribeRenewalPrice
 
-（Beta）调用DescribeRenewalPrice查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。
-
-您需要[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)申请使用DescribeRenewalPrice，否则会报错InvalidAction。
+调用DescribeRenewalPrice查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。
 
 ## 调试
 
@@ -14,14 +12,14 @@
 |--|--|----|---|--|
 |Action|String|是|DescribeRenewalPrice|系统规定参数。取值：DescribeRenewalPrice |
 |RegionId|String|是|cn-hangzhou|实例所属的地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
-|ResourceId|String|是|i-bp1f2o4ldh8l29zv\*\*\*\*|查询续费价格的资源ID。参数ResourceType取值为instance时，ResourceId可以理解为InstanceId。 |
+|ResourceId|String|是|i-bp1f2o4ldh8l29zv\*\*\*\*|查询续费价格的资源ID。参数`ResourceType`取值为`instance`时，`ResourceId`可以理解为`InstanceId`。 |
 |ResourceType|String|否|instance|查询续费价格的资源类型。取值：instance
 
  默认值：instance |
 |Period|Integer|否|1|指定续费时长。取值范围：
 
- -   当参数PriceUnit取值为Month时：1~9
--   当参数PriceUnit取值为Year时：1~3
+ -   当参数`PriceUnit`取值为`Month`时：1~9
+-   当参数`PriceUnit`取值为`Year`时：1~3
 
  默认值：1 |
 |PriceUnit|String|否|Month|指定续费周期。取值范围：
@@ -38,12 +36,12 @@
 |PriceInfo|Struct| |价格信息类型（PriceInfo）组成的数据类型，包括价格和优惠规则信息。 |
 |Price|Struct| |价格。 |
 |Currency|String|CNY|货币单位。 |
-|DetailInfos|Array| |资源定价详情。 |
+|DetailInfos|Array of ResourcePriceModel| |资源定价详情。 |
 |ResourcePriceModel| | | |
 |DiscountPrice|Float|655.2|折扣价。 |
 |OriginalPrice|Float|4368|原价。 |
 |Resource|String|instance|价格对应的资源名称。 |
-|SubRules|Array| |定价规则子集。 |
+|SubRules|Array of Rule| |定价规则子集。 |
 |Rule| | | |
 |Description|String|买满1年，立享官网价格8.5折优惠。|定价规则描述。 |
 |RuleId|Long|1234567890|定价规则ID。 |
@@ -51,7 +49,7 @@
 |DiscountPrice|Float|655.2|折扣。 |
 |OriginalPrice|Float|4368|原价。 |
 |TradePrice|Float|3712.8|最终价，为原价减去折扣。 |
-|Rules|Array| |活动规则。 |
+|Rules|Array of Rule| |活动规则。 |
 |Rule| | | |
 |Description|String|买满1年，立享官网价格8.5折优惠。|活动规则描述。 |
 |RuleId|Long|1234567890|活动ID。 |
@@ -72,7 +70,7 @@ https://ecs.aliyuncs.com/?Action=DescribeRenewalPrice
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeRenewalPriceResponse>
@@ -94,7 +92,7 @@ https://ecs.aliyuncs.com/?Action=DescribeRenewalPrice
 </DescribeRenewalPriceResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -130,6 +128,7 @@ https://ecs.aliyuncs.com/?Action=DescribeRenewalPrice
 |400|Throttling|Request was denied due to request throttling.|当前的操作太过频繁，请稍后重试。|
 |403|ChargeTypeViolation|The operation is not permitted due to charge type of the instance.|付费方式不支持该操作，请您检查实例的付费类型是否与该操作冲突。|
 |400|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|403|InvalidAction.Unauthorized|The specified action is not valid.|指定的操作无效。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
