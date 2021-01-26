@@ -1,18 +1,16 @@
 # DescribePrice
 
-（Beta）调用DescribePrice查询云服务器ECS资源的最新价格。
+调用DescribePrice查询云服务器ECS资源的最新价格。
 
 ## 接口说明
 
-您需要[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex.htm)申请使用询价功能，否则会报错InvalidAction。
-
 -   查询不同类型资源的价格时，必需参数也会相应不同。
-    -   参数`ResourceType`的值为`instance`时，您必须同时指定参数`InstanceType`。
-    -   参数`ResourceType`的值为`disk`时，您必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。查询`disk`资源的价格时，只返回云盘按量付费的价格，即参数PriceUnit只能取值为Hour。
-    -   参数`ResourceType`的值为`ecsrep`时，表示查询弹性保障服务的价格。该参数值正在邀测中，详情请提交工单咨询。
-    -   查询`bandwidth`资源的价格时，只返回按流量计费（`PayByTraffic`）的价格。
--   参数`ResourceType`的值为`instance`时，仅支持查询四块以内数据盘的价格。
--   默认查询付费方式（ChargeType）为按量付费（PostPaid）的价格，您可以通过指定`PriceUnit`参数查询云服务器ECS不同计费周期的价格。
+    -   参数`ResourceType=instance`时，您必须同时指定参数`InstanceType`。
+    -   参数`ResourceType=disk`时，您必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。查询`disk`资源的价格时，只返回云盘按量付费的价格，即参数`PriceUnit`只能取值为`Hour`。
+    -   参数`ResourceType=ecsrep`时，表示查询弹性保障服务的价格。该参数值正在邀测中，详情请提交工单咨询。
+    -   查询`ResourceType=bandwidth`资源的价格时，只返回按流量计费（`PayByTraffic`）的价格。
+-   参数`ResourceType=instance`时，仅支持查询四块以内数据盘的价格。
+-   默认查询付费方式（`ChargeType`）为按量付费（`PostPaid`）的价格，您可以通过指定`PriceUnit`参数查询云服务器ECS不同计费周期的价格。
 
 ## 调试
 
@@ -76,7 +74,8 @@
  **说明：** 该参数的取值必须大于或者等于max\{20, ImageSize\}。 |
 |SystemDisk.PerformanceLevel|String|否|PL1|系统盘类型为ESSD云盘时，区分性能等级。仅当`SystemDiskCategory=cloud_essd`时该参数有效。取值范围：
 
- -   PL1（默认）
+ -   PL0
+-   PL1（默认）
 -   PL2
 -   PL3 |
 |DataDisk.1.Size|Integer|否|2000|第一块数据盘的容量大小，内存单位为GiB。取值范围：
@@ -95,7 +94,8 @@
 -   cloud\_essd：ESSD云盘 |
 |DataDisk.1.PerformanceLevel|String|否|PL1|第一块数据盘类型为ESSD云盘时，区分性能等级。仅当`DataDisk.1.Category=cloud_essd`时该参数有效。取值范围：
 
- -   PL1（默认）
+ -   PL0
+-   PL1（默认）
 -   PL2
 -   PL3 |
 |DataDisk.2.Size|Integer|否|200|第二块数据盘的容量大小，内存单位为GiB。取值范围：
@@ -114,7 +114,8 @@
 -   cloud\_essd：ESSD云盘 |
 |DataDisk.2.PerformanceLevel|String|否|PL1|第二块数据盘类型为ESSD云盘时，区分性能等级。仅当`DataDisk.2.Category=cloud_essd`时该参数有效。取值范围：
 
- -   PL1（默认）
+ -   PL0
+-   PL1（默认）
 -   PL2
 -   PL3 |
 |DataDisk.3.Size|Integer|否|2000|第三块数据盘的容量大小，内存单位为GiB。取值范围：
@@ -133,7 +134,8 @@
 -   cloud\_essd：ESSD云盘 |
 |DataDisk.3.PerformanceLevel|String|否|PL1|第三块数据盘类型为ESSD云盘时，区分性能等级。仅当`DataDisk.3.Category=cloud_essd`时该参数有效。取值范围：
 
- -   PL1（默认）
+ -   PL0
+-   PL1（默认）
 -   PL2
 -   PL3 |
 |DataDisk.4.Size|Integer|否|2000|第四块数据盘的容量大小，内存单位为GiB。取值范围：
@@ -152,7 +154,8 @@
 -   cloud\_essd：ESSD云盘 |
 |DataDisk.4.PerformanceLevel|String|否|PL1|第四块数据盘类型为ESSD云盘时，区分性能等级。仅当`DataDisk.4.Category=cloud_essd`时该参数有效。取值范围：
 
- -   PL1（默认）
+ -   PL0
+-   PL1（默认）
 -   PL2
 -   PL3 |
 |Period|Integer|否|1|云服务器ECS的计费时长。取值范围：
@@ -358,6 +361,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|指定的磁盘是不可移植的。|
 |404|InvalidSystemDisk.NotFound|The specified system disk does not exist.|指定的系统盘不存在。|
 |404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
+|403|InvalidAction.Unauthorized|The specified action is not valid.|指定的操作无效。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
