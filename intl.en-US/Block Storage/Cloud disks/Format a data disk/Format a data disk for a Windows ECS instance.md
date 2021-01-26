@@ -47,7 +47,7 @@ The following procedure applies only to data disks not greater than 2 TiB in siz
 
     5.  Start to create a simple volume. When the information shown in the following figure appears in the wizard, a new simple volume is created. Click **Finish** to close the New Simple Volume wizard.
 
-        ![New Simple Volume wizard](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0195461161/p5102.png)
+        ![New Simple Volume wizard](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3516461161/p5102.png)
 
 
 After Disk 2 is partitioned and formatted, its status is displayed in the **Disk Management** window.
