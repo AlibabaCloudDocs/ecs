@@ -48,7 +48,7 @@ The following figure shows some ECS instance families and the business scenarios
 
 If you are using software or applications similar to those in the following figure, select corresponding instance families from the right side of the figure.
 
-![Select instances based on workloads](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2904488951/p85751.png)
+![Select instances based on workloads](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0358551161/p85751.png)
 
 ## Select instance families based on user-created services
 
@@ -152,7 +152,7 @@ In these scenarios, the performance requirements are not the same for each node.
 
 -   Data nodes: require high storage throughput, high network throughput, and balanced CPU-to-memory ratios. We recommend that you use the d series big data instance families. For example, you can select ecs.d1ne.6xlarge for MapReduce and Hive, and ecs.d1ne.8xlarge for Spark and MLib.
 
-![Select instance families from big data instance families](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2904488951/p85841.png)
+![Select instance families from big data instance families](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0358551161/p85841.png)
 
 ## Recommended instance families for databases, caches, and search scenarios
 
@@ -176,7 +176,7 @@ The following example uses databases. Traditionally, business systems directly c
 -   Lightly loaded databases: use enterprise-level instance families and disks, which are more cost-effective.
 -   Heavily load databases: require high storage IOPS and low read/write latency. We recommend that you use i series instance families equipped with local SSDs. The local SSDs are high I/O NVMe SSDs that can meet the requirements of large heavily-loaded databases.
 
-![Select instance families based on databases](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2904488951/p85843.png)
+![Select instance families based on databases](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0358551161/p85843.png)
 
 ## Recommended instance families for scenarios such as deep learning and image processing
 
@@ -186,10 +186,6 @@ In these scenarios, applications require high-performance GPU accelerators. The 
 -   General purpose deep learning: The recommended GPU-to-CPU ratio is from 1:4 to 1:48.
 -   Image recognition and inference: The recommended GPU-to-CPU ratio is from 1:4 to 1:12.
 -   Speech recognition and synthesis inference : The recommended GPU-to-CPU ratio is from 1:16 to 1:48.
-
-The following figure shows the GPU- and FPGA-accelerated instance families recommended for common AI and image or video processing scenarios.
-
-![Select instance families from GPU- and FPGA-accelerated instance families](../images/p169458.png)
 
 ## Check and adjust your selection
 
