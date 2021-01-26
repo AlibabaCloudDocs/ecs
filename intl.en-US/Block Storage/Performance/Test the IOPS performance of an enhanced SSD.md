@@ -88,7 +88,7 @@ Test conditions:
 
     If the `IOPS=***` result appears, the performance stress test for the ESSD is complete.
 
-    ![Test the performance of the ESSD](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4182909951/p42181.png)
+    ![Test the performance of the ESSD](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4182909951/p42181.png)
 
 
 ## Details of the test100w.sh script
@@ -118,7 +118,7 @@ Test conditions:
     |`/dev/vdb`|The device name of the ESSD.|/dev/vdb|
     |`cpus_allowed_policy`|The `cpus_allowed_policy` and `cpus_allowed` parameters provided by fio to bind vCPUs.|split|
 
-    The preceding command runs `jobs`to bind queues to CPU cores. To view the ID of the CPU core to which a queue is bound, perform the following steps:
+    The preceding command runs `jobs` to bind queues to CPU cores. To view the ID of the CPU core to which a queue is bound, perform the following steps:
 
     -   Run the `ls /sys/block/vd*/mq/` command to view the ID of the queue for an ESSD whose device name is in the /dev/vd\* format.
     -   Run the `cat /sys/block/vd*/mq//cpu_list` command to view the ID of the CPU core to which the queue returned in the previous step is bound.
