@@ -4,7 +4,7 @@ You can call this operation to stop an ECS instance that is in the Running state
 
 ## Description
 
--   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be stopped through calls to this operation. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+-   You cannot call this operation on ECS instances that are locked for security reasons. An instance is locked for security reasons if `OperationLocks` in the response contains "LockReason": "security" when you query information of the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
 -   To stop an instance of an instance family that is equipped with local SSDs, take note of the following items:
     -   `ConfirmStop` is a required parameter when you call this operation to stop an [i1](~~25378#i1~~) instance that is attached with [local disks](~~63138~~). Set ConfirmStop to `true`. Otherwise, the call will fail.
     -   After the instance is stopped, data in its local disks is cleared. We recommend that you implement data redundancy at the application layer to ensure data availability.
@@ -13,31 +13,35 @@ You can call this operation to stop an ECS instance that is in the Running state
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=StopInstance&type=RPC&version=2014-05-26)
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates a sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=StopInstance&type=RPC&version=2014-05-26)
 
 ## Request parameters
 
-|Parameter|Position|Type|Required|Example|Description|
-|---------|--------|----|--------|-------|-----------|
-|Action|Query|String|Yes|StopInstance|The operation that you want to perform. Set the value to StopInstance. |
-|InstanceId|Query|String|Yes|i-bp67acfmxazb4ph\*\*\*\*|The ID of the instance that you want to stop. |
-|StoppedMode|Query|String|No|KeepCharging|Specifies whether billing for the instance continues after the instance is stopped. Valid values:
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|StopInstance|The operation that you want to perform. Set the value to StopInstance. |
+|InstanceId|String|Yes|i-bp67acfmxazb4ph\*\*\*\*|The ID of the instance. |
+|StoppedMode|String|No|KeepCharging|Specifies whether billing for the instance continues after the instance is stopped. Valid values:
 
- -   StopCharging: Billing stops after the instance is stopped. For information about how `StopCharging` takes effect, see the "Prerequisites" section in [No fees for stopped VPC instances](~~63353~~).
+-   StopCharging: Billing stops after the instance is stopped. For information about how `StopCharging` takes effect, see the "Prerequisites" section in [No fees for stopped VPC instances](~~63353~~).
 -   KeepCharging: Billing continues after the instance is stopped.
 
- Default value: If the prerequisites required for enabling the No Fees for Stopped Instances \(VPC-Connected\) feature are met and you have enabled this feature in the ECS console, the default value is `StopCharging`. For more information about how to enable the No Fees for Stopped Instances \(VPC-Connected\) feature, see [No Fees for Stopped Instances \(VPC-Connected\)](~~63353#default~~). Otherwise, the default value is `KeepCharging`. |
-|ConfirmStop|Query|Boolean|No|true|Specifies whether to confirm the stop operation. This parameter is required and takes effect only for instances of the i1 instance family.
+Default value: If the prerequisites required for enabling the No Fees for Stopped Instances \(VPC-Connected\) feature are met and you have enabled this feature in the ECS console, the default value is `StopCharging`. For more information about how to enable the No Fees for Stopped Instances \(VPC-Connected\) feature, see [No Fees for Stopped Instances \(VPC-Connected\)](~~63353#default~~). Otherwise, the default value is `KeepCharging`. |
+|ConfirmStop|Boolean|No|true|Specifies whether to confirm the stop operation. This parameter is required and takes effect only for instances of the i1 instance family.
 
- Default value: false |
-|ForceStop|Query|Boolean|No|false|Specifies whether to forcibly stop the instance. Default value: false. Valid values:
+Default value: false. |
+|ForceStop|Boolean|No|false|Specifies whether to forcibly stop the instance. Valid values:
 
- -   true: forcibly stops the instance.
--   false: normally stops the instance. |
-|DryRun|Query|Boolean|No|true|Specifies whether to check the validity of the request without actually making the request. Default value: false. Valid values:
+-   true: forcibly stops the instance.
+-   false: normally stops the instance.
 
- -   true: The validity of the request is checked but the request is not made. Check items include the request format, service limits, available ECS resources, and whether the required parameters are specified. If the check fails, the corresponding error code is returned. If the check succeeds, the `DryRunOperation` error code is returned.
--   false: The validity of the request is checked, and the request is made if the check succeeds. |
+Default value: false. |
+|DryRun|Boolean|No|true|Specifies whether to check the validity of the request without actually making the request. Valid values:
+
+-   true: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+-   false: The validity of the request is checked, and the request is made if the check succeeds.
+
+Default value: false. |
 
 ## Response parameters
 
@@ -80,18 +84,18 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified InstanceId parameter does not exist.|
+|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified InstanceId parameter does not exist. Check whether the instance ID is correct.|
 |403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|The error message returned because the operation is not supported while the resource is in the current state.|
 |403|InstanceLockedForSecurity|The specified operation is denied as your instance is locked for security reasons.|The error message returned because the operation is not supported while the instance is locked for security reasons.|
-|403|DiskError|IncorrectDiskStatus|The error message returned because the status of the specified disk is invalid.|
+|403|DiskError|IncorrectDiskStatus|The error message returned because the specified disk status is invalid.|
 |500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
 |403|InstanceType.ParameterMismatch|The input parameter ConfirmStop must be true when an instance have localstorage.|The error message returned because the ConfirmStop parameter is set to false for an instance that uses local storage.|
 |403|InstanceExpiredOrInArrears|The specified operation is denied as your prepay instance is expired \(prepay mode\) or in arrears \(afterpay mode\).|The error message returned because the subscription instance has expired. Renew the instance first.|
 |403|InvalidInstanceId.NotSupport|Classic network Instance does not support this operation.|The error message returned because the operation is not supported by instances in the classic network.|
-|403|InvalidInstanceId.NotSupport|Pre pay instance does not support this operation.|The error message returned because the operation is not supported by subscription instances.|
+|403|InvalidInstanceId.NotSupport|Pre pay instance does not support this operation.|The error message returned because subscription instances do not support this operation.|
 |403|InvalidInstanceId.NotSupport|Local disk instance does not support this operation.|The error message returned because the operation is not supported by instances that use local disks.|
 |403|InvalidInstanceId.NotSupport|Spot instance does not support this operation.|The error message returned because the operation is not supported by preemptible instances.|
-|403|IncorrectInstanceStatus|%s|The error message returned because the operation is not supported while the instance is in the current state.|
+|403|IncorrectInstanceStatus|%s|The error message returned because this operation is not supported while the instance is in the current state.|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|The error message returned because ECS is not authorized to access your KMS resources.|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
 
