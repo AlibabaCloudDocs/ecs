@@ -1,56 +1,48 @@
-# RebootInstance {#doc_api_Ecs_RebootInstance .reference}
+# RebootInstance
 
 当一台ECS实例处于运行中（Running）状态时，调用RebootInstance可以重启这台实例。
 
-## 接口说明 {#description .section}
+## 接口说明
 
 -   您只能重启状态为**运行中**（`Running`）的ECS实例。
 -   重启ECS实例后进入**启动中**（`Starting`）状态。
 -   支持强制重启（`ForceStop`），强制重启等同于传统服务器的断电重启，可能丢失实例操作系统中未写入磁盘的数据。
--   被[安全控制](~~25695~~)的ECS实例的`OperationLocks`中标记了`"LockReason" : "security"`时，不能重启实例。
+-   被安全锁定的ECS实例的`OperationLocks`参数包含"LockReason": "security"时，不能重启实例。更多信息，请参见[安全锁定时的API行为](~~25695~~)。
 
-## 调试 {#api_explorer .section}
+## 调试
 
 [您可以在OpenAPI Explorer中直接运行该接口，免去您计算签名的困扰。运行成功后，OpenAPI Explorer可以自动生成SDK代码示例。](https://api.aliyun.com/#product=Ecs&api=RebootInstance&type=RPC&version=2014-05-26)
 
-## 请求参数 {#parameters .section}
+## 请求参数
 
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
-|InstanceId|String|是|i-instance1|指定实例的ID。
+|Action|String|是|RebootInstance|系统规定参数。取值：RebootInstance |
+|InstanceId|String|是|i-bp67acfmxazb4ph\*\*\*\*|指定实例的ID。 |
+|ForceStop|Boolean|否|false|重启ECS实例前，是否强制关机。取值范围：
 
- |
-|Action|String|否|RebootInstance|系统规定参数。取值：RebootInstance
+ -   true：强制关机。相当于典型的断电操作，所有未写入存储设备的缓存数据会丢失。
+-   false（默认）：正常关机。 |
+|DryRun|Boolean|否|false|是否只预检此次请求。取值范围：
 
- |
-|DryRun|Boolean|否|false|是否只预检此次请求。
+ -   true：发送检查请求，不会重启实例。检查项包括是否填写了必选参数、请求格式、业务限制和ECS库存。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码`DryRunOperation`。
+-   false：发送正常请求，通过检查后直接重启实例。
 
- -   true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数、请求格式、业务限制和ECS库存。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码`DryRunOperation`。
--   false（默认）：发送正常请求，通过检查后直接重启实例。
+ 默认值：false |
 
- |
-|ForceStop|Boolean|否|false|重启ECS实例前是否强制关机策略。取值范围：
-
- -   true：重启ECS实例前强制关机。
--   false（默认）：重启ECS实例前正常关机。
-
- |
-
-## 返回数据 {#resultMapping .section}
+## 返回数据
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
 
- |
-
-## 示例 {#demo .section}
+## 示例
 
 请求示例
 
-``` {#request_demo}
+```
 https://ecs.aliyuncs.com/?Action=RebootInstance
-&InstanceId=i-instance1
+&InstanceId=i-bp67acfmxazb4ph****
 &ForceStop=false
 &<公共请求参数>
 ```
@@ -59,7 +51,7 @@ https://ecs.aliyuncs.com/?Action=RebootInstance
 
 `XML` 格式
 
-``` {#xml_return_success_demo}
+```
 <RebootInstanceResponse>
       <RequestId>F2E2C40D-AB09-45A1-B5C5-EB9F5C4E4E4A</RequestId>
 </RebootInstanceResponse>
@@ -67,13 +59,13 @@ https://ecs.aliyuncs.com/?Action=RebootInstance
 
 `JSON` 格式
 
-``` {#json_return_success_demo}
+```
 {
-	"RequestId":"F2E2C40D-AB09-45A1-B5C5-EB9F5C4E4E4A"
+    "RequestId": "F2E2C40D-AB09-45A1-B5C5-EB9F5C4E4E4A"
 }
 ```
 
-## 错误码 { .section}
+## 错误码
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
@@ -83,9 +75,9 @@ https://ecs.aliyuncs.com/?Action=RebootInstance
 |403|DiskError|IncorrectDiskStatus.|指定的磁盘状态不合法。|
 |500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|InstanceExpiredOrInArrears|The specified operation is denied as your prepay instance is expired \(prepay mode\) or in arrears \(afterpay mode\).|包年包月实例已过期，请您续费后再进行操作。|
-|403|IncorrectInstanceStatus|%s|实例当前的状态不支持该操作。|
-|403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS未被授权访问您的KMS资源。|
-|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|发生未知错误。|
+|403|IncorrectInstanceStatus|%s|当前实例的状态不支持此操作。|
+|403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
+|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 
-访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
+访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
