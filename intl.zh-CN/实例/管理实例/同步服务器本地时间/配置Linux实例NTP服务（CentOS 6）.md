@@ -23,7 +23,7 @@ NTP 服务能保证 ECS 实例的本地时间与标准时间同步。在Linux系
 
 2.  执行命令`sudo rm /etc/localtime`删除系统里的当地时间链接。
 
-3.  执行命令`sudo vi /etc/sysconfig/clock`，用vim打开并编辑配置文件/etc/sysconfig/clock。
+3.  执行命令`sudo vi /etc/sysconfig/clock`，打开并编辑配置文件/etc/sysconfig/clock。
 
 4.  输入`i`添加时区城市。例如添加`Zone=Asia/Shanghai`，按下Esc键退出编辑并输入`:wq`保存并退出。
 
@@ -38,34 +38,34 @@ NTP 服务能保证 ECS 实例的本地时间与标准时间同步。在Linux系
 8.  执行命令`date -R`查看时区信息是否生效，未生效可按照上述步骤重新操作一遍。
 
 
-## 启用标准NTP服务
+## 启动标准NTP服务
 
-1.  远程连接 Linux 实例。具体操作，请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
+1.  远程连接Linux实例。具体操作，请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
 
-2.  执行命令`sudo service ntpd start`运行NTP服务。
+2.  执行命令`sudo service ntpd start`启动NTP服务。
 
-3.  执行命令`chkconfig ntpd on`启用NTP服务。
+3.  执行命令`chkconfig ntpd on`设置开机自启动NTP服务。
 
-4.  执行命令`ntpstat`查看是否启用了NTP服务。
+4.  执行命令`ntpstat`查看是否启动了NTP服务。
 
 5.  执行命令`ntpq -p`可查看NTP服务对等端的列表信息；执行命令`sudo chkconfig --list ntpd`可查看NTP服务的运行级别。
 
 
 ## 配置自定义NTP服务
 
-1.  远程连接 Linux 实例。具体操作，请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
+1.  远程连接Linux实例。具体操作，请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
 
-2.  执行命令`sudo vi /etc/ntp.conf`用vim打开并编辑NTP服务配置文件。
+2.  执行命令`sudo vi /etc/ntp.conf`打开并编辑NTP服务配置文件。
 
 3.  找到`server ntp 服务器 iburst`的信息后，输入`i`开始编辑文件，给您暂时不需要的NTP服务器句首加上`#`隐藏起来。
 
 4.  新添加一行NTP服务器信息，格式为：`server 您需要添加的NTP服务器 iburst`。完成编辑后按下Esc键并输入`:wq`保存退出。
 
-5.  执行命令`sudo service ntpd start`启用自定义的NTP服务。
+5.  执行命令`sudo service ntpd start`启动自定义的NTP服务。
 
-6.  执行命令`chkconfig ntpd on`启用NTP服务。
+6.  执行命令`chkconfig ntpd on`设置开机自启动NTP服务。
 
-7.  执行命令`ntpstat`查看是否启用了NTP服务。
+7.  执行命令`ntpstat`查看是否启动了NTP服务。
 
 
 **相关文档**  
