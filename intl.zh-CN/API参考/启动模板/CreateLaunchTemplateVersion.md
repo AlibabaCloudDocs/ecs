@@ -174,6 +174,7 @@
 |PrivateIpAddress|String|否|10.1.\*\*.\*\*|实例私网IP地址。
 
  专有网络VPC类型ECS实例设置私网IP地址时，必须从虚拟交换机（`VSwitchId`）的空闲网段中选择。 |
+|DeploymentSetId|String|否|ds-bp1brhwhoqinyjd6\*\*\*\*|部署集ID。 |
 
 ## 返回数据
 
@@ -238,7 +239,7 @@ https://ecs.aliyuncs.com/?Action=CreateLaunchTemplateVersion
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateLaunchTemplateVersionResponse>
@@ -247,7 +248,7 @@ https://ecs.aliyuncs.com/?Action=CreateLaunchTemplateVersion
 </CreateLaunchTemplateVersionResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
