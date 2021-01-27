@@ -58,6 +58,7 @@
 -   PL3：单盘最高随机读写IOPS 100万。 |
 |Size|Integer|2000|数据盘大小。 |
 |SnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|数据盘使用的快照ID。 |
+|DeploymentSetId|String|ds-bp1brhwhoqinyjd6\*\*\*\*|部署集ID。 |
 |Description|String|testInstanceDescription|实例描述。 |
 |EnableVmOsConfig|Boolean|false|是否启用实例操作系统配置。 |
 |HostName|String|testHostName|实例主机名。 |
@@ -147,7 +148,7 @@ https://ecs.aliyuncs.com/?Action=DescribeLaunchTemplateVersions
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeLaunchTemplateVersionsResponse> 
@@ -170,6 +171,7 @@ https://ecs.aliyuncs.com/?Action=DescribeLaunchTemplateVersions
                   <LaunchTemplateData>
                         <ImageOwnerAlias>system</ImageOwnerAlias>
                         <PrivateIpAddress>10.1.**.**</PrivateIpAddress>
+                        <DeploymentSetId>ds-bp1brhwhoqinyjd6****</DeploymentSetId>
                         <Description>testInstanceDescription</Description>
                         <ResourceGroupId>rg-bp67acfmxazb4p****</ResourceGroupId>
                         <DataDisks>
@@ -238,7 +240,7 @@ https://ecs.aliyuncs.com/?Action=DescribeLaunchTemplateVersions
 </DescribeLaunchTemplateVersionsResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -262,6 +264,7 @@ https://ecs.aliyuncs.com/?Action=DescribeLaunchTemplateVersions
                 "LaunchTemplateData": {
                     "ImageOwnerAlias": "system", 
                     "PrivateIpAddress": "10.1.**.**", 
+                    "DeploymentSetId": "ds-bp1brhwhoqinyjd6****",
                     "Description": "testInstanceDescription", 
                     "ResourceGroupId": "rg-bp67acfmxazb4p****", 
                     "DataDisks": {
