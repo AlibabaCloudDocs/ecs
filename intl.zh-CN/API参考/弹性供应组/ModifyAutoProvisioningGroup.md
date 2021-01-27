@@ -45,6 +45,16 @@
 |PayAsYouGoTargetCapacity|String|否|30|弹性供应组内，按量付费实例的目标容量。取值范围：小于TotalTargetCapacity的参数取值。 |
 |SpotTargetCapacity|String|否|30|弹性供应组内，抢占式实例的目标容量。取值范围：小于TotalTargetCapacity的参数取值。 |
 |AutoProvisioningGroupName|String|否|apg-test|弹性供应组的名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。 |
+|LaunchTemplateConfig.N.InstanceType|String|否|ecs.g5.large|扩展启动模板对应的实例规格，N的取值范围：1~20。取值范围：请参见[实例规格族](~~25378~~)。 |
+|LaunchTemplateConfig.N.MaxPrice|Double|否|3|扩展启动模板中，抢占式实例的价格上限。 |
+|LaunchTemplateConfig.N.VSwitchId|String|否|vsw-sn5bsitu4lfzgc5o7\*\*\*\*|扩展启动模板中，ECS实例加入的虚拟交换机的ID。扩展模板中启动的ECS实例的可用区由虚拟交换机决定。 |
+|LaunchTemplateConfig.N.WeightedCapacity|Double|否|2|扩展启动模板中，实例规格的权重。取值越高，单台实例满足计算力需求的能力越大，所需的实例数量越小。取值范围：大于0
+
+ 您可以根据指定实例规格的计算力和集群单节点最低计算力得出权重值。假设单节点最低计算力为8 vCPU、60 GiB，则：
+
+ -   8 vCPU、60 GiB的实例规格权重可以设置为1
+-   16 vCPU、120 GiB的实例规格权重可以设置为2 |
+|LaunchTemplateConfig.N.Priority|Integer|否|1|扩展启动模板的优先级，取值为0时优先级最高。取值范围：大于0 |
 
 ## 返回数据
 
@@ -67,7 +77,7 @@ http(s)://ecs.aliyuncs.com/?Action=ModifyAutoProvisioningGroup
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyAutoProvisioningGroupResponse>
@@ -75,7 +85,7 @@ http(s)://ecs.aliyuncs.com/?Action=ModifyAutoProvisioningGroup
 </ModifyAutoProvisioningGroupResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -88,6 +98,7 @@ http(s)://ecs.aliyuncs.com/?Action=ModifyAutoProvisioningGroup
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
 |403|Forbidden.RAM|User not authorized to operate on the specified resource, or this API doesn't support RAM.|您没有操作此资源的权限，或者此 API 不支持 RAM 角色。|
+|400|OperationDenied|%s|拒绝操作。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
