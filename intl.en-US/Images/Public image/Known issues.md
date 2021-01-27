@@ -4,11 +4,51 @@ keyword: [Alibaba Cloud Linux, Windows Server, CentOS, Ubuntu, Debian, CoreOS, R
 
 # Known issues
 
-This topic describes known issues of Alibaba Cloud images for different operating systems, the scope of these issues, and their corresponding solutions.
+This topic describes the known issues of Alibaba Cloud images for different operating systems, the scope of these issues, and the solutions that are used to resolve these issues.
 
-## SUSE Linux Enterprise Server 12 SP5: Kernel updates may lead to startup hangs
+## The compatibility issue between the hfg6 general purpose instance family with high clock speeds and some Linux kernel versions may cause kernel panic
 
--   Problem description: After an earlier kernel version is updated to SUSE Linux Enterprise Server \(SLES\) 12 SP5, or after an internal kernel version of SLES 12 SP5 is updated, instances may have the issue of startup hangs for some CPU types. These known CPU types are `Intel®Xeon®CPU E5-2682 v4 @ 2.50GHz` and `Intel®Xeon®CPU E7-8880 v4 @ 2.20GHz`. The following code describes the debugging result of the corresponding calltrace:
+-   Problem description: When kernels of some open source Linux distributions such as CentOS 8, SUSE Linux Enterprise Server \(SLES\) 15 SP2, and openSUSE 15.2 are updated to the latest versions in instances of the hfg6 instance family, the kernel panic error may occur. The following figure shows an example of the call trace debugging method:
+
+    ![calltrace](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7578271161/p232862.png)
+
+-   Cause: Some Linux kernel versions are incompatible with the hfg6 general purpose instance family with high clock speeds.
+-   Solution:
+    -   For the latest versions of the kernels of SLES 15 SP2 and openSUSE 15.2, the compatibility issue is fixed. The following code shows the information of the change commit. If the latest version of the kernel contains this information, the kernel version is compatible with the hfg6 instance family
+
+        ```
+        commit 1e33d5975b49472e286bd7002ad0f689af33fab8
+        Author: Giovanni Gherdovich <ggherdovich@suse.cz>
+        Date:   Thu Sep 24 16:51:09 2020 +0200
+        
+            x86, sched: Bail out of frequency invariance if
+            turbo_freq/base_freq gives 0 (bsc#1176925).
+        
+            suse-commit: a66109f44265ff3f3278fb34646152bc2b3224a5
+            
+            
+        commit dafb858aa4c0e6b0ce6a7ebec5e206f4b3cfc11c
+        Author: Giovanni Gherdovich <ggherdovich@suse.cz>
+        Date:   Thu Sep 24 16:16:50 2020 +0200
+        
+            x86, sched: Bail out of frequency invariance if turbo frequency
+            is unknown (bsc#1176925).
+        
+            suse-commit: 53cd83ab2b10e7a524cb5a287cd61f38ce06aab7
+        
+        commit 22d60a7b159c7851c33c45ada126be8139d68b87
+        Author: Giovanni Gherdovich <ggherdovich@suse.cz>
+        Date:   Thu Sep 24 16:10:30 2020 +0200
+        
+            x86, sched: check for counters overflow in frequency invariant
+            accounting (bsc#1176925).
+        ```
+
+    -   If you run the yum update command to update the kernel of CentOS 8 to `kernel-4.18.0-240` or later in instances of the hfg6 instance family, the kernel panic may occur. If this issue occurs, roll back the kernel to the previous version.
+
+## SLES 12 SP5: Kernel updates may lead to startup hangs
+
+-   Problem description: After an earlier kernel version is updated to SLES 12 SP5, or after a kernel version of SLES 12 SP5 is updated, instances may have the issue of startup hangs for some CPU types. These known CPU types are `Intel®Xeon®CPU E5-2682 v4 @ 2.50GHz` and `Intel®Xeon®CPU E7-8880 v4 @ 2.20GHz`. The following code describes the debugging result of the corresponding calltrace:
 
     ```
     [    0.901281] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
@@ -106,7 +146,7 @@ This topic describes known issues of Alibaba Cloud images for different operatin
 
 -   Cause: The centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd image is in the public image list and was updated by using the latest community update package. The image was upgraded and the actual system version is CentOS 8.1.
 
-    ![centos_8_0_x64_20G_alibase_20200218.vhd](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/5763559951/p94918.png)
+    ![centos_8_0_x64_20G_alibase_20200218.vhd](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5763559951/p94918.png)
 
 -   Involved image: centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd.
 -   Solution: You can call operations such as [RunInstances](/intl.en-US/API Reference/Instances/RunInstances.md) and set `ImageId` to centos\_8\_0\_x64\_20G\_alibase\_20191225.vhd to create an instance whose system version is CentOS 8.0.
@@ -198,17 +238,17 @@ This topic describes known issues of Alibaba Cloud images for different operatin
     -   The internal source address in VPCs: mirrors.cloud.aliyuncs.com
     -   The internal source address in the classic network: mirrors.aliyuncs.com
 -   Solution: You can solve the problem by using one of the following methods:
-    -   Method 1
+    -   Solution 1
 
         Assign a public IP address to your instance by associating an elastic IP address \(EIP\) with your instance. For more information, see [Overview](/intl.en-US/User Guide/Associate an EIP with a cloud instance/Bind an EIP to a secondary ENI/Overview.md).
 
         A subscription instance can also be reassigned with a public IP address by means of configuration upgrade or downgrade. For more information, see [Upgrade the instance types of subscription instances](/intl.en-US/Instance/Change configurations/Change instance types/Upgrade the instance types of subscription instances.md).
 
-    -   Method 2
+    -   Solution 2
 
         If a pip request fails, you can run the fix\_pypi.sh script in your ECS instance and retry the pip operation. Specifically, perform the following operations:
 
-        1.  Connect to your instance. For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+        1.  Connect to your instance. For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using VNC.md).
         2.  Run the following command to obtain the script file:
 
             ```
