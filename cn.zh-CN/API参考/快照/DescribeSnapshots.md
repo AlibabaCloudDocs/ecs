@@ -122,9 +122,9 @@
 |SnapshotSN|String|64472-116742336-61976\*\*\*\*|快照序列号。 |
 |SnapshotType|String|all|快照创建类型。可能值：
 
- -   auto：自动创建快照。
+ -   auto或者timer：自动创建快照。
 -   user：手动创建快照。
--   all（默认）：所有的快照创建类型。 |
+-   all：所有的快照创建类型。 |
 |SourceDiskId|String|d-bp67acfmxazb4ph\*\*\*\*|源云盘ID。如果快照的源云盘已经被释放，该字段仍旧保留。 |
 |SourceDiskSize|String|40|源云盘容量，单位：GiB。 |
 |SourceDiskType|String|system|源云盘属性。可能值：
@@ -177,7 +177,7 @@ https://ecs.aliyuncs.com/?Action=DescribeSnapshots
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeSnapshotsResponse>
@@ -214,7 +214,7 @@ https://ecs.aliyuncs.com/?Action=DescribeSnapshots
 </DescribeSnapshotsResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -268,6 +268,7 @@ https://ecs.aliyuncs.com/?Action=DescribeSnapshots
 |400|InvalidTagCount|The specified tags are beyond the permitted range.|指定的标记超出取值范围。|
 |500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |404|InvalidSnapshotLinkId.NotFound|The specified snapshot link is not found.|指定的快照链不存在。|
+|403|InvalidSnapshotCategory.Malformed|The specified Category is not valid.|指定的快照类型无效。请检查Category参数值是否正确。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
