@@ -128,8 +128,8 @@
 |SystemDisk.Description|String|否|SystemDisk\_Description|系统盘的描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
 |SystemDisk.PerformanceLevel|String|否|PL0|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
 
- -   PL0（默认）：单盘最高随机读写IOPS 1万
--   PL1：单盘最高随机读写IOPS 5万
+ -   PL0：单盘最高随机读写IOPS 1万
+-   PL1（默认）：单盘最高随机读写IOPS 5万
 -   PL2：单盘最高随机读写IOPS 10万
 -   PL3：单盘最高随机读写IOPS 100万
 
@@ -401,7 +401,7 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <RunInstancesResponse>
@@ -414,7 +414,7 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 </RunInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -667,10 +667,12 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 |403|UserNotInTheWhiteList|The user is not in byok white list.|您不在byok白名单中，请加入白名单后重试。|
 |400|InvalidParameter.EncryptedIllegal|The specified parameter Encrypted must be true when kmsKeyId is not empty.|设置参数KMSKeyId后，您必须开启加密属性。|
 |400|IoOptimized.NotSupported|The specified instance must be IoOptimized instance when kmsKeyId is not empty.|设置KMSKeyId后，您必须使用I/O优化实例。|
+|403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |404|InvalidParameter.KMSKeyId.NotFound|The specified KMSKeyId does not exist.|指定的参数KMSKeyId不存在。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |403|SecurityRisk.3DVerification|We have detected a security risk with your default credit or debit card. Please proceed with verification via the link in your email.|我们检测到您的默认信用卡或借记卡存在安全风险。请通过电子邮件中的链接进行验证。|
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
+|400|JoinedGroupLimitExceed|%s|指定资源所能加入的安全组数量达到上限。具体信息请参见错误信息%s占位符的实际返回结果。|
 |404|InvalidSecurityGroupId.NotFound|%s|指定的安全组ID不存在。|
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|指定的磁盘是不可移植的。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
@@ -682,6 +684,10 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 |400|InvalidHttpTokens.NotSupported|The specified HttpTokens not supported, you can use optional\(default\) or required.|指定的参数HttpTokens值非法，请使用optional（默认）或者required。|
 |400|InvalidHttpPutResponseHopLimit.NotSupported|The specified HttpPutResponseHopLimit not supported, more than 1 and less than 64 is reasonable.|指定的参数HttpPutResponseHopLimit值非法，取值范围必须大于等于1且小于等于64。|
 |400|InvalidOperation.VpcHasEnabledAdvancedNetworkFeature|The specified vpc has enabled advanced network feature.|该VPC开启了高阶特性，不能创建低规格的ECS。|
+|403|InvalidOperation.ResourceManagedByCloudProduct|%s|云产品托管的安全组不支持修改操作。|
+|403|InvalidParameter.InvalidEniQueueNumber|%s|弹性网卡队列数有误，具体信息请参见错误信息%s占位符的实际返回结果。|
+|403|InvalidOperation.MaxEniQueueNumberExceeded|%s|弹性网卡队列数超过上限，具体信息请参见错误信息%s占位符的实际返回结果。|
+|403|InvalidOperation.ExceedInstanceTypeQueueNumber|%s|弹性网卡队列总数超过上限，具体信息请参见错误信息%s占位符的实际返回结果。|
 |400|MissingParameter.PrivatePoolOptionsId|The specified PrivatePoolOptions.Id should not be null.|指定的PrivatePoolOptions.Id参数不能为空。|
 |400|Invalid.PrivatePoolOptionsId|The specified PrivatePoolOptions.Id is invalid.|指定的PrivatePoolOptions.Id参数无效。|
 |400|Invalid.PrivatePoolOptionsId|The parameter PrivatePoolOptions.Id should be null when PrivatePoolOptions.MatchCriteria is not Target.|当PrivatePoolOptions.MatchCriteria参数取值不为Target时，PrivatePoolOptions.Id参数需要为空。|
