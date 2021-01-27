@@ -134,8 +134,8 @@
  默认值：空 |
 |SystemDisk.PerformanceLevel|String|否|PL1|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
 
- -   PL0（默认）：单盘最高随机读写IOPS 1万。
--   PL1：单盘最高随机读写IOPS 5万。
+ -   PL0：单盘最高随机读写IOPS 1万。
+-   PL1（默认）：单盘最高随机读写IOPS 5万。
 -   PL2：单盘最高随机读写IOPS 10万。
 -   PL3：单盘最高随机读写IOPS 100万。
 
@@ -336,7 +336,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateInstanceResponse>
@@ -347,7 +347,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 </CreateInstanceResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -560,6 +560,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |403|UserNotInTheWhiteList|The user is not in byok white list.|您不在byok白名单中，请加入白名单后重试。|
 |400|InvalidParameter.EncryptedIllegal|The specified parameter Encrypted must be true when kmsKeyId is not empty.|设置参数KMSKeyId后，您必须开启加密属性。|
 |400|IoOptimized.NotSupported|The specified instance must be IoOptimized instance when kmsKeyId is not empty.|设置KMSKeyId后，您必须使用I/O优化实例。|
+|403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |404|InvalidParameter.KMSKeyId.NotFound|The specified KMSKeyId does not exist.|指定的参数KMSKeyId不存在。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |403|SecurityRisk.3DVerification|We have detected a security risk with your default credit or debit card. Please proceed with verification via the link in your email.|我们检测到您的默认信用卡或借记卡存在安全风险。请通过电子邮件中的链接进行验证。|
@@ -573,6 +574,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|指定的磁盘是不可移植的。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
 |401|InvalidRamRole.NotEcsRole|The specified ram role is not authorized for ecs, please check your role policy.|指定的RAM角色无权使用ECS，请检查您的角色策略。|
+|403|EnterpriseGroupLimited.MutliGroupType|The specified instance can not join multi SecurityGroup types.|指定的实例不能同时加入普通安全组和企业安全组。您可以调用DescribeSecurityGroups查询指定安全组的类型。|
 |403|QuotaExceed.ElasticQuota|No additional quota is available for the specified ECS instance type.|您在当前地域选择的实例规格所要创建的台数超出系统限额，您可以选择其他地域、实例规格或减少台数重新购买，也可以前往ECS管理控制台或配额中心申请提高限额。|
 |403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type.|您在当前地域选择的实例规格所要创建的台数超出系统限额，您可以选择其他地域、实例规格或减少台数重新购买，也可以前往ECS管理控制台或配额中心申请提高限额。|
 |403|QuotaExceed.ElasticQuota|The number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|您的全实例规格vCPU配额超出系统限额，您可以前往ECS管理控制台或配额中心申请提高限额。|
@@ -581,6 +583,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |400|InvalidHttpTokens.NotSupported|The specified HttpTokens not supported, you can use optional\(default\) or required.|指定的参数HttpTokens值非法，请使用optional（默认）或者required。|
 |400|InvalidHttpPutResponseHopLimit.NotSupported|The specified HttpPutResponseHopLimit not supported, more than 1 and less than 64 is reasonable.|指定的参数HttpPutResponseHopLimit值非法，取值范围必须大于等于1且小于等于64。|
 |400|InvalidPrivateIpAddress.Malformed|Specified private IP address is malformed.|指定的私有IP不合法。|
+|403|InvalidOperation.ResourceManagedByCloudProduct|%s|云产品托管的安全组不支持修改操作。|
 |400|InvalidOperation.VpcHasEnabledAdvancedNetworkFeature|The specified vpc has enabled advanced network feature.|该VPC开启了高阶特性，不能创建低规格的ECS。|
 |400|MissingParameter.PrivatePoolOptionsId|The specified PrivatePoolOptions.Id should not be null.|指定的PrivatePoolOptions.Id参数不能为空。|
 |400|Invalid.PrivatePoolOptionsId|The specified PrivatePoolOptions.Id is invalid.|指定的PrivatePoolOptions.Id参数无效。|
