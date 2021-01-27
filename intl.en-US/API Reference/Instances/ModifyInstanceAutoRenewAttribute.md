@@ -1,6 +1,6 @@
 # ModifyInstanceAutoRenewAttribute
 
-You can call this operation to configure auto-renewal for one or more subscription instances. To reduce the maintenance workload when an instance expires, you can configure auto-renewal for subscription ECS instances.
+You can call this operation to configure auto-renewal for one or more subscription instances. To reduce the maintenance workload when instances expire, you can configure auto-renewal for subscription instances.
 
 ## Description
 
@@ -11,7 +11,7 @@ Before you call this operation, make sure that you have fully understood the bil
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=ModifyInstanceAutoRenewAttribute&type=RPC&version=2014-05-26)
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates a sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=ModifyInstanceAutoRenewAttribute&type=RPC&version=2014-05-26)
 
 ## Request parameters
 
@@ -22,8 +22,8 @@ Before you call this operation, make sure that you have fully understood the bil
 |RegionId|String|Yes|cn-hangzhou|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |Duration|Integer|No|1|The auto-renewal period.
 
--   When `PeriodUnit` is set to `year`, valid values of `Duration` are 1, 2, and 3.
--   When `PeriodUnit` is set to `month`, valid values of `Duration` are 1, 2, 3, 6, and 12. |
+-   When `PeriodUnit` is set to `Year`, valid values of `Duration` are 1, 2, and 3.
+-   When `PeriodUnit` is set to `Month`, valid values of `Duration` are 1, 2, 3, 6, and 12. |
 |AutoRenew|Boolean|No|true|Specifies whether to enable auto-renewal.
 
 Default value: false. |
@@ -34,10 +34,10 @@ Default value: false. |
 -   NotRenewal: The instance will not be renewed upon expiration. The system no longer sends an expiration reminder, but sends only a non-renewal reminder three days before the expiration date. You can change the value of this parameter from NotRenewal to `Normal` for an instance, and then manually renew the instance. Alternatively, you can set the RenewalStatus parameter to AutoRenewal.
 
 **Note:** `RenewalStatus` takes precedence over `AutoRenew`. If you do not specify `RenewalStatus`, the `AutoRenew` parameter is used by default. |
-|PeriodUnit|String|No|month|The unit of the renewal duration \(`Period`\). Default value: month. Valid values:
+|PeriodUnit|String|No|Month|The unit of the renewal duration \(`Period`\). Default value: month. Default value: Month. Valid values:
 
--   month
--   year |
+-   Month
+-   Year |
 
 ## Response parameters
 
@@ -54,7 +54,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceAutoRenewAttribute
 &RegionId=cn-hangzhou
 &InstanceId=i-bp67acfmxazb4ph****,i-bp67acfmxazb4pi****
 &Duration=1
-&PeriodUnit=month
+&PeriodUnit=Month
 &AutoRenew=true
 &<Common request parameters>
 ```
