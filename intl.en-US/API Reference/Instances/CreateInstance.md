@@ -10,10 +10,10 @@ When you create an ECS instance, take note of the following items:
 
 -   **Billing**:
     -   You must fully understand the ECS billing methods before you create an instance, because you may be charged for resources used by the instance. For more information, see [Billing overview](~~25398~~).
-    -   If you create a subscription instance \(`PrePaid`\), available coupons in your account are used by default.
+    -   By default, if you create a subscription instance \(`PrePaid`\), available coupons in your account are used.
 -   **Instance type**:
     -   You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
-    -   Select an appropriate instance type. For the performance data about instance types, see [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation. You can also see [Best practices for instance type selection](~~58291~~) to learn how to select instance types.
+    -   Select an appropriate instance type. For information about the performance data about instance types, see [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation. You can also see [Best practices for instance type selection](~~58291~~) to learn how to select instance types.
     -   Query available resources. You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
 
 **Note:** If the `QuotaExceed.ElasticQuota` error is returned when you create an instance, the maximum number of instances of the specified instance type in the current region has been reached, or the maximum number of vCPUs for all instance types has been reached. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
@@ -27,30 +27,27 @@ When you create an ECS instance, take note of the following items:
     -   If `VSwitchId` is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
     -   The value of `PrivateIpAddress` depends on the value of `VSwitchId` and cannot be specified separately.`` If you specify both `VSwitchId` and `PrivateIpAddress`, the IP address specified by `PrivateIpAddress` must be available in the CIDR block of the specified vSwitch.
 -   **Public bandwidth**:
-    -   As of November 27, 2020, the maximum bandwidth for you to create ECS instances or change the configurations of ECS instances is subject to the throttling policy of your account. To increase the maximum bandwidth, submit a ticket. According to the throttling policy, the total maximum bandwidth of all instances whose billing method for network usage is pay-by-traffic cannot exceed 5 Gbit/s and that of all instances whose billing method for network usage is pay-by-bandwidth cannot exceed 50 Gbit/s in a single region.
-    -   If you call the `CreateInstance` operation to create an instance, no public IP address is assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to allocate public IP addresses manually.
+    -   As of November 27, 2020, the maximum bandwidth for you to create ECS instances or change the configurations of ECS instances is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. Based on the throttling policy, the total maximum bandwidth of all instances whose billing method for network usage is pay-by-traffic cannot exceed 5 Gbit/s and that of all instances whose billing method for network usage is pay-by-bandwidth cannot exceed 50 Gbit/s in a single region.
+    -   If you call the `CreateInstance` operation to create an instance, no public IP address is assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to assign public IP addresses.
     -   Bandwidth fees are determined based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
     -   The `InternetMaxBandwidthIn` value is irrelevant to billing because inbound data traffic is free of charge.
     -   If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the bandwidth value.
     -   If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the maximum bandwidth value. Actual costs are calculated based on the network traffic.
 -   **Security group**:
     -   If no security group is available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
-    -   The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security group limits" section of the [Limits](~~25412~~) topic.
+    -   The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security group limits" section in [Limits](~~25412~~).
     -   Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. However, you can allow communication between instances by authorizing mutual access between their security groups. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
 -   **Storage**:
     -   The instance is assigned a system disk whose capacity is based on the image you specified. The capacity of the system disk must be at least `20 GiB and greater than or equal to the size of the image`. For more information about system disk categories, see the description of the `SystemDisk.Category` parameter.
-    -   When the system disk of an instance is a basic disk \(`cloud`\), an ultra disk \(`cloud_efficiency`\), or a standard SSD \(`cloud_ssd`\), the data disks of the instance cannot be local SSDs \(`ephemeral_ssd`\).
-    -   The system disks of I/O optimized instances can only be ultra disks \(`cloud_efficiency`\) or standard SSDs \(`cloud_ssd`\).
+    -   Only enhanced SSDs \(ESSDs\) \(`cloud_essd`\), standard SSDs \(`cloud_ssd`\), and ultra disks \(`cloud_efficiency`\) can be used as system disks of I/O optimized instances.
     -   The maximum capacity of data disks varies based on their categories. For more information, see the description of the `DataDisk.N.Size` parameter.
     -   A maximum of 16 data disks can be attached to each instance. The mount points of data disks are allocated by the system in alphabetical order from /dev/xvdb to /dev/xvdz.
-    -   When data disks of an instance are local SSDs \(`ephemeral_ssd`\), the system disk of the instance must also be a local SSD. Excluding the system disk, the total capacity of local SSDs attached to an instance cannot exceed 1 TiB.
-    -   Local SSDs \(`ephemeral_ssd`\) must be specified when you create instances and cannot be added after the instances are created.
 -   **User data**: If the instance type supports user data, you can use the UserData parameter to pass in user data. For more information, see [Prepare user data](~~49121~~). User data is encoded in Base64. We recommend that you do not pass in confidential information such as passwords or private keys in plaintext. This is because the system does not encrypt `UserData` values when API requests are transferred. If you must pass in confidential information, we recommend that you encrypt and encode the user data in Base64, and then decode and decrypt it in the same way within the instance.
 -   **Others**: When you call API operations by using Alibaba Cloud Command Line Interface \(CLI\) and SDKs, you must delete periods \(.\) from request parameters before you use them. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer automatically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=CreateInstance&type=RPC&version=2014-05-26)
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=CreateInstance&type=RPC&version=2014-05-26)
 
 ## Request parameters
 
@@ -68,14 +65,14 @@ When you create an ECS instance, take note of the following items:
 -   ImageFamily must be empty if `ImageId` is specified.
 -   ImageFamily can be specified if `ImageId` is not specified. |
 |SecurityGroupId|String|No|sg-bp15ed6xe1yxeycg\*\*\*\*|The ID of the security group to which to assign the instance. Instances in the same security group can communicate with each other. |
-|InstanceName|String|No|2018-12-06T103200Z|The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\). and hyphens \(-\). If you do not specify this parameter, the instance ID is used. |
+|InstanceName|String|No|2018-12-06T103200Z|The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\), and hyphens \(-\). If you do not specify this parameter, the instance ID is used. |
 |InternetChargeType|String|No|PayByTraffic|The billing method for network usage. Default value: PayByTraffic. Valid values:
 
 -   PayByBandwidth
 -   PayByTraffic
 
-**Note:** When the **pay-by-traffic** billing method is used, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and used only for reference. In the event of resource contention, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instances, use the **pay-by-bandwidth** billing method. |
-|AutoRenew|Boolean|No|true|Specifies whether to enable auto-renewal for the instance. This parameter takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: false. Valid values:
+**Note:** When the billing method is **pay-by-traffic**, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and used only for reference. When resources are insufficient, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instances, use the **pay-by-bandwidth** billing method. |
+|AutoRenew|Boolean|No|true|Specifies whether to enable auto-renewal for the instance. This parameter takes effect only when the `InstanceChargeType` parameter is set to `PrePaid`. Default value: false. Valid values:
 
 -   true: enables auto-renewal for the instance.
 -   false: disables auto-renewal for the instance. |
@@ -84,36 +81,36 @@ When you create an ECS instance, take note of the following items:
 Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, and 12. |
 |InternetMaxBandwidthIn|Integer|No|50|The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 
--   When the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, valid values are 1 to 10 and the default value is 10.
--   When the purchased outbound public bandwidth is greater than 10, valid values are 1 to the value of `InternetMaxBandwidthOut` and the default value is the value of `InternetMaxBandwidthOut`. |
+-   When the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values are 1 to 10 and the default value is 10.
+-   When the purchased outbound public bandwidth is greater than 10, the valid values are 1 to the value of `InternetMaxBandwidthOut` and the default value is the value of `InternetMaxBandwidthOut`. |
 |InternetMaxBandwidthOut|Integer|No|5|The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
 
 Default value: 0. |
 |HostName|String|No|LocalHostName|The hostname of the instance.
 
--   The hostname cannot start or end with a period \(,\) or a hyphen \(-\). It cannot contain consecutive periods \(.\) or hyphens \(-\).
+-   The hostname cannot start or end with a period \(,\) or a hyphen \(-\). It cannot contain consecutive periods \(,\) or hyphens \(-\).
 -   For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens \(-\). It cannot contain periods \(.\) or contain only digits.
--   For an instance that runs one of other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\). |
-|Password|String|No|TestEcs123!|The password of the instance. The password must be 8 to 30 characters in length. It must include at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
+-   For an instance that runs another operating system such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\). |
+|Password|String|No|TestEcs123!|The password of the instance. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
 
 ```
 
-( ) ` ~ ! @ # $ % ^ & * - _ + = | { } [ ] : ; ' < > , . ? /
+()`~! @#$%^&*-_+=|{}[]:;'<>,.? /
                                 
 ```
 
 For a Windows instance, the password cannot start with a forward slash \(/\).
 
-**Note:** If the `Password` parameter is specified, we recommend that you send requests over HTTPS to secure your password. |
+**Note:** If the `Password` parameter is specified, we recommend that you send requests over HTTPS to keep your password confidential. |
 |PasswordInherit|Boolean|No|false|Specifies whether to use the password preset in the image. If PasswordInherit is set to true, leave Password empty and make sure that the selected image has a password preset. |
 |DeploymentSetId|String|No|ds-bp1brhwhoqinyjd6\*\*\*\*|The ID of the deployment set. |
-|ZoneId|String|No|cn-hangzhou-g|The zone ID of the instance. You can call the [DescribeZones](~~25610~~) operation to query the zone list.
+|ZoneId|String|No|cn-hangzhou-g|The zone ID of the instance. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
 
 This parameter is empty by default. If you do not specify a zone, the system randomly selects one. |
 |ClusterId|String|No|c-bp67acfmxazb4p\*\*\*\*|The ID of the cluster.
 
 **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
-|ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
+|ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value must contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
 |VlanId|String|No|10|The ID of the virtual local area network \(VLAN\). |
 |InnerIpAddress|String|No|192.168.\*\*. \*\*|The private IP address of the instance. |
 |SystemDisk.Size|Integer|No|40|The size of the system disk. Unit: GiB. Valid values: 20 to 500.
@@ -123,19 +120,19 @@ The value of this parameter must be at least 20 and greater than or equal to the
 The default value is 40 or the size of the image, depending on whichever is greater. |
 |SystemDisk.Category|String|No|cloud\_ssd|The category of the system disk. Valid values:
 
+-   cloud\_essd: ESSD. You can use the `SystemDisk.PerformanceLevel` parameter to set the performance level of a cloud disk.
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   cloud: basic disk
--   ephemeral\_ssd: local SSD
 
 For non-I/O optimized instances of retired instance types, the default value is cloud. For other instances, the default value is cloud\_efficiency. |
-|SystemDisk.DiskName|String|No|SystemDiskName|The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\).
+|SystemDisk.DiskName|String|No|SystemDiskName|The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://.
 
 This parameter is empty by default. |
 |SystemDisk.Description|String|No|TestDescription|The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 
 This parameter is empty by default. |
-|SystemDisk.PerformanceLevel|String|No|PL1|The performance level of the enhanced SSD \(ESSD\) used as the system disk. Default value: PL0. Valid values:
+|SystemDisk.PerformanceLevel|String|No|PL1|The performance level of the ESSD used as the system disk. Default value: PL1. Valid values:
 
 -   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
@@ -148,7 +145,6 @@ For more information about ESSD performance levels, see [ESSDs](~~122389~~). |
 -   Valid values when DataDisk.N.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud\_essd: 20 to 32768
--   Valid values when DataDisk.N.Category is set to ephemeral\_ssd: 5 to 800
 -   Valid values when DataDisk.N.Category is set to cloud: 5 to 2000
 
 The value of this parameter must be greater than or equal to the size of the snapshot specified by the `SnapshotId` parameter. |
@@ -160,12 +156,11 @@ The value of this parameter must be greater than or equal to the size of the sna
 
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
--   ephemeral\_ssd: local SSD
 -   cloud\_essd: ESSD
 -   cloud: basic disk
 
 For I/O optimized instances, the default value is cloud\_efficiency. For non-I/O optimized instances, the default value is cloud. |
-|DataDisk.N.DiskName|String|No|DataDiskName|The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\).
+|DataDisk.N.DiskName|String|No|DataDiskName|The name of data disk N. The name must be 2 to 128 characters in length, and can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://.
 
 This parameter is empty by default. |
 |DataDisk.N.Description|String|No|TestDescription|The description of data disk N. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -205,7 +200,7 @@ For other instance types, the default value is optimized. |
 |UseAdditionalService|Boolean|No|true|Specifies whether to use the virtual machine system configuration provided by Alibaba Cloud \(Windows: NTP and KMS. Linux: NTP and YUM\). |
 |InstanceChargeType|String|No|PrePaid|The billing method of the instance. Default value: PostPaid. Valid values:
 
--   PrePaid: subscription. If you set this parameter to PrePaid, make sure that you have sufficient balance or credit in your payment account. Otherwise, an `InvalidPayMethod` error is returned.
+-   PrePaid: subscription. If you set this parameter to PrePaid, make sure that you have sufficient balance or credit in your account. Otherwise, an `InvalidPayMethod` error is returned.
 -   PostPaid: pay-as-you-go. |
 |Period|Integer|No|1|The subscription period of the instance. The unit is specified by the `PeriodUnit` parameter. This parameter is valid and required only when `InstanceChargeType` is set to `PrePaid`. If the `DedicatedHostId` parameter is specified, the subscription period of the instance cannot be longer than that of the dedicated host. Valid values:
 
@@ -215,12 +210,12 @@ For other instance types, the default value is optimized. |
 Set the value to Month. |
 |Tag.N.value|String|No|null|The value of tag N.
 
-**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Value parameter to ensure compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Value parameter to ensure future compatibility. |
 |Tag.N.key|String|No|null|The key of tag N.
 
-**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Key parameter to ensure compatibility. |
-|Tag.N.Key|String|No|TestKey|The key of tag N to be bound to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag key cannot be an empty string. t can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://. |
-|Tag.N.Value|String|No|TestValue|The value of tag N to be bound to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with acs:. It cannot contain http:// or https://. |
+**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Key parameter to ensure future compatibility. |
+|Tag.N.Key|String|No|TestKey|The key of tag N to be bound to the instance, disks, and primary elastic network interface \(ENI\). Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://. |
+|Tag.N.Value|String|No|TestValue|The value of tag N to be bound to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot contain http:// or https://. It cannot start with acs:. |
 |UserData|String|No|ZWNobyBoZWxsbyBlY3Mh|The user data of the instance. User data must be encoded in Base64. The maximum size of raw data is 16 KB. |
 |SpotStrategy|String|No|NoSpot|The preemption policy for a pay-as-you-go instance. This parameter takes effect only when the `InstanceChargeType` parameter is set to `PostPaid`. Default value: NoSpot. Valid values:
 
@@ -234,16 +229,16 @@ Set the value to Month. |
 |SpotPriceLimit|Float|No|0.98|The maximum hourly price of the instance. This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed. |
 |SpotDuration|Integer|No|1|The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
 
--   Protection periods of two to six hours are in invitational preview. If you want to set this parameter to one of these values, submit a ticket.
+-   Protection periods of 2 to 6 hours are in invitational preview. If you want to set this parameter to one of these values, submit a ticket.
 -   If this parameter is set to 0, no protection period is configured for the preemptible instance.
 
-Default value: 1. |
-|SpotInterruptionBehavior|String|No|Terminate|The interruption mode of the preemptible instance. Set the value to Terminate, which specifies to release the instance. |
+Default value : 1. |
+|SpotInterruptionBehavior|String|No|Terminate|The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies to release the instance. |
 |RamRoleName|String|No|RAMTestName|The instance RAM role. You can call the [ListRoles](~~28713~~) operation provided by RAM to query the instance RAM roles that you have created. |
 |SecurityEnhancementStrategy|String|No|Active|Specifies whether to enable security hardening. Valid values:
 
--   Active: enables security hardening. This value is applicable to only public images.
--   Deactive: disables security hardening. This value is applicable to all image types. |
+-   Active: enables security hardening. This value is applicable only to public images.
+-   Deactive: disables security hardening. This value is applicable to all images. |
 |ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which to assign the instance. |
 |HpcClusterId|String|No|hpc-bp67acfmxazb4p\*\*\*\*|The ID of the HPC cluster to which to assign the instance. |
 |DryRun|Boolean|No|false|Specifies whether to check the validity of the request without actually making the request. Default value: false. Valid values:
@@ -257,8 +252,8 @@ You can call the [DescribeDedicatedHosts](~~134242~~) operation to query the ded
 When the `DedicatedHostId` parameter is specified, the `SpotStrategy` and `SpotPriceLimit` parameters are ignored. This is because preemptible instances cannot be created on dedicated hosts. |
 |CreditSpecification|String|No|Standard|The performance mode of the burstable instance. Valid values:
 
--   Standard: the standard mode. For more information, see the "Standard mode" section of the [Burstable instances](~~59977~~) topic.
--   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section of the [Burstable instances](~~59977~~) topic.
+-   Standard: the standard mode. For more information, see the "Standard mode" section in [Burstable instances](~~59977~~).
+-   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in [Burstable instances](~~59977~~).
 
 This parameter is empty by default. |
 |DeletionProtection|Boolean|No|false|The release protection property of the instance. It specifies whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to manually release the instance. Default value: false. Valid values:
@@ -297,11 +292,11 @@ Default value: enabled.
 Default value: optional.
 
 **Note:** For more information about the modes of accessing instance metadata, see [Access mode of instance metadata](~~150575~~). |
-|PrivatePoolOptions.MatchCriteria|String|No|Open|The type of the private pool. After an elasticity assurance or capacity reservation takes effect, a private pool is generated. You can select a private pool when you create an instance. Valid values:
+|PrivatePoolOptions.MatchCriteria|String|No|Open|The type of the private pool. After an elasticity assurance or a capacity reservation takes effect, a private pool is generated. You can select a private pool when you create an instance. Valid values:
 
--   Open: The system automatically matches a private pool of the Open type for the instance to start up. If no matching private pools exist, the instance takes up capacity of public pool resources. If the parameter is set to Open, the `PrivatePoolOptions.Id` parameter must be empty.
--   Target: The instance takes up capacity of a specific private pool to start up. If the specified private pool is unavailable, the instance fails to start up. If the parameter is set to Target, the `PrivatePoolOptions.Id` parameter must be specified.
--   None: The instance does not take up capacity of a private pool to start up.
+-   Open: The system automatically matches a private pool of the Open type for the instance to start up. If no matching private pools exist, the instance takes up the capacity of public pool resources. If this parameter is set to Open, the `PrivatePoolOptions.Id` parameter must be empty.
+-   Target: The instance takes up the capacity of a specific private pool to start up. If the specified private pool is unavailable, the instance fails to start up. If this parameter is set to Target, the `PrivatePoolOptions.Id` parameter must be specified.
+-   None: The instance does not take up the capacity of a private pool to start up.
 
 This parameter is empty by default.
 
@@ -315,8 +310,9 @@ This parameter is empty by default.
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
 |InstanceId|String|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance. |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
+|OrderId|String|1234567890|The ID of the order. This parameter value is returned only when `InstanceChargeType` is set to PrePaid. |
 |TradePrice|Float|0.165|The transaction price. |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
 
 ## Examples
 
@@ -338,8 +334,10 @@ Sample success responses
 
 ```
 <CreateInstanceResponse>
-      <RequestId>04F0F334-1335-436C-A1D7-6C044FE73368</RequestId>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
       <InstanceId>i-bp67acfmxazb4p****</InstanceId>
+      <OrderId>1234567890</OrderId>
+      <TradePrice>0.165</TradePrice>
 </CreateInstanceResponse>
 ```
 
@@ -347,8 +345,10 @@ Sample success responses
 
 ```
 {
-    "RequestId": "04F0F334-1335-436C-A1D7-6C044FE73368",
-    "InstanceId": "i-bp67acfmxazb4p****"
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+    "InstanceId": "i-bp67acfmxazb4p****",
+    "OrderId": "1234567890",
+    "TradePrice": "0.165"
 }
 ```
 
@@ -361,7 +361,7 @@ Sample success responses
 |400|InvalidParameter|The specified parameter "InternetMaxBandwidthOut" is not valid.|The error message returned because the specified InternetMaxBandwidthOut parameter is invalid.|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter " SystemDisk.Category " is not valid.|The error message returned because the specified SystemDisk.Category parameter is invalid.|
 |404|IoOptimized.NotSupported|The specified instancetype is not support IoOptimized instance|The error message returned because the specified instance type does not support I/O optimization.|
-|400|InvalidDataDiskSize.ValueNotSupported|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|The error message returned because the specified DataDisk.N.Size parameter is invalid or the snapshot size exceeds the maximum capacity that is allowed for the specified disk category.|
+|400|InvalidDataDiskSize.ValueNotSupported|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|The error message returned because the specified DataDisk.N.Size parameter or the snapshot size exceeds the maximum capacity that is allowed for the specified disk category.|
 |403|InvalidDiskCategory.NotSupported|The specified disk category is not support the specified instance type.|The error message returned because the specified disk category does not support the instance type.|
 |400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|The error message returned because the specified instance type does not exist or you are not authorized to manage the instance type.|
 |404|InvalidSecurityGroupId.NotFound|The specified SecurityGroupId does not exist.|The error message returned because the specified security group does not exist in this account. Check whether the security group ID is correct.|
@@ -404,7 +404,7 @@ Sample success responses
 |403|OperationDenied|Sales of this resource are temporarily suspended in the specified region; please try again later.|The error message returned because the requested resource is unavailable in the specified region. Try again later.|
 |400|InvalidParameter.Conflict|The specified region and cluster do not match.|The error message returned because the specified region and cluster do not correspond to each other.|
 |403|SecurityGroupInstanceLimitExceed|The maximum number of instances in a security group is exceeded.|The error message returned because the maximum number of instances in the specified security group has been reached.|
-|403|NodeControllerUnavailable|The Node Controller is temporarily unavailable.|The error message returned because the node controller is currently unavailable.|
+|403|NodeControllerUnavailable|The Node Controller is temporarily unavailable.|The error message returned because the node controller is unavailable.|
 |403|RegionUnauthorized|There is no authority to create instance in the specified region.|The error message returned because you are not authorized to create instances in the specified region.|
 |403|CategoryNotSupported|The specified Zone or cluster does not offer the specified disk category.|The error message returned because the specified disk category is unavailable in the specified zone or cluster.|
 |403|InvalidSnapshotId.NotDataDiskSnapshot|The specified snapshot is system disk snapshot.|The error message returned because the specified snapshot is a system disk snapshot.|
@@ -413,22 +413,22 @@ Sample success responses
 |400|InvalidParameter.Mismatch|Specified security group and virtual switch are not in the same VPC.|The error message returned because the specified security group and vSwitch do not belong to the same VPC.|
 |400|InvalidNetworkType.Mismatch|Specified parameter "InternetChargeType" conflict with instance network type.|The error message returned because the network type of the instance does not support the specified billing method for network usage.|
 |400|InvalidPrivateIpAddress|Specified private IP address is not in the CIDR block of virtual switch.|The error message returned because the specified private IP address is not within the CIDR block of the vSwitch.|
-|400|InvalidPrivateIpAddress.Duplicated|Specified private IP address is duplicated.|The error message returned because the specified private IP address has been used. Change the IP address and try again.|
-|400|QuotaExceeded.PrivateIpAddress|Don't have enough private IPs in this switch|The error message returned because all the private IP addresses in the CIDR block of the specified vSwitch are already in use. Try another vSwitch.|
+|400|InvalidPrivateIpAddress.Duplicated|Specified private IP address is duplicated.|The error message returned because the specified private IP address is in use. Change the IP address and try again.|
+|400|QuotaExceeded.PrivateIpAddress|Don't have enough private IPs in this switch|The error message returned because all the private IP addresses on the vSwitch are already in use. Try another vSwitch.|
 |400|QuotaExceeded|Living instances quota exceeded in this VPC.|The error message returned because the maximum number of active instances has been reached.|
 |400|IncorrectVSwitchStatus|The current status of virtual switch does not support this operation.|The error message returned because the specified vSwitch is in the Pending state and cannot be deleted.|
 |400|InvalidParameter.Mismatch|Specified virtual switch is not in the specified zone.|The error message returned because the specified vSwitch does not exist in the specified zone.|
-|400|ResourceNotAvailable|Resource you requested is not available in this region or zone.|The error message returned because VPC is not supported by the specified region or zone.|
+|400|ResourceNotAvailable|Resource you requested is not available in this region or zone.|The error message returned because VPC is not supported in the specified region or zone.|
 |400|MissingParameter|The input parameter "VSwitchId" that is mandatory for processing this request is not supplied.|The error message returned because the VSwitchId parameter is not specified.|
 |400|InvalidDiskCategory.Mismatch|The specified disk categories' combination is not supported.|The error message returned because the combination of the specified disk categories is not supported.|
 |403|DeleteWithInstance.Conflict|The specified disk is not a portable disk and cannot be set to DeleteWithInstance attribute.|The error message returned because the specified disk is not removable and cannot be released along with the instance.|
 |404|InvalidImageId.NotFound|The specified ImageId does not exist.|The error message returned because the specified image does not exist in this account. Check whether the image ID is correct.|
 |403|InstanceDiskNumLimitExceed|The number of specified disk in an instance exceeds.|The error message returned because the maximum number of disks that can be attached to the instance has been reached.|
-|403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|The error message returned because the specified image does not support I/O optimized instances.|
+|403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|The error message returned because the specified image is not supported for I/O optimized instances.|
 |403|ImageNotSupportInstanceType|The specified image don't support the InstanceType instance.|The error message returned because the instance type is not supported by the specified image.|
 |400|InvalidIoOptimizedValue.ValueNotSupported|IoOptimized value not supported.|The error message returned because the specified IoOptimized parameter is invalid.|
-|404|OperationDenied|Another Instance has been creating|The error message returned because no new instances can be created.|
-|403|InvalidDiskSize.TooSmall|Specified disk size is less than the size of snapshot|The error message returned because the specified disk size is smaller than the snapshot size.|
+|404|OperationDenied|Another Instance has been creating|The error message returned because no other instances can be created while an instance is being created.|
+|403|InvalidDiskSize.TooSmall|Specified disk size is less than the size of snapshot|The error message returned because the size of the specified disk is smaller than that of the snapshot.|
 |403|OperationDenied|The type of the disk does not support the operation|The error message returned because the operation is not supported by the specified disk category.|
 |404|InvalidInstanceChargeType.NotFound|The InstanceChargeType does not exist in our records|The error message returned because the specified InstanceChargeType parameter does not exist.|
 |400|MissingParamter|The specified parameter "Period" is not null.|The error message returned because the Period parameter is not specified.|
@@ -452,7 +452,7 @@ Sample success responses
 |403|InvalidParameter.ResourceOwnerAccount|ResourceOwnerAccount is Invalid.|The error message returned because the specified ResourceOwnerAccount parameter is invalid.|
 |404|InvalidSystemDiskSize|The specified parameter SystemDisk.Size is invalid.|The error message returned because the specified SystemDisk.Size parameter is invalid.|
 |400|InvalidParameter.Bandwidth|The specified parameter Bandwidth is not valid.|The error message returned because the specified bandwidth is invalid.|
-|400|InvalidIPAddress.AlreadyUsed|The specified IPAddress is already used by other resource.|The error message returned because the specified IP address is being used. Try another one.|
+|400|InvalidIPAddress.AlreadyUsed|The specified IPAddress is already used by other resource.|The error message returned because the specified IP address is in use. Try another one.|
 |403|InvalidUserData.Forbidden|User not authorized to input the parameter "UserData", please apply for permission "UserData"|The error message returned because you are not authorized to manage user data. Apply for the permission first.|
 |400|InvalidUserData.SizeExceeded|The specified parameter "UserData" exceeds the size.|The error message returned because the maximum size of user data specified by the UserData parameter has been reached.|
 |400|InvalidUserData.NotSupported|The specified parameter "UserData" only support the vpc and IoOptimized Instance.|The error message returned because the specified UserData parameter is not supported. UserData is supported only on VPC-type instances and I/O optimized instances.|
@@ -479,9 +479,9 @@ Sample success responses
 |400|InvalidDataDiskCategory.ValueNotSupported|%s|The error message returned because the specified DataDisk.N.Category parameter is invalid.|
 |400|InvalidSystemDiskCategory.ValueNotSupported|%s|The error message returned because the operation is not supported by the specified system disk category.|
 |400|InvalidParameter.Conflict|%s|The error message returned because a specified parameter is invalid. Check whether the parameter conflicts with another parameter.|
-|400|InvalidInternetChargeType.ValueNotSupported|%s|The error message returned because the specified InternetChargeType parameter is not supported. Check whether the parameter value is correct.|
+|400|InvalidInternetChargeType.ValueNotSupported|%s|The error message returned because the specified InternetChargeType parameter is not supported. Check whether the parameter is correct.|
 |400|InvalidInstanceType.ValueNotSupported|%s|The error message returned because this operation cannot be performed on instances of the specified instance type.|
-|403|InstanceType.Offline|%s|The error message returned because the instance type is retired or has insufficient resources.|
+|403|InstanceType.Offline|%s|The error message returned because the operation is not supported while the instance type is retired or resources of the instance type are insufficient.|
 |400|RegionUnauthorized|%s|The error message returned because you are not authorized to perform the operation in the specified region.|
 |500|InternalError|%s|The error message returned because an internal error has occurred.|
 |400|Zone.NotOnSale|%s|The error message returned because the requested resources are unavailable in the specified zone.|
@@ -511,8 +511,8 @@ Sample success responses
 |400|InvalidPeriodUnit.ValueNotSupported|The specified parameter PeriodUnit is not valid.|The error message returned because the specified PeriodUnit parameter is invalid.|
 |400|IncorrectImageStatus|Encrypted snapshots do not support this operation.|The error message returned because the operation is not supported by encrypted snapshots.|
 |400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|The error message returned because the specified Tag.N.Value parameter is invalid.|
-|400|InvalidSecurityGroup.NotInDefaultVpc|%s|The error message returned because the specified security group is not in the default VPC. Check whether the specified value of the SecurityGroupId parameter is correct.|
-|400|VpcNotFound|Vpc is not found according to the specified VSwitch or the vpc does not belong to you.|The error message returned because the specified vSwitch does not belong to any VPC, or the corresponding VPC does not belong to you.|
+|400|InvalidSecurityGroup.NotInDefaultVpc|%s|The error message returned because the specified security group is not in the default VPC. Check whether the specified SecurityGroupId parameter is correct.|
+|400|VpcNotFound|Vpc is not found according to the specified VSwitch or the vpc does not belong to you.|The error message returned because the specified vSwitch does not belong to any VPC, or because the corresponding VPC does not belong to you.|
 |403|InvalidParameter.NotMatch|%s|The error message returned because a specified parameter is invalid. Check whether the parameter conflicts with another parameter.|
 |403|OperationDenied.InvalidNetworkType|%s|The error message returned because the operation is not supported by the specified network type.|
 |400|InvalidSpotInterruptionBehavior|%s|The error message returned because the specified SpotInterruptionBehavior parameter is invalid.|
@@ -532,7 +532,7 @@ Sample success responses
 |400|ChargeTypeViolation.PostPaidDedicatedHost|Prepaid instance onto postpaid dedicated host is not allowed.|The error message returned because subscription instances cannot be deployed on pay-as-you-go dedicated hosts.|
 |400|InvalidParam.Tenancy|The specified Tenancy is invalid.|The error message returned because the specified Tenancy parameter is invalid.|
 |403|OperationDenied.ImageNotValid|%s|The error message returned because the current image does not support the operation.|
-|403|QuotaExceed.PostPaidDisk|Living postPaid disks quota exceeded.|The error message returned because the maximum number of pay-as-you-go disks has been reached.|
+|403|QuotaExceed.PostPaidDisk|Living postPaid disks quota exceeded.|The error message returned because the maximum number of pay-as-you-go disks has been exceeded.|
 |403|QuotaExceed.DeploymentSetInstanceQuotaFull|instance quota in one deployment set exceeded.|The error message returned because the maximum number of instances in the current deployment set has been reached.|
 |403|InvalidDiskCategory.NotSupported|The specified disk category is not supported.|The error message returned because the specified disk category does not support the current operation.|
 |400|InvalidParameter.CreditSpecification|The specified CreditSpecification is not supported in this region.|The error message returned because the specified credit policy is not supported in the region.|
@@ -548,7 +548,7 @@ Sample success responses
 |403|OperationDenied|If the network segment of the vswitch is the same as that of its VPC. Therefore, the VPC cannot create other vswitchs across the region.|The error message returned because the VPC and vSwitch have the same CIDR block and no additional vSwitches can be created for other zones of this VPC.|
 |403|DefaultVswitch.Existed|The default vswitch for VPC already exists.|The error message returned because a default vSwitch already exists in the current VPC.|
 |403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|The error message returned because the operation is not supported while the resource is in the current state.|
-|403|CategoryViolation|The specified instance does not support this operation because of its disk category.|The error message returned because the configurations of instances that have local disks attached cannot be upgraded or downgraded.|
+|403|CategoryViolation|The specified instance does not support this operation because of its disk category.|The error message returned because the configurations of instances that are attached with local disks cannot be changed.|
 |403|ResourcesNotInSameZone|The specified instance and dedicated host are not in the same zone.|The error message returned because the specified instance and the dedicated host are not in the same region.|
 |403|InvalidRegion.NotSupport|The specified region does not support byok.|The error message returned because the bring your own key \(BYOK\) feature is not supported in this region.|
 |403|UserNotInTheWhiteList|The user is not in byok white list.|The error message returned because you are not in the BYOK whitelist. Try again when you are in the whitelist.|
@@ -560,7 +560,7 @@ Sample success responses
 |403|InvalidDisk.SystemDiskSize|The specified SystemDiskSize beyond the permitted range.|The error message returned because the maximum size of the specified system disk has been reached.|
 |400|InvalidClientToken.ValueNotSupported|The ClientToken provided is invalid.|The error message returned because the specified ClientToken parameter is invalid.|
 |400|OperationDenied|The current user does not support this operation.|The error message returned because your account does not support this operation.|
-|403|InsufficientBalance|Your account does not have enough balance.|The error message returned because you have insufficient balance in your account. Top up your account and try again.|
+|403|InsufficientBalance|Your account does not have enough balance.|The error message returned because you have insufficient balance in your account. Add funds to your account and try again.|
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|The error message returned because the specified tag key already exists. Tag keys must be unique.|
 |404|InvalidSecurityGroupId.NotFound|%s|The error message returned because the specified SecurityGroupId parameter does not exist.|
 |403|InvalidVSwitchId.IpInvalid|%s|The error message returned because the specified InnerIpAddress parameter is invalid.|
@@ -569,8 +569,8 @@ Sample success responses
 |401|InvalidRamRole.NotEcsRole|The specified ram role is not authorized for ecs, please check your role policy.|The error message returned because the specified RAM role is not authorized to use ECS. Check your role policy.|
 |403|QuotaExceed.ElasticQuota|No additional quota is available for the specified ECS instance type.|The error message returned because the maximum number of instances of the specified instance type in the current region has been reached. Try another region or instance type, or reduce the purchase quantity. You can also go to the ECS console or Quota Center to request a quota increase.|
 |403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type.|The error message returned because the maximum number of instances of the specified instance type in the current region has been reached. Try another region or instance type, or reduce the purchase quantity. You can also go to the ECS console or Quota Center to request a quota increase.|
-|403|QuotaExceed.ElasticQuota|The number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|The error message returned because the maximum number of vCPUs for all instance types has been reached. Go to the ECS console or Quota Center to request a quota increase.|
-|403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type, or the number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|The error message returned because the maximum number of instances of the specified instance type in the current region has been reached, or because the maximum number of vCPUs for all instance types has been reached. Go to the ECS console or Quota Center to request a quota increase.|
+|403|QuotaExceed.ElasticQuota|The number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|The error message returned because the maximum number of vCPUs for all instance types has been reached. You can go to the ECS console or Quota Center to request a quota increase.|
+|403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type, or the number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|The error message returned because the maximum number of instances of the specified instance type that can be created in the current region has been reached, or because the maximum number of vCPUs for all instance types has been reached. You can go to the ECS console or Quota Center to request a quota increase.|
 |400|InvalidHttpEndpoint.NotSupported|The specified HttpEndpoint not supported, you can use enabled\(default\) or disabled.|The error message returned because the specified HttpEndpoint parameter is invalid. Set this parameter to enabled \(default value\) or disabled.|
 |400|InvalidHttpTokens.NotSupported|The specified HttpTokens not supported, you can use optional\(default\) or required.|The error message returned because the specified HttpTokens parameter is invalid. Set this parameter to optional \(default value\) or required.|
 |400|InvalidHttpPutResponseHopLimit.NotSupported|The specified HttpPutResponseHopLimit not supported, more than 1 and less than 64 is reasonable.|The error message returned because the specified HttpPutResponseHopLimit parameter is invalid. The value must be in the range of 1 to 64.|
