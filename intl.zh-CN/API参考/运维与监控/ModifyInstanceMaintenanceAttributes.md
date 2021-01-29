@@ -27,6 +27,12 @@
  -   Stop：停止状态（即宕机）。
 -   AutoRecover：自动恢复。
 -   AutoRedeploy：宕机迁移，数据盘有损。 |
+|NotifyOnMaintenance|Boolean|否|false|实例宕机运维前是否发送事件通知。取值范围：
+
+ -   true：发送事件通知。
+-   false：不发送事件通知。
+
+ 默认值：false |
 
 ## 返回数据
 
@@ -47,7 +53,7 @@ https://ecs.aliyuncs.com?Action=ModifyInstanceMaintenanceAttributes
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyInstanceMaintenanceAttributesResponse>    
@@ -55,7 +61,7 @@ https://ecs.aliyuncs.com?Action=ModifyInstanceMaintenanceAttributes
 <ModifyInstanceMaintenanceAttributesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
