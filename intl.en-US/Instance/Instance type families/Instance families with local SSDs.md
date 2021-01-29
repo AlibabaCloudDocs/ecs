@@ -141,8 +141,6 @@ Instance types
 
 ## i2ne, instance family with local SSDs
 
-i2ne is in invitational preview. To use i2ne,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
 Features
 
 -   Is an instance family in which all instances are I/O optimized.
@@ -174,8 +172,6 @@ Instance types
 -   For more information about the performance metrics of local SSDs, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
 
 ## i2gne, instance family with local SSDs
-
-i2gne is in invitational preview. To use i2gne,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
