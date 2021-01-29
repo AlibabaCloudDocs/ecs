@@ -48,6 +48,7 @@
 |MaintenanceWindow| | | |
 |EndTime|String|18:00:00|维护时间窗口结束时间。 |
 |StartTime|String|02:00:00|维护时间窗口开始时间。 |
+|NotifyOnMaintenance|Boolean|false|实例宕机运维前是否发送事件通知。 |
 |PageNumber|Integer|1|维护属性列表的页码。 |
 |PageSize|Integer|10|单页返回的条数。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
@@ -65,7 +66,7 @@ https://ecs.aliyuncs.com?Action=DescribeMaintenanceProperty
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeInstanceMaintenanceAttributesResponse>
@@ -76,6 +77,7 @@ https://ecs.aliyuncs.com?Action=DescribeMaintenanceProperty
       <InstanceMaintenanceAttributes>
             <InstanceMaintenanceAttribute>
                   <InstanceId>i-bp67acfmxazb4ph***</InstanceId>
+                  <NotifyOnMaintenance>false</NotifyOnMaintenance>
                   <MaintenanceWindows>
                         <MaintenanceWindow>
                               <StartTime>02:00:00</StartTime>
@@ -95,7 +97,7 @@ https://ecs.aliyuncs.com?Action=DescribeMaintenanceProperty
 </DescribeInstanceMaintenanceAttributesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -106,6 +108,7 @@ https://ecs.aliyuncs.com?Action=DescribeMaintenanceProperty
 	"InstanceMaintenanceAttributes": {
 		"InstanceMaintenanceAttribute": [{
 			"InstanceId": "i-bp67acfmxazb4ph***",
+            "NotifyOnMaintenance": false,
 			"MaintenanceWindows ": {
 				"MaintenanceWindow": [{
 					"StartTime": "02:00:00",
