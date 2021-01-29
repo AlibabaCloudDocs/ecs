@@ -32,7 +32,7 @@
 |Timed|Boolean|否|true|命令是否为周期执行。
 
  默认值：false |
-|Frequency|String|否|0 \*/20 \* \* \* \*|周期任务的执行周期，两次周期任务的时间间隔不能低于10秒。当参数`Timed`的值为`true`时，`Frequency`为必选参数。
+|Frequency|String|否|0 \*/20 \* \* \* \*|周期执行命令的执行周期，两次周期执行的命令时间间隔不能低于10秒。当参数`Timed`的值为`true`时，`Frequency`为必选参数。
 
  该参数取值遵循Cron表达式，请参见[设置定时执行命令](~~64769~~)。 |
 |Parameters|Json|否|\{"name":"Jack", "accessKey":"LTAIdyv\*\*\*\*\*\*aRY"\}|启用自定义参数功能时，执行命令时传入的自定义参数的键值对。自定义参数的个数范围：0~10
@@ -43,7 +43,7 @@
 -   设置的自定义参数名集合必须为创建命令时定义的参数集的子集。对于未传入的参数，您可以使用空字符串代替。
 
  您可以取消设置该参数从而禁用自定义参数。 |
-|Username|String|否|root|在ECS实例中执行脚本的用户名称。目前仅支持Linux系统的ECS实例，默认以root用户执行脚本。您也可以指定实例中已存在的其它用户执行脚本。 |
+|Username|String|否|root|在ECS实例中执行命令的用户名称。目前仅支持Linux系统的ECS实例，默认以root用户执行命令。您也可以指定实例中已存在的其它用户执行命令。 |
 
 ## 返回数据
 
@@ -69,7 +69,7 @@ https://ecs.aliyuncs.com/?Action=InvokeCommand
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <InvokeCommandResponse>
@@ -78,7 +78,7 @@ https://ecs.aliyuncs.com/?Action=InvokeCommand
 </InvokeCommandResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -91,9 +91,13 @@ https://ecs.aliyuncs.com/?Action=InvokeCommand
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
+|400|RegionId.ApiNotSupported|The api is not supported in this region.|指定地域下不支持调用API。请检查RegionId参数取值是否正确。|
 |500|InternalError.Dispatch|An error occurred when you dispatched the request.|发送请求时发生错误，请稍后重试。|
 |404|InvalidInstance.NotFound|The specified instance does not exist.|指定的实例不存在。|
+|403|InvalidInstance.NotMatch|The specified instance type does not match the command.|指定的实例ID不支持执行指定的命令ID。请检查实例的状态是否符合云助手命令的执行条件。|
+|404|InvalidCmdId.NotFound|The specified command ID does not exist.|指定的CommandId参数有误，请检查参数值是否正确。您可以通过接口DescribeCommands查询所有可用的CommandId。|
 |403|MissingParam.Frequency|The frequency must be specified when you create a timed task.|创建定时任务时必须指定频率。|
+|403|InvalidParam.Frequency|The specified frequency is invalid.|指定的Frequency参数无效。请检查参数值是否正确。|
 |403|InstanceIds.ExceedLimit|The number of instance IDs exceeds the upper limit.|目标实例数量超过上限。|
 |404|Parameter.Disabled|Parameters cannot be passed in when the command customization function is disabled.|当您禁用命令自定义参数功能时，请不要传递自定义参数。|
 |403|ParameterCount.ExceedLimit|The maximum number of parameters is exceeded.|参数数量超出最大可设置数量。|
