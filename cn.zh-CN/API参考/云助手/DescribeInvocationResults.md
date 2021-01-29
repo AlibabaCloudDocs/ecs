@@ -4,7 +4,7 @@
 
 ## 接口说明
 
--   当您执行命令后，不代表命令一定成功运行，并且一定有预期的命令效果。您需要通过本接口查看实际的具体执行结果，以实际输出结果为准。
+-   当您执行命令后，不代表命令一定成功执行，并且一定有预期的命令效果。您需要通过本接口查看实际的具体执行结果，以实际输出结果为准。
 -   您可以查询最近2周的执行信息，执行信息的保留上限为10万条。
 
 ## 调试
@@ -17,7 +17,7 @@
 |--|--|----|---|--|
 |Action|String|是|DescribeInvocationResults|系统规定参数。取值：DescribeInvocationResults |
 |RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
-|InvokeId|String|否|t-hz0jdfwd9f\*\*\*\*|命令执行ID。命令进程执行ID。您可以通过接口[DescribeInvocations](~~64840~~)查询InvokeId。 |
+|InvokeId|String|否|t-hz0jdfwd9f\*\*\*\*|命令执行ID。您可以通过接口[DescribeInvocations](~~64840~~)查询InvokeId。 |
 |InstanceId|String|否|i-bp1i7gg30r52z2em\*\*\*\*|实例ID。 |
 |CommandId|String|否|c-hz0jdfwcsr\*\*\*\*|命令ID。 |
 |InvokeRecordStatus|String|否|Running|命令执行状态。取值范围：
@@ -26,16 +26,16 @@
 -   Finished：已完成
 -   Failed：失败
 -   Stopped：已停止 |
-|IncludeHistory|Boolean|否|false|是否返回周期性任务的历史记录。取值范围：
+|IncludeHistory|Boolean|否|false|是否返回命令周期执行的历史记录。取值范围：
 
- -   true：表示返回周期性任务的执行结果。当取值为true时，参数`InvokeId`的取值不能为空，且必须为周期性任务的执行ID。
+ -   true：表示返回命令周期执行的结果。当取值为true时，参数`InvokeId`的取值不能为空，且必须为周期执行的命令执行ID。
 -   false：表示不返回。
 
  默认值：false |
 |ContentEncoding|String|否|PlainText|设置返回数据中`Output`字段的编码方式，取值范围：
 
- -   PlainText：返回原始脚本内容和输出信息。
--   Base64：返回Base64编码后的脚本内容和输出信息。
+ -   PlainText：返回原始命令内容和输出信息。
+-   Base64：返回Base64编码后的命令内容和输出信息。
 
  默认值：Base64 |
 |PageNumber|Long|否|1|当前页码，起始值：1
@@ -58,10 +58,10 @@
 |Dropped|Integer|0|`Output`字段中文字长度超出24 KB后，截断并丢弃的文字长度。 |
 |ErrorCode|String|InstanceNotExists|命令的下发失败或执行失败原因的代码，可能值：
 
- -   空：命令运行正常。
+ -   空：命令执行正常。
 -   InstanceNotExists：指定的实例不存在或已释放。
--   InstanceReleased：执行任务期间，该实例被释放。
--   InstanceNotRunning：创建任务时，该实例不在运行中。
+-   InstanceReleased：执行命令期间，该实例被释放。
+-   InstanceNotRunning：命令执行时，该实例不在运行中。
 -   CommandNotApplicable：命令不适用于指定的实例。
 -   AccountNotExists：指定的帐号不存在。
 -   DirectoryNotExists：指定的目录不存在。
@@ -71,16 +71,16 @@
 -   ClientIsUpgrading：云助手客户端正在升级中。
 -   ClientNeedUpgrade：云助手客户端需要升级。
 -   DeliveryTimeout：发送命令超时。
--   ExecutionTimeout：命令运行超时。
--   ExecutionException：命令运行发生异常。
--   ExecutionInterrupted：命令运行任务中断。
+-   ExecutionTimeout：命令执行超时。
+-   ExecutionException：命令执行发生异常。
+-   ExecutionInterrupted：命令执行被中断。
 -   ExitCodeNonzero：命令执行结束，退出码非0。 |
 |ErrorInfo|String|the specified instance does not exists|命令的下发失败或执行失败原因的详情，可能值：
 
- -   空：命令运行正常。
+ -   空：命令执行正常。
 -   the specified instance does not exists：指定的实例不存在或已释放。
--   the instance has released when create task：执行任务期间，该实例被释放。
--   the instance is not running when create task：创建任务时，该实例不在运行中。
+-   the instance has released when create task：执行命令期间，该实例被释放。
+-   the instance is not running when create task：命令执行时，该实例不在运行中。
 -   the command is not applicable：命令不适用于指定的实例。
 -   the specified account does not exists：指定的帐号不存在。
 -   the specified directory does not exists：指定的目录不存在。
@@ -90,46 +90,46 @@
 -   the aliyun service in the instance is upgrading now：云助手客户端正在升级中。
 -   the aliyun service in the instance need upgrade：云助手客户端需要升级。
 -   the command delivery has been timeout：发送命令超时。
--   the command execution has been timeout：命令运行超时。
--   the command execution got an exception：命令运行发生异常。
--   the command execution has been interrupted：命令运行任务中断。
+-   the command execution has been timeout：命令执行超时。
+-   the command execution got an exception：命令执行发生异常。
+-   the command execution has been interrupted：命令执行被中断。
 -   the command execution exit code is not zero：命令执行结束，退出码非0。 |
-|ExitCode|Long|0|命令进程的退出码。
+|ExitCode|Long|0|命令的退出码。
 
- -   Linux实例为Shell进程的退出码。
--   Windows实例为Bat或者PowerShell进程的退出码。 |
-|FinishedTime|String|2019-12-20T06:15:56Z|命令进程的完成时间。如果命令进程出现超时情况，命令进程的完成时间以[CreateCommand](~~64844~~)中指定的参数TimedOut为准。 |
+ -   Linux实例为Shell命令的退出码。
+-   Windows实例为Bat或者PowerShell命令的退出码。 |
+|FinishedTime|String|2019-12-20T06:15:56Z|命令执行的完成时间。如果命令执行出现超时情况，命令执行的完成时间以[CreateCommand](~~64844~~)中指定的参数TimedOut为准。 |
 |InstanceId|String|i-bp1i7gg30r52z2em\*\*\*\*|实例ID。 |
-|InvocationStatus|String|Success|单台实例的脚本进度状态，可能值：
+|InvocationStatus|String|Success|单台实例的命令进度状态，可能值：
 
  -   Pending：系统正在校验或发送命令。
 -   Invalid：指定命令类型或参数有误。
 -   Aborted：向实例发送命令失败。实例必须在运行中，且命令可以1分钟内发送完成。
--   Running：命令正在实例上运行。
+-   Running：命令正在实例上执行。
 -   Success：
-    -   立即运行的任务：命令执行完成，且退出码为0。
-    -   周期运行的任务：上一次运行成功且退出码为0，且指定的周期已结束。
+    -   单次执行的命令：命令执行完成，且退出码为0。
+    -   周期执行的命令：上一次执行成功且退出码为0，且指定的周期已结束。
 -   Failed：
-    -   立即运行的任务：命令执行完成，且退出码非0。
-    -   周期运行的任务：上一次运行成功且退出码非0，且指定的周期将中止。
+    -   单次执行的命令：命令执行完成，且退出码非0。
+    -   周期执行的命令：上一次执行成功且退出码非0，且指定的周期将中止。
 -   Error：命令执行时发生异常无法继续。
 -   Timeout：命令执行超时。
--   Cancelled：任务已经取消，命令未曾启动。
--   Stopping：正在停止任务。
--   Terminated：命令运行时被终止。
+-   Cancelled：命令的执行动作已经取消，命令未曾启动。
+-   Stopping：正在停止执行的命令。
+-   Terminated：命令执行时被终止。
 -   Scheduled：
-    -   立即运行的任务：不适用，不会出现。
-    -   周期运行的任务：等待运行。 |
+    -   单次执行的命令：不适用，不会出现。
+    -   单次执行的命令：等待执行。 |
 |InvokeId|String|t-hz0jdfwd9f\*\*\*\*|命令执行ID。 |
 |InvokeRecordStatus|String|Running|命令执行状态。 |
-|Output|String|MTU6MzA6MDEK|脚本进程的输出信息。 |
+|Output|String|MTU6MzA6MDEK|命令执行后的输出信息。 |
 |Repeats|Integer|0|命令在该实例上执行的次数。
 
  -   若执行方式为立即执行，则值为0或1。
 -   若执行方式为周期执行，则值为执行过多少次。 |
-|StartTime|String|2019-12-20T06:15:55Z|脚本进程在实例中开始执行的时间。 |
+|StartTime|String|2019-12-20T06:15:55Z|命令在实例中开始执行的时间。 |
 |StopTime|String|2020-01-19T09:15:47Z|若调用了`StopInvocation`，则表示调用的时间。 |
-|Username|String|root|在ECS实例中执行脚本的用户名称。 |
+|Username|String|root|在ECS实例中执行命令的用户名称。 |
 |PageNumber|Long|1|当前页码。 |
 |PageSize|Long|1|分页查询时设置的每页行数。 |
 |TotalCount|Long|1|命令总个数。 |
@@ -150,7 +150,7 @@ https://ecs.aliyuncs.com/?Action=DescribeInvocationResults
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeInvocationResultsResponse>
@@ -181,7 +181,7 @@ https://ecs.aliyuncs.com/?Action=DescribeInvocationResults
 </DescribeInvocationResultsResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -218,6 +218,7 @@ https://ecs.aliyuncs.com/?Action=DescribeInvocationResults
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
+|400|RegionId.ApiNotSupported|The api is not supported in this region.|指定地域下不支持调用API。请检查RegionId参数取值是否正确。|
 |500|InternalError.Dispatch|An error occurred when you dispatched the request.|发送请求时发生错误，请稍后重试。|
 |403|InvalidParam.PageNumber|The specified parameter is invalid.|指定的PageNumber参数无效。|
 |403|InvalidParam.PageSize|The specified parameter is invalid.|指定的PageSize参数无效。|
