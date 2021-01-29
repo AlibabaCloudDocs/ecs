@@ -139,8 +139,6 @@ i2g包括的实例规格及指标数据如下：
 
 ## 本地SSD型实例规格族i2ne
 
-i2ne正在邀测中，如需使用，请[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
-
 i2ne的特点如下：
 
 -   I/O优化实例
@@ -172,8 +170,6 @@ i2ne包括的实例规格及指标数据如下：
 -   SSD本地盘的性能请参见[本地盘](/intl.zh-CN/块存储/块存储介绍/本地盘.md)。
 
 ## 本地SSD型实例规格族i2gne
-
-i2gne正在邀测中，如需使用，请[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
 
 i2gne的特点如下：
 
