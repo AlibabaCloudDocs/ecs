@@ -14,10 +14,8 @@ After you purchase a burstable instance, additional costs are charged to your ac
 
 5.  On the Details tab, check the billing details.********
 
-6.  
+6.  ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5790359951/p46101.png)
 
-    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5790359951/p46101.png)
-
-    ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5790359951/p46102.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5790359951/p46102.png)
 
 
