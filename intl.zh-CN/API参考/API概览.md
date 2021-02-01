@@ -24,6 +24,7 @@
 |[DescribeInstanceAutoRenewAttribute](/intl.zh-CN/API参考/实例/DescribeInstanceAutoRenewAttribute.md)|调用DescribeInstanceAutoRenewAttribute查询一台或多台包年包月ECS实例自动续费状态。|
 |[DescribeInstanceRamRole](/intl.zh-CN/API参考/实例/DescribeInstanceRamRole.md)|调用DescribeInstanceRamRole查询一台或者多台ECS实例上的已赋予的实例RAM角色。|
 |[DescribeSpotPriceHistory](/intl.zh-CN/API参考/实例/DescribeSpotPriceHistory.md)|调用DescribeSpotPriceHistory查询抢占式实例近30天内的历史价格。|
+|[DescribeSpotAdvice](/intl.zh-CN/API参考/实例/DescribeSpotAdvice.md)|调用DescribeSpotAdvice查询指定地域下，抢占式实例近30天的实例平均释放率、平均折扣率等信息。|
 |[DescribeInstanceTypeFamilies](/intl.zh-CN/API参考/实例/DescribeInstanceTypeFamilies.md)|调用DescribeInstanceTypeFamilies查询云服务器ECS提供的实例规格族资源。|
 |[DescribeInstanceTypes](/intl.zh-CN/API参考/实例/DescribeInstanceTypes.md)|调用DescribeInstanceTypes查询云服务器ECS提供的实例规格资源。|
 |[ModifyInstanceAttribute](/intl.zh-CN/API参考/实例/ModifyInstanceAttribute.md)|调用ModifyInstanceAttribute修改一台ECS实例的部分信息，包括实例密码、名称、描述、主机名和自定义数据等。如果是突发性能实例，可以切换这台实例的性能突发模式。|
@@ -71,6 +72,21 @@
 |[DescribeLaunchTemplateVersions](/intl.zh-CN/API参考/启动模板/DescribeLaunchTemplateVersions.md)|调用DescribeLaunchTemplateVersions查询实例启动模板版本。|
 |[ModifyLaunchTemplateDefaultVersion](/intl.zh-CN/API参考/启动模板/ModifyLaunchTemplateDefaultVersion.md)|调用ModifyLaunchTemplateDefaultVersion切换启动模板的某个版本为该模板的默认版本。如果您在创建实例（RunInstances）时不指定模板版本号，会采用默认版本。|
 
+## 资源保障
+
+|API|描述|
+|---|--|
+|[CreateElasticityAssurance]()|调用CreateElasticityAssurance创建弹性保障服务。|
+|[CreateCapacityReservation]()|调用CreateCapacityReservation创建容量预定服务。|
+|[DescribeElasticityAssurances]()|调用DescribeElasticityAssurances查询弹性保障服务的详细信息。|
+|[DescribeElasticityAssuranceInstances]()|调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。|
+|[DescribeCapacityReservationInstances]()|调用DescribeCapacityReservationInstances查询容量预定服务已匹配的实例列表。|
+|[DescribeInstanceAttachmentAttributes]()|调用DescribeInstanceAttachmentAttributes查询实例匹配的私有池信息。|
+|[ModifyElasticityAssurance]()|调用ModifyElasticityAssurance修改一个弹性保障服务的名称与描述信息。|
+|[ModifyCapacityReservation]()|调用ModifyCapacityReservation修改一个容量预定服务的部分信息，包括容量预定服务的名称、描述信息、失效方式以及预留的实例总数量。|
+|[ModifyInstanceAttachmentAttributes]()|调用ModifyInstanceAttachmentAttributes修改实例的私有池的属性。|
+|[ReleaseCapacityReservation]()|调用ReleaseCapacityReservation释放容量预定服务。|
+
 ## 弹性供应组
 
 |API|描述|
@@ -107,6 +123,14 @@
 |[DescribeReservedInstances](/intl.zh-CN/API参考/预留实例券/DescribeReservedInstances.md)|调用DescribeReservedInstances查询已经购买的预留实例券。|
 |[ModifyReservedInstances](/intl.zh-CN/API参考/预留实例券/ModifyReservedInstances.md)|您可以通过ModifyReservedInstances更改预留实例券。|
 
+## 存储容量单位包
+
+|API|描述|
+|---|--|
+|[PurchaseStorageCapacityUnit](/intl.zh-CN/API参考/存储容量单位包/PurchaseStorageCapacityUnit.md)|调用PurchaseStorageCapacityUnit购买一个或多个存储容量单位包SCU（Storage Capacity Unit）。|
+|[ModifyStorageCapacityUnitAttribute](/intl.zh-CN/API参考/存储容量单位包/ModifyStorageCapacityUnitAttribute.md)|调用ModifyStorageCapacityUnitAttribute修改一个存储容量单位包SCU的名称或者描述信息。|
+|[DescribeStorageCapacityUnits](/intl.zh-CN/API参考/存储容量单位包/DescribeStorageCapacityUnits.md)|调用DescribeStorageCapacityUnits查询一个或多个存储容量单位包SCU的详细信息。|
+
 ## 镜像
 
 |API|描述|
@@ -124,13 +148,19 @@
 |[DescribeImageSupportInstanceTypes](/intl.zh-CN/API参考/镜像/DescribeImageSupportInstanceTypes.md)|调用DescribeImageSupportInstanceTypes查询指定镜像支持的实例规格。|
 |[DescribeImageFromFamily](/intl.zh-CN/API参考/镜像/DescribeImageFromFamily.md)|调用DescribeImageFromFamily查询指定镜像族系内最新创建的可用自定义镜像。|
 
-## 存储容量单位包
+## 镜像构建
 
 |API|描述|
 |---|--|
-|[PurchaseStorageCapacityUnit](/intl.zh-CN/API参考/存储容量单位包/PurchaseStorageCapacityUnit.md)|调用PurchaseStorageCapacityUnit购买一个或多个存储容量单位包SCU（Storage Capacity Unit）。|
-|[ModifyStorageCapacityUnitAttribute](/intl.zh-CN/API参考/存储容量单位包/ModifyStorageCapacityUnitAttribute.md)|调用ModifyStorageCapacityUnitAttribute修改一个存储容量单位包SCU的名称或者描述信息。|
-|[DescribeStorageCapacityUnits](/intl.zh-CN/API参考/存储容量单位包/DescribeStorageCapacityUnits.md)|调用DescribeStorageCapacityUnits查询一个或多个存储容量单位包SCU的详细信息。|
+|[CreateImageComponent](/intl.zh-CN/API参考/镜像构建/CreateImageComponent.md)|调用CreateImageComponent创建一个镜像组件。镜像组件用于存储您在构建镜像时，常用的构建模板命令。|
+|[CreateImagePipeline](/intl.zh-CN/API参考/镜像构建/CreateImagePipeline.md)|调用CreateImagePipeline创建一个镜像模板。镜像模板可用于构建镜像。|
+|[DescribeImageComponents](/intl.zh-CN/API参考/镜像构建/DescribeImageComponents.md)|调用DescribeImageComponents查询一个或多个镜像组件的详细信息。|
+|[DescribeImagePipelines](/intl.zh-CN/API参考/镜像构建/DescribeImagePipelines.md)|调用DescribeImagePipelines查询一个或多个镜像模板的详细信息。|
+|[DeleteImageComponent](/intl.zh-CN/API参考/镜像构建/DeleteImageComponent.md)|调用DeleteImageComponent删除一个镜像组件。|
+|[DeleteImagePipeline](/intl.zh-CN/API参考/镜像构建/DeleteImagePipeline.md)|调用DeleteImagePipeline删除一个镜像模板。|
+|[StartImagePipelineExecution](/intl.zh-CN/API参考/镜像构建/StartImagePipelineExecution.md)|调用StartImagePipelineExecution通过一个镜像模板执行构建镜像的任务。|
+|[DescribeImagePipelineExecutions](/intl.zh-CN/API参考/镜像构建/DescribeImagePipelineExecutions.md)|调用DescribeImagePipelineExecutions查询一个镜像构建任务的详细信息。|
+|[CancelImagePipelineExecution](/intl.zh-CN/API参考/镜像构建/CancelImagePipelineExecution.md)|调用CancelImagePipelineExecution取消一个镜像构建任务。|
 
 ## 快照
 
@@ -228,6 +258,15 @@
 |[CreateSimulatedSystemEvents](/intl.zh-CN/API参考/系统事件/CreateSimulatedSystemEvents.md)|调用CreateSimulatedSystemEvents为一台或多台ECS实例预约模拟系统事件。模拟系统事件相当于事件演习，不会真正执行事件，也不会对ECS实例产生影响。|
 |[AcceptInquiredSystemEvent](/intl.zh-CN/API参考/系统事件/AcceptInquiredSystemEvent.md)|调用AcceptInquiredSystemEvent接受并授权执行系统事件操作。对问询中（Inquiring）状态的系统事件，接受系统事件的默认操作，授权系统执行默认操作。|
 
+## 高性能集群
+
+|API|描述|
+|---|--|
+|[DeleteHpcCluster](/intl.zh-CN/API参考/高性能集群/DeleteHpcCluster.md)|调用DeleteHpcCluster删除一个HPC集群。|
+|[CreateHpcCluster](/intl.zh-CN/API参考/高性能集群/CreateHpcCluster.md)|调用CreateHpcCluster创建一个HPC集群。|
+|[DescribeHpcClusters](/intl.zh-CN/API参考/高性能集群/DescribeHpcClusters.md)|调用DescribeHpcClusters查询您可用的HPC集群。请求参数作为筛选器（Filter）使用，筛选关系为逻辑与（&&）关系，参数之间无依赖关系。|
+|[ModifyHpcClusterAttribute](/intl.zh-CN/API参考/高性能集群/ModifyHpcClusterAttribute.md)|调用ModifyHpcClusterAttribute修改一个HPC集群的描述信息。|
+
 ## 运维与监控
 
 |API|描述|
@@ -259,15 +298,6 @@
 |[SendFile](/intl.zh-CN/API参考/云助手/SendFile.md)|调用SendFile向一台或多台ECS实例下发远程文件。|
 |[DescribeSendFileResults](/intl.zh-CN/API参考/云助手/DescribeSendFileResults.md)|调用DescribeSendFileResults查询云助手下发文件列表及状态。|
 
-## 高性能集群
-
-|API|描述|
-|---|--|
-|[DeleteHpcCluster](/intl.zh-CN/API参考/高性能集群/DeleteHpcCluster.md)|调用DeleteHpcCluster删除一个HPC集群。|
-|[CreateHpcCluster](/intl.zh-CN/API参考/高性能集群/CreateHpcCluster.md)|调用CreateHpcCluster创建一个HPC集群。|
-|[DescribeHpcClusters](/intl.zh-CN/API参考/高性能集群/DescribeHpcClusters.md)|调用DescribeHpcClusters查询您可用的HPC集群。请求参数作为筛选器（Filter）使用，筛选关系为逻辑与（&&）关系，参数之间无依赖关系。|
-|[ModifyHpcClusterAttribute](/intl.zh-CN/API参考/高性能集群/ModifyHpcClusterAttribute.md)|调用ModifyHpcClusterAttribute修改一个HPC集群的描述信息。|
-
 ## 标签
 
 |API|描述|
@@ -285,6 +315,13 @@
 |[DescribeAvailableResource](/intl.zh-CN/API参考/地域/DescribeAvailableResource.md)|调用DescribeAvailableResource查询某一可用区的资源列表。例如，您可以在某一可用区创建实例（RunInstances）或者修改实例规格（ModifyInstanceSpec）时查询该可用区的资源列表。|
 |[DescribeResourcesModification](/intl.zh-CN/API参考/地域/DescribeResourcesModification.md)|调用DescribeResourcesModification查询升级和降配实例规格或者系统盘时，某一可用区的可用资源信息。|
 
+## 询价
+
+|API|描述|
+|---|--|
+|[DescribePrice](/intl.zh-CN/API参考/询价/DescribePrice.md)|调用DescribePrice查询云服务器ECS资源的最新价格。|
+|[DescribeRenewalPrice](/intl.zh-CN/API参考/询价/DescribeRenewalPrice.md)|调用DescribeRenewalPrice查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。|
+
 ## 其他接口
 
 |API|描述|
@@ -294,7 +331,5 @@
 |[DescribeTaskAttribute](/intl.zh-CN/API参考/其他接口/DescribeTaskAttribute.md)|调用DescribeTaskAttribute查询异步任务的详细信息。目前，可以查询的异步任务有导入镜像（ImportImage）和导出镜像（ExportImage）两种。|
 |[DescribeAccountAttributes](/intl.zh-CN/API参考/其他接口/DescribeAccountAttributes.md)|调用DescribeAccountAttributes查询您在一个阿里云地域下能创建的ECS资源配额。包括您能创建的安全组数量、弹性网卡数量、按量付费vCPU核数、抢占式实例vCPU核数、专用宿主机数量、地域网络类型以及账号是否已完成实名认证。|
 |[JoinResourceGroup](/intl.zh-CN/API参考/其他接口/JoinResourceGroup.md)|调用JoinResourceGroup将一个ECS资源或者服务加入另一个资源组。|
-|[DescribePrice](/intl.zh-CN/API参考/其他接口/DescribePrice.md)|（Beta）调用DescribePrice查询云服务器ECS资源的最新价格。|
-|[DescribeRenewalPrice](/intl.zh-CN/API参考/其他接口/DescribeRenewalPrice.md)|（Beta）调用DescribeRenewalPrice查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。|
 |[DescribeDemands](/intl.zh-CN/API参考/其他接口/DescribeDemands.md)|调用DescribeDemands查询报备资源的交付及使用状态。|
 
