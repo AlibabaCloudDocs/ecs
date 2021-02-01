@@ -16,9 +16,9 @@ You can call this operation to create one or more pay-as-you-go or subscription 
     -   Instances automatically start after they are created. The instances are ready for use when they are in the `Running` state.
     -   As of November 27, 2020, the maximum bandwidth available for you to create ECS instances or change the configurations of ECS instances is subject to the throttling policy in your account. To increase the maximum bandwidth value, submit a ticket. According to the throttling policy, the total maximum bandwidth value of all instances whose billing method for network usage is pay-by-traffic cannot not exceed 5 Gbit/s and that of all instances whose billing method for network usage is pay-by-bandwidth cannot exceed 50 Gbit/s in a single region.
     -   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation enables the system to assign public IP addresses to the new instances if you set the `InternetMaxBandwidthOut` parameter to a value greater than 0.
-    -   After you call this operation, an error is returned if a parameter is invalid or available resources are insufficient. For more information, see the "Error codes" section in this topic.
+    -   After you call this operation, an error is returned if a parameter is invalid or available resources are insufficient. For more information, see the "Error codes" section of this topic.
 
-**Note:** If the `QuotaExceed.ElasticQuota` error is returned when you create ECS instances, the maximum number of instances of the specified instance type that can be created in this region has been reached, or the maximum number of vCPUs for all instance types in this region has been reached. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+**Note:** If the `QuotaExceed.ElasticQuota` error is returned when you create ECS instances, the maximum number of instances of the specified instance type that can be created in this region has been reached, or the maximum number of vCPUs for all instance types has been reached. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
 
 -   **Best practices**:
     -   The `RunInstances` operation allows you to create multiple instances at a time. To better manage and search for these instances, we recommend that you specify the same tag pair by using the `Tag.N.Key` and `Tag.N.Value` parameters for the instances. You can also append sequential suffixes specified by the `UniqueSuffix` parameter to the hostnames specified by the `HostName` parameter and instance names specified by the `InstanceName` parameter.
@@ -27,7 +27,7 @@ You can call this operation to create one or more pay-as-you-go or subscription 
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer automatically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=RunInstances&type=RPC&version=2014-05-26)
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=RunInstances&type=RPC&version=2014-05-26)
 
 ## Request parameters
 
@@ -42,10 +42,10 @@ You can call this operation to create one or more pay-as-you-go or subscription 
 -   If you do not set the `ImageId` parameter, but you set the `ImageId` parameter in the launch template specified by the `LaunchTemplateId` or `LaunchTemplateName` parameter, you cannot set the ImageFamily parameter.
 -   If you do not set the `ImageId` parameter, and do not set the `ImageId` parameter in the launch template specified by the `LaunchTemplateId` or `LaunchTemplateName` parameter, you can set the ImageFamily parameter.
 -   If you do not set the `ImageId` parameter, or do not set the `LaunchTemplateId` or `LaunchTemplateName` parameter, you can set the ImageFamily parameter. |
-|InstanceType|String|No|ecs.g6.large|The instance type of the instance. If you do not set `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify the `InstanceType` parameter.
+|InstanceType|String|No|ecs.g6.large|The instance type of the instance. If you do not set `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must set the `InstanceType` parameter.
 
--   Select instance types: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of the instance types to which the instances to be created belong, or see [Select instance types](~~58291~~) to learn how to select instance types.
-    -   Query available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. |
+-   Select instance types: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of the instance types to which the instances to be created belong, or see [Best practices for instance type selection](~~58291~~) to learn how to select instance types.
+    -   Available resource query: Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. |
 |SecurityGroupId|String|No|sg-bp15ed6xe1yxeycg7\*\*\*\*|The ID of the security group to which to assign the instance. Instances in the same security group can communicate with each other. The number of instances that a security group can contain depends on the type of the security group. For more information, see the "Security group limits" section of the [Limits](~~25412~~) topic.
 
 **Note:** The SecurityGroupId parameter determines the network type of instances in the security group. For example, a security group of the VPC type can contain only VPC-type instances, and you must also specify the VSwitchId parameter for the instances.
@@ -53,13 +53,11 @@ You can call this operation to create one or more pay-as-you-go or subscription 
 If you do not use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify the instance launch template, you must set the `SecurityGroupId` parameter. |
 |SecurityGroupIds.N|RepeatList|No|sg-bp15ed6xe1yxeycg7\*\*\*\*|The ID of security group N to which to assign the instance. Valid values of N are based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section of the [Limits](~~101348~~) topic.
 
-**Note:** You cannot specify both SecurityGroupId and SecurityGroupIds.N at a time. |
-|VSwitchId|String|No|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|The ID of the vSwitch. You must specify this parameter when you create a VPC-type instance. The vSwitch and security group must belong to the same VPC. |
-|InstanceName|String|No|k8s-node-\[1,4\]-alibabacloud|The name of the instance. The name must be 2 to 128 characters in length and can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://. The default value of this parameter is the `InstanceId` value.
+**Note:** You cannot specify both SecurityGroupId and SecurityGroupIds.N. |
+|VSwitchId|String|No|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|The ID of the vSwitch. You must specify this parameter when you create a VPC-type instance. The vSwitch and the security group must belong to the same VPC. |
+|InstanceName|String|No|k8s-node-\[1,4\]-alibabacloud|The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\), and hyphens \(-\). The default value of this parameter is the `InstanceId` value.
 
-**Note:** When you create multiple ECS instances, you can use `UniqueSuffix` to specify different instance names for the instances. You can also use the `name_prefix[begin_number,bits]name_suffix` format to specify sequential instance names. For example, if you set `InstanceName` to `k8s-node-[1,4]-alibabacloud`, the instance name of the first ECS instance is `k8s-node-0001-alibabacloud`. For more information, see [API FAQ](~~122617#howToAddSequentialSuffix~~).
-
-If you do not append suffixes to the instance names or hostnames by using the `name_suffix` format, but only use the `name_prefix[begin_number,bits]` format, the `UniqueSuffix` parameter is ignored. For example, when you set `InstanceName` to `instance-[99,3]` and `UniqueSuffix` to `true`, the instance name is `instance099` instead of `instance099001`. |
+When you create multiple instances at a time, you can specify sequential names for the instances. For more information, see [Specify sequential instance names or hostnames](~~196048~~). |
 |Description|String|No|Instance\_Description|The description of the instance. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
 |InternetMaxBandwidthIn|Integer|No|10|The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 
@@ -74,16 +72,18 @@ Default value: 0. |
 -   For Windows instances, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens \(-\). The hostname cannot contain periods \(.\) or only contain digits.
 -   For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\).
 
-**Note:** When you create multiple ECS instances, you can use the `UniqueSuffix` parameter to specify different hostnames for these instances. You can also use the `name_prefix[begin_number,bits]name_suffix` format to specify sequential hostnames. For example, if you set `HostName` to `k8s-node-[1,4]-ecshost`, the hostname of the first ECS instance is `k8s-node-0001-ecshost`. For more information, see [API FAQ](~~122617#howToAddSequentialSuffix~~).
-
-If you do not append suffixes to the instance names or hostnames by using the `name_suffix` format, but only use the `name_prefix[begin_number,bits]` format, the `UniqueSuffix` parameter is ignored. For example, when you set `InstanceName` to `instance-[99,3]` and `UniqueSuffix` to `true`, the instance name is `instance099` instead of `instance099001`. |
-|UniqueSuffix|Boolean|No|true|Specifies whether to append sequential suffixes to the hostnames specified by the `HostName` parameter and instance names specified by the `InstanceName` parameter. The sequential suffixes range from 001 to 999. For example, the hostnames can be `LocalHost001` and `LocalHost002`. The instance names can be `MyInstance001` and `MyInstance002`. Valid values:
+When you create multiple instances at a time, you can specify sequential hostnames. For more information, see [Specify sequential instance names or hostnames](~~196048~~). |
+|UniqueSuffix|Boolean|No|true|Specifies whether to automatically append sequential suffixes to the hostnames specified by the `HostName` parameter and instance names specified by the `InstanceName` parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:
 
 -   true
 -   false
 
-Default value: false. |
-|Password|String|No|EcsV587!|The password of the instance. The password must be 8 to 30 characters in length. It must include at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
+Default value: false.
+
+When the `HostName` or `InstanceName` value is set based on the specified sorting format and `name_suffix` is not specified, the hostnames or instance names are in the `name_prefix[begin_number,bits]` format, and the `UniqueSuffix` parameter does not take effect. The names are sorted in the specified sequence.
+
+For more information, see [Specify sequential instance names or hostnames](~~196048~~). |
+|Password|String|No|EcsV587!|The password of the instance. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
 
 ```
 
@@ -91,9 +91,9 @@ Default value: false. |
                                 
 ```
 
-For Windows instances, the password cannot start with a forward slash \(/\).
+For a Windows instance, the password cannot start with a forward slash \(/\).
 
-**Note:** If the `Password` parameter is specified, we recommend that you send requests over HTTPS to secure your password. |
+**Note:** If the `Password` parameter is specified, we recommend that you send requests over HTTPS to avoid password leaks. |
 |PasswordInherit|Boolean|No|false|Specifies whether to use the password preset in the image. Valid values:
 
 -   true
@@ -122,7 +122,7 @@ The default value is 40 or the size of the image, depending on whichever is grea
 -   cloud: basic disk
 
 For non-I/O optimized instances of retired instance types, the default value is cloud. For other instances, the default value is cloud\_efficiency. |
-|SystemDisk.DiskName|String|No|cloud\_ssdSystem|The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods \(.\), colons \(:\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://.
+|SystemDisk.DiskName|String|No|cloud\_ssdSystem|The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, periods \(.\), colons \(:\), underscores \(\_\), and hyphens \(-\).
 
 This parameter is empty by default. |
 |SystemDisk.Description|String|No|SystemDisk\_Description|The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
@@ -140,7 +140,6 @@ For more information about ESSD performance levels, see [ESSD](~~122389~~). |
 -   Valid values when DataDisk.N.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud\_essd: 20 to 32768
--   Valid values when DataDisk.N.Category is set to ephemeral\_ssd: 5 to 800
 -   Valid values when DataDisk.N.Category is set to cloud: 5 to 2000
 
 The value of this parameter must be greater than or equal to the size of the snapshot specified by the `SnapshotId` parameter. |
@@ -151,19 +150,18 @@ When the `DataDisk.N.SnapshotId` parameter is specified, the `DataDisk.N.Size` p
 
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
--   ephemeral\_ssd: local SSD
 -   cloud\_essd: ESSD
 -   cloud: basic disk
 
 For I/O optimized instances, the default value is cloud\_efficiency. For non-I/O optimized instances, the default value is cloud. |
 |DataDisk.N.Encrypted|String|No|false|Specifies whether to encrypt data disk N. Valid values:
 
--   true: specifies to encrypt the disk.
--   false: specifies to not encrypt the disk.
+-   true: The data disk is encrypted.
+-   false: The data disk is not encrypted.
 
 Default value: false. |
 |DataDisk.N.KMSKeyId|String|No|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|The ID of the KMS key to be used by data disk N. |
-|DataDisk.N.DiskName|String|No|cloud\_ssdData|The name of data disk N. The name must be 2 to 128 characters in length and can contain letters, digits, periods \(.\), colons \(:\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://.
+|DataDisk.N.DiskName|String|No|cloud\_ssdData|The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, periods \(.\), colons \(:\), underscores \(\_\), and hyphens \(-\).
 
 This parameter is empty by default. |
 |DataDisk.N.Description|String|No|DataDisk\_Description|The description of data disk N. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
@@ -172,8 +170,8 @@ This parameter is empty by default. |
 **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
 |DataDisk.N.DeleteWithInstance|Boolean|No|true|Specifies whether to release data disk N when the instance is released. Valid values:
 
--   true: specifies to release data disk N together with the instance.
--   false: specifies to not release data disk N together with the instance.
+-   true: The data disk is released together with the instance.
+-   false: The data disk is not released together with the instance.
 
 Default value: true. |
 |DataDisk.N.PerformanceLevel|String|No|PL1|The performance level of the ESSD used as data disk N. The N value must be the same as that in DataDisk.N.Category when `DataDisk.N.Category` is set to cloud\_essd. Default value: PL1. Valid values:
@@ -202,7 +200,7 @@ The default value is the ID of the vSwitch to which to connect the instance. |
 The default value is the ID of the security group to which to assign the instance. |
 |NetworkInterface.N.SecurityGroupIds.N|RepeatList|No|sg-bp15ed6xe1yxeycg7\*\*\*\*|The ID of security group N to which the secondary ENI belongs. The valid values of N in `SecurityGroupIds.N` are based on the maximum number of security groups to which the instance equipped with the ENI can belong. For more information, see [Limits](~~25412~~).
 
-**Note:** You cannot specify both the `NetworkInterface.N.SecurityGroupId` and `NetworkInterface.N.SecurityGroupIds.N`parameters. |
+**Note:** You cannot specify both the `NetworkInterface.N.SecurityGroupId` and `NetworkInterface.N.SecurityGroupIds.N` parameters. |
 |NetworkInterface.N.NetworkInterfaceName|String|No|Network\_Name|The name of secondary ENI N. Set the value of N to 1. |
 |NetworkInterface.N.Description|String|No|Network\_Description|The description of secondary ENI N. Set the value of N to 1. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
 |NetworkInterface.N.QueueNumber|Integer|No|8|The number of queues supported by secondary ENI N. Set the value of N to 1.
@@ -213,8 +211,8 @@ The default value is the ID of the security group to which to assign the instanc
 |KeyPairName|String|No|KeyPair\_Name|The name of the key pair to be bound to the instance.
 
 -   For Windows instances, this parameter is ignored and is empty by default. The `Password` parameter takes effect even if the KeyPairName parameter is specified.
--   For Linux instances, the username and password authentication method is disabled by default. |
-|RamRoleName|String|No|RAM\_Name|The instance RAM role. You can call the [ListRoles](~~28713~~) operation provided by RAM to query the RAM roles that you have created. |
+-   For Linux instances, the username and password logon method is disabled by default. |
+|RamRoleName|String|No|RAM\_Name|The name of the RAM role. You can call the [ListRoles](~~28713~~) operation provided by RAM to query the RAM roles that you have created. |
 |Amount|Integer|No|3|The number of instances that you want to create. Valid values: 1 to 100.
 
 Default value: 1. |
@@ -242,9 +240,9 @@ Default value: 1. |
 |SpotInterruptionBehavior|String|No|Terminate|The interruption mode of the preemptible instance. Set the value to Terminate, which specifies to release the instance. |
 |SecurityEnhancementStrategy|String|No|Active|Specifies whether to enable security hardening. Valid values:
 
--   Active: enables security hardening. This value is applicable only to public images.
--   Deactive: disables security hardening. This value is applicable to all image types. |
-|ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
+-   Active: Security hardening is enabled. This value is applicable only to public images.
+-   Deactive: Security hardening is disabled. This value is applicable to all image types. |
+|ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
 |Tag.N.Key|String|No|TestKey|The key of tag N to be bound to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://. |
 |Tag.N.Value|String|No|TestValue|The value of tag N to be bound to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with acs:. It cannot contain http:// or https://. |
 |HpcClusterId|String|No|hpc-bp67acfmxazb4p\*\*\*\*|The ID of the E-HPC cluster to which to assign the instance. |
@@ -271,8 +269,8 @@ To use a launch template to create an instance, you must specify the launch temp
 -   Month |
 |AutoRenew|Boolean|No|true|Specifies whether to enable auto-renewal for the instance. This parameter takes effect only when the `InstanceChargeType` parameter is set to `PrePaid`. Default value: false. Valid values:
 
--   true: enables auto-renewal for the instance.
--   false: disables auto-renewal for the instance. |
+-   true: Auto-renewal is enabled for the instance.
+-   false: Auto-renewal is disabled for the instance. |
 |AutoRenewPeriod|Integer|No|1|The auto-renewal period of the instance. Valid values:
 
 -   Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
@@ -280,16 +278,16 @@ To use a launch template to create an instance, you must specify the launch temp
 Default value: 1. |
 |InstanceChargeType|String|No|PrePaid|The billing method of the instance. Default value: PostPaid. Valid values:
 
--   PrePaid: subscription
+-   PrePaid: Subscription
 -   PostPaid: pay-as-you-go
 
 If you set this parameter to PrePaid, make sure that you have sufficient credit in your account. Otherwise, the `InvalidPayMethod` error is returned. |
-|DeploymentSetId|String|No|ds-bp1brhwhoqinyjd6\*\*\*\*|The ID of the deployment set. |
+|DeploymentSetId|String|No|ds-bp1brhwhoqinyjd6\*\*\*\*|The ID of the deployment set to which to deploy the instance. |
 |PrivateIpAddress|String|No|10.1.\*\*. \*\*|The private IP address to be assigned to the instance.
 
 To assign a private IP address to a VPC-type ECS instance, make sure that the IP address is an idle IP address within the CIDR block of the vSwitch specified by the `VSwitchId` parameter.
 
-**Note:** When you specify `PrivateIpAddress`, the `Amount` parameter must be set to 1. |
+**Note:** When you specify the `PrivateIpAddress` parameter, the `Amount` parameter must be set to 1. |
 |CreditSpecification|String|No|Standard|The performance mode of the burstable instance. Valid values:
 
 -   Standard: the standard mode. For more information, see the "Standard mode" section of the [Burstable instances](~~59977~~) topic.
@@ -308,11 +306,11 @@ This parameter is empty by default. |
 -   The total number of queues for all ENIs bound to the instance cannot exceed the queue quota allowed for the instance type. To learn the maximum number of queues per ENI and the queue quota allowed for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` fields. |
 |DeletionProtection|Boolean|No|false|The release protection property of the instance. It specifies whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to manually release the instance. Default value: false. Valid values:
 
--   true: enables release protection.
--   false: disables release protection.
+-   true: Release protection is enabled.
+-   false: Release protection is disabled.
 
 **Note:** This parameter is applicable only to pay-as-you-go instances. It can protect instances only against manual releases, not against automatic releases. |
-|Affinity|String|No|default|Specifies whether an instance on a dedicated host is associated with the dedicated host. Valid values:
+|Affinity|String|No|default|Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
 
 -   default: The instance is not associated with the dedicated host. When the No Fees for Stopped Instances \(VPC-Connected\) feature is enabled and the instance is restarted, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool if resources of the original dedicated host are insufficient.
 -   host: The instance is associated with the dedicated host. When the No Fees for Stopped Instances \(VPC-Connected\) feature is enabled and the instance is restarted, the instance still resides on the original dedicated host. If the available resources of the original dedicated host are insufficient, the instance fails to restart.
@@ -320,13 +318,13 @@ This parameter is empty by default. |
 Default value: default. |
 |Tenancy|String|No|default|Specifies whether to create the instance on a dedicated host. Valid values:
 
--   default: creates the instance on a non-dedicated host.
--   host: creates the instance on a dedicated host. If you do not specify the `DedicatedHostId` parameter, Alibaba Cloud automatically selects a dedicated host for the instance.
+-   default: The instance is created on a non-dedicated host.
+-   host: The instance is created on a dedicated host. If you do not specify the `DedicatedHostId` parameter, Alibaba Cloud automatically selects a dedicated host for the instance.
 
 Default value: default. |
 |StorageSetId|String|No|ss-bp67acfmxazb4p\*\*\*\*|The ID of the storage set. |
 |StorageSetPartitionNumber|Integer|No|2|The maximum number of partitions in the storage set. Valid values: greater than or equal to 2. |
-|CpuOptions.Core|Integer|No|2|The number of CPU cores. This parameter cannot be specified but only uses its default value. |
+|CpuOptions.Core|Integer|No|2|The number of CPU cores. This parameter cannot be specified and can use only its default value. |
 |CpuOptions.ThreadsPerCore|Integer|No|2|The number of threads per core. The following formula is used to calculate the number of vCPUs of the ECS instance: `CpuOptions.Core` value × `CpuOptions.ThreadPerCore` value.
 
 -   If the `CpuOptions.ThreadPerCore` parameter is set to 1, CPU hyper-threading is disabled.
@@ -339,7 +337,7 @@ Default value: default. |
 
 Default value: enabled.
 
-**Note:** For more information about instance metadata, see [Metadata](~~49122~~). |
+**Note:** For more information about instance metadata, see [Overview](~~49122~~). |
 |HttpTokens|String|No|optional|Specifies whether to forcibly use the security-enhanced mode \(IMDSv2\) to access instance metadata. Valid values:
 
 -   optional: The security-enhanced mode \(IMDSv2\) is not forcibly used.
@@ -355,6 +353,12 @@ Default value: optional.
 -   None: The instance does not take up capacity of a private pool to start up.
 
 This parameter is empty by default.
+
+In the following scenarios, the PrivatePoolOptions.MatchCriteria parameter can only be set to `None` or left empty:
+
+-   The instance is a preemptible instance.
+-   The instance is in the classic network.
+-   The instance is created on a dedicated host.
 
 **Note:** This parameter is in invitational preview. For more information, submit a ticket. |
 |PrivatePoolOptions.Id|String|No|eap-bp67acfmxazb4\*\*\*\*|The ID of the private pool. The value of this parameter indicates the ID of the elasticity assurance or capacity reservation that generates the private pool.
@@ -467,7 +471,7 @@ Sample success responses
 |404|InvalidVSwitchId.NotFound|Specified virtual switch does not exist.|The error message returned because the specified VSwitchId parameter does not exist.|
 |404|InvalidVSwitchId.NotFound|%s|The error message returned because the specified VSwitchId parameter does not exist.|
 |400|InvalidParameter.Mismatch|Specified security group and virtual switch are not in the same VPC.|The error message returned because the specified security group and vSwitch do not belong to the same VPC.|
-|400|InvalidNetworkType.Mismatch|Specified parameter "InternetMaxBandwidthIn" or "InternetMaxBandwidthOut" conflict with instance network type.|The error message returned because the specified InternetMaxBandwidthIn or InternetMaxBandwidthOut parameter conflicts with the instance network type.|
+|400|InvalidNetworkType.Mismatch|Specified parameter "InternetMaxBandwidthIn" or "InternetMaxBandwidthOut" conflict with instance network type.|The error message returned because the specified InternetMaxBandwidthIn or InternetMaxBandwidthOut parameter value conflicts with the instance network type.|
 |400|InvalidNetworkType.Mismatch|Specified parameter "InternetChargeType" conflict with instance network type.|The error message returned because the network type of the instance does not support the specified billing method for network usage.|
 |400|InvalidPrivateIpAddress|Specified private IP address is not in the CIDR block of virtual switch.|The error message returned because the specified private IP address is not within the CIDR block of the vSwitch.|
 |400|InvalidPrivateIpAddress.Malformed|Specified private IP address is malformed.|The error message returned because the specified PrivateIpAddress parameter is invalid.|
@@ -522,8 +526,8 @@ Sample success responses
 |403|OperationDenied|The specified RegionId does not support the creation of the network type ECS instance.|The error message returned because instances of the specified network type cannot be created in the specified region. Check whether instance resources of this network type are available in the region.|
 |400|OperationDenied.NoVlan|The specified parameter "VlanId" is not valid or vlan has not enough IP address.|The error message returned because the specified VlanId parameter is invalid or the maximum number of IP addresses in the VLAN has been reached.|
 |403|OperationDenied.ImageNotValid|The specified Image is disabled or is deleted.|The error message returned because the specified ImageId parameter does not exist.|
-|403|OperationDenied.SnapshotNotValid|The specified snapshot is not allowed to create disk.|The error message returned because the snapshot is invalid and you cannot create disks by using the specified snapshot.|
-|403|OperationDenied.SnapshotNotAllowed|The specified snapshot is not allowed to create disk.|The error message returned because the snapshot is invalid and you cannot create disks by using the specified snapshot.|
+|403|OperationDenied.SnapshotNotValid|The specified snapshot is not allowed to create disk.|The error message returned because you cannot create disks by using the specified snapshot.|
+|403|OperationDenied.SnapshotNotAllowed|The specified snapshot is not allowed to create disk.|The error message returned because you cannot create disks by using the specified snapshot.|
 |403|OperationDenied.ZoneNotAllowed|The creation of Instance to the specified Zone is not allowed.|The error message returned because instances cannot be created in the specified zone.|
 |403|OperationDenied.ZoneSystemCategoryNotMatch|The specified Zone or cluster does not offer the specified disk category or the speicified zone and cluster do not match.|The error message returned because the specified disk category is unavailable in the specified zone or cluster, or because the specified zone and cluster do not correspond to each other.|
 |403|OperationDenied.ResourceControl|The specified region is in resource control, please try later.|The error message returned because the specified region is under resource control. Try again later.|
@@ -556,10 +560,10 @@ Sample success responses
 |400|InvalidParameter.Conflict|%s|The error message returned because a specified parameter is invalid. Check whether the parameter conflicts with another parameter.|
 |400|InvalidInternetChargeType.ValueNotSupported|%s|The error message returned because the specified InternetChargeType parameter is not supported. Check whether the parameter is correct.|
 |400|InvalidInstanceType.ValueNotSupported|%s|The error message returned because this operation cannot be performed on instances of the specified instance type.|
-|403|InstanceType.Offline|%s|The error message returned because the instance type is retired or insufficient resources are available for the instance type.|
+|403|InstanceType.Offline|%s|The error message returned because the operation is not supported when the instance type is retired or resources of the instance type are insufficient.|
 |400|RegionUnauthorized|%s|The error message returned because you are not authorized to perform the operation in the specified region.|
 |400|Zone.NotOnSale|%s|The error message returned because the requested resources are unavailable in the specified zone.|
-|400|InvalidSystemDiskSize.ValueNotSupported|%s|The error message returned because the specified system disk size is invalid.|
+|400|InvalidSystemDiskSize.ValueNotSupported|%s|The error message returned because the specified SystemDisk.Size parameter is invalid.|
 |400|InvalidDataDiskSize.ValueNotSupported|%s|The error message returned because the specified DataDisk.N.Size parameter is invalid.|
 |403|DependencyViolation.WindowsInstance|The instance creating is window, cannot use ssh key pair to login.|The error message returned because the specified instance is a Windows instance and does not support logons based on SSH key pairs.|
 |400|InvalidInstanceType.ValueNotSupported|The specified parameter "KeyPairName" only support IoOptimized Instance.|The error message returned because non-I/O optimized instances do not support SSH key pairs.|
@@ -587,7 +591,7 @@ Sample success responses
 |400|InvalidHpcClusterId.NotFound|The specified HpcClusterId is not found|The error message returned because the specified HpcClusterId parameter does not exist.|
 |404|InvalidVSwitchId.NotExist|%s|The error message returned because the specified VSwitchId parameter does not exist.|
 |403|ImageNotSupportInstanceType|The specified image does not support the specified InstanceType.|The error message returned because the specified image does not support the specified instance type.|
-|400|InvalidSecurityGroup.NotInDefaultVpc|%s|The error message returned because the specified security group is not in the default VPC. Check whether the specified value of the SecurityGroupId parameter is correct.|
+|400|InvalidSecurityGroup.NotInDefaultVpc|%s|The error message returned because the specified security group is not in the default VPC. Check whether the specified SecurityGroupId parameter is correct.|
 |400|VpcNotFound|Vpc is not found according to the specified VSwitch or the vpc does not belong to you.|The error message returned because the specified vSwitch does not belong to any VPC, or the corresponding VPC does not belong to you.|
 |400|InvalidSystemDiskSize.ImageNotSupportResize|The specified image does not support resize.|The error message returned because the specified image does not support resizing.|
 |403|OperationDenied.InvalidNetworkType|%s|The error message returned because the operation is not supported by the specified network type.|
@@ -634,7 +638,7 @@ Sample success responses
 |400|InvalidClientToken.ValueNotSupported|The ClientToken provided is invalid.|The error message returned because the specified ClientToken parameter is invalid.|
 |400|OperationDenied|The current user does not support this operation.|The error message returned because your account does not support this operation.|
 |403|InsufficientBalance|Your account does not have enough balance.|The error message returned because your account balance is insufficient. Add funds to your account and try again.|
-|400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|The error message returned because the specified instance type does not exist or you are not authorized to manage instances of this instance type.|
+|400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|The error message returned because the specified InstanceType parameter does not exist or you are not authorized to manage instances of this instance type.|
 |400|InvalidParam.Tenancy|The specified Tenancy is invalid.|The error message returned because the specified Tenancy parameter is invalid.|
 |403|MaxEniIpv6IpsCountExceeded|%s|The error message returned because the maximum number of IPv6 addresses that can be assigned to the ENI has been reached.|
 |403|InvalidIp.IpRepeated|%s|The error message returned because the specified IP address already exists.|
@@ -660,9 +664,9 @@ Sample success responses
 |404|InvalidSecurityGroupId.NotFound|%s|The error message returned because the specified SecurityGroupId parameter does not exist.|
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|The error message returned because the specified disk is not removable.|
 |403|QuotaExceed.Tags|%s|The error message returned because the maximum number of tags has been reached.|
-|403|QuotaExceed.ElasticQuota|No additional quota is available for the specified ECS instance type.|The error message returned because the maximum number of instances of the specified instance type that can be created in the current region has been reached. Try another region or instance type, or reduce the purchase quantity. You can also go to the ECS console or Quota Center to request a quota increase.|
-|403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type.|The error message returned because the maximum number of instances of the specified instance type that can be created in the current region has been reached. Try another region or instance type, or reduce the purchase quantity. You can also go to the ECS console or Quota Center to request a quota increase.|
-|403|QuotaExceed.ElasticQuota|The number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|The error message returned because the maximum number of vCPUs for all instance types has been reached. Go to the ECS console or Quota Center to request a quota increase.|
+|403|QuotaExceed.ElasticQuota|No additional quota is available for the specified ECS instance type.|The error message returned because the maximum number of instances of the specified instance type in the current region has been reached. Try another region or instance type, or reduce the purchase quantity. You can also go to the ECS console or Quota Center to request a quota increase.|
+|403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type.|The error message returned because the maximum number of instances of the specified instance type in the current region has been reached. Try another region or instance type, or reduce the purchase quantity. You can also go to the ECS console or Quota Center to request a quota increase.|
+|403|QuotaExceed.ElasticQuota|The number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|The error message returned because the maximum number of vCPUs for all instance types has been reached. You can go to the ECS console or Quota Center to request a quota increase.|
 |403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type, or the number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|The error message returned because the maximum number of instances of the specified instance type that can be created in the current region has been reached, or because the maximum number of vCPUs for all instance types has been reached. Go to the ECS console or Quota Center to request a quota increase.|
 |400|InvalidHttpEndpoint.NotSupported|The specified HttpEndpoint not supported, you can use enabled\(default\) or disabled.|The error message returned because the specified HttpEndpoint parameter is invalid. Set this parameter to enabled \(default value\) or disabled.|
 |400|InvalidHttpTokens.NotSupported|The specified HttpTokens not supported, you can use optional\(default\) or required.|The error message returned because the specified HttpTokens parameter is invalid. Set this parameter to optional \(default value\) or required.|
