@@ -71,7 +71,7 @@
  -   PeriodUnit=Week时：\{1,2,3\}
 -   PeriodUnit=Month时：\{1,2,3,4,5,6,7,8,9\}
 -   PeriodUnit=Year时：\{1,2,3,4,5\} |
-|PeriodUnit|String|否|Month|购买专有宿主机的时长。取值范围：
+|PeriodUnit|String|否|Month|购买专有宿主机的时长单位。取值范围：
 
  -   Week
 -   Month
@@ -118,7 +118,7 @@ https://ecs.aliyuncs.com/?Action=AllocateDedicatedHosts
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <AllocateDedicatedHostsResponse>
@@ -130,7 +130,7 @@ https://ecs.aliyuncs.com/?Action=AllocateDedicatedHosts
 </AllocateDedicatedHostsResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
