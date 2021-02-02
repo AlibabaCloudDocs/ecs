@@ -78,7 +78,7 @@
 -   vdi
 
  默认值：raw |
-|RoleName|String|否|EcsServiceRole-EcsDocGuideTest|导出镜像时使用的RAM角色名称。 |
+|RoleName|String|否|AliyunECSImageExportDefaultRole|导出镜像时使用的RAM角色名称。 |
 
 ## 返回数据
 
@@ -104,7 +104,7 @@ https://ecs.aliyuncs.com/?Action=ExportImage
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ExportImageResponse>
@@ -114,7 +114,7 @@ https://ecs.aliyuncs.com/?Action=ExportImage
 </ExportImageResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -131,7 +131,7 @@ https://ecs.aliyuncs.com/?Action=ExportImage
 |400|MissingParameter|An input parameter "RegionId" that is mandatory for processing the request is not supplied.|参数RegionId不得为空。|
 |400|MissingParameter|An input parameter "ImageId" that is mandatory for processing the request is not supplied.|参数ImageId不得为空。|
 |400|MissingParameter|An input parameter "OSSBucket" that is mandatory for processing the request is not supplied.|参数OSSBucket不得为空。|
-|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称不合法。长度为2-128个字符，以英文字母或中文开头，可包含数字，点号（.），下划线（\_）或连字符（-）。 不能以http://和https://开头。|
+|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称不合法。长度为2~128个字符，以英文字母或中文开头，可包含数字，点号（.），下划线（\_）或连字符（-）。 不能以http://和https://开头。|
 |400|InvalidOSSPrefix.Malformed|The specified OSSPrefix format is wrongly formed.|参数OssPrefix格式错误。|
 |400|InvalidRegionId.NotFound|The specified RegionId does not exist.|指定的地域ID不存在。|
 |400|InvalidRegion.NotSupport|The specified region does not support image import or export.|指定的地域暂时不支持此操作。|
@@ -148,8 +148,10 @@ https://ecs.aliyuncs.com/?Action=ExportImage
 |400|InvalidImage.DiskAmountOrSize|%s|无效的镜像，导出的镜像限制数据盘数不能超过4块，单块数据盘容量最大不能超过500GiB。|
 |400|ImageNotSupported|The specified Image contains encrypted snapshots, do not support export.|指定的镜像包含了加密快照，不支持导出。|
 |400|ImageNotSupported|Image from image market does not support exporting.|不支持导出镜像市场里的镜像。|
+|400|InvalidOSSBucket.NotMatched|The specified OSS bucket is incorrect, %s.|指定的OSSBucket有误，具体信息请参见错误信息%s占位符的实际返回结果。|
 |403|ConcurrentQuotaExceed.ExportImage|%s|当前处理中的任务，已达到并发最大额度，请耐心等待一段时间再创建任务。|
 |403|WeeklyQuotaExceed.ExportImage|%s|本周提交任务已经超出配额，请耐心等候再次分配可用额度。|
+|403|InvalidImageLicense.NotSupported|%s|指定的镜像不支持导出。具体信息请参见错误信息%s占位符的实际返回值。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
