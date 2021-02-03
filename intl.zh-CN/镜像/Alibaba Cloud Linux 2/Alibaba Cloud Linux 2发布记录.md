@@ -35,7 +35,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
     -   增加Alibaba Cloud Linux容器增强技术支持 |
 |aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210120.vhd|2021-01-20|-   更新`Alibaba Cloud Linux 2.1903 64位 快速启动版`镜像
 -   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd版本制作
--   适用地域：华北1（青岛）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华东1（杭州）、西南1（成都）、新加坡、美国（弗吉尼亚） |
+-   适用地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）、新加坡、马来西亚（吉隆坡）、美国（弗吉尼亚） |
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20200904.vhd|2020-09-04|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本，兼容最新CentOS 7.8版本，修复软件包安全漏洞
 -   /etc/redhat-release的信息从Aliyun Linux release 7.2 LTS \(Hunting Beagle\)变更成Alibaba Cloud Linux \(Aliyun Linux\) release 2.1903 LTS \(Hunting Beagle\)
 -   优化/etc/image-id标识镜像类型
@@ -128,8 +128,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 |-   更新`Alibaba Cloud Linux 2.1903 64位 可信版`镜像
 -   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd版本制作
 -   启动切换为UEFI模式，而且仅支持该模式
--   内核更新：版本更新至kernel-4.19.91-22.2.al7
--   适用地域：华北1（青岛）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华东1（杭州）、西南1（成都）、新加坡、美国（弗吉尼亚） |
+-   内核更新：版本更新至kernel-4.19.91-22.2.al7 |
 |aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210120.vhd|2021-01-20|AMD实例规格族：-   ecs.ebmg6a
 -   ecs.ebmc6a
 -   ecs.ebmr6a
@@ -139,8 +138,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 
 |-   更新`Alibaba Cloud Linux 2.1903 64位 AMD版`镜像到最新的软件版本
 -   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd版本制作
--   启动切换为UEFI模式，而且仅支持该模式
--   适用地域：华北1（青岛）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华东1（杭州）、西南1（成都）、新加坡、美国（弗吉尼亚） |
+-   启动切换为UEFI模式，而且仅支持该模式 |
 |aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20200904.vhd|2020-09-04|可信实例规格族：-   ecs.g6t
 -   ecs.c6t
 
