@@ -7,6 +7,12 @@
 -   请求参数的作用类似于一个过滤器，过滤器为逻辑与（AND）关系。如果某一参数为空，则过滤器不起作用。但是参数InstanceIds如果是一个空JSON数组，则视为该过滤器有效，且返回空。
 -   如果您使用的是RAM用户账号或者RAM角色，当用户或者角色缺乏接口权限时，将会返回空列表。您可以在请求中加入`DryRun`参数，判断是否因权限问题导致的空列表现象。
 -   通过阿里云CLI调用API时，不同数据类型的请求参数取值必须遵循格式要求。更多信息，请参见[CLI参数格式说明](~~110340~~)。
+-   支持以下两种方式查看返回数据：
+    -   方式一：通过`NextToken`设置查询凭证（Token），其取值是上一次调用DescribeInstances返回的`NextToken`参数值，再通过`MaxResults`设置单页查询的最大条目数。
+    -   方式二：通过`PageSize`设置单页返回的条目数，再通过`PageNumber`设置页码。
+
+        以上两种方式只能任选其中之一。当返回的条目数较多时，推荐使用方式一。如果设置了NextToken，则请求参数PageSize和PageNumber将失效。
+
 
 ## 调试
 
@@ -33,6 +39,12 @@
 
  默认值：1 |
 |PageSize|Integer|否|10|分页查询时设置的每页行数。
+
+ 最大值：100
+
+ 默认值：10 |
+|NextToken|String|否|caeba0bbb2be03f84eb48b699f0a4883|查询凭证（Token），取值为上一次API调用返回的`NextToken`参数值。 |
+|MaxResults|Integer|否|10|分页查询时每页行数。
 
  最大值：100
 
@@ -151,7 +163,7 @@
 |CapacityReservationId|String|cr-bp67acfmxazb4p\*\*\*\*|容量预留ID。 |
 |CapacityReservationPreference|String|cr-bp67acfmxazb4p\*\*\*\*|容量预留偏好。 |
 |EipAddress|Struct| |弹性公网IP绑定信息。 |
-|AllocationId|String|i-bp67acfmxazb4p\*\*\*\*|弹性公网IP绑定的实例ID。 |
+|AllocationId|String|eip-2ze88m67qx5z\*\*\*\*|弹性公网IP的ID。 |
 |Bandwidth|Integer|5|弹性公网IP的公网带宽限速，单位为Mbit/s。 |
 |InternetChargeType|String|PayByTraffic|弹性公网IP的计费方式。
 
@@ -166,7 +178,7 @@
 |HpcClusterId|String|hpc-bp67acfmxazb4p\*\*\*\*|实例所属的HPC集群ID。 |
 |ISP|String|null|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |ImageId|String|m-bp67acfmxazb4p\*\*\*\*|实例运行的镜像ID。 |
-|InnerIpAddress|List|10.170.\*\*.\*\*|实例的内网IP地址。 |
+|InnerIpAddress|List|10.170.\*\*.\*\*|经典网络类型实例的内网IP地址。 |
 |InstanceChargeType|String|PostPaid|实例的计费方式。可能值：
 
  -   PrePaid：包年包月
@@ -270,6 +282,7 @@
 |VSwitchId|String|vsw-2zeh0r1pabwtg6wcs\*\*\*\*|虚拟交换机ID。 |
 |VpcId|String|vpc-2zeuphj08tt7q3brd\*\*\*\*|专有网络VPC ID。 |
 |ZoneId|String|cn-hangzhou-g|实例所属可用区。 |
+|NextToken|String|caeba0bbb2be03f84eb48b699f0a4883|本次调用返回的查询凭证值。 |
 |PageNumber|Integer|1|实例列表的页码。 |
 |PageSize|Integer|10|输入时设置的每页行数。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
@@ -289,7 +302,7 @@ PageNumber=1
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeInstancesResponse>
@@ -306,7 +319,7 @@ PageNumber=1
                   <ExpiredTime>2017-12-10T04:04Z</ExpiredTime>
                   <ImageId>m-bp67acfmxazb4p****</ImageId>
                   <EipAddress>
-                        <AllocationId>i-bp67acfmxazb4p****</AllocationId>
+                        <AllocationId>eip-2ze88m67qx5z****</AllocationId>
                         <IpAddress>42.112.**.**</IpAddress>
                         <InternetChargeType>PayByTraffic</InternetChargeType>
                   </EipAddress>
@@ -406,10 +419,11 @@ PageNumber=1
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
       <PageSize>10</PageSize>
       <PageNumber>1</PageNumber>
+      <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken>
 </DescribeInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -428,7 +442,7 @@ PageNumber=1
 				"ExpiredTime": "2017-12-10T04:04Z",
 				"ImageId": "m-bp67acfmxazb4p****",
 				"EipAddress": {
-					"AllocationId": "i-bp67acfmxazb4p****",
+					"AllocationId": "eip-2ze88m67qx5z****",
 					"IpAddress": "42.112.**.**",
 					"InternetChargeType": "PayByTraffic"
 				},
@@ -541,7 +555,8 @@ PageNumber=1
 	"TotalCount": 1,
 	"RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
 	"PageSize": 10,
-	"PageNumber": 1
+	"PageNumber": 1,
+    "NextToken": "caeba0bbb2be03f84eb48b699f0a4883"
 }
 ```
 
