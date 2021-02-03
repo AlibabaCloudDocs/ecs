@@ -139,7 +139,7 @@ Instance types
 
 ## i2ne, instance family with local SSDs
 
-i2ne is in invitational preview. To use i2ne,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+i2ne is in invitational preview. To use i2ne, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -173,7 +173,7 @@ Instance types
 
 ## i2gne, instance family with local SSDs
 
-i2gne is in invitational preview. To use i2gne,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+i2gne is in invitational preview. To use i2gne, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
