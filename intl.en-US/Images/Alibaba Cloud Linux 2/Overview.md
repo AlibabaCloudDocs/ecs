@@ -23,15 +23,14 @@ Alibaba Cloud Linux 2 is suitable for the following scenarios:
 Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following benefits:
 
 -   Alibaba Cloud provides long-term free software maintenance and technical support for Alibaba Cloud Linux 2.
--   Alibaba Cloud Linux 2 is optimized for integration with the Alibaba Cloud infrastructure and provides faster system startup and higher runtime performance.
--   Alibaba Cloud Linux 2 provides the latest enhanced features of the Linux community to power cloud-based application environments.
--   Alibaba Cloud Linux 2 is equipped with an updated Linux kernel, user-mode packages, and toolkits that provide additional features to the operating system.
+-   Alibaba Cloud Linux 2 is optimized for integration with the Alibaba Cloud infrastructure and provides faster system startup and higher runtime performance. Alibaba Cloud Linux 2 has been long-tested and refined in massive scenarios of the Alibaba economy to provide optimal stability.
+-   Alibaba Cloud Linux 2 is equipped with an updated Linux kernel, user-mode packages, and toolkits, and provides the latest enhanced operating system features from the Linux community to power cloud-based application environments.
 -   Alibaba Cloud Linux 2 offers a streamlined kernel and increased protection against security risks. Alibaba Cloud Linux 2 provides policies to monitor and fix security vulnerabilities and ensures constant system security.
 
 ## Features
 
--   Alibaba Cloud Linux 2 is distributed with the latest version of the Alibaba Cloud kernel. The kernel have the following features:
-    -   The Alibaba Cloud kernel is based on Linux kernel V4.19 with the LTS from the kernel community. It is optimized for cloud-based scenarios, improved performance, and bug fixes. For more information, see [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes of Alibaba Cloud Linux 2.md).
+-   Alibaba Cloud Linux 2 is distributed with the latest version of the Alibaba Cloud kernel. The kernel has the following features:
+    -   The Alibaba Cloud kernel is based on Linux kernel V4.19 with the LTS from the kernel community. The Alibaba Cloud kernel is optimized for cloud-based scenarios, improved performance, and bug fixes. For more information, see [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes of Alibaba Cloud Linux 2.md).
     -   Alibaba Cloud Linux 2 provides customized and optimized kernel startup parameters and system configuration parameters for the ECS instance environment.
     -   Alibaba Cloud Linux 2 provides kdump, which is a kernel dumping mechanism used in case of operating system failures. You can enable or disable this feature without restarting the operating system.
     -   Alibaba Cloud Linux 2 provides Kernel Live Patching \(KLP\).
@@ -42,24 +41,24 @@ Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following
     -   Fixes for CVE vulnerabilities are continuously updated until the end of life \(EOL\) of Alibaba Cloud Linux 2. For more information, see [Alibaba Cloud Linux 2.1903 Security Advisories](http://mirrors.aliyun.com/alinux/cve/alinux2.xml). Alibaba Cloud Linux 2 provides solutions to automatically fix vulnerabilities. For more information, see [Use YUM to perform security updates](/intl.en-US/Images/Alibaba Cloud Linux 2/Features and interfaces supported by Alibaba Cloud Linux 2/Use YUM to perform security updates.md).
 -   Alibaba Cloud Linux 2 accelerates the startup process, improves runtime performance, and enhances system stability in the following ways:
     -   Alibaba Cloud Linux 2 optimizes the startup speed of ECS instances. Tests have proven that Alibaba Cloud Linux 2 can save 60% of startup time compared with other operating systems.
-    -   Alibaba Cloud Linux 2 optimizes scheduling, memory, I/O, and network subsystems. In some open source benchmark tests, Alibaba Cloud Linux 2 improves performance by 10% to 30% compared with other operating systems.
-    -   Alibaba Cloud Linux 2 provides enhanced system stability. Alibaba Cloud Linux 2 can reduce downtime by 50% compared with other operating systems.
+    -   Alibaba Cloud Linux 2 optimizes scheduling, memory, I/O, and network subsystems. In some open source benchmark tests, Alibaba Cloud Linux 2 offers a performance increase of 10% to 30% compared with other operating systems.
+    -   Alibaba Cloud Linux 2 provides enhanced system stability, and can reduce downtime by 50% compared with other operating systems.
 
 ## Images
 
-|Image|Description|
-|-----|-----------|
-|Alibaba Cloud Linux 2.1903 LTS 64-bit|The default standard image version of Alibaba Cloud Linux 2.|
-|Alibaba Cloud Linux 2.1903 64-bit \(Quick Start\)|This image is a customized image based on the Alibaba Cloud kernel. It supports quick boot \(Qboot\) and starts instances directly from the kernel. Instances created from images of this version can be started faster than instances created from other images and have the same default runtime environment as instances created from images of standard versions. This image version has the following characteristics:
+|Image|ID of the latest version|Description|
+|-----|------------------------|-----------|
+|Alibaba Cloud Linux 2.1903 LTS 64-bit|aliyun\_2\_1903\_x64\_20G\_alibase\_20200904.vhd|The default standard image version of Alibaba Cloud Linux 2.|
+|Alibaba Cloud Linux 2.1903 64-bit \(Quick Start\)|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20200904.vhd|This image is a customized image based on the Alibaba Cloud kernel. It supports quick boot \(Qboot\) and starts instances directly from the kernel. Instances created from images of this version start faster than those created from other images, and have the same default runtime environment as those created from images of standard versions. This image version has the following characteristics:
 
 -   It accelerates only the initial startup of instances, and subsequently starts instances at a normal speed.
 -   It optimizes and accelerates the process of initializing memory, modularizes devices such as mice that take time to start, and speeds up the kernel boot.
--   It replaces the cloud-init service with the latest AliyunInit service, which reduces the amount of time required to initialize the system.
+-   It replaces the cloud-init service with the latest AliyunInit service. This reduces the amount of time required to initialize the system.
 -   Images of this version are available in the following regions: China \(Hangzhou\), China \(Shenzhen\), China \(Beijing\), China \(Zhangjiakou\), and China \(Hong Kong\).
 
 **Note:** The kernel startup parameters of the quick start version cannot be modified. |
-|Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)|This image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud ECS AMD-compatible instances. This image version supports only the Unified Extensible Firmware Interface \(UEFI\) boot mode.**Note:** Images of this version can be used to create instances of only the following Alibaba Cloud ECS Bare Metal Instance families \(AMD-compatible\): ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a. |
-|Alibaba Cloud Linux 2.1903 64-bit \(Trusted\)|The image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud trusted instances.**Note:** Images of this version can be used to create instances of only the following trusted instance families: ecs.g6t and ecs.c6t. |
+|Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20200904.vhd|This image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud AMD-compatible instances. This image version supports only the Unified Extensible Firmware Interface \(UEFI\) boot mode.**Note:** Images of this version can be used to create instances of only the following Alibaba Cloud AMD-compatible Bare Metal Instance families: ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a. |
+|Alibaba Cloud Linux 2.1903 64-bit \(Trusted\)|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20200904.vhd|The image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud trusted instances.**Note:** Images of this version can be used to create instances of only the ecs.g6t and ecs.c6t trusted instance families. |
 
 ## Billing
 
@@ -72,8 +71,8 @@ You can use the following methods to obtain and use Alibaba Cloud Linux 2 images
 -   ECS instances
     -   When you create an ECS instance, select **Public Image**, and then select Alibaba Cloud Linux 2 and its version.
         -   For information about how to create an instance, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
-        -   For the differences among Alibaba Cloud Linux 2 images, see [What are the differences among Alibaba Cloud Linux 2 images?](/intl.en-US/Images/Alibaba Cloud Linux 2/FAQ.md)
-    -   You can change the operating system of an existing ECS instance to Alibaba Cloud Linux 2 by replacing the system disk of the system. For more information, see [Replace the system disk \(public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace the system disk (public images).md).
+        -   For the differences among Alibaba Cloud Linux 2 images, see [What are the differences among Alibaba Cloud Linux 2 images?](/intl.en-US/Images/Alibaba Cloud Linux 2/FAQ.md).
+    -   You can change the operating system of an existing ECS instance to Alibaba Cloud Linux 2 by replacing the system disk. For more information, see [Replace the system disk \(public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace the system disk (public images).md).
 -   On-premises environments such as a KVM-based virtualization environment
 
     Download and install an Alibaba Cloud Linux 2 image, and restart the system. For more information, see [Use Alibaba Cloud Linux 2 images in an on-premises environment](/intl.en-US/Images/Alibaba Cloud Linux 2/Features and interfaces supported by Alibaba Cloud Linux 2/Use Alibaba Cloud Linux 2 images in an on-premises environment.md).
@@ -191,13 +190,13 @@ You can use the following methods to obtain and use Alibaba Cloud Linux 2 images
         Run the following commands to install an experimental software package that serves common purposes:
 
         ```
-        # Enable YUM repositories.
+        # Enable the support for YUM repositories.
         sudo yum install -y alinux-release-experimentals
         # Install an experimental software package that serves common purposes. packageName specifies the name of the software package to be installed.
         sudo yum install -y <packageName>
         ```
 
-    -   Use developments kits that support SCL plug-ins
+    -   Development kits that support SCL plug-ins
 
         -   Development kit based on `GCC-7.3.1`: devtoolset-7
         -   Development kit based on `GCC-8.2.1`: devtoolset-8
@@ -207,7 +206,7 @@ You can use the following methods to obtain and use Alibaba Cloud Linux 2 images
         ```
         # Install `scl-utils`.
         sudo yum install -y scl-utils
-        # Enable YUM repositories.
+        # Enable the support for YUM repositories.
         sudo yum install -y alinux-release-experimentals
         # Install the software packages that you need from the YUM repositories. The following sample commands are run to install all development kits that support the plug-ins:
         sudo yum install -y devtoolset-7-gcc devtoolset-7-gdb devtoolset-7-binutils devtoolset-7-make
@@ -215,10 +214,10 @@ You can use the following methods to obtain and use Alibaba Cloud Linux 2 images
         sudo yum install -y devtoolset-9-gcc devtoolset-9-gdb devtoolset-9-binutils devtoolset-9-make
         ```
 
-        After the software packages are installed, you can use the later versions of GCC and related tools. The following sample code provides an example:
+        After the software packages are installed, you can use the later versions of GCC and related tools. The following code provides an example of how to run SCL software:
 
         ```
-        # Specify the repository name to view an existing SCL. Repository devtoolset-7 is used in the following sample code:
+        # Specify the repository name to view an existing SCL. Repository devtoolset-7 is used in this snippet of code.
         scl -l devtoolset-7
         # Run the related SCL software.
         scl enable devtoolset-7 'gcc --version'
