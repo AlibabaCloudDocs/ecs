@@ -39,7 +39,7 @@ Terraform能够让您在阿里云上轻松使用简单模板语言来定义、�
 2.  使用Terraform创建一台或多台ECS实例。具体操作，请参见[创建一台ECS实例]()和[创建多台ECS实例]()。
 3.  （可选）使用Terraform部署Web集群。具体操作，请参见[部署Web集群](/intl.zh-CN/部署与弹性/Terraform/部署Web集群.md)。
 
-更多关于Terraform的使用教程，请参见[Terraform文档](https://help.aliyun.com/product/95817.html)。
+更多关于Terraform的使用教程，请参见[Terraform文档]()。
 
 ## 更多信息
 
