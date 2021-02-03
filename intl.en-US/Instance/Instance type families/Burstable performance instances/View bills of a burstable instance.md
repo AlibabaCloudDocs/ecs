@@ -8,14 +8,10 @@ After you purchase a burstable instance, additional costs are charged to your ac
 
 3.  Find the burstable instance that you want to query and click the instance ID.
 
-4.  In the Billing Information section, choose **![More icon](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0924747061/p176812.png)** \> **View Fees**.
+4.  In the Billing Information section, choose **![More](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0924747061/p176812.png)** \> **View Fees**.
 
     ![View consumption details](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0924747061/p46100.png)
 
-5.  On the Details tab, check the billing details.********
-
-6.  ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5790359951/p46101.png)
-
-![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5790359951/p46102.png)
+5.  On the **Details** tab, view the bill of the instance.
 
 
