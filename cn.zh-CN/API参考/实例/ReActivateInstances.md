@@ -7,7 +7,7 @@
 调用该接口时，您需要注意：
 
 -   实例必须处于**已过期**（`Stopped`）或者**欠费回收中**（`Stopped`）的状态。
--   为避免实例会被释放和无法恢复数据，您必须在实例欠费停机后15天内清理账单并重开机实例。无法重开机VPC类型实例时，请间隔一段时间后再试或[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex.htm)联系阿里云。
+-   您必须在实例欠费停机后15天内结清账单并重开机实例。结清欠费账单后如果没有重开机，实例在欠费之日起15天后自动释放，数据无法恢复。当重开机VPC类型的按量付费实例时，可能会重开机失败。请间隔一段时间后再试或[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex.htm)。
 -   结清欠费后，您的账户下必须有大于100元的余额，否则无法重新启动实例。更多业务限制，请参见[重开机实例](~~34374~~)。
 -   接口调用成功后实例进入**启动中**（`Starting`）状态。
 -   被安全锁定的ECS实例的`OperationLocks`参数包含`"LockReason": "security"`时，不支持调用该接口。详情请参见[安全锁定时的API行为](~~25695~~)。
@@ -43,7 +43,7 @@ https://ecs.aliyuncs.com/?Action=ReActivateInstances
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ReActivateInstancesResponse>
@@ -51,7 +51,7 @@ https://ecs.aliyuncs.com/?Action=ReActivateInstances
 </ReActivateInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
