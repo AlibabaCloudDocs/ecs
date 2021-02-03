@@ -76,13 +76,16 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 5.  阅读磁盘扩容须知后，单击**已阅读，继续扩容**，完成支付。
 
 
-**说明：** 控制台上扩容云盘容量后，您还不能直接使用已扩容的容量，需要在ECS实例内部扩容分区和文件系统。
+**说明：**
+
+-   控制台上扩容云盘容量后，您还不能直接使用已扩容的容量，需要在ECS实例内部扩容分区和文件系统。
+-   如果您使用LVM管理磁盘分区，在控制台完成扩容操作后，需要通过LVM扩容分区和文件系统。具体操作，请参见[扩容LVM逻辑卷](/intl.zh-CN/最佳实践/块存储/使用逻辑卷（Linux）/扩容LVM逻辑卷.md)。
 
 ## 步骤三：查看云盘分区情况
 
 进入ECS实例内部，查看系统盘和数据盘的分区类型（MBR和GPT）和文件系统类型（ext4、xfs等）。不同的分区和文件系统，后续扩容分区和文件系统操作中存在差异。
 
-1.  远程登录ECS实例。登录的具体步骤请参见[通过VNC远程连接登录Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+1.  远程登录ECS实例。具体操作，请参见[通过密码认证登录Linux实例](/intl.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
 2.  运行以下命令查看实例的云盘情况。
 
@@ -99,6 +102,8 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
     |①|`/dev/vda1`|系统盘，**System**取值**Linux**表示为MBR分区。|
     |②|`/dev/vdb1`|数据盘，**System**取值**Linux**表示为MBR分区。|
     |③|`/dev/vdc1`|数据盘，**System**取值**GPT**表示为GPT分区。|
+
+    **说明：** 如果您的查询结果中云盘容量还是40 GiB（`Disk /dev/vda: 42.9 GB`），表示扩容不成功，建议您在控制台重启下本实例。
 
 3.  运行以下命令确认已有分区的文件系统类型。
 
@@ -200,12 +205,18 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 支持在线扩容的Linux公共镜像（或基于公共镜像制作的自定义镜像）包括：
 
 -   Alibaba Cloud Linux：Alibaba Cloud Linux 2.1903 LTS 64位
--   CentOS：CentOS 6.8 、CentOS 7.2 、CentOS 8及以上版本
--   Red Hat Enterprise Linux：RHEL 6.9 、RHEL 7.4 、RHEL 8及以上版本
+-   CentOS：
+    -   CentOS 6：CentOS 6.8及以上版本
+    -   CentOS 7：CentOS 7.2及以上版本
+    -   CentOS 8及以上版本
+-   Red Hat Enterprise Linux：
+    -   RHEL 6：RHEL 6.9及以上版本
+    -   RHEL 7：RHEL 7.4及以上版本
+    -   RHEL 8及以上版本
 -   Ubuntu：Ubuntu 16及以上版本
 -   Debian：Debian 8及以上版本
 -   SUSE：SUSE 12 SP2及以上版本
--   OpenSUSE：OpenSUSE42.3及以上版本
+-   OpenSUSE：OpenSUSE 42.3及以上版本
 
 ## 常见问题
 
