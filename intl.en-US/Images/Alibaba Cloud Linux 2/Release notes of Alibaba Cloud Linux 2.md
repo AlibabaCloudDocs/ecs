@@ -15,19 +15,6 @@ This topic describes the feature updates of Alibaba Cloud Linux 2 images in the 
 
 |Image ID|Release time|Description|
 |--------|------------|-----------|
-|aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20201231.vhd|2021-01-11|-   This is an updated `Alibaba Cloud Linux 2.1903 LTS 64-bit image that meets the MLPS 2.0 level 3 standards`.
--   The security of the image is hardened based on *GB/T 22239-2019 Information Security Technology - Baseline for Classified Protection of Cybersecurity*. You can use this image to meet the following security compliance requirements without making additional configurations:
-
-    -   Identity authentication
-    -   Access control
-    -   Security audit
-    -   Intrusion prevention
-    -   Malicious code prevention
-For more information, see [t1961807.md\#]().
-
--   This image is derived from the aliyun\_2\_1903\_x64\_20G\_alibase\_20201231.vhd version of the `Alibaba Cloud Linux 2.1903 LTS 64-bit` basic image.
--   Kernel version: kernel-4.19.91-22.al7.
--   Applicable regions: China \(Hangzhou\), China \(Beijing\), China \(Zhangjiakou\), China \(Chengdu\), and China \(Hong Kong\). |
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20201231.vhd|2020-12-31|-   This image updates the `Alibaba Cloud Linux 2.1903 LTS 64-bit` basic image to the latest software version to be compatible with CentOS 7.9. Common vulnerabilities and exposures \(CVEs\) are fixed.
 -   The new update-motd service is released and enabled by default.
 -   The rhel-loadmodules service is enabled by default.
