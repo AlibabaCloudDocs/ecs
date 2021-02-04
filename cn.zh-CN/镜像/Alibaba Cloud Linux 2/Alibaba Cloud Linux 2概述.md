@@ -48,8 +48,8 @@ Alibaba Cloud Linux 2适用于下列场景。
 
 |镜像|最新版本镜像ID|说明|
 |--|--------|--|
-|Alibaba Cloud Linux 2.1903 LTS 64位|aliyun\_2\_1903\_x64\_20G\_alibase\_20200904.vhd|Alibaba Cloud Linux 2操作系统的默认标准镜像。|
-|Alibaba Cloud Linux 2.1903 64位 快速启动版|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20200904.vhd|该镜像支持Qboot（quick boot）快速启动，基于Alibaba Cloud Kernel，并直接从内核引导虚拟机启动的定制化镜像。使用该镜像创建的ECS实例相比其它镜像创建的ECS实例，启动速度得到了极大的提升，并且默认运行时与标准镜像完全一致。快速启动版镜像的相关说明如下：
+|Alibaba Cloud Linux 2.1903 LTS 64位|aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd|Alibaba Cloud Linux 2操作系统的默认标准镜像。|
+|Alibaba Cloud Linux 2.1903 64位 快速启动版|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210120.vhd|该镜像支持Qboot（quick boot）快速启动，基于Alibaba Cloud Kernel，并直接从内核引导虚拟机启动的定制化镜像。使用该镜像创建的ECS实例相比其它镜像创建的ECS实例，启动速度得到了极大的提升，并且默认运行时与标准镜像完全一致。快速启动版镜像的相关说明如下：
 
 -   只对实例的初次启动加速，后续启动实例的速度将保持正常水准。
 -   优化加速内存初始化的过程，模块化了启动耗时的鼠标等设备，加速内核引导速度。
@@ -57,9 +57,9 @@ Alibaba Cloud Linux 2适用于下列场景。
 -   目前快速启动版镜像支持的地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）。
 
 **说明：** 该镜像的内核版本无法修改内核启动参数。 |
-|Alibaba Cloud Linux 2.1903 64位 等保2.0三级版|aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20200925.vhd|基于默认标准镜像进行等保加固的镜像版本，该镜像符合等保2.0三级安全保护的基本要求。使用说明请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux等保2.0三级版镜像/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)。|
-|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20200904.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像，实例规格族包括ecs.ebmg6a、ecs.ebmc6a、ecs.ebmr6a。 |
-|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20200904.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像，实例规格族包括ecs.g6t、ecs.c6t。 |
+|Alibaba Cloud Linux 2.1903 64位 等保2.0三级版|aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20210120.vhd|基于默认标准镜像进行等保加固的镜像版本，该镜像符合等保2.0三级安全保护的基本要求。使用说明请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux等保2.0三级版镜像/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)。|
+|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210120.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像，实例规格族包括ecs.ebmg6a、ecs.ebmc6a、ecs.ebmr6a。 |
+|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210120.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像，实例规格族包括ecs.g6t、ecs.c6t。 |
 
 ## 费用
 
@@ -102,25 +102,6 @@ Alibaba Cloud Linux 2是免费镜像，但当您选用Alibaba Cloud Linux 2镜�
     |`cryptomgr.notests`|关闭crypto在内核启动时的自检行为，加快启动速度|
     |`cgroup.memory=nokmem`|关闭Memory Cgroup的内核内存统计功能，避免出现潜在的内核不稳定问题|
     |`rcupdate.rcu_cpu_stall_timeout=300`|延长RCU CPU Stall Detector的超时阈值为300秒，避免内核误报|
-
--   回退内核版本
-
-    Alibaba Cloud Linux 2默认搭载4.19.y版本云内核，内核版本会随镜像的更新而升级。您可以根据需要，使用以下命令安装并切换至兼容CentOS 7版本的3.10系列内核。
-
-    **说明：** 更换内核版本可能导致无法开机等风险，请谨慎操作。
-
-    依次运行以下命令可回退内核版本。
-
-    ```
-    # 先安装3.10内核
-    sudo yum install -y kernel-3.10.0
-    # 设置GRUB驱动
-    sudo grub2-set-default "$(grep ^menuentry /boot/grub2/grub.cfg | grep 3.10.0 | awk -F\' '{ print $2 }')"
-    # 将变更更新至配置文件中
-    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-    # 重启操作系统，使配置生效
-    sudo reboot
-    ```
 
 -   开启或关闭内核转储（Kdump）功能
 
