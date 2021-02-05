@@ -142,8 +142,16 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     -   Debian 9及以上版本、Ubuntu14及以上版本运行以下命令。
 
+        更新软件源。
+
         ```
-        apt install -y cloud-guest-utils
+        apt-get update
+        ```
+
+        安装cloud-guest-utils。
+
+        ```
+        apt-get install -y cloud-guest-utils
         ```
 
 3.  运行以下命令扩容分区。
