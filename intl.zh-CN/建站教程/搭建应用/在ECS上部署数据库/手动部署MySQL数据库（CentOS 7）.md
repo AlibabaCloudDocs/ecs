@@ -14,7 +14,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
 
 -   实例规格：ecs.c6.large（2 vCPU，4 GiB内存）
 -   操作系统：公共镜像CentOS 7.2 64位
--   MySQL：5.7.31
+-   MySQL：5.7.33
 
     本示例中，MySQL相关安装路径说明如下：
 
@@ -28,7 +28,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
 
 ## 步骤一：准备环境
 
-连接您的ECS实例。具体操作，请参见[使用SSH密钥对连接Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/使用SSH密钥对连接Linux实例.md)或[使用用户名密码验证连接Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/使用用户名密码验证连接Linux实例.md)。
+连接您的ECS实例。具体操作，请参见[使用SSH密钥对连接Linux实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用SSH密钥对连接Linux实例.md)或[使用用户名密码验证连接Linux实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用用户名密码验证连接Linux实例.md)。
 
 ## 步骤二：安装MySQL
 
@@ -53,7 +53,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
     返回结果如下，表示MySQL安装成功。
 
     ```
-    mysql  Ver 14.14 Distrib 5.7.31, for Linux (x86_64) using  EditLine wrapper
+    mysql  Ver 14.14 Distrib 5.7.33, for Linux (x86_64) using  EditLine wrapper
     ```
 
 
@@ -83,7 +83,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
     2020-04-08T08:12:07.893939Z 1 [Note] A temporary password is generated for root@localhost: xvlo1lZs7>uI
     ```
 
-    **说明：** 下一步对MySQL进行安全性配置时，会使用该初始密码。
+    **说明：** 示例中的`xvlo1lZs7>uI`为初始密码，下一步对MySQL进行安全性配置时，会使用该初始密码。
 
 4.  运行下列命令对MySQL进行安全性配置。
 
@@ -152,19 +152,18 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
          mysql -uroot -p
         ```
 
-    2.  依次运行以下命令创建远程登录MySQL的账号。示例账号为`dms`、密码为`123456`。
+    2.  依次运行以下命令创建远程登录MySQL的账号。
+
+        建议您使用非root账号远程登录MySQL数据库，本示例账号为`dms`、密码为`123456`。
+
+        **说明：** 实际创建账号时，需将示例密码`123456`更换为符合要求的密码，并妥善保存。密码要求：长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号。可以使用以下特殊符号：
+
+        `()` ~!@#$%^&*-+=|{}[]:;‘<>,.?/`
 
         ```
         mysql> grant all on *.* to 'dms'@'%' IDENTIFIED BY '123456'; #使用root替换dms，可设置为允许root账号远程登录。
         mysql> flush privileges;
         ```
-
-        **说明：**
-
-        -   建议您使用非root账号远程登录MySQL数据库。
-        -   实际创建账号时，需将`123456`更换为符合要求的密码： 长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号。可以使用以下特殊符号：
-
-            `()` ~!@#$%^&*-+=|{}[]:;‘<>,.?/`
 
 2.  登录[数据管理控制台](https://dms.console.aliyun.com/)。
 
