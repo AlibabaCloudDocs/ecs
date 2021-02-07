@@ -6,7 +6,6 @@
 
 您可以通过容量预定服务，指定可用区、实例规格等属性，系统会以私有池的方式预留属性相匹配的资源。在创建按量付费实例时选择使用私有池容量将保证实例一定创建成功。
 
--   容量预定服务正在邀测中。如需使用，请提交工单。
 -   目前服务仅支持立即生效模式。购买立即生效容量预定服务后，实例规格即开始遵循按量付费标准计费，不论是否实际创建了按量付费实例，直至您自行手动释放或到期系统自动释放立即生效容量预订。
     -   您可以通过[CreateInstance](~~25499~~)或[RunInstances](~~63440~~)创建实例时设置私有池容量选项，或者通过[ModifyInstanceAttachmentAttributes](~~190006~~)修改实例的私有池容量选项。实例成功匹配私有池容量后，将根据您的实例配置收取实例规格、云盘、公网带宽等相关资源费用。
     -   未实际创建按量付费实例时，仅收取实例规格的费用。
@@ -75,7 +74,7 @@ https://ecs.aliyuncs.com/?Action=CreateCapacityReservation
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateCapacityReservationResponse>
@@ -84,7 +83,7 @@ https://ecs.aliyuncs.com/?Action=CreateCapacityReservation
 </CreateCapacityReservationResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -101,6 +100,13 @@ https://ecs.aliyuncs.com/?Action=CreateCapacityReservation
 |400|InvalidStartTime.NotSupported|The specified StartTime should be within 180 calendar days from the current date, and you must specify a precision to hour.|指定的StartTime参数不在有效取值范围内。|
 |400|InvalidStartTime.MalFormed|The specified StartTime is out of the permitted range.|指定的StartTime参数超出了最大有效取值。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|400|OperationDenied|The specified InstanceType or Zone is not available or not authorized.|指定的实例规格或可用区不可用或者未授权。|
+|403|Zone.NotOpen|The specified zone is not granted to you to buy resources yet.|用户未被授权购买指定的可用区的资源。|
+|403|OperationDenied.NoStock|The resource is out of stock in the specified zone. Please try other types, or choose other regions and zones.|指定的资源在指定可用区中无货。请尝试其他类型，或选择其他可用区和地域。|
+|403|InvalidInstanceType.NotSupported|The specified InstanceType is invalid.|指定的参数“InstanceType”无效。|
+|404|InvalidZoneId.NotFound|The specified zoneId does not exist.|指定的可用区ID不存在。|
+|403|Zone.NotOnSale|The specified zone is not available for purchase.|指定可用区已经售罄，请您更换实例规格或者更换地域创建。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
