@@ -228,7 +228,7 @@
 |---|--|
 |[ModifyInstanceVpcAttribute](/cn.zh-CN/API参考/网络/ModifyInstanceVpcAttribute.md)|调用ModifyInstanceVpcAttribute修改一台ECS实例的专有网络VPC属性。|
 |[AllocatePublicIpAddress](/cn.zh-CN/API参考/网络/AllocatePublicIpAddress.md)|调用AllocatePublicIpAddress为一台ECS实例分配一个公网IP地址。|
-|[ConvertNatPublicIpToEip](/cn.zh-CN/API参考/网络/ConvertNatPublicIpToEip.md)|调用ConvertNatPublicIpToEip将一台网络类型为专有网络VPC的ECS实例的公网IP（NatPublicIp）转化为弹性公网IP（EIP）。|
+|[ConvertNatPublicIpToEip](/cn.zh-CN/API参考/网络/ConvertNatPublicIpToEip.md)|调用ConvertNatPublicIpToEip将一台网络类型为专有网络VPC的ECS实例的公网IP（PublicIp）转化为弹性公网IP（EIP）。|
 |[AttachClassicLinkVpc](/cn.zh-CN/API参考/网络/AttachClassicLinkVpc.md)|调用AttachClassicLinkVpc将一台经典网络类型实例连接到专有网络VPC中，使经典网络类型实例可以和VPC中的云资源私网互通。|
 |[DetachClassicLinkVpc](/cn.zh-CN/API参考/网络/DetachClassicLinkVpc.md)|调用DetachClassicLinkVpc取消经典网络类型实例与专有网络VPC的连接（ClassicLink）。取消ClassicLink后，经典网络类型实例无法与VPC互通。|
 |[DescribeBandwidthLimitation](/cn.zh-CN/API参考/网络/DescribeBandwidthLimitation.md)|调用DescribeBandwidthLimitation查询带宽资源列表。|
