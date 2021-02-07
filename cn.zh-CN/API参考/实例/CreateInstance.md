@@ -303,18 +303,14 @@
 -   Target：指定模式。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。该模式下必须指定私有池ID，即`PrivatePoolOptions.Id`参数为必填项。
 -   None：不使用模式。实例启动将不使用私有池容量。
 
- 默认值：空
+ 默认值：None
 
  以下任一场景，实例启动的私有池容量选项只能取值`None`或不传值。
 
  -   创建抢占式实例。
 -   创建经典网络类型的ECS实例。
--   在专有宿主机DDH上创建ECS实例。
-
- **说明：** 该参数邀测中，详情请提交工单咨询。 |
-|PrivatePoolOptions.Id|String|否|eap-bp67acfmxazb4\*\*\*\*|私有池ID。即弹性保障服务ID或容量预定服务ID。
-
- **说明：** 该参数邀测中，详情请提交工单咨询。 |
+-   在专有宿主机DDH上创建ECS实例。 |
+|PrivatePoolOptions.Id|String|否|eap-bp67acfmxazb4\*\*\*\*|私有池ID。即弹性保障服务ID或容量预定服务ID。 |
 
 ## 返回数据
 
