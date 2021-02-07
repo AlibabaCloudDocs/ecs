@@ -2,10 +2,6 @@
 
 调用DescribeCapacityReservationInstances查询容量预定服务已匹配的实例列表。
 
-## 接口说明
-
-容量预定服务正在邀测中。如需使用，请提交工单。
-
 ## 调试
 
 [您可以在OpenAPI Explorer中直接运行该接口，免去您计算签名的困扰。运行成功后，OpenAPI Explorer可以自动生成SDK代码示例。](https://api.aliyun.com/#product=Ecs&api=DescribeCapacityReservationInstances&type=RPC&version=2014-05-26)
@@ -49,7 +45,7 @@ https://ecs.aliyuncs.com/?Action=DescribeCapacityReservationInstances
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeCapacityReservationInstancesResponse>
@@ -68,7 +64,7 @@ https://ecs.aliyuncs.com/?Action=DescribeCapacityReservationInstances
 </DescribeCapacityReservationInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
