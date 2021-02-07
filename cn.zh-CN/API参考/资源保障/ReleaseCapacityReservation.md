@@ -4,8 +4,7 @@
 
 ## 接口说明
 
--   容量预定服务正在邀测中。如需使用，请提交工单。
--   立即生效的容量预定服务，当释放方式为手动释放时，调用该接口可直接释放容量预定服务。
+立即生效的容量预定服务，当释放方式为手动释放时，调用该接口可直接释放容量预定服务。
 
 ## 调试
 
@@ -40,7 +39,7 @@ https://ecs.aliyuncs.com/?Action=ReleaseCapacityReservation
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ReleaseCapacityReservationResponse>
@@ -48,7 +47,7 @@ https://ecs.aliyuncs.com/?Action=ReleaseCapacityReservation
 </ReleaseCapacityReservationResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
