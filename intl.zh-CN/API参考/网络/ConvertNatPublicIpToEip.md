@@ -1,6 +1,6 @@
 # ConvertNatPublicIpToEip
 
-调用ConvertNatPublicIpToEip将一台专有网络VPC类型ECS实例的公网IP地址（NatPublicIp）转化为弹性公网IP（EIP）。
+调用ConvertNatPublicIpToEip将一台专有网络VPC类型ECS实例的公网IP地址（PublicIP）转化为弹性公网IP（EIP）。
 
 ## 接口说明
 
@@ -46,7 +46,7 @@ https://ecs.aliyuncs.com/?Action=ConvertNatPublicIpToEip
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ConvertNatPublicIpToEipResponse>
@@ -54,7 +54,7 @@ https://ecs.aliyuncs.com/?Action=ConvertNatPublicIpToEip
 </ConvertNatPublicIpToEipResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -74,6 +74,7 @@ https://ecs.aliyuncs.com/?Action=ConvertNatPublicIpToEip
 |404|InvalidInstanceId.NotFound|%s|指定的实例不存在，请确认参数InstanceId是否正确。|
 |403|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的网络计费方式，请确认相关参数是否正确。|
 |403|MaxEIPQuotaExceeded|The number of EIP exceeds the limit per region.|EIP数量超过了当前地域可设置的最大值。|
+|404|InvalidInstance.IpAddressMissing|%s|指定实例没有配置公网IP，具体信息请参见错误信息%s占位符的实际返回结果。您可以调用DescribeInstances查询指定实例的状态。|
 |403|InvalidInstance.OverduePayment|%s|您现在的操作属于逾期付款，请重新创建实例或者联系客服解决。|
 |403|InvalidInstance.OverduePayment|The special instance due to overdue payment,this operation is not supported.|您的账号已欠费，请充值后重试。|
 |403|InvalidAccountStatus.NotEnoughBalance|Your account does not have enough balance.|账号余额不足，请您先充值再进行该操作。|
