@@ -6,7 +6,6 @@
 
 弹性保障服务为您提供了兼顾灵活性和确定性的全新的资源购买和使用方式，是一种能够向计费方式为按量付费的ECS实例，提供确定性保障的资源预定服务。系统将确保服务生效期间，在保障范围内的按量付费ECS实例的购买一定能成功。
 
--   弹性保障服务正在邀测中。如需使用，请提交工单。
 -   购买弹性保障服务后，不支持退款。
 -   弹性保障服务只能创建计费方式为按量付费的ECS实例。
 -   目前弹性保障次数只开放了无限次的模式，即`AssuranceTimes`参数只支持设置为`Unlimited`。无限次模式的弹性保障服务在保障生效后，将自动启动。
@@ -75,7 +74,7 @@ https://ecs.aliyuncs.com/?Action=CreateElasticityAssurance
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateElasticityAssuranceResponse>
@@ -85,7 +84,7 @@ https://ecs.aliyuncs.com/?Action=CreateElasticityAssurance
 </CreateElasticityAssuranceResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -103,6 +102,12 @@ https://ecs.aliyuncs.com/?Action=CreateElasticityAssurance
 |400|InvalidStartTime.NotSupported|The specified StartTime should be within 180 calendar days from the current date, and you must specify a precision to hour.|指定的StartTime参数不在有效取值范围内。|
 |400|InvalidStartTime.MalFormed|The specified StartTime is out of the permitted range.|指定的StartTime参数超出了最大有效取值。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|400|OperationDenied|The specified InstanceType or Zone is not available or not authorized.|指定的实例规格或可用区不可用或者未授权。|
+|403|Zone.NotOpen|The specified zone is not granted to you to buy resources yet.|用户未被授权购买指定的可用区的资源。|
+|403|OperationDenied.NoStock|The resource is out of stock in the specified zone. Please try other types, or choose other regions and zones.|指定的资源在指定可用区中无货。请尝试其他类型，或选择其他可用区和地域。|
+|403|InvalidInstanceType.NotSupported|The specified InstanceType is invalid.|指定的参数“InstanceType”无效。|
+|404|InvalidZoneId.NotFound|The specified zoneId does not exist.|指定的可用区ID不存在。|
+|403|Zone.NotOnSale|The specified zone is not available for purchase.|指定可用区已经售罄，请您更换实例规格或者更换地域创建。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
