@@ -6,8 +6,6 @@
 
 阿里云为安全增强型实例提供了Enclave功能，在ECS实例内部提供一个可信的隔离空间，将合法软件的安全操作封装在一个Enclave中，保障您的代码和数据的机密性与完整性，不受恶意软件的攻击。
 
-**说明：** Enclave功能正在邀测中。您可以前往[产品详情页](https://www.aliyun.com/daily-act/ecs/aliyun-enclave)申请使用。
-
 Enclave功能适用于对敏感和机密数据有强保护需求的业务，例如金融服务、互联网、医疗等。
 
 ## Enclave的工作原理
