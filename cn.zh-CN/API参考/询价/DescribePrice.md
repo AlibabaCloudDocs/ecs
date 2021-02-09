@@ -163,6 +163,7 @@
  -   当参数PriceUnit取值为Month时：1~9
 -   当参数PriceUnit取值为Year时：1~5
 -   当参数PriceUnit取值为Hour时：1
+-   当参数PriceUnit取值为Week时：1~4
 
  默认值：1 |
 |PriceUnit|String|否|Year|查询云服务器ECS不同计费周期的价格。取值范围：
