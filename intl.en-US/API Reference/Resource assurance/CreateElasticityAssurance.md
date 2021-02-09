@@ -6,7 +6,6 @@ You can call this operation to create an elasticity assurance.
 
 Elasticity Assurance provides a new method to purchase and use resources with flexibility and assurance. It offers an assured resource reservation for pay-as-you-go instances. Pay-as-you-go ECS instances covered by the elasticity assurance can be successfully purchased within the term of the elasticity assurance.
 
--   Elasticity Assurance is in invitational preview. If you want to use Elasticity Assurance, submit a ticket.
 -   Elasticity assurances are not refundable after purchase.
 -   Elasticity assurances are applicable only to pay-as-you-go ECS instances.
 -   Currently, only the unlimited mode is enabled for elasticity assurances. The `AssuranceTimes` parameter can be set only to `Unlimited`. The unlimited mode is automatically enabled when the elasticity assurance takes effect.
