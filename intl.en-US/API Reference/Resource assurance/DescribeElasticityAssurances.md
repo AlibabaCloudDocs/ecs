@@ -2,10 +2,6 @@
 
 You can call this operation to query the details of elasticity assurances.
 
-## Description
-
-Elasticity Assurance is in invitational preview. If you want to use Elasticity Assurance, submit a ticket.
-
 ## Debugging
 
 [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeElasticityAssurances&type=RPC&version=2014-05-26)
