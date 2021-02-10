@@ -99,7 +99,7 @@ https://ecs.aliyuncs.com/?Action=CreateNetworkInterface
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateNetworkInterfaceResponse>
@@ -128,7 +128,7 @@ https://ecs.aliyuncs.com/?Action=CreateNetworkInterface
 </CreateNetworkInterfaceResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -195,10 +195,16 @@ https://ecs.aliyuncs.com/?Action=CreateNetworkInterface
 |400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
 |400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
+|400|JoinedGroupLimitExceed|%s|指定资源所能加入的安全组数量达到上限。具体信息请参见错误信息%s占位符的实际返回结果。|
 |403|InvalidIp.Address|%s|指定的IPv6地址无效。|
 |403|InvalidIp.IpRepeated|%s|指定的IP重复。|
+|403|MaxEniPrivateIpsCountExceeded|%s|指定的ENI分配的辅助私网IP数量超过限制，具体信息请参见错误信息%s占位符的实际返回结果。|
 |400|InvalidPrivateIpAddress.Duplicated|Specified private IP address is duplicated.|指定的私网IP已经被使用，请您更换IP再重试。|
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
+|403|InvalidOperation.ResourceManagedByCloudProduct|%s|云产品托管的安全组不支持修改操作。|
+|403|InvalidParameter.InvalidEniQueueNumber|%s|弹性网卡队列数有误，具体信息请参见错误信息%s占位符的实际返回结果。|
+|403|InvalidOperation.MaxEniQueueNumberExceeded|%s|弹性网卡队列数超过上限，具体信息请参见错误信息%s占位符的实际返回结果。|
+|403|InvalidOperation.ExceedInstanceTypeQueueNumber|%s|弹性网卡队列总数超过上限，具体信息请参见错误信息%s占位符的实际返回结果。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
