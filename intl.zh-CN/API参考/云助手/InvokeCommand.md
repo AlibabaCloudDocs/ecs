@@ -43,7 +43,17 @@
 -   设置的自定义参数名集合必须为创建命令时定义的参数集的子集。对于未传入的参数，您可以使用空字符串代替。
 
  您可以取消设置该参数从而禁用自定义参数。 |
-|Username|String|否|root|在ECS实例中执行命令的用户名称。目前仅支持Linux系统的ECS实例，默认以root用户执行命令。您也可以指定实例中已存在的其它用户执行命令。 |
+|Username|String|否|root|在ECS实例中执行命令的用户名称。取值范围：
+
+ -   Linux系统的ECS实例，默认以root用户执行命令。
+-   Windows系统的ECS实例，默认以System用户执行命令。
+
+ 您也可以指定实例中已存在的其他用户执行命令，以普通用户执行云助手命令更加安全。更多信息，请参见[设置普通用户执行云助手命令](~~203771~~)。 |
+|WindowsPasswordName|String|否|axtSecretPassword|在Windows实例中执行命令的用户的密码名称。
+
+ 当您希望以非默认用户（System）在Windows实例中执行命令时，需要同时传入`Username`和该参数。为降低密码泄露的风险，需要将密码明文托管在运维编排服务的参数仓库中，此处仅传入密码的名称。更多信息，请参见[加密参数](~~186828~~)以及[设置普通用户执行云助手命令](~~203771~~)。
+
+ **说明：** 当您使用Linux实例的root用户或Windows实例的System用户执行命令时，不需要传递该参数。 |
 
 ## 返回数据
 
@@ -64,6 +74,7 @@ https://ecs.aliyuncs.com/?Action=InvokeCommand
 &Timed=true
 &Frequency=0 */20 * * * *
 &Parameters={"name":"Jack", "accessKey":"LTAIdyv******aRY"}
+&Username=root
 &<公共请求参数>
 ```
 
@@ -106,7 +117,6 @@ https://ecs.aliyuncs.com/?Action=InvokeCommand
 |403|ParameterKey.Duplicate|Parameter names cannot be duplicated.|参数名称不能重复，请确认后重试。|
 |403|Parameter.NotMatched|The passed-in parameters do not match the parameters defined when you created the command.|传入的自定义参数与创建命令时定义的自定义参数不匹配。|
 |403|Username.ExceedLimit|The length of the username exceeds the upper limit.|用户名长度超过上限。|
-|403|Username.NotSupportWindows|Running as specified user has not supported for Windows yet.|指定用户执行暂不支持Windows实例。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
