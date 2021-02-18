@@ -94,7 +94,17 @@
 -   Base64：Base64编码。
 
  默认值：PlainText，乱填或错填该取值会当作PlainText处理。 |
-|Username|String|否|root|在ECS实例中执行命令的用户名称。目前仅支持Linux系统的ECS实例，默认以root用户执行命令。您也可以指定实例中已存在的其它用户执行命令。 |
+|Username|String|否|root|在ECS实例中执行命令的用户名称。取值范围：
+
+ -   Linux系统的ECS实例，默认以root用户执行命令。
+-   Windows系统的ECS实例，默认以System用户执行命令。
+
+ 您也可以指定实例中已存在的其他用户执行命令，以普通用户执行云助手命令更加安全。更多信息，请参见[设置普通用户执行云助手命令](~~203771~~)。 |
+|WindowsPasswordName|String|否|axtSecretPassword|在Windows实例中执行命令的用户的密码名称。
+
+ 当您希望以非默认用户（System）在Windows实例中执行命令时，需要同时传入`Username`和该参数。为降低密码泄露的风险，需要将密码明文托管在运维编排服务的参数仓库中，此处仅传入密码的名称。更多信息，请参见[加密参数](~~186828~~)以及[设置普通用户执行云助手命令](~~203771~~)。
+
+ **说明：** 当您使用Linux实例的root用户或Windows实例的System用户执行命令时，不需要传递该参数。 |
 
 ## 返回数据
 
@@ -115,6 +125,7 @@ http(s)://ecs.aliyuncs.com/?Action=RunCommand
 &Name=Test
 &RegionId=cn-hangzhou
 &Type=RunShellScript
+&Username=root
 &<公共请求参数>
 ```
 
@@ -157,7 +168,6 @@ http(s)://ecs.aliyuncs.com/?Action=RunCommand
 |403|InvalidParam.Frequency|The specified frequency is invalid.|指定的Frequency参数无效。请检查参数值是否正确。|
 |403|InstanceIds.ExceedLimit|The number of instance IDs exceeds the upper limit.|目标实例数量超过上限。|
 |403|Username.ExceedLimit|The length of the username exceeds the upper limit.|用户名长度超过上限。|
-|403|Username.NotSupportWindows|Running as specified user has not supported for Windows yet.|指定用户执行暂不支持Windows实例。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
