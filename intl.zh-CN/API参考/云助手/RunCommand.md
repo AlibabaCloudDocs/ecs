@@ -94,7 +94,7 @@
 -   Base64：Base64编码。
 
  默认值：PlainText，乱填或错填该取值会当作PlainText处理。 |
-|Username|String|否|root|在ECS实例中执行命令的用户名称。取值范围：
+|Username|String|否|root|在ECS实例中执行命令的用户名称。
 
  -   Linux系统的ECS实例，默认以root用户执行命令。
 -   Windows系统的ECS实例，默认以System用户执行命令。
