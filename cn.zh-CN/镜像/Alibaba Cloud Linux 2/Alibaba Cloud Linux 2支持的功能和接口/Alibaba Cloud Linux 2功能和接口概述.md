@@ -11,6 +11,7 @@
 |[在本地使用Alibaba Cloud Linux 2镜像](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/在本地使用Alibaba Cloud Linux 2镜像.md)|Alibaba Cloud Linux 2镜像支持下载至本地KVM虚拟机中使用。|
 |[基于YUM的安全更新操作](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/基于YUM的安全更新操作.md)|您可以使用yum查询、检查以及安装Alibaba Cloud Linux 2操作系统的安全更新。|
 |[开启或关闭IPv6](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/开启或关闭IPv6.md)|Alibaba Cloud Linux 2提供了暂时开启或关闭IPv6；持久开启或关闭IPv6两种操作方式。|
+|[订阅Alibaba Cloud Linux 2安全漏洞（CVE）公告](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/订阅Alibaba Cloud Linux 2安全漏洞（CVE）公告.md)|软件包安全漏洞（CVE）修复在Alibaba Cloud Linux 2版本支持期限内会持续更新，您可以利用浏览器插件，订阅Alibaba Cloud Linux 2 CVE公告，方便快捷地查看CVE更新情况。|
 
 ## Alibaba Cloud Linux 2内核系统支持的功能接口
 
