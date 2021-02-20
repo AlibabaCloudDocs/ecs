@@ -35,7 +35,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-2.  在左侧导航栏，单击**实例与镜像** \> **实例**。
+2.  在左侧导航栏，选择**实例与镜像** \> **实例**。
 
 3.  在顶部菜单栏左上角处，选择地域。
 
@@ -87,7 +87,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 进入ECS实例内部，查看系统盘和数据盘的分区类型（MBR和GPT）和文件系统类型（ext4、xfs等）。不同的分区和文件系统，后续扩容分区和文件系统操作中存在差异。
 
-1.  远程登录ECS实例。登录的具体步骤请参见[通过Workbench远程连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过Workbench远程连接Linux实例.md)。
+1.  远程登录ECS实例。具体操作，请参见[通过密码或密钥认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Linux实例.md)。
 
 2.  运行以下命令查看实例的云盘情况。
 
@@ -95,7 +95,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
     fdisk -lu
     ```
 
-    示例以系统盘（/dev/vda1）和数据盘（/dev/vdb1、/vde/vdc1）的三个分区为例，执行结果如下所示。
+    示例以系统盘（/dev/vda1）和数据盘（/dev/vdb1、/dev/vdc1）的三个分区为例，执行结果如下所示。
 
     ![查看云盘分区情况](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9339169951/p135832.png)
 
@@ -104,6 +104,8 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
     |①|`/dev/vda1`|系统盘，**System**取值**Linux**表示为MBR分区。|
     |②|`/dev/vdb1`|数据盘，**System**取值**Linux**表示为MBR分区。|
     |③|`/dev/vdc1`|数据盘，**System**取值**GPT**表示为GPT分区。|
+
+    **说明：** 如果您的查询结果中云盘容量还是40 GiB（`Disk /dev/vda: 42.9 GB`），表示扩容不成功，建议您在控制台重启下本实例。
 
 3.  运行以下命令确认已有分区的文件系统类型。
 
@@ -138,8 +140,16 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     -   Debian 9及以上版本、Ubuntu14及以上版本运行以下命令。
 
+        更新软件源。
+
         ```
-        apt install -y cloud-guest-utils
+        apt-get update
+        ```
+
+        安装cloud-guest-utils。
+
+        ```
+        apt-get install -y cloud-guest-utils
         ```
 
 3.  运行以下命令扩容分区。
@@ -202,9 +212,9 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 ## 常见问题
 
--   问题：运行`growpart /dev/vda 1`时，提示`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。
+-   **问题**：运行`growpart /dev/vda 1`时，提示`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。
 
-    解决方案：
+    **解决方案**：
 
     1.  运行`locale`命令查看ECS实例的字符编码类型，将非en\_US.UTF-8的字符编码类型切换成en\_US.UTF-8。
         1.  运行以下命令，切换字符编码类型。
@@ -236,9 +246,9 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     当您通过切换字符编码，成功完成扩容分区后，建议您按需切回原有字符编码。
 
--   问题：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
+-   **问题**：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
 
-    解决方案：
+    **解决方案**：
 
     1.  运行`uname -a`检查Linux内核的版本。本文操作适用于Linux内核版本3.6.0及以上的系统。
 
@@ -257,6 +267,15 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
             apt install -y cloud-guest-utils
             ```
 
+-   **问题**：为什么在CentOS 6.5中不能安装growpart进行扩容分区?
+
+    **解决方案**：CentOS 6操作系统的Linux内核低于3.6.0版本，如果您需要在CentOS 6中使用growpart，请参考以下步骤：
+
+    1.  在CentOS 6中切换yum源。具体操作，请参见[CentOS 6 EOL如何切换源](/cn.zh-CN/镜像/常见问题/CentOS 6 EOL如何切换源.md)。
+
+        **说明：** CentOS 6操作系统版本已结束生命周期（EOL），如果您需要使用yum安装软件包，需要先切换yum源。
+
+    2.  在CentOS 6中安装dracut-modules-growroot并扩容云盘分区。具体操作，请参见[扩展低内核版本实例的系统盘分区和文件系统](/cn.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux系统盘.md)。
 
 ## 其他扩容场景
 
