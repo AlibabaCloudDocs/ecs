@@ -228,9 +228,9 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
 ## 常见问题
 
--   问题：运行`growpart /dev/vda 1`时，提示`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。
+-   **问题**：运行`growpart /dev/vda 1`时，提示`unexpected output in sfdisk --version [sfdisk，来自 util-linux 2.23.2]`。
 
-    解决方案：
+    **解决方案**：
 
     1.  运行`locale`命令查看ECS实例的字符编码类型，将非en\_US.UTF-8的字符编码类型切换成en\_US.UTF-8。
         1.  运行以下命令，切换字符编码类型。
@@ -262,9 +262,9 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
 
     当您通过切换字符编码，成功完成扩容分区后，建议您按需切回原有字符编码。
 
--   问题：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
+-   **问题**：运行`growpart /dev/vda 1`时，提示`-bash: growpart: command not found`。
 
-    解决方案：
+    **解决方案**：
 
     1.  运行`uname -a`检查Linux内核的版本。本文操作适用于Linux内核版本3.6.0及以上的系统。
 
@@ -283,6 +283,15 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
             apt install -y cloud-guest-utils
             ```
 
+-   **问题**：为什么在CentOS 6.5中不能安装growpart进行扩容分区?
+
+    **解决方案**：CentOS 6操作系统的Linux内核低于3.6.0版本，如果您需要在CentOS 6中使用growpart，请参考以下步骤：
+
+    1.  在CentOS 6中切换yum源。具体操作，请参见[CentOS 6 EOL如何切换源](/intl.zh-CN/镜像/常见问题/CentOS 6 EOL如何切换源.md)。
+
+        **说明：** CentOS 6操作系统版本已结束生命周期（EOL），如果您需要使用yum安装软件包，需要先切换yum源。
+
+    2.  在CentOS 6中安装dracut-modules-growroot并扩容云盘分区。具体操作，请参见[扩展低内核版本实例的系统盘分区和文件系统](/intl.zh-CN/最佳实践/块存储/扩展分区和文件系统_Linux系统盘.md)。
 
 ## 其他扩容场景
 
