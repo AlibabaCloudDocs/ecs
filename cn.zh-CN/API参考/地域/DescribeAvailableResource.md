@@ -8,7 +8,8 @@
 
 -   取值顺序：`Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
 -   取值示例：
-    -   若参数`DestinationResource`取值为`DataDisk`，则必须传入参数`InstanceType`。
+    -   若参数`DestinationResource`取值为`DataDisk`，则需要传入`InstanceType`参数或者指定`ResourceType`参数值为`disk`。
+    -   若参数`DestinationResource`取值为`SystemDisk`，则必须要传入参数`InstanceType`。
     -   若参数`DestinationResource`取值为`InstanceType`，则必须传入参数`IoOptimized`和`InstanceType`。
     -   查询指定地域下所有可用区的ecs.g5.large库存供应情况：`RegionId=cn-hangzhou &DestinationResource=InstanceType &IoOptimized=optimized &InstanceType=ecs.g5.large`。
     -   查询指定地域下有ecs.g5.large库存供应的可用区列表：`RegionId=cn-hangzhou &DestinationResource=Zone &IoOptimized=optimized &InstanceType=ecs.g5.large`。
@@ -159,7 +160,7 @@ https://ecs.aliyuncs.com/?Action=DescribeAvailableResource
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeAvailableResourceResponse>
@@ -187,7 +188,7 @@ https://ecs.aliyuncs.com/?Action=DescribeAvailableResource
 </DescribeAvailableResourceResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
