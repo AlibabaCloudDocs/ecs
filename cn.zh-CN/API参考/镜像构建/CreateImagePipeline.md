@@ -16,7 +16,7 @@
 -   如果参数`BuildContent`没有设置`FROM`命令，则系统会自动将源镜像类型`BaseImageType`和源镜像`BaseImage`构成的`FROM`命令添加到模板内容的首行，格式为`<BaseImageType>:<BaseImage>`。
 -   一个镜像模板内容可以通过Dockerfile编辑，然后将内容传入`BuildContent`参数。内容大小不能超过16 KB，最大支持127个命令。支持的命令说明详情，请参见[镜像构建服务支持的命令说明](~~200206~~)。
 
-**说明：** 不支持通过API使用镜像组件快速完成镜像模板的创建，仅控制台操作支持该功能。更多信息，请参见[镜像构建概述](~~197410~~)。
+不支持通过API使用镜像组件快速完成镜像模板的创建，仅控制台操作支持该功能。更多信息，请参见[镜像构建概述](~~197410~~)。
 
 ## 调试
 
@@ -118,6 +118,7 @@ https://ecs.aliyuncs.com/?Action=CreateImagePipeline
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
+|404|InvalidImage.NotFound|%s|指定的参数值有误，具体信息请参见错误信息%s占位符的实际返回结果。|
 |404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
