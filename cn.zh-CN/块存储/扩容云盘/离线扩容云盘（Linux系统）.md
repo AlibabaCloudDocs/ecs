@@ -267,7 +267,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
             apt install -y cloud-guest-utils
             ```
 
--   **问题**：为什么在CentOS 6.5中不能安装growpart进行扩容分区?
+-   **问题**：为什么在CentOS 6.5中不能安装growpart进行扩容分区？
 
     **解决方案**：CentOS 6操作系统的Linux内核低于3.6.0版本，如果您需要在CentOS 6中使用growpart，请参考以下步骤：
 
