@@ -82,8 +82,6 @@
 |[DescribeElasticityAssuranceInstances]()|调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。|
 |[DescribeCapacityReservationInstances]()|调用DescribeCapacityReservationInstances查询容量预定服务已匹配的实例列表。|
 |[DescribeInstanceAttachmentAttributes]()|调用DescribeInstanceAttachmentAttributes查询实例匹配的私有池信息。|
-|[ModifyElasticityAssurance]()|调用ModifyElasticityAssurance修改一个弹性保障服务的名称与描述信息。|
-|[ModifyCapacityReservation]()|调用ModifyCapacityReservation修改一个容量预定服务的部分信息，包括容量预定服务的名称、描述信息、失效方式以及预留的实例总数量。|
 |[ModifyInstanceAttachmentAttributes]()|调用ModifyInstanceAttachmentAttributes修改实例的私有池的属性。|
 |[ReleaseCapacityReservation]()|调用ReleaseCapacityReservation释放容量预定服务。|
 
