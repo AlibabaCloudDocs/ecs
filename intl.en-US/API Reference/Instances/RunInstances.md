@@ -55,9 +55,7 @@ If you do not use the `LaunchTemplateId` or `LaunchTemplateName` parameter to sp
 
 **Note:** You cannot specify both SecurityGroupId and SecurityGroupIds.N. |
 |VSwitchId|String|No|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|The ID of the vSwitch. You must specify this parameter when you create a VPC-type instance. The vSwitch and the security group must belong to the same VPC. |
-|InstanceName|String|No|k8s-node-\[1,4\]-alibabacloud|The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\), and hyphens \(-\). The default value of this parameter is the `InstanceId` value.
-
-When you create multiple instances at a time, you can specify sequential names for the instances. For more information, see [Specify sequential instance names or hostnames](~~196048~~). |
+|InstanceName|String|No|k8s-node-\[1,4\]-alibabacloud|The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\), and hyphens \(-\). The default value of this parameter is the `InstanceId` value. |
 |Description|String|No|Instance\_Description|The description of the instance. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
 |InternetMaxBandwidthIn|Integer|No|10|The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 
@@ -70,9 +68,7 @@ Default value: 0. |
 
 -   The hostname cannot start or end with a period \(.\) or hyphen \(-\). It cannot contain consecutive periods \(.\) or hyphens \(-\).
 -   For Windows instances, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens \(-\). The hostname cannot contain periods \(.\) or only contain digits.
--   For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\).
-
-When you create multiple instances at a time, you can specify sequential hostnames. For more information, see [Specify sequential instance names or hostnames](~~196048~~). |
+-   For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\). |
 |UniqueSuffix|Boolean|No|true|Specifies whether to automatically append sequential suffixes to the hostnames specified by the `HostName` parameter and instance names specified by the `InstanceName` parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:
 
 -   true
@@ -80,9 +76,7 @@ When you create multiple instances at a time, you can specify sequential hostnam
 
 Default value: false.
 
-When the `HostName` or `InstanceName` value is set based on the specified sorting format and `name_suffix` is not specified, the hostnames or instance names are in the `name_prefix[begin_number,bits]` format, and the `UniqueSuffix` parameter does not take effect. The names are sorted in the specified sequence.
-
-For more information, see [Specify sequential instance names or hostnames](~~196048~~). |
+When the `HostName` or `InstanceName` value is set based on the specified sorting format and `name_suffix` is not specified, the hostnames or instance names are in the `name_prefix[begin_number,bits]` format, and the `UniqueSuffix` parameter does not take effect. The names are sorted in the specified sequence. |
 |Password|String|No|EcsV587!|The password of the instance. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
 
 ```
