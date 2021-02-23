@@ -15,14 +15,14 @@ You can call this operation to query instances in an auto provisioning group.
 |RegionId|String|Yes|cn-hangzhou|The region ID of the auto provisioning group. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |PageNumber|Integer|No|1|The number of the page to return.
 
- Pages start from page 1.
+Pages start from page 1.
 
- Default value: 1. |
+Default value: 1. |
 |PageSize|Integer|No|10|The number of entries to return on each page.
 
- Maximum value: 100.
+Maximum value: 100.
 
- Default value: 10. |
+Default value: 10. |
 
 ## Response parameters
 
@@ -39,11 +39,11 @@ You can call this operation to query instances in an auto provisioning group.
 |Memory|Integer|1024|The memory size of the instance. Unit: MiB. |
 |NetworkType|String|vpc|The network type of the instance. Valid values:
 
- -   vpc
+-   vpc
 -   classic |
 |OsType|String|linux|The operating system type of the instance. Valid values:
 
- -   windows
+-   windows
 -   linux |
 |RegionId|String|cn-hangzhou|The region ID of the instance. |
 |Status|String|Running|The status of the instance. |
@@ -59,7 +59,7 @@ Sample requests
 
 ```
 https://ecs.aliyuncs.com/?Action=DescribeAutoProvisioningGroupInstances
-$AutoProvisioningGroupId=apg-uf6jel2bbl62wh13****
+&AutoProvisioningGroupId=apg-uf6jel2bbl62wh13****
 &RegionId=cn-hangzhou
 &<Common request parameters>
 ```
