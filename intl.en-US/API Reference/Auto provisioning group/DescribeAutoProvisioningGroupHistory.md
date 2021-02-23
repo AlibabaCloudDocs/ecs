@@ -15,10 +15,10 @@ You can call this operation to query the scheduling tasks of an auto provisionin
 |RegionId|String|Yes|cn-hangzhou|The region ID of the auto provisioning group. |
 |PageNumber|Integer|No|1|The number of the page to return. Pages start from page 1.
 
- Default value: 1. |
-|PageSize|Integer|No|5|The number of entries to return on each page. Maximum value: 50.
+Default value: 1. |
+|PageSize|Integer|No|5|The number of entries to return on each page. Maximum value: 100.
 
- Default value: 10. |
+Default value: 10. |
 |StartTime|String|No|2019-04-01T15:10:20Z|The beginning of the time range of the queried data. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
 |EndTime|String|No|2019-06-20T15:10:20Z|The end of the time range of the queried data. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
 
@@ -33,7 +33,7 @@ You can call this operation to query the scheduling tasks of an auto provisionin
 |Detail|String|New ECS instances "i-bp67acfmxazb4p\*\*\*\*, i-bp67acfmxazb5p\*\*\*\*" created.|The execution details of instance creation performed by the single scheduling task. |
 |Status|String|Successful|The execution status of instance creation performed by the single scheduling task. Valid values:
 
- -   Successful: Instances are created.
+-   Successful: Instances are created.
 -   Failed: Instances failed to be created.
 -   InProgress: Instances are being created.
 -   Warning: Partial instances are created. |
@@ -41,7 +41,7 @@ You can call this operation to query the scheduling tasks of an auto provisionin
 |StartTime|String|2019-04-01T15:10:20Z|The start time of executing the single scheduling task. |
 |Status|String|Success|The execution status of the single scheduling task. Valid values:
 
- -   prepare: The scheduling task is being executed.
+-   prepare: The scheduling task is being executed.
 -   success: The scheduling task is executed.
 -   failed: The scheduling task failed to be executed. |
 |TaskId|String|apg-task-bp67acfmxazb4p\*\*\*\*|The ID of the scheduling task. |
