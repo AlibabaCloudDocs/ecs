@@ -68,7 +68,7 @@
 
  按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
 
- 默认值：立即生效 |
+ 默认值：2099-12-31T23:59:59Z |
 |TerminateInstancesWithExpiration|Boolean|否|true|弹性供应组到期时，是否停止抢占式实例。取值范围：
 
  -   true：停止。停止后的下一步动作由`SpotInstanceInterruptionBehavior`指定
@@ -334,20 +334,20 @@ https://ecs.aliyuncs.com/?Action=CreateAutoProvisioningGroup
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateAutoProvisioningGroupResponse>
-    <CreateAutoProvisioningGroupId>apg-sn54avj8htgvtyh8****</CreateAutoProvisioningGroupId>
+    <AutoProvisioningGroupId>apg-sn54avj8htgvtyh8****</AutoProvisioningGroupId>
     <RequestId>745CEC9F-0DD7-4451-9FE7-8B752F39****</RequestId>
 </CreateAutoProvisioningGroupResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
-    "CreateAutoProvisioningGroupId": "apg-sn54avj8htgvtyh8****",
+    "AutoProvisioningGroupId": "apg-sn54avj8htgvtyh8****",
     "RequestId": "745CEC9F-0DD7-4451-9FE7-8B752F39****"
 }
 ```
