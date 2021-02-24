@@ -276,6 +276,7 @@
  默认值：无
 
  同时指定启动模板与启动配置信息时，优先使用启动模板。 |
+|LaunchConfiguration.DeploymentSetId|String|否|ds-bp1frxuzdg87zh4p\*\*\*\*|部署集ID。 |
 |SystemDiskConfig.N.DiskCategory|String|否|cloud\_ssd|实例系统盘类型。您可通过该参数指定多种候选磁盘类型，指定顺序作为各磁盘类型的优先级顺序，当某一种磁盘不可用时，自动更换磁盘类型。取值范围：
 
  -   cloud\_efficiency：高效云盘
