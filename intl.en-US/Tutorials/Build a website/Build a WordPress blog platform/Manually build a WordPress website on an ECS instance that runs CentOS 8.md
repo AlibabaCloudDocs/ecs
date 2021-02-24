@@ -22,9 +22,11 @@ The tutorial is intended for enterprises or individuals who are familiar with Li
 
     1.  Connect to the ECS instance.
 
-        For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using a username and password.md).
+        For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using a username and password.md).
 
-    2.  Log on to the MySQL database.
+    2.  Log on to MySQL.
+
+        Log on to MySQL by using the `root` username and entering the password that you set for the root user when you build the LNMP environment.
 
         ```
         mysql -uroot -p
@@ -38,7 +40,7 @@ The tutorial is intended for enterprises or individuals who are familiar with Li
         create database wordpress;
         ```
 
-    4.  Create a user.
+    4.  Create a new user to manage the wordpress database to improve security.
 
         In MySQL 5.7 and later, the password strength validation plug-in validate\_password is installed by default. You can log on to MySQL to view the password strength rules.
 
@@ -70,7 +72,7 @@ The tutorial is intended for enterprises or individuals who are familiar with Li
         exit;
         ```
 
-2.  Download WordPress and move it to the root directory of the WordPress website.
+2.  Download and depress WordPress and move it to the root directory of the WordPress website.
 
     1.  Go to the root directory of the NGINX website and download the WordPress package.
 
@@ -100,22 +102,24 @@ The tutorial is intended for enterprises or individuals who are familiar with Li
 
     5.  Press the I key to switch to the edit mode and modify MySQL-related configurations based on the wordpress database. The following content is an example of the modified code:
 
+        The data of the WordPress website will be saved in the wordpress database by the user named `user`.
+
         ```
         // ** MySQL settings - The information is based on the host in use. ** //
-        /** WordPress database name */
+        /** The name of the WordPress database */
         define('DB_NAME', 'wordpress');
         
-        /** MySQL database username */
+        /** The username of the MySQL database */
         define('DB_USER', 'user');
         
-        /** MySQL database password */
+        /** The password of the MySQL database */
         define('DB_PASSWORD', 'PASSword123.') ;
         
-        /** MySQL host */
+        /** The host of the MySQL database */
         define('DB_HOST', 'localhost');
         ```
 
-    6.  After the modification is complete, press the Esc key, enter `:wq`, and press the Enter key to save and close the configuration file.
+    6.  Press the Esc key to exit the edit mode. Enter `:wq` and press the Enter key to save and exit the configuration file.
 
 3.  Modify the configuration file of NGINX.
 
@@ -129,11 +133,11 @@ The tutorial is intended for enterprises or individuals who are familiar with Li
 
         Within the `location /` braces, replace the content that follows `root` with the wordpress root directory. The root directory is /usr/share/nginx/html/wordpress in this example.
 
-        ![nginx](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4481101061/p167509.png)
+        ![nginx](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4481101061/p167509.png)
 
-        Within the `location ~ .php$` braces, replace the content that follows `root` with the wordpress root directory.
+        Within the `location ~ .php$` braces, replace the content that follows `root` with the root directory of the WordPress website.
 
-        ![nginx](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4481101061/p167510.png)
+        ![nginx](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4481101061/p167510.png)
 
         Press the Esc key to exit the edit mode and enter `:wq` to save and close the configuration file.
 
@@ -157,7 +161,7 @@ The tutorial is intended for enterprises or individuals who are familiar with Li
         -   Your Email: The email used to receive notifications. Example: 1234567890@aliyun.com.
     3.  Click **Install Wordpress**.
 
-    4.  Enter the username testwp and password Wp.123456 that are used to install WordPress, and then click **LOGIN**.
+    4.  Enter the username `testwp` and password `Wp.123456` that are used to install WordPress, and then click **LOGIN**.
 
         You are logged on to your WordPress website.
 
@@ -168,11 +172,11 @@ If you allow users to access your WordPress website by using the public IP addre
 
 1.  Register the domain name.
 
-    For more information, see [Register adomain name](/intl.en-US/Quick Start/Register a genericdomain name.md).
+    For more information, see [Register a generic domain name](/intl.en-US/Quick Start/Register a generic domain name.md).
 
 2.  Apply for an ICP filing.
 
-    If the website of your domain name is hosted on an ECS instance located in a mainland China region, you must apply for an ICP filing. For more information about the application procedure, see [ICP filing application overview]().
+    If the website of your domain name is hosted on an ECS instance located in a mainland China region, you must apply for an ICP filing.
 
 3.  Resolve the domain name and bind it to the public IP address of the ECS instance.
 
@@ -207,37 +211,66 @@ If you allow users to access your WordPress website by using the public IP addre
 
 ## FAQ
 
-Problem description: After a static link is set for the WordPress website, the web page to which the static link points cannot be accessed.
+-   Problem description: After a static link is set for the WordPress website, the web page to which the static link points cannot be accessed.
 
-Solution: If you set a website to be pseudo-static, search engines can include the website more easily. Before you set a static link for a WordPress website, you must specify pseudo-static rules in the NGINX server. Perform the following steps:
+    Solution: If you set a website to be pseudo-static, search engines can include the website more easily. Before you set a static link for a WordPress website, you must specify pseudo-static rules in the NGINX server. To do this, perform the following operations:
 
-1.  Log on to the ECS instance on which the WordPress website is built.
-2.  Run the following command to open the configuration file of NGINX:
+    1.  Log on to the ECS instance on which the WordPress website is built.
+    2.  Run the following command to open the configuration file of NGINX:
 
-    ```
-    vim /etc/nginx/nginx.conf
-    ```
+        ```
+        vi /etc/nginx/conf.d/default.conf
+        ```
 
-3.  Press the I key to enter the edit mode. Within the `location /` braces, add the following code:
+    3.  Press the I key to enter the edit mode. Within the `location /` braces, add the following code:
 
-    ```
-    if (-f $request_filename/index.html){
-    rewrite (.*) $1/index.html break;
-    }
-    if (-f $request_filename/index.php){
-    rewrite (.*) $1/index.php;
-    }
-    if (! -f $request_filename){
-    rewrite (.*) /index.php;
-    }
-    ```
+        ```
+        if (-f $request_filename/index.html){
+        rewrite (.*) $1/index.html break;
+        }
+        if (-f $request_filename/index.php){
+        rewrite (.*) $1/index.php;
+        }
+        if (! -f $request_filename){
+        rewrite (.*) /index.php;
+        }
+        ```
 
-    Press the Esc key, enter `:wq`, and press the Enter key to save and exit the configuration file.
+        Press the Esc key to exit the edit mode. Enter `:wq` and press the Enter key to save and exit the configuration file.
 
-4.  Run the following command to restart the NGINX service:
+    4.  Run the following command to restart the NGINX service:
 
-    ```
-    systemctl restart nginx
-    ```
+        ```
+        systemctl restart nginx
+        ```
+
+-   Problem description: When I update the version of WordPress or upload a topic or plug-in in WordPress, a message is displayed. The message indicates that an FTP logon credential is required or that the directory cannot be created.
+
+    Solution:
+
+    1.  Log on to the ECS instance on which the WordPress website is built.
+    2.  Run the following command to open the configuration file of WordPress:
+
+        ```
+        vim /usr/share/nginx/html/wordpress/wp-config.php
+        ```
+
+    3.  Press the I key to enter the edit mode. Add the following code to the end of the file:
+
+        ```
+        define("FS_METHOD","direct");
+        define("FS_CHMOD_DIR", 0777);
+        define("FS_CHMOD_FILE", 0777);
+        ```
+
+        Press the Esc key to exit the edit mode. Enter `:wq` and press the Enter key to save and exit the configuration file.
+
+    4.  Return to the WordPress dashboard and refresh the page. Check whether the problem that an FTP logon credential is required is solved.
+
+        If the problem that the directory cannot be created persists, return to the ECS instance and run the following command to change the owner of the root directory of the WordPress website to a NGINX user. In this example, the NGINX user is the `nginx` user.
+
+        ```
+        chown -R nginx /usr/share/nginx/html/wordpress
+        ```
 
 
