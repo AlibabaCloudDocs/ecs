@@ -8,7 +8,7 @@ This topic describes how to roll back a disk by using a snapshot. When the syste
 
 Before you roll back a disk by using a snapshot, take note of the following items:
 
--   A snapshot of the disk to be rolled back is created, and no new snapshot is being created for the disk. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)or [Create a local snapshot](/intl.en-US/Snapshots/Use snapshots/Create a local snapshot.md).
+-   A snapshot of the disk to be rolled back is created, and no new snapshot is being created for the disk. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)or[Create a local snapshot](/intl.en-US/Snapshots/Use snapshots/Create a local snapshot.md).
 
     **Warning:** The rollback operation is irreversible. After a disk is rolled back, the data that you added, deleted, or changed from the creation of the snapshot to the time when the disk is rolled back is lost. To avoid data losses caused by incorrect operations, we recommend that you create a snapshot for the current disk before you roll back the disk.
 
