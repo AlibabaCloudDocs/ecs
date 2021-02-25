@@ -59,7 +59,7 @@
 请求示例
 
 ```
-https://ecs.aliyuncs.com?Action=DescribeMaintenanceProperty
+https://ecs.aliyuncs.com?Action=DescribeInstanceMaintenanceAttributes
 &InstanceId.1=i-bp67acfmxazb4p****
 &<公共请求参数>
 ```
