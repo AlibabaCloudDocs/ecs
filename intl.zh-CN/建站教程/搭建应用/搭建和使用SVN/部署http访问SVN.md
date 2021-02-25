@@ -3,31 +3,21 @@
 本教程介绍如何通过http访问模式来部署SVN。
 
 -   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
--   已创建实例规格为ecs.c6.large的CentOS操作系统实例，具体操作请参见[创建方式导航](/intl.zh-CN/实例/创建实例/创建方式导航.md)。
+-   已创建CentOS操作系统实例，具体操作请参见[创建方式导航](/intl.zh-CN/实例/创建实例/创建方式导航.md)。
 -   已在实例安全组的入方向添加规则并放行SVN服务的默认端口3690，具体操作请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
 
-本教程手动部署SVN的示例步骤中使用了以下版本软件。操作时，请您以实际软件版本为准。
+本教程手动部署SVN的示例步骤中ECS实例配置和版本软件信息如下。操作时，请您以实际配置为准。
 
+-   实例规格：ecs.c6.large
 -   操作系统：公共镜像CentOS 7.2 64位
 -   SVN：1.7.14
 -   Apache：2.4.6
 
 您也可以通过云市场镜像快速部署SVN。例如云市场镜像提供的[SVN版本控制（Centos 64位 \| SVN）](https://market.aliyun.com/products/55530001/jxsc000061.html)，您可以选购镜像，并根据镜像选购页的使用指南，快速完成部署。
 
-## 操作步骤
-
-通过http访问模式部署SVN的操作步骤如下：
-
-1.  [步骤一：安装SVN](#section_gyu_lbx_856)
-2.  [步骤二：安装Apache](#section_ily_okj_kbz)
-3.  [步骤三：安装mod\_dav\_svn](#section_gbn_l1r_5yj)
-4.  [步骤四：配置SVN](#section_ed8_meq_o0d)
-5.  [步骤五：配置Apache](#section_dk7_05x_t3w)
-6.  [步骤六：浏览器测试访问](#section_svb_rm4_e81)
-
 ## 步骤一：安装SVN
 
-1.  [远程连接Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/使用用户名密码验证连接Linux实例.md)。
+1.  [远程连接Linux实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用用户名密码验证连接Linux实例.md)。
 
 2.  运行以下命令安装SVN。
 
@@ -94,7 +84,7 @@ yum install mod_dav_svn
     ls
     ```
 
-    ![查看版本库文件](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p12529.png)
+    ![查看版本库文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p12529.png)
 
     Subversion目录说明如下表：
 
@@ -143,7 +133,7 @@ yum install mod_dav_svn
         userTest=rw
         ```
 
-        ![svn-4](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p101211.png)
+        ![svn-4](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p101211.png)
 
     4.  按`Esc`键退出编辑模式，并输入`:wq`保存并退出。
 
@@ -165,7 +155,7 @@ yum install mod_dav_svn
         realm = /var/svn/svnrepos #认证空间名，版本库所在目录
         ```
 
-        ![修改svn服务配置](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p12532.png)
+        ![修改svn服务配置](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p12532.png)
 
     4.  按`Esc`键退出编辑模式，并输入`:wq`保存并退出。
 
@@ -181,7 +171,7 @@ yum install mod_dav_svn
 
     如果返回结果如下图所示，表示SVN服务已经开启。
 
-    ![查看SVN服务状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p12533.png)
+    ![查看SVN服务状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p12533.png)
 
 
 ## 步骤五：配置Apache
@@ -223,6 +213,6 @@ yum install mod_dav_svn
 
     返回结果如下图所示，表示成功访问之前新建的SVN仓库。
 
-    ![result](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p101777.png)
+    ![result](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p101777.png)
 
 
