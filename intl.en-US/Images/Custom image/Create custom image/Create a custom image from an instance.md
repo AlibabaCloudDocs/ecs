@@ -11,7 +11,7 @@ Before you create a custom image from a Linux instance, take note of the followi
 
 When you create a custom image from an instance, a snapshot is generated for each disk in the instance. Together, all of the snapshots constitute a complete custom image, as shown in the following figure.
 
-![custom_image](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8863559951/p4599.png)
+![custom_image](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8863559951/p4599.png)
 
 Before you create a custom image from an instance, take note of the following items:
 
