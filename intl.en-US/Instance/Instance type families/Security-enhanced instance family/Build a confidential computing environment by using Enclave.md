@@ -34,7 +34,7 @@ For other general limits, see [Limits](/intl.en-US/Product Introduction/Limits.m
 
     -   When you are creating an ECS instance, select **Enclave**. The Enclave Runtime toolset is automatically installed.
 
-        ![Install the Enclave Runtime toolset along with the instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5924334161/p240198.png)
+        ![Install the Enclave Runtime toolset along with the instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8244334161/p240198.png)
 
     -   After an ECS instance is created, run the following commands to install the Enclave Runtime toolset on the primary VM:
 
