@@ -8,7 +8,7 @@ This topic describes the updates to the features of ECS public images in order o
 
 ## Background information
 
--   Unless otherwise stated, the released updates apply to all Alibaba Cloud regions where ECS is provided.
+-   Unless otherwise stated, released updates apply to all Alibaba Cloud regions where ECS is provided.
 -   Public images are applicable to most instance families. Some instance families can use only specific public images. For more information, see the following sections:
     -   [Trusted images](#section_ta4_ich_flj)
     -   [AMD images](#section_in3_bba_8af)
@@ -17,6 +17,8 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
+-   Changes: updated to include the latest patches. |
 |CentOS 8.2|centos\_8\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.18.0-193.28.1.el8\_2.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
@@ -122,6 +124,10 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Debian 10.7|debian\_10\_7\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.19.0-13-amd64.
+-   Changes: updated to include the latest patches. |
+|Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.9.0-14-amd64.
+-   Changes: updated to include the latest patches. |
 |Debian 10.6|debian\_10\_6\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.19.0-12-amd64.
 -   Changes:
     -   Updated to include the latest patches.
@@ -202,6 +208,9 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|FreeBSD 12.1|freebsd\_12\_1\_x64\_30G\_alibase\_20201022.vhd|2020-10-22|-   Kernel version: 12.1-RELEASE.
+-   Changes: updated to include the latest patches.
+-   Applicable regions: China \(Hangzhou\), China \(Qingdao\), China \(Zhangjiakou\), China \(Hohhot\), and China \(Chengdu\). |
 |FreeBSD 11.3|freebsd\_11\_3\_x64\_30G\_alibase\_20200803.vhd|2020-08-03|-   Kernel version: 11.3-RELEASE.
 -   Changes: updated to include the latest patches. |
 |FreeBSD 11.3|freebsd\_11\_3\_x64\_20G\_alibase\_20200420.vhd|2020-04-20|-   Kernel version: 11.3-RELEASE.
@@ -215,6 +224,12 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.4.0-58-generic.
+-   Changes: updated to include the latest patches. |
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.15.0-128-generic.
+-   Changes: updated to include the latest patches. |
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.4.0-198-generic.
+-   Changes: updated to include the latest patches. |
 |Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.4.0-54-generic.
 -   Changes: updated to include the latest patches. |
 |Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.15.0-124-generic.
@@ -245,7 +260,7 @@ This topic describes the updates to the features of ECS public images in order o
 -   Changes: updated to include the latest patches. |
 |Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release.
 -   Kernel version: 5.4.0-31-generic. |
-|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 4.4.0-179-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 44.0-179-generic.
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200521.vhd|2020-05-21|-   Kernel version: 4.15.0-101-generic.
 -   Changes: updated to include the latest operating system patches. |
@@ -314,8 +329,10 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
+-   Changes: updated to include the latest patches. |
 |Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
--   Updated to include the latest patches.
+-   Changes: updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
 |Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
 -   Changes: updated to include the latest patches. |
@@ -344,6 +361,7 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|SUSE Linux Enterprise Server 15 SP2|sles\_15\_sp2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|Updated to include the latest patches.|
 |SUSE Linux Enterprise Server 15 SP2|sles\_15\_sp2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel.
 -   Fixed the bsc\#1176925 vulnerability in the Linux kernel and the issue of failed startup for hfg6 instances. |
@@ -392,6 +410,8 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Debian 10.7|debian\_10\_7\_amd\_x64\_20G\_alibase\_20201231.vhd|2020-12-31|-   Released Debian 10.7 AMD images.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Chengdu\), Singapore, and US \(Virginia\). |
 |Ubuntu 20.04|ubuntu\_20\_04\_amd\_x64\_20G\_alibase\_20200820.vhd|2020-08-20|-   Released Ubuntu 20.04 AMD images.
 -   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Guangzhou\), Singapore, China \(Hangzhou\), and China \(Chengdu\). |
 |Ubuntu 18.04|ubuntu\_18\_04\_amd\_x64\_20G\_alibase\_20200804.vhd|2020-08-04|-   Released Ubuntu 18.04 AMD images.
@@ -401,6 +421,11 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20210114.vhd
+-   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20210114.vhd
+
+|2021-01-14|-   Updated to include the KB4597253 and KB4598285 operating system patches released in January 2021.
+-   Fixed the CVE-2021-1673, CVE-2021-1648, CVE-2021-1674, and CVE-2021-1665 vulnerabilities. |
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20201217.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20201217.vhd
 
@@ -490,7 +515,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20181220.vhd
 
-|2018-12-20|-   Updated to include the KB4471320 security patch released in December, 2018. You must update Windows clients with the latest patches to establish RDP connections.
+|2018-12-20|-   Updated to include the KB4471320 security patch released in December 2018. You must update Windows clients by using the latest patches to establish RDP connections.
 -   Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
@@ -498,6 +523,11 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20210114.vhd
+-   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210114.vhd
+
+|2021-01-14|-   Updated to include the KB4597247 and KB4598243 operating system patches released in January 2021.
+-   Fixed the CVE-2021-1673, CVE-2021-1648, CVE-2021-1674, and CVE-2021-1665 vulnerabilities. |
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20201217.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20201217.vhd
 
@@ -587,7 +617,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20181220.vhd
 
-|2018-12-20|-   Updated to include the KB4471321 security patch released in December 2018. You must update Windows clients with the latest patches to establish RDP connections.
+|2018-12-20|-   Updated to include the KB4471321 security patch released in December 2018. You must update Windows clients by using the latest patches to establish RDP connections.
 -   Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
@@ -595,6 +625,16 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210114.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210114.vhd
+
+|2021-01-14|-   Updated to include the KB4586877, KB4598230, and KB4598480 operating system patches released in January 2021.
+-   Fixed the CVE-2021-1673, CVE-2021-1648, CVE-2021-1674, and CVE-2021-1665 vulnerabilities. |
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20210114.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20210114.vhd
+
+|2021-01-14|-   Updated to include the KB4586877, KB4598230, and KB4598480 operating system patches released in January 2021.
+-   Fixed the CVE-2021-1673, CVE-2021-1648, CVE-2021-1674, and CVE-2021-1665 vulnerabilities. |
 |Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201217.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201217.vhd
 
@@ -681,7 +721,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0910, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
 |Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
--   English version: none
+-   English version:
 
 |2020-04-16|-   Updated to include the KB4549947 and KB4549949 operating system patches released in April 2020.
 -   Added disk drives for the Windows Recovery mode.
@@ -846,6 +886,16 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210114.vhd
+-   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210114.vhd
+
+|2021-01-14|-   Updated to include the KB4586876, KB4598242, and KB4598481 operating system patches released in January 2021.
+-   Fixed the CVE-2021-1673, CVE-2021-1648, CVE-2021-1674, and CVE-2021-1665 vulnerabilities. |
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20210114.vhd
+-   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20210114.vhd
+
+|2021-01-14|-   Updated to include the KB4586876, KB4598242, and KB4598481 operating system patches released in January 2021.
+-   Fixed the CVE-2021-1673, CVE-2021-1648, CVE-2021-1674, and CVE-2021-1665 vulnerabilities. |
 |Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20201217.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20201217.vhd
 
@@ -948,7 +998,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: none
 
-|2018-12-20|-   Updated to include the KB4471318 security patch released in December 2018. You must update Windows clients with the latest patches to establish RDP connections.
+|2018-12-20|-   Updated to include the KB4471318 security patch released in December 2018. You must update Windows clients by using the latest patches to establish RDP connections.
 -   Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
