@@ -125,11 +125,29 @@ CentOS 6操作系统版本结束了生命周期（EOL），Linux社区已不再�
 
     编辑完成后，按Esc键，并输入`:wq`保存退出文件。
 
-6.  切换完成后，您可以使用yum install命令安装需要的软件包。
 
+yum源和epel源切换完成后，即可使用yum install命令在实例上安装您所需要的软件包。
+
+使用自定义镜像创建新的ECS实例，在启动实例时`cloud-init`会自动初始化系统的源配置。如果您后续需要通过已切换源的ECS实例创建自定义镜像，并且需要保留已切换的源配置，需要您在创建自定义镜像前，按照以下操作在已切换源的ECS实例中修改`cloud-init`的配置文件/etc/cloud/cloud.cfg。
+
+1.  运行以下命令编辑/etc/cloud/cloud.cfg文件。
+
+    ```
+    vim /etc/cloud/cloud.cfg
+    ```
+
+2.  按i进入编辑模式，使用`#`注释掉`cloud_init_modules:`下的`- source-address`模块。
+
+    注释后，文件内的配置信息如下所示：
+
+    ![cloudinit](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3492234161/p243823.png)
+
+3.  编辑完成后，按Esc键，并输入`:wq`保存退出文件。
 
 **相关文档**  
 
 
 [CentOS Product Specifications](https://wiki.centos.org/About/Product)
+
+[操作系统停止支持计划](/intl.zh-CN/镜像/操作系统停止支持计划.md)
 
