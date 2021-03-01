@@ -1,90 +1,75 @@
-# ModifyCommand {#ModifyCommand .reference}
+# ModifyCommand
 
-修改一条云助手命令相关参数以及命令内容。
+调用ModifyCommand修改一条云助手命令相关参数以及命令内容。
 
-## 描述 {#section_s4q_vr4_ydb .section}
+## 接口说明
 
--   命令执行期间也允许修改，修改命令后，后续执行会按照新的命令内容执行。
--   您不能修改命令的类型，例如，如果命令是 Shell 命令（`RunShellScript`），则不能修改为 Bat 命令（`RunBatScript`）。
+命令执行期间也允许修改，修改命令后，后续执行会按照新的命令内容执行。
 
-## 请求参数 {#RequestParameter .section}
+您不能修改命令的类型，例如，如果命令是Shell命令（RunShellScript），则不能修改为Bat命令（RunBatScript）。
 
-|名称|类型|是否必需|描述|
-|:-|:-|:---|:-|
-|Action|String|是|系统规定参数。取值：ModifyCommand|
-|RegionId|String|是|地域 ID。您可以调用 [DescribeRegions](cn.zh-CN/API参考/地域/DescribeRegions.md#) 查看最新的阿里云地域列表。|
-|CommandId|String|是|命令 ID。您可以通过接口 [DescribeCommands](cn.zh-CN/API参考/云助手/DescribeCommands.md#) 查询所有可用的 `CommandId`。|
-|Name|String|否|命令名称，支持全字符集。长度不得超过 30 个字符。|
-|Description|String|否|命令描述，支持全字符集。长度不得超过100个字符。|
+## 调试
 
-## 返回参数 {#section_f54_lk5_xdb .section}
+[您可以在OpenAPI Explorer中直接运行该接口，免去您计算签名的困扰。运行成功后，OpenAPI Explorer可以自动生成SDK代码示例。](https://api.aliyun.com/#product=Ecs&api=ModifyCommand&type=RPC&version=2014-05-26)
 
-全是公共返回参数。参阅 [公共返回参数](cn.zh-CN/API参考/HTTP调用方式/公共参数.md#commonResponseParameters)。
+## 请求参数
 
-## 示例 { .section}
+|名称|类型|是否必选|示例值|描述|
+|--|--|----|---|--|
+|Action|String|是|ModifyCommand|系统规定参数。取值：ModifyCommand |
+|CommandId|String|是|c-hz01272yr52\*\*\*\*|命令ID。您可以通过接口[DescribeCommands](~~64843~~)查询所有可用的CommandId。 |
+|RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
+|Name|String|否|test-CommandName|命令名称。支持全字符集，长度不得超过128个字符。 |
+|Description|String|否|This is description.|命令描述。支持全字符集，长度不得超过512个字符。 |
+|WorkingDir|String|否|/home/|执行路径。 |
+|Timeout|Long|否|120|您创建的命令在ECS实例中执行时最大的超时时间，单位为秒。当无法在配置的时间内运行并完成您创建的命令时，会出现超时现象。超时后，会强制终止命令进程，即取消命令的PID。 |
 
-**请求示例** 
+## 返回数据
+
+|名称|类型|示例值|描述|
+|--|--|---|--|
+|RequestId|String|0DE9B41E-EF0D-40A0-BB43-37749C5BDA9C|请求ID。 |
+
+## 示例
+
+请求示例
 
 ```
 https://ecs.aliyuncs.com/?Action=ModifyCommand
+&CommandId=c-hz01272yr52****
 &RegionId=cn-hangzhou
-&CommandId=c-e996287206324975b5fbe1dxxxxxxxxx
-&NameId=Test
-&TimeOut=120
+&Name=test-CommandName
+&Description=This is description.
+&CommandContent=c2VydmljZSB0b21jYXQgc3RhcnQ=
+&WorkingDir=/home/
+&Timeout=120
 &<公共请求参数>
 ```
 
-**正常返回示例** 
+正常返回示例
 
-**XML 格式**
+`XML`格式
 
 ```
 <ModifyCommandResponse>
-    <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
+      <RequestId>0DE9B41E-EF0D-40A0-BB43-37749C5BDA9C</RequestId>
 </ModifyCommandResponse>
 ```
 
- **JSON 格式** 
+`JSON`格式
 
 ```
 {
-    "RequestId":"E69EF3CC-94CD-42E7-8926-F133B86387C0",
+    "RequestId": "0DE9B41E-EF0D-40A0-BB43-37749C5BDA9C"
 }
 ```
 
-**异常返回示例** 
+## 错误码
 
-**XML 格式**
+|HttpCode|错误码|错误信息|描述|
+|--------|---|----|--|
+|404|InvalidCmdId.NotFound|The specified command ID does not exist.|指定的CommandId参数有误，请检查参数值是否正确。您可以通过接口DescribeCommands查询所有可用的CommandId。|
+|404|InvalidCmdType.NotFound|The specified command type does not exist.|指定的命令类型不存在。|
 
-```
-<Error>
-    <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
-    <HostId>ecs.aliyuncs.com</HostId>
-    <Code>InvalidCmdId.NotFound</Code>
-    <Message>The specified command ID does not exist.</Message>
-</Error>
-```
-
-**JSON 格式** 
-
-```
-{
-    "RequestId": "E69EF3CC-94CD-42E7-8926-F133B86387C0",
-    "HostId": "ecs.aliyuncs.com"
-    "Code": "InvalidCmdId.NotFound"
-    "Message": "The specified command ID does not exist."
-}
-```
-
-## 错误码 {#ErrorCode .section}
-
-以下为本接口特有的错误码。更多错误码，请访问 [API 错误中心](https://error-center.aliyun.com/status/product/Ecs)。
-
-|错误代码|错误信息|HTTP 状态码|说明|
-|:---|:---|:-------|:-|
-|MissingParameter.CommandId|The input parameter “CommandId” that is mandatory for processing this request is not supplied.|400|您必须指定必需参数 `CommandId`。|
-|MissingParameter.RegionId|The input parameter “RegionId” that is mandatory for processing this request is not supplied.|400|您必须指定必需参数 `RegionId`，或者您暂时不能使用指定 `RegionId` 里的资源。|
-|InvalidCmdId.NotFound|The specified CommandId does not exist.|404|指定的 `CommandId` 不存在。|
-|InvalidRegionId.NotFound|The RegionId provided does not exist in our items.|404|指定的 `RegionId` 不存在。|
-|InternalError.Dispatch|An internal error occurred when dispath the request|500|内部错误，请稍后尝试。|
+访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
