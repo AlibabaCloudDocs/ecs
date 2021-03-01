@@ -1,185 +1,146 @@
-# DescribeDeploymentSets {#doc_api_1006118 .reference}
+# DescribeDeploymentSets
 
-查询一个或多个部署集的属性列表。
+调用DescribeDeploymentSets查询一个或多个部署集的属性列表。
 
-## 调试 {#apiExplorer .section}
+## 调试
 
-前往【[API Explorer](https://api.aliyun.com/#product=Ecs&api=DescribeDeploymentSets)】在线调试，API Explorer 提供在线调用 API、动态生成 SDK Example 代码和快速检索接口等能力，能显著降低使用云 API 的难度，强烈推荐使用。
+[您可以在OpenAPI Explorer中直接运行该接口，免去您计算签名的困扰。运行成功后，OpenAPI Explorer可以自动生成SDK代码示例。](https://api.aliyun.com/#product=Ecs&api=DescribeDeploymentSets&type=RPC&version=2014-05-26)
 
-## 请求参数 {#parameters .section}
+## 请求参数
 
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
-|RegionId|String|是|cn-hangzhou|部署集所属地域ID。您可以调用 [DescribeRegions](~~25609~~) 查看最新的阿里云地域列表。
+|Action|String|是|DescribeDeploymentSets|系统规定参数。取值：DescribeDeploymentSets |
+|RegionId|String|是|cn-hangzhou|部署集所属地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
+|PageNumber|Integer|否|1|部署集列表的页码。
 
- |
-|Action|String|否|DescribeDeploymentSets|系统规定参数。取值：DescribeDeploymentSets
+ 起始值：1
 
- |
-|DeploymentSetIds|String|否|\["ds-xxxxxxxxx", "ds-yyyyyyyyy", … "ds-zzzzzzzzz"\]|部署集ID列表。取值可以由多个部署集ID组成一个JSON数组，最多支持100个ID，ID之间用半角逗号（,）隔开。
+ 默认值：1 |
+|PageSize|Integer|否|10|分页查询时设置的每页行数。
 
- |
-|DeploymentSetName|String|否|FinanceJoshua|部署集名称。
+ 最大值：50
 
- |
-|Domain|String|否|Default|部署域。
+ 默认值：10 |
+|DeploymentSetIds|String|否|\["ds-bp67acfmxazb4ph\*\*\*\*", "ds-bp67acfmxazb4pi\*\*\*\*", … "ds-bp67acfmxazb4pj\*\*\*\*"\]|部署集ID列表。取值可以由多个部署集ID组成一个JSON数组，最多支持100个ID，ID之间用半角逗号（,）隔开。 |
+|DeploymentSetName|String|否|testDeploymentSetName|部署集名称。 |
+|Strategy|String|否|Availability|部署策略。仅支持设置高可用策略。取值：Availability
 
- **说明：** 该参数即将被弃用，为提高兼容性，请尽量使用其他参数。
+ 默认值：空 |
+|NetworkType|String|否|null|部署集内实例的网络类型。
 
- |
-|Granularity|String|否|Host|部署粒度。
+ **说明：** 为提高兼容性，请尽量使用其他参数。 |
+|Granularity|String|否|null|部署粒度。
 
- **说明：** 该参数即将被弃用，为提高兼容性，请尽量使用其他参数。
+ **说明：** 为提高兼容性，请尽量使用其他参数。 |
+|Domain|String|否|null|部署域。
 
- |
-|NetworkType|String|否|vpc|部署集内的网络类型。
+ **说明：** 为提高兼容性，请尽量使用其他参数。 |
 
- **说明：** 该参数即将被弃用，为提高兼容性，请尽量使用其他参数。
-
- |
-|OwnerAccount|String|否|ECSforCloud@Alibaba.com|RAM用户的账号登录名称。
-
- |
-|PageNumber|Integer|否|1|部署集列表的页码。起始值：1
-
- 默认值：1
-
- |
-|PageSize|Integer|否|10|分页查询时设置的每页行数，最大值：100
-
- 默认值：10
-
- |
-|Strategy|String|否|Availability|部署策略。取值：Availability
-
- 默认值：空。
-
- |
-
-## 返回参数 {#resultMapping .section}
+## 返回数据
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
-|DeploymentSets| | |由DeploymentSet组成的数组格式，返回部署集详细信息。
+|DeploymentSets|Array of DeploymentSet| |由DeploymentSet组成的数组格式，返回部署集详细信息。 |
+|DeploymentSet| | | |
+|CreationTime|String|2017-12-05T22:40:00Z|部署集的创建时间。 |
+|DeploymentSetDescription|String|testDeploymentSetDescription|部署集的描述信息。 |
+|DeploymentSetId|String|ds-bp67acfmxazb4ph\*\*\*\*|部署集ID。 |
+|DeploymentSetName|String|testDeploymentSetName|部署集名称。 |
+|DeploymentStrategy|String|Availability|部署策略。该返回值对应请求参数`Strategy`的值。 |
+|Domain|String|default|部署域。 |
+|Granularity|String|Host|部署粒度。 |
+|GroupCount|Integer|0|**说明：** 该参数正在邀测，暂未开放使用。 |
+|InstanceAmount|Integer|1|部署集内的实例数量。 |
+|InstanceIds|List|\["i-bp67acfmxazb4ph\*\*\*\*"\]|部署集内的实例ID列表。 |
+|Strategy|String|LooseDispersion|部署策略。 |
+|PageNumber|Integer|1|部署集列表的页数。 |
+|PageSize|Integer|10|设置的每页行数。 |
+|RegionId|String|cn-hangzhou|部署集所处的地域ID。 |
+|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
+|TotalCount|Integer|1|查询到的部署集总数。 |
 
- |
-|└CreationTime|String|2017-12-05T22:40:00Z|部署集的创建时间。
-
- |
-|└DeploymentSetDescription|String|FinanceDeptHighAvailability|部署集的描述信息。
-
- |
-|└DeploymentSetId|String|ds-deploymentsetid1|部署集ID。
-
- |
-|└DeploymentSetName|String|FinanceJoshua|部署集名称。
-
- |
-|└DeploymentStrategy|String|Availability|部署策略。
-
- |
-|└Domain|String|Default|部署域。
-
- |
-|└Granularity|String|Host|部署粒度。
-
- |
-|└InstanceAmount|Integer|1|部署集内的实例数量。
-
- |
-|└InstanceIds| |\["i-instanceid1"\]|部署集内的实例ID列表。
-
- |
-|└Strategy|String|StrictDispersion|部署策略。
-
- |
-|PageNumber|Integer|1|部署集列表的页数。
-
- |
-|PageSize|Integer|10|设置的每页行数。
-
- |
-|RegionId|String|cn-hangzhou|部署集所处的地域 ID。
-
- |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求 ID。
-
- |
-|TotalCount|Integer|1|查询到的部署集总数。
-
- |
-
-## 示例 {#demo .section}
+## 示例
 
 请求示例
 
-``` {#request_demo}
-
+```
 https://ecs.aliyuncs.com/?Action=DescribeDeploymentSets
 &RegionId=cn-hangzhou
-&DeploymentSetsIds=["ds-bp13v7bjnj9gisnlo1"]
+&PageSize=1
 &<公共请求参数>
-
 ```
 
 正常返回示例
 
-`XML` 格式
-
-``` {#xml_return_success_demo}
-<DescribeDeploymentSetsResponse>
-  <PageSize>10</PageSize>
-  <TotalCount>1</TotalCount>
-  <PageNumber>1</PageNumber>
-  <RequestId>1CB9A584-9E43-408D-B5A8-DB42CDECE03B</RequestId>
-  <DeploymentSets>
-    <DeploymentSet>
-      <DeploymentSetDescription>default</DeploymentSetDescription>
-      <DeploymentSetId>ds-bp13v7bjnj9gisnlo1ow</DeploymentSetId>
-      <DeploymentStrategy>Availability</DeploymentStrategy>
-      <DeploymentSetName>test default</DeploymentSetName>
-      <InstanceIds>
-        <InstanceId>i-sdfkjsdfk</InstanceId>
-        <InstanceId>i-kiiwsch</InstanceId>
-      </InstanceIds>
-    </DeploymentSet>
-  </DeploymentSets>
-</DescribeDeploymentSetsResponse>
+`XML`格式
 
 ```
+<DescribeDeploymentSetsResponse>
+      <DeploymentSets>
+            <DeploymentSet>
+                  <CreationTime>2017-12-05T22:40:00Z</CreationTime>
+                  <Granularity>switch</Granularity>
+                  <DeploymentSetDescription>autogen deploymentset, do not delete</DeploymentSetDescription>
+                  <Domain>default</Domain>
+                  <InstanceIds>
+                        <InstanceId>i-bp67acfmxazb4ph****</InstanceId>
+                        <InstanceId>i-bp67acfmxazb4pi****</InstanceId>
+                        <InstanceId>i-bp67acfmxazb4pj****</InstanceId>
+                  </InstanceIds>
+                  <InstanceAmount>0</InstanceAmount>
+                  <Strategy>LooseDispersion</Strategy>
+                  <DeploymentSetName>hpc-null-deploymentset</DeploymentSetName>
+                  <DeploymentStrategy>Availability</DeploymentStrategy>
+                  <DeploymentSetId>ds-bp120c8htdzx3869****</DeploymentSetId>
+            </DeploymentSet>
+      </DeploymentSets>
+      <PageNumber>1</PageNumber>
+      <TotalCount>5</TotalCount>
+      <PageSize>1</PageSize>
+      <RegionId>cn-hangzhou</RegionId>
+      <RequestId>FB5EF912-FD87-4CF7-91D9-9204974A63F3</RequestId>
+</DescribeDeploymentSetsResponse>
+```
 
-`JSON` 格式
+`JSON`格式
 
-``` {#json_return_success_demo}
+```
 {
-	"DeploymentSets":{
-		"DeploymentSet":[
+	"DeploymentSets": {
+		"DeploymentSet": [
 			{
-				"DeploymentSetDescription":"default",
-				"InstanceIds":{
-					"InstanceId":[
-						"i-sdfkjsdfk",
-						"i-kiiwsch"
-					]
+				"CreationTime": "2017-12-05T22:40:00Z",
+				"Granularity": "switch",
+				"DeploymentSetDescription": "autogen deploymentset, do not delete",
+				"Domain": "default",
+				"InstanceIds": {
+					"InstanceId": [
+                        "i-bp67acfmxazb4ph****",
+                        "i-bp67acfmxazb4pi****",
+                        "i-bp67acfmxazb4pj****"]
 				},
-				"DeploymentSetName":"test default",
-				"DeploymentStrategy":"Availability",
-				"DeploymentSetId":"ds-bp13v7bjnj9gisnlo1ow"
+				"InstanceAmount": 0,
+				"Strategy": "LooseDispersion",
+				"DeploymentSetName": "hpc-null-deploymentset",
+				"DeploymentStrategy": "Availability",
+				"DeploymentSetId": "ds-bp120c8htdzx3869****"
 			}
 		]
 	},
-	"PageNumber":1,
-	"TotalCount":1,
-	"PageSize":10,
-	"RequestId":"1CB9A584-9E43-408D-B5A8-DB42CDECE03B"
+	"PageNumber": 1,
+	"TotalCount": 5,
+	"PageSize": 1,
+	"RegionId": "cn-hangzhou",
+	"RequestId": "FB5EF912-FD87-4CF7-91D9-9204974A63F3"
 }
 ```
 
-## 错误码 { .section}
+## 错误码
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|403|InvalidDeploymentSetIds.TooManyInput|The parameter DeploymentSets size should less than 100.|指定的 DeploymentSets 数量大于 100。|
+|403|InvalidDeploymentSetIds.TooManyInput|The parameter DeploymentSets size should less than 100.|指定的DeploymentSets数量大于100。|
 
-[查看本产品错误码](https://error-center.aliyun.com/status/product/Ecs)
+访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
