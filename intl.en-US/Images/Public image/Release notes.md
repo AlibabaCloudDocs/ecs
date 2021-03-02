@@ -17,6 +17,11 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
+-   Changes:
+    -   Updated to include the latest patches.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
 |CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
 -   Changes: updated to include the latest patches. |
 |CentOS 8.2|centos\_8\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.18.0-193.28.1.el8\_2.x86\_64.
@@ -124,6 +129,16 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Debian 10.7|debian\_10\_7\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.19.0-13-amd64.
+-   Changes:
+    -   Updated to include the latest patches.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+|Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.9.0-14-amd64.
+-   Changes:
+    -   Updated to include the latest patches.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
 |Debian 10.7|debian\_10\_7\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.19.0-13-amd64.
 -   Changes: updated to include the latest patches. |
 |Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.9.0-14-amd64.
@@ -224,6 +239,16 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.4.0-65-generic.
+-   Changes:
+    -   Updated to include the latest patches.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.15.0-135-generic.
+-   Changes:
+    -   Updated to include the latest patches.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
 |Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.4.0-58-generic.
 -   Changes: updated to include the latest patches. |
 |Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.15.0-128-generic.
@@ -260,7 +285,7 @@ This topic describes the updates to the features of ECS public images in order o
 -   Changes: updated to include the latest patches. |
 |Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release.
 -   Kernel version: 5.4.0-31-generic. |
-|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 44.0-179-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 4.4.0-179-generic.
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200521.vhd|2020-05-21|-   Kernel version: 4.15.0-101-generic.
 -   Changes: updated to include the latest operating system patches. |
@@ -329,6 +354,11 @@ This topic describes the updates to the features of ECS public images in order o
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.3.18-lp152.60-default.
+-   Changes:
+    -   Updated to include the latest patches.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
 |Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
 -   Changes: updated to include the latest patches. |
 |Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
@@ -387,6 +417,17 @@ This topic describes the updates to the features of ECS public images in order o
 |SUSE Linux Enterprise Server 15 SP1|sles\_15\_sp1\_x64\_20G\_alibase\_20200218.vhd|2020-02-18|Updated to include the latest patches.|
 |SUSE Linux Enterprise Server 15 SP1|sles\_15\_sp1\_x64\_20G\_alibase\_20200107.vhd|2020-01-07|New release.|
 
+## Fedora
+
+|Release|Image ID|Release date|Description|
+|:------|--------|------------|:----------|
+|Fedora 33 64-bit|fedora\_33\_0\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   New release.
+-   Kernel version: 5.10.10-200.fc33.x86\_64.
+-   Changes:
+    -   Updated to include the latest patches.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+
 ## Trusted images
 
 Trusted images are applicable only to the following instance families and dedicated host types:
@@ -396,7 +437,7 @@ Trusted images are applicable only to the following instance families and dedica
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|CentOS 7.8|centos\_7\_8\_tpm\_x64\_20G\_alibase\_20200810.vhd|2020-08-10|-   Released CentOS 7.8 trusted images.
+|CentOS 7.8|centos\_7\_8\_tpm\_x64\_20G\_alibase\_20200810.vhd|2020-08-10|-   New release.
 -   Installed with GRUB 2 and TPM, to which the following RPM packages are related:
     -   grub2 \(trusted customized version\)
     -   tpm2-abrmd
@@ -410,11 +451,11 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Debian 10.7|debian\_10\_7\_amd\_x64\_20G\_alibase\_20201231.vhd|2020-12-31|-   Released Debian 10.7 AMD images.
+|Debian 10.7|debian\_10\_7\_amd\_x64\_20G\_alibase\_20201231.vhd|2020-12-31|-   New release.
 -   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Chengdu\), Singapore, and US \(Virginia\). |
-|Ubuntu 20.04|ubuntu\_20\_04\_amd\_x64\_20G\_alibase\_20200820.vhd|2020-08-20|-   Released Ubuntu 20.04 AMD images.
+|Ubuntu 20.04|ubuntu\_20\_04\_amd\_x64\_20G\_alibase\_20200820.vhd|2020-08-20|-   New release.
 -   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Guangzhou\), Singapore, China \(Hangzhou\), and China \(Chengdu\). |
-|Ubuntu 18.04|ubuntu\_18\_04\_amd\_x64\_20G\_alibase\_20200804.vhd|2020-08-04|-   Released Ubuntu 18.04 AMD images.
+|Ubuntu 18.04|ubuntu\_18\_04\_amd\_x64\_20G\_alibase\_20200804.vhd|2020-08-04|-   New release.
 -   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Shanghai\), China \(Hangzhou\), and China \(Chengdu\). |
 
 ## Windows Server 2012
@@ -721,7 +762,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   Added disk drives for the Windows Recovery mode.
 -   Fixed the CVE-2020-1020, CVE-2020-0687, CVE-2020-0910, CVE-2020-0938, CVE-2020-0965, and CVE-2020-0968 vulnerabilities. |
 |Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20200416.vhd
--   English version:
+-   English version: none
 
 |2020-04-16|-   Updated to include the KB4549947 and KB4549949 operating system patches released in April 2020.
 -   Added disk drives for the Windows Recovery mode.
