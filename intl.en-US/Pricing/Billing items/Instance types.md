@@ -8,7 +8,7 @@ The billing of instance types refers to the billing of computing resources \(vCP
 
 ## Overview
 
-Instance types are billed based on computing resources, including vCPUs and memory. Prices of an instance type may vary with regions. For more information, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab on the Elastic Compute Service page.
+Instance types are billed based on computing resources, including vCPUs and memory. Prices of an instance type may vary with regions. For more information, see the[Pricing](https://www.alibabacloud.com/product/ecs) tab on the Elastic Compute Service page.
 
 **Note:** If you select an instance type that is equipped with local disks, the price of the instance type includes that of local disks.
 
@@ -38,7 +38,7 @@ The following table describes the comparison of billing methods.
 
 |Comparison item|Subscription|Pay-as-you-go|Preemptible instance|Reserved instance|Savings plan|
 |---------------|------------|-------------|--------------------|-----------------|------------|
-|Usage|All operations are linked to a single instance.|All operations are linked to a single instance.|All operations are linked to a single instance.|Resources are decoupled from bills. Reserved instances must be used together with pay-as-you-go instances.|Resources are decoupled from bills. Reserved instances must be used together with pay-as-you-go instances.|
+|Usage|All operations are linked to the purchased instance.|All operations are linked to the purchased instance.|All operations are linked to the purchased instance.|Resources are decoupled from bills. Reserved instances must be used together with pay-as-you-go instances.|Resources are decoupled from bills. Savings plans must be used together with pay-as-you-go instances.|
 |Payment option|You make a full payment for instance types before you use them.|You pay for instance types after you use them. The instance types are charged by second and billed by hour.|You pay for instance types after you use them. The instance types are charged by second and billed by hour.|You can choose All Upfront, Partial Upfront, or No Upfront.|You can choose All Upfront, Partial Upfront, or No Upfront.|
 |Feature of price|Subscription instances are more cost-effective than pay-as-you-go instances.|Pay-as-you-go instances are the least cost-effective.|Prices of preemptible instances fluctuate based on the changes to supply and demand. The discounts can be up to 90% of pay-as-you-go prices.|Compared with pay-as-you-go instances, reserved instances offer some discounts. The discounted prices are close to those of subscription instances.|Compared with pay-as-you-go instances, savings plans are more flexible, but more expensive.|
 |Instance release|You can manually release instances or they can be released by the system. If you want to release an instance before it expires, you must cancel the subscription of the instance or change its billing method to pay-as-you-go. If you do not renew an instance within the required period of time after it expires, the instance is automatically released.|You can release instances at any time.|You can manually release instances or they can be released by the system. Preemptible instances can be reclaimed and may be automatically released after the protection period ends.|Reserved instances must be used together with pay-as-you-go instances. Pay-as-you-go instances that match reserved instances can be released at any time. After the pay-as-you-go instances are released, the reserved instances can be used to match and offset bills of new pay-as-you-go instances.|Savings plans must be used together with pay-as-you-go instances. Pay-as-you-go instances that match savings plans can be released at any time. After the pay-as-you-go instances are released, the savings plans can be used to match and offset bills of new pay-as-you-go instances.|
@@ -72,13 +72,13 @@ The following figure shows some typical scenarios to which you can refer to choo
 |Business type|Linked pattern|Stable pattern|Burstable pattern|Hybrid pattern|
 |-------------|--------------|--------------|-----------------|--------------|
 |Business characteristic|All businesses are closely linked. When traffic loads of one business increase, traffic loads of other businesses also increase.|Business loads are stable with no obvious peak hours or off-peak hours.|All businesses are loosely linked. Business loads may become burstable at some points in time.|Multiple businesses exist. Each business has a unique requirement for computing power during a specific time period. The businesses have different priorities.|
-|Example scenario|Hot issues, e-commerce promotions, and traffic spikes of IoT|Stable online businesses, such as office automation \(OA\) systems|Event-based tasks, job tasks, and simulation tasks|Scenarios where online, offline, and job tasks are deployed in a hybrid manner and where multiple environments are used alternately, such as blue green deployment|
-|Recommended billing method|Pay-as-you-go and savings plans or reserved instances|-   Subscription
--   Pay-as-you-go and savings plans or reserved instances
+|Example scenario|Hot issues, e-commerce promotions, and traffic spikes of IoT|Stable online businesses, such as office automation \(OA\) systems|Event-based tasks, job tasks, and simulation tasks|Scenarios where online, offline, and job tasks are deployed in a hybrid manner and where multiple environments are used alternately, such as blue-green deployment|
+|Recommended billing method|Pay-as-you-go and savings plans \(or reserved instances\).|-   Subscription.
+-   Pay-as-you-go and savings plans \(or reserved instances\).
 
 |Pay-as-you-go.You can combine the pay-as-you-go billing method with savings plans or reserved instances if traffic bursts frequently.
 
-|Pay-as-you-go and savings plans or reserved instances|
+|Pay-as-you-go and savings plans \(or reserved instances\).|
 
 ## References
 
