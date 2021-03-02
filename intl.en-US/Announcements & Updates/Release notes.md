@@ -5,10 +5,28 @@ This topic describes the release notes of ECS features.
 -   For the release notes of images, see [Release notes](/intl.en-US/Images/Public image/Release notes.md) and [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes of Alibaba Cloud Linux 2.md).
 -   For the release notes of Server Migration Center \(SMC\), see [Release notes](/intl.en-US/Release Notes/Release notes.md).
 
+## November 2020
+
+|Feature|Description|Release date|Supported region|Documentation|
+|-------|:----------|:-----------|----------------|:------------|
+|Instance families|The re6p persistent memory optimized instance family is released.|2020-11-04|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|Instance families|The i3 instance family with local SSDs is released.|2020-11-03|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
+
+## October 2020
+
+|Feature|Description|Release date|Supported region|Documentation|
+|-------|:----------|:-----------|----------------|:------------|
+|Instance families|The g6se storage enhanced instance family is released.|2020-10-23|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
+
 ## September 2020
 
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
+|Preemptible instances|When you create a preemptible instance by calling an API operation, you can set the preemptible instance to have no protection period.|2020-09-25|All|-   [Overview](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Overview.md)
+-   [RunInstances](/intl.en-US/API Reference/Instances/RunInstances.md) |
+|Savings plans|Savings plans are provided as discount plans that can be applied to offset the bills of pay-as-you-go instances, excluding preemptible instances.|2020-09-18|All|-   [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md)
+-   [Savings plans](/intl.en-US/Pricing/Billing methods/Savings plans.md)
+-   [t1950747.md\#](/intl.en-US/Instance/Instance purchasing options/Savings plans/Purchase and apply savings plans.md) |
 |Instance families|The g6t trusted general purpose instance family and c6t trusted compute optimized instance family are released.|2020-09-08|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The g6a general purpose instance family, c6a compute optimized instance family, and r6a memory optimized instance family are released.|2020-09-07|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The ebmg6a general purpose ECS Bare Metal Instance family, ebmc6a compute optimized ECS Bare Metal Instance family, and ebmr6a memory optimized ECS Bare Metal Instance family are released.|2020-09-07|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
@@ -19,6 +37,33 @@ This topic describes the release notes of ECS features.
 |-------|:----------|:-----------|----------------|:------------|
 |Tags|Tags can be bound to more resources, including reserved instances.|2020-08-18|All|[Overview](/intl.en-US/Tag & Resource/Tags/Overview.md)|
 |Snapshots|Snapshots can be replicated across regions to improve service reliability and availability.|2020-08-14|Some|[Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md)|
+
+## June 2020
+
+|Feature|Description|Release date|Supported region|Documentation|
+|-------|:----------|:-----------|----------------|:------------|
+|Instance families|The d2c compute intensive big data instance family is released.|2020-06-23|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|Instance families|The scchfc6 compute optimized SCC instance family with high clock speed, scchfg6 general purpose SCC instance family with high clock speed, and scchfr6 memory optimized SCC instance family with high clock speed are released.|2020-06-23|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|Instance families|The ebmc6e compute optimized ECS Bare Metal Instance family with enhanced performance, ebmg6e general purpose ECS Bare Metal Instance family with enhanced performance, and ebmr6e memory optimized ECS Bare Metal Instance family with enhanced performance are released.|2020-06-23|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|Storage capacity units \(SCUs\)|SCUs can be used to offset the pay-as-you-go bills of different storage resources, such as disks, Object Storage Service \(OSS\), Apsara File Storage NAS, and snapshots.|2020-06-23|All|-   [Overview](/intl.en-US/Block Storage/Storage capacity units/Overview.md)
+-   [Storage capacity units](/intl.en-US/Pricing/Billing methods/Storage capacity units.md)
+-   [Usage rules](/intl.en-US/Block Storage/Storage capacity units/Usage rules.md) |
+|Elastic Block Storage \(EBS\)|Sequence numbers of disks in ECS instances can be queried.|2020-06-16|All|[Query the serial number of a disk](/intl.en-US/Block Storage/Cloud disks/Query the serial number of a disk.md)|
+|Networks|VPCs of ECS instances can be changed in the ECS console. This feature is in invitational preview.|2020-06-10|Some|[Change the VPC of an ECS instance](/intl.en-US/Network/Change the VPC of an ECS instance.md)|
+|Enhanced SSDs \(ESSDs\)|ESSDs of the PL0 performance level are in public preview in the China \(Hangzhou\) and China \(Beijing\) regions. The number of supported regions is increasing.|2020-06-10|Some|-   [Enhanced SSDs](/intl.en-US/Block Storage/Block Storage overview/Enhanced SSDs.md)
+-   [EBS performance](/intl.en-US/Block Storage/Performance/EBS performance.md) |
+|Local disk-related system events|Events about local disk damages can be queried and damaged local disks can be isolated in the ECS console.|2020-06-09|All|[Isolate damaged local disks in the ECS console](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Isolate damaged local disks in the ECS console.md)|
+|Instance families|The hfg7 general purpose instance family with high clock speed, hfc7 compute optimized instance family with high clock speed, and hfr7 memory optimized instance family with high clock speed are released.|2020-06-09|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|Instance families|The g6e general purpose instance family with enhanced performance, c6e compute optimized instance family with enhanced performance, and r6e memory optimized instance family with enhanced performance are released.|2020-06-09|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|Instance families|The ebmre6p non-volatile memory optimized ECS Bare Metal Instance family with enhanced performance is released.|2020-06-09|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
+
+## May 2020
+
+|Feature|Description|Release date|Supported region|Documentation|
+|-------|:----------|:-----------|----------------|:------------|
+|Images|Technical support for the CoreOS Container Linux public images is discontinued. CoreOS Container Linux has reached its end of life and no more security patches are provided. For security concerns, we recommend that you do not use CoreOS Container Linux images any longer. Alibaba Cloud will soon release Fedora CoreOS public images as a replacement.|2020-05-26|All|[Release notes](/intl.en-US/Images/Public image/Release notes.md)|
+|Reserved instances|The normalization factor of instance types can be queried to help understand the computing power requirements in the splitting and merging of reserved instances and the size flexibility of regional reserved instances.|2020-05-14|All|-   [Reserved instance overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Reserved instance overview.md)
+-   [View normalization factors](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/View normalization factors.md) |
 
 ## April 2020
 
@@ -31,14 +76,7 @@ This topic describes the release notes of ECS features.
 
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
-|Local snapshots|The local snapshot feature is released for free public preview in Singapore.|2020-03-18|Some|[Snapshot overview](/intl.en-US/Snapshots/Snapshot overview.md)|
 |Instance families|The i2ne and i2gne instance families with local SSDs are released.|2020-03-11|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
-
-## February 2020
-
-|Feature|Description|Release date|Supported region|Documentation|
-|-------|:----------|:-----------|----------------|:------------|
-|Local snapshots|The local snapshot feature is released for public preview in China \(Hohhot\). The number of supported regions is increasing.|2020-02-14|Some|[Snapshot overview](/intl.en-US/Snapshots/Snapshot overview.md)|
 
 ## January 2020
 
@@ -48,11 +86,16 @@ This topic describes the release notes of ECS features.
 -   [Create a resource with a specific tag](/intl.en-US/Tag & Resource/Tags/Create a resource with a specific tag.md)
 -   [Use OOS to bind tags to multiple ECS resources at a time](/intl.en-US/Tag & Resource/Tags/Use OOS to bind tags to multiple ECS resources at a time.md)
 -   [Use OOS to modify a tag value of multiple resources](/intl.en-US/Tag & Resource/Tags/Use OOS to modify a tag value of multiple resources.md) |
-|Local snapshots|The local snapshot feature is released for public preview. You can create local snapshots for ESSDs and restore a disk from a local snapshot within seconds. You can use the local snapshot feature for free during the public preview period.|2020-01-17|China \(Hong Kong\)|[Snapshot overview](/intl.en-US/Snapshots/Snapshot overview.md)|
 |Instance families|The d2s storage intensive big data instance family is released.|2020-01-17|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The vgn6i lightweight GPU-accelerated compute optimized instance family is released.|2020-01-16|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The s6 shared standard instance family is released.|2020-01-16|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
-|Images|Technical support for the Windows Server 2008 and Windows Server 2008 R2 public images is discontinued. We recommend that you upgrade to Windows Server 2012 or later at your earliest convenience.|2020-01-14|All|[Overview](/intl.en-US/Images/Public image/Overview.md)|
+|Image|Technical support for the Windows Server 2008 and Windows Server 2008 R2 public images is discontinued. We recommend that you upgrade to Windows Server 2012 or later at your earliest convenience.|2020-01-14|All|[Overview](/intl.en-US/Images/Public image/Overview.md)|
+
+## December 2019
+
+|Feature|Description|Release date|Supported region|Documentation|
+|-------|:----------|:-----------|----------------|:------------|
+|SCUs|40 GiB, 100 GiB, and 500 GiB are added as capacity options for SCUs.|2019-12-05|Some|[Overview](/intl.en-US/Block Storage/Storage capacity units/Overview.md)|
 
 ## November 2019
 
@@ -91,7 +134,7 @@ This topic describes the release notes of ECS features.
 |Instance families|The ebmgn6v GPU-accelerated compute optimized ECS Bare Metal Instance family is released.|2019-08-26|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The ebmgn6i GPU-accelerated compute optimized ECS Bare Metal Instance family is released.|2019-08-26|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Images|The image export feature is available in all Alibaba Cloud regions.|2019-08-21|All|[Export a custom image](/intl.en-US/Images/Custom image/Export a custom image.md)|
-|Snapshots|The snapshot service is available for commercial use. All existing and new snapshots are billed on a pay-as-you-go basis.|2019-08-21|All|[Snapshot](/intl.en-US/Pricing/Billing items/Snapshot billing.md)|
+|Snapshots|The snapshot service is available for commercial use. All existing and new snapshots are billed on a pay-as-you-go basis.|2019-08-21|All|[Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md)|
 
 ## July 2019
 
@@ -109,15 +152,15 @@ This topic describes the release notes of ECS features.
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
 |Auto provisioning|Auto provisioning uses auto provisioning groups to schedule and maintain computing resources. This makes it easy to deploy clusters of instances across different billing methods, instance types, and zones.|2019-06-28|All|[Auto Provisioning overview](/intl.en-US/Elasticity/Manage auto provisioning groups/Auto Provisioning overview.md)|
-|Enhanced SSDs \(ESSDs\)|The ESSD service is available for commercial use after the public prereview. Three performance levels of ESSDs are released.|2019-06-28|Some. For more information about the supported regions, see [Block Storage FAQ](/intl.en-US/Block Storage/Block Storage FAQ.md).|[ESSDs](/intl.en-US/Block Storage/Block Storage overview/ESSDs.md)|
-|vgn5i, a lightweight GPU-accelerated compute optimized instance family|GRID drivers are provided for vgn5i instances.|2019-06-19|All|-   [Create an NVIDIA GPU-accelerated instance](/intl.en-US/Instance/Instance type families/Compute optimized type family with GPU/Create an NVIDIA GPU-accelerated instance.md)
+|ESSDs|The ESSD service is available for commercial use after the public preview is complete. Three performance levels of ESSDs are released.|2019-06-28|Some. For more information about the supported regions, see [Elastic Block Storage FAQ](/intl.en-US/Block Storage/Elastic Block Storage FAQ.md).|[Enhanced SSDs](/intl.en-US/Block Storage/Block Storage overview/Enhanced SSDs.md)|
+|vgn5i, lightweight GPU-accelerated compute optimized instance family|GRID drivers are provided for vgn5i instances.|2019-06-19|All|-   [Create an NVIDIA GPU-accelerated instance]()
 -   [Install NVIDIA GRID drivers on vgn6i or vgn5i Linux instances](/intl.en-US/Instance/Instance type families/Compute optimized type family with GPU/Install NVIDIA GRID drivers on vgn6i or vgn5i Linux instances.md) |
 
 ## May 2019
 
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
-|Elastic Block Storage \(EBS\)|Subscription disks can be created by calling API operations.|2019-05-15|All|[CreateDisk](/intl.en-US/API Reference/Disk/CreateDisk.md)|
+|EBS|Subscription disks can be created by calling API operations.|2019-05-15|All|[CreateDisk](/intl.en-US/API Reference/Disk/CreateDisk.md)|
 
 ## April 2019
 
@@ -126,14 +169,14 @@ This topic describes the release notes of ECS features.
 |Elastic network interfaces \(ENIs\)|A single ENI supports multiple private IP addresses.|2019-04-28|All|[Assign secondary private IP addresses](/intl.en-US/Network/Elastic Network Interfaces/Assign secondary private IP addresses.md)|
 |EBS|You can resize data disks of an ECS instance by extending their capacities online to meet your storage requirements without restarting the instance.|2019-04-24|All|[Resize disks online for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Linux instances.md)|
 |EBS|System disks can be resized.|2019-04-24|All|[Resize disks offline for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks offline for Linux instances.md)|
-|Snapshots|Snapshots can be created for expired disks.|2019-04-20|All|-   [Create a snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)
+|Snapshots|Snapshots can be created for expired disks.|2019-04-20|All|-   [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)
 -   [CreateSnapshot](/intl.en-US/API Reference/Snapshots/CreateSnapshot.md) |
 
 ## March 2019
 
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
-|Public images|Aliyun Linux 2 public images are released.|2019-03-27|All|[Overview of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview of Alibaba Cloud Linux 2.md)|
+|Public images|Aliyun Linux 2 public images are released.|2019-03-27|All|[Overview](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview.md)|
 |Instance families|The gn6i GPU-accelerated compute optimized instance family is released.|2019-03-21|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The sccgn6 GPU-accelerated compute optimized SCC instance family is released.|2019-03-20|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The vgn5i lightweight GPU-accelerated compute optimized instance family is released.|2019-03-19|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
@@ -175,8 +218,8 @@ This topic describes the release notes of ECS features.
 
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
-|t5, a burstable instance family|The unlimited mode is available for the t5 burstable instance family.|2018-09-30|All|[Unlimited mode](/intl.en-US/Instance/Instance type families/Burstable performance instances/Overview.mdsection_i6c_2kn_y5s)|
-|Instance metadata|Information of O&M system events is included in instance metadata.|2018-09-14|All|[Instance metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview.md)|
+|t5, burstable instance family|The unlimited mode is available for the t5 burstable instance family.|2018-09-30|All|[Unlimited mode](/intl.en-US/Instance/Instance type families/Burstable instance types/Overview.mdsection_i6c_2kn_y5s)|
+|Instance metadata|Information of O&M system events is included in instance metadata.|2018-09-14|All|[Instance metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview of instance metadata.md)|
 |Instance health status|The health status of each ECS instance is displayed on the instance details page.|2018-09-14|All|[View the health status of an instance](/intl.en-US/Deployment & Maintenance/Monitor the instance status/View the health status of an instance.md)|
 |Instance families|The gn6v new generation GPU-accelerated instance family \(V100 model\) is released.|2018-09-12|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance purchase|Multiple instances can be renewed at a time and historical instances can be purchased.|2018-09-07|All|[Manually renew an instance](/intl.en-US/Pricing/Renew instances/Manually renew an instance.md)|
@@ -198,12 +241,12 @@ This topic describes the release notes of ECS features.
 |-------|:----------|:-----------|----------------|:------------|
 |Custom images|Images in the qcow2 format can be imported.|2018-07-30|All|-   [Import custom images](/intl.en-US/Images/Custom image/Import images/Import custom images.md)
 -   [ImportImage](/intl.en-US/API Reference/Images/ImportImage.md) |
-|Security groups|Security group rules can be modified.|2018-07-25|All|[Modify security group rules](/intl.en-US/Security/Security groups/Manage security group rules/Manage security group rules.md)|
+|Security groups|Security group rules can be modified.|2018-07-25|All|[Modify security group rules](/intl.en-US/Security/Security groups/Manage security group rules/Query security group rules.md)|
 |Tags|Tags can be bound to resources when you create the resources.|2018-07-20|All|[Bind a tag](/intl.en-US/Tag & Resource/Tags/Create or bind a tag.md)|
 |Instance families|The ebmc4 compute optimized ECS Bare Metal Instance family is released.|2018-07-18|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Snapshots|The estimated remaining time for creating snapshots is displayed.|2018-07-17|All|[Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)|
 |Account and user privileges|Quota management is supported.|2018-07-15|All|[View quotas \(old version\)]()|
-|ESSDs|The ESSD service is in public preview in Beijing Zone G.|2018-07-14|Beijing Zone G|[Disk overview](/intl.en-US/Block Storage/Block Storage overview/Disk overview.md)|
+|ESSDs|The ESSD service is in public preview in Beijing Zone G.|2018-07-14|Beijing Zone G|[Cloud disks](/intl.en-US/Block Storage/Block Storage overview/Cloud disks.md)|
 |Instance troubleshooting|System logs and screenshots can be viewed.|2018-07-13|All|[System logs and screenshots](/intl.en-US/Deployment & Maintenance/Troubleshoot operation errors/System logs and screenshots.md)|
 |Security groups|You can submit a ticket to modify the maximum numbers of instances and security group rules that can be added to a security group.|2018-07-10|All|[Limits](/intl.en-US/Product Introduction/Limits.md)|
 |Instance families|The ic5 compute intensive instance family is released.|2018-07-09|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
@@ -239,7 +282,7 @@ This topic describes the release notes of ECS features.
 |-------|:----------|:-----------|----------------|:------------|
 |GPU-accelerated instances|The NVIDIA GPU Cloud \(NGC\) GPU-accelerated container is supported.|2018-03-28|All|[Deploy an NGC environment on gn5 instances](/intl.en-US/Best Practices/GPU instances/Deploy an NGC environment on instances with GPU capabilities.md)|
 |System events|The system event feature is released.|2018-03-26|All|[Overview](/intl.en-US/Deployment & Maintenance/System events/Overview.md)|
-|ECS Bare Metal Instance|ECS Bare Metal Instance is released.|2018-03-14|All|[ECS Bare Metal Instance](/intl.en-US/Instance/Instance type families/ECS bare metal instance type family/ECS Bare Metal Instance.md)|
+|ECS Bare Metal Instance|ECS Bare Metal Instance is released.|2018-03-14|All|[Overview](/intl.en-US/Instance/Instance type families/ECS Bare Metal Instance types/Overview.md)|
 |Instance identifier|The ECS instance identifier feature is released.|2018-03-01|All|[Instance identity](/intl.en-US/Instance/Manage instances/Instance identity.md)|
 
 ## February 2018
@@ -265,7 +308,7 @@ This topic describes the release notes of ECS features.
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
 |Cloud Migration Tool|The Cloud Migration Tool is released.|2017-11-27|All|[What is SMC?](/intl.en-US/Product Introduction/What is SMC?.md)|
-|Security group rules|Security group rules can be imported and exported.|2017-11-23|All|[Manage security group rules](/intl.en-US/Security/Security groups/Manage security group rules/Manage security group rules.md)|
+|Security group rules|Security group rules can be imported and exported.|2017-11-23|All|[Manage security group rules](/intl.en-US/Security/Security groups/Manage security group rules/Query security group rules.md)|
 |Subscription instances|The auto-renewal feature can be disabled for subscription instances.|2017-11-23|All|[ModifyInstanceAutoRenewAttribute](/intl.en-US/API Reference/Instances/ModifyInstanceAutoRenewAttribute.md)|
 |Billing methods|API operations used to create and renew weekly subscription instances are released.|2017-11-03|All|[CreateInstance](/intl.en-US/API Reference/Instances/CreateInstance.md)|
 |Instance RAM roles|RAM roles can be assigned to ECS instances.|2017-11-01|All|[Overview](/intl.en-US/Security/Instance RAM roles/Overview.md)|
@@ -277,14 +320,14 @@ This topic describes the release notes of ECS features.
 |Elastic IP addresses \(EIPs\)|The public IP address of an instance in a VPC can be converted into an EIP.|2017-10-31|All|[Convert an ECS public IP address to an EIP](/intl.en-US/User Guide/Create an EIP/Convert an automatically assigned public IP address to an EIP for a VPC-connected
          ECS instance.md)|
 |Preemptible instances|Preemptible Instance is released.|2017-10-18|All|[Overview](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Overview.md)|
-|t5, a burstable instance family|The t5 burstable instance family is released.|2017-10-09|All|[Overview](/intl.en-US/Instance/Instance type families/Burstable performance instances/Overview.md)|
+|t5, burstable instance family|The t5 burstable instance family is released.|2017-10-09|All|[Overview](/intl.en-US/Instance/Instance type families/Burstable instance types/Overview.md)|
 
 ## September 2017
 
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
-|Billing methods|Bills of pay-as-you-go instances and disks are accurate to the second and generated by hour.|2017-09-29|All|[Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Billing overview.md)|
-|gn5i, an instance family|The gn5i GPU-accelerated compute optimized instance family is released. It is applicable to deep learning and online reasoning scenarios.|2017-09-23|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|Billing methods|Bills of pay-as-you-go instances and disks are accurate to the second and generated by hour.|2017-09-29|All|[Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Billing method overview.md)|
+|gn5i instance family|The gn5i GPU-accelerated compute optimized instance family is released. It is applicable to deep learning and online reasoning scenarios.|2017-09-23|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |ECS disk encryption|ECS disks can be encrypted.|2017-09-05|All|[ECS disk encryption](/intl.en-US/Block Storage/Encrypt a disk/Encryption overview.md)|
 
 ## August 2017
@@ -292,8 +335,8 @@ This topic describes the release notes of ECS features.
 |Feature|Description|Release date|Supported region|Documentation|
 |-------|:----------|:-----------|----------------|:------------|
 |Security group rules|Security group rules can be configured based on the 5-tuple.|2017-08-31|All|[Security group quintuple rules](/intl.en-US/Best Practices/Security/Security group quintuple rules.md)|
-|ClassicLink|ClassicLink allows instances in the classic network can be connected to instances in VPCs.|2017-08-25|All|[Network types](/intl.en-US/Network/Network types.md)|
-|Instance families|The new-generation ECS instances with high clock speed and local SSD-based instances that are equipped with the Skylake processor and support 25 GE networks are released.|2017-08-22|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
+|ClassicLink|ClassicLink allows instances in the classic network to be connected to instances in VPCs.|2017-08-25|All|[Network types](/intl.en-US/Network/Network types.md)|
+|Instance families|The new-generation ECS instances with high clock speeds and local SSD-based instances that are equipped with the Skylake processor and support 25 GE networks are released.|2017-08-22|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |ECS API|The API operation used to change the bandwidth configurations of instances is released.|2017-08-17|All|[ModifyInstanceNetworkSpec](/intl.en-US/API Reference/Networks/ModifyInstanceNetworkSpec.md)|
 |Custom images|Custom images can be imported.|2017-08-10|All|[Import custom images](/intl.en-US/Images/Custom image/Import images/Import custom images.md)|
 
@@ -318,7 +361,7 @@ This topic describes the release notes of ECS features.
 |Instance families|The network optimized instance family is released.|2017-05-23|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance families|The d1 storage intensive instance family is released.|2017-05-12|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Security groups|The default security group rule is modified to expose only ICMP ports, TCP port 22, and TCP port 3389.|2017-05-11|All|[Default rules of the default security group](/intl.en-US/Security/Security groups/Overview.md)|
-|Security groups|Security groups can be backed up, overwritten, and restored.|2017-05-10|All|[Restore security group rules](/intl.en-US/Security/Security groups/Manage security group rules/Manage security group rules.md)|
+|Security groups|Security groups can be backed up, overwritten, and restored.|2017-05-10|All|[Restore security group rules](/intl.en-US/Security/Security groups/Manage security group rules/Query security group rules.md)|
 
 ## April 2017
 
