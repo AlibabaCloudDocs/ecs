@@ -46,6 +46,8 @@ When you use instances with local SSDs, take note of the following items:
 
 ## i3, instance family with local SSDs
 
+i3 is in public preview.
+
 Features
 
 -   Uses 2.5 GHz Intel ® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
