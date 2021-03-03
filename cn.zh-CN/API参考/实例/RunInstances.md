@@ -386,6 +386,7 @@
 |InstanceIdSets|List|\["i-bp67acfmxazb4pd2\*\*\*\*", "i-bp1i43l28m7u48p1\*\*\*\*", "i-bp12yqg7jdyxl11f\*\*\*\*"\]|实例ID（`InstanceIdSet`）列表。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
 |TradePrice|Float|0.165|订单成交价。 |
+|OrderId|String|1234567890|订单ID。该参数只有创建包年包月ECS实例（请求参数`InstanceChargeType=PrePaid`）时有返回值。 |
 
 ## 示例
 
@@ -409,12 +410,14 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 
 ```
 <RunInstancesResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
       <InstanceIdSets>
             <InstanceIdSet>i-bp67acfmxazb4pd2****</InstanceIdSet>
             <InstanceIdSet>i-bp1i43l28m7u48p1****</InstanceIdSet>
             <InstanceIdSet>i-bp12yqg7jdyxl11f****</InstanceIdSet>
       </InstanceIdSets>
-      <RequestId>04F0F334-1335-436C-A1D7-6C044FE73368</RequestId>
+      <OrderId>1234567890</OrderId>
+      <TradePrice>0.165</TradePrice>
 </RunInstancesResponse>
 ```
 
@@ -422,6 +425,7 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 
 ```
 {
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E", 
     "InstanceIdSets": {
         "InstanceIdSet": [
             "i-bp67acfmxazb4pd2****",
@@ -429,7 +433,8 @@ https://ecs.aliyuncs.com/?Action=RunInstances
             "i-bp12yqg7jdyxl11f****"
         ]
     },
-    "RequestId": "04F0F334-1335-436C-A1D7-6C044FE73368"
+    "OrderId": "1234567890", 
+    "TradePrice": "0.165"
 }
 ```
 
