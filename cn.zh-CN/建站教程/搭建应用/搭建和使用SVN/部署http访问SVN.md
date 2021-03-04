@@ -17,12 +17,12 @@
 
 ## 步骤一：安装SVN
 
-1.  [远程连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/使用用户名密码验证连接Linux实例.md)。
+1.  [远程连接Linux实例](/cn.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用用户名密码验证连接Linux实例.md)。
 
 2.  运行以下命令安装SVN。
 
     ```
-    yum install subversion
+    yum install subversion -y
     ```
 
 3.  运行以下命令查看SVN版本。
@@ -37,7 +37,7 @@
 1.  运行以下命令安装httpd。
 
     ```
-    yum install httpd
+    yum install httpd -y
     ```
 
 2.  运行以下命令查看httpd版本。
@@ -52,7 +52,7 @@
 运行以下命令安装mod\_dav\_svn。
 
 ```
-yum install mod_dav_svn
+yum install mod_dav_svn -y
 ```
 
 ## 步骤四：配置SVN
@@ -84,7 +84,7 @@ yum install mod_dav_svn
     ls
     ```
 
-    ![查看版本库文件](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p12529.png)
+    ![查看版本库文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p12529.png)
 
     Subversion目录说明如下表：
 
@@ -133,7 +133,7 @@ yum install mod_dav_svn
         userTest=rw
         ```
 
-        ![svn-4](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p101211.png)
+        ![svn-4](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p101211.png)
 
     4.  按`Esc`键退出编辑模式，并输入`:wq`保存并退出。
 
@@ -155,7 +155,7 @@ yum install mod_dav_svn
         realm = /var/svn/svnrepos #认证空间名，版本库所在目录
         ```
 
-        ![修改svn服务配置](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p12532.png)
+        ![修改svn服务配置](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p12532.png)
 
     4.  按`Esc`键退出编辑模式，并输入`:wq`保存并退出。
 
@@ -171,12 +171,16 @@ yum install mod_dav_svn
 
     如果返回结果如下图所示，表示SVN服务已经开启。
 
-    ![查看SVN服务状态](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p12533.png)
+    ![查看SVN服务状态](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p12533.png)
 
 
 ## 步骤五：配置Apache
 
-1.  运行`vim /etc/httpd/conf.d/subversion.conf`命令打开httpd配置文件。
+1.  运行以下命令新增并编辑httpd配置文件。
+
+    ```
+    vim /etc/httpd/conf.d/subversion.conf
+    ```
 
 2.  按`i`键进入编辑模式。
 
@@ -207,12 +211,12 @@ yum install mod_dav_svn
 
 1.  在本地主机上打开浏览器。
 
-2.  输入网址`http://<ECS实例公网IP>/svn/<SVN版本库名>`并按回车键。本示例中，SVN版本库名为svnrepos。
+2.  输入网址`http://<ECS实例公网IP\>/svn/<SVN版本库名\>`并按回车键。本示例中，SVN版本库名为svnrepos。
 
 3.  输入账号和密码，即您在passwd文件中设置的账号和密码。本示例中，账号为userTest，密码为passWDTest。
 
     返回结果如下图所示，表示成功访问之前新建的SVN仓库。
 
-    ![result](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6912649951/p101777.png)
+    ![result](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6912649951/p101777.png)
 
 
