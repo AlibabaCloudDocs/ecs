@@ -22,7 +22,7 @@
 2.  运行以下命令安装SVN。
 
     ```
-    yum install subversion
+    yum install subversion -y
     ```
 
 3.  运行以下命令查看SVN版本。
@@ -37,7 +37,7 @@
 1.  运行以下命令安装httpd。
 
     ```
-    yum install httpd
+    yum install httpd -y
     ```
 
 2.  运行以下命令查看httpd版本。
@@ -52,7 +52,7 @@
 运行以下命令安装mod\_dav\_svn。
 
 ```
-yum install mod_dav_svn
+yum install mod_dav_svn -y
 ```
 
 ## 步骤四：配置SVN
@@ -176,7 +176,11 @@ yum install mod_dav_svn
 
 ## 步骤五：配置Apache
 
-1.  运行`vim /etc/httpd/conf.d/subversion.conf`命令打开httpd配置文件。
+1.  运行以下命令新增并编辑httpd配置文件。
+
+    ```
+    vim /etc/httpd/conf.d/subversion.conf
+    ```
 
 2.  按`i`键进入编辑模式。
 
@@ -207,7 +211,7 @@ yum install mod_dav_svn
 
 1.  在本地主机上打开浏览器。
 
-2.  输入网址`http://<ECS实例公网IP>/svn/<SVN版本库名>`并按回车键。本示例中，SVN版本库名为svnrepos。
+2.  输入网址`http://<ECS实例公网IP\>/svn/<SVN版本库名\>`并按回车键。本示例中，SVN版本库名为svnrepos。
 
 3.  输入账号和密码，即您在passwd文件中设置的账号和密码。本示例中，账号为userTest，密码为passWDTest。
 
