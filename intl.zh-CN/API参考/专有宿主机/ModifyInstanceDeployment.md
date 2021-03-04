@@ -22,20 +22,22 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|ModifyInstanceDeployment|系统规定参数。取值：ModifyInstanceDeployment |
-|InstanceId|String|是|i-bp67acfmxazb4ph\*\*\*|实例ID。实例必须处于**已停止**（Stopped）状态。 |
+|InstanceId|String|是|i-bp67acfmxazb4ph\*\*\*|实例ID。 |
 |RegionId|String|是|cn-hangzhou|实例所在的地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |DeploymentSetId|String|否|ds-bp67acfmxazb4ph\*\*\*\*|部署集ID。
 
  将ECS实例加入一个部署集，或调整ECS实例的部署集时，该参数为必填参数。
 
- **说明：** 修改专有宿主机实例相关参数（`Tenancy`、`Affinity`和`DedicatedHostId`）时，不可同时修改部署集。 |
+ **说明：** 修改专有宿主机的相关参数（`Tenancy`、`Affinity`和`DedicatedHostId`）时，不可同时修改部署集。 |
 |Force|Boolean|否|false|是否强制更换实例宿主机。取值范围：
 
- -   true：允许。允许重启**运行中**（Running）、**已停止**（Stopped）状态的ECS实例。
+ -   true：允许。允许重启**运行中**（Running）、**已停止**（Stopped）状态的ECS实例。已停止状态的实例不包括开启停机不收费功能的按量付费ECS实例。
 
- **说明：** 已停止状态的实例不包括开启停机不收费功能的按量付费ECS实例。
+**说明：** 如果您指定的ECS实例搭载了本地盘，则本地盘也会允许强制更换，这可能导致在更换宿主机时本地盘数据丢失，请谨慎操作。
 
- -   false（默认）：不允许。只在当前宿主机上加入部署集。这可能导致更换部署集失败。 |
+-   false：不允许。只在当前宿主机上加入部署集。这可能导致更换部署集失败。
+
+ 默认值：false |
 |DedicatedHostId|String|否|dh-bp67acfmxazb4ph\*\*\*\*|专有宿主机ID。调用[DescribeDedicatedHosts](~~134242~~)查看可以使用的专有宿主机。
 
  修改ECS实例宿主机（即将ECS实例从共享宿主机迁移至专有宿主机，或在不同专有宿主机间迁移ECS实例）时：
@@ -44,7 +46,7 @@
 -   若将实例迁移至系统自动为您选择的专有宿主机上，必须将该参数设置为空，并将参数`Tenancy`设置为host。
 
  自动部署功能详情，请参见[专有宿主机功能特性](~~118938~~)。 |
-|Tenancy|String|否|host|实例是否在专有宿主机上部署。取值范围：host（实例在专有宿主机上部署）。 |
+|Tenancy|String|否|host|实例是否在专有宿主机上部署。取值：host，仅支持实例在专有宿主机上部署。 |
 |Affinity|String|否|host|实例是否与专有宿主机关联。取值范围：
 
  -   host：关联。已开启停机不收费功能的实例停机后再次启动时，仍部署在原专有宿主机上。
@@ -53,8 +55,10 @@
  实例从共享宿主机迁移至专有宿主机。默认值：default |
 |MigrationType|String|否|live|是否先停止实例，再迁移到目标专有宿主机。取值范围：
 
- -   reboot（默认）：先停止实例再迁移。
--   live：不停止实例，直接迁移。此时，您必须指定参数**DedicatedHostId**。该取值不支持在迁移ECS实例的同时变更实例规格。 |
+ -   reboot：先停止实例再迁移。
+-   live：不停止实例，直接迁移。此时，您必须指定参数DedicatedHostId。该取值不支持在迁移ECS实例的同时变更实例规格。
+
+ 默认值：reboot |
 |InstanceType|String|否|ecs.c6.large|ECS实例要变更的目标实例规格。调用[DescribeInstanceTypes](~~25620~~)接口可获取最新实例规格列表。
 
  修改ECS实例宿主机时，可同时变更ECS实例规格。目标实例规格必须与指定专有宿主机的规格相匹配，详情请参见[宿主机规格](~~68564~~)。
@@ -85,7 +89,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceDeployment
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyInstanceDeploymentResponse>
@@ -93,7 +97,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceDeployment
 </ModifyInstanceDeploymentResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
