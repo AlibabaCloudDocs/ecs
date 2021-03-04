@@ -138,6 +138,7 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
     -   [如何检查与修复CentOS 7实例和Windows实例IP地址缺失问题？](#section_29l_kc7_8hw)
     -   [ECS实例启动时报错“UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY.”，怎么办？](#section_1qr_p2r_fp0)
     -   [如何从RHEL 7升级到RHEL 8（Red Hat Enterprise Linux 8）？](#section_d8g_9su_f1e)
+    -   [在部署业务时如何让程序区分不同的ECS实例？](#section_n0c_nxo_1hi)
 
 ## ECS实例选择了镜像后能更换吗？
 
@@ -1130,4 +1131,16 @@ systemctl start kdump
 ## 如何从RHEL 7升级到RHEL 8（Red Hat Enterprise Linux 8）？
 
 升级文档请参见 [升级至RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/upgrading_to_rhel_8/index)。
+
+## 在部署业务时如何让程序区分不同的ECS实例？
+
+当您在Linux系统上部署业务时希望程序能够区分不同的ECS实例，可能会通过systemd-machine-id-setup命令重置/etc/machine-id的方式来实现，但该方式需要您在每台ECS实例上重新生成machine ID。为免去繁琐的操作，阿里云推荐您通过/sys/class/dmi/id/product\_uuid文件来区分不同的ECS实例，该文件作为实例对外的唯一标识之一，可完全取代/etc/machine-id的作用，并且操作简便，只需要获取实例对应的UUID即可。您可以运行以下命令查看ECS实例的/sys/class/dmi/id/product\_uuid信息：
+
+```
+cat /sys/class/dmi/id/product_uuid
+```
+
+返回结果示例：
+
+![product_uuid](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9900954161/p244711.png)
 
