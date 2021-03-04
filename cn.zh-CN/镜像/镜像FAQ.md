@@ -143,6 +143,7 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
     -   [如何设置Linux系统的ECS实例的静态IP地址？](#section_pao_850_5pf)
     -   [CentOS/RedHat 7.x升级Systemd重启进入救援模式如何处理？](#section_q4m_wqy_jo8)
     -   [如何在Linux实例中自定义配置DNS？](#section_5qk_pdw_1xv)
+    -   [在部署业务时如何让程序区分不同的ECS实例？](#section_n0c_nxo_1hi)
 
 ## ECS实例选择了镜像后能更换吗？
 
@@ -1164,4 +1165,16 @@ CentOS 7或RedHat 7系列的系统在升级Systemd至systemd-219-71.el7版本后
 ## 如何在Linux实例中自定义配置DNS？
 
 具体操作，请参见[如何在Linux实例中自定义配置DNS](https://help.aliyun.com/knowledge_detail/188420.html)。
+
+## 在部署业务时如何让程序区分不同的ECS实例？
+
+当您在Linux系统上部署业务时希望程序能够区分不同的ECS实例，可能会通过systemd-machine-id-setup命令重置/etc/machine-id的方式来实现，但该方式需要您在每台ECS实例上重新生成machine ID。为免去繁琐的操作，阿里云推荐您通过/sys/class/dmi/id/product\_uuid文件来区分不同的ECS实例，该文件作为实例对外的唯一标识之一，可完全取代/etc/machine-id的作用，并且操作简便，只需要获取实例对应的UUID即可。您可以运行以下命令查看ECS实例的/sys/class/dmi/id/product\_uuid信息：
+
+```
+cat /sys/class/dmi/id/product_uuid
+```
+
+返回结果示例：
+
+![product_uuid](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9900954161/p244711.png)
 
