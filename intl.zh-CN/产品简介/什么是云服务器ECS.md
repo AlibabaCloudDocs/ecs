@@ -37,7 +37,7 @@
 
 以下为云服务器ECS的产品组件架构图，图中涉及的功能组件的详细介绍请参见相应的帮助文档。
 
-![whatIsECS](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5690688951/p48636.png)
+![WhatIsEcs-Orange-Renminbi](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2144684161/p85840.png)
 
 ## 产品定价
 
@@ -52,8 +52,9 @@
     -   [命令行工具CLI]()：基于阿里云API建立的灵活且易于扩展的管理工具。您可基于命令行工具封装阿里云的原生API，扩展出您需要的功能。
     -   [OpenAPI Explorer](https://api.aliyun.com/)：提供快速检索接口、在线调用API和动态生成SDK示例代码等服务。
     -   [阿里云SDK](https://www.alibabacloud.com/support/developer-resources)：提供Java、Python、PHP等多种编程语言的SDK。
--   [资源编排（Resource Orchestration Service）]()：通过创建一个描述您所需的所有阿里云资源的模板，然后资源编排将根据模板，自动创建和配置资源。
--   [Terraform](/intl.zh-CN/部署与弹性/Terraform/什么是Terraform.md)：能够通过配置文件在阿里云以及其他支持Terraform的云商平台调用计算资源，并对其进行版本控制的开源工具。
+-   [资源编排（Resource Orchestration Service）](/intl.zh-CN/产品简介/什么是资源编排服务.md)：通过创建一个描述您所需的所有阿里云资源的模板，然后资源编排将根据模板，自动创建和配置资源。
+-   [运维编排服务（Operation Orchestration Service）](/intl.zh-CN/运维与监控/运维编排/运维编排服务概述.md)：自动化管理和执行运维任务。您可以在执行模板中定义执行任务、执行顺序、执行输入和输出等，通过执行模板达到自动化完成运维任务的目的。
+-   [Terraform](/intl.zh-CN/部署与弹性/Terraform/Terraform概述.md)：能够通过配置文件在阿里云以及其他支持Terraform的云商平台调用计算资源，并对其进行版本控制的开源工具。
 
 ## 部署建议
 
@@ -82,10 +83,10 @@
 
 使用云服务器ECS的同时，您还可以选择以下阿里云服务：
 
--   根据业务需求和策略的变化，使用弹性伸缩（Auto Scaling）自动调整云服务器ECS的数量。更多详情，请参见[弹性伸缩](/intl.zh-CN/产品简介/什么是弹性伸缩.md)。
+-   根据业务需求和策略的变化，使用弹性伸缩（Auto Scaling）自动调整云服务器ECS的数量。更多详情，请参见[弹性伸缩](/intl.zh-CN/产品简介/什么是弹性伸缩Auto Scaling.md)。
 -   使用专有宿主机（Dedicated Host）部署ECS实例，可让您独享物理服务器资源、降低上云和业务部署调整的成本、满足严格的合规和监管要求。更多详情，请参见[专有宿主机DDH](/intl.zh-CN/产品简介/什么是专有宿主机DDH.md)。
 -   使用容器服务Kubernetes版在一组云服务器ECS上通过Docker容器管理应用生命周期。更多详情，请参见[容器服务Kubernetes版](/intl.zh-CN/产品简介/什么是容器服务Kubernetes版.md)。
--   通过负载均衡（Server Load Balancer）对多台云服务器ECS实现流量分发的负载均衡目的。更多详情，请参见[负载均衡](/intl.zh-CN/传统型负载均衡CLB/产品简介/什么是负载均衡.md)。
+-   通过负载均衡（Server Load Balancer）对多台云服务器ECS实现流量分发的负载均衡目的。更多详情，请参见[负载均衡](/intl.zh-CN/传统型负载均衡CLB/CLB产品简介/什么是负载均衡.md)。
 -   通过云监控（CloudMonitor）制定实例、系统盘和公网带宽等的监控方案。更多详情，请参见[云监控](/intl.zh-CN/产品简介/什么是云监控.md)。
 -   在同一阿里云地域下，采用关系型云数据库（Relational Database Service）作为云服务器ECS的数据库应用是典型的业务访问架构，可极大降低网络延时和公网访问费用，并实现云数据库RDS的最佳性能。云数据库RDS支持多种数据库引擎，包括MySQL、SQL Server、PostgreSQL、PPAS和MariaDB。更多详情，请参见[关系型云数据库](/intl.zh-CN/云数据库 RDS 简介/什么是云数据库RDS.md)。
 -   在[云市场](https://www.alibabacloud.com/marketplace)获取由第三方服务商提供的基础软件、企业软件、网站建设、代运维、云安全、数据及API、解决方案等相关的各类软件和服务。您也可以成为云市场服务供应商，提供软件应用及服务。
