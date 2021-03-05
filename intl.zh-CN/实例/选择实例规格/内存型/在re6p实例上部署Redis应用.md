@@ -20,11 +20,11 @@ Redis应用运行在持久内存型实例上可以降低单GiB内存的成本，
 
 **说明：** 持久内存中数据的可靠性取决于物理服务器和持久内存设备的可靠性，因此存在单点故障风险。建议您在应用层做好数据冗余，将需要长期保存的业务数据存储到云盘上，以保证应用数据的可靠性。
 
-## 在使用Alibaba Cloud Linux系统的re6p实例上部署Redis应用
+## 在使用Alibaba Cloud Linux操作系统的re6p实例上部署Redis应用
 
-Alibaba Cloud Linux系统对Redis应用进行了专项调优，相比社区版操作系统，Redis应用整体性能提升20%以上。
+Alibaba Cloud Linux操作系统对Redis应用进行了专项调优，相比社区版操作系统，Redis应用整体性能提升20%以上。
 
-Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可以手动部署其他Redis版本，Redis应用整体性能仍然有20%以上的提升。
+Alibaba Cloud Linux操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您可以通过yum install命令直接部署Redis 6.0.5和Redis 3.2.12。您也可以手动部署其他Redis版本，具体操作，请参见[在使用CentOS系统的re6p实例上部署Redis应用](#section_gx2_rzq_8rk)。
 
 本示例中使用的配置如下：
 
@@ -43,14 +43,14 @@ Alibaba Cloud Linux系统目前集成了Redis 6.0.5和3.2.12版本，您也可�
 
 3.  部署Redis应用。
 
-    -   部署Redis 6.0.5版：
+    -   部署Redis 6.0.5：
 
         ```
         yum install -y alinux-release-experimentals
         yum install -y redis-6.0.5
         ```
 
-    -   部署Redis 3.2.12版：
+    -   部署Redis 3.2.12：
 
         ```
         yum install -y alinux-release-experimentals
@@ -269,21 +269,21 @@ wget https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0.5-devel.diff -O
 
 目前支持的patch的下载地址如下所示：
 
--   Redis 6.0版本
+-   Redis 6.0
     -   [https://github.com/redis/redis/compare/6.0.9...memKeyDB:6.0.9-devel.diff](https://github.com/redis/redis/compare/6.0.9...memKeyDB:6.0.9-devel.diff)
     -   [https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0.5-devel.diff](https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0.5-devel.diff)
     -   [https://github.com/redis/redis/compare/6.0.3...memKeyDB:6.0.3-devel.diff](https://github.com/redis/redis/compare/6.0.3...memKeyDB:6.0.3-devel.diff)
     -   [https://github.com/redis/redis/compare/6.0.0...memKeyDB:6.0.0-devel.diff](https://github.com/redis/redis/compare/6.0.0...memKeyDB:6.0.0-devel.diff)
--   Redis 5.0版本
+-   Redis 5.0
     -   [https://github.com/redis/redis/compare/5.0.9...memKeyDB:5.0.9-devel.diff](https://github.com/redis/redis/compare/5.0.9...memKeyDB:5.0.9-devel.diff)
     -   [https://github.com/redis/redis/compare/5.0.2...memKeyDB:5.0.2-devel.diff](https://github.com/redis/redis/compare/5.0.2...memKeyDB:5.0.2-devel.diff)
     -   [https://github.com/redis/redis/compare/5.0.0...memKeyDB:5.0.0-devel.diff](https://github.com/redis/redis/compare/5.0.0...memKeyDB:5.0.0-devel.diff)
--   Redis 4.0版本
+-   Redis 4.0
     -   [https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff](https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff)
     -   [https://github.com/redis/redis/compare/4.0.9...memKeyDB:4.0.9-devel.diff](https://github.com/redis/redis/compare/4.0.9...memKeyDB:4.0.9-devel.diff)
     -   [https://github.com/redis/redis/compare/4.0.2...memKeyDB:4.0.2-devel.diff](https://github.com/redis/redis/compare/4.0.2...memKeyDB:4.0.2-devel.diff)
     -   [https://github.com/redis/redis/compare/4.0.0...memKeyDB:4.0.0-devel.diff](https://github.com/redis/redis/compare/4.0.0...memKeyDB:4.0.0-devel.diff)
--   Redis 3.0版本
+-   Redis 3.0
     -   [https://github.com/redis/redis/compare/3.2.12...memKeyDB:3.2.diff](https://github.com/redis/redis/compare/3.2.12...memKeyDB:3.2.diff)
 
 **说明：** 如果您有其他版本的支持需求，请[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
