@@ -60,7 +60,7 @@ After the No Fees for Stopped Instances \(VPC-Connected\) feature is triggered f
 
     **Note:** If your application depends on a specific public IP address, we recommend that you disable the No Fees for Stopped Instances \(VPC-Connected\) feature or convert the public IP address to an EIP. For more information, see [Disable the No Fees for Stopped Instances \(VPC-Connected\) feature](#section_4h6_utd_2yr) or [Convert the public IP address of a VPC-type instance to an Elastic IP address](/intl.en-US/Network/Change IPv4 addresses/Convert the public IP address of a VPC-type instance to an Elastic IP address.md).
 
--   If the instance is a burstable instance, the instance stops earning CPU credits and its current CPU credit balance is cleared. After you restart the burstable instance, the instance starts to earn CPU credits again. For more information about CPU credits of burstable instances, see [CPU credits](/intl.en-US/Instance/Instance type families/Burstable performance instances/Overview.md).
+-   If the instance is a burstable instance, the instance stops earning CPU credits and its current CPU credit balance is cleared. After you restart the burstable instance, the instance starts to earn CPU credits again. For more information about CPU credits of burstable instances, see [CPU credits](/intl.en-US/Instance/Instance type families/Burstable instance types/Overview.md).
 
 In some cases, you may need to restart your instances multiple times within a short period of time. We recommend that you disable the No Fees for Stopped Instances \(VPC-Connected\) feature to ensure that the instances can be restarted and provide services. You can disable this feature in the following scenarios:
 
@@ -73,7 +73,7 @@ For an instance that is stopped due to an overdue payment, if you clear the over
 -   If the feature is enabled, the instance enters the No Fees for Stopped Instances \(VPC-Connected\) state when the instance is stopped due to an overdue payment. The computing resources \(vCPUs and memory\) and public IP address of the instance are automatically released and the public IP address may change when the instance is reactivated.
 -   If the feature is disabled, the billing of the instance stops when the instance is stopped due to an overdue payment. The public IP address is retained and does not change when the instance is reactivated.
 
-**Note:** ECS instances do not remain in the Stopped state after a payment becomes overdue in your account. For more information, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
+**Note:** If all three deductions fail for an instance, the instance is stopped. For more information about the changes of resource status when overdue payments occur, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
 
 ## Enable the No Fees for Stopped Instances \(VPC-Connected\) feature
 
@@ -83,7 +83,7 @@ This section describes how to enable the No Fees for Stopped Instances \(VPC-Con
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  In the **Common Features** section of the **Overview** page, click **Custom Settings**.
+2.  In the **Common Settings** section of the **Overview** page, click **Custom Settings**.
 
     ![No Fees for Stopped Instances (VPC-Connected)](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5091909951/p87545.png)
 
@@ -105,7 +105,7 @@ If an instance is in the No Fees for Stopped Instances \(VPC-Connected\) state, 
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  In the **Common Features** section of the **Overview** page, click **Custom Settings**.
+2.  In the **Common Settings** section of the **Overview** page, click **Custom Settings**.
 
     ![No Fees for Stopped Instances (VPC-Connected)](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5091909951/p87545.png)
 
@@ -123,7 +123,7 @@ Regardless of whether the No Fees for Stopped Instances \(VPC-Connected\) featur
 -   If you select **Retain Instance and Continue Charging After Instance Is Stopped**, the instance enters the Keep Instances and Continue Billing state.
 -   If you select **No Charges After Instance Is Stopped**, the instance enters the No Fees for Stopped Instances \(VPC-Connected\) state.
 
-![No Charges After Instance Is Stopped](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6091909951/p52884.png)
+![No Fees for Stopped Instances (VPC-Connected)](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6091909951/p52884.png)
 
 ## References
 
