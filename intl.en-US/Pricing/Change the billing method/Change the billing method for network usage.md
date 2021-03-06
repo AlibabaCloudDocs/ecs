@@ -1,5 +1,5 @@
 ---
-keyword: [Alibaba Cloud, ECS, billing method for network usage, change the billing method for network usage, public bandwidth, pay-by-traffic, change from pay-by-bandwidth to pay-by-traffic, change from pay-by-traffic to pay-by-bandwidth]
+keyword: [Alibaba Cloud, ECS, billing method for network usage, change the billing method for network usage, pay-by-bandwidth, pay-by-traffic, change from pay-by-bandwidth to pay-by-traffic, change from pay-by-traffic to pay-by-bandwidth]
 ---
 
 # Change the billing method for network usage
@@ -15,10 +15,15 @@ The billing methods available for network usage are pay-by-bandwidth and pay-by-
 -   Pay-by-bandwidth: You are charged based on the specified bandwidth. The actual outbound bandwidth does not exceed the specified bandwidth.
 -   Pay-by-traffic: You are charged based on the traffic that you actually used. You can configure a peak bandwidth value for outbound traffic to avoid excess costs caused by bursts in outbound traffic.
 
-    **Note:** When the **pay-by-traffic** billing method is used, the peak inbound and outbound bandwidth values are used as traffic limits instead of guaranteed performance. In scenarios where demands exceed resource supplies, the peak bandwidth values may be limited. If you need guaranteed bandwidth performance, select the **pay-by-bandwidth** billing method.
+    **Note:** When the **Pay-By-Traffic** billing method is used, the peak inbound and outbound bandwidth values are used as traffic limits instead of guaranteed performance. In scenarios where demands exceed resource supplies, the peak bandwidth values may be limited. If you need guaranteed bandwidth performance, select the **Pay-By-Bandwidth** billing method.
 
 
-This topic describes how to change the billing method for network usage of an instance that uses a public IP address. For more information about how to change the billing method for network usage of an instance that uses elastic IP addresses \(EIPs\), see [Modify the bandwidth of an EIP](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth of an EIP.md).
+This topic describes how to change the billing method for network usage of an instance. For information about how to change the bandwidth size, see the following topics:
+
+-   [Modify the bandwidth configurations of subscription instances](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth configurations of subscription instances.md)
+-   [Modify the bandwidth configurations of pay-as-you-go instances](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth configurations of pay-as-you-go instances.md)
+
+This topic describes how to change the billing method for network usage of an instance that uses a public IP address. For more information about how to change the billing method for network usage of an instance that uses an elastic IP address \(EIP\), see [Modify the bandwidth of an EIP](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth of an EIP.md).
 
 ## Change from pay-by-bandwidth to pay-by-traffic
 
@@ -39,7 +44,7 @@ This topic describes how to change the billing method for network usage of an in
         -   Multiple instances: Select the pay-as-you-go instances for which you want to change the billing method for network usage. In the lower part of the page, choose **More** \> **Configuration Change** \> **Change Pay-as-you-go Instance Bandwidth**.
 5.  On the Change Bandwidth page, find the Bandwidth section, select **Pay-By-Traffic**, and then set a peak bandwidth value.
 
-6.  Read the notes and terms of service. If you do not have any questions, select *ECS Service Terms*.
+6.  Read the notes and terms of service. If you do not have questions, select *ECS Service Terms*.
 
 7.  Confirm the configuration costs, click Confirm in the lower part of the page, and then perform the subsequent operations as instructed on the page.
 
@@ -64,7 +69,7 @@ This topic describes how to change the billing method for network usage of an in
         -   Multiple instances: Select the pay-as-you-go instances for which you want to change the billing method for network usage. In the lower part of the page, choose **More** \> **Configuration Change** \> **Change Pay-as-you-go Instance Bandwidth**.
 5.  On the Change Bandwidth page, find the Bandwidth section, select **Pay-By-Bandwidth**, and then set a bandwidth value.
 
-6.  Read the notes and terms of service. If you do not have any questions, select *ECS Service Terms*.
+6.  Read the notes and terms of service. If you do not have questions, select *ECS Service Terms*.
 
 7.  Confirm the configuration costs, click Confirm in the lower part of the page, and then perform the subsequent operations as instructed on the page.
 
