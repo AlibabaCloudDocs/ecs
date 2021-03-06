@@ -6,11 +6,11 @@ keyword: [format, Alibaba Cloud, ECS, partition a disk for a Linux instance]
 
 After you attach a new data disk to an ECS instance, you must create at least one file system on the data disk and mount the file system. In this example, an I/O optimized instance that runs the Alibaba Cloud Linux 2.1903 LTS 64-bit operating system is used. A new 20 GiB data disk is attached to the instance. The device name of the data disk is /dev/vdb. A single master boot record \(MBR\) partition is created on the data disk and an ext4 file system is mounted.
 
-Data disks that you purchased separately are attached to ECS instances. If you purchased data disks with ECS instances, skip the attach operation. For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
+Data disks that you purchased separately are attached to ECS instances. If you purchased data disks together with ECS instances, skip the attaching operation. For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
 
-**Note:** The attach operation refers to attaching disks to ECS instances in the ECS console, instead of mounting file systems by running the mount command within the operating systems of ECS instances.
+**Note:** The attaching operation refers to attaching disks to ECS instances in the ECS console, instead of mounting file systems by running the mount command within the operating systems of ECS instances.
 
-The following procedure applies only to data disks of up to 2 TiB in size. Data disks larger than 2 TiB must be partitioned in the GPT format. For more information, see [Partition and format a data disk larger than 2 TiB](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Partition and format a data disk larger than 2 TiB.md).
+The following procedure applies only to data disks up to 2 TiB in size. Data disks larger than 2 TiB must be partitioned in the GPT format. For more information, see [Partition and format a data disk larger than 2 TiB in size](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Partition and format a data disk larger than 2 TiB in size.md).
 
 By default, the device names of data disks are assigned by the system based on the following naming conventions:
 
@@ -28,7 +28,7 @@ The following section describes the risks of formatting a data disk:
 
 1.  Connect to an ECS instance.
 
-    For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+    For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using VNC.md).
 
 2.  View information about the data disks attached to the ECS instance.
 
@@ -38,13 +38,13 @@ The following section describes the risks of formatting a data disk:
     fdisk -l
     ```
 
-    A command output similar to the following one is returned:
+    A command output similar to the following one is returned.
 
     ![Format disk_fdisk](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3233158061/p173584.png)
 
-    **Note:** If /dev/vdb is not displayed in the command output, the ECS instance does not have data disks. Check whether data disks are attached to the instance. For information about how to attach a data disk, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
+    **Note:** After the command is run, if no /dev/vd\* device name is displayed, check whether the data disk is attached to the instance. /dev/vd\* indicates the new data disk. In this example, /dev/vdb is used. For information about how to attach a data disk in the ECS console, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
 
-3.  Run the following commands in sequence to create a single partition for the data disk.
+3.  Run the following commands in sequence to create a partition for the data disk.
 
     1.  Run the following command to partition the data disk:
 
@@ -60,7 +60,7 @@ The following section describes the risks of formatting a data disk:
 
     4.  Enter p to set the partition as a primary partition.
 
-        **Note:** When you create a single partition for a data disk, the partition must be a primary partition. If you want to create four or more partitions, enter e \(extended\) at least once to create at least one extended partition.
+        **Note:** When you create a single partition for a data disk, the partition must be the primary partition. If you want to create four or more partitions, enter e \(extended\) at least once to create at least one extended partition.
 
     5.  Enter the partition number and press the Enter key.
 
@@ -78,7 +78,7 @@ The following section describes the risks of formatting a data disk:
 
     9.  Enter w to start partitioning, and exit after partitioning is complete.
 
-    The following figure shows the result of running the commands.
+    A command output similar to the following one is returned.
 
     ![Partition creation result](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3233158061/p173593.png)
 
@@ -149,7 +149,7 @@ Write the information of the new partition to /etc/fstab to enable this partitio
             sudo blkid /dev/vdb1
             ```
 
-            A command output similar to the following one is returned:
+            A command output similar to the following one is returned.
 
             ```
             /dev/vdb1: UUID="05779a4e-f04f-4eca-97ac-57fd1fda****" TYPE="ext4"
@@ -161,14 +161,14 @@ Write the information of the new partition to /etc/fstab to enable this partitio
             sudo vi /etc/fstab
             ```
 
-        3.  Enter i to enter the editing mode:
-        4.  Write the information of the new partition to /etc/fstab. Change the UUID value to the value you obtained in Step i.
+        3.  Press the I key to enter the edit mode.
+        4.  Write the information of the new partition to /etc/fstab. Change the UUID value to the value that you obtained in Step i.
 
             ```
             UUID=05779a4e-f04f-4eca-97ac-57fd1fda**** /mnt ext4 defaults 0 0
             ```
 
-        5.  Press the Esc key, enter :wq, and then press the Enter key to save your changes and exit the editing mode.
+        5.  Press the Esc key, enter :wq, and then press the Enter key to save your changes and exit the edit mode.
 3.  View the information of the new partition in /etc/fstab.
 
     Run the following command:
@@ -177,7 +177,7 @@ Write the information of the new partition to /etc/fstab to enable this partitio
     cat /etc/fstab
     ```
 
-    A command output similar to the following one is displayed:
+    A command output similar to the following one is returned.
 
     ![Query fstab](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4233158061/p173707.png)
 
