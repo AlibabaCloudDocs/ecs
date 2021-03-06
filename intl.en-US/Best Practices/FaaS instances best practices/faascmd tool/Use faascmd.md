@@ -1,234 +1,241 @@
-# Use faascmd {#concept_vrl_rn1_tfb .concept}
+# Use faascmd
 
 This topic describes how to use faascmd commands.
 
-## Prerequisite {#section_v5y_n51_tfb .section}
+faascmd is configured. For more information, see [Configure faascmd](/intl.en-US/Best Practices/FaaS instances best practices/faascmd tool/Configure faascmd.md).
 
-You have [configured faascmd](intl.en-US/Best Practices/FaaS instances best practices/faascmd tool/Configure faascmd.md#) before using it.
+The following conditions are met before you can use the authorization command:
 
-## Syntax description {#section_k5j_b2v_vfb .section}
+1.  An Object Storage Service \(OSS\) bucket is created for FPGA as a Service \(FaaS\) to upload the originally compiled DCP file.
+2.  A folder named compiling\_logs is created in the bucket.
+
+Description of the faascmd command syntax:
 
 -   All commands and parameters provided by faascmd are case-sensitive.
+-   In faascmd commands, extra spaces are not allowed between parameters, `equal signs (=)`, or values.
 
--   There must be no space before and after equal signs \(=\) in the parameters of faascmd commands.
+This topic describes the following faascmd commands:
 
+-   [Authorize RAM users](#section_l22_m3t_2lm)
+-   [View an authorization policy](#section_zns_gx0_rw5)
+-   [Delete an authorization policy](#section_4ql_7ju_xc6)
+-   [View all objects in an OSS bucket](#section_pai_qvg_9a3)
+-   [Upload an originally compiled file](#section_bd6_8gn_vz1)
+-   [Download an object from an OSS bucket](#section_518_vs9_hic)
+-   [Create an FPGA image](#section_4mb_909_zbm)
+-   [View FPGA images](#section_o0h_qkz_zzx)
+-   [Delete FPGA images](#section_k1c_yj3_wls)
+-   [Download an FPGA image](#section_0xf_a3k_662)
+-   [View the download status of an FPGA image](#section_a6q_bsy_kau)
+-   [Publish an FPGA image](#section_wct_1ue_ya8)
+-   [Query information of FPGA-accelerated instances](#section_5za_vje_45r)
 
-## Authorize users {#section_wgv_4f5_tfb .section}
+## Authorize RAM users
 
-The `faascmd auth` command is used to authorize the faas admin user to access the users' OSS buckets.
+You can run the `faascmd auth` command to authorize a RAM user to access your OSS buckets as a FaaS administrator.
 
-**Prerequisites**
-
-1.  You have created an OSS bucket for FaaS to upload the originally compiled DCP file.
-
-2.  You have created a folder named compiling\_logs in the FaaS OSS bucket.
-
-
-**Command format**
+Command format:
 
 ```
-faascmd auth --bucket=<yourFaasOSSBucketName>
+faascmd auth --bucket=<YourFaasOSSBucketName>
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431129_en-US.png)
+![Authorize RAM users](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5614488951/p31129.png)
 
-**Note:** If an Alibaba Cloud account has multiple RAM user accounts, we recommend that the RAM user accounts share an OSS bucket to prevent authorization policies from being repeatedly modified or overwritten.
+**Note:** If your Alibaba Cloud account has multiple RAM users, we recommend that you share the OSS bucket to the RAM users so that you do not have to repeatedly modify or overwrite authorization policies.
 
-## View authorization policies {#section_xbt_srr_5fb .section}
+## View an authorization policy
 
-The `faascmd list_policy` command is used to view whether the specified OSS bucket has been added to the corresponding authorization policy \(faasPolicy\).
+You can run the `faascmd list_policy` command to check whether the specified OSS bucket is contained in the corresponding authorization policy \(faasPolicy\).
 
-**Command format**
+Command format:
 
 ```
 faascmd list_policy
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431130_en-US.png)
+![View an authorization policy](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31130.png)
 
-**Note:** You need to check whether your OSS bucket and OSS bucket/compiling\_logs appear in the policy information.
+**Note:** Check whether your OSS bucket and the compiling\_logs folder in the bucket are displayed in the policy information.
 
-## Delete authorization policies {#section_pnl_xrr_5fb .section}
+## Delete an authorization policy
 
-The `faascmd delete_policy` command is used to delete authorization policies \(faasPolicy\).
+You can run the `faascmd delete_policy` command to delete an authorization policy \(faasPolicy\).
 
-**Command format**
+Command format:
 
 ```
 faascmd delete_policy
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431131_en-US.png)
+![Delete an authorization policy](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31131.png)
 
-**Note:** If an Alibaba Cloud account has multiple RAM user accounts, we recommend that you delete the target policy in the RAM console to prevent incorrect authorization policy deletion.
+**Note:** If your Alibaba Cloud account has multiple RAM users, we recommend that you perform this operation in the [RAM console](https://ram.console.aliyun.com/) to avoid unexpected policy deletion.
 
-## View all objects under an OSS bucket {#section_t1s_1sr_5fb .section}
+## View all objects in an OSS bucket
 
-The `faascmd list_objects` command is used to view all objects under your OSS bucket.
+You can run the `faascmd list_objects` command to view all objects in an OSS bucket.
 
-**Command format**
+Command format:
 
 ```
 faascmd list_objects
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431132_en-US.png)
+![View objects](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31132.png)
 
-**Note:** You can use this command with the grep command to filter for the files you want, for example, `faascmd list_objects | grep "xxx"`.
+**Note:** You can combine this command with the grep command to filter objects. Example: `faascmd list_objects | grep "xxx"`.
 
-## Upload original compilation files {#section_k45_dsr_5fb .section}
+## Upload an originally compiled file
 
-The `faascmd upload_object` command is used to upload the original files that are compiled on your local PC to a specified OSS bucket.
+You can run the `faascmd upload_object` command to upload original copies of files compiled on your local PC to a specified OSS bucket.
 
-**Command format**
-
-```
-faascmd upload_object --object=<newFileNameinOSSBucket> --file= <your_file_path>/fileNameYouWantToUpload 
+Command format:
 
 ```
-
-**Code example**
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431112_en-US.png)
-
-**Note:** 
-
--   No path is needed if the target files are stored in the current directory.
-
--   Locally compiled original files provided by Intel FPGA are in .gbs format and those provided by Xilinx FPGA are compressed as packages in .tar format after script processing.
-
-
-## Download objects from an OSS bucket {#section_b4q_gsr_5fb .section}
-
-The `faascmd get_object` command is used to download a specified object from an OSS bucket.
-
-**Command format**
-
-```
-faascmd get_object --obejct=<yourObjectName> --file=<your_local_path>/<yourFileName>
+faascmd upload_object --object=<NewFileNameInOSSBucket> --file=<YourFilePath>/<FileNameYouWantToUpload>           
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431115_en-US.png)
+![upload_object](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31112.png)
 
-**Note:** If no path is provided, the objects are downloaded to the current folder by default.
+**Note:**
 
-## Create FPGA images {#section_rbl_ksr_5fb .section}
+-   If the file to be uploaded is stored in the current directory, you do not need to specify a path.
+-   Locally compiled original files provided by Intel FPGA are in the .gbs format and those provided by Xilinx FPGA are compressed as packages in the .tar format after script processing.
 
-The `faascmd create_image` command is used to submit FPGA image creation requests. If the request succeeds, fpga imageuuid is returned.
+## Download an object from an OSS bucket
 
-**Command format**
+You can run the `faascmd get_object` command to download the specified object from an OSS bucket.
+
+Command format:
 
 ```
-faascmd create_image --object=<yourObjectName> 
+faascmd get_object --object=<YourObjectName> --file=<YourLocalPath>/<YourFileName>
+```
+
+Sample code
+
+![get_object](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31115.png)
+
+**Note:** If you do not specify a path, the object is downloaded to the current folder.
+
+## Create an FPGA image
+
+You can run the `faascmd create_image` command to submit a request to create an FPGA image. If the request succeeds, FpgaImageUUID is returned.
+
+Command format:
+
+```
+faascmd create_image --object=<YourObjectName> 
 --fpgatype=<intel/xilinx>  --encrypted=<true/false> 
---kmskey=<key/mandatory if encrypted is true> 
---shell=<Shell Version/mandatory> --name=<name/optional> 
---description=<description/optional> --tags=<tags/optional>
+--kmskey=<key/If encrypted is set to true, this parameter is required. Otherwise, this parameter is optional.> 
+--shell=<Shell Version/Required> --name=<name/Optional> 
+--description=<description/Optional> --tags=<tags/Optional>
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431117_en-US.png)
+![create_image](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31117.png)
 
-## View FPGA images {#section_msw_nsr_5fb .section}
+## View FPGA images
 
-The `faascmd list_images` command is used to view information about all the FPGA images you have created.
+You can run the `faascmd list_images` command to view the information of all FPGA images that you created.
 
-**Command format**
+Command format:
 
 ```
 faascmd list_images
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431118_en-US.png)
+![list_images](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31118.png)
 
-**Note:** A maximum of 10 FPGA images can be reserved for each RAM user account.
+**Note:** Each RAM user can have up to 10 FPGA images.
 
-## Delete FPGA images {#section_pkw_qsr_5fb .section}
+## Delete FPGA images
 
-The `faascmd delete_image` command is used to delete FPGA images.
+You can run the `faascmd delete_image` command to delete an FPGA image.
 
-**Command format**
+Command format:
 
 ```
 faascmd delete_image --imageuuid=<yourImageuuid>
 ```
 
-**Code example**
+Sample code
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726431120_en-US.png)
+![delete_image](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31120.png)
 
-## Download FPGA images {#section_cmr_tsr_5fb .section}
+## Download an FPGA image
 
-The `faascmd download_image` command is used to submit FPGA image download requests.
+You can run the `faascmd download_image` command to submit a request to download an FPGA image.
 
-**Command format**
+Command format:
 
 ```
-faascmd download_image  --instanceId=<yourInstanceId> 
---fpgauuid=<yourfpgauuid> --fpgatype=<intel/xilinx> 
---imageuuid=<yourImageuuid> --imagetype=<afu> 
---shell=<yourImageShellVersion>
+faascmd download_image  --instanceId=<YourInstanceId> 
+--fpgauuid=<Yourfpgauuid> --fpgatype=<intel/xilinx> 
+--imageuuid=<YourImageuuid> --imagetype=<afu> 
+--shell=<YourImageShellVersion>
 ```
 
-**Code example**
+Sample code
 
 ```
 faascmd download_image --instanceId=XXXXX --fpgauuid=XXXX --fpgatype=intel --imageuuid=XXXX
 ```
 
-## View the FPGA image download status {#section_dhj_wsr_5fb .section}
+## View the download status of an FPGA image
 
-The `faascmd fpga_status` command is used to view the status of the current FPGA board card and the FPGA image download status.
+You can run the `faascmd fpga_status` command to view the status of the current FPGA board card or the download progress of the FPGA image.
 
-**Command format**
-
-```
-faascmd fpga_status --fpgauuid=<fpgauuid> --instanceId=<instanceId>
-```
-
-**Code example**
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726531125_en-US.png)
-
-## Publish FPGA images {#section_snv_ysr_5fb .section}
-
-The `faascmd publish_image` command is used to submit FPGA image publishing requests.
-
-**Command format**
+Command format:
 
 ```
-faascmd publish_image --imageuuid=<yourImageuuid> --imageid=<yourFPGAImageid>
+faascmd fpga_status --fpgauuid=<Yourfpgauuid> --instanceId=<YourInstanceId>
 ```
 
-**Note:** 
+Sample code
 
--   imageuuid is the ID of the image you are going to publish to the cloud marketplace. You can view the image ID by running the `faascmd list_images` command.
--   imageid is the FPGA image ID. You can view the ID on the instance details page in the ECS console.
+![fpga_status](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6614488951/p31126.png)
 
-## View FPGA instance information {#section_vhb_btr_5fb .section}
+## Publish an FPGA image
 
-The `faascmd list_instances` command is used to obtain basic information about an FPGA instance, including the instance ID, FPGA board card information, and shell version.
+You can run the `faascmd publish_image` command to submit a request to publish an FPGA image.
 
-**Command format**
+Command format:
 
 ```
-faascmd list_instances --instanceId=<yourInstanceId>
+faascmd publish_image --imageuuid=<YourImageuuid> --imageid=<YourInstanceImageid>
 ```
 
-**Code example**
+**Note:**
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/61626/154398726531126_en-US.png)
+-   imageuuid indicates the ID of the image that you want to publish to Alibaba Cloud Marketplace. You can run the `faascmd list_images` command to view this image ID.
+-   imageid indicates the image ID of the current FPGA-accelerated instance. You can go to the product details page in the [ECS console](https://ecs.console.aliyun.com) to view this image ID.
+
+## Query information of FPGA-accelerated instances
+
+You can run the `faascmd list_instances` command to query the basic information of an FPGA-accelerated instance such as the instance ID, FPGA board card information, and shell version.
+
+Command format:
+
+```
+faascmd list_instances --instanceId=<YourInstanceId>
+```
+
+Sample code
+
+![list_instances](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7614488951/p31128.png)
 
