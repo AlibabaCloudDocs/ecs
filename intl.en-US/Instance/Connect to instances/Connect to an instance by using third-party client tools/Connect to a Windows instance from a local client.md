@@ -13,8 +13,8 @@ Before you connect to a Windows instance, make sure that the following requireme
         -   If you do not select Assign Public IP Address when you create a subscription instance, you can upgrade the bandwidth to obtain a public IP address for the instance. For more information, see [Overview of instance upgrade and downgrade](/intl.en-US/Instance/Change configurations/Overview of instance upgrade and downgrade.md).
 -   The following security group rules are added to the security group to which the instance belongs. For more information, see [Add security group rules](/intl.en-US/Security/Security groups/Add security group rules.md).
 
-    |Network type|NIC type|Rule direction|Action|Protocol|Port range|Authorization type|Authorization object|Priority|
-    |------------|--------|--------------|------|--------|----------|------------------|--------------------|--------|
+    |Network type|NIC type|Rule direction|Action|Protocol|Port range|Authorization type|Authorized object|Priority|
+    |------------|--------|--------------|------|--------|----------|------------------|-----------------|--------|
     |VPC|N/A|Inbound|Allow|RDP\(3389\)|3389/3389|CIDR block|0.0.0.0/0|1|
     |Classic network|Internet|
 
@@ -69,11 +69,13 @@ If the local client runs a Windows operating system, you can connect to a Window
 
 ## Connect from a local client that runs a Linux operating system
 
-If the local client runs a Linux operating system, you can connect to a Windows instance from the local client by using a remote connection tool. rdesktop is used in this example.
+If the local client runs a Linux operating system, you can connect to a Windows instance from the local client by using a remote connection tool. In this example, rdesktop is used.
 
 1.  Download and start rdesktop.
 
-2.  Run the following command to connect to the Windows instance. Change the parameter values based on your own configurations.
+2.  Run the following command to connect to the Windows instance.
+
+    This sample command is for your reference. Replace the parameters in the command based on your needs.
 
     ```
     rdesktop -u administrator -p password -f -g 1024*720 192.168.1.1 -r clipboard:PRIMARYCLIPBOARD -r disk:sunray=/home/yz16184
@@ -102,7 +104,5 @@ For information about how to connect to a Windows instance from a local client t
 
 ## Connect from a local client that runs an Android or iOS operating system
 
-You can use applications to connect to a Windows instance from your mobile device.
-
-For more information, see [Connect to a Windows instance from a mobile device](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Windows instance from a mobile device.md).
+For information about how to connect to a Windows instance from a mobile device, see [Connect to a Windows instance from a mobile device](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Windows instance from a mobile device.md).
 
