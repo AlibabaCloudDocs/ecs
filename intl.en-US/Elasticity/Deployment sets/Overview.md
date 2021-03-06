@@ -21,22 +21,30 @@ If you want to achieve low-latency communication between ECS instances, we recom
 
 ## Billing
 
-Deployment sets are free of charge, but you will be charged for the usage of ECS instances, disks, snapshots, images, and public bandwidth in deployment sets. For more information, see [Billing overview](/intl.en-US/Pricing/Billing overview.md).
+Deployment sets are free of charge, but you are charged for the usage of ECS instances, disks, snapshots, images, and public bandwidth in deployment sets. For more information, see [Billing overview](/intl.en-US/Pricing/Billing overview.md).
 
 ## Limits
 
-Before you use deployment sets, note that:
+Before you use deployment sets, take note of the following items:
 
 -   Deployment sets cannot be merged.
 -   You cannot create preemptible instances in deployment sets.
 -   You cannot create dedicated hosts in deployment sets.
 -   When you create ECS instances in a deployment set, you can create up to seven ECS instances in each zone. This limit varies with your ECS usage. You can use the following formula to calculate the number of ECS instances that can be created in an Alibaba Cloud region: 7 × Number of zones.
--   Instances in the following instance families can be created in deployment sets: c6, g6, r6, hfc6, hfg6, hfr6, d2, d2s, d2c, c5, d1, d1ne, g5, hfc5, hfg5, i2, i2g, i1, ic5, r5, se1ne, sn1ne, and sn2ne. For more information about instance types and their performance, see [Instance families](/intl.en-US/Instance/Instance families.md).
+-   Instances in the following instance families can be created in deployment sets:
+
+    -   c6, g6, r6, c5, g5, ic5, and r5
+    -   hfc6, hfg6, hfr6, hfc5, and hfg5
+    -   d2, d2s, d2c, d1, and d1ne
+    -   i2, i2g, and i1
+    -   se1ne, sn1ne, and sn2ne
+    For more information about instance types and their performance, see [Instance families](/intl.en-US/Instance/Instance families.md).
+
 -   Supply shortage may result in a failure to create an instance or restart a pay-as-you-go instance that is in the No Fees for Stopped Instances \(VPC-Connected\) state in a deployment set. For more information, see [No Fees for Stopped Instances \(VPC-Connected\)](/intl.en-US/Pricing/Billing methods/No Fees for Stopped Instances (VPC-Connected).md).
 
 For more information about the limits and quotas of deployment sets, see the "Deployment set limits" section in [Limits](/intl.en-US/Product Introduction/Limits.md).
 
-## Operations
+## References
 
 -   [Create a deployment set](/intl.en-US/Elasticity/Deployment sets/Create a deployment set.md)
 -   [Create an ECS instance in a deployment set](/intl.en-US/Elasticity/Deployment sets/Create an ECS instance in a deployment set.md)
@@ -44,7 +52,7 @@ For more information about the limits and quotas of deployment sets, see the "De
 -   [Manage deployment sets](/intl.en-US/Elasticity/Deployment sets/Manage deployment sets.md)
 -   [Delete a deployment set](/intl.en-US/Elasticity/Deployment sets/Delete a deployment set.md)
 
-## API operation
+## API operations
 
 -   Create a deployment set: [CreateDeploymentSet](/intl.en-US/API Reference/Deployment sets/CreateDeploymentSet.md)
 -   Add an instance to a deployment set or migrate an instance from one deployment set to another: [ModifyInstanceDeployment](/intl.en-US/API Reference/Dedicated hosts/ModifyInstanceDeployment.md).
