@@ -69,11 +69,13 @@
 
 ## 本地设备使用Linux操作系统
 
-如果本地设备使用Linux操作系统，您可以使用远程连接工具连接Windows实例。这里以rdesktop为例说明。
+如果本地设备使用Linux操作系统，您可以使用远程连接工具连接Windows实例。本步骤以rdesktop为例。
 
 1.  下载并启动rdesktop。
 
-2.  运行以下命令连接Windows实例。将示例中的参数改为您自己的参数。
+2.  运行以下命令连接Windows实例。
+
+    以下命令为示例，请根据实际情况替换参数。
 
     ```
     rdesktop -u administrator -p password -f -g 1024*720 192.168.1.1 -r clipboard:PRIMARYCLIPBOARD -r disk:sunray=/home/yz16184
@@ -98,11 +100,9 @@
 
 ## 本地设备使用Mac OS操作系统
 
-如果您本地使用Mac OS操作系统，具体操作，请参见[微软官网文档](https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)。
+关于如何在Mac OS操作系统中连接Windows实例，请参见[微软官网文档](https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)。
 
 ## 本地设备使用Android或iOS系统
 
-如果要使用移动设备远程连接您的Windows实例，您可以使用App。
-
-具体的操作描述，请参见[在移动设备上连接Windows实例](/intl.zh-CN/实例/连接实例/使用VNC连接实例/在移动设备上连接Windows实例.md)。
+关于如何使用移动设备远程连接您的Windows实例，请参见[在移动设备上连接Windows实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/在移动设备上连接Windows实例.md)。
 
