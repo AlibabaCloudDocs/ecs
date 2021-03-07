@@ -1,6 +1,6 @@
 # Build a Magento website on ECS {#concept_jny_5rl_2fb .concept}
 
-Magento is an open-source e-commerce platform written in PHP. Many customers use it to build their B2B or B2C e-commerce platforms. This tutorial explains how to build a Magento platform on a single ECS insgtance.
+Magento is an open-source e-commerce platform written in PHP. Many customers use it to build their B2B or B2C e-commerce platforms. This tutorial explains how to build a Magento platform on a single ECS instance.
 
 In this tutorial,we will install the following tools:
 
