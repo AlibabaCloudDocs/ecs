@@ -54,9 +54,9 @@ Create a snapshot for the disk to back up the disk data before you resize the di
 
 ## Step 2: Resize the disk, and restart or start the instance in the console.
 
-1.  On the Instances page, click the instance ID. The **Instance Details** tab appears. Click **Cloud Disk**.
+1.  On the **Instance Details** page, click the **Cloud Disk** tab.
 
-2.  Find the disk to be resized and choose **More** \> **Resize Disk** in the **Actions** column.
+2.  Find the disk that you want to resize and choose **More** \> **Resize Disk** in the **Actions** column.
 
     To batch resize disks, log on to the ECS console by using your Alibaba Cloud account and choose **Storage & Snapshots** \> **Disks** in the left-side navigation pane. On the Disks page, select the disks that you want to resize, and then click **Resize Disk** in the lower part of the page. Disks that are attached to the same instance cannot be batch resized.
 
@@ -87,7 +87,7 @@ Create a snapshot for the disk to back up the disk data before you resize the di
 
 Log on to the ECS instance to view the partition types \(MBR and GPT\) and file system types \(such as ext4 and xfs\) of the system disk and data disks. Subsequent resizing operations vary based on the types of the partitions and file systems.
 
-1.  Connect to the ECS instance. For more information,see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+1.  Connect to the ECS instance. For more information,see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using VNC.md).
 
 2.  Run the following command view the disks attached to the instance:
 
