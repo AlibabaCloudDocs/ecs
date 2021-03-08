@@ -50,8 +50,8 @@
 -   ECS管理控制台：具有交互式操作的Web服务页面。关于管理控制台的操作，请参见[常用操作导航](/intl.zh-CN/最佳实践/常用操作导航.md)。
 -   ECS API：支持GET和POST请求的RPC风格API。关于API说明，请参见[API参考](/intl.zh-CN/API参考/API简介.md)。以下为调用云服务器ECS API的常用开发者工具：
     -   [命令行工具CLI]()：基于阿里云API建立的灵活且易于扩展的管理工具。您可基于命令行工具封装阿里云的原生API，扩展出您需要的功能。
-    -   [OpenAPI Explorer](https://api.aliyun.com/)：提供快速检索接口、在线调用API和动态生成SDK示例代码等服务。
-    -   [阿里云SDK](https://www.alibabacloud.com/support/developer-resources)：提供Java、Python、PHP等多种编程语言的SDK。
+    -   [OpenAPI开发者门户](https://next.api.aliyun.com/api/Ecs/2014-05-26)：提供快速检索接口、在线调用API和动态生成SDK示例代码等服务。
+    -   [阿里云SDK](https://next.api.aliyun.com/api-tools/sdk/Ecs?version=2014-05-26)：提供Java、Python、PHP等多种编程语言的SDK。
 -   [资源编排（Resource Orchestration Service）](/intl.zh-CN/产品简介/什么是资源编排服务.md)：通过创建一个描述您所需的所有阿里云资源的模板，然后资源编排将根据模板，自动创建和配置资源。
 -   [运维编排服务（Operation Orchestration Service）](/intl.zh-CN/运维与监控/运维编排/运维编排服务概述.md)：自动化管理和执行运维任务。您可以在执行模板中定义执行任务、执行顺序、执行输入和输出等，通过执行模板达到自动化完成运维任务的目的。
 -   [Terraform](/intl.zh-CN/部署与弹性/Terraform/Terraform概述.md)：能够通过配置文件在阿里云以及其他支持Terraform的云商平台调用计算资源，并对其进行版本控制的开源工具。
