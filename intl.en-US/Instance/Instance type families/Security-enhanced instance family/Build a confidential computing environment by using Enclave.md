@@ -87,7 +87,7 @@ Alibaba Cloud Enclave provides SDKs for you to develop your own applications on 
 2.  Run the following command to use Docker to create an enclave image:
 
     ```
-    docker build -t deenclave/sdk-builder
+    docker build -t deenclave/sdk-builder .
     ```
 
     After the command is run, an image named deenclave/sdk-builder is generated. You can use this image to build DE Enclave applications. Alibaba Cloud provides the following [SDK examples](#section_gem_b9o_bg2) for your reference.
