@@ -51,7 +51,7 @@ After you register an Alibaba Cloud account, you can create, use, or release ECS
 -   ECS API: an RPC API that supports GET and POST requests. For more information, see [API Reference](/intl.en-US/API Reference/Introduction.md). The following developer tools can be used to call ECS API operations:
     -   [Alibaba Cloud CLI](): a flexible and scalable management tool based on Alibaba Cloud APIs. You can use CLI to encapsulate Alibaba Cloud native APIs to develop custom features.
     -   [OpenAPI Explorer](https://api.aliyun.com/): allows you to retrieve API operations, call API operations, and dynamically generate SDK sample code.
-    -   [Alibaba Cloud SDK](https://www.alibabacloud.com/support/developer-resources): SDKs for a variety of programming languages such as Java, Python, and PHP are provided.
+    -   [Alibaba Cloud SDK](https://next.api.aliyun.com/api-tools/sdk/Ecs?version=2014-05-26): SDKs for a variety of programming languages such as Java, Python, and PHP are provided.
 -   [Resource Orchestration Service \(ROS\)](/intl.en-US/Product Introduction/What is ROS?.md): automatically creates and configures Alibaba Cloud resources based on user-defined templates.
 -   [Terraform](/intl.en-US/Elasticity/Terraform/What is Terraform?.md): an open source tool that uses configuration files to call computing resources of Alibaba Cloud and other platforms that support Terraform. Terraform also implements version control.
 
@@ -76,7 +76,7 @@ Before you purchase an ECS instance, consider the following factors:
     You can use ECS security groups to control inbound and outbound access policies and the port listening status of ECS instances. For applications deployed on ECS instances, Alibaba Cloud provides Anti-DDoS Basic for free. You can also use Alibaba Cloud Security. For example:
 
     -   You can use Anti-DDoS Pro to ensure the stability and reliability of source sites. For more information, see [What is Anti-DDoS Pro](/intl.en-US/Anti-DDoS Pro Service (Old)/Product Introduction/What is Anti-DDoS Pro.md).
-    -   Security Center can be used to safeguard the security of ECS instances. For more information, see [What is Security Center?](/intl.en-US/Product Introduction/What is Security Center?.md)
+    -   Security Center can be used to safeguard the security of ECS instances. For more information, see [What is Security Center?](/intl.en-US/Product Introduction/What is Security Center.md)
 
 ## Related services
 
@@ -85,7 +85,7 @@ Together with ECS, you can select the following Alibaba Cloud services:
 -   Auto Scaling: automatically adjusts the number of ECS instances based on business and policy changes. For more information, see [What is Auto Scaling?](/intl.en-US/Product Introduction/What is Auto Scaling?.md)
 -   Dedicated Host \(DDH\): allows you to deploy ECS instances on a dedicated host to have dedicated use of its physical resources. DDH also allows you to migrate your businesses to the cloud at minimal costs while meeting compliance requirements. For more information, see [What is DDH?](/intl.en-US/Product Introduction/What is DDH?.md)
 -   Container Service for Kubernetes: manages application lifecycles on groups of ECS instances. For more information, see [What is Container Service for Kubernetes?](/intl.en-US/Product Introduction/What is Container Service for Kubernetes?.md)
--   Server Load Balancer \(SLB\): distributes traffic among multiple ECS instances. For more information, see [What is Server Load Balancer?](/intl.en-US/Classic Load Balancer/Product Introduction/What is SLB?.md)
+-   Server Load Balancer \(SLB\): distributes traffic among multiple ECS instances. For more information, see [What is Server Load Balancer?](/intl.en-US/Classic Load Balancer/Product Introduction/What is CLB?.md)
 -   CloudMonitor: develops monitoring solutions for instances, system disks, and public bandwidth. For more information, see [Overview](/intl.en-US/Product Introduction/What is Cloud Monitor?.md).
 -   ApsaraDB RDS: provides database services accessible over internal networks to ECS instances, reduces network latency and access fees, and delivers top-notch performance. ApsaraDB RDS supports multiple database engines, including MySQL, SQL Server, PostgreSQL, PPAS, and MariaDB. For more information, see [What is ApsaraDB RDS?](/intl.en-US/Product Introduction/What is ApsaraDB for RDS?.md)
 -   [Alibaba Cloud Marketplace](https://www.alibabacloud.com/marketplace): a platform where third-party partners provide software infrastructure, business software, and various software and services related to website construction, hosted O&M, security, data, APIs, and solutions. You can also provide software and services as a service provider in Alibaba Cloud Marketplace.
