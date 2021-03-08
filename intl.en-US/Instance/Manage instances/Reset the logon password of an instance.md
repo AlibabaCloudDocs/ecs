@@ -10,7 +10,7 @@ The instance is in a stable state, such as **Stopped** or **Running**. For more 
 
 -   After you reset the logon password of an instance that is in the **Running** state, you must restart the instance to make the new password take effect. When you restart the instance, your services may be affected. We recommend that you reset the logon password during off-peak hours to avoid service disruption.
 -   If the instance is a Linux instance, you can log on to the instance by using the password or the key pair. If you only use the password for authentication, this authentication method becomes invalid after you attach a key pair to your instance. If you want to use both methods to log on to the instance, you must reset its logon password.
--   You can also change the logon password of an instance by connecting to the instance. The change takes effect immediately and you do not need to restart the instance. For more information, see [Change the logon password of an instance by connecting to the instance](/intl.en-US/Instance/Manage instances/Change the logon password of an instance by connecting to the instance.md).
+-   You can also change the logon password of an instance by using Cloud Assistant or change the logon password of an instance by connecting to the instance. The change takes effect immediately and you do not need to restart the instance. For more information, see [Change the logon password of an instance](/intl.en-US/Deployment & Maintenance/Cloud assistant/DevOps practice/Change the logon password of an instance.md) or [Change the logon password of an instance by connecting to the instance](/intl.en-US/Instance/Manage instances/Change the logon password of an instance by connecting to the instance.md).
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
@@ -18,7 +18,7 @@ The instance is in a stable state, such as **Stopped** or **Running**. For more 
 
 3.  In the top navigation bar, select a region.
 
-4.  Based on the number of instances for which you want to change passwords, you can perform different operations.
+4.  Based on the number of instances whose passwords you want to change, you can perform different operations.
 
     -   To reset the password of a single instance, find the instance and choose **More** \> **Password/Key Pair** \> **Reset Password** in the **Actions** column.
 
@@ -40,6 +40,8 @@ The instance is in a stable state, such as **Stopped** or **Running**. For more 
 
 **Related topics**  
 
+
+[Change the logon password of an instance](/intl.en-US/Deployment & Maintenance/Cloud assistant/DevOps practice/Change the logon password of an instance.md)
 
 [ModifyInstanceAttribute](/intl.en-US/API Reference/Instances/ModifyInstanceAttribute.md)
 
