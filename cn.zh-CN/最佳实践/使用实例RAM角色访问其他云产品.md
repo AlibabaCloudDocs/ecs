@@ -8,7 +8,7 @@
 
 现在借助于ECS实例RAM角色，您可以将RAM角色和ECS实例关联起来，实例内部的应用程序可以通过STS临时凭证访问其他云产品。其中STS临时凭证由系统自动生成和更新，应用程序可以使用指定的实例元数据URL获取STS临时凭证，无需特别管理。同时借助于RAM，通过对角色和授权策略的管理，您可以达到不同实例对不同云产品或相同云产品具有各自访问权限的目的。
 
-**说明：** 为了方便您随本文样例快速入门，文档里所有操作均在[OpenAPI Explorer](https://api.aliyun.com/?spm=a2c4g.11186623.2.16.21a418efIOhoV6)完成。OpenAPI Explorer通过已登录用户信息获取当前账号临时AK，对当前账号发起线上资源操作，请谨慎操作。创建实例操作会产生费用。操作完成后请及时释放实例。
+**说明：** 为了方便您随本文样例快速入门，文档里所有操作均在[OpenAPI开发者门户](https://next.api.aliyun.com/api/Ecs/2014-05-26)完成。OpenAPI Explorer通过已登录用户信息获取当前账号临时AK，对当前账号发起线上资源操作，请谨慎操作。创建实例操作会产生费用。操作完成后请及时释放实例。
 
 ## 操作步骤
 
@@ -25,7 +25,7 @@
 
 1.  创建RAM角色。
 
-    找到OpenAPI Explorer RAM产品下CreateRole API。其中：
+    找到OpenAPI开发者门户RAM产品下CreateRole API。其中：
 
     -   RoleName：设置角色的名称。根据自己的需要填写，本示例中为 EcsRamRoleTest。
     -   AssumeRolePolicyDocument： 填写如下内容，表示该角色为一个服务角色，受信云服务（本示例中为ECS）可以扮演该角色。
@@ -47,11 +47,9 @@
         }
         ```
 
-        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0675688951/p75917.png)
-
 2.  创建授权策略。
 
-    找到OpenAPI Explorer RAM产品下的CreatePolicy API。其中：
+    找到OpenAPI开发者门户RAM产品下的CreatePolicy API。其中：
 
     -   PolicyName：设置授权策略的名称。本示例中为EcsRamRolePolicyTest。
     -   PolicyDocument：输入授权策略内容。本示例中填写如下内容，表示该角色具有OSS只读权限。
@@ -72,16 +70,11 @@
         }
         ```
 
-        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1675688951/p75915.png)
-
-3.  为角色附加授权。找到OpenAPI Explorer RAM产品下的AttachPolicyToRole API。
+3.  为角色附加授权。找到OpenAPI开发者门户RAM产品下的AttachPolicyToRole API。
 
     -   PolicyType：填写Custom。
     -   PolicyName：填写第2步创建的策略名称，如本示例中的EcsRamRolePolicyTest。
     -   RoleName：填写第1步创建的角色名称，如本示例中的EcsRamRoleTest。
-
-        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1675688951/p75919.png)
-
 
 ## 步骤二：指定RAM角色创建并设置ECS实例
 
@@ -100,16 +93,13 @@
 
     1.  创建实例。
 
-        找到OpenAPI Explorer ECS产品下的CreateInstance API，根据实际情况填写请求参数。必须填写的参数包括：
+        找到OpenAPI开发者门户ECS产品下的CreateInstance API，根据实际情况填写请求参数。必须填写的参数包括：
 
         -   RegionId：实例所在地域。本示例中为cn-hangzhou。
         -   ImageId：实例的镜像。本示例中为centos\_7\_03\_64\_40G\_alibase\_20170503.vhd。
         -   InstanceType：实例的规格。本示例中为ecs.g6.large。
         -   VSwitchId：实例所在的VPC虚拟交换机。因为ECS实例RAM角色目前只支持VPC类型ECS实例，所以VSwitchId是必需的。
         -   RamRoleName：RAM角色的名称。本示例中为EcsRamRoleTest。
-
-            ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1675688951/p75918.png)
-
         如果您希望授权子账号创建指定RAM角色的ECS实例，那么子账号除了拥有创建ECS实例的权限之外，还需要增加PassRole权限。所以，您需要创建一个如下所示的自定义授权策略并绑定到子账号上。
 
         -   如果是创建ECS实例，\[ECS RAM Action\]可以是`ecs:CreateInstance`，您也可以根据实际情况添加更多的权限。
