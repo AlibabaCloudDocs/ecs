@@ -87,7 +87,7 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
 2.  运行以下命令，利用docker创建Enclave镜像。
 
     ```
-    docker build -t deenclave/sdk-builder
+    docker build -t deenclave/sdk-builder .
     ```
 
     执行成功后，自动生成名为deenclave/sdk-builder的镜像。您只需使用该镜像，即可进行DE Enclave的应用构建。阿里云提供了[SDK示例](#section_gem_b9o_bg2)供您参考。
