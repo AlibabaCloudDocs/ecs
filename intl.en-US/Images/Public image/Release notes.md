@@ -8,7 +8,7 @@ This topic describes the updates to the features of ECS public images in order o
 
 ## Background information
 
--   Unless otherwise stated, released updates apply to all Alibaba Cloud regions where ECS is provided.
+-   Unless otherwise stated, released updates apply to all Alibaba Cloud regions where ECS is available.
 -   Public images are applicable to most instance families. Some instance families can use only specific public images. For more information, see the following sections:
     -   [Trusted images](#section_ta4_ich_flj)
     -   [AMD images](#section_in3_bba_8af)
@@ -20,8 +20,7 @@ This topic describes the updates to the features of ECS public images in order o
 |CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
 |CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
 -   Changes: updated to include the latest patches. |
 |CentOS 8.2|centos\_8\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.18.0-193.28.1.el8\_2.x86\_64.
@@ -90,7 +89,7 @@ This topic describes the updates to the features of ECS public images in order o
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 6.10|centos\_6\_10\_x64\_20G\_alibase\_20200103.vhd|2020-01-03|-   Kernel version: 2.6.32-754.25.1.el6.x86\_64.
 -   Changes: updated to include the latest operating system patches.
--   Applicable regions: China \(Beijing\), US \(Virginia\), China \(Hong Kong\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Qingdao\), China \(Chengdu\), and Singapore. |
+-   Applicable regions: China \(Beijing\), US \(Virginia\), China \(Hong Kong\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Qingdao\), China \(Chengdu\), and Singapore \(Singapore\). |
 |CentOS 7.7|centos\_7\_7\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 3.10.0-1062.9.1.el7.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 8.0|centos\_8\_0\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.18.0-80.11.2.el8\_0.x86\_64.
@@ -132,13 +131,11 @@ This topic describes the updates to the features of ECS public images in order o
 |Debian 10.7|debian\_10\_7\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.19.0-13-amd64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
 |Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.9.0-14-amd64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
 |Debian 10.7|debian\_10\_7\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.19.0-13-amd64.
 -   Changes: updated to include the latest patches. |
 |Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.9.0-14-amd64.
@@ -242,13 +239,11 @@ This topic describes the updates to the features of ECS public images in order o
 |Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.4.0-65-generic.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
 |Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.15.0-135-generic.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
 |Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.4.0-58-generic.
 -   Changes: updated to include the latest patches. |
 |Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.15.0-128-generic.
@@ -332,9 +327,9 @@ This topic describes the updates to the features of ECS public images in order o
 
 **Note:** According to the end-of-life announcement for CoreOS Container Linux from the Fedora CoreOS community, updates are no longer provided for CoreOS Container Linux as of May 26, 2020. In view of this, Alibaba Cloud makes the following announcements:
 
--   As of May 26, 2020, Alibaba Cloud no longer provides technical support for ECS instances that use the CoreOS Container Linux operating system. However, you can still use existing ECS instances that run this operating system.
+-   On May 26, 2020, Alibaba Cloud no longer provides technical support for ECS instances that use the CoreOS Container Linux operating system. However, you can still use existing ECS instances that run this operating system.
 -   You can still obtain CoreOS Container Linux images from Alibaba Cloud before September 30, 2020. After September 30, 2020, you are unable to use CoreOS Container Linux public images provided by Alibaba Cloud to create new ECS instances.
--   As of May 26, 2020, you can still use CoreOS Container Linux that has already been installed. However, no security patches are available because the operating system has reached its end of life. For security concerns, Alibaba Cloud recommends that you do not use CoreOS Container Linux images any longer.
+-   After May 26, 2020, you can still use CoreOS Container Linux that has already been installed. However, no security patches are available because the operating system has reached its end of life. For security concerns, Alibaba Cloud recommends that you do not use CoreOS Container Linux images any longer.
 -   The Fedora CoreOS community recommends that you use Fedora CoreOS as a replacement of CoreOS Container Linux. Alibaba Cloud will also bring Fedora CoreOS public images online soon.
 
 |Release|Image ID|Release date|Description|
@@ -350,39 +345,38 @@ This topic describes the updates to the features of ECS public images in order o
 |CoreOS 2303\_3.0|coreos\_2303\_3\_x64\_30G\_alibase\_20191223.vhd|2019-12-23|-   Kernel version: 4.19.86-coreos.
 -   Changes: updated to include the latest operating system patches. |
 
-## OpenSUSE
+## openSUSE
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.3.18-lp152.60-default.
+|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.3.18-lp152.60-default.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
-|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
+|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
 -   Changes: updated to include the latest patches. |
-|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
+|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
 -   Changes: updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
-|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
+|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
 -   Changes: updated to include the latest patches. |
-|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200818.vhd|2020-08-18|-   Kernel version: 5.3.18-lp152.33-default.
+|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200818.vhd|2020-08-18|-   Kernel version: 5.3.18-lp152.33-default.
 -   Changes: updated to include the latest patches. |
-|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 5.3.18-lp152.20.7-default.
+|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 5.3.18-lp152.20.7-default.
 -   Changes: updated to include the latest patches. |
-|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200623.vhd|2020-06-23|-   Kernel version: 4.12.14-lp151.28.52-default.
+|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200623.vhd|2020-06-23|-   Kernel version: 4.12.14-lp151.28.52-default.
 -   Changes: updated to include the latest patches. |
-|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200520.vhd|2020-05-20|-   Kernel version: 4.12.14-lp151.28.48-default.
+|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200520.vhd|2020-05-20|-   Kernel version: 4.12.14-lp151.28.48-default.
 -   Changes: updated to include the latest patches. |
-|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.12.14-lp151.28.48-default.
+|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.12.14-lp151.28.48-default.
 -   Changes:
     -   Enabled IPv6 by default.
     -   Updated to include the latest operating system patches. |
-|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200331.vhd|2020-03-31|-   Kernel version: 4.12.14-lp151.28.44-default.
+|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200331.vhd|2020-03-31|-   Kernel version: 4.12.14-lp151.28.44-default.
 -   Changes: updated to include the latest operating system patches. |
-|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200222.vhd|2020-02-22|-   Kernel version: 4.12.14-lp151.28.36-default.
+|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200222.vhd|2020-02-22|-   Kernel version: 4.12.14-lp151.28.36-default.
 -   Changes: updated to include the latest operating system patches. |
-|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20191219.vhd|2019-12-19|-   Kernel version: 4.12.14-lp151.28.36-default.
+|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20191219.vhd|2019-12-19|-   Kernel version: 4.12.14-lp151.28.36-default.
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Upgraded cloud-init to version 19.1. |
@@ -425,8 +419,7 @@ This topic describes the updates to the features of ECS public images in order o
 -   Kernel version: 5.10.10-200.fc33.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Hangzhou\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
 
 ## Trusted images
 
@@ -452,9 +445,9 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
 |Debian 10.7|debian\_10\_7\_amd\_x64\_20G\_alibase\_20201231.vhd|2020-12-31|-   New release.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Chengdu\), Singapore, and US \(Virginia\). |
+-   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Chengdu\), Singapore \(Singapore\), and US \(Virginia\). |
 |Ubuntu 20.04|ubuntu\_20\_04\_amd\_x64\_20G\_alibase\_20200820.vhd|2020-08-20|-   New release.
--   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Guangzhou\), Singapore, China \(Hangzhou\), and China \(Chengdu\). |
+-   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Guangzhou\), Singapore \(Singapore\), China \(Hangzhou\), and China \(Chengdu\). |
 |Ubuntu 18.04|ubuntu\_18\_04\_amd\_x64\_20G\_alibase\_20200804.vhd|2020-08-04|-   New release.
 -   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Shanghai\), China \(Hangzhou\), and China \(Chengdu\). |
 
@@ -462,6 +455,11 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20210220.vhd
+-   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
+
+|2021-02-20|-   Updated to include the KB4601384 and KB4601058 operating system patches released in February 2021.
+-   Fixed the CVE-2021-24074, CVE-2021-24078, and CVE-2021-24086 vulnerabilities. |
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20210114.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20210114.vhd
 
@@ -564,6 +562,11 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20210220.vhd
+-   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
+
+|2021-02-20|-   Updated to include the KB5001078, KB4601318, and KB4601051 operating system patches released in February 2021.
+-   Fixed the CVE-2021-24074, CVE-2021-24078, and CVE-2021-24086 vulnerabilities. |
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20210114.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210114.vhd
 
@@ -666,6 +669,16 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210220.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210220.vhd
+
+|2021-02-20|-   Updated to include the KB4601393, KB4601055, and KB4601383 operating system patches released in February 2021.
+-   Fixed the CVE-2021-24074, CVE-2021-24078, and CVE-2021-24086 vulnerabilities. |
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20210220.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
+
+|2021-02-20|-   Updated to include the KB4601393, KB4601055, and KB4601383 operating system patches released in February 2021.
+-   Fixed the CVE-2021-24074, CVE-2021-24078, and CVE-2021-24086 vulnerabilities. |
 |Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210114.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210114.vhd
 
@@ -927,6 +940,16 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210220.vhd
+-   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210220.vhd
+
+|2021-02-20|-   Updated to include the KB4601319 and KB4601050 operating system patches released in February 2021.
+-   Fixed the CVE-2021-24074, CVE-2021-24078, and CVE-2021-24086 vulnerabilities. |
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20210220.vhd
+-   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
+
+|2021-02-20|-   Updated to include the KB4601319 and KB4601050 operating system patches released in February 2021.
+-   Fixed the CVE-2021-24074, CVE-2021-24078, and CVE-2021-24086 vulnerabilities. |
 |Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210114.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210114.vhd
 
