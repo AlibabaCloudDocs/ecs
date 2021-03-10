@@ -8,8 +8,6 @@ keyword: [选择ESSD, 选择essd, essd商业化, 数据库高性能云盘]
 
 ## ESSD云盘的规格
 
-**说明：** 2020年06月09日起，PL0的ESSD云盘开始公测，公测期间PL0不支持修改为其他性能级别。
-
 ESSD云盘的API取值为cloud\_essd，提供了四个性能级别的云盘规格，四种性能级别核心差异在于单盘性能上限的不同。
 
 |ESSD云盘属性|性能级别PL（Performance Level）|
@@ -26,11 +24,14 @@ ESSD云盘的API取值为cloud\_essd，提供了四个性能级别的云盘规�
 |业务场景示例|中大型核心业务关系型数据库及NoSQL数据库，大型SAP和Oracle系统。|中等规模关系型数据库、NoSQL数据库，中等规模ELK日志集群，SAP和Oracle等企业级商用软件。|中小型MySQL和SQLServer等数据库场景，中小规模ELK日志集群，SAP和Oracle等企业级商用软件，容器应用。|中小型MySQL和SQLServer等数据库场景，中小规模ELK日志集群，SAP和Oracle等企业级商用软件，容器应用。|
 |在推荐业务场景下，这些产品的系统盘或数据盘建议替换为ESSD云盘。|16核vCPU以上本地SSD实例规格族（i1、i2、i2g）的数据盘|SSD云盘，本地SSD实例规格族（i1、i2、i2g）的数据盘|SSD云盘|系统盘|
 
-有关如何压测ESSD云盘，请参见 [压测ESSD云盘IOPS性能](/cn.zh-CN/块存储/性能/压测ESSD云盘IOPS性能.md)。
+**说明：**
+
+-   关于如何压测ESSD云盘，请参见[压测ESSD云盘IOPS性能](/cn.zh-CN/块存储/性能/压测ESSD云盘IOPS性能.md)。
+-   ESSD PL0云盘不支持修改为其他性能级别。更多信息，请参见[变更云盘类型](/cn.zh-CN/块存储/云盘基础操作/变更云盘类型.md)。
 
 ## 计费
 
-云服务器ECS支持创建按量付费和包年包月两种计费方式的ESSD云盘。详情请参见[创建云盘](/cn.zh-CN/块存储/云盘基础操作/创建云盘/创建云盘.md)和[创建包年包月云盘]()。
+云服务器ECS支持创建按量付费和包年包月两种计费方式的ESSD云盘。具体操作，请参见[创建云盘](/cn.zh-CN/块存储/云盘基础操作/创建云盘/创建云盘.md)。
 
 有关不同ESSD云盘性能级别的定价详情，请参见[块存储定价](https://www.aliyun.com/price/product#/disk/detail)。
 
@@ -55,16 +56,16 @@ ESSD云盘适用于时延敏感的应用或者I/O密集型业务场景：
 
 -   示例一：张先生在ECS管理控制台上创建ESSD云盘时，选择了20 GiB。则张先生只能选购PL1性能级别的ESSD云盘，对应的IOPS上限为50,000。
 
-    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6953359951/p49959.png)
+    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6953359951/p49959.png)
 
 -   示例二：张先生在ECS管理控制台上创建ESSD云盘时，选择了32,000 GiB。则张先生能选购PL0至PL3性能级别的ESSD云盘，对应的IOPS上限分别为10,000、50,000、100,000和1,000,000。
 
-    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6953359951/p129355.png)
+    ![在ECS管理控制台上创建ESSD云盘](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6953359951/p129355.png)
 
 
 ## 实例规格的存储I/O性能
 
-部分全新一代实例规格族的存储I/O性能和实例规格成正比线性关系，以存储增强型实例规格族g6se为例，实例规格越高可获得的存储IOPS和吞吐量越高。更多详情，请参见[存储I/O性能](/cn.zh-CN/块存储/性能/存储I/O性能.md)。
+部分全新一代实例规格族的存储I/O性能和实例规格成正比线性关系，以存储增强型实例规格族g6se为例，实例规格越高可获得的存储IOPS和吞吐量越高。更多信息，请参见[存储I/O性能](/cn.zh-CN/块存储/性能/存储I/O性能.md)。
 
 实例规格与ESSD云盘性能的关系规则如下所示：
 
