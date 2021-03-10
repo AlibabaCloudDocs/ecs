@@ -1,0 +1,27 @@
+# /proc/meminfo文件中的统计信息变更说明
+
+Alibaba Cloud Linux 2操作系统在内核4.19.91-22.al7.x86\_64及其之后的版本中，/proc/meminfo文件内的匿名页状态统计信息`Active(anon)`和`Inactive(anon)`发生了变化。如果您的应用程序正在使用该统计信息，统计信息的变化会导致变更前后查询到的数据不一致。本文将对本次变化进行详细说明。
+
+## 变更原因
+
+Linux kernel社区在最新的版本中对匿名页的回收进行了优化，分配的匿名页默认放置的位置由active LRU变更为了inactive LRU，因此对/proc/meminfo文件内的统计信息`Active(anon)`和`Inactive(anon)`的数据产生了影响。社区合入信息如下所示：
+
+-   社区合入版本：Linux Kernel 5.10
+-   社区合入commit：b518154e59aab3ad0780a169c5cc84bd4ee4357e
+
+Alibaba Cloud Linux 2的内核在4.19.91-22.al7.x86\_64及其之后的版本中合入了该优化项，/proc/meminfo文件内的统计信息`Active(anon)`和`Inactive(anon)`的数据将发生变化。
+
+**说明：** 您可以在操作系统内运行uname -r命令获取内核版本信息。
+
+## 变更详情
+
+Alibaba Cloud Linux 2的内核在4.19.91-22.al7.x86\_64版本之前（不包含该版本），应用程序申请的匿名页（anon page）默认被统计到/proc/meminfo文件的`Active(anon)`中，当内存不足时才会被统计到`Inactive(anon)`中。
+
+当内核升级到4.19.91-22.al7.x86\_64及其之后的版本时，应用程序申请的匿名页（anon page）默认被统计到/proc/meminfo文件的`Inactive(anon)`中，当被访问后才会切换到`Active(anon)`中。因此，如果您在使用/proc/meminfo文件内的`Active(anon)`和`Inactive(anon)`来统计匿名页状态的数据，需要对本次变化进行相应的调整。
+
+## 变更影响及建议
+
+由于统计匿名页状态的信息（即`Active(anon)`和`Inactive(anon)`）发生变化，因此相同的应用程序在本次变更前所查询到的`Active(anon)`和`Inactive(anon)`的数据，与变更后查询的到数据将不一致。
+
+建议您根据所使用的Alibaba Cloud Linux 2操作系统中最新的匿名页状态的统计数据，对应用程序的配置进行相应的调整。
+
