@@ -38,9 +38,9 @@ Features
         **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Network:
-    -   Provides an ultra-high packet forwarding rate.
+    -   Provides an ultra high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Video encoding and decoding
     -   Scenarios where large volumes of packets are received and transmitted
     -   Web frontend servers
@@ -49,8 +49,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-------------------------|------------------------------|:------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
 |ecs.c6a.large|2|4.0|None|1.0|10.0|900|Yes|2|12.5|1.0|
 |ecs.c6a.xlarge|4|8.0|None|1.5|10.0|1,000|Yes|3|20|1.5|
 |ecs.c6a.2xlarge|8|16.0|None|2.5|10.0|1,600|Yes|4|30|2.0|
@@ -71,6 +71,7 @@ Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
+-   Supports the Enclave feature and provides a trusted isolation space inside ECS instances to encapsulate security operations of legitimate software in an enclave.
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. c6t improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of SHENLONG chips.
 -   Compute:
     -   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
@@ -87,11 +88,11 @@ Features
         **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Network:
-    -   Provides an ultra-high packet forwarding rate.
+    -   Provides an ultra high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Scenarios that require high security and enhanced trust, such as financial services, government affairs, and enterprise services
-    -   Scenarios where large volumes of packets are received and transmitted, such as bullet screen and re-transmission of telecommunication information
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
@@ -99,8 +100,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|TPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|--------------------|:------------------------------|-----------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c6t.large|2|4.0|None|A burstable bandwidth of up to 10.0|900|Yes|Yes|Up to 250|2|3|6|20|1.0|
 |ecs.c6t.xlarge|4|8.0|None|A burstable bandwidth of up to 10.0|1,000|Yes|Yes|Up to 250|4|4|15|40|1.5|
 |ecs.c6t.2xlarge|8|16.0|None|A burstable bandwidth of up to 10.0|1,600|Yes|Yes|Up to 250|8|4|15|50|2.0|
@@ -136,8 +137,8 @@ Features
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
--   Applies to the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as bullet screen and re-transmission of telecommunication information
+-   Scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
@@ -145,8 +146,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|--------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c6e.large|2|4.0|None|A burstable bandwidth of up to 10.0|900|Yes|Up to 250|2|3|6|20|1.0|
 |ecs.c6e.xlarge|4|8.0|None|A burstable bandwidth of up to 10.0|1,000|Yes|Up to 250|4|4|15|40|1.5|
 |ecs.c6e.2xlarge|8|16.0|None|A burstable bandwidth of up to 10.0|1,600|Yes|Up to 250|8|4|15|50|2.0|
@@ -159,7 +160,7 @@ Instance types
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
--   The results for network capabilities are the maximum values obtained from single item tests. For example, when network bandwidth is tested, no stress tests are performed on the packet forwarding rate or other metrics of the network.
+-   The results for network capabilities are the maximum values obtained from single item tests. For example, when network bandwidth is tested, no stress tests are performed on the packet forwarding rate or other specifications.
 
 ## c6, compute optimized instance family
 
@@ -181,20 +182,20 @@ Features
 
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Provides an ultra-high packet forwarding rate.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
 -   Supports instance type changes to g6 or r6.
--   Applies to the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as bullet screen and re-transmission of telecommunication information
+-   Scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
-    -   High-performance scientific and engineering applications
+    -   High-performance science and engineering applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c6.large|2|4.0|None|1.0|3.0|300|Yes|Up to 250|2|2|6|10|1|
 |ecs.c6.xlarge|4|8.0|None|1.5|5.0|500|Yes|Up to 250|4|3|10|20|1.5|
 |ecs.c6.2xlarge|8|16.0|None|2.5|8.0|800|Yes|Up to 250|8|4|10|25|2|
@@ -221,10 +222,10 @@ Features
 
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Provides an ultra-high packet forwarding rate.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as bullet screen and re-transmission of telecommunication information
+-   Scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
@@ -232,8 +233,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:-------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.c5.large|2|4.0|None|1.0|300|Yes|2|2|6|
 |ecs.c5.xlarge|4|8.0|None|1.5|500|Yes|2|3|10|
 |ecs.c5.2xlarge|8|16.0|None|2.5|800|Yes|2|4|10|
@@ -256,18 +257,18 @@ Features
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Offers a CPU-to-memory ratio of 1:1.
 -   Provides an ultra-high packet forwarding rate.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Web frontend servers
     -   Data analysis, batch processing, and video encoding
-    -   Scenarios where large volumes of packets are received and transmitted, such as bullet screen and re-transmission of telecommunication information
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Frontend servers of MMO games
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:-------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.ic5.large|2|2.0|None|1.0|300|No|2|2|6|
 |ecs.ic5.xlarge|4|4.0|None|1.5|500|No|2|3|10|
 |ecs.ic5.2xlarge|8|8.0|None|2.5|800|No|2|4|10|
@@ -287,10 +288,10 @@ Features
 -   Supports standard SSDs and ultra disks only.
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Provides an ultra-high packet forwarding rate.
--   Uses 2.5 GHz Intel ® Xeon ® E5-2682 v4 \(Broadwell\) or Platinum 8163 \(Skylake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) or Platinum 8163 \(Skylake\) processors for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as bullet screen and re-transmission of telecommunication information
+-   Scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
@@ -298,8 +299,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:-------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.sn1ne.large|2|4.0|None|1.0|300|Yes|2|2|6|
 |ecs.sn1ne.xlarge|4|8.0|None|1.5|500|Yes|2|3|10|
 |ecs.sn1ne.2xlarge|8|16.0|None|2.0|1,000|Yes|4|4|10|
