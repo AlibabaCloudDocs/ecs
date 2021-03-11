@@ -7,6 +7,7 @@ keyword: [Alibaba Cloud, ECS, server, elastic computing]
 This topic describes the features of general purpose instance families of ECS and lists the instance types of each family.
 
 -   Recommended instance families
+    -   [g7ne, network enhanced instance family](#section_srt_k9b_at3)
     -   [g6se, storage enhanced instance family](#section_aky_rag_mve)
     -   [g6a, general purpose instance family](#section_jtr_8p8_3y8)
     -   [g6t, security-enhanced general purpose instance family](#section_2dm_67f_8cm)
@@ -18,6 +19,44 @@ This topic describes the features of general purpose instance families of ECS an
 
     [sn2ne, general purpose instance family with enhanced network performance](#section_1ki_kxs_w47)
 
+
+## g7ne, network enhanced instance family
+
+g7ne is in invitational preview. To use g7ne, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+
+-   Improves the network bandwidth and packet forwarding rate of a single instance.
+-   Compute:
+    -   Uses Intel ® Xeon ® Platinum 8369HB \(Cooper Lake\) or Intel ® Xeon ® Platinum 8369HC \(Cooper Lake\) processors that deliver a maximum turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
+    -   Offers a CPU-to-memory ratio of 1:4.
+-   Storage:
+    -   Is an instance family in which all instances are I/O optimized.
+    -   Supports enhanced SSDs \(ESSDs\) only and provides ultra-high I/O performance.
+-   Network:
+    -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps per instance.
+    -   Provides high network performance based on large computing capacity.
+-   Scenarios:
+    -   Network-intensive scenarios such as NFV or SD-WAN, mobile Internet, on-screen video comments, and telecom data forwarding
+    -   Small and medium-sized database systems, caches, and search clusters
+    -   Enterprise-level applications of various types and sizes
+    -   Big data analysis and machine learning
+
+Instance types
+
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.g7ne.large|2|8.0|None|1.5|25.0|900|Yes|450|2|3|10|10|0.75|
+|ecs.g7ne.xlarge|4|16.0|None|3.0|25.0|1,000|Yes|900|4|4|15|20|1.0|
+|ecs.g7ne.2xlarge|8|32.0|None|6.0|25.0|1,500|Yes|1,750|8|6|15|25|1.5|
+|ecs.g7ne.4xlarge|16|64.0|None|12.5|25.0|3,000|Yes|3,500|16|8|30|40|2.5|
+|ecs.g7ne.8xlarge|32|128.0|None|25.0|None|6,000|Yes|7,000|16|8|30|75|5.0|
+|ecs.g7ne.12xlarge|48|192.0|None|40.0|None|12,000|Yes|8,000|32|8|30|100|8.0|
+|ecs.g7ne.16xlarge|64|256.0|None|50.0|None|16,000|Yes|14,000|32|8|30|150|8.0|
+|ecs.g7ne.24xlarge|96|384.0|None|80.0|None|24,000|Yes|16,000|32|15|50|240|16.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
 
 ## g6se, storage enhanced instance family
 
@@ -31,7 +70,7 @@ Features
 -   Storage:
     -   Delivers a sequential read/write performance of up to 32 Gbit/s per instance.
     -   Is an instance family in which all instances are I/O optimized.
-    -   Supports enhanced SSDs \(ESSDs\) only and provides ultra-high I/O performance.
+    -   Supports ESSDs only and provides ultra-high I/O performance.
     -   Provides high storage I/O performance based on large computing capacity.
 
         **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
@@ -39,16 +78,16 @@ Features
 -   Network:
     -   Provides an ultra-high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
-    -   I/O-intensive scenarios, such as large and medium-sized OLTP core databases
+-   Scenarios:
+    -   I/O-intensive scenarios such as large and medium-sized OLTP core databases
     -   Large and medium-sized NoSQL databases
     -   Search and real-time log analytics
     -   Traditional large enterprise-level commercial software, such as SAP
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-------------------------|------------------------------|:------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.g6se.large|2|8.0|None|0.7|10.0|300|Yes|2|2|6|30|1.5|
 |ecs.g6se.xlarge|4|16.0|None|1.0|10.0|500|Yes|4|3|10|60|2.0|
 |ecs.g6se.2xlarge|8|32.0|None|1.5|10.0|800|Yes|8|4|10|90|3.0|
@@ -84,19 +123,19 @@ Features
 -   Network:
     -   Provides an ultra-high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Video encoding and decoding
     -   Scenarios where large volumes of packets are received and transmitted
     -   Websites and application servers
     -   Small and medium-sized database systems, caches, and search clusters
     -   Game servers
     -   Test and development, such as DevOps
-    -   Other general purpose enterprise-level applications
+    -   Other general-purpose enterprise-level applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-------------------------|------------------------------|:------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
 |ecs.g6a.large|2|8.0|None|1.0|10.0|900|Yes|2|12.5|1.0|
 |ecs.g6a.xlarge|4|16.0|None|1.5|10.0|1,000|Yes|3|20|1.5|
 |ecs.g6a.2xlarge|8|32.0|None|2.5|10.0|1,600|Yes|4|30|2.0|
@@ -117,7 +156,8 @@ Features
 
 -   Implements trusted boot based on the Trusted Platform Module \(TPM\) chip. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Supports comprehensive monitoring on the IaaS layer and provides trusted capabilities of the whole IaaS layer.
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the SHENLONG architecture. g6t improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
+-   Supports the Enclave feature and provides a trusted isolation space inside ECS instances to encapsulate security operations of legitimate software in an enclave. This ensures the confidentiality and integrity of your code and data against malware attacks.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. g6t improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of SHENLONG chips.
 -   Compute:
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
@@ -135,7 +175,7 @@ Features
 -   Network:
     -   Provides an ultra-high packet forwarding rate.
     -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Scenarios that require high security and enhanced trust, such as financial services, government affairs, and enterprise services
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
@@ -147,8 +187,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|TPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:-------------------|:------------------------------|-----------|------------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|-----------|------------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.g6t.large|2|8.0|None|A burstable bandwidth of up to 10.0|900|Yes|Yes|Up to 250|2|3|6|20|1.0|
 |ecs.g6t.xlarge|4|16.0|None|A burstable bandwidth of up to 10.0|1,000|Yes|Yes|Up to 250|4|4|15|40|1.5|
 |ecs.g6t.2xlarge|8|32.0|None|A burstable bandwidth of up to 10.0|1,600|Yes|Yes|Up to 250|8|4|15|50|2.0|
@@ -167,7 +207,7 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high performance and reduces virtualization overheads based on the SHENLONG architecture. g6e improves storage performance, network performance, and computing stability by an order of magnitude through fast path acceleration of SHENLONG chips.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads. g6e improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of SHENLONG chips.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs only.
 -   Provides high network and storage I/O performance based on large computing capacity.
@@ -184,7 +224,7 @@ Features
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
--   Applies to the following scenarios:
+-   Scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
@@ -195,8 +235,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|--------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.g6e.large|2|8.0|None|A burstable bandwidth of up to 10.0|900|Yes|Up to 250|2|3|6|20|1.0|
 |ecs.g6e.xlarge|4|16.0|None|A burstable bandwidth of up to 10.0|1,000|Yes|Up to 250|4|4|15|40|1.5|
 |ecs.g6e.2xlarge|8|32.0|None|A burstable bandwidth of up to 10.0|1,600|Yes|Up to 250|8|4|15|50|2.0|
@@ -221,7 +261,7 @@ Features
 
     **Note:** The maximum performance of disks varies with instance families. A single instance of this instance family can deliver up to 200,000 IOPS. For higher storage I/O performance, we recommend that you use g6se.
 
--   Provides high storage I/O performance based on large computing capacity.
+-   Provides high storage I/O performance based on large compute capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
@@ -234,22 +274,22 @@ Features
 
     **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
 
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
 -   Supports instance type changes to c6 or r6.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
     -   Game servers
     -   Small and medium-sized database systems, caches, and search clusters
     -   Data analysis and computing
-    -   Compute clusters and memory-intensive data processing
+    -   Computing clusters and memory-intensive data processing
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.g6.large|2|8.0|None|1.0|3.0|300|Yes|Up to 250|2|2|6|10|1|
 |ecs.g6.xlarge|4|16.0|None|1.5|5.0|500|Yes|Up to 250|4|3|10|20|1.5|
 |ecs.g6.2xlarge|8|32.0|None|2.5|8.0|800|Yes|Up to 250|8|4|10|25|2|
@@ -279,9 +319,9 @@ Features
 
     **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
 
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) or 8269CY \(Cascade Lake\) processors for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Small and medium-sized database systems, caches, and search clusters
@@ -290,8 +330,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:-------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.g5.large|2|8.0|None|1.0|300|Yes|2|2|6|
 |ecs.g5.xlarge|4|16.0|None|1.5|500|Yes|2|3|10|
 |ecs.g5.2xlarge|8|32.0|None|2.5|800|Yes|2|4|10|
@@ -319,7 +359,7 @@ Features
 
     **Note:** We recommend that you select instance types of the g5ne instance family to deploy Data Plane Development Kit \(DPDK\) applications.
 
--   Applies to the following scenarios:
+-   Scenarios:
     -   DPDK applications
     -   Network-intensive scenarios such as NFV or SD-WAN, mobile Internet, on-screen video comments, and telecom data forwarding
     -   Small and medium-sized database systems, caches, and search clusters
@@ -328,8 +368,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:-------------------|:------------------------------|------------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|------------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.g5ne.large|2|8.0|None|1.0|400|Yes|450|2|3|10|10|1|
 |ecs.g5ne.xlarge|4|16.0|None|2.0|750|Yes|900|4|4|15|15|1|
 |ecs.g5ne.2xlarge|8|32.0|None|3.5|1,500|Yes|1,750|8|6|15|30|1|
@@ -351,9 +391,9 @@ Features
 -   Supports standard SSDs and ultra disks only.
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Provides an ultra-high packet forwarding rate.
--   Uses 2.5 GHz Intel ® Xeon ® E5-2682 v4 \(Broadwell\) or Platinum 8163 \(Skylake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) or Platinum 8163 \(Skylake\) processors for consistent computing performance.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
     -   Enterprise-level applications of various types and sizes
     -   Small and medium-sized database systems, caches, and search clusters
@@ -362,8 +402,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:-------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.sn2ne.large|2|8.0|None|1.0|300|Yes|2|2|6|
 |ecs.sn2ne.xlarge|4|16.0|None|1.5|500|Yes|2|3|10|
 |ecs.sn2ne.2xlarge|8|32.0|None|2.0|1,000|Yes|4|4|10|
