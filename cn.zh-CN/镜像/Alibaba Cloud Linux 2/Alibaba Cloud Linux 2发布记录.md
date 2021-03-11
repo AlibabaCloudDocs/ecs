@@ -173,8 +173,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 |-   更新`Alibaba Cloud Linux 2.1903 64位 可信版`镜像
 -   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210208.vhd版本制作
 -   启动切换为UEFI模式，而且仅支持该模式
--   内核更新：版本更新至kernel-4.19.91-22.2.al7
--   适用地域：华北1（青岛）、华北2（北京）、华东1（杭州）、西南1（成都）、中国（香港）、新加坡 |
+-   内核更新：版本更新至kernel-4.19.91-22.2.al7 |
 |aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|2021-02-18|AMD实例规格族：-   ecs.ebmg6a
 -   ecs.ebmc6a
 -   ecs.ebmr6a
