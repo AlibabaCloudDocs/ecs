@@ -17,7 +17,15 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
 -   由底层虚拟化技术提供安全隔离，EVM和主VM之间隔离，并且和其他ECS实例也隔离。
 -   EVM运行独立的、定制化的可信操作系统，没有持久化存储、交互式连接或外部网络通路，仅允许通过本地安全信道（基于vsock）与主VM进行通信，最大程度缩小攻击面。您可以将涉及机密数据的应用放入EVM中运行，通过安全调用的形式与运行在主VM上的应用进行交互。
 
+阿里云Enclave的工作原理图如下所示。
+
+![enclave原理图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3916902161/p237059.png)
+
 阿里云Enclave提供的安全性由多个方面结合实现。底层基于带有TPM/TCM芯片的第三代神龙架构，且为EVM提供vTPM/vTCM设备来增强其安全性和可信能力；上层提供高兼容性的SDK，方便您快速搭建Enclave环境并使用。在可信证明能力方面，您可以对运行在机密执行环境中的代码进行验证，例如借助SDK，机密应用可在运行时生成证明材料（包括平台、应用信息、签名等），再通过远程证明服务端（可结合KMS）验证证明材料的有效性。当主VM切分资源给EVM，并且EVM开始运行时，底层会执行资源访问隔离，确保主VM无法访问这些已经切分出去的vCPU或内存资源，保障EVM的正常运行和私密性。
+
+阿里云Enclave功能的架构图如下所示。
+
+![enclave架构图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9345962161/p237060.png)
 
 ## 使用限制
 
@@ -41,7 +49,7 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
         ```
         sudo rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
         sudo yum install -y alinux-release-experimentals
-        sudo yum install -y https://enclave.oss-cn-hangzhou.aliyuncs.com/de-platform-runtime-0.1.0-1.al7.x86_64.rpm
+        sudo yum install -y https://enclave.oss-cn-hangzhou.aliyuncs.com/de-platform-runtime-0.1.0-1.2.al7.x86_64.rpm
         ```
 
     安装Enclave Runtime后，本地服务会尝试自动拉起Enclave，默认的Enclave镜像存储于/usr/local/share/dragonfly/image.bin，您可以修改配置文件/etc/enclave.conf来变更镜像存储所在路径。配置文件还提供了更多的配置选项，包括分配给Enclave的vCPU和内存资源等。
