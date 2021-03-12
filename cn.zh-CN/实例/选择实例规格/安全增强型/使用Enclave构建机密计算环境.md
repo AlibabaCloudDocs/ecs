@@ -49,7 +49,7 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
         ```
         sudo rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
         sudo yum install -y alinux-release-experimentals
-        sudo yum install -y https://enclave.oss-cn-hangzhou.aliyuncs.com/de-platform-runtime-0.1.0-1.al7.x86_64.rpm
+        sudo yum install -y https://enclave.oss-cn-hangzhou.aliyuncs.com/de-platform-runtime-0.1.0-1.2.al7.x86_64.rpm
         ```
 
     安装Enclave Runtime后，本地服务会尝试自动拉起Enclave，默认的Enclave镜像存储于/usr/local/share/dragonfly/image.bin，您可以修改配置文件/etc/enclave.conf来变更镜像存储所在路径。配置文件还提供了更多的配置选项，包括分配给Enclave的vCPU和内存资源等。
