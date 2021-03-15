@@ -72,19 +72,6 @@
 |[DescribeLaunchTemplateVersions](/intl.zh-CN/API参考/启动模板/DescribeLaunchTemplateVersions.md)|调用DescribeLaunchTemplateVersions查询实例启动模板版本。|
 |[ModifyLaunchTemplateDefaultVersion](/intl.zh-CN/API参考/启动模板/ModifyLaunchTemplateDefaultVersion.md)|调用ModifyLaunchTemplateDefaultVersion切换启动模板的某个版本为该模板的默认版本。如果您在创建实例（RunInstances）时不指定模板版本号，会采用默认版本。|
 
-## 资源保障
-
-|API|描述|
-|---|--|
-|[CreateElasticityAssurance]()|调用CreateElasticityAssurance创建弹性保障服务。|
-|[CreateCapacityReservation]()|调用CreateCapacityReservation创建容量预定服务。|
-|[DescribeElasticityAssurances]()|调用DescribeElasticityAssurances查询弹性保障服务的详细信息。|
-|[DescribeElasticityAssuranceInstances]()|调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。|
-|[DescribeCapacityReservationInstances]()|调用DescribeCapacityReservationInstances查询容量预定服务已匹配的实例列表。|
-|[DescribeInstanceAttachmentAttributes]()|调用DescribeInstanceAttachmentAttributes查询实例匹配的私有池信息。|
-|[ModifyInstanceAttachmentAttributes]()|调用ModifyInstanceAttachmentAttributes修改实例的私有池的属性。|
-|[ReleaseCapacityReservation]()|调用ReleaseCapacityReservation释放容量预定服务。|
-
 ## 弹性供应组
 
 |API|描述|
