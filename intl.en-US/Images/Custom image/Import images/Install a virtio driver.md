@@ -119,7 +119,7 @@ If the check result shows that the kernel of the operating system supports virti
     make mrproper
     symvers_path=$(find /usr/src/ -name "Module.symvers")
     test -f $symvers_path && cp $symvers_path .
-    cp /boot/config-$(uname -r) . /.config
+    cp /boot/config-$(uname -r) ./.config
     make menuconfig
     ```
 
@@ -129,11 +129,11 @@ If the check result shows that the kernel of the operating system supports virti
 
     1.  Select Virtualization.
 
-        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4963559951/p4639.png)
+        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7139432161/p4639.png)
 
         Select the Kernel-based Virtual Machine \(KVM\) support option.
 
-        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5963559951/p4640.png)
+        ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7139432161/p4640.png)
 
         ```
         Processor type and features  --->
