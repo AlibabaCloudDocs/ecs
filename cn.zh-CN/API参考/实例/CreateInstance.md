@@ -110,7 +110,9 @@
 |DeploymentSetId|String|否|ds-bp1brhwhoqinyjd6\*\*\*\*|部署集ID。 |
 |ZoneId|String|否|cn-hangzhou-g|实例所属的可用区ID。更多详情，请参见[DescribeZones](~~25610~~)获取可用区列表。
 
- 默认值：空，表示随机选择。 |
+ **说明：** 如果您指定了`VSwitchId`参数，则指定的`ZoneId`参数必须和交换机所在的可用区保持一致。您也可以不指定`ZoneId`参数，系统将自动选择指定的交换机所在的可用区。
+
+ 默认值：空，系统自动选择。 |
 |ClusterId|String|否|c-bp67acfmxazb4p\*\*\*\*|实例所在的集群ID。
 
  **说明：** 该参数即将被弃用，为提高兼容性，请尽量使用其他参数。 |
@@ -191,7 +193,9 @@
 |Description|String|否|InstanceTest|实例的描述。长度为2~256个英文或中文字符，不能以http://和https://开头。
 
  默认值：空 |
-|VSwitchId|String|否|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|如果是创建VPC类型的实例，需要指定交换机ID。 |
+|VSwitchId|String|否|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|如果是创建VPC类型的实例，需要指定交换机ID。您可以调用[DescribeVSwitches](~~35748~~)查询已创建的交换机的相关信息。
+
+ **说明：** 如果您指定了`VSwitchId`参数，则指定的`ZoneId`参数必须和交换机所在的可用区保持一致。您也可以不指定`ZoneId`参数，系统将自动选择指定的交换机所在的可用区。 |
 |PrivateIpAddress|String|否|172.16.236.\*|实例私网IP地址。该IP地址必须为交换机（VSwitchId）网段的空闲地址。 |
 |IoOptimized|String|否|optimized|是否为I/O优化实例。取值范围：
 
