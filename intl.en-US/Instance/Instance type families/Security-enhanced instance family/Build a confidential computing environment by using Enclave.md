@@ -17,7 +17,15 @@ Computing resources \(including vCPUs and memory\) are split within an ECS insta
 -   The underlying virtualization technology provides security isolation. The EVM is isolated from the primary VM as well as other ECS instances.
 -   The EVM runs an independent, customized, and trusted operating system. The EVM has no persistent storage, interactive connections, or external network channels, and allows communication with the primary VM only by using a local secure channel \(based on vsock\) to ensure a minimal attack surface. You can put applications that involve confidential data into the EVM for running, and make secure calls to interact with the applications that run within the primary VM.
 
+阿里云Enclave的工作原理图如下所示。
+
+![enclave原理图](../images/p237059.png)
+
 The security provided by Alibaba Cloud Enclave is implemented in multiple aspects. At the underlying layer, the third-generation SHENLONG architecture that uses TPM or TCM chips provides vTPM or vTCM devices for the EVM to enhance security and trusted capabilities. At the upper layer, highly compatible SDKs are provided so that you can quickly build an Enclave environment for use. To verify the trusted capabilities, you can verify the code running in the confidential execution environment, such as by using SDKs. Confidential applications can generate attestation materials \(including the platform, application information, and signatures\) at runtime, and then verify the attestation materials by using the remote attestation server \(with reference to KMS\). When the primary VM splits resources to the EVM and the EVM starts to run, the underlying layer performs resource access isolation to ensure that the primary VM cannot access these split vCPU or memory resources. This ensures the normal operation and privacy of the EVM.
+
+阿里云Enclave功能的架构图如下所示。
+
+![enclave架构图](../images/p237060.png)
 
 ## Limits
 
@@ -41,7 +49,7 @@ For other general limits, see [Limits](/intl.en-US/Product Introduction/Limits.m
         ```
         sudo rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
         sudo yum install -y alinux-release-experimentals
-        sudo yum install -y https://enclave.oss-cn-hangzhou.aliyuncs.com/de-platform-runtime-0.1.0-1.al7.x86_64.rpm
+        sudo yum install -y https://enclave.oss-cn-hangzhou.aliyuncs.com/de-platform-runtime-0.1.0-1.2.al7.x86_64.rpm
         ```
 
     After the Enclave Runtime toolset is installed, the local service attempts to automatically starts the enclave. By default, the enclave image is stored in /usr/local/share/dragonfly/image.bin. You can modify the /etc/enclave.conf configuration file to change the storage path. The configuration file also provides more configuration options, including the vCPU and memory resources allocated to the enclave.
