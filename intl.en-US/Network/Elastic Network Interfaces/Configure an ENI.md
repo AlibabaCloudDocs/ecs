@@ -10,15 +10,17 @@ ENIs are bound to ECS instances. For more information about how to bind an ENI t
 
 If your instances are running images of the following versions, you do not need to configure ENIs:
 
--   CentOS 7.3 64-bit
--   CentOS 6.8 64-bit
+-   CentOS 8.0 64-bit, CentOS 8.1 64-bit, and CentOS 8.2 64-bit
+-   CentOS 7.3 64-bit, CentOS 7.4 64-bit, and CentOS 7.5 64-bit
+-   CentOS 6.8 64-bit and CentOS 6.9 64-bit
+-   Debian 10.5 64-bit and Debian 10.6 64-bit
 -   Windows Server 2008 R2 and later
 
 If your instances are running images whose versions are not included in the preceding list, you must manually configure ENIs for the images.
 
 ## Procedure
 
-1.  View and record information of ENIs. For more information, see [Preparations](#section_n3y_n0g_l1c).
+1.  View and record information of ENIs. For more information, see the [Preparations](#section_n3y_n0g_l1c) section.
 2.  Use one of the following methods to configure ENIs based on the operating systems of your instances:
     -   Alibaba Cloud Linux 2: [Configure ENIs for instances that run Alibaba Cloud Linux 2](#section_s2z_h1l_4wh)
     -   CentOS or Red Hat: [Configure ENIs for instances that run CentOS or Red Hat](#section_zx6_9u0_9b0)
@@ -30,15 +32,16 @@ If your instances are running images whose versions are not included in the prec
 
 You must query the attributes of each ENI, including the primary private IP address, subnet mask, default route, and MAC address. You must also pay attention to the mapping between the ENI name and the MAC address in subsequent configurations.
 
-1.  Remotely connect to an ECS instance. For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
+1.  Remotely connect to an ECS instance. For more information, see [OverviewGuidelines on instance connection](/intl.en-US/Instance/Connect to instances/Overview.md).
 
 2.  Query the attributes of each ENI, including the primary private IP address, subnet mask, default route, and MAC address.
 
     -   Method 1: Query the attributes in the ECS console.
         1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
-        2.  In the left-side navigation pane, choose **Network & Security** \> **ENIs**.
-        3.  On the **Network Interfaces** page, find the ENIs whose attributes you want to query and view their primary private IP addresses and MAC addresses in the **Primary Private IP Address** and **Type/MAC Address\(All\)** columns.
-    -   Method 2: Run the curl command to query the attributes from the instance metadata. For more information, see [Metadata](/intl.en-US/Instance/Manage instances/Metadata/Metadata.md).
+        2.  Log on to the [ECS console](https://partners-intl.console.aliyun.com/#/ecs).
+        3.  In the left-side navigation pane, choose **Network & Security** \> **ENIs**.
+        4.  On the **Network Interfaces** page, find the ENIs whose attributes you want to query and view their primary private IP addresses and MAC addresses in the **Private IP Address** and **Type/MAC Address\(All\)** columns.
+    -   Method 2: Run the curl command to query the attributes from the instance metadata. For more information, see [Overview of instance metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview of instance metadata.md).
 
         ```
         [root@LocalHost ~]# curl http://100.100.100.200/latest/meta-data/network/interfaces/macs/
@@ -65,7 +68,7 @@ You must query the attributes of each ENI, including the primary private IP addr
 
 eth1 is used in the following example. If you want to configure another ENI, modify the ENI ID.
 
-1.  Open the configuration file of an ENI.
+1.  Open the configuration file of the ENI.
 
     ```
     vi /etc/systemd/network/60-eth1.network
@@ -77,7 +80,7 @@ eth1 is used in the following example. If you want to configure another ENI, mod
 
     -   Scenario 1: Assign a dynamic IP address for the ENI over DHCP.
 
-        Example:
+        Sample code:
 
         ```
         [Match]
@@ -92,7 +95,7 @@ eth1 is used in the following example. If you want to configure another ENI, mod
 
     -   Scenario 2: Assign a static IP address for the ENI.
 
-        Example:
+        Sample code:
 
         ```
         [Match]
@@ -146,9 +149,9 @@ Method 1: Use the multi-nic-util tool.
     ```
 
 
-Method 2: Manually configure an ENI.
+Method 2: Manually configure the ENI.
 
-1.  Open the configuration file of an ENI.
+1.  Open the configuration file of the ENI.
 
     ```
     vi /etc/sysconfig/network-scripts/ifcfg-eth1
@@ -156,10 +159,10 @@ Method 2: Manually configure an ENI.
 
 2.  Press the I key to enter the edit mode and add the configuration information to the ENI configuration file.
 
-    Example:
+    Sample code:
 
     ```
-    DEVICE=eth1  #Specify the ENI to be configured.
+    DEVICE=eth1  # Specify the ENI to be configured.
     BOOTPROTO=dhcp
     ONBOOT=yes
     TYPE=Ethernet
@@ -167,8 +170,8 @@ Method 2: Manually configure an ENI.
     PEERDNS=no
     IPV6INIT=no
     PERSISTENT_DHCLIENT=yes
-    HWADDR=00:16:3e:12:e7:**  #Specify this address as the queried MAC address of the ENI.
-    DEFROUTE=no  #This indicates that the ENI is not the default route. To prevent the active default route of the ECS instance from being changed when you start the ENI by running the ifup command, do not set eth1 to the default route.
+    HWADDR=00:16:3e:12:e7:**  # Specify this address as the queried MAC address of the ENI.
+    DEFROUTE=no  # Specify that the ENI is not the default route. To prevent the active default route of the ECS instance from being changed when you start the ENI by running the ifup command, do not set eth1 to the default route.
     ```
 
     Press the Esc key, enter `:wq`, and then press the Enter key to save the file and exit the edit mode.
@@ -202,7 +205,7 @@ You can perform the following operations on instances that run Ubuntu 14.04, Ubu
     auto eth0
     iface eth0 inet dhcp
     
-    auto eth1  #Specify the ENI to be configured.
+    auto eth1  # Specify the ENI to be configured.
     iface eth1 inet dhcp
     ```
 
@@ -261,7 +264,7 @@ You can perform the following operations on instances that run Ubuntu 18.04:
 
 eth1 is used in the following example. If you want to configure another ENI, modify the ENI ID.
 
-1.  Open the configuration file of an ENI.
+1.  Open the configuration file of the ENI.
 
     ```
     vi /etc/sysconfig/network/ifcfg-eth1
@@ -290,7 +293,7 @@ eth1 is used in the following example. If you want to configure another ENI, mod
 
 1.  Start ENIs.
 
-    1.  Run the `ifup [ENI name]` command to start the dhclient process, and initiate a DHCP request.
+    1.  Run the `ifup <ENI name>` command to start the dhclient process and initiate a DHCP request.
 
         ```
         ifup eth1
@@ -354,7 +357,7 @@ eth1 is used in the following example. If you want to configure another ENI, mod
 
 3.  Create route tables.
 
-    1.  Create route tables.
+    1.  Create the route tables.
 
         ```
         ip -4 route add default via 10.0.0.253 dev eth1 table 1001
