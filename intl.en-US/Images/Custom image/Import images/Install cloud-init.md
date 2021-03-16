@@ -4,9 +4,9 @@ keyword: [cloud-init, Alibaba Cloud, image, custom, configuration]
 
 # Install cloud-init
 
-To ensure that the ECS instance running a custom image can initialize the configurations, we recommend that you install cloud-init on the source server when you create the custom Linux image. This topic describes how to install Alibaba Cloud cloud-init and the native cloud-init.
+To ensure that an ECS instance that runs a custom image can complete system initialization, we recommend that you install cloud-init on the source server when you create the custom Linux image. This topic describes how to install Alibaba Cloud cloud-init and the native cloud-init.
 
-cloud-init is open-source software used by cloud platforms to initialize Linux virtual machines. All major public cloud platforms such as Alibaba Cloud, Amazon Web Services \(AWS\), Microsoft Azure, and OpenStack support cloud-init. Alibaba Cloud cloud-init initializes the configurations of instances when the system is starting up and executes user data scripts. These configurations include NTP, software repositories, hostnames, and SSH key pairs. For more information, visit [cloud-init Documentation](http://cloudinit.readthedocs.io/).
+cloud-init is open source software used by cloud platforms to initialize the system for Linux virtual machines. All major public cloud platforms such as Alibaba Cloud, Amazon Web Services \(AWS\), Microsoft Azure, and OpenStack support cloud-init. Alibaba Cloud cloud-init initializes instance configurations on system start up and executes user data scripts. These configurations include NTP, software repositories, hostnames, and SSH key pairs. For more information, visit [cloud-init Documentation](http://cloudinit.readthedocs.io/).
 
 By default, cloud-init is installed for all Alibaba Cloud public images. To ensure that instances created from custom images can automatically initialize system configurations, we recommend that you install Alibaba Cloud cloud-init on your Linux server in the following scenarios:
 
@@ -19,7 +19,7 @@ By default, cloud-init is installed for all Alibaba Cloud public images. To ensu
 
 ## Description
 
-Different cloud platforms may use different versions of cloud-init. Select an appropriate version and configure it with the appropriate data source \(datasource\). The latest version of Alibaba Cloud cloud-init is 19.1.2, and the data source is `Aliyun`.
+Different cloud platforms may use different versions of cloud-init. Select an appropriate version and configure it with the appropriate data source \(datasource\). The latest version of Alibaba Cloud cloud-init is 19.1.7, and the data source is `Aliyun`.
 
 **Note:** After cloud-init is installed, it automatically runs on system startup. If the installed version of cloud-init is not compatible with the operating system of the server or the data source is not configured properly, cloud-init may not run normally and the instance may start slowly or even fail to start the next time you restart the instance. Therefore, you must select a later version of cloud-init and an appropriate data source such as `Aliyun`.
 
@@ -27,7 +27,7 @@ When you use cloud-init, take note of the following differences among different 
 
 -   0.7.6a: the initial version of Alibaba Cloud cloud-init, which depends on Python 2.7 for the Python environment. Some early public images still use cloud-init 0.7.6a. If you need to install cloud-init 0.7.6a for your images, see the [\(Optional\) Install Alibaba Cloud cloud-init 0.7.6a15](#section_bn5_s01_qv9) section.
 
-    **Note:** The Python community no longer provides technical support for Python 2.7. Therefore, we recommend that you use later versions of cloud-init to avoid potential risks associated with dependency libraries.
+    **Note:** The Python community no longer provides technical support for Python 2.7. To avoid potential risks associated with dependency libraries, we recommend that you use later versions of cloud-init.
 
 -   0.7.9 and earlier: initial versions of the native cloud-init, which are not applicable to initializing ECS instances and must be upgraded.
 -   18: cloud-init 18 and later automatically initialize network configurations. The code for network configuration is `BOOTPROTO=dhcp DEVICE=eth0 ONBOOT=yes STARTMODE=auto TYPE=Ethernet USERCTL=no`. If you want to customize network configurations after you install cloud-init, see the [\(Optional\) Customize network configuration](#section_v23_ilz_0cn) section.
@@ -51,14 +51,14 @@ When you use cloud-init, take note of the following differences among different 
     cloud-init --version
     ```
 
-    If the returned version is earlier than 0.7.9, install Alibaba Cloud cloud-init 19.1.2.
+    If the returned version is earlier than 0.7.9, install Alibaba Cloud cloud-init 19.1.7.
 
 4.  Back up data on the server.
 
 
-## \(Recommended\) Install Alibaba Cloud cloud-init 19.1.2
+## \(Recommended\) Install Alibaba Cloud cloud-init 19.1.7
 
-Perform the following operations to download cloud-init 19.1.2 whose data source is `Aliyun`:
+Perform the following operations to download cloud-init 19.1.7, whose data source is `Aliyun`:
 
 1.  Make sure that the python-pip dependency library is installed on the source server.
 
@@ -85,19 +85,19 @@ Perform the following operations to download cloud-init 19.1.2 whose data source
 2.  Run the following command to download Alibaba Cloud cloud-init:
 
     ```
-    wget https://ecs-image-utils.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.2.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
     ```
 
 3.  Run the following command to decompress the cloud-init installation package to the current directory:
 
     ```
-    tar -zxvf cloud-init-19.1.2.tgz
+    tar -zxvf cloud-init-19.1.7.tgz
     ```
 
 4.  Go to the cloud-init directory and install the dependency library.
 
     ```
-    cd ./cloud-init-19.1.2
+    cd ./cloud-init-19.1.7
     pip3 install -r ./requirements.txt
     ```
 
@@ -115,8 +115,8 @@ Perform the following operations to download cloud-init 19.1.2 whose data source
 
     The following table describes the parameters and values in the deploy.sh script.
 
-    |Parameter|Description|Example|
-    |---------|-----------|-------|
+    |Parameter|Description|Reference|
+    |---------|-----------|---------|
     |issue|The type of the operating system. Valid values: centos, redhat, rhel, debian, ubuntu, opensuse, and sles. The parameter values are case-sensitive. sles stands for SUSE and SLES.|centos.|
     |major\_version|The major version number of the operating system.|The major version number of CentOS 6.5 is 6.|
 
@@ -139,8 +139,8 @@ The following section provides sample shell scripts used to install Alibaba Clou
     # Back up cloud-init of an earlier version.
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # Download and decompress Alibaba Cloud cloud-init.
-    wget https://ecs-image-utils.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.2.tgz
-    tar -zxvf ./cloud-init-19.1.2.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
+    tar -zxvf ./cloud-init-19.1.7.tgz
     # Install cloud-init.
     issue_major=$( cat /etc/redhat-release | grep -Eo '[0-9]+\.?[ 0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh centos "$issue_major"
@@ -156,8 +156,8 @@ The following section provides sample shell scripts used to install Alibaba Clou
     # Back up cloud-init of an earlier version.
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # Download and decompress Alibaba Cloud cloud-init.
-    wget https://ecs-image-utils.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.2.tgz
-    tar -zxvf ./cloud-init-19.1.2.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
+    tar -zxvf ./cloud-init-19.1.7.tgz
     # Install cloud-init.
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[ 0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh rhel "$issue_major"
@@ -173,8 +173,8 @@ The following section provides sample shell scripts used to install Alibaba Clou
     # Back up cloud-init of an earlier version.
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # Download and decompress Alibaba Cloud cloud-init.
-    wget https://ecs-image-utils.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.2.tgz
-    tar -zxvf ./cloud-init-19.1.2.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
+    tar -zxvf ./cloud-init-19.1.7.tgz
     # Install cloud-init.
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[ 0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh ubuntu "$issue_major"
@@ -190,8 +190,8 @@ The following section provides sample shell scripts used to install Alibaba Clou
     # Back up cloud-init of an earlier version.
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # Download and decompress Alibaba Cloud cloud-init.
-    wget https://ecs-image-utils.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.2.tgz
-    tar -zxvf ./cloud-init-19.1.2.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
+    tar -zxvf ./cloud-init-19.1.7.tgz
     # Install cloud-init.
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[ 0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh debian "$issue_major"
@@ -207,8 +207,8 @@ The following section provides sample shell scripts used to install Alibaba Clou
     # Back up cloud-init of an earlier version.
     test -d /etc/cloud && mv /etc/cloud/etc/cloud-old
     # Download and decompress Alibaba Cloud cloud-init.
-    wget https://ecs-image-utils.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.2.tgz
-    tar -zxvf ./cloud-init-19.1.2.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
+    tar -zxvf ./cloud-init-19.1.7.tgz
     # Install cloud-init.
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[ 0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh sles "$issue_major"
@@ -224,8 +224,8 @@ The following section provides sample shell scripts used to install Alibaba Clou
     # Back up cloud-init of an earlier version.
     test -d /etc/cloud && mv /etc/cloud/etc/cloud-old
     # Download and decompress Alibaba Cloud cloud-init.
-    wget https://ecs-image-utils.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.2.tgz
-    tar -zxvf ./cloud-init-19.1.2.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
+    tar -zxvf ./cloud-init-19.1.7.tgz
     # Install cloud-init.
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[ 0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh opensuse"$issue_major"
@@ -265,8 +265,8 @@ Some early operating systems still use cloud-init 0.7.6a15, such as CentOS 6, De
 
     The following table describes the parameters and values in the deploy.sh script.
 
-    |Parameter|Description|Example|
-    |---------|-----------|-------|
+    |Parameter|Description|Reference|
+    |---------|-----------|---------|
     |issue|The type of the operating system. Valid values: centos, debian, and sles. The parameter values are case-sensitive. sles stands for SUSE and SLES.|centos.|
     |major\_version|The major version number of the operating system.|The major version number of CentOS 6.5 is 6.|
 
@@ -329,7 +329,7 @@ Some early operating systems still use cloud-init 0.7.6a15, such as CentOS 6, De
 
         ![vi /etc/cloud/cloud.cfg](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2963559951/p4621.png)
 
-    2.  Change the configuration before `cloud_init_modules:` to the following code:
+    2.  Change the configuration before `cloud_init_modules:` to the following content:
 
         ```
         # Example datasource config
@@ -387,8 +387,8 @@ Some early operating systems still use cloud-init 0.7.6a15, such as CentOS 6, De
 -   The libraries that are missing may vary based on images. You can use pip to install the libraries and then install cloud-init again.
 -   If the default software package manager \(such as YUM\) and the pip manager are installed with different versions of dependency libraries, library version conflicts may occur and cause cloud-init to run abnormally. We recommend that you download the dependency libraries based on the error message.
 
-|Error message|Cause|Troubleshooting command|
-|-------------|-----|-----------------------|
+|Error message|Description|Troubleshooting command|
+|-------------|-----------|-----------------------|
 |```
 no setuptools module in python
 ```
@@ -420,7 +420,7 @@ pip3 install -r requirements.txt
 
 -   For Linux servers that will be migrated to the cloud:
 
-    You can migrate the servers by using the Cloud Migration tool or importing the custom images. For more information, see [Migrate a server to Alibaba Cloud by using the Cloud Migration tool]() or [Import custom images](/intl.en-US/Images/Custom image/Import images/Import custom images.md).
+    You can migrate the servers by using Server Migration Center \(SMC\) or importing the custom images. For more information, see [Migrate a server to Alibaba Cloud by using the Cloud Migration tool]() or [Import custom images](/intl.en-US/Images/Custom image/Import images/Import custom images.md).
 
 -   For Alibaba Cloud ECS instances that already run Linux custom images:
 
