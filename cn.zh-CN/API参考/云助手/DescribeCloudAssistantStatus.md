@@ -1,6 +1,6 @@
 # DescribeCloudAssistantStatus
 
-调用DescribeCloudAssistantStatus查询一台或者多台实例是否安装了云助手客户端。
+调用DescribeCloudAssistantStatus查询一台或者多台实例是否安装了云助手客户端。如果已安装了云助手，还将查询云助手命令执行的总数量、正在执行的数量以及最近一次命令执行的时间。
 
 ## 调试
 
@@ -34,9 +34,16 @@
 |--|--|---|--|
 |InstanceCloudAssistantStatusSet|Array of InstanceCloudAssistantStatus| |实例云助手安装状态结果集合。 |
 |InstanceCloudAssistantStatus| | | |
+|ActiveTaskCount|Long|0|正在执行的命令的数量。 |
 |CloudAssistantStatus|String|true|是否已经安装了云助手。 |
 |CloudAssistantVersion|String|2.2.0.106|云助手客户端版本号。 |
 |InstanceId|String|i-bp1iudwa5b1tqa\*\*\*\*|实例ID。 |
+|InvocationCount|Long|2|已执行的命令的总数量。 |
+|LastInvokedTime|String|2021-03-15T08:00:00Z|最近一次命令执行的时间。 |
+|OSType|String|Linux|实例操作系统类型。可能值：
+
+ -   Windows
+-   Linux |
 |PageNumber|Long|1|当前页码。 |
 |PageSize|Long|1|每页行数。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
@@ -59,17 +66,21 @@ https://ecs.aliyuncs.com/?Action=DescribeCloudAssistantStatus
 
 ```
 <DescribeCloudAssistantStatusResponse>
-	  <TotalCount>1</TotalCount>
-	  <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
-	  <PageSize>1</PageSize>
-	  <PageNumber>1</PageNumber>
-	  <InstanceCloudAssistantStatusSet>
-		    <InstanceCloudAssistantStatus>
-			      <CloudAssistantVersion>2.2.0.106</CloudAssistantVersion>
-			      <InstanceId>i-bp1iudwa5b1tqa****</InstanceId>
-			      <CloudAssistantStatus>true</CloudAssistantStatus>
-		    </InstanceCloudAssistantStatus>
-	  </InstanceCloudAssistantStatusSet>
+      <TotalCount>1</TotalCount>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <PageSize>1</PageSize>
+      <PageNumber>1</PageNumber>
+      <InstanceCloudAssistantStatusSet>
+            <InstanceCloudAssistantStatus>
+                  <CloudAssistantVersion>2.2.0.106</CloudAssistantVersion>
+                  <InstanceId>i-bp1iudwa5b1tqa****</InstanceId>
+                  <CloudAssistantStatus>true</CloudAssistantStatus>
+                  <OSType>Linux</OSType>
+                  <InvocationCount>2</InvocationCount>
+                  <ActiveTaskCount>0</ActiveTaskCount>
+                  <LastInvokedTime>2021-03-15T08:00:00Z</LastInvokedTime>
+            </InstanceCloudAssistantStatus>
+      </InstanceCloudAssistantStatusSet>
 </DescribeCloudAssistantStatusResponse>
 ```
 
@@ -86,7 +97,11 @@ https://ecs.aliyuncs.com/?Action=DescribeCloudAssistantStatus
       {
         "CloudAssistantVersion": "2.2.0.106",
         "InstanceId": "i-bp1iudwa5b1tqa****",
-        "CloudAssistantStatus": "true"
+        "CloudAssistantStatus": "true",
+        "OSType": "Linux",
+        "InvocationCount": 2,
+        "ActiveTaskCount": 0,
+        "LastInvokedTime": "2021-03-15T08:00:00Z"
       }
     ]
   }
