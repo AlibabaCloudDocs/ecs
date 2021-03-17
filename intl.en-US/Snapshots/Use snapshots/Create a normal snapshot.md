@@ -4,7 +4,7 @@ keyword: [snapshot backup, custom image, disk, data backup, modify key files, ro
 
 # Create a normal snapshot
 
-A snapshot is a backup file of the data on a disk for a specific point in time. A snapshot is used for data backup, data recovery after accidental instance releases, data recovery after network attacks, and the creation of custom images. You can create snapshots of disks to improve fault tolerance for operations before you roll back a disk, modify key system files, or change the operating system of an instance. This topic describes how to create a normal snapshot in the ECS console or by calling an API operation in Alibaba Cloud CLI.
+The Alibaba Cloud snapshot service is an agentless backup service that allows you to create crash-consistent snapshots for system disks or data disks. You can use snapshots to back up data, restore instances that were released by mistake, and create custom images. Before you roll back disks, modify key system files, or replace operating systems, you can create snapshots to improve fault tolerance. This topic describes how to create a snapshot by using the ECS console or by calling an API operation.
 
 -   The ECS instance must be in the **Running** or **Stopped** state.
 -   The disk must be in the **In Use** or **Expired** state.
@@ -30,32 +30,38 @@ The following operations demonstrate how to create a snapshot for an instance fr
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  In the left-side navigation pane, choose **Instances & Images** \> **Instances**.
+2.  Log on to the [ECS console](https://partners-intl.console.aliyun.com/#/ecs).
 
-3.  In the top navigation bar, select a region.
+3.  In the left-side navigation pane, choose **Instances & Images** \> **Instances**.
 
-4.  Find the ECS instance for which you need to create a snapshot, click the instance ID, or click **Manage** in the **Actions** column.
+4.  In the top navigation bar, select a region.
+
+5.  Find the ECS instance for which you need to create a snapshot, click the instance ID, or click **Manage** in the **Actions** column.
 
     ![Manage](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4665319951/p9505.png)
 
-5.  The **Instance Details** tab appears. Click the **Cloud Disk** tab.
+6.  The **Instance Details** tab appears. Click the **Cloud Disk** tab.
 
-6.  Find the disk and click **Create Snapshot** in the Actions column.
+7.  Find the disk and click **Create Snapshot** in the Actions column.
 
     **Note:** You can also select appropriate values for headers of the disk list such as **Disk Category \(All\)**, **Status \(All\)**, and **Type \(All\)** to quickly find the disk.
 
     ![Disk type](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8734736061/p4530.png)
 
-7.  In the dialog box that appears, enter a snapshot name, bind a tag, and then click **Create**.
+8.  In the dialog box that appears, enter a snapshot name, bind a tag, and then click **Create**.
 
     **Note:** You can also create a local snapshot for an Enhanced SSD disk. If you do not select Create Local Snapshot in this dialog box, a normal snapshot is created.
 
     ![Create a normal snapshot](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2665319951/p92970.png)
 
-8.  After the **Instance Details** tab appears, click the **Snapshot** tab to view the created snapshot.
+9.  After the **Instance Details** tab appears, click the **Snapshot** tab to view the created snapshot.
 
     ![Snapshots](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2665319951/p4552.png)
 
+
+以下示例演示了如何创建普通快照。
+
+![创建普通快照](../images/p129364.gif)
 
 You can also choose **Storage & Snapshots** \> **Disks** from the left-side navigation pane of the ECS console to create a snapshot for a disk.
 
@@ -63,7 +69,7 @@ You can also choose **Storage & Snapshots** \> **Disks** from the left-side navi
 
 1.  Obtain the instance ID.
 
-    -   Method 1: If you have connected to the ECS instance, you can obtain the instance ID from the instance metadata. For more information, see [Metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview.md).
+    -   Method 1: If you have connected to the ECS instance, you can obtain the instance ID from the instance metadata. For more information, see [Metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview of instance metadata.md).
 
         For example, to query the ID of a Linux instance, run the following command:
 
