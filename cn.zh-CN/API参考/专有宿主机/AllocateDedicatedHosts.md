@@ -59,11 +59,14 @@
 |CpuOverCommitRatio|Float|否|1|CPU超卖比。仅自定义规格g6s、c6s、r6s支持设置CPU超卖比。取值范围：1~5
 
  CPU超卖比影响DDH的可用vCPU数，一台DDH的可用vCPU数=物理CPU核数\*2\*CPU超卖比。例如，g6s的物理CPU核数为52，如果设置CPU超卖比为4，则DDH创建完成后vCPU总数显示为416。针对CPU绝对稳定性要求不严苛或CPU负载不高的场景，例如开发测试环境，提升超卖比可以提升可用vCPU数，用于部署更多同等规格的ECS实例，降低单位部署成本。 |
+|MinQuantity|Integer|否|2|指定专有宿主机的最小购买数量。取值范围：1~100。
+
+ **说明：** 当专有宿主机的库存小于最小购买数量时，创建专有宿主机将会失败。 |
 |ChargeType|String|否|PrePaid|专有宿主机的计费方式。取值范围：
 
  -   PrePaid：包年包月。选择包年包月时，请确认您的支付方式支持余额或者信用额度支付，否则会提示InvalidPayMethod。
 -   PostPaid（默认）：按量付费。 |
-|Quantity|Integer|否|1|本次创建的专有宿主机的数量。取值范围：1~100
+|Quantity|Integer|否|2|本次创建的专有宿主机的数量。取值范围：1~100
 
  默认值：1 |
 |Period|Integer|否|6|购买专有宿主机的包年包月时长。当参数`ChargeType`取值为`PrePaid`时，`Period`参数方可生效并为必选参数。取值范围：
