@@ -4,7 +4,7 @@ keyword: [Alibaba Cloud, back up, back up data, roll back, disaster recovery]
 
 # Snapshot overview
 
-The Alibaba Cloud snapshot service allows you to create crash-consistent snapshots for all disk categories. Crash-consistent snapshots can be used to implement disaster recovery for applications, back up data, and create custom images.
+The Alibaba Cloud snapshot service is an agentless backup service that allows you to create crash-consistent snapshots for all disk categories. Crash-consistent snapshots are an effective solution to disaster recovery and can be used to back up data, restore disks, create custom images, and implement disaster recovery for applications.
 
 ## Introduction
 
@@ -28,11 +28,13 @@ The following figure shows common snapshot features.![Scenarios](https://static-
 
 In addition, the snapshot service provides advanced features such as instant access. For more information, see [Enable or disable the instant access feature](/intl.en-US/Snapshots/Use snapshots/Enable or disable the instant access feature.md).
 
+In addition, the snapshot service provides advanced features such as instant access and instance snapshot. For more information, see [Enable or disable the instant access feature](/intl.en-US/Snapshots/Use snapshots/Enable or disable the instant access feature.md) and [t1997214.md\#]().
+
 ## Billing
 
 Snapshots are billed based on their size and use the pay-as-you-go billing method. For more information, see [Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
 
-**Note:** Pay-as-you-go bills of snapshots can be offset by storage capacity units \(SCUs\).
+**Note:** Pay-as-you-go bills of snapshots can be offset by OSS存储包或storage capacity units \(SCUs\).
 
 ## Limits
 
@@ -62,4 +64,10 @@ The following table describes the benefits of Alibaba Cloud ECS snapshots compar
 -   Snapshots do not affect service availability and can be created at any time without affecting user experience.
 
 |Typically uses copy-on-write \(COW\), but may also use ROW or other methods. COW may affect the data write capabilities of the source system.|
+
+## 联系我们
+
+如果您在使用快照时遇到任何问题或需求，欢迎您使用钉钉扫描下面的二维码加入阿里云快照用户服务群。（[钉钉通讯客户端下载地址](https://tms.dingtalk.com/markets/dingtalk/download?spm=a2c4g.11186623.2.9.2a1d4e2bCgb1WP)）
+
+![q](../images/p161426.png)
 
