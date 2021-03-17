@@ -13,7 +13,6 @@ keyword: [购买实例, 企业级实例, GPU实例, 弹性裸金属服务器, �
     -   [购买ECS实例如何付款？](#section_huh_ipu_6gt)
     -   [开通一台云服务器需要多久？](#section_ska_yf3_rvx)
     -   [购买实例付款成功，但是没有生成实例，为什么？](#section_gbw_acs_xwn)
-    -   [为什么购买实例时看不到按量付费资源？](#section_ls5_e9e_kt3)
 -   企业级实例问题
     -   [什么是企业级实例？什么是共享型实例？](#section_2p8_osd_e5y)
     -   [企业级实例与共享型实例有什么本质区别？](#section_cm4_dks_zu1)
@@ -277,12 +276,6 @@ keyword: [购买实例, 企业级实例, GPU实例, 弹性裸金属服务器, �
 
 您可以前往[ECS实例可购买地域](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion)，查看实例在各地域的可购情况。
 
-## 为什么购买实例时看不到按量付费资源？
-
-16核及以上实例规格可能存在按量高配限制。如果您在购买实例时能看到包年包月资源，但是看不到按量付费资源，请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)确认当前账号是否已经获得购买该实例规格按量高配资源的授权。
-
-如果已获得授权，仍然看不到按量资源，可能是当前地域下库存不足，请参见[购买实例时，资源已经售罄怎么办？](#section_lxw_bwz_qgb)。
-
 ## 什么是企业级实例？什么是共享型实例？
 
 企业级实例是阿里云2016年9月开始推出的一系列实例规格族的总称，具有高性能、稳定计算能力和平衡网络性能的特点。因为具有独享且稳定的计算、存储、网络资源，这些实例规格族非常适合对业务稳定性具有高要求的企业场景。
@@ -461,7 +454,7 @@ Redis应用运行在持久内存型实例上，可以大幅度降低单GiB内存
 
 ## 如何查看GPU监控数据？
 
-您可以通过[云监控控制台](https://cloudmonitor.console.aliyun.com/)或[DescribeMetricList](/cn.zh-CN/API参考/云产品时序指标类监控数据/DescribeMetricList.md)来查看GPU监控数据，详情请参见[GPU监控](/cn.zh-CN/主机监控/GPU监控.md)。
+您可以通过[云监控控制台](https://cloudmonitor.console.aliyun.com/)或[DescribeMetricList](/cn.zh-CN/API参考/云产品监控/DescribeMetricList.md)来查看GPU监控数据，详情请参见[GPU监控](/cn.zh-CN/主机监控/GPU监控.md)。
 
 ## 弹性裸金属服务器、传统云主机（虚拟机）和传统物理机有何本质区别？
 
@@ -793,7 +786,7 @@ SCC实例支持包年包月和按周付费。
 请排查以下问题：
 
 -   实例应处于运行中状态。
--   实例所在安全组中应添加了对应的安全组规则，安全组组规则详情请参见[通过Workbench远程连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过Workbench远程连接Linux实例.md)。
+-   实例所在安全组中应添加了对应的安全组规则，安全组组规则详情请参见[通过密码或密钥认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Linux实例.md)。
 
 ## 为什么通过Workbench远程连接Linux实例时失败，提示拒绝连接？
 
@@ -808,14 +801,14 @@ SCC实例支持包年包月和按周付费。
 
 -   输入正确的用户名，一般Linux实例用户名为root。
 -   输入正确的密码。如果忘记了密码，您可以重置密码，具体操作请参见[重置实例登录密码](/cn.zh-CN/实例/管理实例/重置实例登录密码.md)。
--   如果使用root用户登录Linux实例，需要保证/etc/ssh/sshd\_config文件中配置`PermitRootLogin yes`。具体操作请参见[通过Workbench远程连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过Workbench远程连接Linux实例.md)。
+-   如果使用root用户登录Linux实例，需要保证/etc/ssh/sshd\_config文件中配置`PermitRootLogin yes`。具体操作请参见[通过密码或密钥认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Linux实例.md)。
 
 ## 为什么通过Workbench远程连接Windows实例时失败，提示连接实例超时？
 
 请排查以下问题：
 
 -   实例应处于运行中状态。
--   实例所在安全组中应添加了对应的安全组规则，安全组组规则详情请参见[通过Workbench远程连接Windows实例](/cn.zh-CN/实例/连接实例/连接Windows实例/通过Workbench远程连接Windows实例.md)。
+-   实例所在安全组中应添加了对应的安全组规则，安全组组规则详情请参见[通过密码或密钥认证登录Windows实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Windows实例.md)。
 -   实例应开启了终端连接（SSH）或远程桌面（RDP）对应的远程服务。
 -   实例应开放了连接端口，一般终端连接（SSH）开放22端口，远程桌面（RDP）开放3389端口。
 
@@ -833,7 +826,7 @@ SCC实例支持包年包月和按周付费。
 
 ## 忘记了远程连接密码，怎么办？
 
-您可以修改远程连接密码，详细步骤请参见[修改远程连接密码](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+您可以修改远程连接密码，详细步骤请参见[修改VNC密码](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
 ## 为什么修改了远程连接密码还是连不上控制台VNC？
 
@@ -846,7 +839,7 @@ SCC实例支持包年包月和按周付费。
 输入远程连接密码后，提示授权验证失败，可能是因为您输入了错误的密码。请按以下步骤排查：
 
 1.  确认输入了正确的远程连接密码。
-2.  如果忘记了远程连接密码，您可以修改密码，然后重试。具体操作请参见[修改远程连接密码](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+2.  如果忘记了远程连接密码，您可以修改密码，然后重试。具体操作请参见[修改VNC密码](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
     **说明：** 如果需要连接非I/O优化实例，修改远程连接密码后，必须在控制台中或通过API RebootInstance重启实例，新密码才会生效。
 
@@ -878,11 +871,11 @@ SCC实例支持包年包月和按周付费。
 
 通常Linux系统使用SSH服务提供远程连接。您可以：
 
--   [通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
--   [通过Workbench远程连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过Workbench远程连接Linux实例.md)
--   [使用用户名密码验证连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/使用用户名密码验证连接Linux实例.md)。
--   [使用SSH密钥对连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/使用SSH密钥对连接Linux实例.md)。
--   [在移动设备上连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/在移动设备上连接Linux实例.md)。
+-   [通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
+-   [通过密码或密钥认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Linux实例.md)
+-   [使用用户名密码验证连接Linux实例](/cn.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用用户名密码验证连接Linux实例.md)。
+-   [使用SSH密钥对连接Linux实例](/cn.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用SSH密钥对连接Linux实例.md)。
+-   [在移动设备上连接Linux实例](/cn.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/在移动设备上连接Linux实例.md)。
 
 ## 无法连接Linux实例怎么办？
 
@@ -915,7 +908,7 @@ SCC实例支持包年包月和按周付费。
 
     以`Windows Server 2019 数据中心版 64位`操作系统为例，调整分辨率的操作如下：
 
-    1.  通过控制台VNC远程连接ECS实例。连接方式请参见[通过VNC远程连接Windows实例](/cn.zh-CN/实例/连接实例/连接Windows实例/通过VNC远程连接Windows实例.md)。
+    1.  通过控制台VNC远程连接ECS实例。连接方式请参见[通过密码认证登录Windows实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Windows实例.md)。
     2.  在Windows桌面，单击鼠标右键，然后单击**显示设置\(D\)**。
     3.  在**缩放与布局**区域，调整您需要的分辨率。
 -   通过本地主机的远程桌面连接工具调整分辨率。
