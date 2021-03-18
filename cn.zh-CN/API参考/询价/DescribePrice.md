@@ -4,11 +4,11 @@
 
 ## 接口说明
 
--   查询不同类型资源的价格时，必需参数也会相应不同。
+-   查询不同类型资源的价格时，必需参数也有所不同，具体说明如下：
     -   参数`ResourceType=instance`时，您必须同时指定参数`InstanceType`。
     -   参数`ResourceType=disk`时，您必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。查询`disk`资源的价格时，只返回云盘按量付费的价格，即参数`PriceUnit`只能取值为`Hour`。
-    -   参数`ResourceType=ecsrep`时，表示查询弹性保障服务的价格。该参数值正在邀测中，详情请提交工单咨询。
-    -   查询`ResourceType=bandwidth`资源的价格时，只返回按流量计费（`PayByTraffic`）的价格。
+    -   查询`ResourceType=ddh`时，您必须同时指定参数`DedicatedHostType`。
+-   查询`ResourceType=bandwidth`时，只返回按流量计费（`PayByTraffic`）的价格。
 -   参数`ResourceType=instance`时，仅支持查询四块以内数据盘的价格。
 -   默认查询付费方式（`ChargeType`）为按量付费（`PostPaid`）的价格，您可以通过指定`PriceUnit`参数查询云服务器ECS不同计费周期的价格。
 
@@ -28,6 +28,7 @@
 -   disk：查询云盘的最新价格列表。当取值为disk时，必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。
 -   bandwidth：查询带宽的最新价格列表。
 -   ecsrep：查询弹性保障服务的最新价格列表。
+-   ddh：查询专有宿主机的最新价格列表。
 
  默认值：instance |
 |ImageId|String|否|centos\_7\_05\_64\_20G\_alibase\_20181212.vhd|镜像ID，表示启动实例时希望装载的运行环境。您可以调用[DescribeImages](~~25534~~)查询您可用的镜像资源。如果不指定，默认查询Linux系统镜像的价格。 |
@@ -177,12 +178,9 @@
  默认值：1 |
 |AssuranceTimes|String|否|Unlimited|弹性保障的总次数。取值：Unlimited，目前仅支持在服务生效期内的无限次模式。
 
- 默认值：Unlimited
-
- **说明：** 该参数邀测中，详情请提交工单咨询。 |
-|InstanceTypeList.N|RepeatList|否|ecs.g6.xlarge|实例规格。目前仅支持无限次保障服务设置单个实例规格。
-
- **说明：** 该参数邀测中，详情请提交工单咨询。 |
+ 默认值：Unlimited |
+|InstanceTypeList.N|RepeatList|否|ecs.g6.xlarge|实例规格。目前仅支持无限次保障服务设置单个实例规格。 |
+|DedicatedHostType|String|否|ddh.c5|专有宿主机的规格。您可以调用[DescribeDedicatedHostTypes](~~134240~~)接口获得最新的专有宿主机规格表。 |
 
 ## 返回数据
 
@@ -345,7 +343,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.Category" is not valid.|指定的参数DataDisk.Category不合法。|
 |400|InvalidDataDiskSize.ValueNotSupported|The specified parameter "DataDisk.Size" is not valid.|指定的参数DataDisk.Size不合法。|
 |400|Throttling|Request was denied due to request throttling.|当前的操作太过频繁，请稍后重试。|
-|400|PriceNotFound|The price of your queried resource is not available now, please try other resources.|暂无法查询该资源的价格，请稍后重试。|
+|400|PriceNotFound|The price of your queried resource is not available now, please try other resources.|未找到价格，请修改相应的参数值重试。|
 |400|InvalidResourceType.ValueNotSupported|The specified parameter ResourceType is not valid.|指定的资源类型不合法。|
 |400|InvalidPriceUnit.ValueNotSupported|The specified parameter PriceUnit is not valid.|指定的单价不合法。|
 |403|OperationDenied|The specified parameter InstanceNetworkType is not authorized.|用户未被授权指定的实例网络类型。|
