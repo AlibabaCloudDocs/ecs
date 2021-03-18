@@ -17,13 +17,15 @@ This topic provides answers to commonly asked questions about ECS billing.
         -   [What is a savings plan?](#section_trr_ifq_t3s)
         -   [What are the advantages of savings plans?](#section_0lb_kci_5hh)
         -   [What is the hourly commitment of a savings plan?](#section_39p_uqh_u7o)
+        -   [How does a savings plan work when the number of instances that can be deducted is not an integer?](#section_c0e_2t7_k4f)
         -   [What are the types of savings plans?](#section_892_s28_1sh)
         -   [What are the payment options of a savings plan?](#section_p2i_nra_m3x)
-        -   [Where do I view the recommendation and purchase pages for a savings plan?](#section_s06_i0g_5se)
+        -   [Where do I view the recommendation and buy pages for a savings plan?](#section_s06_i0g_5se)
         -   [How do I query the discount offered in a savings plan?](#section_tok_kjt_2ye)
         -   [How do I query the cost savings brought about by a savings plan?](#section_4ly_tbq_eqk)
         -   [Can I have multiple savings plans in effect at the same time?](#section_vxf_h21_zwr)
         -   [Can I purchase reserved instances if I have purchased savings plans?](#section_1mg_cb0_hp6)
+        -   [Can I purchase storage capacity units \(SCUs\) if I have purchased savings plans?](#section_v57_6hc_cxq)
         -   [Do savings plans provide resource reservations?](#section_1d9_hns_3ih)
         -   [Do savings plans provide discounts for preemptible instances?](#section_5uy_2xk_3n0)
         -   [What happens if my savings plans expire?](#section_pwh_w92_83p)
@@ -95,7 +97,7 @@ This topic provides answers to commonly asked questions about ECS billing.
         -   [Can I select the pay-by-traffic billing method for network usage when I purchase a subscription instance?](#section_833_hn8_tap)
         -   [How am I charged when I select the pay-by-traffic billing method for network usage?](#section_4vz_zc9_gnc)
         -   [Can I change the billing method for network usage of a subscription instance from pay-by-bandwidth to pay-by-traffic?](#section_re1_ou7_60i)
-        -   [Can I adjust the peak traffic bandwidth for an ECS instance at any time?](#section_ei9_f8i_d64)
+        -   [Can I adjust the maximum bandwidth for an ECS instance at any time?](#section_ei9_f8i_d64)
         -   [If the pay-by-traffic billing method is used for a subscription instance, can the instance continue to use the public bandwidth service when a payment becomes overdue due to insufficient account balance?](#section_ekv_ozx_v9t)
         -   [If the pay-by-traffic billing method is used for a subscription instance, will I be notified when a payment becomes overdue in my account?](#section_nhh_cph_mpe)
         -   [If the pay-by-traffic billing method is used for a subscription instance, can I upgrade the instance configurations after a payment becomes overdue in my account?](#section_wxp_s0g_s4k)
@@ -150,7 +152,7 @@ The following examples demonstrate how to use the price difference-based method 
 
     In this example, Alibaba Cloud will refund USD 10 for the instance configuration downgrade.
 
--   Example 2: The configurations of a new instance have been upgraded after the instance was in use for some period of time, and are downgraded after another period of time.
+-   Example 2: New Instance B has been upgraded after it was in use for some period of time, and is downgraded after another period of time.
 
     Assume that on the first day of a calendar month, you purchased a 30-day subscription instance \(Instance B\) at the price of USD 1/day and paid USD 30 in total. On the 11th day of the calendar month, you upgraded the configurations of the instance. The price of the new instance configurations was USD 2/day. You paid the price difference P between the original and new instance configurations. The following formula is used to calculate P: P = \(USD 2/day - USD 1/day\) × \(30 days - 10 days\) = USD 20. On the 21st day of the calendar month, you initiate a configuration downgrade for the instance. The price of the new instance configurations is USD 0.5/day. The refundable amount is calculated in the following manner:
 
@@ -193,7 +195,7 @@ The following examples demonstrate how to use the ratio-based method to calculat
 
     In this example, Alibaba Cloud will refund MYR 100 for the instance configuration downgrade.
 
--   Example 2: The configurations of a new instance have been upgraded after the instance was in use for some period of time, and are downgraded after another period of time.
+-   Example 2: New Instance B has been upgraded after it was in use for some period of time, and is downgraded after another period of time.
 
     Assume that on the first day of a calendar month, you placed an order to purchase a 30-day subscription instance \(Instance B\) and the order amount was USD 30. The MYR to USD exchange rate was 1:10 at the time of your purchase. You paid MYR 300 in total. On the 11th day of the calendar month, you upgraded the configurations of instance. The price of the new instance configurations was USD 2/day. The MYR to USD exchange rate was 1:11 at the time of upgrade. You paid the price difference P between the original and new instance configurations. The following formula is used to calculate P: P = \(USD 2/day - USD 1/day\) × \(30 days - 10 days\) × 11 = MYR 220. On the 21st day of the calendar month, you initiate a configuration downgrade for the instance. The price of the new instance configurations is USD 0.5/day. The refundable amount is calculated in the following manner:
 
@@ -239,27 +241,35 @@ In this example, the actual refundable amount is MYR 40 instead of MYR 100.
 
 ## What is a savings plan?
 
-A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount of resources \(measured in dollars per hour\) over a one- or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md).
+A savings plan is a discount plan that allows you to receive pay-as-you-go billing discounts in exchange for a commitment to use a consistent amount\(measured in USD/hour\) of resources over a one-year or three-year period. After you purchase a savings plan, the hourly bills of your pay-as-you-go instances are covered up to the amount of the plan. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md).
 
 ## What are the advantages of savings plans?
 
-Savings plans have the following advantages:
-
 -   Flexible in price and payment: Savings plans are available for purchase for as little as one cent and have no price limits. Savings plans can be paid in installments to minimize the impact on your cash flow.
--   Cost effective: Savings plans can significantly reduce your costs and provide discounts on pay-as-you-go resources as great as 77% off.
--   Easy to manage: A single savings plan can be applied to pay-as-you-go ECS and ECI instances across regions, instance types, and accounts.
+-   Cost effective: Savings plans can significantly reduce your costs and provide discounts on pay-as-you-go resources as great as 76% off.
+-   Easy to manage: A single savings plan can be applied to pay-as-you-go ECS instances and elastic container instances of multiple instance types that belong to multiple accounts across multiple regions.
 
 ## What is the hourly commitment of a savings plan?
 
-When you purchase a savings plan, you commit to a duration and an expense amount. The hourly commitment is the minimum amount of resources \(measured in dollars\) that you commit to use per hour. The hourly bills within this amount are calculated based on the discount of the plan and can be offset by the plan. If an hourly bill is less than your hourly commitment, you must pay 50% of your hourly commitment when you select the Partial Upfront payment option for your savings plan, or 100% of your hourly commitment when you select the No Upfront payment option. For information about how to select an appropriate hourly commitment, see [Purchase and apply savings plans](/intl.en-US/Instance/Instance purchasing options/Savings plans/Purchase and apply savings plans.md).
+When you purchase a savings plan, you commit to a usage duration and an amount of expense. The hourly commitment is the minimum amount of resources\(measured in USD\) that you commit to use per hour. The hourly bills within this amount are calculated based on the discount of the plan and can be offset by the plan. If an hourly bill is less than your hourly commitment, you must pay 50% of your hourly commitment when you select the Partial Upfront payment option for your savings plan, or 100% of your hourly commitment when you select the No Upfront payment option. For information about how to select an appropriate hourly commitment, see [Purchase and apply savings plans](/intl.en-US/Instance/Instance purchasing options/Savings plans/Purchase and apply savings plans.md).
+
+The hourly commitment of an savings plan is the upper limit of the pay-as-you-go bills that can be exempted. Within this value range, the price of a pay-as-you-go bill is discounted first and then deducted. The following example describes this issue:
+
+**Note:** The following prices are for reference only. The actual prices displayed on the buy page prevails.
+
+The unit price of pay-as-you-go instances that are of the ecs.c5.large instance type and located in the China \(Shanghai\) region is USD 0.62/hour. A discount of 57.8% off is provided for the instances after you purchase a three-year general-purpose savings plan by using the All Upfront payment option. Assume that an hourly commitment ofUSD 10 is selected. In this case, the number of ecs.c5.large instances that can be deducted per hour is calculated based on the following formula: 10/\(0.62 × 0.422\) = 38.22.
+
+## How does a savings plan work when the number of instances that can be deducted is not an integer?
+
+Assume that your savings plan allows 38.22 instances to be deducted per hour. Bills are deducted in the following way: If you have 39 running instances, 22% of the bill for one of the instance is deducted, and the remaining 78% of the bill must be payed at the regular prices. If you have 38 running instances, the deduction for 0.22 instance is wasted per hour in this savings plan.
 
 ## What are the types of savings plans?
 
-Savings plans are available in two types:
+Savings plans come in two types:
 
 -   General purpose
 
-    General purpose savings plans can be applied to offset the bills of pay-as-you-go ECS and ECI instances. General purpose savings plans are automatically applied to eligible pay-as-you-go instances regardless of the regions, instance families, instance sizes, and operating systems.
+    General purpose savings plans can be applied to offset the bills of pay-as-you-go ECS instances and elastic container instance. General purpose savings plans are automatically applied to eligible pay-as-you-go instances regardless of the regions, instance families, instance sizes, and operating systems.
 
 -   ECS compute
 
@@ -270,19 +280,26 @@ General purpose savings plans are more flexible in use than ECS compute savings 
 
 ## What are the payment options of a savings plan?
 
-Savings plans support three payment options: All Upfront, Partial Upfront, and No Upfront. Different payment options offer different discounts. For more information, see [Savings plans](/intl.en-US/Pricing/Billing methods/Savings plans.md).
+Savings plans support three payment options: All Upfront, Partial Upfront, and No Upfront. The discount that you can obtain varies based on the specified duration and billing method. You can obtain the maximum discount when you purchase a three-year all upfront savings plan. The corresponding discounts decrease based on the following sequence: three-year partial upfront, three-year no upfront, one-year all upfront, one-year partial upfront, and one-year zero upfront. For more information, see [Savings plans](/intl.en-US/Pricing/Billing methods/Savings plans.md).
 
-## Where do I view the recommendation and purchase pages for a savings plan?
+## Where do I view the recommendation and buy pages for a savings plan?
 
-You can purchase savings plans on the [Savings Plan](https://common-buy.aliyun.com/?spm=a2c81.a53620e.app.1.5a1011279HUkI1&commodityCode=savingplan_common_public_cn#/buy) page. You can also go to the [Recommended](https://usercenter2.aliyun.com/resource/spn/recommend) page for recommendations. The system recommends an appropriate savings plan based on your selected historical purchase records, savings plan type, and payment option.
+-   Method 1
+
+    You can directly accessthe [Savings plan buy page](https://common-buy-intl.alibabacloud.com/?spm=a2c63.p38356.879954.10.2ed96120enykMx&commodityCode=savingplan_common_public_intl#/buy) to purchase a savings plan.You can also go to the [Savings plan purchase recommendation page](https://usercenter2-intl.aliyun.com/resource/spn/recommend) to obtain suggestions. The system recommends an appropriate savings plan based on conditions such as the consumption data, savings plan type, and payment method you have selected.
+
+-   Method 2
+
+    Go to the[ECS console](https://partners-intl.console.aliyun.com/#/ecs). In the left-side navigation pane, choose **Instances & Images** \> **Savings Plan**.
+
 
 ## How do I query the discount offered in a savings plan?
 
-You can go to the [Discount Details](https://usercenter2.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
+You can go to the[Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
 
 ## How do I query the cost savings brought about by a savings plan?
 
-You can go to the Overview tab on the [Savings Plan](https://usercenter2.aliyun.com/resource/spn/overview) page to view the cost savings brought about by a savings plan, including the total, annual, and monthly saving amounts.
+You can go to theOverview tab on the [Savings Plan](https://usercenter2-intl.aliyun.com/resource/spn/overview) page to view the cost savings brought about by a savings plan, including the total, annual, and monthly saving amounts.
 
 ## Can I have multiple savings plans in effect at the same time?
 
@@ -292,9 +309,15 @@ Yes, you can purchase and use multiple savings plans at the same time. The syste
 
 You can purchase both reserved instances and savings plans at the same time. However, reserved instances have a higher priority than savings plans when they are applied to pay-as-you-go instances.
 
+## Can I purchase SCUs if I have purchased savings plans?
+
+You can purchase both SCUs and savings plans at the same time. However, SCUs have a higher priority than savings plans when they are applied to pay-as-you-go instances.
+
 ## Do savings plans provide resource reservations?
 
 No, savings plans do not provide resource reservations. No resources are specified when you purchase savings plans.
+
+**Note:** To reserve resources when you have savings plans or reserved instances, you can purchase immediate capacity reservations. For more information, see [Overview of Immediate Capacity Reservation]().
 
 ## Do savings plans provide discounts for preemptible instances?
 
@@ -308,7 +331,7 @@ When your savings plans expire, the discounts provided in your savings plans are
 
 You may be unable to change the billing method of an instance from subscription to pay-as-you-go due to one of the following reasons:
 
--   The instance is in a state that does not support changes to the billing method. For example, the instance has an unpaid order.
+-   The instance is in a state that does not support changes to the billing method. For example, you have an unpaid order for the instance.
 -   The instance is in the **Expired** state.
 -   The instance information has changed. For example, the bandwidth of the instance has been temporarily upgraded.
 
@@ -320,7 +343,7 @@ Pay-as-you-go instances are billed at increments of one second. Payments are mad
 
 ## Am I still charged for a pay-as-you-go instance after it is stopped either manually or due to an overdue payment?
 
-**Stopped due to an overdue payment**: When a payment becomes overdue in your account, your pay-as-you-go instance is automatically stopped and billing for this instance stops. Instances do not always stay in the Stopped state after they are stopped due to overdue payments. For more information, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
+**Stopped due to an overdue payment**: When a payment becomes overdue in your account, your pay-as-you-go instance is automatically stopped and billing for the instance stops. Instances do not always stay in the Stopped state after they are stopped due to overdue payments. For more information, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
 
 **Manually stopped**: You can stop a running pay-as-you-go instance by using the ECS console or by calling the StopInstance operation. When the instance is stopped, its status changes to **Stopped**. Billing for stopped pay-as-you-go instances is based on their network types.
 
@@ -333,7 +356,7 @@ Pay-as-you-go instances are billed at increments of one second. Payments are mad
 
 You may be unable to place the order due to one of the following reasons:
 
--   The instance is in a state that does not support changes to the billing method. For example, the instance has an unpaid order.
+-   The instance is in a state that does not support changes to the billing method. For example, you have an unpaid order for the instance.
 -   Changes to the billing method are not allowed due to an upcoming scheduled automatic release.
 -   Changes to the billing method are not allowed because the instance information has changed.
 -   A previous order to change the billing method of the instance has not been paid.
@@ -342,7 +365,7 @@ If one of the preceding errors is reported, adjust the instance accordingly.
 
 ## How long after an order is paid does it take to change the billing method of an instance from pay-as-you-go to subscription?
 
-The billing method of your ECS instance is changed after the order is paid. It can take up to four seconds to change the billing method of 20 instances. After the change is complete, you can see that the billing method of your instance has been changed to **Subscription** in the ECS console.
+The billing method of your ECS instance is changed after the order is paid. It can take up to 4 seconds to change the billing method of 20 instances. After the change is complete, you can see that the billing method of your instance has been changed to **Subscription** in the ECS console.
 
 ## What do I do if the billing method of an instance cannot be changed from pay-as-you-go to subscription?
 
@@ -358,7 +381,7 @@ An order is created when you change the billing method of your instance from pay
 
 ## Why am I unable to change a pay-as-you-go instance into a subscription one?
 
-The pay-as-you-go instance that you want to change must meet the following requirements:
+The pay-as-you-go instance whose billing method you want to change must meet the following requirements:
 
 -   The instance type of the instance is not retired. For more information, see [Retired instance types](/intl.en-US/Instance/Retired instance types.md).
 -   The instance is not a preemptible instance.
@@ -433,8 +456,8 @@ Each ECS instance can have its configurations downgraded a maximum of three time
 You can copy your instance ID and perform the following steps to view the bill details:
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
-2.  In the top navigation bar, choose **Expenses** \> **User Center**.
-3.  In the left-side navigation pane, choose **Spending Summary** \> **Spending Summary**.
+2.  In the top navigation bar, choose **Billing** \> **User Center**.
+3.  In the left-side navigation pane, choose **Spending Summary** \> **Instance Spending Detail**.
 4.  Set the search criteria and click Search.
 
     ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5291909951/p55292.png)
@@ -473,7 +496,7 @@ This situation may occur in the following circumstances:
 
 ## Are Alibaba Cloud Marketplace images refundable?
 
-Alibaba Cloud Marketplace images support money-back guarantee within a certain period of time based on the Alibaba Cloud Marketplace rules. However, you are ineligible for a refund in the following situations:
+Alibaba Cloud Marketplace images support money-back guarantee within a period of time based on the Alibaba Cloud Marketplace rules. However, you are ineligible for a refund in the following situations:
 
 -   You have deployed the purchased image to an ECS instance within the money-back guarantee period.
 -   You have deployed the purchased image to an ECS instance before your application for a refund for this image is approved.
@@ -483,7 +506,7 @@ Alibaba Cloud Marketplace images support money-back guarantee within a certain p
 
 Free Alibaba Cloud Marketplace images are still available. However, you must purchase them at a price of USD 0.00 before you can use them.
 
-## I have an instance created from an Alibaba Cloud Marketplace image. Do I need to make further payments for the image when I renew the instance or upgrade its configurations?
+## I have an instance created from an Alibaba Cloud Marketplace image. Do I need to make further payments for the image when I renew the instance or upgrade the configurations of the instance?
 
 No, you do not need to make further payments for the image. After you purchase an Alibaba Cloud Marketplace image, you can use it on instances at no additional costs.
 
@@ -554,9 +577,9 @@ The image provider determines whether to make a refund. You can consult the imag
 
 If a refund is available, the image provider makes the refund based on your usage.
 
-## Can a subscription image be converted to a pay-as-you-go image?
+## Can a subscription image be converted into a pay-as-you-go image?
 
-Subscription images cannot be converted to pay-as-you-go images. This conversion function is currently under development for release in the future. Stay updated on the official Alibaba Cloud website.
+Subscription images cannot be converted into pay-as-you-go images. This conversion feature is under development for release in the future. Stay updated on the official Alibaba Cloud website.
 
 ## Can I replace a subscription image with an image of another type or vice versa? How is the fee calculated?
 
@@ -564,23 +587,23 @@ Yes, you can replace images when you replace system disks of ECS instances. You 
 
 -   Replace an image of another type \(such as public image, custom image, or shared image\) with a subscription image. After the image is replaced, the system calculates the actual cost based on the image cost and the remaining subscription duration of the ECS instance.
 -   Replace a subscription image with an image of another type \(such as public image, custom image, or shared image\). If the image provider allows for refunds, a refund is made based on your actual usage.
--   Replace Subscription Image A with Subscription Image B. If a refund is available after the image is replaced, the refund is made based on the refund policy. The actual cost of Image B is calculated based on the image price and the remaining subscription duration of the ECS instance.
+-   Replace one subscription image with another subscription image. If a refund is available for the replaced image after the replacement, the refund is made based on the refund policy. The actual cost of the replacement image is calculated based on the image price and the remaining subscription duration of the ECS instance.
 
 ## Is a fee charged for a custom image derived from a subscription image? How is the custom image affected if the subscription image expires?
 
 When you use a custom image derived from a subscription image to create an instance or replace a system disk, you are re-ordering the subscription image on Alibaba Cloud Marketplace. The custom image is not affected regardless of whether the subscription image expires.
 
-## How are enhanced SSDs billed?
+## How are ESSDs billed?
 
-Enhanced SSDs support both subscription and pay-as-you-go billing methods. For more information, see the [Pricing](https://www.alibabacloud.com/product/ecs) page.
+Enhanced SSDs support both subscription and pay-as-you-go billing methods. For more information, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page.
 
 ## How do I purchase a standard SSD? What are the pricing options for I/O optimized instances and standard SSDs?
 
-For fore information about pricing, see the [Pricing](https://www.alibabacloud.com/product/ecs) page.
+For more information about pricing, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page.
 
 ## How is a separately purchased pay-as-you-go data disk billed?
 
-A pay-as-you-go data disk is billed by the hour. Note that if your account balance is insufficient, the services of the data disk will be suspended.
+A pay-as-you-go data disk is billed by hour. Note that if you have insufficient balance in your account, the services of the data disk will be suspended.
 
 ## The snapshots from which existing disks or custom images were created will be retained 15 days after a payment becomes overdue. Will I continue to be charged for these snapshots, which will cause the overdue amount to increase?
 
@@ -611,7 +634,7 @@ For more information, see [Public bandwidth](/intl.en-US/Pricing/Billing items/P
 
 ## Can I adjust the specified peak bandwidth?
 
-Yes, you can adjust the specified peak bandwidth. For more information, see [Overview of instance upgrade and downgrade](/intl.en-US/Instance/Change configurations/Overview of instance upgrade and downgrade.md).
+Yes, you can adjust the specified peak bandwidth. For more information, see [.](/intl.en-US/Instance/Change configurations/Overview of instance upgrade and downgrade.md)
 
 ## Will I be charged for the traffic generated by ECS instances under attack?
 
@@ -635,9 +658,9 @@ Yes, you can change the billing method for network usage of a subscription insta
 
 You can also use the renewal and configuration downgrade feature to change the billing method for network usage. The new configurations do not take effect until the next subscription duration starts. For more information, see [Downgrade the configurations of an instance during renewal](/intl.en-US/Pricing/Renew instances/Downgrade the configurations of an instance during renewal.md).
 
-## Can I adjust the peak traffic bandwidth for an ECS instance at any time?
+## Can I adjust the maximum bandwidth for an ECS instance at any time?
 
-Yes, you can adjust the peak traffic bandwidth for an ECS instance at any time by using the bandwidth downgrade feature. After you set the peak traffic bandwidth to a smaller value, the new value takes effect immediately. A maximum of three refunds can be made for each instance. Exercise caution when you downgrade the configurations of an instance.
+Yes, you can adjust the maximum bandwidth for an ECS instance at any time by using the bandwidth downgrade feature. After you set the maximum bandwidth to a smaller value, the new value takes effect immediately. A maximum of three refunds can be made for each instance. Exercise caution when you downgrade the configurations of an instance.
 
 If you downgraded the configurations of a subscription instance when you renewed it, you cannot upgrade or downgrade the instance configurations again until the new subscription duration starts.
 
@@ -655,7 +678,7 @@ No, you can upgrade the instance configurations only after you settle the overdu
 
 ## If the pay-by-traffic billing method is used for a subscription instance, does the public bandwidth service of the instance automatically resume after I settle overdue payments?
 
-If the public bandwidth service was stopped due to an overdue payment, the service will automatically resume when the overdue payment is settled.
+If the public bandwidth service was stopped due to an overdue payment, the service automatically resumes when the overdue payment is settled.
 
 ## How is traffic priced after I change the billing method for network usage of a subscription instance from pay-by-bandwidth to pay-by-traffic?
 
