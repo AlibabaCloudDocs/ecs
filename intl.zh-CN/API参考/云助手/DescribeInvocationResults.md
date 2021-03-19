@@ -119,7 +119,7 @@
 -   Terminated：命令执行时被终止。
 -   Scheduled：
     -   单次执行的命令：不适用，不会出现。
-    -   单次执行的命令：等待执行。 |
+    -   周期执行的命令：等待执行。 |
 |InvokeId|String|t-hz0jdfwd9f\*\*\*\*|命令执行ID。 |
 |InvokeRecordStatus|String|Running|命令执行状态。 |
 |Output|String|MTU6MzA6MDEK|命令执行后的输出信息。 |
