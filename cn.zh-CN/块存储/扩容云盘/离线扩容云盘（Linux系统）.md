@@ -235,7 +235,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
             localectl set-locale LANG=en_US.UTF-8
             ```
 
-        4.  如果您使用CentOS 8镜像，采用以上方案无法解决问题时，运行以下命令，切换字符编码类型。
+        4.  如果采用以上方案无法解决问题时，运行以下命令，切换字符编码类型。
 
             ```
             export LANGUAGE=en_US.UTF-8
