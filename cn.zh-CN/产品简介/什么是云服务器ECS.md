@@ -41,7 +41,7 @@
 
 ## 产品定价
 
-云服务器ECS支持包年包月、按量付费、预留实例券、抢占式实例等多种账单计算模式。更多详情，请参见[计费概述](/cn.zh-CN/产品定价/计费概述.md)和[云产品定价页](https://www.aliyun.com/price/product#/ecs/detail)。
+云服务器ECS支持包年包月、按量付费、预留实例券、抢占式实例等多种账单计算模式。更多详情，请参见[计费概述](/cn.zh-CN/产品计费/计费概述.md)和[云产品定价页](https://www.aliyun.com/price/product#/ecs/detail)。
 
 ## 管理工具
 
