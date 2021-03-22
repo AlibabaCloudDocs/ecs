@@ -170,7 +170,7 @@ Preemptible instances help you build a cost-effective solution to process busine
 
 4.  Call the CreateInstance operation to create a preemptible instance.
 
-    To create multiple preemptible instances at a time, you can call the RunInstance operation. For more information, see [Batch create ECS instances](/intl.en-US/SDK Reference/Java example/Create an ECS instance/Batch create ECS instances.md).
+    To create multiple preemptible instances at a time, you can call the RunInstances operation. For more information, see [Batch create ECS instances](/intl.en-US/SDK Reference/Java example/Create an ECS instance/Batch create ECS instances.md).
 
     ```
     public class CreateInstanceSample {
@@ -179,7 +179,7 @@ Preemptible instances help you build a cost-effective solution to process busine
     
             ApiCaller caller = new ApiCaller();
     
-            CreateInstancesRequest request = new CreateInstancesRequest();
+            CreateInstanceRequest request = new CreateInstanceRequest();
             // The region ID.
             request.setRegionId("cn-hangzhou");
             // The zone ID.
