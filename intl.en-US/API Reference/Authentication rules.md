@@ -1,86 +1,79 @@
-# Authentication rules {#EcsApiAuthorizationRules .reference}
+# Authentication rules
 
-This topic describes how to use Alibaba Cloud Resource Names \(ARN\) in ECS to authenticate users or user groups, grant RAM user accounts access to resources, and implement access authorization across cloud services.
+This topic lists the values of Action and Resource parameters that are used to implement RAM authentication. You can use the ECS console or call ECS API operations to authenticate team or department members, RAM users, and RAM roles, as well as implement authorization across cloud services. These parameters are suitable for scenarios where custom policies need to be created to implement fine-grained access control.
 
-## Background information {#section_hvf_sxj_dhb .section}
+## Background information
 
 **Note:** If you can access resources without authorization, skip this topic.
 
-You can use your Alibaba Cloud account or RAM user account to perform operations on ECS resources through the ECS API by default. Operation permissions are required when:
+You can use your Alibaba Cloud account or a RAM user to manage your ECS resources by using the ECS console or by calling API operations. Specific permissions are required in the following scenarios:
 
--   A RAM user account that you created has no permissions to perform operations on the ECS resources under your Alibaba Cloud account.
+-   A RAM user has no permissions to manage the ECS resources that belong to your Alibaba Cloud account.
 -   You want to access ECS resources from other Alibaba Cloud services, or access other Alibaba Cloud services from ECS.
--   You want to perform operations on ECS resources that require operation permissions to be granted by the resource owners.
+-   Before you can manage a resource, you must be granted the required permissions on the resource and the relevant API operations by the resource owner.
 
-When an account requests access to ECS resources under your Alibaba Cloud account by calling ECS API operations, Alibaba Cloud ECS instructs RAM to perform a permission check to ensure that the required permissions have been granted to the account that sends the request. Depending on the requested resources and API operation syntaxes, ECS determines which resources require a permission check. For more information about authorization policies and permission control, see [What is RAM?](../../../../intl.en-US/Product Introduction/What is RAM?.md#) and [API overview](../../../../intl.en-US/API Reference/API overview.md#) in the RAM documentation.
+When an Alibaba Cloud account requests access to ECS resources in your Alibaba Cloud account by calling ECS API operations, Alibaba Cloud ECS instructs RAM to perform a permission check to ensure that the account is granted the required permissions. ECS determines which resources require a permission check based on the requested resources and API operation syntax. For more information, see [What is RAM?](/intl.en-US/Product Introduction/What is RAM?.md) and [List of operations by function](/intl.en-US/API Reference/API Reference (RAM)/List of operations by function.md).
 
-## Use ARN values in policies {#section_i54_4fv_fgb .section}
+## Custom policies
 
-The following section describes how to use an ARN value in a custom policy in the RAM console. You can also call the [CreatePolicy](../../../../intl.en-US/API Reference/Policy management APIs/CreatePolicy.md#) operation to do so.
+You can use the RAM console or call the [CreatePolicy](/intl.en-US/API Reference/API Reference (RAM)/Policy management APIs/CreatePolicy.md) API operation to create a custom policy. If you select **Script** for Configuration Mode, you must set the parameters in the **PolicyDocument** section based on the JSON template. You need to specify the values of Action and Resource parameters based on the authentication list in the following section. For more information, see [Implement access control by using RAM](/intl.en-US/Security/Implement access control by using RAM.md) and [Policy elements](/intl.en-US/Policy Management/Policy language/Policy elements.md).
 
-1.  Log on to the [RAM console](https://ram.console.aliyun.com/policies/new).
-2.  In the left-side navigation pane, choose **Permissions** \> **Policies**.
-3.  On the Policies page, click **Create Policy**.
-4.  On the Create Custom Policy page, set **Policy Name** and **Note**.
-5.  Select **Script** for Configuration Mode.
+```
+{
+    "Version": "1",
+    "Statement": [
+        {
+            "Action": [
+                "ecs:[ECS RAM Action]",
+                "ecs:DescribeInstances"
+            ],
+            "Resource": [
+                "[ECS RAM Action Resource]",
+                "acs:ecs:$regionid:15619224785*****:instance/i-bp1bzvz55uz27hf*****"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
+```
 
-    **Note:** You can also select **Visualized** for Configuration Mode to complete the policy settings without referring to following ARN values section.
+## Authentication list
 
-6.  Set the parameters in the **Policy Document** section based on the JSON template. Set the Resource parameter to one of the ARN values in the ARN values table. For the settings of other parameters, *see* [Policy elements](../../../../intl.en-US/User Guide/Policies/Policy language/Policy elements.md#) in the RAM documentation.
+**Note:** For more information about the format of the Resource, see [Terms](/intl.en-US/Product Introduction/Terms.md).
 
-    ``` {#codeblock_k1y_z8z_xa6}
-    {
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": "",
-                "Resource": ""
-            }
-        ],
-        "Version": "1"
-    }
-    ```
-
-7.  Click **OK**.
-
-## ARN values {#section_yln_xgy_g2b .section}
-
-The following table lists the ARN values that correspond to some ECS API operations. For information about the ARN format, *see* [Terms](../../../../intl.en-US/Product Introduction/Terms.md#) in the RAM documentation.
-
-|Action|ARN value|
-|:-----|:--------|
-|AddTags|acs:ecs:$regionid:$accountid:$resourceType/$resourceId|
-|AllocatePublicIpAddress|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ApplyAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|
-|AttachClassicLinkVpc|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|AttachDisk| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Action|Resource|Description|
+|:-----|:-------|-----------|
+|AllocatePublicIpAddress|acs:ecs:$regionid:$accountid:instance/$instanceId|Assigns a public IP address to an ECS instance.|
+|ApplyAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|Applies an automatic snapshot policy to one or more cloud disks or replace the existing automatic snapshot policy of the cloud disks.|
+|AttachClassicLinkVpc|acs:ecs:$regionid:$accountid:instance/$instanceId|Establishes a ClassicLink connection between a classic network-type ECS instance and a VPC to allow the instance to communicate with resources in the VPC over the internal network.|
+|AttachDisk|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:instance/$diskId
 
- |
-|AttachKeyPair| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Attaches a pay-as-you-go data disk to an ECS instance.|
+|AttachKeyPair|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:keypair/$keypairName
 
- |
-|AuthorizeSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|AuthorizeSecurityGroupEgress|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|CancelAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|
-|CancelCopyImage|acs:ecs:$regionid:$accountid:image/$imageNo|
-|CopyImage| -   acs:ecs:$fromRegionid:$accountid:image/$imageNo
+|Attaches an SSH key pair to one or more Linux ECS instances.|
+|AuthorizeSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Configures an inbound rule for a security group.|
+|AuthorizeSecurityGroupEgress|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Configures an outbound rule for a security group.|
+|CancelAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|Detaches an automatic snapshot policy from one or more cloud disks.|
+|CancelCopyImage|acs:ecs:$regionid:$accountid:image/$imageNo|Cancels an ongoing image copy task.|
+|CopyImage|-   acs:ecs:$fromRegionid:$accountid:image/$imageNo
 -   acs:ecs:$toRegionid:$accountid:image/\*
 
- |
-|ConvertNatPublicIpToEip|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|CreateAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|
-|CreateDisk| -   acs:ecs:$regionid:$accountid:disk/\*
+|Copies a custom image from one region to another.|
+|ConvertNatPublicIpToEip|acs:ecs:$regionid:$accountid:instance/$instanceId|Converts the public IP address of a VPC-type ECS instance to an EIP.|
+|CreateAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|Creates an automatic snapshot policy.|
+|CreateDisk|-   acs:ecs:$regionid:$accountid:disk/\*
 -   acs:ecs:$regionid:$accountid:snapshot/$snapshotId
 
- |
-|CreateImage| -   acs:ecs:$regionid:$accountid:image/\*
+|Creates a pay-as-you-go or subscription data disk.|
+|CreateImage|-   acs:ecs:$regionid:$accountid:image/\*
 -   acs:ecs:$regionid:$accountid:snapshot/$snapshotId
 -   acs:ecs:$regionid:$accountid:instance/$instanceId
 
- |
-|CreateInstance| -   acs:ecs:$regionid:$accountid:instance/\*
+|Creates a custom image.|
+|CreateInstance|-   acs:ecs:$regionid:$accountid:instance/\*
 -   acs:ecs:$regionid:$accountid:image/$imageNo
 -   acs:ecs:$regionid:$accountid:securitygroup/$groupNo
 -   acs:ecs:$regionid:$accountid:snapshot/$snapshotId
@@ -88,118 +81,115 @@ The following table lists the ARN values that correspond to some ECS API operati
 -   acs:vpc:$regionid:$accountid:vswitch/$vswitchId
 -   acs:vpc:$regionid:$accountid:vpc/$vpcId
 
- |
-|CreateKeyPair|acs:ecs:$regionid:$accountid:keypair/\*|
-|CreateSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/\*|
-|CreateSnapshot| -   acs:ecs:$regionid:$accountid:snapshot/\*
+|Creates a subscription or pay-as-you-go ECS instance.|
+|CreateKeyPair|acs:ecs:$regionid:$accountid:keypair/\*|Creates an SSH key pair.|
+|CreateSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/\*|Creates a security group. For a new security group, only instances in the security group can access each other by default. Access requests to the security group from outside are denied. If you want to receive requests from the Internet or requests from instances in other security groups, you can call the AuthorizeSecurityGroup operation to allow the requests.|
+|CreateSnapshot|-   acs:ecs:$regionid:$accountid:snapshot/\*
 -   acs:ecs:$regionid:$accountid:disk/$diskId
 -   acs:ecs:$regionid:$accountid:volume/$volumeId
 
- |
-|DeleteAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|
-|DeleteDisk|acs:ecs:$regionid:$accountid:disk/$diskId|
-|DeleteImage|acs:ecs:$regionid:$accountid:image/$imageNo|
-|DeleteInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|DeleteKeyPairs|acs:ecs:$regionid:$accountid:keypair/$keyPairName|
-|DeleteSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|DeleteSnapshot|acs:ecs:$regionid:$accountid:snapshot/$snapshotId|
-|DescribeClassicLinkInstances|acs:ecs:$regionid:$accountid:instance/\*|
-|DescribeDiskMonitorData|acs:ecs:$regionid:$accountid:disk/$diskId|
-|DescribeDisks| -   acs:ecs:$regionid:$accountid:disk/$diskId
+|Creates a snapshot for a cloud disk.|
+|DeleteAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|Deletes an automatic snapshot policy.|
+|DeleteDisk|acs:ecs:$regionid:$accountid:disk/$diskId|Releases a pay-as-you-go data disk.|
+|DeleteImage|acs:ecs:$regionid:$accountid:image/$imageNo|Deletes a custom image.|
+|DeleteInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|Releases a pay-as-you-go instance or an expired subscription instance.|
+|DeleteKeyPairs|acs:ecs:$regionid:$accountid:keypair/$keyPairName|Deletes one or more SSH key pairs.|
+|DeleteSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Deletes a security group.|
+|DeleteSnapshot|acs:ecs:$regionid:$accountid:snapshot/$snapshotId|Deletes a specified snapshot.|
+|DescribeClassicLinkInstances|acs:ecs:$regionid:$accountid:instance/\*|Queries one or multiple classic network-type instances that have established ClassicLink connections with VPCs.|
+|DescribeDiskMonitorData|acs:ecs:$regionid:$accountid:disk/$diskId|Queries the monitoring data of a cloud disk within a specified period of time.|
+|DescribeDisks|-   acs:ecs:$regionid:$accountid:disk/$diskId
 -   acs:ecs:$regionid:$accountid:disk/\*
 
- |
-|DescribeImages| -   acs:ecs:$regionid:$accountid:image/$imageNo
+|Queries one or more cloud disks and local disks that you have created.|
+|DescribeImages|-   acs:ecs:$regionid:$accountid:image/$imageNo
 -   acs:ecs:$regionid:$accountid:image/\*
 
- |
-|DescribeInstanceMonitorData|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|DescribeInstances| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Queries available image resources.|
+|DescribeInstanceMonitorData|acs:ecs:$regionid:$accountid:instance/$instanceId|Queries the monitoring information of an ECS instance.|
+|DescribeInstances|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:instance/\*
 
- |
-|DescribeInstanceStatus|acs:ecs:$regionid:$accountid:instance/\*|
-|DescribeInstanceVncPasswd|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|DescribeInstanceVncUrl|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|DescribeKeyPairs| -   acs:ecs:$regionid:$accountid:keypair/$keyPairName
+|Queries the details of one or more ECS instances.|
+|DescribeInstanceStatus|acs:ecs:$regionid:$accountid:instance/\*|Queries the status of one or more ECS instances.|
+|DescribeInstanceVncUrl|acs:ecs:$regionid:$accountid:instance/$instanceId|Queries the web management terminal URL of an ECS instance.|
+|DescribeKeyPairs|-   acs:ecs:$regionid:$accountid:keypair/$keyPairName
 -   acs:ecs:$regionid:$accountid:keypair/\*
 
- |
-|DescribePrice|acs:ecs:\*:$accountid:\*|
-|DescribeRenewalPrice|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|DescribeSecurityGroupAttribute|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|DescribeSecurityGroups| -   acs:ecs:$regionid:$accountid:securitygroup/$groupNo
+|Queries one or more SSH key pairs.|
+|DescribePrice|acs:ecs:\*:$accountid:\*|Queries the latest prices of ECS resources.|
+|DescribeRenewalPrice|acs:ecs:$regionid:$accountid:instance/$instanceId|Queries the renewal prices of ECS resources. You can call this operation to query only the renewal prices of subscription resources.|
+|DescribeSecurityGroupAttribute|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Query the security group rules of a security group.|
+|DescribeSecurityGroups|-   acs:ecs:$regionid:$accountid:securitygroup/$groupNo
 -   acs:ecs:$regionid:$accountid:securitygroup/\*
 
- |
-|DescribeSnapshotAttribute|acs:ecs:$regionid:$accountid:snapshot/$snapshotId|
-|DescribeSnapshotLinks| -   acs:ecs:$regionid:$accountid:disk/$diskId
+|Queries the basic information of the security groups that you create.|
+|DescribeSnapshotLinks|-   acs:ecs:$regionid:$accountid:disk/$diskId
 -   acs:ecs:$regionid:$accountid:disk/\*
 
- |
-|DescribeSnapshotMonitorData|acs:ecs:\*:$accountid:snapshot/\*|
-|DescribeSnapshots| -   acs:ecs:$regionid:$accountid:snapshot/$snapshotId
+|Queries the snapshot chains of one or more cloud disks.|
+|DescribeSnapshotMonitorData|acs:ecs:\*:$accountid:snapshot/\*|Queries the monitoring data on snapshot capacity changes in the last 30 days in a region.|
+|DescribeSnapshots|-   acs:ecs:$regionid:$accountid:snapshot/$snapshotId
 -   acs:ecs:$regionid:$accountid:snapshot/\*
 
- |
-|DescribeTags|acs:ecs:$regionid:$accountid:$resourceType/$resourceId|
-|DetachClassicLinkVpc|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|DetachDisk| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Queries all the snapshots of an ECS instance or a cloud disk.|
+|DetachClassicLinkVpc|acs:ecs:$regionid:$accountid:instance/$instanceId|Removes the ClassicLink connection between a classic network-type instance and a VPC.|
+|DetachDisk|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:disk/$diskId
 
- |
-|DetachKeyPair| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Detaches a pay-as-you-go disk from an ECS instance.|
+|DetachKeyPair|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:keypair/$keypairName
 
- |
-|ExportImage|acs:ecs:$regionid:$accountid:image/$imageNo|
-|ImportImage|acs:ecs:$regionid:$accountid:image/\*|
-|ImportKeyPair|acs:ecs:$regionid:$accountid:keypair/\*|
-|JoinSecurityGroup| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Unbinds an SSH key pair from one or more Linux instances.|
+|ExportImage|acs:ecs:$regionid:$accountid:image/$imageNo|Exports a custom image to an OSS bucket in the same region as the custom image.|
+|ImportImage|acs:ecs:$regionid:$accountid:image/\*|Imports your local image files to Alibaba Cloud ECS. Such images appear in the corresponding regions as custom images.|
+|ImportKeyPair|acs:ecs:$regionid:$accountid:keypair/\*|Imports the public key of an RSA-encrypted key pair that is created by using a third-party tool. After the key pair is imported, the public key is stored in Alibaba Cloud. You must securely lock the private key away on your own.|
+|JoinSecurityGroup|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:securitygroup/$groupNo
 
- |
-|LeaveSecurityGroup| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Adds an ECS instance to a specified security group.|
+|LeaveSecurityGroup|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:securitygroup/$groupNo
 
- |
-|ModifyAutoSnapshotPolicy|acs:ecs:\*:$accountid:snapshot/\*|
-|ModifyDiskAttribute|acs:ecs:$regionid:$accountid:disk/$diskId|
-|ModifyImageAttribute|acs:ecs:$regionid:$accountid:image/$imageNo|
-|ModifyInstanceAttribute|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ModifyInstanceAutoReleaseTime|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ModifyInstanceChargeType|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ModifyInstanceNetworkSpec|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ModifyInstanceVncPasswd|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ModifyInstanceVpcAttribute| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Removes an ECS instance from a security group.|
+|ListTagResources|acs:ecs:$regionid:$accountid:$resourceType/$resourceId|Queries tags that are bound to one or more ECS resources.|
+|ModifyDiskAttribute|acs:ecs:$regionid:$accountid:disk/$diskId|Modifies the attributes of a disk.|
+|ModifyImageAttribute|acs:ecs:$regionid:$accountid:image/$imageNo|Modifies the name and description of a custom image.|
+|ModifyInstanceAttribute|acs:ecs:$regionid:$accountid:instance/$instanceId|Modifies the information of an ECS instance, such as the password, name, description, hostname, and user data. For a burstable instance, you can also change its performance mode.|
+|ModifyInstanceAutoReleaseTime|acs:ecs:$regionid:$accountid:instance/$instanceId|Sets or cancels the automatic release time for a pay-as-you-go ECS instance. Exercise caution when you set the automatic release time because the instance will be automatically released upon expiration.|
+|ModifyInstanceChargeType|acs:ecs:$regionid:$accountid:instance/$instanceId|Changes the billing method for one or more instances. You can change the billing method of instances between pay-as-you-go and subscription, or change the billing method of all cloud disks attached to an instance from pay-as-you-go to subscription.|
+|ModifyInstanceNetworkSpec|acs:ecs:$regionid:$accountid:instance/$instanceId|Modifies the bandwidth configurations of an instance.|
+|ModifyInstanceVncPasswd|acs:ecs:$regionid:$accountid:instance/$instanceId|Modifies the web management terminal password of an ECS instance.|
+|ModifyInstanceVpcAttribute|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:vswitch/$vSwitchId
 
- |
-|ModifySecurityGroupAttribute|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|ModifySecurityGroupEgressRule|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|ModifySecurityGroupRule|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|ModifyPrepayInstanceSpec|acs:ecs:$regionid:$accountid:|
-|ModifySnapshotAttribute|acs:ecs:$regionid:$accountid:snapshot/$snapshotId|
-|RebootInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ReInitDisk|acs:ecs:$regionid:$accountid:disk/$diskId|
-|ReleasePublicIpAddress|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|RemoveTags|acs:ecs:$regionid:$accountid:$resourceType/$resourceId|
-|RenewInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|ReplaceSystemDisk| -   acs:ecs:$regionid:$accountid:instance/$instanceId
+|Modifies the VPC attributes of an ECS instance.|
+|ModifySecurityGroupAttribute|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Modifies the name or description of a security group.|
+|ModifySecurityGroupEgressRule|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Modifies the outbound rules of a security group.|
+|ModifySecurityGroupRule|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Modifies the inbound rules for a security group.|
+|ModifyPrepayInstanceSpec|acs:ecs:$regionid:$accountid:|Change the instance type of your subscription instance. The new instance type takes effect for the remaining lifecycle of the instance.|
+|ModifySnapshotAttribute|acs:ecs:$regionid:$accountid:snapshot/$snapshotId|Modifies the name or description of a snapshot.|
+|RebootInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|Restarts an ECS instance that is in the Running state.|
+|ReInitDisk|acs:ecs:$regionid:$accountid:disk/$diskId|Resets a cloud disk to its initial state.|
+|RenewInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|Renews a subscription ECS instance.|
+|ReplaceSystemDisk|-   acs:ecs:$regionid:$accountid:instance/$instanceId
 -   acs:ecs:$regionid:$accountid:image/$imageNo
 
- |
-|ResetDisk|acs:ecs:$regionid:$accountid:disk/$diskId|
-|ResizeDisk|acs:ecs:$regionid:$accountid:disk/$diskId|
-|RevokeSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|RevokeSecurityGroupEgress|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|
-|RunInstances| -   acs:ecs:$regionid:$accountid:instance/\*
+|Replaces the system disk or the operating system of an ECS instance.|
+|ResetDisk|acs:ecs:$regionid:$accountid:disk/$diskId|Rolls back a disk to a specified state by using a disk snapshot.|
+|ResizeDisk|acs:ecs:$regionid:$accountid:disk/$diskId|Resizes a cloud disk. You can resize a system disk or a data disk.|
+|RevokeSecurityGroup|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Deletes an inbound rule for a security group. This revokes inbound permissions of the security group.|
+|RevokeSecurityGroupEgress|acs:ecs:$regionid:$accountid:securitygroup/$groupNo|Deletes an outbound rule of a security group. After the rule is deleted, the access control implemented by the rule is removed.|
+|RunInstances|-   acs:ecs:$regionid:$accountid:instance/\*
 -   acs:ecs:$regionid:$accountid:image/$imageNo
 -   acs:ecs:$regionid:$accountid:securitygroup/$groupNo
 -   acs:ecs:$regionid:$accountid:snapshot/$snapshotId
 -   acs:ecs:$regionid:$accountid:keypair/$keyPairName
 
- |
-|StartInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|
-|StopInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|
+|Creates one or more pay-as-you-go or subscription ECS instances.|
+|StartInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|Starts an instance.|
+|StopInstance|acs:ecs:$regionid:$accountid:instance/$instanceId|Stops an instance.|
+|TagResources|acs:ecs:$regionid:$accountid:$resourceType/$resourceId|Creates tags and binds the tags to a specified group of ECS instances.|
+|UntagResources|acs:ecs:$regionid:$accountid:$resourceType/$resourceId|Unbinds tags from a specified group of ECS instances and deletes the tags.|
 
