@@ -1,6 +1,6 @@
 # DescribeInstanceModificationPrice
 
-调用DescribeInstanceModificationPrice查询未到期的包年包月ECS实例升配时，目标实例规格或新增包年包月数据盘的价格信息。
+调用DescribeInstanceModificationPrice查询未到期的包年包月ECS实例升配时目标实例规格的价格信息、新增包年包月数据盘的价格信息。
 
 ## 接口说明
 
@@ -148,6 +148,9 @@ https://ecs.aliyuncs.com/?Action=DescribeInstanceModificationPrice
 |403|InvalidParameter.ResourceOwnerAccount|ResourceOwnerAccount is Invalid.|指定的ResourceOwnerAccount不合法。|
 |404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
 |404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
+|403|ChargeTypeViolation|PostPaid instance do not support this operation.|该 API 不支持查询按量付费的 ECS 的变配价格。|
+|400|MissingParameter.InstanceTypeOrDataDisk|You must specify the parameter InstanceType or DataDisk.|实例规格和数据盘参数二选一必须传一个，不能都为空。|
+|403|InvalidInstanceType.NotSupportUpgrade|The specified InstanceType can only be downgraded. This API supports querying prices only of InstanceType that can be upgraded.|指定的实例规格为降配的规格，该 API 仅支持查询升配的实例规格的价格 说明：建议通过 DescribeResourcesModification 接口获取可升配的实例规格。|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter "SystemDisk.Category" is not valid.|指定的SystemDisk.Category不合法。|
 |400|InvalidDiskCategory.Missing|The DataDisk.1.Category parameter that is mandatory for processing the request is not provided.|没有指定数据盘类型。|
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.n.Category" is not valid.|指定的参数DataDisk.n.Category不合法。|
@@ -156,7 +159,9 @@ https://ecs.aliyuncs.com/?Action=DescribeInstanceModificationPrice
 |400|InstanceType.Offline|%s|实例规格因停售、供货不足等原因，不支持该操作。|
 |400|RegionUnauthorized|%s|该地域未被授权。|
 |500|InternalError|%s|内部错误。|
-|400|PriceNotFound|The price of your queried resource is not available now, please try other resources.|暂无法查询该资源的价格，请稍后重试。|
+|403|InstanceExpired|The PrePaid instance has been expired.|当前实例已过期，不支持查询变配价格。|
+|400|InvalidAction.WithActiveElasticUpgrade|The instance has active Elastic Upgrade.|弹性升级中的实例暂不支持|
+|400|PriceNotFound|The price of your queried resource is not available now, please try other resources.|未找到价格，请修改相应的参数值重试。|
 |403|Throttling|Request was denied due to request throttling.|当前的操作太过频繁，请稍后重试。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
