@@ -11,6 +11,7 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
     -   [ECS系统盘是否支持KMS加密，通过Terraform或Packer如何使用？](#section_bjd_h5l_93s)
     -   [快照和镜像有什么不同？有什么关系？](#section_bmh_2xf_3ds)
     -   [RHEL（Red Hat Enterprise Linux）镜像支持哪些实例规格族？](#section_kv6_hyb_55i)
+    -   [Windows系统不同版本的内存限制有何不同？](#section_yd4_b0j_p8u)
 -   自定义镜像FAQ
     -   [数据盘的快照是否可以创建自定义镜像？](#section_lyx_6pb_932)
     -   [如何查看数据盘？](#section_hrq_fgx_fhb)
@@ -205,6 +206,10 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
 
 -   [Red Hat Enterprise Linux认证信息](https://catalog.redhat.com/cloud/images/detail/3245731)
 -   [Red Hat Enterprise Linux认证的ECS实例规格列表](https://access.redhat.com/solutions/3336161)
+
+## Windows系统不同版本的内存限制有何不同？
+
+Windows系统不同的版本对应的内存上限不同。更多信息，请参见[Memory Limits for Windows and Windows Server Releases](https://docs.microsoft.com/zh-cn/windows/win32/memory/memory-limits-for-windows-releases)。请您根据Windows系统的内存限制选配合适的实例规格。
 
 ## 数据盘的快照是否可以创建自定义镜像？
 
@@ -433,7 +438,7 @@ Linux其他较重要的配置文件如下：
 
 复制镜像的时间取决于网络传输速度和任务队列的排队数量。复制镜像需要通过网络把一个地域的可用区中的镜像文件传输到目标地域的可用区，需要您耐心等待。
 
-如果您需要复制大容量镜像（例如大于2 TiB的镜像），也可以先通过复制快照功能将快照复制到目标地域，再在目标地域使用快照创建镜像。相比直接复制镜像，可节约时间。具体操作请参见[复制快照](/intl.zh-CN/快照/使用快照/复制快照.md)和[使用快照创建自定义镜像](/intl.zh-CN/镜像/自定义镜像/创建自定义镜像/使用快照创建自定义镜像.md)；复制快照收费说明请参见[快照计费](/intl.zh-CN/产品定价/计费项/快照计费.md)。
+如果您需要复制大容量镜像（例如大于2 TiB的镜像），也可以先通过复制快照功能将快照复制到目标地域，再在目标地域使用快照创建镜像。相比直接复制镜像，可节约时间。具体操作请参见[复制快照](/intl.zh-CN/快照/使用快照/复制快照.md)和[使用快照创建自定义镜像](/intl.zh-CN/镜像/自定义镜像/创建自定义镜像/使用快照创建自定义镜像.md)；复制快照收费说明请参见[快照计费](/intl.zh-CN/产品计费/计费项/快照计费.md)。
 
 ## 复制镜像怎么收费的？
 
@@ -445,7 +450,7 @@ Linux其他较重要的配置文件如下：
 上述过程可能涉及以下费用：
 
 -   不同地域之间的数据传输流量费。阿里云目前暂未对这部分流量收费，具体收费时间请以官网公告为准。
--   复制过来的快照会占用快照容量。目前快照容量已经收费，详情请参见[快照计费](/intl.zh-CN/产品定价/计费项/快照计费.md)。
+-   复制过来的快照会占用快照容量。目前快照容量已经收费，详情请参见[快照计费](/intl.zh-CN/产品计费/计费项/快照计费.md)。
 
 ## 在复制镜像过程中，源镜像和目标镜像有什么限制？
 
@@ -797,7 +802,7 @@ Linux其他较重要的配置文件如下：
 
 ## 为什么我无法使用ssh-rsa签名算法的SSH密钥对远程连接Fedora 33 64位系统的实例？
 
-当您使用Fedora 33 64位操作系统的ECS实例时，如果登陆凭证设置的是ssh-rsa签名算法的SSH密钥对，可能无法顺利使用SSH远程连接实例。您可以通过以下任一方式解决该问题：
+当您使用Fedora 33 64位操作系统的ECS实例时，如果登录凭证设置的是ssh-rsa签名算法的SSH密钥对，可能无法顺利使用SSH远程连接实例。您可以通过以下任一方式解决该问题：
 
 -   将ssh-rsa签名算法的SSH密钥对替换为ECDSA签名算法等其他签名算法的SSH密钥对。
 -   在系统中运行update-crypto-policies --set LEGACY命令，将加密策略`POLICY`切换为`LEGACY`，即可继续使用ssh-rsa签名算法的SSH密钥对。
