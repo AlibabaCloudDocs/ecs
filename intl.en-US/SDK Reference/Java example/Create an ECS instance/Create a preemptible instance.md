@@ -1,17 +1,21 @@
+---
+keyword: [sdk, java sdk, ecs, aliyun-java-sdk-ecs, preemptible instance]
+---
+
 # Create a preemptible instance
 
-This topic describes how to use the Alibaba Cloud ECS Java SDK to call the DescribeAvailableResource operation to query available resources, call the DescribeSpotPriceHistory operation to query the historical prices of preemptible instances, and call the CreateInstance operation to create a preemptible instance.
+This topic describes how to use Alibaba Cloud ECS SDK for Java to call the DescribeAvailableResource operation to query available resources, call the DescribeSpotPriceHistory operation to query the historical prices of preemptible instances, and call the CreateInstance operation to create a preemptible instance.
 
--   The Alibaba Cloud ECS Java SDK that you use must be V4.2.0 or later.
--   The image used to create a preemptible instance must contain all of the environment elements required to run the instance. We recommend that you use a custom image to create a preemptible instance to ensure that the instance can process business data. In this example, the ID of the image is m-bp146shijn7hujkui9\*\*\*.
+-   The version of Alibaba Cloud ECS SDK for Java is V4.2.0 or later.
+-   The image to be used to create a preemptible instance contains all the environment dependencies that are required to run the instance. We recommend that you use a custom image to create a preemptible instance to ensure that the instance can process business data. In this example, the image ID is m-bp146shijn7hujkui9\*\*\*.
 -   Call the DescribeRegions operation to query the region where you want to create ECS instances. In this example, the region is cn-hangzhou.
 -   Call the DescribeInstanceTypes operation to query the instance type that you want to select. In this example, the instance type is ecs.g5.large. For more information, see [Instance families](/intl.en-US/Instance/Instance families.md).
 
-Preemptible instances provide a cost-effective solution to process business data. When you create a preemptible instance, you can set a maximum price per hour to bid for a specified instance type. If your price is higher than the current market price, your instance will be created and billed at the current market price. Preemptible instances are often used to control computing costs and are suitable in stateless application scenarios. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Overview.md).
+Preemptible instances help you build a cost-effective solution to process business data. When you create a preemptible instance, you can set a maximum price per hour to bid for a specified instance type. If your price is higher than the current market price, your instance is created and billed at the current market price. Preemptible instances are used to control computing costs and are suitable for stateless applications. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Overview.md).
 
 ## Procedure
 
-1.  Encapsulate an ApiCaller.java class to initialize the profile and client and add exception handling logic.
+1.  Encapsulate an ApiCaller.java class to initialize a profile and a client and add exception handling logic.
 
     ```
     public class ApiCaller {
@@ -35,10 +39,10 @@ Preemptible instances provide a cost-effective solution to process business data
             }
         }
     
-     }
+     ｝
     ```
 
-2.  Call the DescribeAvailableResource operation to query the instance types available for the specific region.
+2.  Call the DescribeAvailableResource operation to query the instance types that are available in the specified region.
 
     ```
     public class DescribeAvailableResourceSample {
@@ -50,13 +54,13 @@ Preemptible instances provide a cost-effective solution to process business data
             // Call the DescribeRegionsRequest operation to obtain the region ID.
             request.setRegionId("cn-hangzhou");
             request.setDestinationResource("InstanceType");
-            // Set the billing method to pay-as-you-go. This parameter is required.
+            // Required. Set the InstanceChargeType parameter to PostPaid.
             request.setInstanceChargeType("PostPaid");
-            // Set the bidding policy. This parameter is required.
+            // Required. Set the SpotStrategy parameter of the preemptible instance.
             request.setSpotStrategy("SpotAsPriceGo");
-            // If no zone ID is specified, all zones in which preemptible instances can be created will be queried.
+            // If you do not specify a zone ID, all zones in which preemptible instances can be created are queried.
             request.setZoneId("cn-hangzhou-h");
-            // If no instance type is specified, all instance types that can be selected to create preemptible instances will be queried.
+            // If you do not specify an instance type, all instance types that can be selected to create preemptible instances are queried.
             request.setInstanceType("ecs.g5.large");
             request.setSystemDiskCategory("cloud_ssd");
             request.setNetworkCategory("vpc");
@@ -67,7 +71,7 @@ Preemptible instances provide a cost-effective solution to process business data
     }
     ```
 
-    Sample response:
+    Sample success responses:
 
     ```
     {
@@ -101,9 +105,9 @@ Preemptible instances provide a cost-effective solution to process business data
     }
     ```
 
-3.  \(Optional\) Call the DescribeSpotPriceHistory operation to query the historical prices of preemptible instances.
+3.  Optional. Call the DescribeSpotPriceHistory operation to query the historical prices of preemptible instances.
 
-    **Note:** DescribeSpotPriceHistory allows you to obtain the historical prices for up to the last 30 days.
+    **Note:** The DescribeSpotPriceHistory operation allows you to obtain the historical prices for up to the last 30 days.
 
     ```
     public class DescribeSpotPriceHistorySample {
@@ -115,15 +119,21 @@ Preemptible instances provide a cost-effective solution to process business data
             int offset = 0;
             while (true) {
                 DescribeSpotPriceHistoryRequest request = new DescribeSpotPriceHistoryRequest();
-                request.setRegionId("cn-hangzhou");// The region is required.
-                request.setZoneId("cn-hangzhou-b");// The zone is required.
-                request.setInstanceType("ecs.g5.large");// The instance type is required.
-                request.setNetworkType("vpc");// The network type is required.
-                // request.setStartTime("2017-09-20T08:45:08Z");// Optional. The start time of a time period for which the historical prices of preemptible instances are to be queried. The time period is three days by default.
-                // request.setEndTime("2017-09-28T08:45:08Z");// Optional. The end time of a time period for which the historical prices of preemptible instances are to be queried.
+                // Required. The region ID.
+                request.setRegionId("cn-hangzhou");
+                // Required. The zone ID.
+                request.setZoneId("cn-hangzhou-b");
+                // Required. The instance type.
+                request.setInstanceType("ecs.g5.large");
+                // Required. The network type.
+                request.setNetworkType("vpc");
+                // Optional. The start of the time range to query. By default, the time range is three hours.
+                // request.setStartTime("2017-09-20T08:45:08Z");
+                // Optional. The end of the time range to query. If the end time is not specified, the default end time is the current time. The prices within three hours earlier than current time are queried.
+                // request.setEndTime("2017-09-28T08:45:08Z");
                 request.setOffset(offset);
                 DescribeSpotPriceHistoryResponse response = caller.doAction(request);
-                if (response !\ = null && response.getSpotPrices() ! = null) {
+                if (response ! = null && response.getSpotPrices() ! = null) {
                     result.addAll(response.getSpotPrices());
                 }
                 if (response.getNextOffset() == null || response.getNextOffset() == 0) {
@@ -145,7 +155,7 @@ Preemptible instances provide a cost-effective solution to process business data
     }
     ```
 
-    Sample response:
+    Sample success responses:
 
     ```
     2017-09-26T06:28:55Z--->spotPrice:0.24---->originPrice:1.2
@@ -158,30 +168,45 @@ Preemptible instances provide a cost-effective solution to process business data
     2017-09-29T06:28:55Z--->spotPrice:0.24---->originPrice:1.2
     ```
 
-4.  Call the CreateInstances operation to create a preemptible instance.
+4.  Call the CreateInstance operation to create a preemptible instance.
 
-    You can call the RunInstance operation to create multiple preemptible instances at a time. For more information, see [Batch create ECS instances](/intl.en-US/SDK Reference/Java example/Create an ECS instance/Batch create ECS instances.md).
+    To create multiple preemptible instances at a time, you can call the RunInstance operation. For more information, see [Batch create ECS instances](/intl.en-US/SDK Reference/Java example/Create an ECS instance/Batch create ECS instances.md).
 
     ```
-    public class CreateInstancesSample {
+    public class CreateInstanceSample {
     
         public static void main(String[] args) {
-            ApiCaller caller = new ApiCaller();
-            CreateInstancesRequest request = new CreateInstancesRequest();
-            request.setRegionId("cn-hangzhou");// The ID of the region.
-            request.setZoneId("cn-hangzhou-h"); // The ID of the zone.
-            request.setSecurityGroupId("sg-bp11nhf94ivkdxwb2***");// The ID of the security group.
-            request.setImageId("m-bp146shijn7hujkui9***");// We recommend that you use a custom image to create instances more quickly.
-            request.setVSwitchId("vsw-bp164cyonthfudn9kj***");// The ID of the VSwitch that is in the same VPC as the security group.
     
-            request.setInstanceType("ecs.g5.large"); // Enter the instance type you want to purchase after the query.
-            request.setSystemDiskCategory("cloud_ssd");// The category of the system disk. Valid values: cloud_essd, cloud_ssd, cloud_efficiency, and cloud.
+            ApiCaller caller = new ApiCaller();
+    
+            CreateInstancesRequest request = new CreateInstancesRequest();
+            // The region ID.
+            request.setRegionId("cn-hangzhou");
+            // The zone ID.
+            request.setZoneId("cn-hangzhou-h"); 
+            // The ID of the security group.
+            request.setSecurityGroupId("sg-bp11nhf94ivkdxwb2***");
+            // The image ID. We recommend that you use a custom image to create a preemptible instance.
+            request.setImageId("m-bp146shijn7hujkui9***");
+            // The ID of the vSwitch that is in the same VPC as the security group.
+            request.setVSwitchId("vsw-bp164cyonthfudn9kj***");
+    
+            // The instance type that you want to purchase.
+            request.setInstanceType("ecs.g5.large"); 
+    
+            // The category of the system disk. Valid values: cloud_essd, cloud_ssd, cloud_efficiency, and cloud.
+            request.setSystemDiskCategory("cloud_ssd");
             request.setSystemDiskSize(40);
     
-            request.setInstanceChargeType("PostPaid");// Set the billing method to pay-as-you-go. This parameter is required.
-            request.setSpotStrategy("SpotWithPriceLimit");// SpotWithPriceLimit: the bidding mode. Manually set the maximum price. SpotAsPriceGo: The system provides a price automatically based on the market price.
-            request.setSpotPriceLimit(0.25F);// If the bidding mode is set to SpotWithPriceLimit, the maximum price must be set higher than the current market price to create the instance.
-            // request.setAmount(2);// Create two preemptible instances. If the parameter is not configured, only one preemptible instance will be created.
+            // Required. Set the InstanceChargeType parameter to PostPaid.
+            request.setInstanceChargeType("PostPaid");
+            // Set the SpotStrategy parameter to SpotWithPriceLimit. You can also set the SpotStrategy parameter to SpotAsPriceGo to use the system-provided pay-as-you-go price as the maximum bidding price. In this case, you do not need to specify the SpotPriceLimit parameter.
+            request.setSpotStrategy("SpotWithPriceLimit");
+            // If you set the SpotStrategy parameter to SpotWithPriceLimit, the maximum bidding price that you specify must be higher than the current market price. Otherwise, the instance cannot be created.
+            request.setSpotPriceLimit(0.25F);
+    
+            // Set the Amount parameter to 2 to create two preemptible instances. By default, only one preemptible instance is created if this parameter is not set.
+            // request.setAmount(2);
     
             CreateInstanceResponse response = caller.doAction(request);
             System.out.println(response.getInstanceId());
@@ -190,40 +215,45 @@ Preemptible instances provide a cost-effective solution to process business data
     }
     ```
 
-5.  Recycle a preemptible instance
+5.  Query the recycle time of the preemptible instance.
 
-    **Note:** After the instance is created, you must make sure to complete all of your business within the guaranteed duration and prepare for inconvenience that may be caused by the recycle of the instance.
+    **Note:** Preemptible instances can be reclaimed. We recommend that you configure a service interruption solution or a load balancing mechanism when you create a preemptible instance. This can avoid problems if the preemptible instance is released.
 
-    1.  Run the following command in the operating system of the preemptible instance to query the recycle time of the instance based on the instance metadata:
+    -   Method 1: Run the following command in the operating system of the preemptible instance to query the recycle time of the instance based on the instance metadata:
 
         ```
-        curl 'http://100.100.100.200/latest/meta-data/instance/spot/termination-time'
+        curl http://100.100.100.200/latest/meta-data/instance/spot/termination-time
         ```
 
-        **Note:** If the response is empty, the preemptible instance can continue to be used. If information in format of `2015-01-05T18:02:00Z` \(UTC+0\) is returned in the response, the preemptible instance will be recycled at that point of time.
+        **Note:** If the output is empty, you can continue using the preemptible instance. If the output contains a point in time that follows the format of yyyy-MM-ddTHH:mm:ssZ and is displayed in UTC, the preemptible instance is recycled at that point in time. Example: `2015-01-05T18:02:00Z`.
 
-    2.  Call the DescribeInstances operation to determine whether the instance has entered the Pending Release state based on the returned OperationLocks parameter.
+    -   Method 2: Call the DescribeInstances operation to check whether the instance is in the Pending Release state based on the returned OperationLocks parameter.
 
         ```
         public class DescribeInstancesSample {
           public static void main(String[] args) throws InterruptedException {
+        
               ApiCaller caller = new ApiCaller();
               JSONArray allInstances = new JSONArray();
               allInstances.addAll(Arrays.asList("i-bp18hgfai8ekoqwo0***", "i-bp1ecbyds24ij63w1***"));
+        
               while (! allInstances.isEmpty()) {
+        
                   DescribeInstancesRequest request = new DescribeInstancesRequest();
                   request.setRegionId("cn-hangzhou");
-                  request.setInstanceIds(allInstances.toJSONString());// Specify the ID of the instance and only query the instance whose ID has been specified.
+                  // Specify an instance ID to make the query more efficient.
+                  request.setInstanceIds(allInstances.toJSONString());
                   DescribeInstancesResponse response = caller.doAction(request);
                   List<DescribeInstancesResponse.Instance> instanceList = response.getInstances();
+        
                   if (instanceList ! = null && ! instanceList.isEmpty()) {
                       for (DescribeInstancesResponse.Instance instance : instanceList) {
                           System.out.println("result:instance:" + instance.getInstanceId() + ",was created in zone:" + instance.getZoneId());
                           if (instance.getOperationLocks() ! = null) {
                               for (DescribeInstancesResponse.Instance.LockReason lockReason : instance.getOperationLocks()) {
-                                  System.out.println("instance: " + instance.getInstanceId() + "-->lockReason:" + lockReason.getLockReason() + ",vmStatus:" + instance.getStatus());
+                                  System.out.println("instance: " + instance.getInstanceId() + "-->lockReason:" + lockReason.getLockReason() + ",instanceStatus:" + instance.getStatus());
                                   if ("Recycling".equals(lockReason.getLockReason())) {
-                                      // Return the recycle time of the instance and delete the ID of the recycled instance from the instance ID list.
+                                      // The recycle time of the instance is returned and the ID of the recycled instance is deleted from the instance ID list.
                                       System.out.println("Preemptible instance will be recycled immediately, instance id: " + instance.getInstanceId());
                                       allInstances.remove(instance.getInstanceId());
                                   }
@@ -243,8 +273,67 @@ Preemptible instances provide a cost-effective solution to process business data
         If the following response is returned, the preemptible instance has entered the Pending Release state:
 
         ```
-        instance: i-bp1ecbyds24ij63w1***-->lockReason:Recycling,vmStatus:Stopped
+        instance: i-bp1ecbyds24ij63w1***-->lockReason:Recycling,instanceStatus:Stopped
         Preemptible instance will be recycled immediately, instance id: i-bp1ecbyds24ij63w1***
+        ```
+
+    -   Method 3: Call the DescribeSystemEventAttribute operation of Cloud Monitor to query the recycle time of the preemptible instance.
+
+        ```
+        public class DescribeSystemEventAttribute {
+        
+            public static void main(String[] args) {
+                DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "<accessKeyId>", "<accessSecret>");
+                IAcsClient client = new DefaultAcsClient(profile);
+        
+                DescribeSystemEventAttributeRequest request = new DescribeSystemEventAttributeRequest();
+                // The region ID.
+                request.setRegionId("cn-hangzhou");
+                // The cloud service.
+                request.setProduct("ecs");
+                // The start of the time range to query.
+                request.setStartTime("1574064240000");
+        
+                try {
+                    DescribeSystemEventAttributeResponse response = client.getAcsResponse(request);
+                    System.out.println(new Gson().toJson(response));
+                } catch (ServerException e) {
+                    e.printStackTrace();
+                } catch (ClientException e) {
+                    System.out.println("ErrCode:" + e.getErrCode());
+                    System.out.println("ErrMsg:" + e.getErrMsg());
+                    System.out.println("RequestId:" + e.getRequestId());
+                }
+        
+            }
+        }
+        ```
+
+        If the following response is returned, the preemptible instance has entered the Pending Release state:
+
+        ```
+        {
+            "SystemEvents": {
+                "SystemEvent": [
+                    {
+                        "Name": "Instance:PreemptibleInstanceInterruption",
+                        "Status": "Normal",
+                        "Time": 1574064244000,
+                        "Product": "ECS",
+                        "ResourceId": "acs:ecs:cn-hangzhou:1331602849963181:instance/i-bp19w6o2tqa9jvoh8***",
+                        "RegionId": "cn-hangzhou",
+                        "Level": "WARN",
+                        "Content": "{\"action\":\"delete\",\"instanceId\":\"i-bp19w6o2tqa9jvoh8***\"}",
+                        "GroupId": "0",
+                        "InstanceName": "i-bp19w6o2tqa9jvoh8***"
+                    }
+                ]
+            },
+            "Message": "200",
+            "RequestId": "D4730844-EF73-4856-BFF3-1BDAE8E54C81",
+            "Success": true,
+            "Code": "200"
+        }
         ```
 
 
@@ -264,4 +353,6 @@ Preemptible instances provide a cost-effective solution to process business data
 [CreateInstance](/intl.en-US/API Reference/Instances/CreateInstance.md)
 
 [RunInstances](/intl.en-US/API Reference/Instances/RunInstances.md)
+
+[DescribeSystemEventAttribute](/intl.en-US/API Reference/System events of cloud services/System events/DescribeSystemEventAttribute.md)
 
