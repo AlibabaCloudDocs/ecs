@@ -72,7 +72,9 @@ The following software versions are used in the sample procedure:
             **Note:** You can re-enable SELinux after it is disabled. For more information, see [Enable or disable SELinux](/intl.en-US/Best Practices/Security/Enable or disable SELinux.md).
 
 
-## Step 2. Install NGINX
+## Step 2: Install NGINX
+
+**Note:** The installation method of only one version of NGINX is provided in this topic. If you want to install NGINX of other versions, see the [FAQ](#section_0ho_omf_0ct) section in this topic.
 
 1.  Run the following command to install NGINX:
 
@@ -93,7 +95,7 @@ The following software versions are used in the sample procedure:
     ```
 
 
-## Step 3. Install MySQL
+## Step 3: Install MySQL
 
 1.  Run the following command to update the YUM repository:
 
@@ -175,7 +177,7 @@ The following software versions are used in the sample procedure:
     ```
 
 
-## Step 5. Configure NGINX
+## Step 5: Configure NGINX
 
 1.  Run the following command to back up the NGINX configuration file:
 
@@ -187,7 +189,7 @@ The following software versions are used in the sample procedure:
 
     **Note:** If you do not add this configuration information, PHP-based pages cannot be displayed when you access them by using a browser.
 
-    1.  Run the following command to open the NGINX configuration file:
+    1.  Run the following command to open the configuration file of NGINX:
 
         ```
         vim /etc/nginx/nginx.conf
@@ -195,7 +197,7 @@ The following software versions are used in the sample procedure:
 
     2.  Press the I key to enter the edit mode.
 
-    3.  Modify or add the following configuration information inside the `server` braces:
+    3.  Modify or add the following configuration inside the `server` braces:
 
         ```
                 # Retain the default values for all settings except the following settings:
@@ -235,7 +237,7 @@ The following software versions are used in the sample procedure:
     ```
 
 
-## Step 6. Configure MySQL
+## Step 6: Configure MySQL
 
 1.  Run the following command to check the /var/log/mysqld.log file, and obtain and record the initial password of the root user:
 
@@ -249,9 +251,9 @@ The following software versions are used in the sample procedure:
     2016-12-13T14:57:47.535748Z 1 [Note] A temporary password is generated for root@localhost: p0/G28g>lsHD
     ```
 
-    **Note:** You must use this initial password to reset the password of the root user.
+    **Note:** This initial password will be used when you reset the password of the root user.
 
-2.  Run the following command to make security configurations for MySQL:
+2.  Run the following command to perform security configurations for MySQL:
 
     ```
     mysql_secure_installation
@@ -308,7 +310,7 @@ The following software versions are used in the sample procedure:
 
 For more information, visit [MySQL documentation](http://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html).
 
-## Step 7. Configure PHP
+## Step 7: Configure PHP
 
 1.  Create the phpinfo.php file to show the PHP information.
 
@@ -351,7 +353,7 @@ For more information, visit [MySQL documentation](http://dev.mysql.com/doc/refma
     ```
 
 
-## Step 8. Test the connection to the LNMP environment
+## Step 8: Test the connection to the LNMP environment
 
 1.  Open your browser.
 
@@ -361,6 +363,8 @@ For more information, visit [MySQL documentation](http://dev.mysql.com/doc/refma
 
     ![LNMP deployed](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8129919951/p44922.png)
 
+
+## What to do next
 
 After you confirm that the LNMP environment is deployed, we recommend that you run the following command to delete the phpinfo.php file to ensure system security:
 
@@ -373,4 +377,69 @@ In this example, the website root directory is /usr/share/nginx/html. You can ru
 ```
 rm -rf /usr/share/nginx/html/phpinfo.php
 ```
+
+## FAQ
+
+How do I install other versions of NGINX?
+
+1.  Use a browser to visit the [NGINX open source community](http://nginx.org/en/download.html) to obtain the downloaded URLs of NGINX versions.
+
+    Select the NGINX version that you want to install. NGINX 1.8.1 is used in this example.
+
+2.  Connect to the ECS instance on which you want to deploy an LNMP environment.
+3.  Run the wget command to download NGINX 1.8.1.
+
+    You can obtain the URL of the installation package for the required version from the NGINX open source community. Then, run the `wget <URL>` command to download the NGINX installation package to the ECS instance. For example, to download the NGINX 1.8.1 installation package, run the following command:
+
+    ```
+    wget http://nginx.org/download/nginx-1.8.1.tar.gz
+    ```
+
+4.  Run the following command to install NGINX dependencies:
+
+    ```
+    yum install -y gcc-c++
+    yum install -y pcre pcre-devel
+    yum install -y zlib zlib-devel
+    yum install -y openssl openssl-devel
+    ```
+
+5.  Run the following command to decompress the NGINX 1.8.1 installation package. Then, go to the folder where NGINX resides:
+
+    ```
+    tar zxvf nginx-1.8.1.tar.gz
+    cd nginx-1.8.1
+    ```
+
+6.  Run the following commands in sequence to compile the source code:
+
+    ```
+    ./configure \
+     --user=nobody \
+     --group=nobody \
+     --prefix=/usr/local/nginx \
+     --with-http_stub_status_module \
+     --with-http_gzip_static_module \
+     --with-http_realip_module \
+     --with-http_sub_module \
+     --with-http_ssl_module
+    ```
+
+    ```
+    make && make install
+    ```
+
+7.  Run the following command to go to the sbin directory of NGINX, and then start NGINX:
+
+    ```
+    cd /usr/local/nginx/sbin/
+    ./nginx
+    ```
+
+8.  Use a browser to access `<the public IP address of the ECS instance>`.
+
+    If the following page appears, NGINX is installed and started.
+
+    ![nginx](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4842516161/p228426.png)
+
 
