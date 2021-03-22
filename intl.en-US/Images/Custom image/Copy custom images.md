@@ -51,8 +51,6 @@ Before you copy a custom image, take note of the following items:
 
 5.  Select the image that you want to copy and click **Copy Image** in the **Actions** column.
 
-    **Note:** If the size of your custom image is larger than 500 GiB, you are directed to submit a ticket to complete the operation when you click **Copy Image**.
-
 6.  In the **Copy Image** dialog box, perform the following operations:
 
     1.  Verify the custom image ID.
