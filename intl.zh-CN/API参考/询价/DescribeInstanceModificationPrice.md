@@ -150,7 +150,7 @@ https://ecs.aliyuncs.com/?Action=DescribeInstanceModificationPrice
 |404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
 |403|ChargeTypeViolation|PostPaid instance do not support this operation.|该 API 不支持查询按量付费的 ECS 的变配价格。|
 |400|MissingParameter.InstanceTypeOrDataDisk|You must specify the parameter InstanceType or DataDisk.|实例规格和数据盘参数二选一必须传一个，不能都为空。|
-|403|InvalidInstanceType.NotSupportUpgrade|The specified InstanceType can only be downgraded. This API supports querying prices only of InstanceType that can be upgraded.|指定的实例规格为降配的规格，该 API 仅支持查询升配的实例规格的价格 说明：建议通过 DescribeResourcesModification 接口获取可升配的实例规格。|
+|403|InvalidInstanceType.NotSupportUpgrade|The specified InstanceType can only be downgraded. This API supports querying prices only of InstanceType that can be upgraded.|指定的实例规格为降配的规格，该API仅支持查询升配的实例规格的价格。建议您通过DescribeResourcesModification接口获取可升配的实例规格。|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter "SystemDisk.Category" is not valid.|指定的SystemDisk.Category不合法。|
 |400|InvalidDiskCategory.Missing|The DataDisk.1.Category parameter that is mandatory for processing the request is not provided.|没有指定数据盘类型。|
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.n.Category" is not valid.|指定的参数DataDisk.n.Category不合法。|
