@@ -38,7 +38,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Alibaba Cloud L
 
     1.  运行systemctl status firewalld命令查看当前防火墙的状态。
 
-        ![firewalld status](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3902649951/p129002.png)
+        ![firewalld status](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3902649951/p129002.png)
 
         -   如果防火墙的状态参数是inactive，则防火墙为关闭状态。
         -   如果防火墙的状态参数是active，则防火墙为开启状态。
@@ -56,7 +56,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Alibaba Cloud L
 
     1.  运行getenforce命令查看SELinux的当前状态。
 
-        ![SELinux](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3902649951/p129003.png)
+        ![SELinux](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3902649951/p129003.png)
 
         -   如果SELinux状态参数是Disabled，则SELinux为关闭状态。
         -   如果SELinux状态参数是Enforcing，则SELinux为开启状态。
@@ -74,6 +74,8 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Alibaba Cloud L
 
 
 ## 步骤二：安装Nginx
+
+**说明：** 本教程只提供一个版本的Nginx作为示例，如果您需要安装其他版本的Nginx，请参见[\#d8e555](#d8e555)。
 
 1.  运行以下命令安装Nginx。
 
@@ -217,7 +219,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Alibaba Cloud L
 
         添加配置信息后，如下图所示。
 
-        ![nginx-configuration](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7902649951/p69697.png)
+        ![nginx-configuration](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7902649951/p69697.png)
 
     4.  按下Esc键后，输入:wq并回车以保存并关闭配置文件。
 
@@ -319,7 +321,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Alibaba Cloud L
 
         网站根目录是您在nginx.conf文件中`location ~ .php$`大括号内配置的`root`值，如下图所示。
 
-        ![lnmp-root-dir](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7902649951/p69633.png)
+        ![lnmp-root-dir](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7902649951/p69633.png)
 
         本教程配置的网站根目录为/usr/share/nginx/html，因此命令为：
 
@@ -358,7 +360,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Alibaba Cloud L
 
     返回结果如下图所示，表示LNMP环境部署成功。
 
-    ![php](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3902649951/p129004.png)
+    ![php](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3902649951/p129004.png)
 
 
 测试访问LNMP平台成功后，建议您运行以下命令将phpinfo.php文件删除，消除安全隐患。
