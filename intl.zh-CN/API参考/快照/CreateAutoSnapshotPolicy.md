@@ -34,7 +34,7 @@
 -   1~65535：指定保存天数
 
  默认值：-1 |
-|timePoints|String|是|\["0", "1", … "23"\]|自动快照的创建时间点，单位为小时。取值范围：0~23，代表00:00至23:00共24个时间点，如1表示01:00。
+|timePoints|String|是|\["0", "1", … "23"\]|自动快照的创建时间点。使用UTC +8时间，单位为小时。取值范围：0~23，代表00:00至23:00共24个时间点，如1表示01:00。
 
  当一天内需要创建多次自动快照时，可以传入多个时间点，最多传入24个时间点。 |
 |autoSnapshotPolicyName|String|否|TestName|自动快照策略的名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。
@@ -77,7 +77,7 @@ https://ecs.aliyuncs.com/?Action=CreateAutoSnapshotPolicy
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateAutoSnapshotPolicyResponse>
@@ -86,7 +86,7 @@ https://ecs.aliyuncs.com/?Action=CreateAutoSnapshotPolicy
 </CreateAutoSnapshotPolicyResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
