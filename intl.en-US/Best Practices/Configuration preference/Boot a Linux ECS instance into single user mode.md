@@ -27,25 +27,27 @@ In this example, an ECS instance running a CentOS 8.0 64-bit operating system is
 
 1.  Connect to the ECS instance.
 
-    For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
+    For more information, see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
+
+    **Note:** If you connect an instance by using Workbench or SSH commands, you are not directed to the system boot page when you restart the instance by using a command. Therefore, we recommend that you do not connect to an instance by using Workbench or SSH commands.
 
 2.  Run the `reboot` command to restart the ECS instance. When the interface for selecting a boot system appears, press the E key to go to the configuration interface for boot options.
 
     The following figure shows the configuration interface for boot options.
 
-    ![os1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/7214488951/p94739.png)
+    ![os1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7214488951/p94739.png)
 
-3.  Move the pointer to the line that starts with `linux` by using the arrow keys on the keyboard. Replace the content from `ro` to the end of the line with `rw init=/bin/sh crashkernel=auto`.
+3.  Move the pointer to the line that starts with `linux` by using the arrow keys on the keyboard. Replace the content from `ro` to the end of the line with `rw init=/bin/sh creashkernel=auto`.
 
     The following figure shows the information after the change is made.
 
-    ![os2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/0380369951/p162862.png)
+    ![os2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1982435161/p94742.png)
 
 4.  Press the Ctrl+X composite key or the F10 key.
 
     The system enters single user mode. The following figure shows the interface for resetting the system password.
 
-    ![os3](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94745.png)
+    ![os3](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94745.png)
 
 
 ## Example 2: How a Debian ECS instance enters single user mode
@@ -54,25 +56,27 @@ In this example, an ECS instance running a Debian 10.2 64-bit operating system i
 
 1.  Connect to the ECS instance.
 
-    For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
+    For more information, see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
+
+    **Note:** If you connect an instance by using Workbench or SSH commands, you are not directed to the system boot page when you restart the instance by using a command. Therefore, we recommend that you do not connect to an instance by using Workbench or SSH commands.
 
 2.  Run the `reboot` command to restart the ECS instance. When the configuration interface for kernel options appears, press the E key to go to the GRUB interface.
 
     The following figure shows the GRUB interface.
 
-    ![db1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94723.png)
+    ![db1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94723.png)
 
 3.  Move the pointer to the line that starts with `linux` by using the arrow keys on the keyboard. Append `single` to the end of the line.
 
     The following figure shows the information after the change is made.
 
-    ![db3](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94715.png)
+    ![db3](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94715.png)
 
 4.  Press the Ctrl+X composite key or the F10 key to start the system. Enter the password of the root user.
 
     The system enters single user mode.
 
-    ![db4](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94716.png)
+    ![db4](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94716.png)
 
 
 ## Example 3: How a SLES instance enters single user mode
@@ -81,25 +85,27 @@ In this example, an ECS instance running a SLES 15 SP1 64-bit operating system i
 
 1.  Connect to the ECS instance.
 
-    For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
+    For more information, see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
+
+    **Note:** If you connect an instance by using Workbench or SSH commands, you are not directed to the system boot page when you restart the instance by using a command. Therefore, we recommend that you do not connect to an instance by using Workbench or SSH commands.
 
 2.  Run the `reboot` command to restart the ECS instance. When the configuration interface for kernel options appears, press the E key to go to the GRUB interface.
 
     The following figure shows the GRUB interface.
 
-    ![sles1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94725.png)
+    ![sles1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94725.png)
 
 3.  Move the pointer to the line that starts with `linux` by using the arrow keys on the keyboard. Append `single` to the end of the line.
 
     The following figure shows the information after the change is made.
 
-    ![sles2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94731.png)
+    ![sles2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94731.png)
 
 4.  Press the Ctrl+X composite key or the F10 key to start the system. Enter the password of the root user.
 
     The system enters single user mode.
 
-    ![sles3](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94733.png)
+    ![sles3](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94733.png)
 
 
 ## Example 4: How an Ubuntu ECS instance enters single user mode
@@ -108,30 +114,32 @@ In this example, an ECS instance running an Ubuntu 18.04 64-bit operating system
 
 1.  Connect to the ECS instance.
 
-    For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
+    For more information, see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
+
+    **Note:** If you connect an instance by using Workbench or SSH commands, you are not directed to the system boot page when you restart the instance by using a command. Therefore, we recommend that you do not connect to an instance by using Workbench or SSH commands.
 
 2.  Run the `reboot` command to restart the ECS instance. During the restarting process, press the Shift key to go to the GRUB interface.
 
     The following figure shows the GRUB interface.
 
-    ![ubt1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/8214488951/p94572.png)
+    ![ubt1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8214488951/p94572.png)
 
 3.  Select the Advanced options for Ubuntu in the second line of the GRUB interface and press the Enter key.
 
 4.  Select the recovery mode in the second line on the interface that appears and press the E key to edit the boot options.
 
-    ![ubt2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/9214488951/p94573.png)
+    ![ubt2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9214488951/p94573.png)
 
 5.  On the editing page, move the pointer to the line that starts with `linux` by using the arrow keys on the keyboard. Replace the content from `ro` to the end of the line with `rw single inti=/bin/bash`.
 
     The following figure shows the information after the change is made.
 
-    ![ubt4](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/9214488951/p94683.png)
+    ![ubt4](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9214488951/p94683.png)
 
 6.  Press the Ctrl+X composite key or the F10 key.
 
     The system enters single user mode. The following figure shows the interface for resetting the system password.
 
-    ![ubt5](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/9214488951/p94707.png)
+    ![ubt5](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9214488951/p94707.png)
 
 
