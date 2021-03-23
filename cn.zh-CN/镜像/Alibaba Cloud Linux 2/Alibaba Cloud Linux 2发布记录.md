@@ -16,7 +16,8 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 |镜像ID|发布时间|发布内容|
 |----|----|----|
 |aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210218.vhd|2021-02-18|-   更新`Alibaba Cloud Linux 2.1903 64位 快速启动版`镜像
--   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210208.vhd版本制作
+-   默认的网络配置服务切换为network-scripts
+-   修复CVE-2021-3156漏洞，即Linux sudo权限漏洞。更多信息，请参见[漏洞公告 \| Linux sudo权限漏洞（CVE-2021-3156）](/cn.zh-CN/动态与公告/安全公告/漏洞公告 | Linux sudo权限漏洞（CVE-2021-3156）.md)
 -   适用地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）、新加坡、马来西亚（吉隆坡）、美国（弗吉尼亚） |
 |aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20210218.vhd|2021-02-18|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位 等保2.0三级版`镜像
 -   该镜像是根据*GB/T22239-2019信息安全技术网络安全等级保护基本要求*进行等保加固的镜像，您使用本镜像无需额外配置即可满足以下等保合规要求：
@@ -28,12 +29,10 @@ keyword: [发布更新, ecs, alibaba cloud linux]
     -   恶意代码防范
 更多信息，请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux等保2.0三级版镜像/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)
 
--   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210208.vhd版本制作
+-   默认的网络配置服务切换为network-scripts
+-   修复CVE-2021-3156漏洞，即Linux sudo权限漏洞。更多信息，请参见[漏洞公告 \| Linux sudo权限漏洞（CVE-2021-3156）](/cn.zh-CN/动态与公告/安全公告/漏洞公告 | Linux sudo权限漏洞（CVE-2021-3156）.md)
 -   内核版本：kernel-4.19.91-22.2.al7
 -   适用地域：华东1（杭州）、华东2（上海）、华北1（青岛）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华北6（乌兰察布）、华南1（深圳）、华南2（河源）、华南3（广州）、西南1（成都）、中国（香港） |
-|aliyun\_2\_1903\_x64\_20G\_alibase\_20210208.vhd|2021-02-08|-   默认的网络配置服务切换为network-scripts
--   修复CVE-2021-3156漏洞，即Linux sudo权限漏洞。更多信息，请参见[漏洞公告 \| Linux sudo权限漏洞（CVE-2021-3156）](/cn.zh-CN/动态与公告/安全公告/漏洞公告 | Linux sudo权限漏洞（CVE-2021-3156）.md)
--   适用地域：华北1（青岛）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华东1（杭州）、西南1（成都）、新加坡、美国（弗吉尼亚） |
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd|2021-01-20|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本，兼容最新CentOS 7.9版本，修复软件包安全漏洞
 -   新增并默认开启update-motd服务
 -   默认开启rhel-loadmodules服务
@@ -171,7 +170,8 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 -   ecs.c6t
 
 |-   更新`Alibaba Cloud Linux 2.1903 64位 可信版`镜像
--   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210208.vhd版本制作
+-   默认的网络配置服务切换为network-scripts
+-   修复CVE-2021-3156漏洞，即Linux sudo权限漏洞。更多信息，请参见[漏洞公告 \| Linux sudo权限漏洞（CVE-2021-3156）](/cn.zh-CN/动态与公告/安全公告/漏洞公告 | Linux sudo权限漏洞（CVE-2021-3156）.md)
 -   启动切换为UEFI模式，而且仅支持该模式
 -   内核更新：版本更新至kernel-4.19.91-22.2.al7 |
 |aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|2021-02-18|AMD实例规格族：-   ecs.ebmg6a
@@ -182,7 +182,8 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 -   ecs.ebmr6a-htoff
 
 |-   更新`Alibaba Cloud Linux 2.1903 64位 AMD版`镜像到最新的软件版本
--   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210208.vhd版本制作
+-   默认的网络配置服务切换为network-scripts
+-   修复CVE-2021-3156漏洞，即Linux sudo权限漏洞。更多信息，请参见[漏洞公告 \| Linux sudo权限漏洞（CVE-2021-3156）](/cn.zh-CN/动态与公告/安全公告/漏洞公告 | Linux sudo权限漏洞（CVE-2021-3156）.md)
 -   启动切换为UEFI模式，而且仅支持该模式 |
 |aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210120.vhd|2021-01-20|可信实例规格族：-   ecs.g6t
 -   ecs.c6t
