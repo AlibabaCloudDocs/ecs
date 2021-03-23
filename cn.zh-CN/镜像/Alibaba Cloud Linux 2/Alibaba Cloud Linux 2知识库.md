@@ -2,6 +2,7 @@
 
 本文提供Alibaba Cloud Linux 2镜像的故障排查与解决方案。
 
+-   [如何安装并启用高版本的curl]()
 -   [/proc/meminfo文件中的统计信息变更说明]()
 -   [如何在Alibaba Cloud Linux 2系统中配置Kdump](https://help.aliyun.com/knowledge_detail/153912.html)
 -   [Alibaba Cloud Linux 2.1903镜像的ECS实例启动或重启后系统时间同步存在延迟](https://help.aliyun.com/knowledge_detail/153362.html)
