@@ -1,10 +1,10 @@
 ---
-keyword: [release a disk, delete a disk, delete a disk, Alibaba Cloud, ECS]
+keyword: [release a disk, delete a disk, deletedisk, Alibaba Cloud, ECS]
 ---
 
 # Release a disk
 
-You can manually release disks that you no longer need. When a disk is released, all data stored on the disk is also released, and billing for the disk is stopped. By default, disks attached to ECS instances are released together with the instances. You can disable the Release Disk with Instance feature to retain disks. This topic describes how to release a disk in the ECS console and how to enable or disable the Release with Instance feature.
+You can manually release disks that you no longer need. When a disk is released, all data stored on the disk is also released, and billing for the disk is stopped. By default, disks attached to ECS instances are released together with the instances. You can disable the Release Disk with Instance feature to retain disks. This topic describes how to release a disk in the ECS console and how to enable or disable the Release Disk with Instance feature.
 
 -   A snapshot of the disk is created to back up important data of the disk. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md).
 -   The disk to be manually released or the pay-as-you-go data disk for which you want to enable or disable the Release Disk with Instance feature is in the **Unattached** state. For more information, see [Detach a data disk](/intl.en-US/Block Storage/Cloud disks/Detach a data disk.md).
@@ -23,7 +23,7 @@ You can manually release disks that you no longer need. When a disk is released,
 
 -   When you enable or disable the Release Disk with Instance feature for a system disk or data disk, take note of the following items:
     -   When the Release Disk with Instance feature is enabled, the disk is automatically released when its attached ECS instance is released.
-    -   When the Release Disk with Instance feature is disabled, the disk is retained as a pay-as-you-go data disk three days after its attached ECS instance expires, three days after a payment becomes overdue for the instance, or when the instance is manually released. If your disks are created in regions inside mainland China, you must complete real-name verification in your account to ensure that the disks can be retained.
+    -   When the Release Disk with Instance feature is disabled, the disk is retained as a pay-as-you-go data disk 15 days after its attached ECS instance expires, 15 days after a payment becomes overdue for the instance, or when the instance is manually released. If your disks are created in regions inside mainland China, you must complete real-name verification for your account to ensure that the disks can be retained.
 
         **Note:** The retained data disk is billed on a pay-as-you-go basis. You can log on to the Billing Management console and view the consumption details based on the disk ID.
 
@@ -38,7 +38,7 @@ Perform the following operations to manually release a pay-as-you-go data disk:
 
 3.  In the top navigation bar, select a region.
 
-4.  Find the disk that you want to release. Choose **More** \> **Release** in the **Actions** column.
+4.  Find the disk that you want to release and choose **More** \> **Release** in the **Actions** column.
 
 5.  In the message that appears, confirm the information and click **Confirm Release**.
 
@@ -55,9 +55,9 @@ Perform the following operations to enable or disable the Release Disk with Inst
 
 4.  In the Basic Configurations step, scroll down to the **Storage** section and select or clear **Release with Instance** for data disks or the system disk.
 
-    For more information about how to create an ECS instance, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
+    For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 
-    ![Release with Instance](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4972909951/p63822.png)
+    ![Release with Instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4972909951/p63822.png)
 
 
 ## Enable or disable the Release Disk with Instance feature for a disk on the Disks page
@@ -70,13 +70,13 @@ Perform the following operations to enable or disable the Release Disk with Inst
 
 3.  In the top navigation bar, select a region.
 
-4.  Find the disk for which you want to enable or disable the feature. Choose **More** \> **Modify Disk Property** in the **Actions** column.
+4.  Find the disk for which you want to enable or disable the feature and choose **More** \> **Modify Disk Property** in the **Actions** column.
 
 5.  In the Modify Disk Property dialog box, select or clear **Release Disk with Instance** and click **OK**.
 
-    **Note:** After you clear **Release Disk with Instance**, the disk is retained as a pay-as-you-go data disk three days after its attached ECS instance expires, three days after a payment becomes overdue for the instance, or when the instance is manually released.
+    **Note:** After you clear **Release Disk with Instance**, a disk is retained as a pay-as-you-go data disk 15 days after the attached ECS instance expires, 15 days after a payment becomes overdue for the instance, or when the instance is manually released.
 
-    ![Release Disk with Instance](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4972909951/p63856.png)
+    ![Release Disk with Instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4972909951/p63856.png)
 
 
 **Related topics**  
