@@ -15,7 +15,7 @@ When you copy a snapshot, take note of the following items:
     -   You can copy snapshots among the following regions: China \(Hong Kong\), Singapore, Australia \(Sydney\), Malaysia \(Kuala Lumpur\), Indonesia \(Jakarta\), Japan \(Tokyo\), Germany \(Frankfurt\), UK \(London\), US \(Silicon Valley\), US \(Virginia\), and India \(Mumbai\).
 -   Billing:
 
-    When you copy a snapshot to a new region, a snapshot copy is created. You are charged for copying snapshots and for the storage of the snapshot copy. For more information, see [Snapshot](/intl.en-US/Pricing/Billing items/Snapshot billing.md).
+    When you copy a snapshot to a new region, a snapshot copy is created. You are charged for copying snapshots and for the storage of the snapshot copy. For more information, see [Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
 
     **Note:** When a disk snapshot is copied for the first time, all data stored in the disk is copied. All subsequent copies of the snapshot in the same region are incremental copies. Snapshots are billed based on snapshot sizes. Incremental copies can significantly reduce the sizes of snapshots to be copied.
 
@@ -52,6 +52,8 @@ Scenarios:
 
 6.  Click **OK**.
 
+
+After the snapshot is copied to the destination region, you can use the snapshot in the source region or the copied snapshot in the destination region to create an instance or a disk to restore data if your instance is attacked by viruses or your data is accidentally deleted. For more information, see [Create a disk from a snapshot](/intl.en-US/Block Storage/Cloud disks/Create a cloud disk/Create a disk from a snapshot.md).
 
 ## Cancel snapshot copying
 
