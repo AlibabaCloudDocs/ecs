@@ -1,48 +1,48 @@
-# Create a cloud disk
+# 什么是云盘异步复制
 
-This topic describes how to create a cloud disk in a dedicated block storage cluster.
+云盘异步复制，是一种基于云盘块级别的异步复制功能。该功能将一个云盘上的数据，异步复制到另外一个地域中的云盘，可在主盘异常时提供数据保护并恢复业务，从而减少或避免数据丢失，为关键数据制定业务连续性计划。
 
-Only data disks that are enhanced SSDs \(ESSDs\) of the PL1 performance level can be created.
+## 功能介绍
 
-**Note:** The Dedicated Block Storage Cluster feature is now available only in the China \(Heyuan\) and Indonesia \(Jakarta\) regions. The number of supported regions is increasing.
+云盘异步复制功能支持您将云盘复制到其他地域，实现数据的异地容灾备份。创建并激活复制关系后，系统会定期将主盘数据异步复制到从盘。
 
-## Procedure
+![异步复制](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8332555161/p247233.png)
 
-1.  Go to the **Dedicated Block Storage Cluster** page.
+地域之间支持云盘异步复制的情况：
 
-    1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
+-   这些地域之间支持互相复制：华东1（杭州）、华东2（上海）和华南2（河源）。
+-   这些地域之间支持互相复制：美国（硅谷）和美国（弗吉尼亚）。
 
-    2.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Dedicated Block Storage Cluster**.
+## 基本概念
 
-    3.  In the top navigation bar, select a region.
+云盘异步复制功能涉及的基本概念如下：
 
-2.  Find the cluster in which to create a cloud disk and click **Create Disk** in the **Actions** column.
+-   异步复制：在不同的阿里云地域之间，按照一定的周期，将一个云盘上的数据异步复制到另外一个云盘。
+-   主盘：需要进行同步备份的云盘，也可以称为源云盘。
+-   从盘：同步的目标云盘。
+-   恢复点目标（RPO）：由于故障可能丢失的数据量（以时间为单位测量）。例如，若RPO为1小时，则云盘发生不可用事件时，最近一小时内写入到云盘的所有数据都会丢失。
+-   恢复时间目标（RTO）：业务系统发生灾难后到恢复的时间。例如，若RTO为1小时，则云盘发生不可用事件后，一小时内恢复服务。
+-   复制关系：主盘和从盘及复制配置构成了复制关系。
 
-3.  On the disk buy page, configure the parameters described in the following table.
+## 使用规格
 
-    |Parameter|Description|
-    |---------|-----------|
-    |Attach|Specifies whether to attach the created disk to ECS instances.    -   **Not Attach**: only creates a disk and does not attach the disk to ECS instances.
-    -   **Attach to ECS Instance**: creates a disk and attach the disk to the specified ECS instance.
+|规格项|说明|
+|---|--|
+|一个账号在单可用区中最大可创建的复制关系数|32|
+|一个云盘可创建的复制关系数|1|
+|最小复制周期|15分钟（每隔15分钟自动复制）|
+|主盘类型|ESSD云盘类型的数据盘|
+|从盘类型|和主盘相同类型和相同容量的云盘。|
 
-If you select this option, you must specify **ECS Instance** by selecting an ECS instance. |
-    |Storage|Set the capacity of the disk.|
-    |Quantity|Select the number of disks that you want to create.**Note:** You can attach a maximum of 16 data disks to an ECS instance. When you purchase disks for an instance, take note of the number of data disks attached to the instance. |
-    |Terms of Service|Read and select Terms of Service.|
-    |Others \(Optional\)|Specify the disk name, description, tags, and resource group for easy management.|
+创建异步复制关系后，云盘一些功能将受限，具体如下所示：
 
-4.  Click **Confirm Order**.
-
-    After the disk is created, you can choose **Storage & Snapshots** \> **Disks** to go to the **Disks** page. On the **Disks** page, search by **Dedicated Block Storage Cluster ID/Name** to view the created disks.
-
-
-## What to do next
-
-After a disk is created, you must attach the disk to an ECS instance within the same zone and format the disk before you can use it.
-
-1.  If you set Attach to **Not Attach** when you create the disk, you must attach it to an ECS instance first. For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
-
-    **Note:** If you set Attach to **Attach to ECS Instance** when you create the disk, skip this step.
-
-2.  Log on to the ECS instance and format the disk. For more information, see [Format a data disk for a Linux instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Linux instance.md) or [Format a data disk for a Windows ECS instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Windows ECS instance.md).
+|限制项|主盘是否支持|从盘是否支持|
+|---|------|------|
+|云盘读写|√|×|
+|删除云盘|√|×|
+|初始化云盘|×|×|
+|扩容云盘|×|×|
+|挂载云盘|√|×|
+|创建快照|√|√|
+|修改性能类型|×|×|
 
