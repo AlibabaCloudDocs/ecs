@@ -1,80 +1,80 @@
-# 开启云盘异步复制功能
+# Enable ABSR
 
-本文介绍如何为云盘开启异步复制功能，将云盘数据同步到其他地域。
+This topic describes how to enable ABSR to synchronize cloud disk data to other regions.
 
-地域之间支持云盘异步复制的情况：
+ABSR is supported between the following regions:
 
--   这些地域之间支持互相复制：华东1（杭州）、华东2（上海）和华南2（河源）。
--   这些地域之间支持互相复制：美国（硅谷）和美国（弗吉尼亚）。
+-   ABSR is supported between the China \(beijing\), China \(Shanghai\), and China \(Heyuan\) regions.
+-   ABSR is supported between the US \(Silicon Valley\) and US \(Virginia\) regions.
 
-在复制关系中，主盘为ESSD类型的数据盘，且主盘不能是其他复制关系中的从盘。从盘是和主盘同规格同容量的新云盘。云盘（主盘或从盘）只支持一个复制关系。
+In a replication relationship, the primary disk is a data disk that is an enhanced SSD \(ESSD\), and the primary disk cannot be a secondary disk in another replication relationship. The secondary disk is a cloud disk that has the same specifications and capacity as the primary disk. Each cloud disk \(primary or secondary disk\) can have only a single replication relationship.
 
-配置复制关系后，主盘和从盘操作限制如下所示：
+The following table describes the limits on the primary and secondary disks after a replication relationship is configured.
 
-|限制项|主盘是否支持|从盘是否支持|
-|---|------|------|
-|云盘读写|√|×|
-|删除云盘|√|×|
-|初始化云盘|×|×|
-|扩容云盘|×|×|
-|挂载云盘|√|×|
-|创建快照|√|√|
-|修改性能类型|×|×|
+|Item|Support for the primary disk|Support for the secondary disk|
+|----|----------------------------|------------------------------|
+|Read and write operations|Yes|No|
+|Deletion|Yes|No|
+|Re-initialization|No|No|
+|Resizing|No|No|
+|Attachment|Yes|No|
+|Snapshot creation|Yes|Yes|
+|Performance type modification|No|No|
 
-## 创建云盘异步复制关系
+## Create a replication relationship
 
-云盘异步复制功能，需要先创建云盘异步复制关系。
+To use the ABSR feature, you must create a replication relationship first.
 
-1.  进入云盘异步复制页面。
+1.  Go to the Asynchronous Block Storage Replication page.
 
-    1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
+    1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-    2.  在左侧导航栏，选择**存储与快照** \> **云盘异步复制**。
+    2.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Asynchronous Block Storage Replication**.
 
-    3.  在顶部菜单栏左上角处，选择地域。
+    3.  In the top navigation bar, select a region.
 
-2.  单击**创建云盘异步复制**。
+2.  Click **Create Asynchronous Block Storage Replication**.
 
-3.  在**选择异步复制的主站点资源**引导页，设置主盘信息，并单击**下一步：创建目标站点资源**。
+3.  In the **Select Source Resource to Replicate** step, configure the parameters for the primary disk. Then, click **Next: Create Destination Resource**.
 
-    主站点资源信息如下所示。
+    The following table describes the parameters to configure for the primary disk.
 
-    |名称|说明|
-    |--|--|
-    |地域与可用区|选择需要复制的主盘所在地域和可用区。|
-    |主盘|选择需要复制的云盘。|
+    |Parameter|Description|
+    |---------|-----------|
+    |Region and Zone|Select the region and zone of the primary disk to replicate.|
+    |Primary Disk|Select the primary disk to replicate.|
 
-4.  在**创建目标站点资源**引导页，创建从盘，单击**订购云盘**。
+4.  In the **Create Destination Resource** step, create a secondary disk. Then, click **Create Disk**.
 
-    目标站点资源信息如下所示。
+    The following table describes the parameters to configure for the secondary disk.
 
-    |名称|说明|
-    |--|--|
-    |复制到的地域及可用区|选择复制的目标地域和可用区。|
-    |付费类型|选择从盘的付费类型。|
-    |云盘名称|设置从盘的云盘名称。|
-    |标签|设置从盘的标签信息。通过使用标签功能，便于管理云盘。|
-    |服务协议|阅读并选中服务协议。|
+    |Parameter|Description|
+    |---------|-----------|
+    |Destination Region and Zone|The destination region and zone of the secondary disk.|
+    |Billing Method|Select the billing method of the secondary disk.|
+    |Disk Name|Specify the name of the secondary disk|
+    |Tags|Configure the tag key and value of the secondary disk You can use tags to manage disks.|
+    |Terms of Service|Read and select Terms of Service.|
 
-5.  在**创建云盘异步复制关系**引导页，设置复制对信息，单击**下一步：订单总览**。
+5.  In the **Create Replication Relationship** step, configure the parameters described in the following table. Then, click **Next: Preview**.
 
-    |名称|说明|
-    |--|--|
-    |复制对名称|设置云盘异步复制关系名称。|
-    |描述|设置云盘异步复制描述信息。|
-    |最小同步周期|设置云盘异步复制最小同步周期。主盘的数据在最小同步周期内可以同步到从盘。|
+    |Parameter|Description|
+    |---------|-----------|
+    |Name|Specify a name for the replication relationship.|
+    |Description|Specify a description for the replication relationship.|
+    |Minimum Synchronization Cycle|Specify a minimum synchronization cycle for asynchronous replication. Data in the primary disk is synchronized to the secondary disk based on the minimum synchronization cycle.|
 
-6.  在**订单总览**引导页，您可以确认以上步骤设置的主盘、从盘和复制对信息，单击**确认订单**。
+6.  In the **Preview** step, confirm the information about the primary disk, secondary disk, and replication relationship. Then, click **Confirm Order**.
 
 
-## 激活云盘异步复制
+## Activate the replication relationship
 
-创建完成复制对后，您还需要激活复制对，云盘才能开始异步复制。
+After a replication relationship is created, you must activate it before asynchronous replication can be performed.
 
-1.  选择**存储与快照** \> **云盘异步复制**。
+1.  In the left-side navigation pane, Choose **Storage & Snapshots** \> **Asynchronous Block Storage Replication**.
 
-2.  找到目标云盘异步复制关系，在操作栏中单击**激活**。
+2.  Find the replication relationship that you want to activate and click **Activate** in the Actions column.
 
-    激活完成后，系统按照一定的周期，将主盘上的数据异步复制到从云盘。
+    After the replication relationship is activated, data on the primary disk is asynchronously replicated to the secondary disk based on the specified cycle.
 
 
