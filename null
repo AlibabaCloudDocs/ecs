@@ -1,37 +1,48 @@
-# Create a cluster
+# 创建云盘
 
-This topic describes how to create a dedicated block storage cluster.
+本文介绍如何在专属块存储集群中创建云盘。
 
-For information about the billing of the Dedicated Block Storage Cluster feature, see [Purchase]().
+专属块存储集群仅支持创建ESSD PL1云盘类型的数据盘。
 
-**Note:** The Dedicated Block Storage Cluster feature is now available only in the China \(Heyuan\) and Indonesia \(Jakarta\) regions. The number of supported regions is increasing.
+**说明：** 专属块存储集群功能目前支持华南2（河源）和印度尼西亚（雅加达）地域，地域数量持续增加中。
 
-1.  Go to the Dedicated Block Storage Cluster page.
+## 操作步骤
 
-    1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
+1.  进入专属块存储集群页面。
 
-    2.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Dedicated Block Storage Cluster**.
+    1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-    3.  In the top navigation bar, select a region.
+    2.  在左侧导航栏，选择**存储与快照** \> **专属块存储集群**。
 
-2.  Click **Create**.
+    3.  在顶部菜单栏左上角处，选择地域。
 
-3.  On the buy page, configure the parameters described in the following table for the dedicated block storage cluster.
+2.  找到目标集群，在**操作**列中单击**创建云盘**。
 
-    |Parameter|Description|
-    |---------|-----------|
-    |Billing Method|Only the **Subscription** billing method is supported.|
-    |Region and Zone|Select the region and zone in which to create the dedicated block storage cluster. The region and zone of the dedicated block storage cluster must be the same as those of the ECS instance to which you want to attach the cloud disks in the cluster.**Note:** After a dedicated block storage cluster is created, you cannot change the region and zone. |
-    |Cluster Capacity|Set the capacity of the dedicated block storage cluster.|
-    |Cluster Name|Set the name of the dedicated block storage cluster for subsequent management.|
-    |Duration|Set the subscription duration of the dedicated block storage cluster.|
+3.  在购买云盘页面，设置云盘参数信息。
 
-4.  Check the configuration fees, read and select the service agreement, and then click **Confirm Order**.
+    |参数|说明|
+    |--|--|
+    |是否挂载|设置新创建的云盘是否直接挂载到实例。    -   **暂不挂载**：只创建云盘，不挂载到ECS实例。
+    -   **挂载到ECS实例**：创建云盘并挂载到指定的ECS实例。
 
-    The dedicated block storage cluster is delivered within 21 business days after the payment is made.
+选择此选项之后，**ECS实例**参数中选择ECS实例。 |
+    |存储|设置云盘容量。|
+    |购买量|选择需要购买的云盘数量。**说明：** 一个ECS实例最多可以挂载16块数据盘，购买时请注意ECS实例数据盘的数量。 |
+    |服务协议|查看并选中服务协议。|
+    |其他选项（非必填）|设置云盘名称、描述、标签和资源组等信息，便于识别和管理云盘。|
+
+4.  单击**确认下单**。
+
+    创建完成后，您可以在**存储与快照** \> **云盘**页面，通过**专属块存储集群ID/名称**过滤，查看集群中已创建的云盘。
 
 
-After the dedicated block storage cluster is created, you can choose **Storage & Snapshots** \> **Dedicated Block Storage Cluster** to view the information about the cluster.
+## 后续操作
 
-After the dedicated block storage cluster is deployed, you can create data disks in the cluster. For more information, see [Create a cloud disk]().
+创建云盘后，您还需要将云盘挂载到同可用区的ECS实例并格式化云盘，才能正常使用。
+
+1.  如果您创建云盘时选择**暂不挂载**，请先挂载云盘。具体操作，请参见[挂载数据盘](/intl.zh-CN/块存储/云盘/挂载数据盘.md)。
+
+    **说明：** 如果您创建云盘时选择的是**挂载到ECS实例**，请跳过此步骤。
+
+2.  登录ECS实例，格式化云盘。具体操作，请参见[Linux格式化数据盘](/intl.zh-CN/块存储/云盘/分区格式化数据盘/Linux格式化数据盘.md)或[Windows格式化数据盘](/intl.zh-CN/块存储/云盘/分区格式化数据盘/Windows格式化数据盘.md)。
 
