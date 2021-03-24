@@ -1,48 +1,48 @@
-# 创建云盘
+# Create a cloud disk
 
-本文介绍如何在专属块存储集群中创建云盘。
+This topic describes how to create a cloud disk in a dedicated block storage cluster.
 
-专属块存储集群仅支持创建ESSD PL1云盘类型的数据盘。
+Only data disks that are enhanced SSDs \(ESSDs\) of the PL1 performance level can be created.
 
-**说明：** 专属块存储集群功能目前支持华南2（河源）和印度尼西亚（雅加达）地域，地域数量持续增加中。
+**Note:** The Dedicated Block Storage Cluster feature is now available only in the China \(Heyuan\) and Indonesia \(Jakarta\) regions. The number of supported regions is increasing.
 
-## 操作步骤
+## Procedure
 
-1.  进入专属块存储集群页面。
+1.  Go to the **Dedicated Block Storage Cluster** page.
 
-    1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
+    1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-    2.  在左侧导航栏，选择**存储与快照** \> **专属块存储集群**。
+    2.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Dedicated Block Storage Cluster**.
 
-    3.  在顶部菜单栏左上角处，选择地域。
+    3.  In the top navigation bar, select a region.
 
-2.  找到目标集群，在**操作**列中单击**创建云盘**。
+2.  Find the cluster in which to create a cloud disk and click **Create Disk** in the **Actions** column.
 
-3.  在购买云盘页面，设置云盘参数信息。
+3.  On the disk buy page, configure the parameters described in the following table.
 
-    |参数|说明|
-    |--|--|
-    |是否挂载|设置新创建的云盘是否直接挂载到实例。    -   **暂不挂载**：只创建云盘，不挂载到ECS实例。
-    -   **挂载到ECS实例**：创建云盘并挂载到指定的ECS实例。
+    |Parameter|Description|
+    |---------|-----------|
+    |Attach|Specifies whether to attach the created disk to ECS instances.    -   **Not Attach**: only creates a disk and does not attach the disk to ECS instances.
+    -   **Attach to ECS Instance**: creates a disk and attach the disk to the specified ECS instance.
 
-选择此选项之后，**ECS实例**参数中选择ECS实例。 |
-    |存储|设置云盘容量。|
-    |购买量|选择需要购买的云盘数量。**说明：** 一个ECS实例最多可以挂载16块数据盘，购买时请注意ECS实例数据盘的数量。 |
-    |服务协议|查看并选中服务协议。|
-    |其他选项（非必填）|设置云盘名称、描述、标签和资源组等信息，便于识别和管理云盘。|
+If you select this option, you must specify **ECS Instance** by selecting an ECS instance. |
+    |Storage|Set the capacity of the disk.|
+    |Quantity|Select the number of disks that you want to create.**Note:** You can attach a maximum of 16 data disks to an ECS instance. When you purchase disks for an instance, take note of the number of data disks attached to the instance. |
+    |Terms of Service|Read and select Terms of Service.|
+    |Others \(Optional\)|Specify the disk name, description, tags, and resource group for easy management.|
 
-4.  单击**确认下单**。
+4.  Click **Confirm Order**.
 
-    创建完成后，您可以在**存储与快照** \> **云盘**页面，通过**专属块存储集群ID/名称**过滤，查看集群中已创建的云盘。
+    After the disk is created, you can choose **Storage & Snapshots** \> **Disks** to go to the **Disks** page. On the **Disks** page, search by **Dedicated Block Storage Cluster ID/Name** to view the created disks.
 
 
-## 后续操作
+## What to do next
 
-创建云盘后，您还需要将云盘挂载到同可用区的ECS实例并格式化云盘，才能正常使用。
+After a disk is created, you must attach the disk to an ECS instance within the same zone and format the disk before you can use it.
 
-1.  如果您创建云盘时选择**暂不挂载**，请先挂载云盘。具体操作，请参见[挂载数据盘](/intl.zh-CN/块存储/云盘/挂载数据盘.md)。
+1.  If you set Attach to **Not Attach** when you create the disk, you must attach it to an ECS instance first. For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
 
-    **说明：** 如果您创建云盘时选择的是**挂载到ECS实例**，请跳过此步骤。
+    **Note:** If you set Attach to **Attach to ECS Instance** when you create the disk, skip this step.
 
-2.  登录ECS实例，格式化云盘。具体操作，请参见[Linux格式化数据盘](/intl.zh-CN/块存储/云盘/分区格式化数据盘/Linux格式化数据盘.md)或[Windows格式化数据盘](/intl.zh-CN/块存储/云盘/分区格式化数据盘/Windows格式化数据盘.md)。
+2.  Log on to the ECS instance and format the disk. For more information, see [Format a data disk for a Linux instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Linux instance.md) or [Format a data disk for a Windows ECS instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Windows ECS instance.md).
 
