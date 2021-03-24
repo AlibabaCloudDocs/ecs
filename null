@@ -1,27 +1,38 @@
-# /proc/meminfo文件中的统计信息变更说明
+# 什么是专属块存储集群
 
-Alibaba Cloud Linux 2操作系统在内核4.19.91-22.al7.x86\_64及其之后的版本中，/proc/meminfo文件内的匿名页状态统计信息`Active(anon)`和`Inactive(anon)`发生了变化。如果您的应用程序正在使用该统计信息，统计信息的变化会导致变更前后查询到的数据不一致。本文将对本次变化进行详细说明。
+专属块存储集群（Dedicated Block Storage Cluster）是一种物理隔离、用户独占整个块存储集群的块存储服务。
 
-## 变更原因
+## 功能介绍
 
-Linux kernel社区在最新的版本中对匿名页的回收进行了优化，分配的匿名页默认放置的位置由active LRU变更为了inactive LRU，因此对/proc/meminfo文件内的统计信息`Active(anon)`和`Inactive(anon)`的数据产生了影响。社区合入信息如下所示：
+专属块存储集群指由一个用户独享物理资源的块存储集群。作为该块存储集群的唯一用户，您不需要与其他用户共享集群所有物理资源。您还可以查看整个集群的性能监控信息和异常信息。
 
--   社区合入版本：Linux Kernel 5.10
--   社区合入commit：b518154e59aab3ad0780a169c5cc84bd4ee4357e
+专属块存储集群和其他公共云块存储集群相比较，具有物理隔离、资源独享等优点。在目标可用区的专属块存储集群，您可以创建云盘并将云盘挂载到已创建的ECS实例（包括专有宿主机中实例），其他用户不能使用此集群。
 
-Alibaba Cloud Linux 2的内核在4.19.91-22.al7.x86\_64及其之后的版本中合入了该优化项，/proc/meminfo文件内的统计信息`Active(anon)`和`Inactive(anon)`的数据将发生变化。
+![专属块存储集群](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8323555161/p246410.png)
 
-**说明：** 您可以在操作系统内运行uname -r命令获取内核版本信息。
+**说明：** 专属块存储集群功能目前支持华南2（河源）和印度尼西亚（雅加达）地域，地域数量持续增加中。
 
-## 变更详情
+## 应用场景
 
-Alibaba Cloud Linux 2的内核在4.19.91-22.al7.x86\_64版本之前（不包含该版本），应用程序申请的匿名页（anon page）默认被统计到/proc/meminfo文件的`Active(anon)`中，当内存不足时才会被统计到`Inactive(anon)`中。
+专属块存储集群和公共云的其他集群物理隔离，您在购买后能够独占整个专属块存储集群，适用于金融、医疗、政府等对数据安全有严格要求的行业。
 
-当内核升级到4.19.91-22.al7.x86\_64及其之后的版本时，应用程序申请的匿名页（anon page）默认被统计到/proc/meminfo文件的`Inactive(anon)`中，当被访问后才会切换到`Active(anon)`中。因此，如果您在使用/proc/meminfo文件内的`Active(anon)`和`Inactive(anon)`来统计匿名页状态的数据，需要对本次变化进行相应的调整。
+## 限制条件
 
-## 变更影响及建议
+专属块存储集群的限制条件如下所示。
 
-由于统计匿名页状态的信息（即`Active(anon)`和`Inactive(anon)`）发生变化，因此相同的应用程序在本次变更前所查询到的`Active(anon)`和`Inactive(anon)`的数据，与变更后查询的到数据将不一致。
+|限制项|说明|
+|---|--|
+|集群容量|-   支持最小容量：60 TiB
+-   递增容量：12 TiB
 
-建议您根据所使用的Alibaba Cloud Linux 2操作系统中最新的匿名页状态的统计数据，对应用程序的配置进行相应的调整。
+**说明：** 集群容量仅支持在最小容量的基础上按每12 TiB增加，不支持自定义其他容量。
+
+-   支持最大容量：1020 TiB |
+|支持云盘类型|仅支持创建ESSD PL1云盘。关于ESSD PL1云盘更多信息，请参见[ESSD云盘](/intl.zh-CN/块存储/块存储介绍/ESSD云盘.md)。 |
+
+## 生命周期
+
+专属块存储集群从创建、运维到释放的生命周期如下图所示。
+
+![生命周期](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8756294161/p246126.png)
 
