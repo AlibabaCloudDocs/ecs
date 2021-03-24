@@ -1,38 +1,39 @@
-# What is Dedicated Block Storage Cluster?
+# 计费说明
 
-Dedicated Block Storage Cluster is a block storage service that offers physical isolation and allows you to exclusively use the entire block storage cluster.
+本文介绍专属块存储集群购买、续费和退款等计费相关信息。
 
-## Features
+## 购买计费
 
-A dedicated block storage cluster is a block storage cluster in which you have exclusive use to the physical resources. As the only user of the block storage cluster, you do not need to share its physical resources with other users. In addition, you can view the performance monitoring information and exception information of the cluster.
+专属块存储集群仅支持包年包月的计费方式。
 
-Unlike public cloud block storage clusters, dedicated block storage clusters offer physical isolation and exclusive resources. Within a dedicated block storage cluster in the destination zone, you can create a disk and attach the disk to existing ECS instances \(including dedicated hosts\). Other users are not able to use this cluster.
+专属块存储集群费用 = 购买容量 × 购买时长 × 购买单价。其中，购买容量、时长和单价介绍如下：
 
-![Dedicated block storage cluster](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1769646161/p246410.png)
+|项目|说明|
+|--|--|
+|购买容量（TiB）|-   支持最小容量：60 TiB
+-   递增容量：12 TiB
 
-**Note:** The Dedicated Block Storage Cluster feature is now available only in the China \(Heyuan\) and Indonesia \(Jakarta\) regions. The number of supported regions is increasing.
+**说明：** 集群购买容量仅支持按每12 TiB增加，不支持自定义其他容量。
 
-## Scenarios
+-   支持最大容量：1020 TiB |
+|购买时长|最小购买时长为6个月，最长为3年。|
+|单价|以购买页面价格为准。|
 
-Dedicated block storage clusters are physically isolated from other public cloud block storage clusters. After you purchase a dedicated block storage cluster, you can exclusively own the cluster. The Dedicated Block Storage Cluster feature is suited for the industries such as finance, healthcare, and government that have strict requirements on data security.
+## 续费
 
-## Limits
+专属块存储集群续费支持手动续费和自动续费。
 
-The following table describes the limits of the Dedicated Block Storage Cluster feature.
+-   手动续费时，您可以选择的续费时长最短3个月，最长3年。
+-   自动续费时，按照您购买时长自动续费。例如购买时选择12个月，则每次自动续费时也会续费12个月。
 
-|Item|Description|
-|----|-----------|
-|Cluster capacity|-   Minimum capacity: 60 TiB
--   Incremental capacity: 12 TiB
+## 退款
 
-**Note:** The cluster capacity can only be increased by an increment of 12 TiB, and cannot be customized.
+专属块存储集群不支持五天无理由退订。您购买专属块存储集群后，使用超过6个月，才支持退款。更多信息，请参见[退款规则及退款操作](https://help.aliyun.com/document_detail/37096.html)。
 
--   Maximum capacity: 1,020 TiB |
-|Disk type|Only enhanced SSDs \(ESSDs\) of the PL1 performance level can be created.For more information about PL1 ESSDs, see [Enhanced SSDs](/intl.en-US/Block Storage/Block Storage overview/Enhanced SSDs.md). |
+## 到期后资源处理
 
-## Lifecycle
+专属块存储集群到期前，控制台会提示您是否转移云盘资源。
 
-The following figure shows the lifecycle of a dedicated block storage cluster from its creation to O&M and then release.
-
-![Lifecycle](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2148846161/p246126.png)
+-   如果专属块存储集群到期后您不想要续费，同时也不需要保留云盘中的数据信息，您可以等专属块存储集群到期后，云盘自动释放。
+-   如果专属块存储集群到期后您不想要续费，但需要保留云盘中的数据信息，您可以通过控制台将专属块存储集群上的云盘迁移到公共云。
 
