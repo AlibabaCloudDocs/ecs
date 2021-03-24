@@ -1,48 +1,80 @@
-# What is Asynchronous Block Storage Replication?
+# 开启云盘异步复制功能
 
-Asynchronous Block Storage Replication \(ABSR\) is a block-level feature for asynchronous replication of cloud disks. It asynchronously replicates data on a cloud disk within one region to a cloud disk in another region. ABSR provides data protection and resumes services when an exception occurs on a primary disk, to reduce or prevent data losses and ensure service continuity for key data.
+本文介绍如何为云盘开启异步复制功能，将云盘数据同步到其他地域。
 
-## Features
+地域之间支持云盘异步复制的情况：
 
-ABSR allows you to replicate cloud disks to other regions to implement geo-disaster recovery of data. After a replication relationship is created and activated, data on a primary disk is asynchronously replicated to a secondary disk on a regular basis. Users do not need to create any snapshots. For example, when a user needs to copy a cloud disk from one region to another region,  only needs to create a cloud disk at the opposite region in and create a replication pair.
+-   这些地域之间支持互相复制：华东1（杭州）、华东2（上海）和华南2（河源）。
+-   这些地域之间支持互相复制：美国（硅谷）和美国（弗吉尼亚）。
 
-![Asynchronous replication](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3997746161/p247233.png)
+在复制关系中，主盘为ESSD类型的数据盘，且主盘不能是其他复制关系中的从盘。从盘是和主盘同规格同容量的新云盘。云盘（主盘或从盘）只支持一个复制关系。
 
-ABSR is supported between the following regions:
+配置复制关系后，主盘和从盘操作限制如下所示：
 
--   ABSR is supported between the China \(beijing\), China \(Shanghai\), and China \(Heyuan\) regions.
--   ABSR is supported between the US \(Silicon Valley\) and US \(Virginia\) regions.
+|限制项|主盘是否支持|从盘是否支持|
+|---|------|------|
+|云盘读写|√|×|
+|删除云盘|√|×|
+|初始化云盘|×|×|
+|扩容云盘|×|×|
+|挂载云盘|√|×|
+|创建快照|√|√|
+|修改性能类型|×|×|
 
-## Terms
+## 创建云盘异步复制关系
 
-The following terms are used in ABSR:
+云盘异步复制功能，需要先创建云盘异步复制关系。
 
--   Asynchronous replication: Data on a cloud disk within one Alibaba Cloud region is asynchronously replicated to a cloud disk within another region based on a specific cycle.
--   Primary disk: the cloud disk whose data is to be replicated. The primary disk is also called the source disk.
--   Secondary disk: the destination disk to which data is replicated.
--   Recovery point objective \(RPO\): the amount of data that may be lost due to a failure. RPO is measured by time. For example, if the RPO is 1 hour, all the data written to the cloud disk within the last hour is lost when the disk becomes unavailable.
--   Recovery time objective \(RTO\): the duration of time within which a business system is restored after a disaster. For example, if the RTO is 1 hour, the service is restored within 1 hour after a disk becomes unavailable.
--   Replication relationship: the replication relationship established between the primary disk, secondary disk, and replication configurations.
+1.  进入云盘异步复制页面。
 
-## Usage specifications
+    1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-|Specification|Description|
-|-------------|-----------|
-|The maximum number of replication relationships that can be created for an account within a single zone|32|
-|The number of replication relationships that can be created for a cloud disk|1|
-|Minimum replication cycle|15 minutes \(replication is automatically performed every 15 minutes\)|
-|Category of the primary disk|Data disks that are enhanced SSDs \(ESSDs\)|
-|Category of the secondary disk|Cloud disks of the same category and with the same capacity as the primary disk|
+    2.  在左侧导航栏，选择**存储与快照** \> **云盘异步复制**。
 
-After an replication relationship is created for a cloud disk, some features of the cloud disk is limited. The following table describes these limits.
+    3.  在顶部菜单栏左上角处，选择地域。
 
-|Item|Support for the primary disk|Support for the secondary disk|
-|----|----------------------------|------------------------------|
-|Read and write operations|Yes|No|
-|Deletion|Yes|No|
-|Re-initialization|No|No|
-|Resizing|No|No|
-|Attachment|Yes|No|
-|Snapshot creation|Yes|Yes|
-|Performance type modification|No|No|
+2.  单击**创建云盘异步复制**。
+
+3.  在**选择异步复制的主站点资源**引导页，设置主盘信息，并单击**下一步：创建目标站点资源**。
+
+    主站点资源信息如下所示。
+
+    |名称|说明|
+    |--|--|
+    |地域与可用区|选择需要复制的主盘所在地域和可用区。|
+    |主盘|选择需要复制的云盘。|
+
+4.  在**创建目标站点资源**引导页，创建从盘，单击**订购云盘**。
+
+    目标站点资源信息如下所示。
+
+    |名称|说明|
+    |--|--|
+    |复制到的地域及可用区|选择复制的目标地域和可用区。|
+    |付费类型|选择从盘的付费类型。|
+    |云盘名称|设置从盘的云盘名称。|
+    |标签|设置从盘的标签信息。通过使用标签功能，便于管理云盘。|
+    |服务协议|阅读并选中服务协议。|
+
+5.  在**创建云盘异步复制关系**引导页，设置复制对信息，单击**下一步：订单总览**。
+
+    |名称|说明|
+    |--|--|
+    |复制对名称|设置云盘异步复制关系名称。|
+    |描述|设置云盘异步复制描述信息。|
+    |最小同步周期|设置云盘异步复制最小同步周期。主盘的数据在最小同步周期内可以同步到从盘。|
+
+6.  在**订单总览**引导页，您可以确认以上步骤设置的主盘、从盘和复制对信息，单击**确认订单**。
+
+
+## 激活云盘异步复制
+
+创建完成复制对后，您还需要激活复制对，云盘才能开始异步复制。
+
+1.  选择**存储与快照** \> **云盘异步复制**。
+
+2.  找到目标云盘异步复制关系，在操作栏中单击**激活**。
+
+    激活完成后，系统按照一定的周期，将主盘上的数据异步复制到从云盘。
+
 
