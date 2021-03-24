@@ -1,39 +1,39 @@
-# 计费说明
+# Billing
 
-本文介绍专属块存储集群购买、续费和退款等计费相关信息。
+This topic describes the billing of the Dedicated Block Storage Cluster feature when you purchase and renew a dedicated block storage cluster and handle refunds.
 
-## 购买计费
+## Purchase
 
-专属块存储集群仅支持包年包月的计费方式。
+Dedicated block storage clusters support only the subscription billing method.
 
-专属块存储集群费用 = 购买容量 × 购买时长 × 购买单价。其中，购买容量、时长和单价介绍如下：
+Fees for a dedicated block storage cluster = Cluster capacity × Subscription duration × Unit price. The following table describes the cluster capacity, subscription duration, and unit price.
 
-|项目|说明|
-|--|--|
-|购买容量（TiB）|-   支持最小容量：60 TiB
--   递增容量：12 TiB
+|Item|Description|
+|----|-----------|
+|Cluster capacity \(TiB\)|-   Minimum capacity: 60 TiB
+-   Incremental capacity: 12 TiB
 
-**说明：** 集群购买容量仅支持按每12 TiB增加，不支持自定义其他容量。
+**Note:** The cluster capacity can only be increased by an increment of 12 TiB, and cannot be customized.
 
--   支持最大容量：1020 TiB |
-|购买时长|最小购买时长为6个月，最长为3年。|
-|单价|以购买页面价格为准。|
+-   Maximum capacity: 1,020 TiB |
+|Subscription duration|The subscription duration ranges from six months to three years.|
+|Unit price|The unit price displayed on the buy page prevails.|
 
-## 续费
+## Renewal
 
-专属块存储集群续费支持手动续费和自动续费。
+Dedicated block storage clusters can be manually or automatically renewed.
 
--   手动续费时，您可以选择的续费时长最短3个月，最长3年。
--   自动续费时，按照您购买时长自动续费。例如购买时选择12个月，则每次自动续费时也会续费12个月。
+-   When you manually renew a dedicated block storage cluster, the renewal duration ranges from three months to three years.
+-   When you configure a dedicated block storage cluster to be automatically renewed, the dedicated block storage cluster is automatically renewed based on the purchase duration. For example, if you set the duration to 12 months when you purchase a dedicated block storage cluster, the cluster is automatically renewed by 12 months.
 
-## 退款
+## Refund
 
-专属块存储集群不支持五天无理由退订。您购买专属块存储集群后，使用超过6个月，才支持退款。更多信息，请参见[退款规则及退款操作](https://help.aliyun.com/document_detail/37096.html)。
+Dedicated Block Storage Cluster does not provide a 5-day money-back guarantee. Refunds are supported only after you use a dedicated block storage cluster for more than six months. For more information, see [Refund rules and procedure](https://help.aliyun.com/document_detail/37096.html).
 
-## 到期后资源处理
+## Post-expiration processing of resources
 
-专属块存储集群到期前，控制台会提示您是否转移云盘资源。
+Before your dedicated block storage cluster expires, the ECS console prompts you to determine whether to migrate your disk resources.
 
--   如果专属块存储集群到期后您不想要续费，同时也不需要保留云盘中的数据信息，您可以等专属块存储集群到期后，云盘自动释放。
--   如果专属块存储集群到期后您不想要续费，但需要保留云盘中的数据信息，您可以通过控制台将专属块存储集群上的云盘迁移到公共云。
+-   If you do not want to renew the dedicated block storage cluster after it expires, and if you do not need to retain the data in the cloud disks in the dedicated block storage cluster, you can configure the cloud disks to be automatically released when the dedicated block storage cluster expires.
+-   If you do not want to renew the dedicated block storage cluster after it expires, but you want to retain the data in the cloud disks in the dedicated block storage cluster, you can migrate the cloud disks to the public cloud by using the ECS console.
 
