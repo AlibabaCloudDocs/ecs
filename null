@@ -1,38 +1,38 @@
-# 什么是专属块存储集群
+# What is Dedicated Block Storage Cluster?
 
-专属块存储集群（Dedicated Block Storage Cluster）是一种物理隔离、用户独占整个块存储集群的块存储服务。
+Dedicated Block Storage Cluster is a block storage service that offers physical isolation and allows you to exclusively use the entire block storage cluster.
 
-## 功能介绍
+## Features
 
-专属块存储集群指由一个用户独享物理资源的块存储集群。作为该块存储集群的唯一用户，您不需要与其他用户共享集群所有物理资源。您还可以查看整个集群的性能监控信息和异常信息。
+A dedicated block storage cluster is a block storage cluster in which you have exclusive use to the physical resources. As the only user of the block storage cluster, you do not need to share its physical resources with other users. In addition, you can view the performance monitoring information and exception information of the cluster.
 
-专属块存储集群和其他公共云块存储集群相比较，具有物理隔离、资源独享等优点。在目标可用区的专属块存储集群，您可以创建云盘并将云盘挂载到已创建的ECS实例（包括专有宿主机中实例），其他用户不能使用此集群。
+Unlike public cloud block storage clusters, dedicated block storage clusters offer physical isolation and exclusive resources. Within a dedicated block storage cluster in the destination zone, you can create a disk and attach the disk to existing ECS instances \(including dedicated hosts\). Other users are not able to use this cluster.
 
-![专属块存储集群](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8323555161/p246410.png)
+![Dedicated block storage cluster](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1769646161/p246410.png)
 
-**说明：** 专属块存储集群功能目前支持华南2（河源）和印度尼西亚（雅加达）地域，地域数量持续增加中。
+**Note:** The Dedicated Block Storage Cluster feature is now available only in the China \(Heyuan\) and Indonesia \(Jakarta\) regions. The number of supported regions is increasing.
 
-## 应用场景
+## Scenarios
 
-专属块存储集群和公共云的其他集群物理隔离，您在购买后能够独占整个专属块存储集群，适用于金融、医疗、政府等对数据安全有严格要求的行业。
+Dedicated block storage clusters are physically isolated from other public cloud block storage clusters. After you purchase a dedicated block storage cluster, you can exclusively own the cluster. The Dedicated Block Storage Cluster feature is suited for the industries such as finance, healthcare, and government that have strict requirements on data security.
 
-## 限制条件
+## Limits
 
-专属块存储集群的限制条件如下所示。
+The following table describes the limits of the Dedicated Block Storage Cluster feature.
 
-|限制项|说明|
-|---|--|
-|集群容量|-   支持最小容量：60 TiB
--   递增容量：12 TiB
+|Item|Description|
+|----|-----------|
+|Cluster capacity|-   Minimum capacity: 60 TiB
+-   Incremental capacity: 12 TiB
 
-**说明：** 集群容量仅支持在最小容量的基础上按每12 TiB增加，不支持自定义其他容量。
+**Note:** The cluster capacity can only be increased by an increment of 12 TiB, and cannot be customized.
 
--   支持最大容量：1020 TiB |
-|支持云盘类型|仅支持创建ESSD PL1云盘。关于ESSD PL1云盘更多信息，请参见[ESSD云盘](/intl.zh-CN/块存储/块存储介绍/ESSD云盘.md)。 |
+-   Maximum capacity: 1,020 TiB |
+|Disk type|Only enhanced SSDs \(ESSDs\) of the PL1 performance level can be created.For more information about PL1 ESSDs, see [Enhanced SSDs](/intl.en-US/Block Storage/Block Storage overview/Enhanced SSDs.md). |
 
-## 生命周期
+## Lifecycle
 
-专属块存储集群从创建、运维到释放的生命周期如下图所示。
+The following figure shows the lifecycle of a dedicated block storage cluster from its creation to O&M and then release.
 
-![生命周期](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8756294161/p246126.png)
+![Lifecycle](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2148846161/p246126.png)
 
