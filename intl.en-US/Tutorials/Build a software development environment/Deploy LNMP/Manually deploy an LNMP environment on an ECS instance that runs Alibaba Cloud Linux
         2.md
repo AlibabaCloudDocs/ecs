@@ -75,8 +75,6 @@ The following software versions are used in the example:
 
 ## Step 2: Install NGINX
 
-**Note:** The installation method of only one version of NGINX is provided in this topic. If you want to install NGINX of other versions, see the [FAQ](/intl.en-US/Tutorials/Build a software development environment/Deploy LNMP/Manually build an LNMP environment on a CentOS 7 instance.md) section in this topic.
-
 1.  Run the following command to install NGINX:
 
     ```
