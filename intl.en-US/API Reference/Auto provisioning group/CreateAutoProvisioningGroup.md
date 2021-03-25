@@ -199,8 +199,6 @@ Default value: 0.
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.InstanceName|String|No|k8s-node-\[1,4\]-alibabacloud|The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\), and hyphens \(-\). The default value of this parameter is the `InstanceId` value.
 
-When you create multiple instances at a time, you can specify sequential names for the instances. For more information, see [Specify sequential instance names or hostnames](~~196048~~).
-
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.HostName|String|No|k8s-node-\[1,4\]-ecshost|The hostname of the instance.
 
@@ -359,8 +357,6 @@ Sample success responses
 |400|InvalidFleetExcessCapacityTerminationPolicy.ValueNotSupported|The specified parameter "ExcessCapacityTerminationPolicy" is not supported.|The error message returned because the specified ExcessCapacityTerminationPolicy parameter is invalid.|
 |500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
 |400|MissingParameter|%s|The error message returned because a required parameter is not specified.|
-
-访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
