@@ -39,7 +39,7 @@ Preemptible instances help you build a cost-effective solution to process busine
             }
         }
     
-     ｝
+     }
     ```
 
 2.  Call the DescribeAvailableResource operation to query the instance types that are available in the specified region.
