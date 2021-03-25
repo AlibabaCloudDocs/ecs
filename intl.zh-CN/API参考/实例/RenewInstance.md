@@ -8,8 +8,8 @@
 
 调用该接口时，您需要注意：
 
--   仅支持为包年包月ECS实例续费时长或者续费至统一到期日。
--   续费实例的时长和续费实例至统一到期日的操作不能同步执行，即续费时长参数（`Period`、`PeriodUnit`）与统一到期日参数（`ExpectedRenewDay`）必须指定其中之一，但不能同时设置。
+-   仅支持续费包年包月ECS实例。
+-   除折扣账号之外，支付续费产生的账单时，默认优先使用代金券。
 -   您的账号必须支持信用支付。
 
 ## 调试
@@ -22,20 +22,13 @@
 |--|--|----|---|--|
 |Action|String|是|RenewInstance|系统规定参数。取值：RenewInstance |
 |InstanceId|String|是|i-bp67acfmxazb4p\*\*\*\*|需要续费的实例ID。 |
-|Period|Integer|否|1|包年包月续费时长。一旦指定了`DedicatedHostId`，则取值范围不能超过专有宿主机的订阅时长。取值范围：
+|Period|Integer|是|1|包年包月续费时长。一旦指定了DedicatedHostId，则取值范围不能超过专有宿主机的订阅时长。取值范围：
 
- -   参数`PeriodUnit`值为`Month`。`Period`取值为：1~12, 24, 36, 48, 60
-
- **说明：** 您必须指定续费时长参数（`Period`、`PeriodUnit`）或统一到期日参数（`ExpectedRenewDay`）的其中一个，但不能同时设置。 |
+ -   参数`PeriodUnit`值为`Month`。`Period`取值为：1~12, 24, 36, 48, 60 |
 |PeriodUnit|String|否|Month|续费时长的时间单位，即参数Period的单位。取值范围：
 
  -   Month（默认） |
 |ClientToken|String|否|0c593ea1-3bea-11e9-b96b-88e9fe637760|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。更多详情，请参见[如何保证幂等性](~~25693~~)。 |
-|ExpectedRenewDay|Integer|否|5|统一到期日。该参数值必须与您已设置的统一到期日保持一致，否则将调用失败。指定该参数后，您的实例将续费至统一到期日。取值范围：1~28。
-
- 关于统一到期日功能的限制说明，请参见[统一实例到期日](~~108486~~)。
-
- **说明：** 您必须指定续费时长参数（`Period`、`PeriodUnit`）或统一到期日参数（`ExpectedRenewDay`）的其中一个，但不能同时设置。 |
 
 ## 返回数据
 
@@ -59,7 +52,7 @@ https://ecs.aliyuncs.com/?Action=RenewInstance
 
 正常返回示例
 
-`XML`格式
+`XML` 格式
 
 ```
 <RenewInstanceResponse>
@@ -68,7 +61,7 @@ https://ecs.aliyuncs.com/?Action=RenewInstance
 </RenewInstanceResponse>
 ```
 
-`JSON`格式
+`JSON` 格式
 
 ```
 {
@@ -97,7 +90,6 @@ https://ecs.aliyuncs.com/?Action=RenewInstance
 |400|InvalidInstanceType.codeUnauthorized|The specified InstanceType is not authorized.|指定的InstanceType不合法。|
 |400|InvalidInternetChargeType.InstanceNotSupported|The specified instance which is in vpc is not support the parameter InternetChargeType.|指定的VPC网络实例不支持指定的网络计费方式。|
 |400|InvalidPeriod|The specified period is not valid.|指定的时段不合法。|
-|400|MissingParamter|The specified parameter "Period" is not null.|参数Period不得为空。|
 |403|InstanceSpecModification.NotEffective|The specified instance has been reserved for making a spec modification and not taken effective in the current contract period.|指定的实例因规格调整被保留，在当前合同期内无法生效。|
 |400|Upgrade.NotSupported|Upgrade operation is not supported.|升级操作不合法。|
 |403|LastTokenProcessing|The last token request is processing.|正在处理上一条令牌请求，请您稍后再试。|
