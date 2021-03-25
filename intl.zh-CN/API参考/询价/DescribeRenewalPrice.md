@@ -2,13 +2,6 @@
 
 调用DescribeRenewalPrice查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。
 
-## 接口说明
-
--   仅支持查询包年包月ECS实例续费时长的价格或者续费至统一到期日的价格。
--   参数设置的注意事项如下：
-    -   只设置必选参数时，默认查询实例续费时长1个月的价格信息。
-    -   不支持同时查询续费时长价格和续费至统一到期日的价格，即续费时长参数（`Period`、`PeriodUnit`）与续费至统一到期日参数（`ExpectedRenewDay`）不能同时设置。
-
 ## 调试
 
 [您可以在OpenAPI Explorer中直接运行该接口，免去您计算签名的困扰。运行成功后，OpenAPI Explorer可以自动生成SDK代码示例。](https://api.aliyun.com/#product=Ecs&api=DescribeRenewalPrice&type=RPC&version=2014-05-26)
@@ -28,20 +21,13 @@
  -   当参数`PriceUnit`取值为`Month`时：1~9
 -   当参数`PriceUnit`取值为`Year`时：1~3
 
- 默认值：1
-
- **说明：** 续费时长参数（`Period`、`PeriodUnit`）与统一到期日参数（`ExpectedRenewDay`）不能同时设置。 |
+ 默认值：1 |
 |PriceUnit|String|否|Month|指定续费周期。取值范围：
 
  -   Month：续费周期为一个月。
 -   Year：续费周期为一年。
 
  默认值：Month |
-|ExpectedRenewDay|Integer|否|5|统一到期日。指定该参数后，将查询实例续费至统一到期日的价格信息。取值范围：1~28。
-
- 关于统一到期日功能的更多信息，请参见[统一实例到期日](~~108486~~)。
-
- **说明：** 续费时长参数（`Period`、`PeriodUnit`）与统一到期日参数（`ExpectedRenewDay`）不能同时设置。 |
 
 ## 返回数据
 
