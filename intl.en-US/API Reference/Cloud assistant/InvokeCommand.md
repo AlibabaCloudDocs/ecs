@@ -31,29 +31,29 @@ You can call this operation to trigger a Cloud Assistant command on one or more 
 |RegionId|String|Yes|cn-hangzhou|The region ID of the command. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |Timed|Boolean|No|true|Specifies whether to periodically run the command.
 
- Default value: false. |
+Default value: false. |
 |Frequency|String|No|0 \*/20 \* \* \* \*|The time when recurring executions of the command take place. The interval between two consecutive recurring executions cannot be less than 10 seconds. When the `Timed` parameter is set to `true`, you must specify the `Frequency` parameter.
 
- Set the value of this parameter to a cron expression. For more information, see [Cron expression](~~64769~~). |
+Set the value of this parameter to a cron expression. For more information, see [Cron expression](~~64769~~). |
 |Parameters|Json|No|\{"name":"Jack", "accessKey":"LTAIdyv\*\*\*\*\*\*aRY"\}|The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled. Number of custom parameters: 0 to 10.
 
- -   The key of a custom parameter cannot be an empty string. It can be up to 64 characters in length.
+-   The key of a custom parameter cannot be an empty string. It can be up to 64 characters in length.
 -   The value of a custom parameter can be an empty string.
 -   After the custom parameters and the original command content are encoded in Base64, their total size cannot exceed 16 KB.
 -   The set of custom parameter names must be a subset of the parameter set that is specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
 
- You can leave this parameter empty to disable the custom parameter feature. |
+You can leave this parameter empty to disable the custom parameter feature. |
 |Username|String|No|root|The username that is used to run the command on the ECS instance.
 
- -   For Linux instances, the root username is used by default.
+-   For Linux instances, the root username is used by default.
 -   For Windows instances, the System username is used by default.
 
- You can also specify other usernames that already exist in the ECS instance to run the command. It is safer for you to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](~~203771~~). |
+You can also specify other usernames that already exist in the ECS instance to run the command. It is safer for you to run Cloud Assistant commands as a regular user. |
 |WindowsPasswordName|String|No|axtSecretPassword|The name of the password used to run the command on a Windows instance.
 
- If you want to use a username other than the default System username to run the command on the Windows instance, you must specify both this parameter and the `Username` parameter. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service \(OOS\) to reduce the risk of password leaks. Only the name of the password is passed in by using this parameter. For more information, see [Encrypt parameters](~~186828~~) and [Configure a regular user to run Cloud Assistant commands](~~203771~~).
+If you want to use a username other than the default System username to run the command on the Windows instance, you must specify both this parameter and the `Username` parameter. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service \(OOS\) to reduce the risk of password leaks. Only the name of the password is passed in by using this parameter.
 
- **Note:** When you use the root username for Linux instances or the System username for Windows instances to run the command, you do not need to specify this parameter. |
+**Note:** When you use the root username for Linux instances or the System username for Windows instances to run the command, you do not need to specify this parameter. |
 
 ## Response parameters
 
