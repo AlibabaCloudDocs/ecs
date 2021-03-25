@@ -4,7 +4,7 @@ keyword: [pricing, billing, questions, frequently asked questions, FAQ, savings 
 
 # Billing FAQ
 
-This topic provides answers to commonly asked questions about ECS billing.
+This topic provides answers to commonly askedow do I query the discount offered in a savings plan? questions about ECS billing.
 
 -   Account FAQ
     -   [Why am I unable to purchase pay-as-you-go instances?](#section_cva_k09_jom)
@@ -257,7 +257,7 @@ The hourly commitment of an savings plan is the upper limit of the pay-as-you-go
 
 **Note:** The following prices are for reference only. The actual prices displayed on the buy page prevails.
 
-The unit price of pay-as-you-go instances that are of the ecs.c5.large instance type and located in the China \(Shanghai\) region is USD 0.62/hour. A discount of 57.8% off is provided for the instances after you purchase a three-year general-purpose savings plan by using the All Upfront payment option. Assume that an hourly commitment ofUSD 10 is selected. In this case, the number of ecs.c5.large instances that can be deducted per hour is calculated based on the following formula: 10/\(0.62 × 0.422\) = 38.22.
+The unit price of pay-as-you-go instances that are of the ecs.c5.large instance type and located in the China \(Shanghai\) region is USD 0.62/hour. A discount of 57.8% off is provided for the instances after you purchase a three-year general-purpose savings plan by using the All Upfront payment option. Assume that an hourly commitment of USD 10 is selected. In this case, the number of ecs.c5.large instances that can be deducted per hour is calculated based on the following formula: 10/\(0.62 × 0.422\) = 38.22.
 
 ## How does a savings plan work when the number of instances that can be deducted is not an integer?
 
@@ -290,12 +290,12 @@ Savings plans support three payment options: All Upfront, Partial Upfront, and N
 
 -   Method 2
 
-    Go to the[ECS console](https://partners-intl.console.aliyun.com/#/ecs). In the left-side navigation pane, choose **Instances & Images** \> **Savings Plan**.
+    Go to the [ECS console](https://partners-intl.console.aliyun.com/#/ecs). In the left-side navigation pane, choose **Instances & Images** \> **Savings Plan**.
 
 
 ## How do I query the discount offered in a savings plan?
 
-You can go to the[Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
+You can go to the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page to query the pay-as-you-go discount offered in a savings plan.
 
 ## How do I query the cost savings brought about by a savings plan?
 
@@ -439,7 +439,7 @@ When an instance enters the No Fees for Stopped Instances \(VPC-Connected\) stat
 
 To retain the original public IP address, you can convert this IP address to an Elastic IP address before you stop the instance. For more information, see [Convert the public IP address of a VPC-type instance to an Elastic IP address](/intl.en-US/Network/Change IPv4 addresses/Convert the public IP address of a VPC-type instance to an Elastic IP address.md) and [ConvertNatPublicIpToEip](/intl.en-US/API Reference/Networks/ConvertNatPublicIpToEip.md).
 
-**Note:** After the IP address is converted to an Elastic IP address, you will be charged for the Elastic IP address while the instance is in the No Fees for Stopped Instances \(VPC-Connected\) state. For more information about how Elastic IP addresses are billed, see [Billing overview](/intl.en-US/Pricing/Billing.md).
+**Note:** After the IP address is converted to an Elastic IP address, you will be charged for the Elastic IP address while the instance is in the No Fees for Stopped Instances \(VPC-Connected\) state. For more information about how Elastic IP addresses are billed, see [Billing overview](/intl.en-US/Pricing/Overview.md).
 
 ## Can I release ECS instances on my own?
 
@@ -540,7 +540,7 @@ Yearly, monthly, or weekly subscription Alibaba Cloud Marketplace images are ima
 
 ## On which ECS instances can I use a subscription image?
 
-A subscription image can only be used on a subscription instance with the same subscription duration.
+A subscription image can be used only on a subscription instance with the same subscription duration.
 
 ## How do I purchase a subscription image? Can I purchase it separately?
 
@@ -554,7 +554,7 @@ You can use one of the following methods to purchase a subscription image:
 
 -   To use a subscription image on an existing subscription ECS instance, you can use the image to replace the operating system of the instance. In this case, you must select the image subscription duration based on the instance subscription duration. For more information, see [Replace a system disk \(non-public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace a system disk (non-public images).md).
 
-    **Note:** In this case, you only need to pay for the image.
+    **Note:** In this case, you need to pay only for the image.
 
 
 ## How do I pay for subscription images?
@@ -567,7 +567,7 @@ Image prices are set by the image providers.
 
 When a subscription image expires, it cannot be used unless it is renewed in a timely manner.
 
-You cannot renew a subscription image separately. If you want to continue using the image, you must renew the image together with the corresponding ECS instance. You can resume use of the image after it is renewed.
+You cannot renew a subscription image separately. If you want to continue to use the image, you must renew the image together with the corresponding ECS instance. After the image is renewed, you can continue to use it.
 
 ## After I purchase a subscription image, can I request a refund if I no longer want to use it?
 
