@@ -1,106 +1,106 @@
-# 休眠实例
+# Hibernate an instance
 
-如果您在某个时间段内无需运行ECS实例，也不会执行某些操作（如升降配等），建议您休眠ECS实例。相比停止实例，休眠实例后再次启动实例，ECS实例会自动恢复至休眠前的应用程序状态，便于您快速进入休眠前ECS实例的运行状态。
+If you do not require the use of an ECS instance for a period of time, but you still want to retain the instance without performing operations such as configuration upgrade or downgrade on the instance, we recommend that you hibernate the instance. A hibernated instance is different from a stopped instance. A hibernated instance automatically restores the applications on the instance to the status before hibernation when the instance is waked. This allows the instance to resume providing services in a short of time.
 
-休眠实例时，操作系统会将内存中的数据（操作系统内正在运行的各种应用程序及使用状态）保留至实例的系统盘。当您下次启动实例时，操作系统会读取上次保留的内存数据，自动恢复至休眠前ECS实例的应用程序状态，快速进入休眠前ECS实例的运行状态。而停止实例后再次启动实例时，操作系统会重新启动后台服务和应用程序。
+When you hibernate an instance, the operating system of the instance saves data from the memory to the system disk of the instance. The saved data includes the applications that run in the operating system and the usage status of the applications. When you wake the instance, the operating system reads the data saved in the system disk, automatically restores the applications to the status before hibernation, and resumes the running state of the instance. In comparison, when you stop and restart an instance, the operating system restarts the backend services and applications.
 
-**说明：** 休眠失败时，会自动正常关机，即内存数据不会保存至系统盘。等实例关机后启动实例，操作系统会重新启动后台服务和应用程序，无法恢复休眠前ECS实例的应用程序状态。
+**Note:** If the instance fails to be hibernated, the instance is automatically shut down. Data in the memory is not saved to the system disk. When the instance is started again, the operating system of the instance restarts the backend services and applications. The operating system cannot restore the applications to the status before hibernation.
 
-在休眠时，不同购买方式的ECS实例计费有如下差异：
+Hibernation has different impacts on the billing of instances that use different billing methods:
 
--   包年包月实例：休眠后不影响实例的到期时间，计费不受影响。
--   按量付费实例：取决于休眠时是否选择了**休眠不收费**选项，具体的区别如下表所示。
+-   Subscription instance: The expiration time and billing of the hibernated instance are not affected.
+-   Pay-as-you-go instance: Whether the billing of the hibernated instance is affected is based on whether you select the **No Fees for Hibernated Instances** option when you hibernate the instance. The following table describes the billing details of resources.
 
-|资源项|休眠不收费|休眠后仍旧保留实例并继续收费|
-|---|-----|--------------|
-|计算资源（vCPU和内存）|释放，不收费|保留并继续收费|
-|云盘（系统盘和数据盘）|保留并继续收费|保留并继续收费|
-|内网IP|保留，不收费|保留，不收费|
-|公网IP|释放，启动ECS实例后会获取新的公网IP，不收费|保留，不收费|
-|EIP|保留并继续收费|保留并继续收费|
-|带宽|继续收费|继续收费|
+|Resource|No Fees for Hibernated Instances|Retain Instance and Continue Charging After Instance Is Hibernated|
+|--------|--------------------------------|------------------------------------------------------------------|
+|Computing resource \(vCPUs and memory\)|Release and stop billing|Retain and continue billing|
+|Disk \(system disk and data disk\)|Retain and continue billing|Retain and continue billing|
+|Internal IP address|Retain and stop billing|Retain and stop billing|
+|Public IP address|Release and stop billing. After the instance is started, a new public IP address is obtained.|Retain and stop billing|
+|EIP|Retain and continue billing|Retain and continue billing|
+|Bandwidth|Continue billing|Continue billing|
 
-## 使用限制
+## Limits
 
--   您只能在创建ECS实例时开启休眠功能，然后在需要时使实例进入休眠状态。开启休眠功能后不支持关闭该功能。创建时未开启该功能的实例无法设置该功能。
--   创建ECS实例时，您只能使用加密的自定义镜像才能开启休眠功能。并且镜像版本支持以下几种：
-    -   Windows Server 2016及以上
-    -   Ubuntu 18及以上
-    -   CentOS 7及以上
--   如果ECS实例在创建时开启了休眠功能，则ECS实例不支持以下功能：
-    -   不支持创建镜像。
-    -   不支持创建快照。
-    -   不支持变更实例规格。
-    -   不支持修改实例的CPU和内存大小。
-    -   不支持更换系统盘。
--   如果抢占式实例开启了休眠功能，在休眠时仅支持休眠不收费功能。
--   弹性伸缩组内的ECS实例不支持休眠功能。
+-   You can enable the instance hibernation feature only when you create an ECS instance. Then, you can hibernate the instance based on your requirements. The instance hibernation feature cannot be disabled after it is enabled. If you do not enable the instance hibernation feature when you create an instance, you cannot hibernate the instance.
+-   You can enable the instance hibernation feature only when you create an ECS instance by using an encrypted custom image. The following image versions are supported:
+    -   Windows Server 2016 or later
+    -   Ubuntu 18 or later
+    -   CentOS 7 or later
+-   If the instance hibernation feature is enabled for an ECS instance when the instance is created, you cannot perform the following operations on the instance:
+    -   Create images.
+    -   Create snapshots.
+    -   Change the instance type.
+    -   Change the CPU and memory sizes.
+    -   Replace the system disk.
+-   If the instance hibernation feature is enabled for a preemptible instance, you can select the No Fees for Hibernated Instances option when you hibernate the instance.
+-   You cannot hibernate ECS instances in scaling groups.
 
-## 步骤一：开启休眠功能
+## Step 1: Enable the instance hibernation feature
 
-您必须在创建ECS实例时，选择开启休眠功能，否则无法使实例进入休眠状态。创建时，必须使用加密镜像。
+You must enable the instance hibernation feature when you create an ECS instance. Otherwise, you cannot hibernate the instance. When you create the instance, you must use an encrypted image.
 
-1.  获取加密的自定义镜像。
+1.  Obtain an encrypted custom image.
 
-    有两种方式获取：
+    You can use one of the following methods to obtain an encrypted custom image:
 
-    -   您已准备了满足休眠要求的加密自定义镜像。
-    -   通过复制镜像获取，在复制过程中将镜像加密。具体步骤，请参见[复制镜像](/cn.zh-CN/镜像/自定义镜像/复制镜像.md)。
-    **说明：** 镜像的限制，请参见[使用限制](#section_55c_coc_sg1)。
+    -   Create an encrypted custom image that meets the hibernation requirements.
+    -   Copy an image and encrypt it at the same time. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md).
+    **Note:** For more information about the limits on images, see [Limits](#section_55c_coc_sg1).
 
-2.  创建ECS实例，并在创建实例时开启休眠功能。
+2.  Create an ECS instance and enable the instance hibernation feature when you create the instance.
 
-    具体操作步骤，请参见[使用向导创建实例](/cn.zh-CN/实例/创建实例/使用向导创建实例.md)。请注意以下配置信息：
+    For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). Take note of the parameters described in the following table.
 
-    |配置项|配置说明|举例|
-    |---|----|--|
-    |实例|    -   实例规格：除裸金属服务器外的任一I/O优化实例。
-    -   实例内存大小：
-        -   Windows：必须小于16 GiB。
-        -   Linux：必须小于150 GiB。
+    |Parameter|Description|Example|
+    |---------|-----------|-------|
+    |Instance|    -   Instance Type: Select an I/O optimized instance type, except ECS Bare Metal Instance.
+    -   Memory:
+        -   Windows: Set the memory size to a value less than 16 GiB.
+        -   Linux: Set the memory size to a value less than 150 GiB.
 |ecs.g6e.large|
-    |镜像|    -   选择第一步创建完成的加密自定义镜像，或者已有的满足休眠要求的加密自定义镜像。
-    -   选中**开启实例休眠状态**，开启休眠功能。
+    |Image|    -   Select the encrypted custom image created in the previous step or an existing encrypted custom image that meets the hibernation requirements.
+    -   Select **Instance Hibernation** to enable the instance hibernation feature.
 |    -   encrypted.windows2016
-    -   选中**开启实例休眠状态** |
-    |云盘|    -   系统盘：必选项，且需要满足以下要求：
-        -   类型：高效云盘、SSD云盘或者ESSD云盘。
-        -   容量：必须足够大，建议至少是内存的2倍。因为，在开启休眠能力时，系统盘会预留部分空间来存放内存数据。因此，系统盘的容量需要确保在存放内存数据时，还能使操作系统和内部应用程序正常运行。
-        -   加密：使用加密镜像后，系统盘会默认加密。
-    -   数据盘：可选项。如果在此时创建云盘作为数据盘，必须选择云盘类型、容量、数量，并设置是否加密。
-|    -   系统盘：ESSD云盘，60 GiB，加密且密钥为**Default Service CMK**。
-    -   数据盘：ESSD云盘，40 GiB，未加密。 |
-    |网络|请选择专有网络。**说明：** 经典网络下的ECS实例不支持休眠功能。
+    -   Select **Instance Hibernation**. |
+    |Disk|    -   System Disk: required. The system disk must meet the following requirements:
+        -   Category: ultra disk, standard SSD, or enhanced SSD \(ESSD\).
+        -   Capacity: The system disk capacity must be sufficient. We recommend that you set the system disk capacity to at least twice the memory size. This is because when the instance hibernation feature is enabled, the system disk reserves some space to store memory data. Therefore, the system disk capacity must be sufficient to ensure normal running of the operating system and applications when the system disk stores the memory data.
+        -   Encryption: By default, the system disk is encrypted if an encrypted image is used.
+    -   Data Disk: optional. To create data disks for an instance when you create the instance, you must select the disk categories and specify the sizes and quantity of the disks. You must also determine whether to encrypt the disks.
+|    -   System Disk: Select Enhanced SSD \(ESSD\), set Disk Capacity to 60 GiB, select Disk Encryption, and then select **Default Service CMK** from the drop-down list.
+    -   Data Disk: Select Enhanced SSD \(ESSD\), set Disk Capacity to 40 GiB, and do not select Disk Encryption. |
+    |Network|Select a virtual private cloud \(VPC\). **Note:** ECS instances in the classic network do not support the instance hibernation feature.
 
-|\[默认\]vpc-bp1opxu1zkhn00g\*\*\*\*|
+|\[Default\]vpc-bp1opxu1zkhn00g\*\*\*\*|
 
 
-## 步骤二：使实例进入休眠状态
+## Step 2: Hibernate the instance
 
-如果实例已开启休眠功能，并且处于运行状态，您可以按照以下步骤使实例进入休眠状态。实例休眠期间，您无法连接此实例。
+If the instance hibernation feature is enabled for an instance and the instance is in the Running state, you can perform the following operations to hibernate the instance. You are unable to connect to the instance when the instance is hibernated.
 
-1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
+1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  在左侧导航栏，选择**实例与镜像** \> **实例**。
+2.  In the left-side navigation pane, choose **Instances & Images** \> **Instances**.
 
-3.  在顶部菜单栏左上角处，选择地域。
+3.  In the top navigation bar, select a region.
 
-4.  找到需要休眠的实例，在**操作**列，单击**更多** \> **实例状态** \> **停止**。
+4.  Find the instance that you want to hibernate and choose **More** \> **Instance Status** \> **Stop** in the **Actions** column.
 
-5.  在停止实例对话框中，完成休眠相关设置。
+5.  In the Stop Instance dialog box, configure the parameters.
 
-    1.  选择**停止方式**为**休眠**。
-    2.  选择**停止模式**，您可以根据ECS实例的计费方式选择**休眠后仍旧保留实例并继续收费**或者**休眠不收费** :
+    1.  Set **Stop By** to **Hibernate**.
+    2.  Set **Stop Mode** to **Retain Instance and Continue Charging After Instance Is Hibernated** or **No Fees for Hibernated Instances** based on the billing method of the instance.
 
-        -   包年包月的ECS实例休眠后会继续收费，请选择**休眠后仍旧保留实例并继续收费**。
-        -   按量付费ECS实例支持**休眠后仍旧保留实例并继续收费**或者**休眠不收费**，您可以自由选择。
+        -   You are charged for subscription instances even after the instances are hibernated. Select **Retain Instance and Continue Charging After Instance Is Hibernated**.
+        -   For pay-as-you-go instances, you can select **Retain Instance and Continue Charging After Instance Is Hibernated** or **No Fees for Hibernated Instances**.
 
-            **说明：** 抢占式ECS实例只支持休眠不收费，请选择**休眠不收费**。
+            **Note:** For preemptible instances, select **No Fees for Hibernated Instances**.
 
-        **休眠后仍旧保留实例并继续收费**或者**休眠不收费**的区别，请参见[表 1](#table_82t_3jc_tg6)。
+        For more information about the difference between **Retain Instance and Continue Charging After Instance Is Hibernated** and **No Fees for Hibernated Instances**, see [Table 1](#table_82t_3jc_tg6) in this topic.
 
-    3.  单击**确定**。
+    3.  Click **OK**.
 
-        **说明：** 实例停止，进入**已停止**状态。如需启动实例，具体操作，请参见[启动实例](/cn.zh-CN/实例/管理实例/启动实例.md)。
+        **Note:** The instance is stopped and enters the **Stopped** state. To start the instance, see [Start or stop an instance](/intl.en-US/Instance/Manage instances/Start ECS instances.md).
 
 
