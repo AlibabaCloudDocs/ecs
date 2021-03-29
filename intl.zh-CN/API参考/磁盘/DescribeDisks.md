@@ -217,7 +217,8 @@
 |LockReason|String|security|云盘或本地盘被安全锁定的原因。 |
 |PerformanceLevel|String|PL2|ESSD云盘的性能等级。可能值：
 
- -   PL1：单盘最高随机读写IOPS 5万。
+ -   PL0：单盘最高随机读写IOPS 1万。
+-   PL1：单盘最高随机读写IOPS 5万。
 -   PL2：单盘最高随机读写IOPS 10万。
 -   PL3：单盘最高随机读写IOPS 100万。 |
 |Portable|Boolean|false|云盘或本地盘是否可卸载。 |
@@ -268,7 +269,7 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeDisksResponse>
@@ -325,7 +326,7 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 </DescribeDisksResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
