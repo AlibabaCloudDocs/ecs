@@ -100,47 +100,47 @@
 
  -   i386
 -   x86\_64 |
-|CreationTime|String|2018-01-10T01:01:10Z|镜像的创建时间。 |
+|CreationTime|String|2019-11-15T06:07:05Z|镜像的创建时间。 |
 |Description|String|Archive log for Oracle|描述信息。 |
 |DiskDeviceMappings|Array of DiskDeviceMapping| |镜像下包含云盘和快照的映射关系。 |
 |DiskDeviceMapping| | | |
-|Device|String|/dev/xvdb|云盘的设备信息，例如/dev/xvdb。
+|Device|String|/dev/xvda|云盘的设备信息，例如/dev/xvdb。
 
  **说明：** 该参数即将停止使用，为提高代码的兼容性，建议您尽量不要使用该参数。 |
 |Format|String|qcow2|镜像格式。 |
 |ImportOSSBucket|String|testEcsImport|导入镜像所属OSS的bucket。 |
 |ImportOSSObject|String|imageImport|导入镜像所属OSS的object。 |
 |Progress|String|32%|对于复制中的镜像，返回复制任务的进度。 |
-|RemainTime|Integer|213|对于复制中的镜像，返回复制任务的剩余时间，单位为秒。 |
-|Size|String|80|云盘的大小。 |
+|RemainTime|Integer|233|对于复制中的镜像，返回复制任务的剩余时间，单位为秒。 |
+|Size|String|60|云盘的大小。 |
 |SnapshotId|String|s-bp17ot2q7x72ggtw\*\*\*\*|快照ID。 |
-|Type|String|custom|镜像的类型。 |
-|ImageFamily|String|as-hangzhou-game-01|镜像族系名称。 |
+|Type|String|system|镜像的类型。 |
+|ImageFamily|String|hangzhou-daily-update|镜像族系名称。 |
 |ImageId|String|m-bp1g7004ksh0oeuc\*\*\*\*|镜像ID。 |
 |ImageName|String|testImageName|镜像的名称。 |
-|ImageOwnerAlias|String|self|镜像所有者别名。可能值：
+|ImageOwnerAlias|String|self|镜像来源。可能值：
 
- -   system：公共镜像。
--   self：您的自定义镜像。
--   others：其他用户的公开镜像。
--   marketplace：镜像市场镜像。 |
+ -   system：阿里云提供的公共镜像。
+-   self：您创建的自定义镜像。
+-   others：其他阿里云用户共享给您的镜像。
+-   marketplace：镜像市场提供的镜像。 |
 |ImageVersion|String|2|镜像版本。 |
 |IsCopied|Boolean|false|是否是拷贝的镜像。 |
 |IsSelfShared|String|true|是否共享过该自定义镜像给其他用户。 |
 |IsSubscribed|Boolean|false|是否订阅了该镜像的商品码对应的镜像商品的服务条款。 |
 |IsSupportCloudinit|Boolean|true|是否支持Cloud Init。 |
 |IsSupportIoOptimized|Boolean|true|是否可以在I/O优化实例上运行。 |
-|OSName|String|Alibaba Cloud Linux 2.1903|操作系统的中文显示名称。 |
-|OSNameEn|String|Alibaba Cloud Linux 2.1903|操作系统的英文显示名称。 |
-|OSType|String|Linux|操作系统类型。可能值：
+|OSName|String|Windows Server 2016 数据中心版 64位中文版|操作系统的中文显示名称。 |
+|OSNameEn|String|Windows Server 2016 Data Center Edition 64bit Chinese Edition|操作系统的英文显示名称。 |
+|OSType|String|windows|操作系统类型。可能值：
 
  -   windows
 -   linux |
-|Platform|String|Aliyun|操作系统平台。 |
-|ProductCode|String|jxsc000204|镜像市场的镜像商品标示。 |
-|Progress|String|100|镜像完成的进度，单位为百分比。 |
+|Platform|String|Windows Server 2016|操作系统平台。 |
+|ProductCode|String|test000\*\*\*\*|镜像市场的镜像商品标示。 |
+|Progress|String|100%|镜像完成的进度，单位为百分比。 |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|镜像所在的企业资源组ID。 |
-|Size|Integer|80|镜像大小，单位GiB。 |
+|Size|Integer|60|镜像大小，单位GiB。 |
 |Status|String|Available|镜像的状态。可能值：
 
  -   UnAvailable：不可用
@@ -149,8 +149,8 @@
 -   CreateFailed：创建失败 |
 |Tags|Array of Tag| |镜像的标签对信息。 |
 |Tag| | | |
-|TagKey|String|TestKey|镜像的标签键。 |
-|TagValue|String|TestValue|镜像的标签值。 |
+|TagKey|String|DTS|镜像的标签键。 |
+|TagValue|String|Oracle|镜像的标签值。 |
 |Usage|String|none|有引用关系的资源类型。可能值：
 
  -   instance：创建了一台或多台ECS实例。
@@ -158,8 +158,8 @@
 |PageNumber|Integer|1|当前页码。 |
 |PageSize|Integer|1|当前分页包含多少条目。 |
 |RegionId|String|cn-hangzhou|镜像所属地域ID。 |
-|RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
-|TotalCount|Integer|24|镜像总数。 |
+|RequestId|String|66189103-EDB2-43E2-BB60-BFF2B62F4EB8|请求ID。 |
+|TotalCount|Integer|1|镜像总数。 |
 
 ## 示例
 
@@ -175,12 +175,12 @@ https://ecs.aliyuncs.com/?Action=DescribeImages
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeImagesResponse>
       <PageNumber>1</PageNumber>
-      <TotalCount>61</TotalCount>
+      <TotalCount>1</TotalCount>
       <PageSize>1</PageSize>
       <RegionId>cn-hangzhou</RegionId>
       <RequestId>66189103-EDB2-43E2-BB60-BFF2B62F4EB8</RequestId>
@@ -220,7 +220,7 @@ https://ecs.aliyuncs.com/?Action=DescribeImages
                         </Tag>
                   </Tags>
                   <Status>Available</Status>
-                  <ImageName>Oracle_DTS</ImageName>
+                  <ImageName>testImageName</ImageName>
                   <IsSupportIoOptimized>true</IsSupportIoOptimized>
                   <IsSelfShared>False</IsSelfShared>
                   <IsCopied>false</IsCopied>
@@ -232,12 +232,12 @@ https://ecs.aliyuncs.com/?Action=DescribeImages
 </DescribeImagesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
 	"PageNumber": 1,
-	"TotalCount": 61,
+	"TotalCount": 1,
 	"PageSize": 1,
 	"RegionId": "cn-hangzhou",
 	"RequestId": "66189103-EDB2-43E2-BB60-BFF2B62F4EB8",
@@ -282,7 +282,7 @@ https://ecs.aliyuncs.com/?Action=DescribeImages
 					]
 				},
 				"Status": "Available",
-				"ImageName": "Oracle_DTS",
+				"ImageName": "testImageName",
 				"IsSupportIoOptimized": true,
 				"IsSelfShared": "False",
 				"IsCopied": false,
