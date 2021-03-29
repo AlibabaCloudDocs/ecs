@@ -866,9 +866,9 @@ The Windows Server and Red Hat public images are charged. The fees depend on ins
 
 ## Can I install or upgrade the operating systems of ECS instances on my own?
 
-No, you cannot install or upgrade the operating systems of ECS instances on your own. ECS instances must use images provided by Alibaba Cloud, which you cannot add or upgrade on your own. However, you can perform the following operations:
+You can use one of the following methods to install or upgrade the operating system:
 
--   Replace system disks and select new operating systems. For more information, see [Change the operating system](/intl.en-US/Images/Change the operating system.md).
+-   Replace system disks and select new operating systems. For more information, see [Change the operating system](/intl.en-US/Images/Change the operating system.md) or [Upgrade the operating systems in batches]().
 -   Create ECS instances from custom images that are imported from computers. For information about how to import an image, see [Instructions for importing images](/intl.en-US/Images/Custom image/Import images/Instructions for importing images.md). For more information about how to create ECS instances from a custom image, see [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md).
 -   Patch operating systems.
 
