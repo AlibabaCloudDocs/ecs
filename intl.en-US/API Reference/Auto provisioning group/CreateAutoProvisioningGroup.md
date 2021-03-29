@@ -206,8 +206,6 @@ When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specifi
 -   For a Windows instance, the hostname must be 2 to 15 characters in length and cannot contain periods \(.\) or contain only digits. It can contain letters, digits, and hyphens \(-\).
 -   For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\).
 
-When you create multiple instances at a time, you can specify sequential hostnames. For more information, see [Specify sequential instance names or hostnames](~~196048~~).
-
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.InstanceDescription|String|No|Instance\_Description|The description of the instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.KeyPairName|String|No|KeyPair\_Name|The name of the key pair.
