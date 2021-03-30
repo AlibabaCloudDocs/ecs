@@ -1,12 +1,12 @@
 # DescribeInstanceMaintenanceAttributes
 
-You can call this operation to query the maintenance attributes of an instance.
+You can call this operation to query the maintenance properties of an instance.
 
 ## Description
 
-The operation is used to query the specified maintenance policy of an instance, which contains the following two major maintenance attributes:
+This operation is used to query the specified maintenance policy of an instance, which contains the following two major maintenance properties:
 
--   Maintenance window: the time period that you specify for O&M.
+-   Maintenance window: the time period that you specify for maintenance.
 -   Maintenance action: the policy that you specify in response to instance shutdown.
 
 ## Debugging
@@ -33,32 +33,33 @@ Default value: 10. |
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
-|MaintenanceAttributes|Array of MaintenanceAttribute| |Details about the maintenance attributes. |
+|MaintenanceAttributes|Array of MaintenanceAttribute| |Details of the maintenance properties. |
 |MaintenanceAttribute| | | |
-|ActionOnMaintenance|Struct| |The attribute of the maintenance action of the instance. |
-|DefaultValue|String|AutoRecover|The default value of the maintenance action. |
-|SupportedValues|List|"SupportedValue": \["Stop", "AutoRecover"\]|Details about the supported maintenance actions. |
-|Value|String|Stop|The current value of the maintenance action. Valid values:
+|ActionOnMaintenance|Struct| |The property of the maintenance action of the instance. |
+|DefaultValue|String|AutoRecover|The default maintenance action. |
+|SupportedValues|List|"SupportedValue": \["Stop", "AutoRecover"\]|Details of the supported maintenance actions. |
+|Value|String|Stop|The current maintenance action. Valid values:
 
 -   Stop: The instance is shutdown.
 -   AutoRecover: The instance is automatically recovered.
--   AutoRedeploy: Failover is performed, which may cause the damage of the data disk. |
+-   AutoRedeploy: Failover is performed, which may cause damage to the data disks attached to the instance. |
 |InstanceId|String|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance. |
-|MaintenanceWindows|Array of MaintenanceWindow| |Details about the maintenance window. |
+|MaintenanceWindows|Array of MaintenanceWindow| |Details of the maintenance window. |
 |MaintenanceWindow| | | |
 |EndTime|String|18:00:00|The end time of the maintenance window. |
 |StartTime|String|02:00:00|The start time of the maintenance window. |
+|NotifyOnMaintenance|Boolean|false|Indicates whether an event notification was sent before instance shutdown. |
 |PageNumber|Integer|1|The page number of the returned page. |
 |PageSize|Integer|10|The number of entries returned per page. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
-|TotalCount|Integer|100|The total number of queried maintenance attributes. |
+|TotalCount|Integer|100|The total number of queried maintenance properties. |
 
 ## Examples
 
 Sample requests
 
 ```
-https://ecs.aliyuncs.com?Action=DescribeInstanceMaintenanceAttributes
+https://ecs.aliyuncs.com?Action=DescribeMaintenanceProperty
 &InstanceId.1=i-bp67acfmxazb4p****
 &<Common request parameters>
 ```
@@ -76,6 +77,7 @@ Sample success responses
       <InstanceMaintenanceAttributes>
             <InstanceMaintenanceAttribute>
                   <InstanceId>i-bp67acfmxazb4ph***</InstanceId>
+                  <NotifyOnMaintenance>false</NotifyOnMaintenance>
                   <MaintenanceWindows>
                         <MaintenanceWindow>
                               <StartTime>02:00:00</StartTime>
@@ -106,6 +108,7 @@ Sample success responses
     "InstanceMaintenanceAttributes": {
         "InstanceMaintenanceAttribute": [{
             "InstanceId": "i-bp67acfmxazb4ph***",
+            "NotifyOnMaintenance": false,
             "MaintenanceWindows ": {
                 "MaintenanceWindow": [{
                     "StartTime": "02:00:00",
@@ -129,10 +132,10 @@ Sample success responses
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
 |400|MissingParameter|%s|The error message returned because a required parameter is not specified.|
-|403|InvalidParameter|%s|The error message returned because the specified parameter is invalid.|
-|403|InstanceIdLimitExceeded|%s|The error message returned because the value set for N in the InstanceId.N parameter is more than 100.|
-|403|OperationDenied.NotInWhiteList|%s|The error message returned because you are not authorized to perform this operation. Try again when you are in the whitelist.|
-|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified instance does not exist. Check whether instance ID is correct.|
+|403|InvalidParameter|%s|The error message returned because a specified parameter is invalid.|
+|403|InstanceIdLimitExceeded|%s|The error message returned because the value of N in the InstanceId.N parameter is greater than 100.|
+|403|OperationDenied.NotInWhiteList|%s|The error message returned because you are not authorized to perform this operation. Try again when you are authorized.|
+|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified InstanceId parameter does not exist. Check whether the instance ID is correct.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
