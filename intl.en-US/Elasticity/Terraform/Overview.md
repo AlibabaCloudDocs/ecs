@@ -39,7 +39,7 @@ Terraform allows you to use a simple template language to define, preview, and d
 2.  Use Terraform to create one or more ECS instances. For more information, see [Create an ECS instance]() and [Create multiple ECS instances]().
 3.  Optional. Use Terraform to deploy a web cluster. For more information, see [Deploy a web cluster](/intl.en-US/Elasticity/Terraform/Deploy a web cluster.md).
 
-For more information about how to use Terraform, visit [Documents on Terraform](https://help.aliyun.com/product/95817.html).
+For more information about how to use Terraform, visit [Documents on Terraform]().
 
 ## References
 
