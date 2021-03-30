@@ -59,7 +59,7 @@ Default value: 10. |
 Sample requests
 
 ```
-https://ecs.aliyuncs.com?Action=DescribeMaintenanceProperty
+https://ecs.aliyuncs.com?Action=DescribeInstanceMaintenanceAttributes
 &InstanceId.1=i-bp67acfmxazb4p****
 &<Common request parameters>
 ```
