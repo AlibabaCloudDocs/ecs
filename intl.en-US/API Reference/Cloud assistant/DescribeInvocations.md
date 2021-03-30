@@ -4,12 +4,12 @@ You can call this operation to query the execution list and status of Cloud Assi
 
 ## Description
 
--   After you run a command, it may not succeed. You must call the operation to query the actual execution result.
+-   After you run a command, it may not succeed or achieve the expected results. You can call this operation to query the actual execution results.
 -   You can query the execution information within the past two weeks. A maximum of 100,000 pieces of execution information can be retained.
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer automatically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeInvocations&type=RPC&version=2014-05-26)
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeInvocations&type=RPC&version=2014-05-26)
 
 ## Request parameters
 
@@ -21,37 +21,37 @@ You can call this operation to query the execution list and status of Cloud Assi
 |CommandId|String|No|c-hz0jdfwcsr\*\*\*\*|The ID of the command. You can call the [DescribeCommands](~~64843~~) operation to query all available command IDs. |
 |CommandName|String|No|CommandTestName|The name of the command. |
 |CommandType|String|No|RunShellScript|The type of the command. |
-|Timed|Boolean|No|true|Specifies whether to run the command on a scheduled basis.
+|Timed|Boolean|No|true|Specifies whether to periodically run the command.
 
 Default value: false. |
-|InvokeStatus|String|No|Finished|The overall execution status of the command. The value of this parameter depends on the overall execution status of the command on all the involved instances \(`InstanceInvokeStatus`\). Valid values:
+|InvokeStatus|String|No|Finished|The overall status of the execution. The value of this parameter depends on the overall execution status of the command on all the involved instances \(`InstanceInvokeStatus`\). Valid values:
 
 -   Running:
-    -   Scheduled invocation: Before you manually stop the command, the execution status is always Running.
-    -   One-time invocation: As long as the command is being executed on one instance, the overall execution status is Running.
+    -   Recurring execution: Before you manually stop the command, the overall execution status is always Running.
+    -   One-time execution: As long as the command is being run on one or more instances, the overall execution status is Running.
 -   Finished:
-    -   Scheduled invocation: The command execution status can never be Finished.
-    -   One-time invocation: The command execution on all instances is complete, or the command execution on some instances is manually stopped and that on the other instances is complete.
+    -   Recurring execution: The overall execution status can never be Finished.
+    -   One-time execution: The execution is complete on all instances, or the execution is manually stopped on some instances and is complete on the other instances.
 -   Failed:
-    -   Scheduled invocation: The command execution status can never be Failed.
-    -   One-time invocation: The command execution fails on all instances.
+    -   Recurring execution: The overall execution status can never be Failed.
+    -   One-time execution: The execution fails on all instances.
 -   PartialFailed:
-    -   Scheduled invocation: The command execution status can never be PartialFailed.
-    -   One-time invocation: The command execution fails on some instances.
--   Stopped: The command is stopped.
+    -   Recurring execution: The overall execution status can never be PartialFailed.
+    -   One-time execution: The execution fails on some instances.
+-   Stopped: The execution is stopped.
 
 Default value: Running. |
-|InstanceId|String|No|i-bp1i7gg30r52z2em\*\*\*\*|The ID of the instance. When you specify this parameter, the system queries all the command execution records of the instance. |
-|ContentEncoding|String|No|PlainText|The encoding method of the `CommandContent` and `Output` response parameters. Valid values:
+|InstanceId|String|No|i-bp1i7gg30r52z2em\*\*\*\*|The ID of the instance. When you specify this parameter, the system queries all the execution records of the instance. |
+|ContentEncoding|String|No|PlainText|The encoding mode of the `CommandContent` and `Output` response parameters. Valid values:
 
 -   PlainText: returns the original command content and command output.
--   Base64: returns Base64-encoded command content and command output.
+-   Base64: returns the Base64-encoded command content and command output.
 
 Default value: Base64. |
-|IncludeOutput|Boolean|No|false|Specifies whether to return the execution output information in the result.
+|IncludeOutput|Boolean|No|false|Specifies whether to return the command outputs in the response.
 
--   true: The execution output information is returned in the result. When this parameter is set to true, you must specify at least one of the following parameters: `InvokeId` and `InstanceId`.
--   false: The execution output information is not returned in the result.
+-   true: returns the command outputs. When this parameter is set to true, you must specify at least one of the following parameters: `InvokeId` and `InstanceId`.
+-   false: does not return the command outputs.
 
 Default value: false. |
 |PageNumber|Long|No|1|The number of the page to return.
@@ -69,62 +69,62 @@ Default value: 10. |
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
-|Invocations|Array| |Details about the command execution records. |
+|Invocations|Array of Invocation| |Details of execution records. |
 |Invocation| | | |
 |CommandContent|String|cnBtIC1xYSB8IGdyZXAgdnNm\*\*\*\*|The Base64-encoded command content. |
 |CommandId|String|c-hz0jdfwcsr\*\*\*\*|The ID of the command. |
 |CommandName|String|CommandTestName|The name of the command. |
 |CommandType|String|RunShellScript|The type of the command. |
 |CreationTime|String|2020-01-19T09:15:46Z|The time when the task was created. |
-|Frequency|String|0 \*/20 \* \* \* \*|The execution cycle of the scheduled invocation. For more information about the value specifications, see [Cron expression](~~64769~~). |
-|InvocationStatus|String|Pending|The overall execution status of the command. The value of this parameter depends on the overall execution status on all the involved instances. Valid values:
+|Frequency|String|0 \*/20 \* \* \* \*|The time when recurring executions of the command take place. For more information about the value specifications, see [Cron expression](~~64769~~). |
+|InvocationStatus|String|Pending|The overall status of the execution. The value of this parameter depends on the overall execution status on all the involved instances. Valid values:
 
 -   Pending: The system is verifying or sending the command. When the execution status on at least one instance is Pending, the overall execution status is Pending.
--   Scheduled: The scheduled command is sent and waiting to be executed. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
--   Running: The command is running on the instances. When the execution status on at least one instance is Running, the overall execution status is Running.
+-   Scheduled: The recurring command was sent and waiting to be run. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
+-   Running: The command is being run on the instance. When the execution status on at least one instance is Running, the overall execution status is Running.
 -   Success: When the execution status on all instances is Stopped or Success and the execution status on at least one instance is Success, the overall execution status is Success.
-    -   One-time invocation: The execution is complete and the exit code is 0.
-    -   Scheduled invocation: The last execution succeeds, the exit code is 0, and the specified cycle has ended.
--   Failed: When the execution status on all instances is Stopped or Failed and the execution status on at least one instance is Failed, the overall execution status is Failed. When the execution status on the instances is one of the following values, Failed is returned:
+    -   One-time execution: The execution is complete and the exit code is zero.
+    -   Recurring execution: The last execution succeeds, the exit code is zero, and the specified cycle has ended.
+-   Failed: When the execution status on all instances is Stopped or Failed, the overall execution status is Failed. When the execution status on an instance is one of the following values, Failed is returned as the overall execution status:
     -   Invalid: The command is invalid.
     -   Aborted: The command fails to be sent.
-    -   Failed: The execution is complete but the exit code is not 0.
+    -   Failed: The execution is complete but the exit code is not zero.
     -   Timeout: The execution times out.
-    -   Error: An error occurs when the command is being executed.
--   Stopping: The task is being stopped. When the execution status on at least one instance is Stopping, the overall execution status is Stopping.
--   Stopped: The task is stopped. When the execution status on all instances is Stopped, the overall execution status is Stopped. When the execution status on the instances is one of the following values, Stopped is returned:
-    -   Cancelled: The task is canceled.
-    -   Terminated: The task is terminated.
--   PartialFailed: The execution succeeds on some instances and fails on some other instances. If the execution status on all instances is Success, Failed, or Stopped, the overall execution status is PartialFailed.
+    -   Error: The execution is abnormal.
+-   Stopping: The execution is being stopped. When the execution status on at least one instance is Stopping, the overall execution status is Stopping.
+-   Stopped: The execution is stopped. When the execution status on all instances is Stopped, the overall execution status is Stopped. When the execution status on an instance is one of the following values, Stopped is returned as the overall execution status:
+    -   Cancelled: The execution is canceled.
+    -   Terminated: The execution is terminated.
+-   PartialFailed: The execution succeeds on some instances and fails on some other instances. If the execution status is Success on some instances, and is Failed or Stopped on the other instances, the overall execution status is PartialFailed.
 
 **Note:** The `InvokeStatus` parameter is similar to this parameter, but we recommend that you check this parameter. |
 |InvokeId|String|t-hz0jdfwd9f\*\*\*\*|The ID of the execution. |
-|InvokeInstances|Array| |Details about the instances on which the command is executed. |
+|InvokeInstances|Array of InvokeInstance| |Details of the instances on which the command is run. |
 |InvokeInstance| | | |
-|CreationTime|String|2019-12-20T06:15:54Z|The time when the command execution was created. |
-|Dropped|Integer|0|The size of truncated and discarded text when the size of text in the Output field is larger than 24 KB. |
-|ErrorCode|String|InstanceNotExists|The code for the cause why a command fails to be sent or executed. Valid values:
+|CreationTime|String|2019-12-20T06:15:54Z|The start time of the execution. |
+|Dropped|Integer|0|The size of truncated and discarded text when the size of text in the Output response parameter is larger than 24 KB. |
+|ErrorCode|String|InstanceNotExists|The code for the cause why a command failed to be sent or run. Valid values:
 
--   Null: The command runs normally.
+-   If this parameter is empty, the command is run normally.
 -   InstanceNotExists: The instance does not exist or is released.
--   InstanceReleased: The instance is released while the task is being executed.
--   InstanceNotRunning: The instance is not running when the task is being created.
+-   InstanceReleased: The instance is released while the command is being run.
+-   InstanceNotRunning: The instance is not running when the command begins to be run.
 -   CommandNotApplicable: The command is not applicable to the specified instance.
 -   AccountNotExists: The specified account does not exist.
 -   DirectoryNotExists: The specified directory does not exist.
 -   BadCronExpression: The specified cron expression for the execution cycle is invalid.
 -   ClientNotRunning: The Cloud Assistant client is not running.
--   ClientNotResponse: The Cloud Assistant client is not responding.
+-   ClientNotResponse: The Cloud Assistant client does not respond.
 -   ClientIsUpgrading: The Cloud Assistant client is being upgraded.
 -   ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
 -   DeliveryTimeout: The request times out.
 -   ExecutionTimeout: The execution times out.
--   ExecutionException: An exception occurs when the command is running.
--   ExecutionInterrupted: The task is interrupted.
--   ExitCodeNonzero: The execution is complete but the exit code is not 0. |
-|ErrorInfo|String|the specified instance does not exists|The detailed cause why a command fails to be sent or executed. Valid values:
+-   ExecutionException: An exception occurs when the command is being run.
+-   ExecutionInterrupted: The execution is interrupted.
+-   ExitCodeNonzero: The execution is complete but the exit code is not zero. |
+|ErrorInfo|String|the specified instance does not exists|The detailed cause why a command failed to be sent or run. Valid values:
 
--   Null: The command runs normally
+-   If this parameter is empty, the command is run normally.
 -   the specified instance does not exists
 -   the instance has released when create task
 -   the instance is not running when create task
@@ -141,60 +141,61 @@ Default value: 10. |
 -   the command execution got an exception
 -   the command execution has been interrupted
 -   the command execution exit code is not zero |
-|ExitCode|Long|0|The exit code of the command execution. Valid values:
+|ExitCode|Long|0|The exit code of the execution. Valid values:
 
 -   For Linux instances, the exit code is the exit code of the shell process.
 -   For Windows instances, the exit code is the exit code of the batch or PowerShell process. |
-|FinishTime|String|2019-12-20T06:15:56Z|The end time of the command execution. |
+|FinishTime|String|2019-12-20T06:15:56Z|The end time of the execution. |
 |InstanceId|String|i-bp1i7gg30r52z2em\*\*\*\*|The ID of the instance. |
-|InstanceInvokeStatus|String|Finished|The command execution status on a single instance. Valid values:
+|InstanceInvokeStatus|String|Finished|The execution status on a single instance. Valid values:
 
 -   Running:
-    -   Scheduled invocation: Before you manually stop the command, the command execution status is always Running.
-    -   One-time invocation: The command is running.
+    -   Recurring execution: Before you manually stop the command, the overall execution status is always Running.
+    -   One-time execution: The execution is in process.
 -   Finished:
-    -   Scheduled invocation: The command execution status cannot be Finished.
-    -   One-time invocation: The command is executed.
+    -   Recurring execution: The overall execution status can never be Finished.
+    -   One-time execution: The execution is complete.
 -   Failed:
-    -   Scheduled invocation: The command execution status cannot be Failed.
-    -   One-time invocation: The command execution fails.
--   Stopped: The command execution is stopped.
+    -   Recurring execution: The overall execution status can never be Failed.
+    -   One-time execution: The execution fails.
+-   Stopped: The execution is stopped.
 -   PartialFailed:
-    -   Scheduled invocation: The command execution status cannot be PartialFailed.
-    -   One-time invocation: The command execution fails on some instances. |
-|InvocationStatus|String|Success|The command execution progress on a single instance. Valid values:
+    -   Recurring execution: The overall execution status can never be PartialFailed.
+    -   One-time execution: The execution fails on some instances. |
+|InvocationStatus|String|Success|The execution status on a single instance. Valid values:
 
 -   Pending: The system is verifying or sending the command.
 -   Invalid: The specified command type or parameter is invalid.
--   Aborted: The command fails to be sent. The instance must be in the Running state and the command can be sent within one minute.
--   Running: The command is running on the instance.
+-   Aborted: The command fails to be sent. To send a command to an instance, the instance must be in the Running state and the command must be sent within one minute.
+-   Running: The command is being run on the instance.
 -   Success:
-    -   One-time invocation: The execution is complete and the exit code is 0.
-    -   Scheduled invocation: The last execution succeeds, the exit code is 0, and the specified cycle has ended.
+    -   One-time execution: The execution is complete and the exit code is zero.
+    -   Recurring execution: The last execution succeeds, the exit code is zero, and the specified cycle ends.
 -   Failed:
-    -   One-time invocation: The execution is complete but the exit code is not 0.
-    -   Scheduled invocation: The last execution is complete, the exit code is not 0, and the specified cycle is about to end.
+    -   One-time execution: The execution is complete but the exit code is not zero.
+    -   Recurring execution: The last execution is complete, the exit code is not zero, and the specified cycle is about to end.
 -   Error: The execution cannot proceed due to an exception.
 -   Timeout: The execution times out.
--   Cancelled: The task has been canceled and the command has not been started.
--   Stopping: The task is being stopped.
--   Terminated: The command is terminated when it is running.
+-   Cancelled: The execution has been canceled and the command has not been started.
+-   Stopping: The execution is being stopped.
+-   Terminated: The command is terminated when it is being run.
 -   Scheduled:
-    -   One-time invocation: not applicable.
-    -   Scheduled invocation: The command is waiting to be run. |
-|Output|String|OutPutTestmsg|The output of the command execution. |
+    -   One-time execution: not applicable.
+    -   Recurring execution: The command is waiting to be run. |
+|Output|String|OutPutTestmsg|The output of the execution. |
 |Repeats|Integer|0|The number of executions on the instance.
 
--   If the execution mode is one-time invocation, the value is 0 or 1.
--   If the execution mode is scheduled invocation, the value is the number of executions that have occurred. |
-|StartTime|String|2019-12-20T06:15:55Z|The time when the command started to be executed on the instance. |
-|StopTime|String|2020-01-19T09:15:47Z|The time when you called the `StopInvocation` operation to manually stop the command execution. |
-|UpdateTime|String|2020-01-19T09:15:47Z|The time when the task status was updated. |
-|InvokeStatus|String|Finished|The overall execution status of the command.
+-   If the execution mode is one-time execution, the value is 0 or 1.
+-   If the execution mode is recurring execution, the value is the number of executions that have occurred. |
+|StartTime|String|2019-12-20T06:15:55Z|The time when the command started to be run on the instance. |
+|StopTime|String|2020-01-19T09:15:47Z|The time when the command stopped being run on the instance. If you called the `StopInvocation` operation to manually stop the execution, the value is the time when you call the operation. |
+|UpdateTime|String|2020-01-19T09:15:47Z|The time when the execution status was updated. |
+|InvokeStatus|String|Finished|The overall status of the execution.
 
-**Note:** We recommend that you ignore this parameter and check the returned values of the `InvocationStatus` parameter. |
+**Note:** We recommend that you ignore this parameter and check the returned values of the `InvocationStatus` parameter for the overall status of the execution. |
 |Parameters|String|\{\}|The custom parameters in the command. |
-|Timed|Boolean|false|Indicates whether the command is run on a scheduled basis. |
+|Timed|Boolean|false|Indicates whether the execution is a recurring execution. |
+|Username|String|root|The username that was used to run the command on the ECS instance. |
 |PageNumber|Long|1|The page number of the returned page. |
 |PageSize|Long|10|The number of entries returned per page. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
@@ -249,7 +250,7 @@ Sample success responses
                               <InstanceId>i-bp1i7gg30r52z2em****</InstanceId>
                               <InstanceInvokeStatus>Finished</InstanceInvokeStatus>
                               <ExitCode>1</ExitCode>
-                              <ErrorInfo>the command execution exit code is not zero. </ErrorInfo>
+                              <ErrorInfo>the command execution exit code is not zero.</ErrorInfo>
                               <StartTime>2020-05-11T09:01:40Z</StartTime>
                               <Repeats>1</Repeats>
                               <FinishTime>2020-05-11T09:01:41Z</FinishTime>
@@ -317,6 +318,7 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
+|400|RegionId.ApiNotSupported|The api is not supported in this region.|The error message returned because this API operation cannot be called in the specified region. Check whether the RegionId parameter is valid.|
 |500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned because an error occurred when the request was being sent. Try again later.|
 |403|InvalidParam.PageNumber|The specified parameter is invalid.|The error message returned because the specified PageNumber parameter is invalid.|
 |403|InvalidParam.PageSize|The specified parameter is invalid.|The error message returned because the specified PageSize parameter is invalid.|
