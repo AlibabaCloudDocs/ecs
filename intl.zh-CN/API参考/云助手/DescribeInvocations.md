@@ -24,7 +24,7 @@
 |Timed|Boolean|否|true|命令是否为周期执行。
 
  默认值：false |
-|InvokeStatus|String|否|Finished|命令执行的总执行状态。总执行状态取决于创建执行中的一台或多台实例的共同执行状态（`InstanceInvokeStatus`）。取值范围：
+|InvokeStatus|String|否|Finished|命令执行的总执行状态。总执行状态取决于创建执行中的一台或多台实例的共同执行状态。取值范围：
 
  -   Running：
     -   周期执行：未手动停止周期执行命令前，执行状态一直为进行中。
@@ -147,21 +147,7 @@
 -   Windows实例为Bat或者PowerShell进程的退出码。 |
 |FinishTime|String|2019-12-20T06:15:56Z|命令进程的结束时间。 |
 |InstanceId|String|i-bp1i7gg30r52z2em\*\*\*\*|实例ID。 |
-|InstanceInvokeStatus|String|Finished|单台实例的命令进程状态。可能值：
-
- -   Running：
-    -   周期执行：未手动停止周期执行命令前，命令进程一直为进行中。
-    -   单次执行：进行中。
--   Finished：
-    -   周期执行：不可能为执行完成。
-    -   单次执行：执行完成。
--   Failed：
-    -   周期执行：不可能为执行失败。
-    -   单次执行：执行失败。
--   Stopped：停止命令执行。
--   PartialFailed：
-    -   周期执行：不可能为部分失败。
-    -   单次执行：部分实例有执行失败的命令进程，则总执行状态为部分失败。 |
+|InstanceInvokeStatus|String|Finished|**说明：** 不推荐查看该返回值，推荐您查看`InvocationStatus`的返回值。 |
 |InvocationStatus|String|Success|单台实例的命令进度状态，可能值：
 
  -   Pending：系统正在校验或发送命令。
