@@ -38,12 +38,6 @@
 -   capacity-optimized：容量优化分布策略。根据库存情况，选择最优的实例规格和可用区进行创建。
 
  默认值：lowest-price |
-|SpotInstanceInterruptionBehavior|String|否|terminate|停止了超额的抢占式实例后的下一步动作。取值范围：
-
- -   stop：保持停止状态
--   terminate：释放
-
- 默认值：stop |
 |SpotInstancePoolsToUseCount|Integer|否|2|在`SpotAllocationStrategy`为`lowest-price`时生效，表示弹性供应组选择价格最低的实例规格创建实例的数量。
 
  取值范围：低于`LaunchTemplateConfig.N`中N的取值 |
@@ -53,10 +47,10 @@
 -   prioritized：优先级策略。按照`LaunchTemplateConfig.N.Priority`设定的优先级创建实例。
 
  默认值：lowest-price |
-|ExcessCapacityTerminationPolicy|String|否|termination|弹性供应组超过目标总容量时，是否停止超额的抢占式实例。取值范围：
+|ExcessCapacityTerminationPolicy|String|否|termination|弹性供应组实时容量超过目标容量并触发缩容时，是否释放缩容的实例。取值范围：
 
- -   no-termination：继续运行
--   termination：停止。停止后的下一步动作由`SpotInstanceInterruptionBehavior`指定
+ -   termination：释放缩容的实例。
+-   no-termination：只将缩容的实例移出弹性供应组。
 
  默认值：no-termination |
 |ValidFrom|String|否|2019-04-01T15:10:20Z|弹性供应组的启动时间，和`ValidUntil`共同确定有效时段。
@@ -69,13 +63,16 @@
  按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
 
  默认值：2099-12-31T23:59:59Z |
-|TerminateInstancesWithExpiration|Boolean|否|true|弹性供应组到期时，是否停止抢占式实例。取值范围：
+|TerminateInstancesWithExpiration|Boolean|否|true|弹性供应组到期时，是否释放组内实例。取值范围：
 
- -   true：停止。停止后的下一步动作由`SpotInstanceInterruptionBehavior`指定
--   false：继续运行
+ -   true：释放组内实例。
+-   false：只将组内实例移出弹性供应组。
 
  默认值：false |
-|TerminateInstances|Boolean|否|true|删除弹性供应组时，是否释放组内实例。
+|TerminateInstances|Boolean|否|true|删除弹性供应组时，是否释放组内实例。取值范围：
+
+ -   true：释放组内实例。
+-   false：保留组内实例。
 
  默认值：false |
 |MaxSpotPrice|Float|否|2|弹性供应组内抢占式实例的最高价格。
