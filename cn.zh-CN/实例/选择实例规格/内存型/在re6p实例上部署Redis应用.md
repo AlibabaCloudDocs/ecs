@@ -1,6 +1,6 @@
 # 在re6p实例上部署Redis应用
 
-Redis应用运行在持久内存型实例上可以降低单GiB内存的成本，但为了保证性能，您需要对Redis应用做适当的改造。为了最大程度降低您的应用改造成本，re6p专门提供了针对Redis应用的规格，通过几行命令即可快速部署Redis应用。本文以Alibaba Cloud Linux和CentOS为例介绍如何在re6p实例上快速部署Redis应用。
+Redis应用运行在持久内存型实例上可以降低单GiB内存的成本，但为了保证性能，您需要对Redis应用做适当的改造。为了最大程度降低您的应用改造成本，re6p专门提供了针对Redis应用的规格，通过几行命令即可快速部署Redis应用。本文以Alibaba Cloud Linux 2和CentOS为例介绍如何在re6p实例上快速部署Redis应用。
 
 本文中快速部署Redis应用的步骤仅适用于以下实例规格：
 
@@ -18,13 +18,11 @@ Redis应用运行在持久内存型实例上可以降低单GiB内存的成本，
 -   Ubuntu 18.10及更高版本
 -   SUSE Linux 12 SP4及更高版本
 
-**说明：** 持久内存中数据的可靠性取决于物理服务器和持久内存设备的可靠性，因此存在单点故障风险。建议您在应用层做好数据冗余，将需要长期保存的业务数据存储到云盘上，以保证应用数据的可靠性。
+## 在使用Alibaba Cloud Linux 2操作系统的re6p实例上部署Redis应用
 
-## 在使用Alibaba Cloud Linux操作系统的re6p实例上部署Redis应用
+Alibaba Cloud Linux 2操作系统对Redis应用进行了专项调优，相比社区版操作系统，Redis应用整体性能提升20%以上。
 
-Alibaba Cloud Linux操作系统对Redis应用进行了专项调优，相比社区版操作系统，Redis应用整体性能提升20%以上。
-
-Alibaba Cloud Linux操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您可以通过yum install命令直接部署Redis 6.0.5和Redis 3.2.12。您也可以手动部署其他Redis版本，具体操作，请参见[在使用CentOS系统的re6p实例上部署Redis应用](#section_gx2_rzq_8rk)。
+Alibaba Cloud Linux 2操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您可以通过yum install命令直接部署Redis 6.0.5和Redis 3.2.12。您也可以手动部署其他Redis版本，具体操作，请参见[在使用CentOS系统的re6p实例上部署Redis应用](#section_gx2_rzq_8rk)。
 
 本示例中使用的配置如下：
 
@@ -41,23 +39,27 @@ Alibaba Cloud Linux操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您�
 
     具体操作，请参见[连接方式概述](/cn.zh-CN/实例/连接实例/连接方式概述.md)。
 
-3.  部署Redis应用。
+3.  安装阿里云exp源。
+
+    ```
+    yum install -y alinux-release-experimentals
+    ```
+
+4.  部署Redis应用。
 
     -   部署Redis 6.0.5：
 
         ```
-        yum install -y alinux-release-experimentals
         yum install -y redis-6.0.5
         ```
 
     -   部署Redis 3.2.12：
 
         ```
-        yum install -y alinux-release-experimentals
-        yum install –y redis-3.2.12
+        yum install -y redis-3.2.12
         ```
 
-4.  配置网卡多队列。
+5.  配置网卡多队列。
 
     网卡多队列可以帮助Redis应用获得更好的性能。
 
@@ -93,32 +95,55 @@ Alibaba Cloud Linux操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您�
         systemctl start ecs_mq
         ```
 
-5.  为Redis服务配置默认的DRAM和持久内存大小。
+6.  查看普通内存和持久内存的容量大小。
 
-    **说明：** 为防止其他未经优化的应用（例如Nginx）分配到持久内存的空间地址，引起性能问题，建议您在启动Redis应用时将所有持久内存分配给Redis应用。
+    1.  安装numactl。
 
-    示例命令如下：
+        ```
+        yum install -y numactl
+        ```
 
-    -   端口号6379、DRAM=4 GiB、持久内存32 GiB
+    2.  查看普通内存和持久内存的容量大小。
+
+        ```
+        numactl -H
+        ```
+
+        **说明：** `node 0 free`为可分配给应用程序的普通内存容量，`node 1 free`为可分配给应用程序的持久内存容量。
+
+        ![available-mem](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7756517161/p259154.png)
+
+7.  启动Redis服务。
+
+    1.  设置环境变量。
 
         ```
         export MEMKIND_DAX_KMEM_NODES=1
-        redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
         ```
 
-    -   端口号6379、DRAM=2 GiB、持久内存32 GiB
+    2.  启动Redis（配置默认使用的普通内存和持久内存容量）。
 
-        ```
-        export MEMKIND_DAX_KMEM_NODES=1
-        redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
-        ```
+        **说明：** 为防止其他未经优化的应用（例如Nginx）分配到持久内存的空间地址，引起性能问题，建议您在启动Redis应用时将所有持久内存分配给Redis应用。
 
-    -   端口号6379、DRAM=0 GiB、持久内存32 GiB
+        示例命令如下：
 
-        ```
-        export MEMKIND_DAX_KMEM_NODES=1
-        redis-server /etc/redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
-        ```
+        -   端口号6379、普通内存4 GiB、持久内存32 GiB
+
+            ```
+            redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
+            ```
+
+        -   端口号6379、普通内存2 GiB、持久内存32 GiB
+
+            ```
+            redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
+            ```
+
+        -   端口号6379、普通内存0 GiB、持久内存32 GiB
+
+            ```
+            redis-server /etc/redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
+            ```
 
 
 ## 在使用CentOS系统的re6p实例上部署Redis应用
@@ -145,58 +170,125 @@ Alibaba Cloud Linux操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您�
 
 3.  准备编译环境。
 
-    ```
-    export MEMKIND_DAX_KMEM_NODES=1
-    yum -y install numactl-devel.x86_64
-    yum -y groupinstall 'Development Tools'
-    ```
+    1.  设置环境变量。
 
-    **说明：** Development Tools包括gcc编译器等工具。
+        ```
+        export MEMKIND_DAX_KMEM_NODES=1
+        ```
 
-4.  下载Redis安装包。
+    2.  下载依赖包。
 
-    ```
-    wget https://github.com/redis-io/redis/archive/4.0.14.tar.gz
-    tar xzvf 4.0.14.tar.gz
-    ```
+        ```
+        yum -y install numactl-devel.x86_64
+        ```
+
+    3.  下载工具包。
+
+        ```
+        yum -y groupinstall 'Development Tools'
+        ```
+
+        **说明：** Development Tools包括gcc编译器等工具。
+
+4.  准备Redis 4.0.14安装包。
+
+    1.  下载安装包。
+
+        ```
+        wget https://github.com/redis-io/redis/archive/4.0.14.tar.gz
+        ```
+
+    2.  解压安装包。
+
+        ```
+        tar xzvf 4.0.14.tar.gz
+        ```
 
 5.  下载并安装为Redis应用使能持久内存的patch。
 
-    关于如何下载并安装更多Redis版本对应patch，请参见[下载使能持久内存的patch](#section_7l0_0ys_dm0)。
+    1.  下载patch。
 
-    ```
-    wget https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff -O redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
-    cd redis-4.0.14
-    git apply --ignore-whitespace ../redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
-    ```
+        ```
+        wget https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff -O redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
+        ```
 
-6.  安装memkind。
+        **说明：** 关于如何下载更多Redis版本对应的patch，请参见[下载使能持久内存的patch](#section_7l0_0ys_dm0)。
+
+    2.  切换到Redis 4.0.14安装目录。
+
+        ```
+        cd redis-4.0.14
+        ```
+
+    3.  安装patch。
+
+        ```
+        git apply --ignore-whitespace ../redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
+        ```
+
+6.  准备memkind安装包。
 
     memkind是内存管理工具，用于分配管理持久内存。
 
-    ```
-    wget https://github.com/memkind/memkind/archive/v1.10.1-rc2.tar.gz
-    tar xzvf v1.10.1-rc2.tar.gz
-    mv memkind-1.10.1-rc2/* ./deps/memkind/
-    ```
+    1.  下载memkind安装包。
 
-7.  如果glibc版本低于2.17，需要调整makefile。
+        ```
+        wget https://github.com/memkind/memkind/archive/v1.10.1-rc2.tar.gz
+        ```
 
-    ```
-    cd ./deps/memkind/
-    wget https://github.com/memKeyDB/memKeyDB/wiki/files/0001-Use-secure_getenv-when-possible.patch
-    git apply --ignore-whitespace 0001-Use-secure_getenv-when-possible.patch
-    ```
+    2.  解压memkind安装包。
 
-8.  在redis-4.0.14目录下执行编译。
+        ```
+        tar xzvf v1.10.1-rc2.tar.gz
+        ```
 
-    **说明：** 如果您未切换到./deps/memkind/目录调整makefile，则仍然位于redis-4.0.14目录下，无需运行`cd ../..`切换目录。
+    3.  将memkind安装包移动到./deps/memkind/目录中。
 
-    ```
-    cd ../..
-    make clean;make distclean;make MALLOC=memkind -j 4
-    make install
-    ```
+        ```
+        mv memkind-1.10.1-rc2/* ./deps/memkind/
+        ```
+
+7.  运行`ldd --version`查看glibc版本，并判断是否需要调整makefile。
+
+    **说明：** 如果glibc版本低于2.17，请执行以下操作调整makefile。如果glibc版本等于或高于2.17，请跳过以下操作直接开始编译Redis 4.0.14。
+
+    1.  切换到./deps/memkind/目录。
+
+        ```
+        cd ./deps/memkind/
+        ```
+
+    2.  下载patch。
+
+        ```
+        wget https://github.com/memKeyDB/memKeyDB/wiki/files/0001-Use-secure_getenv-when-possible.patch
+        ```
+
+    3.  安装patch。
+
+        ```
+        git apply --ignore-whitespace 0001-Use-secure_getenv-when-possible.patch
+        ```
+
+    4.  返回redis-4.0.14目录。
+
+        ```
+        cd /root/redis-4.0.14
+        ```
+
+8.  在redis-4.0.14目录中编译并安装Redis 4.0.14。
+
+    1.  编译Redis 4.0.14。
+
+        ```
+        make clean;make distclean;make MALLOC=memkind -j 4
+        ```
+
+    2.  安装Redis 4.0.14。
+
+        ```
+        make install
+        ```
 
 9.  配置网卡多队列。
 
@@ -234,25 +326,49 @@ Alibaba Cloud Linux操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您�
         systemctl start ecs_mq
         ```
 
-10. 为Redis服务配置默认的DRAM和持久内存大小。
+    6.  返回redis-4.0.14目录。
+
+        ```
+        cd /root/redis-4.0.14
+        ```
+
+10. 查看普通内存和持久内存的容量大小。
+
+    1.  安装numactl。
+
+        ```
+        yum install -y numactl
+        ```
+
+    2.  查看普通内存和持久内存的容量大小。
+
+        ```
+        numactl -H
+        ```
+
+        **说明：** `node 0 free`为可分配给应用程序的普通内存容量，`node 1 free`为可分配给应用程序的持久内存容量。
+
+        ![available-mem](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7756517161/p259154.png)
+
+11. 启动Redis（配置默认使用的普通内存和持久内存容量）。
 
     **说明：** 为防止其他未经优化的应用（例如Nginx）分配到持久内存的空间地址，引起性能问题，建议您在启动Redis应用时将所有持久内存分配给Redis应用。
 
     示例命令如下：
 
-    -   端口号6379、DRAM=4 GiB、持久内存32 GiB
+    -   端口号6379、普通内存4 GiB、持久内存32 GiB
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
         ```
 
-    -   端口号6379、DRAM=2 GiB、持久内存32 GiB
+    -   端口号6379、普通内存2 GiB、持久内存32 GiB
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
         ```
 
-    -   端口号6379、DRAM=0 GiB、持久内存32 GiB
+    -   端口号6379、普通内存0 GiB、持久内存32 GiB
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
