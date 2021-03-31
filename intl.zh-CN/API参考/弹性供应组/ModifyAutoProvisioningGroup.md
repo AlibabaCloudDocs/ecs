@@ -20,22 +20,18 @@
 |Action|String|是|ModifyAutoProvisioningGroup|系统规定参数。取值：ModifyAutoProvisioningGroup |
 |RegionId|String|是|cn-hangzhou|弹性供应组所在地域的ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |AutoProvisioningGroupId|String|否|apg-bp67acfmxazb4ph\*\*\*\*|弹性供应组的ID。 |
-|ExcessCapacityTerminationPolicy|String|否|no-termination|弹性供应组超过目标总容量时，是否停止超额的抢占式实例。取值范围：
+|ExcessCapacityTerminationPolicy|String|否|no-termination|弹性供应组实时容量超过目标容量并触发缩容时，是否释放缩容的实例。取值范围：
 
- -   no-termination：继续运行。
--   termination：停止。停止后的下一步动作由SpotInstanceInterruptionBehavior指定。
-
- **说明：** SpotInstanceInterruptionBehavior在创建弹性供应组时设置，且不可修改。 |
+ -   termination：释放缩容的实例。
+-   no-termination：只将缩容的实例移出弹性供应组。 |
 |DefaultTargetCapacityType|String|否|Spot|PayAsYouGoTargetCapacity和SpotTargetCapacity之和小于TotalTargetCapacity时，指定差额容量的计费方式。取值范围：
 
  -   PayAsYouGo：按量付费实例
 -   Spot：抢占式实例 |
-|TerminateInstancesWithExpiration|Boolean|否|false|弹性供应组到期时，是否停止抢占式实例。取值范围：
+|TerminateInstancesWithExpiration|Boolean|否|false|弹性供应组到期时，是否释放组内实例。取值范围：
 
- -   true：停止。停止后的下一步动作由SpotInstanceInterruptionBehavior指定。
--   false：继续运行。
-
- **说明：** SpotInstanceInterruptionBehavior在创建弹性供应组时设置，且不可修改。 |
+ -   true：释放组内实例。
+-   false：只将组内实例移出弹性供应组。 |
 |MaxSpotPrice|Float|否|0.5|弹性供应组内抢占式实例的最高价格。
 
  **说明：** 同时设置了MaxSpotPrice和LaunchTemplateConfig.N.MaxPrice时，以最低值为准。LaunchTemplateConfig.N.MaxPrice在创建弹性供应组时设置，且不可修改。 |
