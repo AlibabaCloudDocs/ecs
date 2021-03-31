@@ -58,7 +58,7 @@ To solve these issues, you can use an auto provisioning group to deploy an insta
 
 -   Practical protection mechanism
 
-    Auto provisioning groups provide the instance shutdown settings. You can configure the settings to specify whether to stop the instances in the group when an auto provisioning group expires or when instances exceed the target capacity. Auto provisioning groups perform routine health checks on instances and replace unhealthy instances in a timely manner to ensure availability of instances.
+    Auto provisioning groups perform routine health checks on instances and replace unhealthy instances in a timely manner to ensure availability of instances.
 
 
 ## Billing
