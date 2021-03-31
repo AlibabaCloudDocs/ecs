@@ -30,7 +30,7 @@ r7t is in invitational preview. To use r7t, [submit a ticket](https://workorder-
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
     -   Offers a CPU-to-memory-to-encrypted memory ratio of 1:4:4.
-    -   Uses third-generation Intel® Xeon® Scalable processors \(Ice Lake\) that deliver an all-core turbo frequency of 3.5 GHz for consistent computing performance.
+    -   Uses third-generation Intel® Xeon® Scalable processors that deliver consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
