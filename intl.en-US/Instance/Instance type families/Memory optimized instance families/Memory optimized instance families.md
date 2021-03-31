@@ -368,7 +368,7 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
 |:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.re4e.40xlarge|160|3,840.0|None|30.0|4,050|Yes|16|15|20|
+|ecs.re4e.40xlarge|160|3,840.0|None|30.0|4,500|Yes|16|15|20|
 
 **Note:**
 
