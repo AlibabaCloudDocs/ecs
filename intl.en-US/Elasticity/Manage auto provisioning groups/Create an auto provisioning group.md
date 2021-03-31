@@ -34,18 +34,40 @@ This topic describes how to create an auto provisioning group in the ECS console
     |**Target Capacity**|The target capacity that the auto provisioning group is scheduled to provision. You can specify this capacity in terms of **Instances** or **vCPUs**. After you select **Use Pay-as-you-go Instances to Provide Computing Power**, you can specify the computing power provided by the pay-as-you-go instances.**Note:** By default, only preemptible instances are created. Pay-as-you-go instances are created only after you set the value of Pay-as-you-go Instance Capacity to a number greater than 0. |
     |**Pay-as-you-go Instance Capacity**|The target capacity of pay-as-you-go instances that the auto provisioning group is scheduled to provision. You can specify this capacity in terms of instances or vCPUs. You can use pay-as-you-go instances to ensure that the lowest computing power requirement can be met because preemptible instances may be reclaimed.|
 
+    **Note:** When you create an auto provisioning group by calling the [CreateAutoProvisioningGroup](/intl.en-US/API Reference/Auto provisioning group/CreateAutoProvisioningGroup.md) operation, you can specify the target capacity in terms of instances, vCPUs, or the amount of memory.
+
     Auto Provisioning uses weights to indicate the capacity of a single instance in an auto provisioning group.
 
     -   If the target capacity is specified in terms of **Instances**, the weights of all instance types are the same.
-    -   If the target capacity is specified in terms of **vCPUs**, the weight of an instance type depends on the number of vCPUs of the instance type. The more vCPUs that an instance type has, the higher the weight of the instance type and the fewer instances of the instance type that are needed to meet the target capacity. For example, the target capacity is 24 vCPUs and is divided evenly among three instance types. The following table lists the weight and the number of instances required for each instance type.
+    -   If the target capacity is specified in terms of **vCPUs**, the weight of an instance type depends on the number of vCPUs of the instance type. The more vCPUs that an instance type has, the higher the weight of the instance type and the fewer instances of the instance type that are needed to meet the target capacity. The following table describes an example in which different weights are set for three instance types based on the number of vCPUs.
 
-        |Instance type|vCPU|Weight|Number of instances required to meet the target capacity|
-        |-------------|----|------|--------------------------------------------------------|
-        |ecs.c6.large|2|2|4|
-        |ecs.c6.xlarge|4|4|2|
-        |ecs.c6.2xlarge|8|8|1|
+        |Instancetype|vCPU|Weight|
+        |------------|----|------|
+        |ecs.c6.large|2|2|
+        |ecs.c6.xlarge|4|4|
+        |ecs.c6.2xlarge|8|8|
 
         **Note:** When you create an auto provisioning group in the ECS console, you do not need to manually set a weight for each instance type. Auto provisioning automatically assigns weights based on the number of vCPUs of each instance type.
+
+        For example, the target capacity is 24 vCPUs, and the auto provisioning group can deliver instances of one or more of the ecs.c6.large, ecs.c6.xlarge, ecs.c6.2xlarge instance types to meet the target capacity. The required number of instances is determined based on the combination of instance types:
+
+        -   12 ecs.c6.large instances
+        -   8 ecs.c6.large instances and 1 ecs.c6.2xlarge instance
+        -   4 ecs.c6.large instances, 2 ecs.c6.xlarge instances, and 1 ecs.c6.2xlarge instance
+    -   If the target capacity is specified in terms of the amount of memory, the weight of an instance type depends on the amount of memory of the instance type. The larger the amount of memory that an instance type has, the higher the weight of the instance type and the fewer the instances of the instance type that are needed to meet the target capacity. The following table describes an example in which different weights are set for three instance types based on the amount of memory.
+
+        |Instancetype|Memory|Weight|
+        |------------|------|------|
+        |ecs.c6.large|4 GiB|4|
+        |ecs.c6.xlarge|8 GiB|8|
+        |ecs.c6.2xlarge|16 GiB|16|
+
+        For example, the target capacity is 48 GiB memory, and the auto provisioning group can deliver instances of one or more of the ecs.c6.large, ecs.c6.xlarge, ecs.c6.2xlarge instance types to meet the target capacity. The required number of instances is determined based on the combination of instance types:
+
+        -   12 ecs.c6.large instances
+        -   8 ecs.c6.large instances and 1 ecs.c6.2xlarge instance
+        -   4 ecs.c6.large instances, 2 ecs.c6.xlarge instances, and 1 ecs.c6.2xlarge instance
+        **Note:** To specify the target capacity of an auto provisioning group in terms of the amount of memory, call the CreateAutoProvisioningGroup operation to create the auto provisioning group and set the weight of each alternative instance type based on the amount of memory.
 
 5.  In the **Configuration Source** and **Instance Configuration** fields, configure instance properties.
 
