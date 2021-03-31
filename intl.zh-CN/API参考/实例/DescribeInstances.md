@@ -214,7 +214,7 @@
 -   required：强制使用 |
 |NetworkInterfaces|Array of NetworkInterface| |实例包含的弹性网卡集合。 |
 |NetworkInterface| | | |
-|Ipv6Sets|Array of Ipv6Set| |为弹性网卡分配的IPv6地址集合。 |
+|Ipv6Sets|Array of Ipv6Set| |为弹性网卡分配的IPv6地址集合。仅当请求参数`AdditionalAttributes.N`取值为`NETWORK_PRIMARY_ENI_IP`时，才会返回该参数值。 |
 |Ipv6Set| | | |
 |Ipv6Address|String|2408:4321:180:1701:94c7:bc38:3bfa:\*\*\*|为弹性网卡指定的IPv6地址。 |
 |MacAddress|String|00:16:3e:32:b4:\*\*|弹性网卡的MAC地址。 |
