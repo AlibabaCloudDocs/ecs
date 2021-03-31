@@ -45,12 +45,10 @@
  -   request：一次性。供应组仅在启动时交付实例集群，调度失败后不再重试。
 -   maintain：持续供应。供应组在启动时尝试交付实例集群，并监控实时容量，未达到目标容量则尝试继续创建ECS实例。 |
 |CreationTime|String|2019-04-01T15:10:20Z|创建时间。 |
-|ExcessCapacityTerminationPolicy|String|termination|超过目标总容量时，是否停止超额的抢占式实例。可能值：
+|ExcessCapacityTerminationPolicy|String|termination|弹性供应组实时容量超过目标容量并触发缩容时，是否释放缩容的实例。可能值：
 
- -   no-termination：继续运行。
--   termination：停止。停止后的下一步动作由SpotInstanceInterruptionBehavior指定。
-
- **说明：** 该属性在创建弹性供应组时被设置，且不可修改。更多信息请参见[CreateAutoProvisioningGroup](~~122738~~)。 |
+ -   termination：释放缩容的实例。
+-   no-termination：只将缩容的实例移出弹性供应组。 |
 |LaunchTemplateConfigs|Array of LaunchTemplateConfig| |扩展启动模板的详细信息。 |
 |LaunchTemplateConfig| | | |
 |InstanceType|String|ecs.g5.large|扩展启动模板对应的实例规格。 |
@@ -110,13 +108,14 @@
  -   PayAsYouGoTargetCapacity
 -   SpotTargetCapacity
 -   PayAsYouGoTargetCapacity和SpotTargetCapacity之外的差额容量 |
-|TerminateInstances|Boolean|false|删除弹性供应组时，是否释放组内实例。 |
-|TerminateInstancesWithExpiration|Boolean|true|弹性供应组到期时，是否停止抢占式实例。可能值：
+|TerminateInstances|Boolean|false|删除弹性供应组时，是否释放组内实例。可能值：
 
- -   true：停止。停止后的下一步动作由SpotInstanceInterruptionBehavior指定。
--   false：继续运行。
+ -   true：释放组内实例。
+-   false：保留组内实例。 |
+|TerminateInstancesWithExpiration|Boolean|true|弹性供应组到期时，是否释放组内实例。可能值：
 
- **说明：** SpotInstanceInterruptionBehavior在创建弹性供应组时设置，且不可修改。 |
+ -   true：释放组内实例。
+-   false：只将组内实例移出弹性供应组。 |
 |ValidFrom|String|2019-04-01T15:10:20Z|弹性供应组的启动时间，和`ValidUntil`结合确定有效时段。 |
 |ValidUntil|String|2019-06-01T15:10:20Z|弹性供应组的到期时间，和`ValidFrom`结合确定有效时段。 |
 |PageNumber|Integer|1|页码。 |
