@@ -22,7 +22,7 @@ To solve these issues, you can use an auto provisioning group to deploy an insta
 
 -   Flexible computing power delivery methods
 
-    The target capacity for an auto provisioning group is set based on the number of instances or vCPUs. Auto Provisioning uses weights to indicate the capacity of a single instance in an auto provisioning group. For more information, see [Create an auto provisioning group](/intl.en-US/Elasticity/Manage auto provisioning groups/Create an auto provisioning group.md).
+    The target capacity for an auto provisioning group is set based on the number of instances or vCPUs, or the amount of memory. Auto Provisioning uses weights to indicate the capacity of a single instance in an auto provisioning group. For more information, see [Create an auto provisioning group](/intl.en-US/Elasticity/Manage auto provisioning groups/Create an auto provisioning group.md).
 
 -   Multi-zone and multi-instance types
 
