@@ -41,8 +41,8 @@ This topic describes how to create an auto provisioning group in the ECS console
     -   If the target capacity is specified in terms of **Instances**, the weights of all instance types are the same.
     -   If the target capacity is specified in terms of **vCPUs**, the weight of an instance type depends on the number of vCPUs of the instance type. The more vCPUs that an instance type has, the higher the weight of the instance type and the fewer instances of the instance type that are needed to meet the target capacity. The following table describes an example in which different weights are set for three instance types based on the number of vCPUs.
 
-        |Instancetype|vCPU|Weight|
-        |------------|----|------|
+        |Instance type|vCPU|Weight|
+        |-------------|----|------|
         |ecs.c6.large|2|2|
         |ecs.c6.xlarge|4|4|
         |ecs.c6.2xlarge|8|8|
@@ -56,8 +56,8 @@ This topic describes how to create an auto provisioning group in the ECS console
         -   4 ecs.c6.large instances, 2 ecs.c6.xlarge instances, and 1 ecs.c6.2xlarge instance
     -   If the target capacity is specified in terms of the amount of memory, the weight of an instance type depends on the amount of memory of the instance type. The larger the amount of memory that an instance type has, the higher the weight of the instance type and the fewer the instances of the instance type that are needed to meet the target capacity. The following table describes an example in which different weights are set for three instance types based on the amount of memory.
 
-        |Instancetype|Memory|Weight|
-        |------------|------|------|
+        |Instance type|Memory|Weight|
+        |-------------|------|------|
         |ecs.c6.large|4 GiB|4|
         |ecs.c6.xlarge|8 GiB|8|
         |ecs.c6.2xlarge|16 GiB|16|
@@ -73,7 +73,7 @@ This topic describes how to create an auto provisioning group in the ECS console
 
     You can use an auto provisioning group to create instances of multiple instance types across multiple zones. If an instance fails to be created due to insufficient resources of a specific instance type or in a specific zone, the auto provisioning group attempts to create instances of another instance type or in another zone. This can improve the success rate of creating instances.
 
-    You can specify vSwitches in multiple zones to create instances across multiple zones, and add instance types to create instances of multiple instance types. The following figure shows an example of parameter configurations. For more examples, see[Configure an auto provisioning group](/intl.en-US/Elasticity/Manage auto provisioning groups/Configure an auto provisioning group.md).
+    You can specify vSwitches in multiple zones to create instances across multiple zones, and add instance types to create instances of multiple instance types. The following figure shows an example of parameter configurations. For more examples, see [Configure an auto provisioning group](/intl.en-US/Elasticity/Manage auto provisioning groups/Configure an auto provisioning group.md).
 
     ![multi-zone-type](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2359695161/p244716.png)
 
