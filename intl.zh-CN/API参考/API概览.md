@@ -133,20 +133,6 @@
 |[DescribeImageSupportInstanceTypes](/intl.zh-CN/API参考/镜像/DescribeImageSupportInstanceTypes.md)|调用DescribeImageSupportInstanceTypes查询指定镜像支持的实例规格。|
 |[DescribeImageFromFamily](/intl.zh-CN/API参考/镜像/DescribeImageFromFamily.md)|调用DescribeImageFromFamily查询指定镜像族系内最新创建的可用自定义镜像。|
 
-## 镜像构建
-
-|API|描述|
-|---|--|
-|[CreateImageComponent](/intl.zh-CN/API参考/镜像构建/CreateImageComponent.md)|调用CreateImageComponent创建一个镜像组件。镜像组件用于存储您在构建镜像时，常用的构建模板命令。|
-|[CreateImagePipeline](/intl.zh-CN/API参考/镜像构建/CreateImagePipeline.md)|调用CreateImagePipeline创建一个镜像模板。镜像模板可用于构建镜像。|
-|[DescribeImageComponents](/intl.zh-CN/API参考/镜像构建/DescribeImageComponents.md)|调用DescribeImageComponents查询一个或多个镜像组件的详细信息。|
-|[DescribeImagePipelines](/intl.zh-CN/API参考/镜像构建/DescribeImagePipelines.md)|调用DescribeImagePipelines查询一个或多个镜像模板的详细信息。|
-|[DeleteImageComponent](/intl.zh-CN/API参考/镜像构建/DeleteImageComponent.md)|调用DeleteImageComponent删除一个镜像组件。|
-|[DeleteImagePipeline](/intl.zh-CN/API参考/镜像构建/DeleteImagePipeline.md)|调用DeleteImagePipeline删除一个镜像模板。|
-|[StartImagePipelineExecution](/intl.zh-CN/API参考/镜像构建/StartImagePipelineExecution.md)|调用StartImagePipelineExecution通过一个镜像模板执行构建镜像的任务。|
-|[DescribeImagePipelineExecutions](/intl.zh-CN/API参考/镜像构建/DescribeImagePipelineExecutions.md)|调用DescribeImagePipelineExecutions查询一个镜像构建任务的详细信息。|
-|[CancelImagePipelineExecution](/intl.zh-CN/API参考/镜像构建/CancelImagePipelineExecution.md)|调用CancelImagePipelineExecution取消一个镜像构建任务。|
-
 ## 快照
 
 |API|描述|
