@@ -147,20 +147,6 @@ The following tables list the API operations available for use in ECS.
 |[DescribeImageSupportInstanceTypes](/intl.en-US/API Reference/Images/DescribeImageSupportInstanceTypes.md)|Queries the instance types supported by an image.|
 |[t1876994.md\#](/intl.en-US/API Reference/Images/DescribeImageFromFamily.md)|Queries available custom images that are newly created in a specific image family.|
 
-## Image builder
-
-|API|Description|
-|---|-----------|
-|[t2007161.md\#]()|Creates an image component. An image component is used to store the builder template commands that are commonly used when you build an image.|
-|[t2007251.md\#]()|Creates an image template. An image template can be used to build an image.|
-|[t2007175.md\#]()|Queries the details of one or more image components.|
-|[t2007271.md\#]()|Queries the details of one or more image templates.|
-|[t2007170.md\#]()|Deletes an image component.|
-|[t2007279.md\#]()|Deletes an image template.|
-|[t2007280.md\#]()|Executes an image building task by using an image template.|
-|[t2007620.md\#]()|Queries the details of an image building task.|
-|[t2007281.md\#]()|Cancels an image building task.|
-
 ## Snapshots
 
 |API|Description|
