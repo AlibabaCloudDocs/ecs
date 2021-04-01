@@ -8,10 +8,11 @@ Values for the `DestinationResource` parameter have dependencies. When you selec
 
 -   Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
 -   Examples:
-    -   If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter.
+    -   If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
+    -   If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
     -   If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
-    -   If you want to query the available ecs.g5.large resources in all zones of the China \(Hangzhou\) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
-    -   If you want to query the zones where ecs.g5.large resources are available within the China \(Hangzhou\) region, you must set RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
+    -   If you want to query the available ecs.g5.large resources in all zones of the China \(Hangzhou\) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.
+    -   If you want to query the zones where ecs.g5.large resources are available within the China \(Hangzhou\) region, you must set RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large.
 
 ## Debugging
 
@@ -34,7 +35,7 @@ Values for the `DestinationResource` parameter have dependencies. When you selec
 
 For more information about how to set the DestinationResource parameter, see the "Description" section in this topic. |
 |RegionId|String|Yes|cn-hangzhou|The region ID. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
-|ZoneId|String|No|cn-hangzhou-e|The zone ID.
+|ZoneId|String|No|cn-hangzhou-e|The ID of the zone for which to query resources.
 
 This parameter is empty by default. When this parameter is empty, the system returns resources that match the other filter conditions of all zones within the region specified by `RegionId`. |
 |InstanceChargeType|String|No|PrePaid|The billing method of the resource. For more information, see [Billing overview](~~25398~~). Valid values:
@@ -45,13 +46,13 @@ This parameter is empty by default. When this parameter is empty, the system ret
 Default value: PostPaid. |
 |SpotStrategy|String|No|NoSpot|The preemption policy for the preemptible or pay-as-you-go instance. Valid values:
 
--   NoSpot: The instance is a regular pay-as-you-go instance.
--   SpotWithPriceLimit: The instance is created with a maximum hourly price.
--   SpotAsPriceGo: The instance is of the market price at the time of purchase.
+-   NoSpot: applies to regular pay-as-you-go instances.
+-   SpotWithPriceLimit: applies to preemptible instances that have maximum hourly prices.
+-   SpotAsPriceGo: applies to preemptible instances that are of the market price at the time of purchase.
 
 Default value: NoSpot.
 
-This parameter takes effect only when the InstanceChargeType parameter is set to PostPaid. |
+The SpotStrategy parameter takes effect only when the InstanceChargeType parameter is set to PostPaid. |
 |IoOptimized|String|No|optimized|Specifies whether the instance is I/O optimized. Valid values:
 
 -   none: non-I/O optimized
@@ -59,9 +60,9 @@ This parameter takes effect only when the InstanceChargeType parameter is set to
 
 Default value: optimized. |
 |DedicatedHostId|String|No|dh-bp165p6xk2tlw61e\*\*\*\*|The ID of the dedicated host. |
-|InstanceType|String|No|ecs.g5.large|The instance type. For more information, see [Instance type families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the most recent instance type list.
+|InstanceType|String|No|ecs.g5.large|The instance type. For more information, see [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the most recent instance type list.
 
-When the DestinationResource parameter is set to SystemDisk or DataDisk, the InstanceType parameter is required. |
+When the DestinationResource parameter is set to SystemDisk or DataDisk, you must set the InstanceType parameter. |
 |SystemDiskCategory|String|No|cloud\_ssd|The category of the system disk. Valid values:
 
 -   cloud: basic disk
@@ -84,13 +85,13 @@ Default value: cloud\_efficiency. |
 
 -   vpc
 -   classic |
-|Cores|Integer|No|2|The number of vCPU cores of the instance type. For more information, see [Instance type families](~~25378~~).
+|Cores|Integer|No|2|The number of vCPU cores of the instance type. For more information, see [Instance families](~~25378~~).
 
 The Cores parameter takes effect only when the DestinationResource parameter is set to InstanceType. |
-|Memory|Float|No|8.0|The memory size of the instance type. Unit: GiB. For more information, see [Instance type families](~~25378~~).
+|Memory|Float|No|8.0|The memory size of the instance type. Unit: GiB. For more information, see [Instance families](~~25378~~).
 
 The Memory parameter takes effect only when the DestinationResource parameter is set to InstanceType. |
-|ResourceType|String|No|instance|The resource type. Valid values:
+|ResourceType|String|No|instance|The type of the resource. Valid values:
 
 -   instance: ECS instance
 -   disk: cloud disk
@@ -121,7 +122,7 @@ The Memory parameter takes effect only when the DestinationResource parameter is
 -   ClosedWithoutStock: Resources are sold out and will not be replenished.We recommend that you use resources in sufficient stock. |
 |Unit|String|null|The unit of the resource type. No value is returned when the parameter is empty. |
 |Value|String|ecs.d1ne.xlarge|The value of the resource. |
-|Type|String|InstanceType|The types of the resources. Valid values:
+|Type|String|InstanceType|The type of the resource. Valid values:
 
 -   Zone: zone
 -   IoOptimized: I/O optimized
@@ -130,7 +131,7 @@ The Memory parameter takes effect only when the DestinationResource parameter is
 -   DataDisk: data disk
 -   Network: network type
 -   ddh: dedicated host |
-|RegionId|String|cn-hangzhou|The region ID. |
+|RegionId|String|cn-hangzhou|The region ID of the resource. |
 |Status|String|Available|The status of the resource. Valid values:
 
 -   Available
@@ -141,7 +142,7 @@ The Memory parameter takes effect only when the DestinationResource parameter is
 -   ClosedWithStock: Resources are insufficient. We recommend that you use resources in sufficient stock.
 -   WithoutStock: Resources are sold out and will be replenished. We recommend that you use resources in sufficient stock.
 -   ClosedWithoutStock: Resources are sold out and will not be replenished.We recommend that you use resources in sufficient stock. |
-|ZoneId|String|cn-hangzhou-e|The zone ID. |
+|ZoneId|String|cn-hangzhou-e|The zone ID of the resource. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
 
 ## Examples
