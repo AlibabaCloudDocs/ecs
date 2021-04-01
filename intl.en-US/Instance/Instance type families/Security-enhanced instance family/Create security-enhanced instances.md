@@ -25,7 +25,7 @@ When you create a security-enhanced instance in the ECS console, you are prompte
 
     -   **Instance Type**: You can select a security-enhanced instance type.
 
-        **Note:** The seventh-generation security-enhanced instance families \(g7t, c7t, and r7t\) support SGX encrypted computing. When you create an instance of the g7t, c7t, or r7t instance family in the ECS console, the Alibaba Cloud SGX runtime is automatically installed. For information about how to build an SGX encrypted computing environment on instances of the g7t, c7t, or r7t instance families, see [t2057424.md\#](/intl.en-US/Instance/Instance type families/Security-enhanced instance family/Build an SGX encrypted computing environment.md)。
+        **Note:** The seventh-generation security-enhanced instance families \(g7t, c7t, and r7t\) support SGX encrypted computing. When you create an instance of the g7t, c7t, or r7t instance family in the ECS console, the Alibaba Cloud SGX runtime is automatically installed. For information about how to build an SGX encrypted computing environment on instances of the g7t, c7t, or r7t instance families, see [t2057424.md\#](/intl.en-US/Instance/Instance type families/Security-enhanced instance family/Build an SGX encrypted computing environment.md).
 
     -   **Image**:
 
