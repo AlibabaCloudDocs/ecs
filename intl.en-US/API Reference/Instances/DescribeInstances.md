@@ -4,9 +4,15 @@ You can call this operation to query the details of one or more instances.
 
 ## Description
 
--   You can specify multiple request parameters. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
--   If you are using a RAM user or RAM role, an empty list is returned when the user or the role has no permission to call this operation. You can include the `DryRun` parameter in your request to check whether the empty list is caused by the lack of permission.
--   When you call an API operation by using Alibaba Cloud Command Line Interface \(CLI\), specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+-   You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+-   If you are using a RAM user or RAM role, an empty list is returned when the user or the role has no permission to call this operation. You can include the `DryRun` parameter in your request to check whether the empty list is caused by the lack of permissions.
+-   When you call an API operation by using Alibaba Cloud Command Line Interface \(CLI\), you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+-   You can use one of the following methods to check the responses:
+    -   Method 1: Use `NextToken` to configure the query token. Set this parameter to the `NextToken` value that is returned in the last call to the DescribeInstances operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+    -   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the number of the page to return.
+
+        You can use only one of the preceding methods. If a large number of entries are returned, we recommend that you use method 1. If NextToken is set, the PageSize and PageNumber request parameters become invalid.
+
 
 ## Debugging
 
@@ -20,27 +26,33 @@ You can call this operation to query the details of one or more instances.
 |RegionId|String|Yes|cn-hangzhou|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |VpcId|String|No|v-bp67acfmxazb4p\*\*\*\*|The ID of the VPC. |
 |VSwitchId|String|No|vsw-bp67acfmxazb4p\*\*\*\*|The ID of the vSwitch to which the instance is connected. |
-|ZoneId|String|No|cn-hangzhou-g|The zone ID of the instance. |
+|ZoneId|String|No|cn-hangzhou-g|The zone ID. |
 |InstanceNetworkType|String|No|vpc|The network type of the instance. Valid values:
 
 -   classic
 -   vpc |
 |SecurityGroupId|String|No|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group to which the instance belongs. |
-|InstanceIds|String|No|\["i-bp67acfmxazb4p\*\*\*\*", "i-bp67acfmxazb4p\*\*\*\*", ... "i-bp67acfmxazb4p\*\*\*\*"\]|The IDs of instances. It can be a JSON array that consists of up to 100 instance IDs. Separate multiple instance IDs with commas \(,\). |
+|InstanceIds|String|No|\["i-bp67acfmxazb4p\*\*\*\*", "i-bp67acfmxazb4p\*\*\*\*", ... "i-bp67acfmxazb4p\*\*\*\*"\]|The IDs of the instances. It can be a JSON array that consists of up to 100 instance IDs. Separate multiple instance IDs with commas \(,\). |
 |PageNumber|Integer|No|1|The number of the page to return.
 
 Pages start from page 1.
 
 Default value: 1. |
-|PageSize|Integer|No|10|The number of entries returned per page.
+|PageSize|Integer|No|10|The number of entries to return on each page.
+
+Maximum value: 100.
+
+Default value: 10. |
+|NextToken|String|No|caeba0bbb2be03f84eb48b699f0a4883|The query token. Set the value to the `NextToken` value returned in the last call. |
+|MaxResults|Integer|No|10|The number of entries to return on each page.
 
 Maximum value: 100.
 
 Default value: 10. |
 |InnerIpAddresses|String|No|\["10.1.1.1", "10.1.2.1", ... "10.1.10.1"\]|The internal IP addresses of classic network-type instances. This parameter takes effect when InstanceNetworkType is set to classic. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas \(,\). |
 |PrivateIpAddresses|String|No|\["172.16.1.1", "172.16.2.1", ... "172.16.10.1"\]|The private IP addresses of VPC-type instances. This parameter takes effect when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas \(,\). |
-|PublicIpAddresses|String|No|\["42.1.1. \*\*", "42.1.2. \*\*", ... "42.1.10. \*\*"\]|The public IP addresses of instances. It can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas \(,\). |
-|EipAddresses|String|No|\["42.1.1. \*\*", "42.1.2. \*\*", ... "42.1.10. \*\*"\]|The elastic IP addresses \(EIPs\) of the instances. This parameter takes effect when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas \(,\). |
+|PublicIpAddresses|String|No|\["42.1.1.\*\*", "42.1.2.\*\*", ... "42.1.10.\*\*"\]|The public IP addresses of instances. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas \(,\). |
+|EipAddresses|String|No|\["42.1.1.\*\*", "42.1.2.\*\*", ... "42.1.10.\*\*"\]|The elastic IP addresses \(EIPs\) of the instance. This parameter takes effect when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas \(,\). |
 |InstanceChargeType|String|No|PostPaid|The billing method of the instance. Valid values:
 
 -   PostPaid: pay-as-you-go
@@ -50,7 +62,7 @@ Default value: 10. |
 -   PayByBandwidth
 -   PayByTraffic
 
-**Note:** When the **pay-by-traffic** billing method is used, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and used only for reference. In the event of resource contention, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instances, use the **pay-by-bandwidth** billing method. |
+**Note:** When the **pay-by-traffic** billing method for network usage is used, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and used only for reference. When resources are insufficient, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth** billing method for network usage. |
 |InstanceName|String|No|Test|The name of the instance. Fuzzy search by using the asterisk \(\*\) wildcard is supported. |
 |ImageId|String|No|m-bp67acfmxazb4p\*\*\*\*|The ID of the image. |
 |Status|String|No|Running|The status of the instance. Valid values:
@@ -64,30 +76,30 @@ Default value: 10. |
 |IoOptimized|Boolean|No|true|Specifies whether the instance is I/O optimized. |
 |Tag.N.value|String|No|valueTest|The value of tag N.
 
-**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Value parameter to ensure compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Value parameter to ensure future compatibility. |
 |Tag.N.key|String|No|keyTest|The key of tag N.
 
-**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Key parameter to ensure compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use the Tag.N.Key parameter to ensure future compatibility. |
 |Tag.N.Key|String|No|TestKey|The key of tag N of the instance. Valid values of N: 1 to 20.
 
 If a single tag is specified to query resources, up to 1,000 resources that are bound with this tag can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that are bound with all these tags can be displayed in the response. To query more than 1,000 resources that are bound with specified tags, call the [ListTagResources](~~110425~~) operation. |
 |Tag.N.Value|String|No|TestValue|The value of tag N of the instance. Valid values of N: 1 to 20. |
-|InstanceType|String|No|ecs.g5.large|The instance type. |
-|InstanceTypeFamily|String|No|ecs.g5|The instance family. |
+|InstanceType|String|No|ecs.g5.large|The instance type of the instance. |
+|InstanceTypeFamily|String|No|ecs.g5|The instance family of the instance. |
 |KeyPairName|String|No|KeyPairNameTest|The name of the SSH key pair for the instance. |
 |ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the instance belongs. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response. |
 |HpcClusterId|String|No|hpc-bp67acfmxazb4p\*\*\*\*|The ID of the HPC cluster to which the instance belongs. |
 |RdmaIpAddresses|String|No|10.10.10.102|The RDMA IP addresses of the HPC instances. |
 |DryRun|Boolean|No|false|Specifies whether to check the validity of the request without actually making the request. Default value: false. Valid values:
 
--   true: The validity of the request is checked but the request is not made. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are set. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+-   true: The validity of the request is checked but the request is not made. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
 -   false: The validity of the request is checked. If the check succeeds, a 2XX HTTP status code is returned and the request is made. |
 |AdditionalAttributes.N|RepeatList|No|META\_OPTIONS|The value of attribute N. Valid values of N: 1 to 20. Valid values:
 
 -   META\_OPTIONS: the instance metadata
 -   DDH\_CLUSTER: the dedicated host cluster
--   NETWORK\_PRIMARY\_ENI\_IP: the secondary IP addresses bound to the primary elastic network interface \(ENI\) of the instance |
-|HttpEndpoint|String|No|enabled|Specifies whether to enable the access channel for the instance metadata. Valid values:
+-   NETWORK\_PRIMARY\_ENI\_IP: the secondary IP addresses associated with the primary elastic network interface \(ENI\) of the instance |
+|HttpEndpoint|String|No|enabled|Specifies whether to enable the access channel for instance metadata. Valid values:
 
 -   enabled
 -   disabled
@@ -111,7 +123,7 @@ Default value: optional.
 |Instances|Array of Instance| |Details about the instances. |
 |Instance| | | |
 |AutoReleaseTime|String|2017-12-10T04:04Z|The automatic release time of the pay-as-you-go instance. |
-|ClusterId|String|c-bp67acfmxazb4p\*\*\*\*|The ID of the cluster.
+|ClusterId|String|c-bp67acfmxazb4p\*\*\*\*|The ID of the cluster to which the instance belongs.
 
 **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
 |Cpu|Integer|8|The number of vCPUs. |
@@ -122,10 +134,10 @@ Default value: optional.
 |CreationTime|String|2017-12-10T04:04Z|The time when the instance was created. |
 |CreditSpecification|String|Standard|The performance mode of the burstable instance. Valid values:
 
--   Standard: the standard mode. For more information, see the "Standard mode" section of the [Overview](~~59977~~) topic.
--   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section of the [Overview](~~59977~~) topic. |
+-   Standard: the standard mode. For more information, see the "Standard mode" section in [Overview](~~59977~~).
+-   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in [Overview](~~59977~~). |
 |DedicatedHostAttribute|Struct| |The host attribute array that consists of the DedicatedHostClusterId, DedicatedHostId, and DedicatedHostName values. |
-|DedicatedHostClusterId|String|dc-bp67acfmxazb4h\*\*\*\*|The cluster ID of the dedicated host. |
+|DedicatedHostClusterId|String|dc-bp67acfmxazb4h\*\*\*\*|The ID of the dedicated host cluster. |
 |DedicatedHostId|String|dh-bp67acfmxazb4p\*\*\*\*|The ID of the dedicated host. |
 |DedicatedHostName|String|testDedicatedHostName|The name of the dedicated host. |
 |DedicatedInstanceAttribute|Struct| |The attribute of the instance on a dedicated host. |
@@ -137,36 +149,36 @@ Default value: optional.
 
 -   default: The instance is not hosted on a dedicated host.
 -   host: The instance is hosted on a dedicated host. |
-|DeletionProtection|Boolean|false|The release protection property of the instance. This indicates whether you can use the ECS console or call the DeleteInstance operation to release the instance.
+|DeletionProtection|Boolean|false|The release protection property of the instance, which indicates whether you can use the ECS console or call the DeleteInstance operation to release the instance.
 
 -   true: Release protection is enabled for the instance.
 -   false: Release protection is disabled for the instance.
 
 **Note:** This parameter is applicable only to pay-as-you-go instances. It can protect only against manual releases, not against automatic releases. |
-|DeploymentSetGroupNo|Integer|1|The group No. of the instance in a deployment set when the deployment set is used to distribute instances across multiple physical machines. |
+|DeploymentSetGroupNo|Integer|1|The group number of the instance in a deployment set when the deployment set is used to distribute instances across multiple physical machines. |
 |DeploymentSetId|String|ds-bp67acfmxazb4p\*\*\*\*|The ID of the deployment set. |
 |Description|String|testDescription|The description of the instance. |
 |DeviceAvailable|Boolean|true|Indicates whether data disks can be attached to the instance. |
 |EcsCapacityReservationAttr|Struct| |The capacity reservation attribute of the ECS instance. |
 |CapacityReservationId|String|cr-bp67acfmxazb4p\*\*\*\*|The ID of the capacity reservation. |
-|CapacityReservationPreference|String|cr-bp67acfmxazb4p\*\*\*\*|The preference of the ECS capacity reservation. |
-|EipAddress|Struct| |The information of the EIP associated with the instance. |
-|AllocationId|String|i-bp67acfmxazb4p\*\*\*\*|The ID of the instance with which the EIP is associated. |
+|CapacityReservationPreference|String|cr-bp67acfmxazb4p\*\*\*\*|The preference of the capacity reservation. |
+|EipAddress|Struct| |Details about the EIP associated with the instance. |
+|AllocationId|String|eip-2ze88m67qx5z\*\*\*\*|The ID of the EIP. |
 |Bandwidth|Integer|5|The maximum public bandwidth of the EIP. Unit: Mbit/s. |
-|InternetChargeType|String|PayByTraffic|The billing method of the EIP.
+|InternetChargeType|String|PayByTraffic|The billing method of the EIP. Valid values:
 
 -   PayByBandwidth
 -   PayByTraffic |
-|IpAddress|String|42.112.\*\*. \*\*|The EIP. |
+|IpAddress|String|42.112.\*\*.\*\*|The EIP. |
 |IsSupportUnassociate|Boolean|true|Indicates whether the EIP can be disassociated. |
 |ExpiredTime|String|2017-12-10T04:04Z|The expiration time of the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. For more information, see [ISO 8601 Time Format](~~25696~~). |
 |GPUAmount|Integer|4|The number of GPUs for the instance type. |
 |GPUSpec|String|NVIDIA V100|The category of GPUs for the instance type. |
 |HostName|String|testHostName|The hostname of the instance. |
 |HpcClusterId|String|hpc-bp67acfmxazb4p\*\*\*\*|The ID of the HPC cluster to which the instance belongs. |
-|ISP|String|null|**Note:** This parameter is in invitational preview and not available. |
+|ISP|String|null|**Note:** This parameter is in invitational preview and unavailable. |
 |ImageId|String|m-bp67acfmxazb4p\*\*\*\*|The ID of the image that the instance is running. |
-|InnerIpAddress|List|10.170.\*\*. \*\*|The internal IP address of the instance. |
+|InnerIpAddress|List|10.170.\*\*.\*\*|The internal IP address of the classic network-type instance. |
 |InstanceChargeType|String|PostPaid|The billing method of the instance. Valid values:
 
 -   PrePaid: subscription
@@ -195,61 +207,61 @@ Default value: optional.
 
 -   enabled
 -   disabled |
-|HttpPutResponseHopLimit|Integer|0|This parameter is not available. |
+|HttpPutResponseHopLimit|Integer|0|This parameter is unavailable. |
 |HttpTokens|String|optional|Indicates whether the security hardening mode \(IMDSv2\) was forcibly used to access instance metadata. Valid values:
 
 -   optional: The security hardening mode \(IMDSv2\) was not forcibly used.
 -   required: The security hardening mode \(IMDSv2\) was forcibly used. |
-|NetworkInterfaces|Array of NetworkInterface| |Details about the ENIs bound to the instance. |
+|NetworkInterfaces|Array of NetworkInterface| |The ENIs bound to the instance. |
 |NetworkInterface| | | |
-|Ipv6Sets|Array of Ipv6Set| |Details about the IPv6 addresses assigned to the ENI. |
+|Ipv6Sets|Array of Ipv6Set| |The IPv6 addresses assigned to the ENI. |
 |Ipv6Set| | | |
 |Ipv6Address|String|2408:4321:180:1701:94c7:bc38:3bfa:\*\*\*|The IPv6 address assigned to the ENI. |
 |MacAddress|String|00:16:3e:32:b4:\*\*|The MAC address of the ENI. |
 |NetworkInterfaceId|String|eni-2zeh9atclduxvf1z\*\*\*\*|The ID of the ENI. |
-|PrimaryIpAddress|String|172.17.\*\*. \*\*\*|The primary private IP address of the ENI. |
+|PrimaryIpAddress|String|172.17.\*\*.\*\*\*|The primary private IP address of the ENI. |
 |PrivateIpSets|Array of PrivateIpSet| |Details about the private IP addresses of the ENI. |
 |PrivateIpSet| | | |
 |Primary|Boolean|true|Indicates whether the IP address is the primary private IP address. |
-|PrivateIpAddress|String|172.17.\*\*. \*\*|The private IP address of the instance. |
+|PrivateIpAddress|String|172.17.\*\*.\*\*|The private IP address of the instance. |
 |Type|String|Primary|The type of the ENI. Valid values:
 
 -   Primary
 -   Secondary |
 |OSName|String|CentOS 7.4 64-bit|The name of the operating system for the instance. |
 |OSNameEn|String|CentOS 7.4 64 bit|The English name of the operating system for the instance. |
-|OSType|String|linux|The operating system type of the instance, consisting of Windows Server and Linux. Valid values:
+|OSType|String|linux|The operating system type of the instance, which consists of Windows Server and Linux. Valid values:
 
 -   windows
 -   linux |
-|OperationLocks|Array of LockReason| |Details about the reasons why the instance was locked. |
+|OperationLocks|Array of LockReason| |The reasons why the instance was locked. |
 |LockReason| | | |
 |LockMsg|String|The specified instance is locked due to financial reason.|The description of the locked instance. |
 |LockReason|String|Recycling|The type of the reason why the instance was locked. Valid value:
 
 -   financial: The instance was locked due to overdue payments.
 -   security: The instance was locked due to security reasons.
--   recycling: The preemptible instance was locked and is pending for release.
+-   recycling: The preemptible instance is locked and pending for release.
 -   dedicatedhostfinancial: The instance was locked due to overdue payments on the dedicated host.
 -   refunded: The instance was locked because a refund was made for the instance. |
-|PublicIpAddress|List|121.40.\*\*. \*\*|The public IP address of the instance. |
-|RdmaIpAddress|List|10.10.10.102|The RDMA IP address of HPC instance. |
+|PublicIpAddress|List|121.40.\*\*.\*\*|The public IP address of the instance. |
+|RdmaIpAddress|List|10.10.10.102|The RDMA IP address of the HPC instance. |
 |Recyclable|Boolean|false|Indicates whether the instance can be recycled. |
 |RegionId|String|cn-hangzhou|The region ID of the instance. |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the instance belongs. |
 |SaleCycle|String|month|The billing cycle of the instance. |
-|SecurityGroupIds|List|sg-bp67acfmxazb4p\*\*\*\*|The IDs of security groups to which the instance belongs. |
+|SecurityGroupIds|List|sg-bp67acfmxazb4p\*\*\*\*|The IDs of the security groups to which the instance belongs. |
 |SerialNumber|String|51d1353b-22bf-4567-a176-8b3e12e4\*\*\*\*|The serial number of the instance. |
 |SpotDuration|Integer|1|The protection period of the preemptible instance. Unit: hours. Valid values: 0 to 6.
 
--   Protection periods of two to six hours are in invitational preview. If you want to set the protection period value to one of these values, submit a ticket.
+-   Protection periods of 2 to 6 hours are in invitational preview. If you want to set the protection period value to one of these values, submit a ticket.
 -   A value of 0 indicates that the preemptible instance has no protection period. |
 |SpotPriceLimit|Float|0.98|The maximum hourly price for the instance. It can be accurate to three decimal places. This parameter takes effect when the SpotStrategy parameter is set to SpotWithPriceLimit. |
 |SpotStrategy|String|NoSpot|The preemption policy for the pay-as-you-go instance. Valid values:
 
 -   NoSpot: The instance is created as a regular pay-as-you-go instance.
 -   SpotWithPriceLimit: The instance has a maximum hourly price.
--   SpotAsPriceGo: The instance is of the market price at the time of purchase. |
+-   SpotAsPriceGo: The instance is priced at the market price at the time of purchase. |
 |StartTime|String|2017-12-10T04:04Z|The start time of the bidding mode for the preemptible instance. |
 |Status|String|Running|The status of the instance. |
 |StoppedMode|String|KeepCharging|Indicates whether the instance continues to be billed after it is stopped. Valid values:
@@ -257,7 +269,7 @@ Default value: optional.
 -   KeepCharging: The billing of the instance continues after it is stopped, and resources are reserved for the instance.
 -   StopCharging: The billing of the instance stops after it is stopped. After the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
 -   Not-applicable: The No Fees for Stopped Instances \(VPC-Connected\) feature is not applicable to the instance. |
-|Tags|Array of Tag| |Details about the tags of the instance. |
+|Tags|Array of Tag| |The tags of the instance. |
 |Tag| | | |
 |TagKey|String|TestKey|The tag key of the instance. |
 |TagValue|String|TestValue|The tag value of the instance. |
@@ -265,11 +277,12 @@ Default value: optional.
 
 **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
 |VpcAttributes|Struct| |The VPC attributes of the instance. |
-|NatIpAddress|String|172.17.\*\*. \*\*|The IP address of the instance. It is used by ECS instances in different VPCs for communication. |
-|PrivateIpAddress|List|172.17.\*\*. \*\*|The private IP address of the instance. |
-|VSwitchId|String|vsw-2zeh0r1pabwtg6wcs\*\*\*\*|The ID of the vSwitch. |
+|NatIpAddress|String|172.17.\*\*.\*\*|The IP address of the instance. It is used by ECS instances in different VPCs for communication. |
+|PrivateIpAddress|List|172.17.\*\*.\*\*|The private IP address of the instance. |
+|VSwitchId|String|vsw-2zeh0r1pabwtg6wcs\*\*\*\*|The ID of the vSwitch to which the instance is connected. |
 |VpcId|String|vpc-2zeuphj08tt7q3brd\*\*\*\*|The ID of the VPC. |
-|ZoneId|String|cn-hangzhou-g|The ID of the zone. |
+|ZoneId|String|cn-hangzhou-g|The zone ID of the instance. |
+|NextToken|String|caeba0bbb2be03f84eb48b699f0a4883|The query token returned in this call. |
 |PageNumber|Integer|1|The page number of the returned page. |
 |PageSize|Integer|10|The number of entries returned per page. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
@@ -306,8 +319,8 @@ Sample success responses
                   <ExpiredTime>2017-12-10T04:04Z</ExpiredTime>
                   <ImageId>m-bp67acfmxazb4p****</ImageId>
                   <EipAddress>
-                        <AllocationId>i-bp67acfmxazb4p****</AllocationId>
-                        <IpAddress>42.112. **. **</IpAddress>
+                        <AllocationId>eip-2ze88m67qx5z****</AllocationId>
+                        <IpAddress>42.112.**.**</IpAddress>
                         <InternetChargeType>PayByTraffic</InternetChargeType>
                   </EipAddress>
                   <HostName>testHostName</HostName>
@@ -337,11 +350,11 @@ Sample success responses
                   </SecurityGroupIds>
                   <VpcAttributes>
                         <PrivateIpAddress>
-                              <IpAddress>172.17. **. **</IpAddress>
+                              <IpAddress>172.17.**.**</IpAddress>
                         </PrivateIpAddress>
                         <VpcId>vpc-2zeuphj08tt7q3brd****</VpcId>
                         <VSwitchId>vsw-2zeh0r1pabwtg6wcs****</VSwitchId>
-                        <NatIpAddress>172.17. **. **</NatIpAddress>
+                        <NatIpAddress>172.17.**.**</NatIpAddress>
                   </VpcAttributes>
                   <InternetChargeType>PayByTraffic</InternetChargeType>
                   <InstanceName>InstanceNameTest</InstanceName>
@@ -358,18 +371,18 @@ Sample success responses
                         <Affinity>default</Affinity>
                   </DedicatedInstanceAttribute>
                   <PublicIpAddress>
-                        <IpAddress>121.40. **. **</IpAddress>
+                        <IpAddress>121.40.**.**</IpAddress>
                   </PublicIpAddress>
                   <GPUSpec></GPUSpec>
                   <NetworkInterfaces>
                         <NetworkInterface>
                               <Type>Primary</Type>
-                              <PrimaryIpAddress>172.17. **. ***</PrimaryIpAddress>
+                              <PrimaryIpAddress>172.17.**.***</PrimaryIpAddress>
                               <NetworkInterfaceId>eni-2zeh9atclduxvf1z****</NetworkInterfaceId>
                               <MacAddress>00:16:3e:32:b4:**</MacAddress>
                               <PrivateIpSets>
                                     <PrivateIpSet>
-                                          <PrivateIpAddress>172.17. **. **</PrivateIpAddress>
+                                          <PrivateIpAddress>172.17.**.**</PrivateIpAddress>
                                           <Primary>true</Primary>
                                     </PrivateIpSet>
                               </PrivateIpSets>
@@ -406,6 +419,7 @@ Sample success responses
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
       <PageSize>10</PageSize>
       <PageNumber>1</PageNumber>
+      <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken>
 </DescribeInstancesResponse>
 ```
 
@@ -428,8 +442,8 @@ Sample success responses
                 "ExpiredTime": "2017-12-10T04:04Z",
                 "ImageId": "m-bp67acfmxazb4p****",
                 "EipAddress": {
-                    "AllocationId": "i-bp67acfmxazb4p****",
-                    "IpAddress": "42.112. **. **",
+                    "AllocationId": "eip-2ze88m67qx5z****",
+                    "IpAddress": "42.112.**.**",
                     "InternetChargeType": "PayByTraffic"
                 },
                 "HostName": "testHostName",
@@ -464,12 +478,12 @@ Sample success responses
                 "VpcAttributes": {
                     "PrivateIpAddress": {
                         "IpAddress": [
-                            "172.17. **. **"
+                            "172.17.**.**"
                         ]
                     },
                     "VpcId": "vpc-2zeuphj08tt7q3brd****",
                     "VSwitchId": "vsw-2zeh0r1pabwtg6wcs****",
-                    "NatIpAddress": "172.17. **. **"
+                    "NatIpAddress": "172.17.**.**"
                 },
                 "InternetChargeType": "PayByTraffic",
                 "InstanceName": "InstanceNameTest",
@@ -487,7 +501,7 @@ Sample success responses
                 },
                 "PublicIpAddress": {
                     "IpAddress": [
-                        "121.40. **. **"
+                        "121.40.**.**"
                     ]
                 },
                 "GPUSpec": "",
@@ -495,13 +509,13 @@ Sample success responses
                     "NetworkInterface": [
                         {
                             "Type": "Primary",
-                            "PrimaryIpAddress": "172.17. **. ***",
+                            "PrimaryIpAddress": "172.17.**.***",
                             "NetworkInterfaceId": "eni-2zeh9atclduxvf1z****",
                             "MacAddress": "00:16:3e:32:b4:**",
                             "PrivateIpSets": {
                                 "PrivateIpSet": [
                                     {
-                                        "PrivateIpAddress": "172.17. **. **",
+                                        "PrivateIpAddress": "172.17.**.**",
                                         "Primary": true
                                     }
                                 ]
@@ -541,7 +555,8 @@ Sample success responses
     "TotalCount": 1,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "PageSize": 10,
-    "PageNumber": 1
+    "PageNumber": 1,
+    "NextToken": "caeba0bbb2be03f84eb48b699f0a4883"
 }
 ```
 
@@ -558,7 +573,7 @@ Sample success responses
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|The error message returned because the specified Tag.N.Key and Tag.N.Value parameters do not match.|
 |400|InvalidTagCount|The specified tags are beyond the permitted range.|The error message returned because the maximum number of tags has been reached.|
 |400|InvalidHpcClusterId.NotFound|The specified HpcClusterId is not found.|The error message returned because the specified HpcClusterId parameter does not exist.|
-|400|InvalidHpcClusterId.Creating|The specified HpcClusterId is creating.|The error message returned because the specified HPC cluster is being created.|
+|400|InvalidHpcClusterId.Creating|The specified HpcClusterId is creating.|The error message returned because the specified HPC cluster to which the instance belongs is being created.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
