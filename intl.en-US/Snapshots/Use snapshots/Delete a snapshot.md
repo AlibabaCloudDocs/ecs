@@ -19,13 +19,9 @@ To delete a snapshot from which you have created disks, you can choose only **Fo
 
 4.  Select one or more snapshots to be deleted and click **Delete** at the bottom of the page.
 
-    ![Delete a snapshot ](../images/p54074.png)
-
 5.  In the Delete dialog box, select **Delete** or **Force Delete**.
 
     **Note:** To delete a snapshot from which you have created disks, you can choose only **Force Delete** and then click Proceed to Forcibly Delete. After a snapshot is deleted, you cannot perform operations that depend on the status of the original snapshot data, such as the operation to [reinitialize a cloud disk](/intl.en-US/Block Storage/Cloud disks/Reinitialize a cloud disk/Re-initialize a system disk.md).
-
-    ![Active the ECS snapshot service](../images/p54077.png)
 
 6.  Click **OK**.
 
