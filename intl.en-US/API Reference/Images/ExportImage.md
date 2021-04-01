@@ -4,9 +4,9 @@ You can call this operation to export a custom image to an OSS bucket in the sam
 
 ## Description
 
--   If system disk snapshots have been taken for instances created from Alibaba Cloud Marketplace images, you cannot call this operation to export the custom images created from these system disk snapshots.
+-   If system disk snapshots have been taken for the instances created from Alibaba Cloud Marketplace images, you cannot call this operation to export the custom images created from these system disk snapshots.
 -   A custom image cannot be exported if it contains more than four data disk snapshots or if one of the data disk snapshots exceeds 500 GiB in size.
--   Before you export a custom image, you must use Resource Access Management \(RAM\) to create a RAM role for ECS and authorize ECS to write data to OSS.
+-   Before you export a custom image, you must use Resource Access Management \(RAM\) to create a RAM role for ECS and authorize ECS to write data to Object Storage Service \(OSS\).
 
     1. Create a role named `AliyunECSImageExportDefaultRole`. Configure the following trust policy for the role:
 
@@ -58,18 +58,18 @@ You can call this operation to export a custom image to an OSS bucket in the sam
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates a sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=ExportImage&type=RPC&version=2014-05-26)
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=ExportImage&type=RPC&version=2014-05-26)
 
 ## Request parameters
 
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|ExportImage|The operation that you want to perform. Set the value to ExportImage. |
-|ImageId|String|Yes|m-bp67acfmxazb4p\*\*\*\*|The ID of the image to be exported. |
+|ImageId|String|Yes|m-bp67acfmxazb4p\*\*\*\*|The ID of the custom image. |
 |OSSBucket|String|Yes|testexportImage|The OSS bucket to which to export the custom image. |
 |RegionId|String|Yes|cn-hangzhou|The region ID of the custom image. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |OSSPrefix|String|No|EcsExport|The prefix of the OSS object. It must be 1 to 30 characters in length and can contain digits and letters. |
-|ImageFormat|String|No|raw|The format in which to export the custom image. Default value: raw. Valid values:
+|ImageFormat|String|No|raw|The format in which to export the custom image. Valid values:
 
 -   raw
 -   vhd
@@ -77,14 +77,14 @@ You can call this operation to export a custom image to an OSS bucket in the sam
 -   vmdk
 -   vdi
 
-raw |
-|RoleName|String|No|EcsServiceRole-EcsDocGuideTest|The name of the RAM role used to export the custom image. |
+Default value: raw. |
+|RoleName|String|No|AliyunECSImageExportDefaultRole|The name of the RAM role used to export the custom image. |
 
 ## Response parameters
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
-|RegionId|String|cn-hangzhou|The ID of the region. |
+|RegionId|String|cn-hangzhou|The region ID. |
 |RequestId|String|C8B26B44-0189-443E-9816-D951F59623A9|The ID of the request. |
 |TaskId|String|tsk-bp67acfmxazb4p\*\*\*\*|The ID of the image export task. |
 
@@ -131,11 +131,11 @@ Sample success responses
 |400|MissingParameter|An input parameter "RegionId" that is mandatory for processing the request is not supplied.|The error message returned because the required RegionId parameter is not specified.|
 |400|MissingParameter|An input parameter "ImageId" that is mandatory for processing the request is not supplied.|The error message returned because the required ImageId parameter is not specified.|
 |400|MissingParameter|An input parameter "OSSBucket" that is mandatory for processing the request is not supplied.|The error message returned because the required OSSBucket parameter is not specified.|
-|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|The error message returned because the specified image name is invalid. The name must be 2 to 128 characters in length and can contain letters, digits, periods \(.\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://.|
+|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|The error message returned because the specified DestinationImageName parameter is invalid. The name must be 2 to 128 characters in length and can contain letters, digits, periods \(.\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://.|
 |400|InvalidOSSPrefix.Malformed|The specified OSSPrefix format is wrongly formed.|The error message returned because the specified OSSPrefix parameter is invalid.|
-|400|InvalidRegionId.NotFound|The specified RegionId does not exist.|The error message returned because the specified RegionId parameter does not exist.|
+|400|InvalidRegionId.NotFound|The specified RegionId does not exist.|The error message returned because the RegionId parameter does not exist.|
 |400|InvalidRegion.NotSupport|The specified region does not support image import or export.|The error message returned because the specified region does not support this operation.|
-|404|InvalidImageId.NotFound|The specified ImageId does not exist.|The error message returned because the specified image does not exist in this account.|
+|404|InvalidImageId.NotFound|The specified ImageId does not exist.|The error message returned because the specified image does not exist within this account. Check whether the image ID is correct.|
 |400|IncorrectImageStatus|The specified Image is not available.|The error message returned because the status of the specified image is invalid.|
 |403|ImageNotSupported|The specified image from the image market, do not support export image.|The error message returned because the specified image is an Alibaba Cloud Marketplace image and cannot be exported.|
 |400|InvalidImageFormat.Malformed|The specified Image Format is wrongly formed.|The error message returned because the specified ImageFormat parameter is invalid.|
@@ -148,8 +148,10 @@ Sample success responses
 |400|InvalidImage.DiskAmountOrSize|%s|The error message returned because the image contains more than four data disk snapshots or the size of one of the data disk snapshot exceeds 500 GiB.|
 |400|ImageNotSupported|The specified Image contains encrypted snapshots, do not support export.|The error message returned because the specified image contains encrypted snapshots and cannot be exported.|
 |400|ImageNotSupported|Image from image market does not support exporting.|The error message returned because the specified image is an Alibaba Cloud Marketplace image and cannot be exported.|
+|400|InvalidOSSBucket.NotMatched|The specified OSS bucket is incorrect, %s.|The error message returned because the specified OSS bucket is invalid. For information about the details, see the response.|
 |403|ConcurrentQuotaExceed.ExportImage|%s|The error message returned because the maximum number of concurrent ongoing tasks has been reached. Try again later.|
 |403|WeeklyQuotaExceed.ExportImage|%s|The error message returned because the weekly quota for exported images of this week has been used up. Retry when the quota becomes available again.|
+|403|InvalidImageLicense.NotSupported|%s|The error message returned because the specified image cannot be exported. For information about the details, see the response.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
