@@ -24,12 +24,12 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
 
     2.  下载阿里云SGX运行时安装文件。
 
-        -   公网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/runtime/installer/sgx_linux_x64_runtime_2.13.100.4.bin`。
-        -   VPC内网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/runtime/installer/sgx_linux_x64_runtime_2.13.100.4.bin`。
-        请将上述地址中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如，华东1（杭州）地域中的VPC内网下载示例：
+        -   公网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin`。
+        -   VPC内网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin`。
+        请将上述地址中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如，华北2（北京）地域中的VPC内网下载示例：
 
         ```
-        wget https://enclave-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/runtime/installer/sgx_linux_x64_runtime_2.13.100.4.bin
+        wget https://enclave-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin
         ```
 
     3.  安装阿里云SGX运行时。
@@ -46,10 +46,10 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
 
     -   公网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm`。
     -   VPC内网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm`。
-    请将上述地址中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如，华东1（杭州）地域中的VPC内网安装示例：
+    请将上述地址中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如，华北2（北京）地域中的VPC内网安装示例：
 
     ```
-    yum install -y https://enclave-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm
+    yum install -y https://enclave-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm
     ```
 
     **说明：** 阿里云TEE SDK中包含的Intel® SGX SDK的默认安装目录为/opt/alibaba/teesdk/intel/sgxsdk/。
@@ -74,11 +74,11 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
         USE_SECURE_CERT=TRUE
         ```
 
-        请将上述内容中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如华东1（杭州）地域的修改示例如下：
+        请将上述内容中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如华北2（北京）地域的修改示例如下：
 
         ```
         # PCCS server address
-        PCCS_URL=https://sgx-dcap-server.cn-hangzhou.aliyuncs.com/sgx/certification/v3/
+        PCCS_URL=https://sgx-dcap-server.cn-beijing.aliyuncs.com/sgx/certification/v3/
         # To accept insecure HTTPS cert, set this option to FALSE
         USE_SECURE_CERT=TRUE
         ```
@@ -92,11 +92,11 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
         USE_SECURE_CERT=TRUE
         ```
 
-        请将上述内容中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如华东1（杭州）地域的修改示例如下：
+        请将上述内容中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如华北2（北京）地域的修改示例如下：
 
         ```
         # PCCS server address
-        PCCS_URL=https://sgx-dcap-server-vpc.cn-hangzhou.aliyuncs.com/sgx/certification/v3/
+        PCCS_URL=https://sgx-dcap-server-vpc.cn-beijing.aliyuncs.com/sgx/certification/v3/
         # To accept insecure HTTPS cert, set this option to FALSE
         USE_SECURE_CERT=TRUE
         ```
@@ -113,7 +113,7 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
     1.  打开阿里云exp源。
 
         ```
-        rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
+        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
         yum install -y alinux-release-experimentals
         ```
 
@@ -171,7 +171,7 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
     1.  打开阿里云exp源。
 
         ```
-        rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
+        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
         yum install -y alinux-release-experimentals
         ```
 
@@ -238,7 +238,7 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
     发布对外的正式版Enclave时，您需要提供签名密钥进行签名操作。
 
     ```
-    /opt/alibaba/teesdk/intel/sgxsdk/bin/x64/sgx_sign sign -key Enclave/Enclave_private_sample.pem -enclave enclave.so -out enclave.signed.so -config Enclave/Enclave.config.xml
+    sgx_sign sign -key Enclave/Enclave_private_sample.pem -enclave enclave.so -out enclave.signed.so -config Enclave/Enclave.config.xml
     ```
 
     ![sign-enclave](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2874007161/p256827.png)
