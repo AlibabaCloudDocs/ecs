@@ -24,12 +24,12 @@ Before you can develop SGX programs, you must install the runtime and SDK on the
 
     2.  Download the installation file of the Alibaba Cloud SGX runtime.
 
-        -   Download URL over the Internet: `https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/runtime/installer/sgx_linux_x64_runtime_2.13.100.4.bin`.
-        -   Download URL over the internal network in VPCs: `https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/runtime/installer/sgx_linux_x64_runtime_2.13.100.4.bin`.
-        Replace \[Region-ID\] in the preceding URLs with the region ID of the vSGX instance. For example, you can download the installation file from the following URL over the internal network in a VPC for an instance in the China \(Hangzhou\) region:
+        -   Download URL over the Internet: `https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin`.
+        -   Download URL over the internal network in VPCs: `https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin`.
+        Replace \[Region-ID\] in the preceding URLs with the region ID of the vSGX instance. For example, you can download the installation file from the following URL over the internal network in a VPC for an instance in the China \(Beijing\) region:
 
         ```
-        wget https://enclave-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/runtime/installer/sgx_linux_x64_runtime_2.13.100.4.bin
+        wget https://enclave-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin
         ```
 
     3.  Install the Alibaba Cloud SGX runtime.
@@ -46,10 +46,10 @@ Before you can develop SGX programs, you must install the runtime and SDK on the
 
     -   Download URL over the Internet: `https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm`.
     -   Download URL over the internal network in VPCs: `https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm`.
-    Replace \[Region-ID\] in the preceding URLs with the region ID of the vSGX instance. For example, you can install Alibaba Cloud TEE SDK from the following URL over the internal network in a VPC for an instance in the China \(Hangzhou\) region:
+    Replace \[Region-ID\] in the preceding URLs with the region ID of the vSGX instance. For example, you can install Alibaba Cloud TEE SDK from the following URL over the internal network in a VPC for an instance in the China \(Beijing\) region:
 
     ```
-    yum install -y https://enclave-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm
+    yum install -y https://enclave-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm
     ```
 
     **Note:** The default installation directory of Intel® SGX SDK in Alibaba Cloud TEE SDK is /opt/alibaba/teesdk/intel/sgxsdk/.
@@ -74,11 +74,11 @@ Before you can develop SGX programs, you must install the runtime and SDK on the
         USE_SECURE_CERT=TRUE
         ```
 
-        Replace \[Region-ID\] in the preceding file with the region ID of the vSGX instance. Example for a vSGX instance in the China \(Hangzhou\) region:
+        Replace \[Region-ID\] in the preceding file with the region ID of the vSGX instance. Example for a vSGX instance in the China \(Beijing\) region:
 
         ```
         # PCCS server address
-        PCCS_URL=https://sgx-dcap-server.cn-hangzhou.aliyuncs.com/sgx/certification/v3/
+        PCCS_URL=https://sgx-dcap-server.cn-beijing.aliyuncs.com/sgx/certification/v3/
         # To accept insecure HTTPS cert, set this option to FALSE
         USE_SECURE_CERT=TRUE
         ```
@@ -92,11 +92,11 @@ Before you can develop SGX programs, you must install the runtime and SDK on the
         USE_SECURE_CERT=TRUE
         ```
 
-        Replace \[Region-ID\] in the preceding file with the region ID of the vSGX instance. Example for a vSGX instance in the China \(Hangzhou\) region:
+        Replace \[Region-ID\] in the preceding file with the region ID of the vSGX instance. Example for a vSGX instance in the China \(Beijing\) region:
 
         ```
         # PCCS server address
-        PCCS_URL=https://sgx-dcap-server-vpc.cn-hangzhou.aliyuncs.com/sgx/certification/v3/
+        PCCS_URL=https://sgx-dcap-server-vpc.cn-beijing.aliyuncs.com/sgx/certification/v3/
         # To accept insecure HTTPS cert, set this option to FALSE
         USE_SECURE_CERT=TRUE
         ```
@@ -113,7 +113,7 @@ This section describes the example of how to verify whether the installed SGX SD
     1.  Open Alibaba Cloud software repositories.
 
         ```
-        rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
+        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
         yum install -y alinux-release-experimentals
         ```
 
@@ -171,7 +171,7 @@ This section describes the example of the SGX remote attestation service \(Quote
     1.  Open Alibaba Cloud software repositories.
 
         ```
-        rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
+        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
         yum install -y alinux-release-experimentals
         ```
 
