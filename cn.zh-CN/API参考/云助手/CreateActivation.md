@@ -6,7 +6,7 @@
 
 通过激活码将非阿里云服务器注册为阿里云托管实例后，您可以在托管实例中使用阿里云提供的多种在线服务（例如云助手、运维编排和云效等服务）。
 
-非阿里云服务器的操作系统需要符合以下版本，且服务器可以访问公网。
+非阿里云服务器的操作系统需要符合以下版本，且服务器可以访问公网，才可以注册为阿里云托管实例。
 
 -   Alibaba Cloud Linux 2
 -   CentOS 6/7/8及更高版本
@@ -84,6 +84,10 @@ https://ecs.aliyuncs.com/?Action=CreateActivation
 ```
 
 ## 错误码
+
+|HttpCode|错误码|错误信息|描述|
+|--------|---|----|--|
+|400|RegionId.ApiNotSupported|The api is not supported in this region.|指定地域下不支持调用API。请检查RegionId参数取值是否正确。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
