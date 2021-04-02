@@ -37,13 +37,18 @@
  **说明：** 以上有效取值按云盘性能降序排列。如果指定的云盘是包年包月云盘，则不允许降配云盘。 |
 |PerformanceLevel|String|否|PL2|修改一块ESSD云盘的性能级别。取值范围：
 
- -   PL1（默认）：单盘最高随机读写IOPS 5万。
+ -   PL0：单盘最高随机读写IOPS 1万。
+-   PL1：单盘最高随机读写IOPS 5万。
 -   PL2：单盘最高随机读写IOPS 10万。
--   PL3：单盘最高随机读写IOPS 100万。 |
+-   PL3：单盘最高随机读写IOPS 100万。
+
+ 默认值：PL1 |
 |DryRun|Boolean|否|false|是否只预检此次请求。取值范围：
 
  -   true：发送检查请求。检查项包括是否填写了必需参数、请求格式、业务限制和ECS库存。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码`DryRunOperation`。
--   false（默认）：发送正常请求，通过检查后返回2XX HTTP状态码并且直接变配云盘或修改ESSD性能等级。 |
+-   false：发送正常请求，通过检查后返回2XX HTTP状态码并且直接变配云盘或修改ESSD性能等级。
+
+ 默认值：false |
 
 ## 返回数据
 
@@ -70,7 +75,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyDiskSpecResponse>
@@ -80,7 +85,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 </ModifyDiskSpecResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -104,6 +109,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 |400|InvalidPerformanceLevel.Malformed|The specified parameter PerformanceLevel is not valid.|指定的参数PerformanceLevel无效。|
 |403|OperationDenied.PerformanceLevelNotMatch|The specified PerformanceLevel and disk size do not match.|指定的性能等级与磁盘大小不匹配。|
 |400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
+|403|InvalidInstanceType.NotSupportDiskCategory|The instanceType of the specified instance does not support this disk category.|指定的实例规格（InstanceType）不支持当前实例的云盘类别。请尝试更换其它实例规格。关于实例规格支持的云盘类型，请参见实例规格族文档。|
 |403|OperationDenied.NoStock|The requested resource is sold out in the specified zone; try other types of resources or other regions and zones.|库存不足。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
