@@ -16,16 +16,16 @@ You can increase the storage capacity of an instance by using one of the followi
 
     |Method|Limit|Reference|
     |------|-----|---------|
-    |Resize a disk online|The instance to which the disk is attached must be in the **Running** \(Running\) state. After the disk is resized, the new size takes effect automatically without the need to restart the instance.
+    |Resize a disk online|The instance to which the disk is attached must be in the **Running** \(Running\) state. For more information about limits, see documents in the **Reference** column. After the disk is resized, the new size takes effect automatically without the need to restart the instance.
 
 |    -   [Resize disks online for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Linux instances.md)
     -   [Resize disks online for Windows instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Windows instances.md) |
-    |Resize a disk offline|The instance to which the disk is attached must be in the **Running** \(Running\) or **Stopped** \(Stopped\) state. After the disk is resized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new size to take effect.
+    |Resize a disk offline|The instance to which the disk is attached must be in the **Running** \(Running\) or **Stopped** \(Stopped\) state. For more information about limits, see documents in the **Reference** column. After the disk is resized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new size to take effect.
 
 |    -   [Resize disks offline for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks offline for Linux instances.md)
     -   [Resize disks offline for Windows instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks offline for Windows instances.md) |
 
--   Create a new disk, attach the disk to the instance, and then partition and format the disk.
+-   Create a new disk, attach the disk to the ECS instance, and partition and format the disk.
 -   Replace the system disk of the instance and specify a larger size for the new system disk. For more information, see [Replace the system disk \(public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace the system disk (public images).md).
 
 ## Size ranges of resized system disks
