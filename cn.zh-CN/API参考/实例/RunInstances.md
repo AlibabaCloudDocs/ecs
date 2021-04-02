@@ -59,10 +59,10 @@
 |VSwitchId|String|否|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|虚拟交换机ID。如果您创建的是VPC类型ECS实例，必须指定虚拟交换机ID，且安全组和虚拟交换机在同一个专有网络VPC中。您可以调用[DescribeVSwitches](~~35748~~)查询已创建的交换机的相关信息。
 
  **说明：** 如果您指定了`VSwitchId`参数，则指定的`ZoneId`参数必须和交换机所在的可用区保持一致。您也可以不指定`ZoneId`参数，系统将自动选择指定的交换机所在的可用区。 |
-|InstanceName|String|否|k8s-node-\[1,4\]-alibabacloud|实例名称。长度为2~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（\_）、点号（.）或者连字符（-）。默认值为实例的`InstanceId`。
+|InstanceName|String|否|k8s-node-\[1,4\]-alibabacloud|实例名称。长度为2~128个字符，必须以大小字母或中文开头，不能以`http://`和`https://`开头。可以包含中文、英文、数字、半角冒号（:）、下划线（\_）、半角句号（.）或者短划线（-）。默认值为实例的`InstanceId`。
 
  创建多台ECS实例时，您可以批量设置有序的实例名称。具体操作，请参见[批量设置有序的实例名称或主机名称](~~196048~~)。 |
-|Description|String|否|Instance\_Description|实例的描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
+|Description|String|否|Instance\_Description|实例的描述。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。 |
 |InternetMaxBandwidthIn|Integer|否|10|公网入带宽最大值，单位为Mbit/s。取值范围：
 
  -   当所购公网出带宽小于等于10Mbit/s时：1~10，默认为10。
@@ -70,13 +70,25 @@
 |InternetMaxBandwidthOut|Integer|否|10|公网出带宽最大值，单位为Mbit/s。取值范围：0~100
 
  默认值：0 |
-|HostName|String|否|k8s-node-\[1,4\]-ecshost|实例主机名称。
+|HostName|String|否|k8s-node-\[1,4\]-ecshost|实例主机名称。限制说明如下：
 
- -   点号（.）和短横线（-）不能作为首尾字符，更不能连续使用。
--   Windows实例：字符长度为2~15，不支持点号（.），不能全是数字。允许大小写英文字母、数字和短横线（-）。
--   其他类型实例（Linux等）：字符长度为2~64，支持多个点号（.），点之间为一段，每段允许大小写英文字母、数字和短横线（-）。
+ -   半角句号（.）和短划线（-）不能作为首尾字符，更不能连续使用。
+-   Windows实例：字符长度为2~15，不支持半角句号（.），不能全是数字。允许包含大小写英文字母、数字和短划线（-）。
+-   其他类型实例（Linux等）：
+    -   字符长度为2~64，支持多个半角句号（.），点之间为一段，每段允许包含大小写英文字母、数字和短划线（-）。
+    -   支持通过占位符`${instance_id}`将实例ID写入`HostName`参数。例如：`HostName=k8s-${instance_id}`，并且创建的ECS实例ID为`i-123abc****`，则该实例的主机名为`k8s-i-123abc****`。
 
- 创建多台ECS实例时，您可以批量设置有序的主机名。具体操作，请参见[批量设置有序的实例名称或主机名称](~~196048~~)。 |
+ 创建多台ECS实例时，您可以：
+
+ -   批量设置有序的主机名。具体操作，请参见[批量设置有序的实例名称或主机名称](~~196048~~)。
+-   通过`HostNames.N`参数，为多台实例分别设置主机名。需要注意`HostName`参数和`HostNames.N`参数不能同时设置。 |
+|HostNames.N|RepeatList|否|ecs-host-01|创建多台实例时，为每台实例指定不同的主机名。限制说明如下：
+
+ -   N的个数需要和`Amount`参数值保持一致。
+-   不支持同时设置`HostName`参数和`HostNames.N`参数。
+-   半角句号（.）和短划线（-）不能作为首尾字符，更不能连续使用。
+-   Windows实例：字符长度为2~15，不支持半角句号（.），不能全是数字。允许包含大小写英文字母、数字和短划线（-）。
+-   其他类型实例（Linux等）：字符长度为2~64，支持多个半角句号（.），点之间为一段，每段允许包含大小写英文字母、数字和短划线（-）。 |
 |UniqueSuffix|Boolean|否|true|当创建多台实例时，是否为`HostName`和`InstanceName`自动添加有序后缀。有序后缀从001开始递增，最大不能超过999。取值范围：
 
  -   true：添加
@@ -128,10 +140,10 @@
 -   cloud：普通云盘
 
  已停售的实例规格且非I/O优化实例默认值为cloud，否则默认值为cloud\_efficiency。 |
-|SystemDisk.DiskName|String|否|cloud\_ssdSystem|系统盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、点号（.）、半角冒号（:）、下划线（\_）或者连字符（-）。
+|SystemDisk.DiskName|String|否|cloud\_ssdSystem|系统盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以`http://`和`https://`开头。可以包含数字、半角句号（.）、半角冒号（:）、下划线（\_）或者短划线（-）。
 
  默认值：空 |
-|SystemDisk.Description|String|否|SystemDisk\_Description|系统盘的描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
+|SystemDisk.Description|String|否|SystemDisk\_Description|系统盘的描述。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。 |
 |SystemDisk.PerformanceLevel|String|否|PL0|创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
 
  -   PL0：单盘最高随机读写IOPS 1万
@@ -167,10 +179,10 @@
 
  默认值：false |
 |DataDisk.N.KMSKeyId|String|否|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|数据盘对应的KMS密钥ID。 |
-|DataDisk.N.DiskName|String|否|cloud\_ssdData|数据盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、点号（.）、半角冒号（:）、下划线（\_）或者连字符（-）。
+|DataDisk.N.DiskName|String|否|cloud\_ssdData|数据盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以`http://`和`https://`开头。可以包含数字、半角句号（.）、半角冒号（:）、下划线（\_）或者短划线（-）。
 
  默认值：空 |
-|DataDisk.N.Description|String|否|DataDisk\_Description|数据盘的描述。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
+|DataDisk.N.Description|String|否|DataDisk\_Description|数据盘的描述。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。 |
 |DataDisk.N.Device|String|否|null|数据盘的挂载点。
 
  **说明：** 该参数即将被弃用，为提高兼容性，请尽量使用其他参数。 |
@@ -208,7 +220,7 @@
 
  **说明：** 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。 |
 |NetworkInterface.N.NetworkInterfaceName|String|否|Network\_Name|辅助弹性网卡名称。N的取值：1 |
-|NetworkInterface.N.Description|String|否|Network\_Description|辅助弹性网卡的描述。N的取值：1。长度为2~256个英文或中文字符，不能以http://和https://开头。 |
+|NetworkInterface.N.Description|String|否|Network\_Description|辅助弹性网卡的描述。N的取值：1。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。 |
 |NetworkInterface.N.QueueNumber|Integer|否|8|辅助弹性网卡队列数。N的取值：1
 
  -   不能超过实例规格允许的单块网卡最大队列数。
