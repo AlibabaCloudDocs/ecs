@@ -141,7 +141,7 @@ g7t is in invitational preview. To use g7t, [submit a ticket](https://workorder-
 -   Implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
-    -   Offers a CPU-to-memory-to-encrypted memory ratio of 1:2:2.
+    -   Offers a CPU-to-memory ratio of 1:4. About 50% of memory is encrypted.
     -   Uses the third-generation Intel® Xeon® scalable processors that deliver consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
@@ -161,17 +161,17 @@ g7t is in invitational preview. To use g7t, [submit a ticket](https://workorder-
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Encrypted memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.g7t.large|2|4.0|4.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.xlarge|4|8.0|8.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.2xlarge|8|16.0|16.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.3xlarge|12|24.0|24.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.4xlarge|16|32.0|32.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.6xlarge|24|48.0|48.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
-|ecs.g7t.8xlarge|32|64.0|64.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
-|ecs.g7t.16xlarge|64|128.0|128.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
-|ecs.g7t.32xlarge|128|256.0|256.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.g7t.large|2|8.0|4.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.xlarge|4|16.0|8.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.2xlarge|8|32.0|16.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.3xlarge|12|48.0|24.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.4xlarge|16|64.0|32.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.6xlarge|24|96.0|48.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.g7t.8xlarge|32|128.0|64.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.g7t.16xlarge|64|256.0|128.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.g7t.32xlarge|128|512.0|256.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
 
 **Note:**
 
@@ -589,7 +589,7 @@ c7t is in invitational preview. To use c7t, [submit a ticket](https://workorder-
 -   Implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
 -   Compute:
-    -   Offers a CPU-to-memory-to-encrypted memory ratio of 1:1:1.
+    -   Offers a CPU-to-memory ratio of 1:2. About 50% of memory is encrypted.
     -   Uses the third-generation Intel® Xeon® Scalable processors that deliver consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
@@ -609,17 +609,17 @@ c7t is in invitational preview. To use c7t, [submit a ticket](https://workorder-
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Encrypted memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|------------------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.c7t.large|2|2.0|2.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
-|ecs.c7t.xlarge|4|4.0|4.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.c7t.2xlarge|8|8.0|8.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.c7t.3xlarge|12|12.0|12.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.c7t.4xlarge|16|16.0|16.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
-|ecs.c7t.6xlarge|24|24.0|24.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
-|ecs.c7t.8xlarge|32|32.0|32.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
-|ecs.c7t.16xlarge|64|64.0|64.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
-|ecs.c7t.32xlarge|128|128.0|128.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.c7t.large|2|4.0|2.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7t.xlarge|4|8.0|4.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7t.2xlarge|8|16.0|8.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7t.3xlarge|12|24.0|12.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7t.4xlarge|16|32.0|16.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7t.6xlarge|24|48.0|24.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.c7t.8xlarge|32|64.0|32.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.c7t.16xlarge|64|128.0|64.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.c7t.32xlarge|128|256.0|128.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
 
 **Note:**
 
@@ -897,7 +897,7 @@ r7t is in invitational preview. To use r7t, [submit a ticket](https://workorder-
 -   Implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
-    -   Offers a CPU-to-memory-to-encrypted memory ratio of 1:4:4.
+    -   Offers a CPU-to-memory ratio of 1:8. About 50% of memory is encrypted.
     -   Uses third-generation Intel® Xeon® Scalable processors that deliver consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
@@ -918,17 +918,17 @@ r7t is in invitational preview. To use r7t, [submit a ticket](https://workorder-
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Encrypted memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|------------------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.r7t.large|2|8.0|8.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
-|ecs.r7t.xlarge|4|16.0|16.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.r7t.2xlarge|8|32.0|32.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.r7t.3xlarge|12|48.0|48.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.r7t.4xlarge|16|64.0|64.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
-|ecs.r7t.6xlarge|24|96.0|96.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
-|ecs.r7t.8xlarge|32|128.0|128.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
-|ecs.r7t.16xlarge|64|256.0|256.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
-|ecs.r7t.32xlarge|128|512.0|512.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.r7t.large|2|16.0|8.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7t.xlarge|4|32.0|16.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7t.2xlarge|8|64.0|32.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7t.3xlarge|12|96.0|48.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7t.4xlarge|16|128.0|64.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7t.6xlarge|24|192.0|96.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.r7t.8xlarge|32|256.0|128.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.r7t.16xlarge|64|512.0|256.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.r7t.32xlarge|128|1,024.0|512.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
 
 **Note:**
 
