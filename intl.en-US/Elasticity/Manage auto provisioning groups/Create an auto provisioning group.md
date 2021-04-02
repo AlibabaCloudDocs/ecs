@@ -39,8 +39,8 @@ This topic describes how to create an auto provisioning group in the ECS console
     -   If the target capacity is specified in terms of **Instances**, the weights of all instance types are the same.
     -   If the target capacity is specified in terms of **vCPUs**, the weight of an instance type depends on the number of vCPUs of the instance type. The more vCPUs that an instance type has, the higher the weight of the instance type and the fewer instances of the instance type that are needed to meet the target capacity. The following table describes an example in which different weights are set for three instance types based on the number of vCPUs.
 
-        |Instance type|vCPU|Weight|
-        |-------------|----|------|
+        |Instance type|vCPUs|Weight|
+        |-------------|-----|------|
         |ecs.c6.large|2|2|
         |ecs.c6.xlarge|4|4|
         |ecs.c6.2xlarge|8|8|
