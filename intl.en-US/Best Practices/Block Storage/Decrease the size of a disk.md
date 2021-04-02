@@ -12,7 +12,7 @@ Take note that when you use SMC to decrease the size of a disk, some attributes 
 
 1.  Connect to the ECS instance for which you want to decrease the size of a disk.
 
-    For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using a username and password.md).
+    For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using a username and password.md).
 
 2.  Download the [SMC client](https://p2v-tools.oss-cn-hangzhou.aliyuncs.com/smc/Alibaba_Cloud_Migration_Tool.zip?file=Alibaba_Cloud_Migration_Tool.zip).
 
