@@ -157,6 +157,7 @@
 
 
 至此，您已经成功登录Windows实例桌面。
+按 command+q 退出远程桌面。
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9622/15519530325304_zh-CN.png)
 
