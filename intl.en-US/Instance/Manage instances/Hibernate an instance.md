@@ -1,6 +1,6 @@
 # Hibernate an instance
 
-If you do not require the use of an ECS instance for a period of time, but you still want to retain the instance without performing operations such as configuration upgrade or downgrade on the instance, we recommend that you hibernate the instance. A hibernated instance is different from a stopped instance. A hibernated instance automatically restores the applications on the instance to the status before hibernation when the instance is waked. This allows the instance to resume providing services in a short time.
+If you do not require the use of an ECS instance for a period of time, but you still want to retain the instance without performing operations such as configuration upgrade or downgrade on the instance, we recommend that you hibernate the instance. A hibernated instance is different from a stopped instance. A hibernated instance automatically restores the applications on the instance to the status before hibernation when the instance is waked. This allows the instance to resume providing services in a short of time.
 
 When you hibernate an instance, the operating system of the instance saves data from the memory to the system disk of the instance. The saved data includes the applications that run in the operating system and the usage status of the applications. When you wake the instance, the operating system reads the data saved in the system disk, automatically restores the applications to the status before hibernation, and resumes the running state of the instance. In comparison, when you stop and restart an instance, the operating system restarts the backend services and applications.
 
@@ -17,18 +17,12 @@ Hibernation has different impacts on the billing of instances that use different
 |Disk \(system disk and data disk\)|Retain and continue billing|Retain and continue billing|
 |Internal IP address|Retain and stop billing|Retain and stop billing|
 |Public IP address|Release and stop billing. After the instance is started, a new public IP address is obtained.|Retain and stop billing|
-|EIP|Retain and continue billing|Retain and continue billing|
+|Elastic IP address \(EIP\)|Retain and continue billing|Retain and continue billing|
 |Bandwidth|Continue billing|Continue billing|
 
 ## Limits
 
--   The instance hibernation feature is now available only in the US \(Silicon Valley\) and Germany \(Frankfurt\) regions, and will be gradually supported in other regions.
--   Before you can hibernate an instance, the instance must meet the following requirements:
-    -   The instance hibernation feature is enabled when the instance is created.
-
-        **Note:** The instance hibernation feature cannot be disabled after it is enabled. If you do not enable the instance hibernation feature when you create an instance, you cannot hibernate the instance.
-
-    -   The hibernation agent is installed on the instance.
+-   You can enable the instance hibernation feature only when you create an ECS instance. Then, you can hibernate the instance based on your requirements. The instance hibernation feature cannot be disabled after it is enabled. If you do not enable the instance hibernation feature when you create an instance, you cannot hibernate the instance.
 -   You can enable the instance hibernation feature only when you create an ECS instance by using an encrypted custom image. The following image versions are supported:
     -   Windows Server 2016 or later
     -   Ubuntu 18 or later
@@ -81,30 +75,9 @@ You must enable the instance hibernation feature when you create an ECS instance
 |\[Default\]vpc-bp1opxu1zkhn00g\*\*\*\*|
 
 
-## Step 2: Install the hibernation agent
+## Step 2: Hibernate the instance
 
-After you enable the instance hibernation feature for the instance, you must install the hibernation agent on the instance before you can hibernate the instance.
-
-1.  Create and run one of the following commands to install the hibernation agent on the instance. For more information, see [Immediate execution](/intl.en-US/Deployment & Maintenance/Cloud assistant/Use the cloud assistant/Immediate execution.md).
-
-    -   Windows instance:
-
-        ```
-        acs-plugin-manager.exe --exec --plugin ecs-hibernate-win --params "install"
-        ```
-
-    -   Linux instance:
-
-        ```
-        acs-plugin-manager --exec --plugin ecs-hibernate-linux --params "install"
-        ```
-
-2.  Restart the instance to make the hibernation agent take effect. For more information, see [Reboot the instance](/intl.en-US/Instance/Manage instances/Restart an instance.md).
-
-
-## Step 3: Hibernate the instance
-
-After the instance hibernation feature is enabled for the instance and the hibernation agent is installed on the instance, you can hibernate the instance in the Running state. You are unable to connect to the instance when the instance is hibernated.
+If the instance hibernation feature is enabled for an instance and the instance is in the Running state, you can perform the following operations to hibernate the instance. You are unable to connect to the instance when the instance is hibernated.
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
@@ -128,6 +101,6 @@ After the instance hibernation feature is enabled for the instance and the hiber
 
     3.  Click **OK**.
 
-        **Note:** The instance is stopped and enters the **Stopped** state. To start the instance, see [Start or stop an instance](/intl.en-US/Instance/Manage instances/Start ECS instances.md).
+        **Note:** The instance is stopped and enters the **Stopped** state. To start the instance, see [Start ECS instances](/intl.en-US/Instance/Manage instances/Start ECS instances.md).
 
 
