@@ -191,7 +191,7 @@ The following configurations are used in this example:
     **Note:** If you did not switch to the ./deps/memkind/ directory to adjust Makefile, you are still in the redis-4.0.14 directory. In this case, you do not need to run the `cd ../..` command to switch the directory.
 
     ```
-    cd ../..
+    cd /root/redis-4.0.14
     make clean;make distclean;make MALLOC=memkind -j 4
     make install
     ```
@@ -230,6 +230,7 @@ The following configurations are used in this example:
 
         ```
         systemctl start ecs_mq
+        cd /root/redis-4.0.14
         ```
 
 10. Configure the default sizes of DRAM and persistent memory for the Redis service.
