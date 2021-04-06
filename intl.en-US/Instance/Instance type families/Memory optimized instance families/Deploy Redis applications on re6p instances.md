@@ -1,6 +1,6 @@
 # Deploy Redis applications on re6p instances
 
-You can run Redis applications on persistent memory optimized instances to reduce memory costs per GiB. To ensure performance, you must modify your Redis applications. To reduce your modification costs, Alibaba Cloud provides re6p instance types specially for Redis applications. You can deploy Redis applications on re6p instances by running several commands. In this topic, Alibaba Cloud Linux and CentOS are used to demonstrate how to deploy Redis applications on re6p instances.
+You can run Redis applications on persistent memory optimized instances to reduce memory costs per GiB. To ensure performance, you must modify your Redis applications. To reduce your modification costs, Alibaba Cloud provides re6p instance types for Redis applications. You can deploy Redis applications on re6p instances by running several commands. In this topic, Alibaba Cloud Linux and CentOS are used to demonstrate how to deploy Redis applications on re6p instances.
 
 The procedures described in this topic apply only to the following instance types:
 
@@ -9,22 +9,20 @@ The procedures described in this topic apply only to the following instance type
 -   ecs.re6p-redis.2xlarge
 -   ecs.re6p-redis.13xlarge
 
-**Note:** ecs.re6p-redis.<nx\>large are instance types that are specially provided for Redis applications and support only persistent memory used as memory.
+**Note:** ecs.re6p-redis.<nx\>large indicates instance types that are provided for Redis applications and support only persistent memory used as memory.
 
-If you use other operating systems to deploy Redis applications, make sure that you use one of the following image versions:
+If you deploy Redis applications in other operating systems, make sure that you use one of the following image versions:
 
 -   Alibaba Cloud Linux 2
 -   CentOS 7.6 or later
 -   Ubuntu 18.10 or later
 -   SUSE Linux 12 SP4 or later
 
-**Note:** The reliability of data stored in persistent memory depends on the reliability of persistent memory devices and the physical servers to which these devices are attached. This increases risks of single points of failure. To ensure the reliability of application data, we recommend that you implement data redundancy at the application layer and use cloud disks for long-term data storage.
-
 ## Deploy Redis applications on an re6p instance that runs Alibaba Cloud Linux
 
-Alibaba Cloud Linux is specially tuned for Redis applications. Redis applications deployed on community operating systems outperform those deployed on Alibaba Cloud Linux by more than 20%.
+Alibaba Cloud Linux is tuned for Redis applications. Redis applications deployed on Alibaba Cloud Linux outperform those deployed on community-supported operating systems by more than 20%.
 
-Alibaba Cloud Linux integrates Redis 6.0.5 and Redis 3.2.12. You can also manually deploy Redis of other versions. In this way, the overall performance of Redis applications can also be improved by more than 20%.
+Alibaba Cloud Linux has the built-in YUM repositories of Redis 6.0.5 and Redis 3.2.12. You can run the yum install command to deploy Redis 6.0.5 and Redis 3.2.12. You can also manually deploy Redis of other versions. For more information, see [Deploy Redis applications on an re6p instance that runs CentOS](#section_gx2_rzq_8rk).
 
 The following configurations are used in this example:
 
@@ -79,9 +77,9 @@ The following configurations are used in this example:
         cd ecs_mq/
         ```
 
-    4.  Run the extracted script file.
+    4.  Run the script.
 
-        The command format varies with image versions. For example, Alibaba Cloud Linux 2.1903 images use the `bash install.sh aliyun 2` format.
+        The command format varies with image versions. For example, Alibaba Cloud Linux 2.1903 images use `bash install.sh aliyun 2`.
 
         ```
         bash install.sh <Operating system name> <Major version number of the operating system>
@@ -190,10 +188,10 @@ The following configurations are used in this example:
 
 8.  Perform compilation in the redis-4.0.14 directory.
 
-    **Note:** If you do not need to switch to the ./deps/memkind/ directory to adjust Makefile, you are still in the redis-4.0.14 directory. In this case, you do not need to run the `cd .. /..` command to switch the directory.
+    **Note:** If you did not switch to the ./deps/memkind/ directory to adjust Makefile, you are still in the redis-4.0.14 directory. In this case, you do not need to run the `cd ../..` command to switch the directory.
 
     ```
-    cd .. /..
+    cd ../..
     make clean;make distclean;make MALLOC=memkind -j 4
     make install
     ```
@@ -220,9 +218,9 @@ The following configurations are used in this example:
         cd ecs_mq/
         ```
 
-    4.  Run the extracted script file.
+    4.  Run the script.
 
-        The command format varies with image versions. For example, CentOS 7.6 images use the `bash install.sh centos 7` format.
+        The command format varies with image versions. For example, CentOS 7.6 images use `bash install.sh centos 7`.
 
         ```
         bash install.sh <Operating system name> <Major version number of the operating system>
@@ -261,13 +259,13 @@ The following configurations are used in this example:
 
 ## Download patches that enable Redis applications to use persistent memory
 
-Replace the download URL and the version number of the file name in the sample command. For example, run the following command to download patches suitable for Redis 6.0.5:
+In the sample command, replace the download URL and the version number of the file name. For example, run the following command to download patches suitable for Redis 6.0.5:
 
 ```
 wget https://github.com/redis/redis/compare/6.0.5...memKeyDB:6.0.5-devel.diff -O redis_6.0.5_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
 ```
 
-The following section shows the download URLs for supported patches:
+The following section lists the download URLs for supported patches:
 
 -   Redis 6.0
     -   [https://github.com/redis/redis/compare/6.0.9...memKeyDB:6.0.9-devel.diff](https://github.com/redis/redis/compare/6.0.9...memKeyDB:6.0.9-devel.diff)
