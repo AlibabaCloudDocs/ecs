@@ -51,6 +51,9 @@
  默认值：Linux
 
  **说明：** 该参数暂未开放使用。 |
+|Tag.N.Key|String|否|TestKey|容量预定服务的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。 |
+|Tag.N.Value|String|否|TestValue|容量预定服务的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。 |
+|ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|容量预定服务所在的企业资源组ID。 |
 
 ## 返回数据
 
@@ -107,6 +110,7 @@ https://ecs.aliyuncs.com/?Action=CreateCapacityReservation
 |403|InvalidInstanceType.NotSupported|The specified InstanceType is invalid.|指定的参数“InstanceType”无效。|
 |404|InvalidZoneId.NotFound|The specified zoneId does not exist.|指定的可用区ID不存在。|
 |403|Zone.NotOnSale|The specified zone is not available for purchase.|指定可用区已经售罄，请您更换实例规格或者更换地域创建。|
+|404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
