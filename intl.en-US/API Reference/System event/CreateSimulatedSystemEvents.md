@@ -35,8 +35,8 @@ The following section describes the lifecycle of a simulated system event:
 |InstanceId.N|RepeatList|Yes|i-bp1gtjxuuvwj17zr\*\*\*\*|The ID of instance N. Valid values of N: 1 to 100. Specify multiple values in the repeated list format. |
 |NotBefore|String|Yes|2018-12-01T06:32:31Z|The start time of the scheduled event execution. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 
-**Note:** For a system event that is created due to a system or instance failure, the system event enters the `Executing` state after it is created. In this case, the value of the `NotBefore` parameter is the time when the event enters the `Executed` state. |
-|RegionId|String|Yes|cn-hangzhou|The region ID of the system event. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+**Note:** For exception events due to system failures or instance failures, the simulated events of these exception events enter the Executing \(`Executing`\) state when the simulated events are created. The value of `NotBefore` is the time when the simulated events enter the Executed \(`Executed`\) state. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the event. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 
 ## Response parameters
 
@@ -95,7 +95,7 @@ Sample success responses
 |403|InvalidNotBefore.Passed|%s|The error message returned because the specified value of the NotBefore parameter is earlier than the current time.|
 |404|InvalidInstanceId.NotFound|%s|The error message returned because the specified instance does not exist.|
 |403|SimulatedEventLimitExceeded|%s|The error message returned because the maximum number of simulated system events has been reached.|
-|403|InstanceIdLimitExceeded|%s|The error message returned because the value set for N in the InstanceId.N parameter is more than 100.|
+|403|InstanceIdLimitExceeded|%s|The error message returned because the value of N in the InstanceId.N parameter is greater than 100.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
