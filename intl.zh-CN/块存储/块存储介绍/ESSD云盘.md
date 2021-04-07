@@ -24,10 +24,7 @@ ESSD云盘的API取值为cloud\_essd，提供了四个性能级别的云盘规�
 |业务场景示例|中大型核心业务关系型数据库及NoSQL数据库，大型SAP和Oracle系统。|中等规模关系型数据库、NoSQL数据库，中等规模ELK日志集群，SAP和Oracle等企业级商用软件。|中小型MySQL和SQLServer等数据库场景，中小规模ELK日志集群，SAP和Oracle等企业级商用软件，容器应用。|中小型MySQL和SQLServer等数据库场景，中小规模ELK日志集群，SAP和Oracle等企业级商用软件，容器应用。|
 |在推荐业务场景下，这些产品的系统盘或数据盘建议替换为ESSD云盘。|16核vCPU以上本地SSD实例规格族（i1、i2、i2g）的数据盘|SSD云盘，本地SSD实例规格族（i1、i2、i2g）的数据盘|SSD云盘|系统盘|
 
-**说明：**
-
--   关于如何压测ESSD云盘，请参见[压测ESSD云盘IOPS性能](/intl.zh-CN/块存储/性能/压测ESSD云盘IOPS性能.md)。
--   ESSD PL0云盘不支持修改为其他性能级别。更多信息，请参见[变更云盘类型](/intl.zh-CN/块存储/云盘/变更云盘类型.md)。
+**说明：** 关于如何压测ESSD云盘，请参见[压测ESSD云盘IOPS性能](/intl.zh-CN/块存储/性能/压测ESSD云盘IOPS性能.md)。
 
 ## 计费
 
