@@ -27,11 +27,13 @@ Before you call this operation to roll back disks, you must understand the preca
 |OperationProgress| | | |
 |ErrorCode|String|400|The error code. This parameter is empty when the operation was successful.
 
- For more information about error codes and error messages, visit the [API error center](https://error-center.alibabacloud.com/status/product/Ecs). |
-|ErrorMsg|String|testErrorMsg|The error message. This parameter is empty when the operation was successful. |
+For more information about error codes and error messages, visit the [API error center](https://error-center.alibabacloud.com/status/product/Ecs). |
+|ErrorMsg|String|testErrorMsg|The error message. This parameter is empty when the operation was successful.
+
+For more information about error codes and error messages, visit the [API error center](https://error-center.alibabacloud.com/status/product/Ecs). |
 |OperationStatus|String|Success|Indicates whether the operation was successful.
 
- If the operation was successful, a value of Success is returned. If the operation failed, error codes and messages are returned. |
+If the operation was successful, a value of Success is returned. If the operation failed, an error code and error message are returned. |
 |RelatedItemSet|Array of RelatedItem| |Details about the resources. |
 |RelatedItem| | | |
 |Name|String|SnapshotId|The name of the resource. |
@@ -81,28 +83,28 @@ Sample success responses
 
 ```
 {
-	"RequestId": "5C4160C1-C77D-4FD0-9C47-DB9FFA3D1220",
-	"OperationProgressSet": {
-		"OperationProgress": [
-			{
-				"OperationStatus": "Success",
-				"ErrorMsg": "",
-				"RelatedItemSet": {
-					"RelatedItem": [
-						{
-							"Value": "s-j6cdofbycydvg7ey****",
-							"Name": "SnapshotId"
-						},
-						{
-							"Value": "d-j6cf7l0ewidb78lq****",
-							"Name": "DiskId"
-						}
-					]
-				},
-				"ErrorCode": ""
-			}
-		]
-	}
+    "RequestId": "5C4160C1-C77D-4FD0-9C47-DB9FFA3D1220",
+    "OperationProgressSet": {
+        "OperationProgress": [
+            {
+                "OperationStatus": "Success",
+                "ErrorMsg": "",
+                "RelatedItemSet": {
+                    "RelatedItem": [
+                        {
+                            "Value": "s-j6cdofbycydvg7ey****",
+                            "Name": "SnapshotId"
+                        },
+                        {
+                            "Value": "d-j6cf7l0ewidb78lq****",
+                            "Name": "DiskId"
+                        }
+                    ]
+                },
+                "ErrorCode": ""
+            }
+        ]
+    }
 }
 ```
 
