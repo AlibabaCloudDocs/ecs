@@ -6,11 +6,13 @@ keyword: [ECS, consumption bill, bill details, overdue payment]
 
 You can view bills and consumption details of ECS resources in the Billing Management console.
 
+## Procedure
+
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  In the top navigation bar, click **Expenses** to go to the Billing Management console.
+2.  In the top navigation bar, click **Expenses** to go to theBilling Management console.
 
-3.  In the left-side navigation pane, choose **Spending Summary \>****Spending Summary**.
+3.  In the left-side navigation pane, choose **Spending Summary****Spending Summary**.
 
 4.  On the Bills page, click the corresponding tab to view the billing information.
 
@@ -24,7 +26,7 @@ You can view bills and consumption details of ECS resources in the Billing Manag
 
     -   Click the **Details** tab to view consumption details.
 
-        You can filter statistics by statistic item and period. The consumption details include the billable item, usage, price, and deduction of a specific service.
+        You can filter billing details by statistic item and period. Consumption details include the billable item, usage, price, and deduction of a specific service.
 
     For example, if you want to view the billing details of ECS snapshots in July 2020, you can filter the bills based on the conditions shown in the following figure.
 
@@ -32,6 +34,6 @@ You can view bills and consumption details of ECS resources in the Billing Manag
 
     **Note:**
 
-    -   Click **Customize Column Options** in the upper-right corner to select the billable item to be displayed.
-    -   To analyze bills, click **Export Billing Overview \(CSV\)** to export and view current bills on your local computer.
+    -   You can click **Customize Column Options** in the upper-right corner of the consumption detail list and select billable items to be displayed.
+    -   To analyze bills, you can click **Export Billing Overview \(CSV\)** to export and view current bills on your computer.
 
