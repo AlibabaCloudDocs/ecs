@@ -27,8 +27,10 @@ keyword: [发布更新, ecs, alibaba cloud linux]
     -   支持Intel SGX
     -   支持网络诊断工具Ping Trace
     -   支持在单机多实例的场景下轻量级创建cgroup，有效减少cgroup的创建时间
-    -   支持Intel IceLake MCA
--   适用地域：华北1（青岛）、华北2（北京）、华东1（杭州）、西南1（成都）、中国（香港）、新加坡 |
+    -   支持Intel IceLake MCA |
+|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210325.vhd|2021-03-25|-   更新`Alibaba Cloud Linux 2.1903 64位 快速启动版`镜像
+-   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd版本制作
+-   适用地域：华东1（杭州）、华北2（北京）、华南1（深圳）、中国（香港） |
 |aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210218.vhd|2021-02-18|-   更新`Alibaba Cloud Linux 2.1903 64位 快速启动版`镜像
 -   默认的网络配置服务切换为network-scripts
 -   修复CVE-2021-3156漏洞，即Linux sudo权限漏洞。更多信息，请参见[漏洞公告 \| Linux sudo权限漏洞（CVE-2021-3156）](/intl.zh-CN/动态与公告/安全公告/漏洞公告 | Linux sudo权限漏洞（CVE-2021-3156）.md)
@@ -140,6 +142,14 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 
 |镜像ID|发布时间|适用实例规格族|发布内容|
 |----|----|-------|----|
+|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|2021-03-25|可信实例规格族：-   ecs.g6t
+-   ecs.c6t
+
+|-   更新`Alibaba Cloud Linux 2.1903 64位 可信版`镜像
+-   该镜像基于`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像的aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd版本制作
+-   启动切换为UEFI模式，而且仅支持该模式
+-   内核更新：版本更新至kernel-4.19.91-23.al7
+-   适用地域：华东1（杭州）、华东2（上海）、华北2（北京）、华南1（深圳） |
 |aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210218.vhd|2021-02-18|可信实例规格族：-   ecs.g6t
 -   ecs.c6t
 
