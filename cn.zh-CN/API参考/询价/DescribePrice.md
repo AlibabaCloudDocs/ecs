@@ -8,6 +8,8 @@
     -   参数`ResourceType=instance`时，您必须同时指定参数`InstanceType`。
     -   参数`ResourceType=disk`时，您必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。查询`disk`资源的价格时，只返回云盘按量付费的价格，即参数`PriceUnit`只能取值为`Hour`。
     -   查询`ResourceType=ddh`时，您必须同时指定参数`DedicatedHostType`。
+    -   查询`ResourceType=ElasticityAssurance`时，必须同时指定参数`InstanceType`。
+    -   查询`ResourceType=CapacityReservation`时，必须同时指定参数`InstanceType`。
 -   查询`ResourceType=bandwidth`时，只返回按流量计费（`PayByTraffic`）的价格。
 -   参数`ResourceType=instance`时，仅支持查询四块以内数据盘的价格。
 -   默认查询付费方式（`ChargeType`）为按量付费（`PostPaid`）的价格，您可以通过指定`PriceUnit`参数查询云服务器ECS不同计费周期的价格。
@@ -24,11 +26,12 @@
 |RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |ResourceType|String|否|instance|目标资源的类型。取值范围：
 
- -   instance：查询ECS实例的最新价格列表。当取值为instance时，必须同时指定参数`InstanceType`。
--   disk：查询云盘的最新价格列表。当取值为disk时，必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。
+ -   instance：查询ECS实例的最新价格列表。当取值为`instance`时，必须同时指定参数`InstanceType`。
+-   disk：查询云盘的最新价格列表。当取值为`disk`时，必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。
 -   bandwidth：查询带宽的最新价格列表。
--   ecsrep：查询弹性保障服务的最新价格列表。
 -   ddh：查询专有宿主机的最新价格列表。
+-   ElasticityAssurance：查询弹性保障服务的价格信息。当取值为`ElasticityAssurance`时，必须同时指定参数`InstanceType`。
+-   CapacityReservation：查询容量预定服务的价格信息。当取值为`CapacityReservation`时，必须同时指定参数`InstanceType`。
 
  默认值：instance |
 |ImageId|String|否|centos\_7\_05\_64\_20G\_alibase\_20181212.vhd|镜像ID，表示启动实例时希望装载的运行环境。您可以调用[DescribeImages](~~25534~~)查询您可用的镜像资源。如果不指定，默认查询Linux系统镜像的价格。 |
