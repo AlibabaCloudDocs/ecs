@@ -11,7 +11,7 @@
 
 以下描述了三种通过该接口创建自定义镜像的方法。请求参数的优先级为：`InstanceId` \> `DiskDeviceMapping` \> `SnapshotId`，若您的请求中同时含有两个及以上参数，默认以优先级更高的参数为准创建镜像。
 
--   **方法一**：使用一台实例做模板，只需要指定实例ID（`InstanceId`）。该台实例的状态必须为运行中（`Running`）或者已停止（`Stopped`）。接口调用成功后，该台实例的每块云盘均会新增一份快照。
+-   **方法一**：使用一台实例做模板，只需要指定实例ID（`InstanceId`）。该台实例的状态必须为运行中（`Running`）或者已停止（`Stopped`）。接口调用成功后，该台实例的每块云盘均会新增一份快照。由于运行中的实例存在缓存数据未落盘的情况，可能导致创建的自定义镜像数据与实例数据不完全一致。因此阿里云推荐您停止实例（[StopInstances](~~155372~~)）后创建镜像。
 -   **方法二**：针对某一台实例的系统盘创建自定义镜像，只需要指定实例系统盘的一份历史快照ID（`SnapshotId`）。其中，指定的快照不能是2013年7月15日（含）之前创建的快照。
 -   **方法三**：将多份快照组合成一个镜像模板，需要建立几块云盘的数据关联（`DiskDeviceMapping`）。
 
@@ -64,7 +64,7 @@
 -   RedHat
 -   Debian
 -   CoreOS
--   Aliyun Linux
+-   Aliyun
 -   Windows Server 2012
 -   Windows 7
 -   Customized Linux
@@ -119,7 +119,7 @@ https://ecs.aliyuncs.com/?Action=CreateImage
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateImageResponse>
@@ -128,7 +128,7 @@ https://ecs.aliyuncs.com/?Action=CreateImage
 </CreateImageResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -142,7 +142,7 @@ https://ecs.aliyuncs.com/?Action=CreateImage
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
 |404|InvalidSnapshotId.NotFound|The specified SnapshotId does not exist.|指定的快照不存在，请您检查快照是否正确。|
-|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称不合法。长度为2-128个字符，以英文字母或中文开头，可包含数字，点号（.），下划线（\_）或连字符（-）。 不能以http://和https://开头。|
+|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称格式错误。长度为2~128个字符。必须以大小字母或中文开头，不能以aliyun和acs:开头，不能包含http://或者https://。可以包含数字、半角句号（.）、半角冒号（:）、下划线（\_）或者短划线（-）。|
 |400|InvalidImageName.Duplicated|The specified Image name has already bean used.|镜像名称已经重复。|
 |400|InvalidDescription.Malformed|The specified description is wrongly formed.|指定的资源描述格式不合法。长度为2-256个字符，不能以http://和https://开头。|
 |400|InvalidImageVersion.Malformed|The specified ImageVersion is wrongly formed.|无效的镜像版本号取值（或者您无权使用该快照）。|
@@ -178,11 +178,12 @@ https://ecs.aliyuncs.com/?Action=CreateImage
 |403|IncorrectDiskStatus.CreatingSnapshot|A previous snapshot creation is in process.|当前磁盘有创建中的快照，请您等待创建完成再试。|
 |404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
 |500|InternalError|The process of creating snapshot has failed due to some unknown error.|创建快照失败。|
+|403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键不合法。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值不合法。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
 |400|InvalidDiskType.ValueNotSupported|The specified disk type is not supported.|指定的磁盘属性不支持。|
 |400|IdempotenceParamNotMatch|Request uses a client token in a previous request but is not identical to that request.|与相同ClientToken的请求参数不符合。|
