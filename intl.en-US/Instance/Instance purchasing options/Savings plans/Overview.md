@@ -60,7 +60,7 @@ Both savings plans and reserved instances can be applied to offset the bills of 
 |You want to deploy your instances in multiple regions.|A reserved instance can be used only within a single region.|
 |You want to make it easy to select resources in the budgeting phase.|Requires an estimate of the approximate usage range but not details about the instance family or operating system.|Requires details about the region, instance family, and operating system.|
 
-For more information about instance billing, see [t1937440.md\#](/intl.en-US/Pricing/Billing items/Instance types.md).
+For more information about instance billing, see [Instance types](/intl.en-US/Pricing/Billing items/Instance types.md).
 
 ## Billing
 
@@ -94,7 +94,6 @@ The following table describes the limits of savings plans.
 |Object|Item|Description|
 |------|----|-----------|
 |Savings plan|Maximum number|You can purchase up to 40 savings plans for each account.|
-|Eligible instance|Savings plans cannot be applied to instances of retired Generation I instance families, which include t1, s1, s2, s3, m1, m2, c1, and c2.|
 |Order of application|When multiple discount plans take effect, they are applied in the following order:1.  Reserved instances and resource plans
 2.  Savings plans
 3.  Coupons
