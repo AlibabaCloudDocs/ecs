@@ -71,21 +71,6 @@ The following tables list the API operations available for use in ECS.
 |[DescribeLaunchTemplateVersions](/intl.en-US/API Reference/Launch templates/DescribeLaunchTemplateVersions.md)|Queries versions of launch templates.|
 |[ModifyLaunchTemplateDefaultVersion](/intl.en-US/API Reference/Launch templates/ModifyLaunchTemplateDefaultVersion.md)|Modifies the default version of a launch template. If you do not specify a template version number when you create instances \(RunInstances\), the default version is used.|
 
-## Resource assurances
-
-|API|Description|
-|---|-----------|
-|[t1990706.md\#]()|Creates an elasticity assurance.|
-|[t1990711.md\#]()|Creates a capacity reservation.|
-|[t1990613.md\#]()|Queries the details of elasticity assurances.|
-|[t1990619.md\#]()|Queries the running ECS instances that were created by using an elasticity assurance.|
-|[t1990639.md\#]()|Queries the instances that match a capacity reservation.|
-|[t1990622.md\#]()|Queries information about the private pools that instances match.|
-|[t2022241.md\#]()|Modifies the name and description of an elasticity assurance.|
-|[t2022313.md\#]()|Modifies some information about a capacity reservation, including the name, description, expiration method, and the total number of ECS instances that can be reserved.|
-|[t1990643.md\#]()|Modifies the properties of the private pool for an instance.|
-|[t1990635.md\#]()|Releases a capacity reservation.|
-
 ## Auto provisioning groups
 
 |API|Description|
