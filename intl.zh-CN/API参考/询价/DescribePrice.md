@@ -24,10 +24,9 @@
 |RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |ResourceType|String|否|instance|目标资源的类型。取值范围：
 
- -   instance：查询ECS实例的最新价格列表。当取值为instance时，必须同时指定参数`InstanceType`。
--   disk：查询云盘的最新价格列表。当取值为disk时，必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。
+ -   instance：查询ECS实例的最新价格列表。当取值为`instance`时，必须同时指定参数`InstanceType`。
+-   disk：查询云盘的最新价格列表。当取值为`disk`时，必须同时指定参数`DataDisk.1.Category`和`DataDisk.1.Size`。
 -   bandwidth：查询带宽的最新价格列表。
--   ecsrep：查询弹性保障服务的最新价格列表。
 -   ddh：查询专有宿主机的最新价格列表。
 
  默认值：instance |
