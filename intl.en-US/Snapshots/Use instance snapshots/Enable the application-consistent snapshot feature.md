@@ -2,26 +2,31 @@
 
 The Alibaba Cloud snapshot service works with Cloud Assistant to provide the application-consistent snapshot feature. Application-consistent snapshots can be used for rollbacks to avoid log rollbacks when applications such as databases start. This ensures that the applications start in a consistent state.
 
--   The instance allows access to the Internet. A public IP address is configured or an elastic IP address \(EIP\) is associated.
--   The instance runs one of the following operating systems:
-    -   Windows: Windows Server 2019, Windows Server 2016, and Windows Server 2012.
+-   The ECS instance runs one of the following operating systems:
+    -   Windows: Windows Server 2019, Windows Server 2016, and Windows Server 2012 R2.
     -   Linux: CentOS 7.6 or later, Ubuntu 18.04 or later, and Alibaba Cloud Linux 2 \(2.1903 LTS 64-bit\).
--   The disks of the instance are enhanced SSDs \(ESSDs\) and the file system is EXT3, EXT4, XFS, or NTFS.
+-   The disks of the ECS instance are enhanced SSDs \(ESSDs\) and the file system is EXT3, EXT4, XFS, or NTFS. Network or shared file systems are not supported.
+-   The Cloud Assistant client is installed on the instance. For more information, see [Install the Cloud Assistant client](/intl.en-US/Deployment & Maintenance/Cloud assistant/Configure the Cloud Assistant client/Install the Cloud Assistant client.md).
+
+    **Note:** By default, ECS instances created from public images after December 1, 2017 are pre-installed with the Cloud Assistant client.
+
 
 By default, created snapshots are crash-consistent. If you enable the application-consistent snapshot feature when you create a snapshot, the system creates an application-consistent snapshot or a file-system consistent snapshot based on your requirements.
 
 |Type|Description|Implementation|
 |----|-----------|--------------|
-|Application-consistent snapshot|Application-consistent snapshots back up the data in memory and the database transactions in progress when the snapshots are created. This ensures consistency of the application data and database transactions. When application-consistent snapshots are used for rollbacks, no data corruption or loss occurs, logs are not rolled back when databases start, and applications start in a consistent state.Application-consistent snapshots are identified by the `APPConsistent:True` tag.
+|Application-consistent snapshot|Application-consistent snapshots back up the data in memory and the database transactions in progress when the snapshots are created. This ensures consistency of the application data and database transactions. When application-consistent snapshots are used for rollbacks, no data corruption or loss occurs, logs are not rolled back when databases start, and applications start in a consistent state. Application-consistent snapshots are identified by the `APPConsistent:True` tag.
 
 |The application-consistent snapshot feature is implemented in different manners based on the operating system:-   Windows: The feature is implemented by using Volume Shadow Copy Service \(VSS\).
 -   Linux: The feature is implemented by using custom shell scripts. You must write your own scripts based on the application. When you use custom scripts, Alibaba Cloud does not take responsibility for application consistency issues. |
-|File-system consistent snapshot|If the application-consistent snapshot feature is enabled but relevant conditions are not met, file-system consistent snapshots are created.File-system consistent snapshots synchronize the file system memory and disk information when the snapshots are created and freezes write operations on the file system to ensure consistency of the file system. File-system consistent snapshots can be used to prevent the operating system from performing disk check and fix operations by using check disk \(chkdsk\) or file system consistency check \(fsck\).
+|File-system consistent snapshot|If the application-consistent snapshot feature is enabled but relevant conditions are not met, file-system consistent snapshots are created. File-system consistent snapshots synchronize the file system memory and disk information when the snapshots are created and freezes write operations on the file system to ensure consistency of the file system. File-system consistent snapshots can be used to prevent the operating system from performing disk check and fix operations by using check disk \(chkdsk\) or file system consistency check \(fsck\).
 
 File-system consistent snapshots are identified by the `FsConsistent:True` tag.
 
 |The file-system consistent snapshot feature is implemented based on the operating system:-   Windows: If no VSS writers are available, file-system consistent snapshots are created by default.
 -   Linux: If no application scripts are available, file-system consistent snapshots are created by default. |
+
+**Note:** The application-consistent snapshot feature is now available in the China \(Hong Kong\) and Singapore \(Singapore\) regions. The number of supported regions is increasing.
 
 ## Procedure
 
@@ -41,7 +46,7 @@ File-system consistent snapshots are identified by the `FsConsistent:True` tag.
 
 ## Step 1: Configure a RAM role for the ECS instance
 
-1.  Log on to the [Resource Access Management \(RAM\) console](https://ram.console.aliyun.com/) by using your Alibaba Cloud account.
+1.  Log on to the [RAM console](https://ram.console.aliyun.com/) by using your Alibaba Cloud account.
 
 2.  Create a RAM role for the application-consistent snapshot feature. For more information about how to create a RAM role, see [Create a RAM role for a trusted Alibaba Cloud service](/intl.en-US/RAM Role Management/Create a RAM role/Create a RAM role for a trusted Alibaba Cloud service.md).
 
@@ -105,7 +110,7 @@ For Windows instances, you can use VSS to implement application consistency. Thi
 
     -   If you select **Enable Application-consistent Snapshot** and **Whether Writer is included by default**, an application-consistent snapshot is created.
     -   If you select only **Enable Application-consistent Snapshot**, a file-system consistent snapshot is created.
-    **Note:** If the Cloud Assistant client is not installed on your instance, the client is automatically installed when the instance snapshot is created after you select **Enable Application-consistent Snapshot**.
+    **Note:** If the required Cloud Assistant plug-in is not installed on your instance, the plug-in is automatically installed on the instance after you select **Enable Application-consistent Snapshot**.
 
 5.  Click **OK**.
 
@@ -144,7 +149,7 @@ For Linux instances, you must configure shell scripts \(application pre-freeze a
 
     -   If you select **Enable Application-consistent Snapshot** and **Enable File System Freeze and Thaw** and configure valid scripts, an application-consistent snapshot is created.
     -   If you select **Enable Application-consistent Snapshot** and **Enable File System Freeze and Thaw** but do not configure valid scripts, a file-system consistent snapshot is created.
-    **Note:** If the Cloud Assistant client is not installed on your instance, the client is automatically installed when the instance snapshot is created after you select **Enable Application-consistent Snapshot**.
+    **Note:** If the required Cloud Assistant plug-in is not installed on your instance, the plug-in is automatically installed on the instance after you select **Enable Application-consistent Snapshot**.
 
 6.  Click **OK**.
 
