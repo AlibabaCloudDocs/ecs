@@ -84,7 +84,7 @@ ECS实例在同地域同可用区内通过内网通信可以获得最低延迟�
 
 ## 云服务器ECS的公网带宽怎么收费？
 
-详情请参见[公网带宽计费](/intl.zh-CN/产品定价/计费项/公网带宽计费.md)。
+详情请参见[公网带宽计费](/intl.zh-CN/产品计费/计费项/公网带宽计费.md)。
 
 ## 为何新建的ECS实例就有200 Kbps左右入网流量？
 
@@ -187,7 +187,7 @@ ECS实例在同地域同可用区内通过内网通信可以获得最低延迟�
 2.  选择云产品，找到您想要取消的正在清洗中的IP，单击**查看详情**。
 3.  单击**取消清洗**。
 
-    ![取消清洗](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1286649951/p50257.png)
+    ![取消清洗](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1286649951/p50257.png)
 
 
 ## 怎么申请云服务器ECS反向解析？
