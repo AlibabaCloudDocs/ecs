@@ -22,7 +22,7 @@ You can perform the following operations to update the Red Hat virtio drivers of
 You can use one of the following methods to check the version of the drivers:
 
 -   Method 1: Use the PowerShell script to check the version of the drivers.
-    1.  Connect to the Windows instance. For more information, see [Connect to a Windows instance from a local client](/intl.en-US/Instance/Connect to instances/Connect to Windows instances/Connect to a Windows instance from a local client.md).
+    1.  Connect to the Windows instance. For more information, see [Connect to a Windows instance from a local client](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Windows instance from a local client.md).
     2.  Open Command Prompt.
     3.  Enter powershell to access the PowerShell interactive interface.
     4.  Enter and run the following command to check the version and determine whether the ECS instance supports resizing disks online based on the command output:
@@ -52,7 +52,7 @@ Determine whether the requirements of the file version are met based on the quer
 
 ## Step 2: Download the drivers
 
-Click [here](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/169523/cn_zh/1590721781509/virtio_58015.zip) to download the virtio driver package and decompress it. The subsequent steps in this topic are based on the assumption that the decompressed driver package is located at C:\\Users\\Administrator\\Desktop\\virtioDriver. The following table lists the extracted folders corresponding to ECS instances of different operating system versions.
+Click [here](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/169523/cn_zh/1590721781509/virtio_58015.zip) to download the virtio driver package and decompress it. The subsequent steps in this topic are based on the assumption that the decompressed driver package is located at C:\\Users\\Administrator\\Desktop\\virtioDriver. The following table lists the extracted folders corresponding to ECS instances of different operating system versions.
 
 |Driver file \(folder\) name|Description|
 |:--------------------------|:----------|
