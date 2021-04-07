@@ -14,7 +14,7 @@ keyword: [云盘扩容, 磁盘热扩容, Windows扩容云盘, Windows增加存�
 -   不支持Windows Server 2003操作系统。
 -   不支持以下实例规格：ecs.ebmc4.8xlarge、ecs.ebmhfg5.2xlarge、ecs.ebmg5.24xlarge。
 -   实例状态为**运行中**（Running）。
--   Windows实例的RedHat VirtIO SICI驱动需要大于58011版本。具体检查和升级步骤请参见[Windows实例更新RedHat VirtIO驱动](/cn.zh-CN/块存储/扩容云盘/Windows实例更新RedHat VirtIO驱动.md)。
+-   Windows实例的RedHat VirtIO SCSI驱动需要大于58011版本。具体检查和升级步骤请参见[Windows实例更新RedHat VirtIO驱动](/cn.zh-CN/块存储/扩容云盘/Windows实例更新RedHat VirtIO驱动.md)。
 
 **说明：** 如果您的ECS实例不符合在线扩容条件，您可以使用离线扩容云盘功能，具体请参见[离线扩容云盘（Windows系统）](/cn.zh-CN/块存储/扩容云盘/离线扩容云盘（Windows系统）.md)。 |
 |云盘|-   云盘状态为**使用中**（In Use）。
@@ -44,7 +44,7 @@ keyword: [云盘扩容, 磁盘热扩容, Windows扩容云盘, Windows增加存�
 
 1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-2.  在左侧导航栏，单击**实例与镜像** \> **实例**。
+2.  在左侧导航栏，选择**实例与镜像** \> **实例**。
 
 3.  在顶部菜单栏左上角处，选择地域。
 
@@ -78,13 +78,16 @@ keyword: [云盘扩容, 磁盘热扩容, Windows扩容云盘, Windows增加存�
 5.  阅读磁盘扩容须知后，单击**已阅读，继续扩容**，完成支付。
 
 
-**说明：** 控制台上扩容云盘容量后，您还不能直接使用已扩容的容量，需要在ECS实例内部扩容分区和文件系统。
+**说明：**
+
+-   控制台上扩容云盘容量后，您还不能直接使用已扩容的容量，需要在ECS实例内部扩容分区和文件系统。
+-   如果您使用LVM管理磁盘分区，在控制台完成扩容操作后，需要通过LVM扩容分区和文件系统。具体操作，请参见[扩容LVM逻辑卷](/cn.zh-CN/最佳实践/块存储/使用逻辑卷（Linux）/扩容LVM逻辑卷.md)。
 
 ## 步骤三：扩容系统盘或数据盘分区的文件系统
 
 在ECS控制台上扩容云盘后，对应分区的文件系统并未扩容。您需要连接实例扩容文件系统。扩容前的容量为40 GiB，扩容为60 GiB，文件系统类型为NTFS。此步骤以扩容系统盘分区的文件系统为例。
 
-1.  远程登录ECS实例，具体操作请参见[通过Workbench远程连接Windows实例](/cn.zh-CN/实例/连接实例/连接Windows实例/通过Workbench远程连接Windows实例.md)。
+1.  远程登录ECS实例，具体操作请参见[通过密码或密钥认证登录Windows实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Windows实例.md)。
 
 2.  在Windows Server桌面，右键单击**开始**图标，然后单击**磁盘管理**。
 
@@ -117,7 +120,7 @@ keyword: [云盘扩容, 磁盘热扩容, Windows扩容云盘, Windows增加存�
 
 云盘新扩容的容量如果需要用于创建新分区，请参见此步骤操作。
 
-1.  远程登录ECS实例，具体操作请参见[通过Workbench远程连接Windows实例](/cn.zh-CN/实例/连接实例/连接Windows实例/通过Workbench远程连接Windows实例.md)。
+1.  远程登录ECS实例，具体操作请参见[通过密码或密钥认证登录Windows实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Windows实例.md)。
 
 2.  在Windows Server桌面，右键单击**开始**图标，然后单击**磁盘管理**。
 
