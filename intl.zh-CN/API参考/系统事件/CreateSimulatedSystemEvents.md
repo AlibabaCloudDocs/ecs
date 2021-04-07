@@ -35,7 +35,7 @@
 |InstanceId.N|RepeatList|是|i-bp1gtjxuuvwj17zr\*\*\*\*|一个或者多个ECS实例ID。N的取值范围：1~100，多个取值使用重复列表的形式。 |
 |NotBefore|String|是|2018-12-01T06:32:31Z|事件计划执行的开始时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
 
- **说明：** 对于系统错误或实例错误导致的异常事件，创建后事件处于正在执行（`Executing`）的一个中间状态，此时参数`NotBefore`为事件变为`Executed`状态的时间。 |
+ **说明：** 对于系统错误或实例错误导致的异常事件，创建事件后，事件已处于正在执行（`Executing`）状态，此时参数`NotBefore`为事件进入完成执行（`Executed`）状态的时间。 |
 |RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 
 ## 返回数据
