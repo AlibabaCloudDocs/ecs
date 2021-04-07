@@ -26,11 +26,40 @@ You can use one of the following methods to detach data disks in the ECS console
 
 ## Detach a data disk on the Instance Details page
 
-1.  In the top navigation bar, select a region.
+1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  Find the instance from which you want to detach the disk and click the instance ID.
+2.  In the left-side navigation pane, choose **Instances & Images** \> **Instances**.
 
-3.  On the **Instance Details** page, click the **Cloud Disk** tab.
+3.  In the top navigation bar, select a region.
+
+4.  Find the instance from which you want to detach the disk and click the instance ID.
+
+5.  On the **Instance Details** page, click the **Cloud Disk** tab.
+
+6.  Find the disk and choose **More** \> **Detach** in the **Actions** column.
+
+    Only disks that have the following properties can be detached:
+
+    -   The value of **Status** is **In Use**.
+    -   The value of **Detachable** is **Yes**.
+
+        **Note:** If the value of **Detachable** corresponding to your disk is **No**, you must first change the billing method of the disk from subscription to pay-as-you-go. For more information, see [Change billing methods of disks](/intl.en-US/Block Storage/Cloud disks/Change billing methods of disks.md).
+
+    -   The value of **Type \(All\)** is **Data Disk**.
+7.  In the message that appears, click **OK**.
+
+
+**Note:** You can repeat the preceding procedure to detach multiple disks.
+
+When the value of **Status** becomes **Unattached**, the disk is detached.
+
+## Detach a data disk on the Disks page
+
+1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
+
+2.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Disks**.
+
+3.  In the top navigation bar, select a region.
 
 4.  Find the disk and choose **More** \> **Detach** in the **Actions** column.
 
@@ -43,27 +72,6 @@ You can use one of the following methods to detach data disks in the ECS console
 
     -   The value of **Type \(All\)** is **Data Disk**.
 5.  In the message that appears, click **OK**.
-
-
-**Note:** You can repeat the preceding procedure to detach multiple disks.
-
-When the value of **Status** becomes **Unattached**, the disk is detached.
-
-## Detach a data disk on the Disks page
-
-1.  In the top navigation bar, select a region.
-
-2.  Find the disk and choose **More** \> **Detach** in the **Actions** column.
-
-    Only disks that have the following properties can be detached:
-
-    -   The value of **Status** is **In Use**.
-    -   The value of **Detachable** is **Yes**.
-
-        **Note:** If the value of **Detachable** corresponding to your disk is **No**, you must first change the billing method of the disk from subscription to pay-as-you-go. For more information, see [Change billing methods of disks](/intl.en-US/Block Storage/Cloud disks/Change billing methods of disks.md).
-
-    -   The value of **Type \(All\)** is **Data Disk**.
-3.  In the message that appears, click **OK**.
 
 
 When the value of **Status** becomes **Unattached**, the disk is detached.
