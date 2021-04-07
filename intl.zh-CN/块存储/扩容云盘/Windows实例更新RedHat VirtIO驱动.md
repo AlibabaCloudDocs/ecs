@@ -22,7 +22,7 @@ Windows实例更新RedHat VirtIO驱动的操作步骤如下。
 检查驱动版本有以下两种方式。
 
 -   方式一：使用PowerShell检查驱动版本
-    1.  远程连接Windows实例。详情请参见[在本地客户端上连接Windows实例](/intl.zh-CN/实例/连接实例/连接Windows实例/在本地客户端上连接Windows实例.md)。
+    1.  远程连接Windows实例。详情请参见[在本地客户端上连接Windows实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/在本地客户端上连接Windows实例.md)。
     2.  打开CMD命令行窗口。
     3.  输入powershell进入PowerShell交互界面。
     4.  输入以下命令检查驱动版本，根据返回信息判断ECS实例是否支持在线扩容。
@@ -52,7 +52,7 @@ Windows实例更新RedHat VirtIO驱动的操作步骤如下。
 
 ## 步骤二：下载驱动程序
 
-下载并解压安装包（[virtio驱动包](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/169523/cn_zh/1590721781509/virtio_58015.zip)），本文后续步骤假设您解压后驱动包所在路径为C:\\Users\\Administrator\\Desktop\\virtioDriver。ECS实例的操作系统与解压后文件夹目录的对应关系如下表所示。
+下载并解压安装包（[virtio驱动包](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/169523/cn_zh/1590721781509/virtio_58015.zip)），本文后续步骤假设您解压后驱动包所在路径为C:\\Users\\Administrator\\Desktop\\virtioDriver。ECS实例的操作系统与解压后文件夹目录的对应关系如下表所示。
 
 |驱动文件（夹）名称|文件（夹）描述|
 |:--------|:------|
