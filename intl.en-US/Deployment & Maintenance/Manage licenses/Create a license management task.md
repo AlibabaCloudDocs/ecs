@@ -8,7 +8,8 @@ License Manager provides simplified management and usage monitoring for your sof
 
 ## Limits
 
-You can create up to 25 license management tasks within a single region.
+-   License Manager is now available only in the US \(Silicon Valley\), US \(Virginia\), and China \(Hangzhou\) regions, and will be gradually supported in other regions.
+-   You can create up to 25 license management tasks within a single region.
 
 ## Procedure
 
