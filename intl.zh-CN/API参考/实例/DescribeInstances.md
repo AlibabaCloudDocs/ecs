@@ -131,7 +131,7 @@
 |CoreCount|Integer|2|物理CPU核心数。 |
 |Numa|String|2|分配的线程数。可能值：2 |
 |ThreadsPerCore|Integer|4|CPU线程数。 |
-|CreationTime|String|2017-12-10T04:04Z|实例创建时间。 |
+|CreationTime|String|2017-12-10T04:04Z|实例创建时间。以ISO8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO8601](~~25696~~)。 |
 |CreditSpecification|String|Standard|修改突发性能实例的运行模式。可能值：
 
  -   Standard：标准模式。有关实例性能的更多信息，请参见[什么是突发性能实例](~~59977~~)中的性能约束模式章节。
@@ -171,9 +171,11 @@
 -   PayByTraffic：按流量计费。 |
 |IpAddress|String|42.112.\*\*.\*\*|弹性公网IP。 |
 |IsSupportUnassociate|Boolean|true|是否可以解绑弹性公网IP。 |
-|ExpiredTime|String|2017-12-10T04:04Z|过期时间。以ISO8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mm:ssZ。更多信息，请参见[ISO8601](~~25696~~)。 |
+|ExpiredTime|String|2017-12-10T04:04Z|过期时间。以ISO8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO8601](~~25696~~)。 |
 |GPUAmount|Integer|4|实例规格附带的GPU数量。 |
 |GPUSpec|String|NVIDIA V100|实例规格附带的GPU类型。 |
+|HibernationOptions|Struct| |**说明：** 该参数正在邀测中，暂未开放使用。 |
+|Configured|Boolean|false|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |HostName|String|testHostName|实例主机名。 |
 |HpcClusterId|String|hpc-bp67acfmxazb4p\*\*\*\*|实例所属的HPC集群ID。 |
 |ISP|String|null|**说明：** 该参数正在邀测中，暂未开放使用。 |
@@ -262,7 +264,7 @@
  -   NoSpot：正常按量付费实例。
 -   SpotWithPriceLimit：设置上限价格的抢占式实例。
 -   SpotAsPriceGo：系统自动出价，最高按量付费价格。 |
-|StartTime|String|2017-12-10T04:04Z|实例的竞价模式开始时间。 |
+|StartTime|String|2017-12-10T04:04Z|实例的创建时间。以ISO8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO8601](~~25696~~)。 |
 |Status|String|Running|实例状态。 |
 |StoppedMode|String|KeepCharging|实例停机后是否继续收费。可能值：
 
