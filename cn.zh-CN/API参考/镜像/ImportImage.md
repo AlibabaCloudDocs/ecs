@@ -118,6 +118,14 @@
 -   Windows Server 2012
 -   Others Linux（默认）
 -   Customized Linux |
+|BootMode|String|否|BIOS|修改镜像的启动模式。取值范围：
+
+ -   BIOS：BIOS启动模式。
+-   UEFI：UEFI启动模式。
+
+ 默认值：BIOS
+
+ **说明：** 您需要了解指定的镜像支持的启动模式，当通过该参数修改启动模式后，必须与镜像本身支持的启动模式匹配，实例才能正常启动。 |
 |RoleName|String|否|AliyunECSImageImportDefaultRole|导入镜像时，使用的RAM角色名称。 |
 |LicenseType|String|否|Auto|导入镜像后，激活操作系统采用的许可证类型。取值范围：
 
@@ -159,7 +167,7 @@ https://ecs.aliyuncs.com/?Action=ImportImage
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ImportImageResponse>
@@ -170,7 +178,7 @@ https://ecs.aliyuncs.com/?Action=ImportImage
 </ImportImageResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -188,7 +196,7 @@ https://ecs.aliyuncs.com/?Action=ImportImage
 |400|MissingParameter|An input parameter "RegionId" that is mandatory for processing the request is not supplied.|参数RegionId不得为空。|
 |400|MissingParameter|An input parameter "DiskDeviceMapping.1.OSSBucket" that is mandatory for processing the request is not supplied.|导入镜像的OSS的bucket不得为空。|
 |400|MissingParameter|An input parameter "DiskDeviceMapping.1.OSSObject" that is mandatory for processing the request is not supplied.|导入镜像的OSS的bucket不得为空。|
-|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称不合法。长度为2-128个字符，以英文字母或中文开头，可包含数字，点号（.），下划线（\_）或连字符（-）。 不能以http://和https://开头。|
+|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称格式错误。长度为2~128个字符。必须以大小字母或中文开头，不能以aliyun和acs:开头，不能包含http://或者https://。可以包含数字、半角句号（.）、半角冒号（:）、下划线（\_）或者短划线（-）。|
 |400|InvalidOSSObject.Malformed|The specified OSS object is wrongly formed.|指定的OSS Object不合法。|
 |400|InvalidDescription.Malformed|The specified Image description is wrongly formed.|镜像描述格式错误。|
 |400|InvalidArchitecture.Malformed|The specified Architecture is wrongly formed.|参数Architecture格式错误。|
@@ -210,6 +218,7 @@ https://ecs.aliyuncs.com/?Action=ImportImage
 |403|MissingParameter.DiskDeviceMapping|The specified parameter DiskDeviceMapping is not supplied.|参数DiskDeviceMapping不能为空。|
 |400|InvalidOSSObject.NotFound|The specified OSS object does not exist in this region.|指定的object不存在。|
 |400|InvalidOSSObject.NotFound|The specified OSS object cannot be retrieved.|指定的OSS对象无法检索。|
+|400|InvalidOSSBucket.NotMatched|The specified OSS bucket is incorrect, %s.|指定的OSSBucket有误，具体信息请参见错误信息%s占位符的实际返回结果。|
 |400|InvalidLicenseType.NotSupported|The specified LicenseType is not supported|指定的许可证类型不支持。|
 |400|InvalidLicenseType.BYOLOnly|Only BYOL LicenseType is supported for the current platform provided|当前提供的平台仅支持BYOL类型的许可证。|
 
