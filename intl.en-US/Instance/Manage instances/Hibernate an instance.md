@@ -131,3 +131,7 @@ After the instance hibernation feature is enabled for the instance and the hiber
         **Note:** The instance is stopped and enters the **Stopped** state. To start the instance, see [Start or stop an instance](/intl.en-US/Instance/Manage instances/Start ECS instances.md).
 
 
+## References
+
+You can use Operation Orchestration Service \(OOS\) to hibernate and wake ECS instances at the scheduled time. This way, the hibernation and wake time of a large number of instances can be managed in an automated manner and the costs can be reduced by using the No Fees for Hibernated Instances feature. For more information, see [Start and shut down ECS instances at the scheduled time]().
+
