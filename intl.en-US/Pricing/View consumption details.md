@@ -10,9 +10,9 @@ You can view bills and consumption details of ECS resources in the Billing Manag
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  In the top navigation bar, click **Expenses** to go to theBilling Management console.
+2.  In the top navigation bar, click **Expenses** to go to the Billing Management console.
 
-3.  In the left-side navigation pane, choose **Spending Summary****Spending Summary**.
+3.  In the left-side navigation pane, choose **Spending Summary** \> **Spending Summary**.
 
 4.  On the Bills page, click the corresponding tab to view the billing information.
 
