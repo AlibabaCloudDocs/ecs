@@ -136,17 +136,17 @@ For information about retired instance families, see [Retired instance types](/i
 
 g7t is in invitational preview. To use g7t, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
--   Supports confidential computing based on Intel® SGX and up to 256 GiB encrypted memory to protect the confidentiality and integrity of key codes and data from malware attacks.
+-   Supports encrypted computing based on Intel® SGX and up to 256 GiB encrypted memory to protect the confidentiality and integrity of key codes and data from malware attacks.
 -   Supports SGX technology applicable to virtual machines and allows you to select instance types based on your needs.
 -   Implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
-    -   Offers a CPU-to-memory ratio of 1:4. About 50% of memory is encrypted.
-    -   Uses the third-generation Intel® Xeon® scalable processors that deliver consistent computing performance.
+    -   Offers a CPU-to-memory ratio of 1: 4. About 50% of memory is encrypted.
+    -   Uses third-generation Intel® Xeon® scalable processors for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
-    -   Supports enhanced SSDs \(ESSDs\) only.
+    -   Supports ESSDs only.
     -   Provides high storage I/O performance based on large computing capacity.
 -   Network:
     -   Provides ultra-high packet forwarding rates.
@@ -161,8 +161,8 @@ g7t is in invitational preview. To use g7t, [submit a ticket](https://workorder-
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|---------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.g7t.large|2|8.0|4.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
 |ecs.g7t.xlarge|4|16.0|8.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
 |ecs.g7t.2xlarge|8|32.0|16.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
@@ -185,7 +185,7 @@ g7ne is in invitational preview. To use g7ne, [submit a ticket](https://workorde
 -   Improves the network bandwidth and packet forwarding rate of a single instance.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Uses Intel® Xeon® Platinum 8369HB \(Cooper Lake\) or Intel® Xeon® Platinum 8369HC \(Cooper Lake\) processors that deliver a maximum turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
+    -   Uses Intel ® Xeon ® Platinum 8369HB \(Cooper Lake\) or Intel ® Xeon ® Platinum 8369HC \(Cooper Lake\) processors that deliver a turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
     -   Supports ESSDs only and provides ultra-high I/O performance.
@@ -202,9 +202,9 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.g7ne.large|2|8.0|None|1.5|25.0|900|Yes|450|2|3|10|10|0.75|
-|ecs.g7ne.xlarge|4|16.0|None|3.0|25.0|1,000|Yes|900|4|4|15|20|1.0|
-|ecs.g7ne.2xlarge|8|32.0|None|6.0|25.0|1,500|Yes|1,750|8|6|15|25|1.5|
+|ecs.g7ne.large|2|8.0|None|1.5|10.0|900|Yes|450|2|3|10|10|0.75|
+|ecs.g7ne.xlarge|4|16.0|None|3.0|10.0|1,000|Yes|900|4|4|15|20|1.0|
+|ecs.g7ne.2xlarge|8|32.0|None|6.0|15.0|1,500|Yes|1,750|8|6|15|25|1.5|
 |ecs.g7ne.4xlarge|16|64.0|None|12.5|25.0|3,000|Yes|3,500|16|8|30|40|2.5|
 |ecs.g7ne.8xlarge|32|128.0|None|25.0|None|6,000|Yes|7,000|16|8|30|75|5.0|
 |ecs.g7ne.12xlarge|48|192.0|None|40.0|None|12,000|Yes|8,000|32|8|30|100|8.0|
@@ -232,13 +232,13 @@ Features
 
     **Note:** The maximum performance of disks varies with instance families. A single instance of this instance family can deliver up to 200,000 IOPS. For higher storage I/O performance, we recommend that you use g6se.
 
--   Provides high storage I/O performance based on large compute capacity.
+-   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Provides ultra-high packet forwarding rates.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Provides high network performance based on large computing capacity.
 -   Supports changes to instance types in the c6 or r6 instance family.
@@ -277,6 +277,10 @@ g6se is in invitational preview. To use g6se, [submit a ticket](https://workorde
 Features
 
 -   Delivers a sequential read/write performance of up to 32 Gbit/s per instance.
+-   Can have up to 64 data disks attached.
+
+    **Note:** You can attach a maximum of 16 data disks to an instance when you create the instance. If the instance needs more data disks, attach more data disks after the instance is created. For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
+
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
@@ -298,15 +302,15 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.g6se.large|2|8.0|None|0.7|10.0|300|Yes|2|2|6|30|1.5|
-|ecs.g6se.xlarge|4|16.0|None|1.0|10.0|500|Yes|4|3|10|60|2.0|
-|ecs.g6se.2xlarge|8|32.0|None|1.5|10.0|800|Yes|8|4|10|90|3.0|
-|ecs.g6se.4xlarge|16|64.0|None|3.0|10.0|1,000|Yes|8|8|20|150|5.0|
-|ecs.g6se.8xlarge|32|128.0|None|6.0|None|2,000|Yes|16|8|20|300|10.0|
-|ecs.g6se.13xlarge|52|192.0|None|8.0|None|3,000|Yes|32|7|20|500|16.0|
-|ecs.g6se.26xlarge|104|384.0|None|16.0|None|6,000|Yes|52|15|20|900|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Maximum attached data disks|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------------------|---------------|-------------------------|
+|ecs.g6se.large|2|8.0|None|0.7|10.0|300|Yes|2|2|6|16|30|1.5|
+|ecs.g6se.xlarge|4|16.0|None|1.0|10.0|500|Yes|4|3|10|16|60|2.0|
+|ecs.g6se.2xlarge|8|32.0|None|1.5|10.0|800|Yes|8|4|10|16|90|3.0|
+|ecs.g6se.4xlarge|16|64.0|None|3.0|10.0|1,000|Yes|8|8|20|24|150|5.0|
+|ecs.g6se.8xlarge|32|128.0|None|6.0|None|2,000|Yes|16|8|20|32|300|10.0|
+|ecs.g6se.13xlarge|52|192.0|None|8.0|None|3,000|Yes|32|7|20|48|500|16.0|
+|ecs.g6se.26xlarge|104|384.0|None|16.0|None|6,000|Yes|52|15|20|64|900|32.0|
 
 **Note:**
 
@@ -319,7 +323,7 @@ Features
 
 -   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
-    -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
+    -   Uses 2.6 GHz AMD EPYC TM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
     -   Allows you to enable or disable Hyper-Threading.
 
@@ -341,7 +345,7 @@ Features
     -   Websites and application servers
     -   Small and medium-sized database systems, caches, and search clusters
     -   Game servers
-    -   Test and development, such as DevOps
+    -   Scenarios where applications such as DevOps applications are developed and tested
     -   Other general-purpose enterprise-level applications
 
 Instance types
@@ -372,7 +376,7 @@ Features
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+    -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
         **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
@@ -421,7 +425,7 @@ Features
 
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
 -   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
 -   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
@@ -434,7 +438,7 @@ Features
 
 -   Provides ultra-high packet forwarding rates.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
@@ -476,7 +480,7 @@ Features
 
 -   Provides ultra-high packet forwarding rates.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
@@ -786,7 +790,7 @@ Features
 
 -   Provides an ultra-high packet forwarding rate.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
@@ -1094,7 +1098,7 @@ Features
 
 -   Provides ultra-high packet forwarding rates.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Offers a CPU-to-memory ratio of 1:8.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
@@ -1295,30 +1299,30 @@ Instance types
 
 ## i3, instance family with local SSDs
 
-i3 is in invitational preview. To use i3, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+The instance family is in invitational preview.
 
-Features:
+Features
 
--   Uses 2.5 GHz Intel ® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
 -   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency, and allows damaged disks to be isolated online.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports enhanced SSDs \(ESSDs\) only.
+-   Supports ESSDs only.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   OLTP and high-performance relational databases
     -   NoSQL databases such as Cassandra and MongoDB
     -   Search scenarios that use solutions such as Elasticsearch
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.i3.xlarge|4|32.0|1 \* 894|1.5|10|1,000|Yes|250|4|4|15|40|1.5|
-|ecs.i3.2xlarge|8|64.0|1 \* 1788|2.5|10|1,600|Yes|250|8|4|15|50|2.0|
-|ecs.i3.4xlarge|16|128.0|2 \* 1788|5.0|10|3,000|Yes|300|8|8|30|80|3.0|
-|ecs.i3.8xlarge|32|256.0|4 \* 1788|10.0|None|6,000|Yes|600|16|8|30|150|5.0|
-|ecs.i3.13xlarge|52|384.0|6 \* 1788|16.0|None|9,000|Yes|900|32|7|30|240|8.0|
-|ecs.i3.26xlarge|104|768.0|12 \* 1788|32.0|None|24,000|Yes|1,800|32|15|30|480|16.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.i3.xlarge|4|32.0|1 × 894|1.5|10|1,000|Yes|250|4|4|15|40|1.5|
+|ecs.i3.2xlarge|8|64.0|1 × 1,788|2.5|10|1,600|Yes|250|8|4|15|50|2.0|
+|ecs.i3.4xlarge|16|128.0|2 × 1,788|5.0|10|3,000|Yes|300|8|8|300|80|3.0|
+|ecs.i3.8xlarge|32|256.0|4 × 1,788|10.0|None|6,000|Yes|600|16|8|300|150|5.0|
+|ecs.i3.13xlarge|52|384.0|6 × 1,788|16.0|None|9,000|Yes|900|32|7|300|240|8.0|
+|ecs.i3.26xlarge|104|768.0|12 × 1,788|32.0|None|24,000|Yes|1,800|32|15|300|480|16.0|
 
 **Note:**
 
@@ -1330,27 +1334,27 @@ Instance types
 
 Features
 
--   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
 -   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Offers a CPU-to-memory ratio of 1:8, which is designed for high-performance databases.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports standard SSDs and ultra disks only.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   OLTP and high-performance relational databases
     -   NoSQL databases such as Cassandra, MongoDB, and HBase
     -   Search scenarios that use solutions such as Elasticsearch
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|-------------------------|
-|ecs.i2.xlarge|4|32.0|1 \* 894|1.0|500|Yes|2|3|10|Up to 16|
-|ecs.i2.2xlarge|8|64.0|1 \* 1788|2.0|1,000|Yes|2|4|10|Up to 16|
-|ecs.i2.4xlarge|16|128.0|2 \* 1788|3.0|1,500|Yes|4|8|20|Up to 16|
-|ecs.i2.8xlarge|32|256.0|4 \* 1788|6.0|2,000|Yes|8|8|20|Up to 16|
-|ecs.i2.16xlarge|64|512.0|8 \* 1788|10.0|4,000|Yes|16|8|20|Up to 16|
-|ecs.i2d.21xlarge|84|712.0|4 \* 3570|25.0|4,000|Yes|32|16|20|Up to 16|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|-------------------------|
+|ecs.i2.xlarge|4|32.0|1 × 894|1.0|500|Yes|2|3|10|Up to 16|
+|ecs.i2.2xlarge|8|64.0|1 × 1,788|2.0|1,000|Yes|2|4|10|Up to 16|
+|ecs.i2.4xlarge|16|128.0|2 × 1,788|3.0|1,500|Yes|4|8|20|Up to 16|
+|ecs.i2.8xlarge|32|256.0|4 × 1,788|6.0|2,000|Yes|8|8|20|Up to 16|
+|ecs.i2.16xlarge|64|512.0|8 × 1,788|10.0|4,000|Yes|16|8|20|Up to 16|
+|ecs.i2d.21xlarge|84|712.0|4 × 3,570|25.0|4,000|Yes|32|16|20|Up to 16|
 
 **Note:**
 
@@ -1362,25 +1366,25 @@ Instance types
 
 Features
 
--   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
 -   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors.
+-   Uses 2.5 GHz Intel ® Xeon® Platinum 8163 \(Skylake\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports standard SSDs and ultra disks only.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   OLTP and high-performance relational databases
     -   NoSQL databases such as Cassandra, MongoDB, and HBase
     -   Search scenarios that use solutions such as Elasticsearch
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.i2g.2xlarge|8|32.0|1 \* 894|2.0|1,000|No|2|4|10|
-|ecs.i2g.4xlarge|16|64.0|1 \* 1788|3.0|1,500|No|4|8|20|
-|ecs.i2g.8xlarge|32|128.0|2 \* 1788|6.0|2,000|No|8|8|20|
-|ecs.i2g.16xlarge|64|256.0|4 \* 1788|10.0|4,000|No|16|8|20|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.i2g.2xlarge|8|32.0|1 × 894|2.0|1,000|No|2|4|10|
+|ecs.i2g.4xlarge|16|64.0|1 × 1,788|3.0|1,500|No|4|8|20|
+|ecs.i2g.8xlarge|32|128.0|2 × 1,788|6.0|2,000|No|8|8|20|
+|ecs.i2g.16xlarge|64|256.0|4 × 1,788|10.0|4,000|No|16|8|20|
 
 **Note:**
 
@@ -1392,27 +1396,27 @@ Instance types
 
 Features
 
--   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
 -   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
--   Provides a bandwidth of up to 20 Gbit/s.
 -   Offers a CPU-to-memory ratio of 1:8, which is designed for high-performance databases.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports standard SSDs and ultra disks only.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Provides a bandwidth of up to 20 Gbit/s.
+-   Suits the following scenarios:
     -   OLTP and high-performance relational databases
     -   NoSQL databases such as Cassandra, MongoDB, and HBase
     -   Search scenarios that use solutions such as Elasticsearch
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|-------------------------|
-|ecs.i2ne.xlarge|4|32.0|1 \* 894|1.5|500|Yes|2|3|10|Up to 16|
-|ecs.i2ne.2xlarge|8|64.0|1 \* 1788|2.5|1,000|Yes|2|4|10|Up to 16|
-|ecs.i2ne.4xlarge|16|128.0|2 \* 1788|5.0|1,500|Yes|4|8|20|Up to 16|
-|ecs.i2ne.8xlarge|32|256.0|4 \* 1788|10.0|2,000|Yes|8|8|20|Up to 16|
-|ecs.i2ne.16xlarge|64|512.0|8 \* 1788|20.0|4,000|Yes|16|8|20|Up to 16|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|-------------------------|
+|ecs.i2ne.xlarge|4|32.0|1 × 894|1.5|500|Yes|2|3|10|Up to 16|
+|ecs.i2ne.2xlarge|8|64.0|1 × 1,788|2.5|1,000|Yes|2|4|10|Up to 16|
+|ecs.i2ne.4xlarge|16|128.0|2 × 1,788|5.0|1,500|Yes|4|8|20|Up to 16|
+|ecs.i2ne.8xlarge|32|256.0|4 × 1,788|10.0|2,000|Yes|8|8|20|Up to 16|
+|ecs.i2ne.16xlarge|64|512.0|8 × 1,788|20.0|4,000|Yes|16|8|20|Up to 16|
 
 **Note:**
 
@@ -1424,26 +1428,26 @@ Instance types
 
 Features
 
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
+-   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
--   Provides a bandwidth of up to 20 Gbit/s.
--   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Provides a bandwidth of up to 20 Gbit/s.
+-   Suits the following scenarios:
     -   OLTP and high-performance relational databases
     -   NoSQL databases such as Cassandra, MongoDB, and HBase
     -   Search scenarios that use solutions such as Elasticsearch
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.i2gne.2xlarge|8|32.0|1 \* 894|2.5|1,000|No|2|4|10|
-|ecs.i2gne.4xlarge|16|64.0|1 \* 1788|5.0|1,500|No|4|8|20|
-|ecs.i2gne.8xlarge|32|128.0|2 \* 1788|10.0|2,000|No|8|8|20|
-|ecs.i2gne.16xlarge|64|256.0|4 \* 1788|20.0|4,000|No|16|8|20|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.i2gne.2xlarge|8|32.0|1 × 894|2.5|1,000|No|2|4|10|
+|ecs.i2gne.4xlarge|16|64.0|1 × 1,788|5.0|1,500|No|4|8|20|
+|ecs.i2gne.8xlarge|32|128.0|2 × 1,788|10.0|2,000|No|8|8|20|
+|ecs.i2gne.16xlarge|64|256.0|4 × 1,788|20.0|4,000|No|16|8|20|
 
 **Note:**
 
@@ -1988,30 +1992,30 @@ Instance types
 
 Features
 
--   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
 -   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
 -   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
--   Uses 2.5 GHz Intel ® Xeon ® E5-2682 v4 \(Broadwell\) processors.
+-   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports standard SSDs and ultra disks only.
 -   Provides high network performance based on large computing capacity.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   OLTP and high-performance relational databases
     -   NoSQL databases such as Cassandra and MongoDB
     -   Search scenarios that use solutions such as Elasticsearch
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.i1.xlarge|4|16.0|2 \* 104|0.8|200|No|1|3|10|
-|ecs.i1.2xlarge|8|32.0|2 \* 208|1.5|400|No|1|4|10|
-|ecs.i1.3xlarge|12|48.0|2 \* 312|2.0|400|No|1|6|10|
-|ecs.i1.4xlarge|16|64.0|2 \* 416|3.0|500|No|2|8|20|
-|ecs.i1-c5d1.4xlarge|16|64.0|2 \* 1456|3.0|400|No|2|8|20|
-|ecs.i1.6xlarge|24|96.0|2 \* 624|4.5|600|No|2|8|20|
-|ecs.i1.8xlarge|32|128.0|2 \* 832|6.0|800|No|3|8|20|
-|ecs.i1-c10d1.8xlarge|32|128.0|2 \* 1456|6.0|800|No|3|8|20|
-|ecs.i1.14xlarge|56|224.0|2 \* 1456|10.0|1,200|No|4|8|20|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.i1.xlarge|4|16.0|2 × 104|0.8|200|No|1|3|10|
+|ecs.i1.2xlarge|8|32.0|2 × 208|1.5|400|No|1|4|10|
+|ecs.i1.3xlarge|12|48.0|2 × 312|2.0|400|No|1|6|10|
+|ecs.i1.4xlarge|16|64.0|2 × 416|3.0|500|No|2|8|20|
+|ecs.i1-c5d1.4xlarge|16|64.0|2 × 1,456|3.0|400|No|2|8|20|
+|ecs.i1.6xlarge|240|96.0|2 × 624|4.5|600|No|2|8|20|
+|ecs.i1.8xlarge|32|128.0|2 × 832|6.0|800|No|3|8|20|
+|ecs.i1-c10d1.8xlarge|32|128.0|2 × 1,456|6.0|800|No|3|8|20|
+|ecs.i1.14xlarge|56|224.0|2 × 1,456|10.0|1,200|No|4|8|20|
 
 **Note:**
 
@@ -2432,22 +2436,22 @@ Instance types
 Features
 
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors.
--   Uses NVIDIA A100 GPUs. NVSwitches are used to establish connections between NVIDIA A100 GPUs.
+-   Uses NVIDIA A100 GPUs. NVSwitches are used to establish connections between NVIDIA A100 GPUs. The GPUs feature:
     -   Innovative Ampere architecture
     -   40 GB HBM2 memory per GPU
+-   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Provides high network performance based on a large computing capacity.
--   Suits to the following scenarios:
+-   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
     -   Deep learning applications such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications that have high GPU workloads such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|GPU|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|---|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmgn7.26xlarge|104|768.0|None|A100\*8|30.0|18,000|Yes|16|15|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|----|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.ebmgn7.26xlarge|104|768.0|None|A100 × 8|30.0|18,000|Yes|16|15|10|
 
 **Note:**
 
@@ -2459,27 +2463,27 @@ Instance types
 Features
 
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs, standard SSDs, and ultra disks.
 -   Uses NVIDIA V100 \(32 GB NVLink\) GPUs.
--   Offers a CPU-to-memory ratio of 1:8.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
--   Uses NVIDIA V100 GPU computing accelerators \(SXM2-based\) that feature:
-    -   New NVIDIA Volta architecture
+-   Uses NVIDIA V100 GPUs \(SXM2-based\) that feature:
+    -   Innovative Volta architecture
     -   32 GB HBM2 memory \(900 GB/s bandwidth\) per GPU
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
--   Provides high network performance based on a large computing capacity.
--   Suits to the following scenarios:
+-   Offers a CPU-to-memory ratio of 1:8.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
+-   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
     -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|GPU|GPU memory \(GB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|---|-----------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmgn6e.24xlarge|96|768.0|None|V100\*8|256|32.0|4,800|Yes|16|15|20|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|GPUs|GPU memory \(GB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|----|-----------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.ebmgn6e.24xlarge|96|768.0|None|V100 × 8|256|32.0|4,800|Yes|16|15|20|
 
 **Note:**
 
@@ -2491,27 +2495,27 @@ Instance types
 Features
 
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs, standard SSDs, and ultra disks.
 -   Uses NVIDIA V100 GPUs.
--   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
--   Uses NVIDIA V100 GPU computing accelerators \(SXM2-based\) that feature:
-    -   New NVIDIA Volta architecture
-    -   16 GB HBM2 memory \(900 GB/s bandwidth\) per GPU
+-   Uses NVIDIA V100 GPUs \(SXM2-based\) that feature:
+    -   Innovative Volta architecture
+    -   16 GB HBM2 memory per GPU \(900 Gbit/s bandwidth\).
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
--   Provides high network performance based on a large computing capacity.
--   Suits to the following scenarios:
+-   Offers a CPU-to-memory ratio of 1:4.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
+-   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
     -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|GPU|GPU memory \(GB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|---|-----------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmgn6v.24xlarge|96|384.0|None|V100\*8|128|30.0|4,500|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|GPUs|GPU memory \(GB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|----|-----------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.ebmgn6v.24xlarge|96|384.0|None|V100 × 8|128|30.0|4,500|Yes|8|32|10|
 
 **Note:**
 
@@ -2523,18 +2527,18 @@ Instance types
 Features
 
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
--   Is an instance family in which all instances are I/O optimized.
--   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
--   Supports ESSDs that deliver millions of IOPS, standard SSDs, and ultra disks.
--   Uses NVIDIA T4 GPU accelerators that feature:
+-   Uses NVIDIA T4 GPUs that feature:
     -   New NVIDIA Turing architecture
     -   16 GB memory \(320 GB/s bandwidth\) per GPU
     -   2,560 CUDA cores per GPU
     -   Up to 320 Turing Tensor cores per GPU
-    -   Mixed-precision Tensor cores that support 65 FP16 TFLOPS, 130 INT8 TOPS, and 260 INT4 TOPS.
--   Provides high network performance based on a large computing capacity.
--   Suits to the following scenarios:
+    -   Mixed-precision Tensor cores that support 65 FP16 TFLOPS, 130 INT8 TOPS, and 260 INT4 TOPS
+-   Offers a CPU-to-memory ratio of 1:4.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports standard SSDs, ultra disks, and ESSDs that deliver millions of IOPS.
+-   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
     -   AI \(deep learning and machine learning\) inference for computer vision, speech recognition, speech synthesis, natural language processing \(NLP\), machine translation, and recommendation systems
     -   Real-time rendering for cloud gaming
     -   Real-time rendering for AR and VR applications
@@ -2544,9 +2548,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|GPU|GPU memory \(GB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|---|-----------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmgn6i.24xlarge|96|384.0|None|T4\*4|64|30.0|4,500|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|GPUs|GPU memory \(GB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|----|-----------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.ebmgn6i.24xlarge|96|384.0|None|T4 × 4|64|30.0|4,500|Yes|8|32|10|
 
 **Note:**
 
@@ -2559,15 +2563,15 @@ ebmc6a is in invitational preview. To use ebmc6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
--   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:2.
+-   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Supports VPCs only.
--   Suits to the following scenarios:
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -2576,9 +2580,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-----------------------------------------------|:---------------------------------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
-|ecs.ebmc6a.64xlarge|256|512.0|None|64.0|24,000|Yes|31|480|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmc6a.64xlarge|256|512.0|None|64.0|24,000|Yes|32|31|10|600|32.0|
 
 **Note:**
 
@@ -2589,30 +2593,29 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only.
 -   Offers a CPU-to-memory ratio of 1:2.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz.
--   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs only and provides ultra-high I/O performance.
 -   Supports VPCs only.
--   Suits to the following scenarios:
-    -   Scenarios that have high security and regulatory requirements, such as deploying core database services
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
-    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
-    -   Web frontend servers.
-    -   Frontend servers of massive multiplayer online \(MMO\) games
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Web frontend servers
+    -   Frontend servers of massively multiplayer online \(MMO\) games
     -   Data analysis, batch processing, and video encoding
     -   High-performance scientific and engineering applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.ebmc6e.26xlarge|104|192.0|None|30.0|24,000|Yes|1,800|16|31|10|480|20.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmc6e.26xlarge|104|192.0|None|32.0|24,000|Yes|1,800|32|10|480|16.0|
 
 **Note:**
 
@@ -2623,15 +2626,14 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:2.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:1.8.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -2641,9 +2643,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmc6.26xlarge|104|192.0|None|30.0|6,000|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmc6.26xlarge|104|192.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -2656,27 +2658,27 @@ ebmg6a is in invitational preview. To use ebmg6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
--   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:4.
+-   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports enhanced SSDs \(ESSDs\), standard SSDs, and ultra disks.
--   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Supports VPCs only.
--   Suits to the following scenarios:
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
     -   Video encoding, decoding, and rendering
-    -   Compute clusters and memory intensive data processing
+    -   Compute clusters and memory-intensive data processing
     -   Data analysis and computing
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-----------------------------------------------|:---------------------------------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
-|ecs.ebmg6a.64xlarge|256|1024.0|None|64.0|24,000|Yes|31|480|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmg6a.64xlarge|256|1,024.0|None|64.0|24,000|Yes|32|31|10|600|32.0|
 
 **Note:**
 
@@ -2687,33 +2689,32 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only.
 -   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz.
--   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs only and provides ultra-high I/O performance.
 -   Supports VPCs only.
--   Suits to the following scenarios:
-    -   Scenarios that have high security and regulatory requirements, such as deploying core database services
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
-    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
     -   Game servers
-    -   Small and medium-sized database systems, caches, and search clusters.
+    -   Small and medium-sized database systems, caches, and search clusters
     -   Data analysis and computing
-    -   Compute clusters and memory intensive data processing
+    -   Compute clusters and memory-intensive data processing
     -   High-performance scientific and engineering applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.ebmg6e.26xlarge|104|384.0|None|30.0|24,000|Yes|1,800|16|31|10|480|20.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmg6e.26xlarge|104|384.0|None|32.0|24,000|Yes|1,800|32|10|480|16.0|
 
 **Note:**
 
@@ -2724,27 +2725,27 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:4.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:3.7.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
     -   Video encoding, decoding, and rendering
     -   Enterprise-level applications such as large and medium-sized databases
-    -   Compute clusters and memory intensive data processing
+    -   Compute clusters and memory-intensive data processing
     -   Data analysis and computing
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmg6.26xlarge|104|384.0|None|30.0|6,000|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmg6.26xlarge|104|384.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -2757,27 +2758,27 @@ ebmr6a is in invitational preview. To use ebmr6a, [submit a ticket](https://work
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
--   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:8.
+-   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Supports VPCs only.
--   Suits to the following scenarios:
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
     -   In-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-----------------------------------------------|:---------------------------------------------------------|:-----------|:---------------------------------|---------------|-------------------------|
-|ecs.ebmr6a.64xlarge|256|2048.0|None|64.0|24,000|Yes|31|480|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmr6a.64xlarge|256|2,048.0|None|64.0|24,000|Yes|32|31|10|600|32.0|
 
 **Note:**
 
@@ -2788,30 +2789,29 @@ Instance types
 
 Features
 
--   Provides predictable and consistent ultra-high computing, storage, and network performance with the use of the fast path acceleration based on the third-generation SHENLONG architecture.
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only.
 -   Offers a CPU-to-memory ratio of 1:8.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz.
--   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs only and provides ultra-high I/O performance.
 -   Supports VPCs only.
--   Suits to the following scenarios:
-    -   Scenarios that have high security and regulatory requirements, such as deploying core database services
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
-    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   High-performance and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
     -   High-performance scientific and engineering applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.ebmr6e.26xlarge|104|768.0|None|30.0|24,000|Yes|1,800|16|31|10|480|20.0|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmr6e.26xlarge|104|768.0|None|32.0|24,000|Yes|1,800|32|10|480|16.0|
 
 **Note:**
 
@@ -2822,26 +2822,26 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:8.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:7.4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
     -   High-performance and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmr6.26xlarge|104|768.0|None|30.0|6,000|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmr6.26xlarge|104|768.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -2852,15 +2852,15 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:2.4.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:2.4.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -2868,9 +2868,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmhfc6.20xlarge|80|192.0|None|30.0|6,000|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfc6.20xlarge|80|192.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -2881,14 +2881,14 @@ Instance types
 
 Features
 
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs, standard SSDs, and ultra disks.
+-   Provides dedicated hardware resources and physical isolation.
 -   Offers a CPU-to-memory ratio of 1:4.8.
 -   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -2897,9 +2897,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmhfg6.20xlarge|80|384.0|None|30.0|6,000|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfg6.20xlarge|80|384.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -2910,56 +2910,56 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:9.6.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:9.6.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
     -   High-performance and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmhfr6.20xlarge|80|768.0|None|30.0|6,000|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfr6.20xlarge|80|768.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## ebmre6p, persistent memory optimized ECS Bare Metal Instance family
+## ebmre6p, persistent memory optimized ECS Bare Metal Instance family with enhanced performance
 
 To use ebmre6p, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
--   Uses Intel® OptaneTM persistent memory.
--   Implements end-to-end optimization for Redis applications to provide cost-effectiveness.
+-   Provides dedicated hardware resources and physical isolation.
+-   Uses the Intel ® OptaneTM persistent memory and is tuned for Redis applications in an end-to-end manner to provide cost-effectiveness.
+-   Supports a maximum of 1,920 GiB memory \(384 GiB DRAM memory + 1,536 GiB Intel® OptaneTM persistent memory\), offers a CPU-to-memory ratio of 1:20, and can meet the needs of memory-intensive applications.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
--   Supports a maximum of 1,920 GiB memory \(384 GiB DRAM memory + 1,536 GiB Intel® OptaneTM persistent memory\), offers a CPU-to-memory ratio of 1:20, and can meet the needs of memory intensive applications.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
     -   In-memory databases such as Redis
     -   High-performance databases such as SAP HANA
-    -   Other memory intensive applications such as AI applications and smart search applications
+    -   Other memory-intensive applications such as AI applications and smart search applications
 
 Instance types
 
-|Instance type|vCPU|DRAM \(GiB\)|AEP memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-----------|------------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmre6p.26xlarge|104|384.0|1536.0|None|30.0|6,000|Yes|16|31|10|
+|Instance type|vCPUs|DRAM \(GiB\)|AEP memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-----------|------------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmre6p.26xlarge|104|384.0|1,536.0|None|32.0|6,000|Yes|32|10|200|16.0|
 
 **Note:**
 
@@ -2972,14 +2972,14 @@ To use ebmre6-6t, [submit a ticket](https://workorder-intl.console.aliyun.com/co
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:30.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:30.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   High-performance and in-memory databases such as SAP HANA
     -   Memory-intensive applications
@@ -2987,9 +2987,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmre6-6t.52xlarge|208|6144.0|None|30.0|6,000|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmre6-6t.52xlarge|208|6,144.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -3004,19 +3004,19 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports enhanced SSDs \(ESSDs\), standard SSDs, and ultra disks.
--   Supports both RoCE and VPCs. RoCE is dedicated to RDMA communication.
+-   Supports both RoCE networks and VPCs. RoCE networks are dedicated to RDMA communication.
 -   Provides all features of ECS Bare Metal Instance.
--   Uses 3.1 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors with a maximum turbo frequency of 3.5 GHz.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
 -   Offers a CPU-to-memory ratio of 1:2.4.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   Large-scale machine learning training
-    -   Large-scale high performance scientific computing and simulations
+    -   Large-scale high-performance scientific computing and simulations
     -   Large-scale data analysis, batch processing, and video encoding
 
 Instance types
 
-|Instance type|vCPU|Physical cores|Memory \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|RoCE \(Gbit/s\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|--------------|:--|:-------------------|:------------------------------|:--------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPUs|Physical cores|Memory \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|--------------|:---|:----------------------------------|:---------------------------------------------|:---------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.scchfc6.20xlarge|80|40|192.0|None|30.0|6,000|50|Yes|8|32|10|
 
 **Note:**
@@ -3033,19 +3033,19 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports both RoCE and VPCs. RoCE is dedicated to RDMA communication.
+-   Supports both RoCE networks and VPCs. RoCE networks are dedicated to RDMA communication.
 -   Provides all features of ECS Bare Metal Instance.
--   Uses 3.1 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors with a maximum turbo frequency of 3.5 GHz.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
 -   Offers a CPU-to-memory ratio of 1:4.8.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   Large-scale machine learning training
-    -   Large-scale high performance scientific computing and simulations
+    -   Large-scale high-performance scientific computing and simulations
     -   Large-scale data analysis, batch processing, and video encoding
 
 Instance types
 
-|Instance type|vCPU|Physical cores|Memory \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|RoCE \(Gbit/s\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|--------------|:--|:-------------------|:------------------------------|:--------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPUs|Physical cores|Memory \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|--------------|:---|:----------------------------------|:---------------------------------------------|:---------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.scchfg6.20xlarge|80|40|384.0|None|30.0|6,000|50|Yes|8|32|10|
 
 **Note:**
@@ -3062,19 +3062,19 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports both RoCE and VPCs. RoCE is dedicated to RDMA communication.
+-   Supports both RoCE networks and VPCs. RoCE networks are dedicated to RDMA communication.
 -   Provides all features of ECS Bare Metal Instance.
--   Uses 3.1 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors with a maximum turbo frequency of 3.5 GHz.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
 -   Offers a CPU-to-memory ratio of 1:9.6.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   Large-scale machine learning training
-    -   Large-scale high performance scientific computing and simulations
+    -   Large-scale high-performance scientific computing and simulations
     -   Large-scale data analysis, batch processing, and video encoding
 
 Instance types
 
-|Instance type|vCPU|Physical cores|Memory \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|RoCE \(Gbit/s\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|--------------|:--|:-------------------|:------------------------------|:--------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPUs|Physical cores|Memory \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|--------------|:---|:----------------------------------|:---------------------------------------------|:---------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.scchfr6.20xlarge|80|40|768.0|None|30.0|6,000|50|Yes|8|32|10|
 
 **Note:**
@@ -3089,20 +3089,20 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Supports both RoCE and VPCs. RoCE is dedicated to RDMA communication.
+-   Supports both RoCE networks and VPCs. RoCE networks are dedicated to RDMA communication.
 -   Provides all features of ECS Bare Metal Instance.
--   Uses 3.1 GHz Intel ® Xeon ® Gold 6149 \(Skylake\) processors
+-   Uses 3.1 GHz Intel® Xeon® Gold 6149 \(Skylake\) processors.
 -   Offers a CPU-to-memory ratio of 1:3.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   Large-scale machine learning training
-    -   Large-scale high performance scientific computing and simulations
+    -   Large-scale high-performance scientific computing and simulations
     -   Large-scale data analysis, batch processing, and video encoding
 
 Instance types
 
-|Instance type|vCPU|Physical cores|Memory \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|RoCE \(Gbit/s\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|--------------|:--|:-------------------|:------------------------------|:--------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.scch5.16xlarge|64|32|192.0|None|10.0|4,500|25\*2|No|8|32|10|
+|Instance type|vCPUs|Physical cores|Memory \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|--------------|:---|:----------------------------------|:---------------------------------------------|:---------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.scch5.16xlarge|64|32|192.0|None|10.0|4,500|25 × 2|No|8|32|10|
 
 **Note:**
 
@@ -3116,20 +3116,20 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Supports both RoCE and VPCs. RoCE is dedicated to RDMA communication.
+-   Supports both RoCE networks and VPCs. RoCE networks are dedicated to RDMA communication.
 -   Provides all features of ECS Bare Metal Instance.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors for consistent computing performance.
 -   Offers a CPU-to-memory ratio of 1:4.
--   Applies to the following scenarios:
+-   Suits the following scenarios:
     -   Large-scale machine learning training
-    -   Large-scale high performance scientific computing and simulations
+    -   Large-scale high-performance scientific computing and simulations
     -   Large-scale data analysis, batch processing, and video encoding
 
 Instance types
 
-|Instance type|vCPU|Physical cores|Memory \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|RoCE \(Gbit/s\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|--------------|:--|:-------------------|:------------------------------|:--------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.sccg5.24xlarge|96|48|384.0|None|10.0|4,500|25\*2|No|8|32|10|
+|Instance type|vCPUs|Physical cores|Memory \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|--------------|:---|:----------------------------------|:---------------------------------------------|:---------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.sccg5.24xlarge|96|48|384.0|None|10.0|4,500|25 × 2|No|8|32|10|
 
 **Note:**
 
@@ -3143,30 +3143,31 @@ Features
 
 -   Is an instance family in which all instances are I/O optimized.
 -   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8163 \(Skylake\) processors for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors for consistent computing performance.
 -   Provides all features of ECS Bare Metal Instance.
 -   Storage:
     -   Supports ESSDs, standard SSDs, and ultra disks.
-    -   Supports a high performance CPFS.
+    -   Supports high performance CPFSs.
 -   Networking:
     -   Supports VPCs.
-    -   Supports the RoCE v2 network, which is dedicated to low-latency RDMA communication.
--   Uses NVIDIA V100 GPU accelerators \(SXM2-based\) that feature:
-    -   New NVIDIA Volta architecture
-    -   16 GB HBM2 GPU memory
-    -   Up to 5,120 CUDA cores per GPUUp to 640 Tensor cores per GPU
-    -   A GPU memory bandwidth of up to 900 GB/s
+    -   Supports RoCE v2 networks, which are dedicated to low-latency RDMA communication.
+-   Uses NVIDIA V100 GPUs \(SXM2-based\) that feature:
+    -   Innovative Volta architecture
+    -   Up to 16 GB HBM2 GPU memory
+    -   5,120 CUDA cores
+    -   640 Tensor cores
+    -   GPU memory bandwidth of up to 900 Gbit/s
     -   Support for up to six NVLink connections and total bandwidth of 300 GB/s \(25 GB/s per connection\)
--   Applies to the following scenarios:
-    -   Ultra-large-scale machine learning training on a distributed GPU cluster
-    -   Large-scale high performance scientific computing and simulations
+-   Suits the following scenarios:
+    -   Ultra-large-scale training for machine learning on a distributed GPU cluster
+    -   Large-scale high-performance scientific computing and simulations
     -   Large-scale data analysis, batch processing, and video encoding
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|RoCE \(Gbit/s\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:--|:-------------------|:------------------------------|---------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.sccgn6.24xlarge|96|384.0|None|V100\*8|30|4,500|25\*2|Yes|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:---|:----------------------------------|:---------------------------------------------|----------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.sccgn6.24xlarge|96|384.0|None|V100 × 8|30|4,500|25 × 2|Yes|8|32|10|
 
 **Note:**
 
@@ -3177,15 +3178,15 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:2.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:2.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver a maximum turbo frequency of 2.7 GHz.
--   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and re-transmission of telecommunication information
+-   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -3193,9 +3194,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmc5s.24xlarge|96|192.0|None|30.0|4,500|No|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmc5s.24xlarge|96|192.0|None|32.0|4,500|No|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -3206,14 +3207,14 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:4.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver a maximum turbo frequency of 2.7 GHz.
--   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -3222,9 +3223,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmg5s.24xlarge|96|384.0|None|30.0|4,500|No|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmg5s.24xlarge|96|384.0|None|32.0|4,500|No|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -3235,26 +3236,26 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:8.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Offers a CPU-to-memory ratio of 1:8.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver a maximum turbo frequency of 2.7 GHz.
--   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
     -   High-performance and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmr5s.24xlarge|96|768.0|None|30.0|4,500|No|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmr5s.24xlarge|96|768.0|None|32.0|4,500|No|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -3265,14 +3266,14 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:4.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver a maximum turbo frequency of 2.7 GHz.
--   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -3281,9 +3282,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmg5.24xlarge|96|384.0|None|10.0|4,000|No|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------------------------------|----------------------------|
+|ecs.ebmg5.24xlarge|96|384.0|None|10.0|4,000|No|32|10|
 
 **Note:**
 
@@ -3294,19 +3295,19 @@ Instance types
 
 Features
 
--   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Offers a CPU-to-memory ratio of 1:4.
--   Uses 3.7 GHz Intel® Xeon® E3-1240v6 \(Skylake\) processors that deliver a maximum turbo frequency of 4.1 GHz.
--   Provides high network performance with a packet forwarding rate of 2,000 Kpps.
--   Supports VPCs only.
 -   Provides dedicated hardware resources and physical isolation.
--   Disables failover by default.
+-   Supports encrypted computing based on Intel® SGX.
+-   Has failover disabled by default.
 
     You can call the [ModifyInstanceMaintenanceAttributes](/intl.en-US/API Reference/Operations and monitoring/ModifyInstanceMaintenanceAttributes.md) operation to modify the maintenance action. Set ActionOnMaintenance to AutoRedeploy to enable failover.
 
--   Supports Intel® SGX.
--   Suits to the following scenarios:
+-   Offers a CPU-to-memory ratio of 1:4.
+-   Uses 3.7 GHz Intel® Xeon® E3-1240v6 \(Skylake\) processors that deliver a turbo frequency of 4.1 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports standard SSDs and ultra disks only.
+-   Supports VPCs only.
+-   Provides high network performance with a packet forwarding rate of 2,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Gaming and finance applications that require high performance
     -   High-performance web servers
@@ -3314,9 +3315,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmhfg5.2xlarge|8|32.0|None|6.0|2,000|No|8|6|8|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------------------------------|----------------------------|
+|ecs.ebmhfg5.2xlarge|8|32.0|None|6.0|2,000|No|6|8|
 
 **Note:**
 
@@ -3327,14 +3328,14 @@ Instance types
 
 Features
 
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:2.
+-   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) processors that deliver a turbo frequency of 3.0 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports standard SSDs and ultra disks only.
--   Offers a CPU-to-memory ratio of 1:2.
--   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) processors that deliver a maximum turbo frequency of 2.9 GHz.
--   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
 -   Supports VPCs only.
--   Provides dedicated hardware resources and physical isolation.
--   Suits to the following scenarios:
+-   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
+-   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
     -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
     -   Containers including Docker, Clear Containers, and Pouch
@@ -3343,9 +3344,9 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Total inbound and outbound bandwidth \(Gbit/s\)|Total inbound and outbound packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:---|:-------------|:--------------------|:----------------------------------------------|:---------------------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
-|ecs.ebmc4.8xlarge|32|64.0|None|10.0|4,000|No|8|12|10|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------------------------------|----------------------------|
+|ecs.ebmc4.8xlarge|32|64.0|None|10.0|4,000|No|12|10|
 
 **Note:**
 
