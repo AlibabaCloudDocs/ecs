@@ -4,7 +4,7 @@ You can call this operation to create an auto provisioning group.
 
 ## Description
 
--   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible and pay-as-you-go instances. Auto Provisioning supports one-click deployment of instance clusters that are of specific billing methods and instance families across zones.
+-   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible and pay-as-you-go instances. Auto Provisioning supports one-click deployment of instance clusters that are of specific billing methods and instance families across zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
 -   Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to provide stable computing power. This alleviates the instability problem caused by reclaiming preemptible instances.
 -   Auto Provisioning is free to use. However, you are charged for instance resources created in auto provisioning groups. For more information about billing, see [Preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
 -   When you specify both the `LaunchTemplateId` and `LaunchConfiguration.*` parameters, the LaunchTemplateId parameter is preferentially used.
@@ -13,7 +13,7 @@ You can call this operation to create an auto provisioning group.
 
 [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=CreateAutoProvisioningGroup&type=RPC&version=2014-05-26)
 
-## Request parameters
+## Request Parameter
 
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
@@ -33,9 +33,9 @@ The total target capacity of the auto provisioning group must be at least the su
 Default value: maintain. |
 |SpotAllocationStrategy|String|No|diversified|The policy for creating preemptible instances. Valid values:
 
--   lowest-price: cost optimization policy. Auto provisioning group attempts to create instances of the lowest-priced instance type.
--   diversified: balanced distribution policy. Auto provisioning group attempts to create instances in zones that are specified in extended configurations and then distributes the instances evenly across the zones.
--   capacity-optimized: capacity-optimized distribution policy. Auto provisioning group attempts to create instances that are of the optimal instance types and across the optimal zones based on the resource availability.
+-   lowest-price: cost optimization policy. The auto provisioning group attempts to create instances of the lowest-priced instance type.
+-   diversified: balanced distribution policy. The auto provisioning group attempts to create instances in zones that are specified in extended configurations and then distributes the instances evenly across the zones.
+-   capacity-optimized: capacity-optimized distribution policy. The auto provisioning group attempts to create instances that are of the optimal instance types and across the optimal zones based on the resource availability.
 
 Default value: lowest-price. |
 |SpotInstanceInterruptionBehavior|String|No|terminate|The action to take on the excess preemptible instances after the instances are stopped. Valid values:
@@ -49,8 +49,8 @@ Default value: stop. |
 The parameter value must be less than N specified in the `LaunchTemplateConfig.N` parameter. |
 |PayAsYouGoAllocationStrategy|String|No|prioritized|The policy for creating pay-as-you-go instances. Valid values:
 
--   lowest-price: cost optimization policy. Auto provisioning group attempts to create instances of the lowest-priced instance type.
--   prioritized: priority policy. Auto Provisioning attempts to create instances based on the priority specified by the `LaunchTemplateConfig.N.Priority` parameter.
+-   lowest-price: cost optimization policy. The auto provisioning group attempts to create instances of the lowest-priced instance type.
+-   prioritized: priority policy. The auto provisioning group attempts to create instances based on the priority specified by the `LaunchTemplateConfig.N.Priority` parameter.
 
 Default value: lowest-price. |
 |ExcessCapacityTerminationPolicy|String|No|termination|Specifies how to handle excess preemptible instances when the target capacity of the auto provisioning group is reached. Valid values:
@@ -68,7 +68,7 @@ By default, an auto provisioning group is immediately started after it is create
 
 Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 
-Default value: 2099-12-31T23:59:59Z |
+Default value: 2099-12-31T23:59:59Z. |
 |TerminateInstancesWithExpiration|Boolean|No|true|Specifies whether to stop preemptible instances when the auto provisioning group expires. Valid values:
 
 -   true: stops preemptible instances. The action to be taken on the stopped instances is specified by the `SpotInstanceInterruptionBehavior` parameter.
@@ -83,10 +83,10 @@ Default value: false. |
 **Note:** When the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are both specified, the lower one of the two parameter values is used. |
 |PayAsYouGoTargetCapacity|String|No|30|The target capacity of pay-as-you-go instances in the auto provisioning group. The parameter value must be smaller than the `TotalTargetCapacity` value. |
 |SpotTargetCapacity|String|No|20|The target capacity of preemptible instances in the auto provisioning group. The parameter value must be smaller than the `TotalTargetCapacity` value. |
-|DefaultTargetCapacityType|String|No|Spot|The billing method of the capacity difference when the sum value of the `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` parameters is smaller than the value of the `TotalTargetCapacity` parameter. Valid values:
+|DefaultTargetCapacityType|String|No|Spot|The billing method of the capacity difference when the sum of the `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` values is smaller than the `TotalTargetCapacity` value. Valid values:
 
 -   PayAsYouGo: pay-as-you-go
--   Spot: preemptible instances.
+-   Spot: preemptible instances
 
 Default value: Spot. |
 |LaunchTemplateId|String|No|lt-bp1fgzds4bdogu03\*\*\*\*|The ID of the launch template associated with the auto provisioning group. You can call the [DescribeLaunchTemplates](~~73759~~) operation to query available launch templates. When you specify both this parameter and the `LaunchConfiguration.*` parameter, this parameter is preferentially used. |
@@ -146,7 +146,7 @@ When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specifi
 -   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 
-For more information about ESSD performance levels, see [Enhanced SSDs](~~122389~~).
+For more information about ESSD performance levels, see [ESSDs](~~122389~~).
 
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.DataDisk.N.Device|String|No|/dev/vd1|The mount point of data disk N. When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
@@ -157,8 +157,8 @@ After this parameter is specified, the `LaunchConfiguration.DataDisk.N.Size` par
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.DataDisk.N.DeleteWithInstance|Boolean|No|true|Specifies whether to release data disk N when the instance to which data disk N is attached is released. Valid values:
 
--   true: Data disk N is released together with the instance.
--   false: Data disk N is not released together with the instance.
+-   true: releases data disk N when the instance to which data disk N is attached is released
+-   false: does not release data disk N when the instance to which data disk N is attached is released
 
 Default value: true.
 
@@ -183,7 +183,7 @@ When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specifi
 -   PayByBandwidth
 -   PayByTraffic
 
-**Note:** When the pay-by-traffic billing method is used, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and for reference only. In the event of resource contention, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instance, use the pay-by-bandwidth billing method.
+**Note:** When the pay-by-traffic billing method is used, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and for reference only. When resources are insufficient, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instance, use the pay-by-bandwidth billing method.
 
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.InternetMaxBandwidthIn|Integer|No|10|The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
@@ -204,7 +204,7 @@ When you create multiple instances at a time, you can specify sequential names f
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.HostName|String|No|k8s-node-\[1,4\]-ecshost|The hostname of the instance.
 
--   The hostname cannot start or end with a period \(,\) or a hyphen \(-\).It cannot contain consecutive periods \(.\) or hyphens \(-\).
+-   The hostname cannot start or end with a period \(,\) or a hyphen \(-\). It cannot contain consecutive periods \(.\) or hyphens \(-\).
 -   For a Windows instance, the hostname must be 2 to 15 characters in length and cannot contain periods \(.\) or contain only digits. It can contain letters, digits, and hyphens \(-\).
 -   For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\).
 
@@ -227,7 +227,7 @@ When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specifi
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.Tag.N.Key|String|No|TestKey|The key of tag N of the instance. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`. When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.Tag.N.Value|String|No|TestValue|The value of tag N of the instance. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length. It cannot start with acs: or contain `http://` or `https://`. When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
-|LaunchConfiguration.UserData|String|No|ZWNobyBoZWxsbyBlY3Mh|The user data of the instance. User data must be encoded in Base64. The maximum size of raw data is 16 KB. When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
+|LaunchConfiguration.UserData|String|No|ZWNobyBoZWxsbyBlY3Mh|The user data of the instance. It must be encoded in Base64. The maximum size of the raw data is 16 KB. When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.SystemDiskCategory|String|No|cloud\_ssd|The category of the system disk. Valid values:
 
 -   cloud\_efficiency: ultra disk
@@ -258,10 +258,10 @@ When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specifi
 -   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 
-For more information about ESSD performance levels, see [Enhanced SSDs](~~122389~~).
+For more information about ESSD performance levels, see [ESSDs](~~122389~~).
 
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
-|LaunchConfiguration.PasswordInherit|Boolean|No|true|Specifies whether to use the password that is preset in the image. Valid values:
+|LaunchConfiguration.PasswordInherit|Boolean|No|true|Specifies whether to use the password preset in the image. Valid values:
 
 -   true: uses the preset password.
 -   false: does not use the preset password.
@@ -270,20 +270,20 @@ When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specifi
 |LaunchConfiguration.ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which to assign the instance. When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.CreditSpecification|String|No|Standard|The performance mode of the burstable instance. Valid values:
 
--   Standard: the standard mode. For more information, see the "Standard mode" section of the [Burstable instances](~~59977~~) topic.
--   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section of the [Burstable instances](~~59977~~) topic.
+-   Standard: the standard mode. For more information, see the "Standard mode" section in [Burstable instances](~~59977~~).
+-   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in [Burstable instances](~~59977~~).
 
 This parameter is empty by default.
 
 When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specified, the LaunchTemplateId parameter is preferentially used. |
 |LaunchConfiguration.DeploymentSetId|String|No|ds-bp1frxuzdg87zh4p\*\*\*\*|The ID of the deployment set. |
-|SystemDiskConfig.N.DiskCategory|String|No|cloud\_ssd|The category of system disk N. You can use this parameter to specify multiple disk categories and specify the priority for each disk category. When a disk category is unavailable, the system changes the disk category. Valid values:
+|SystemDiskConfig.N.DiskCategory|String|No|cloud\_ssd|Category N of the system disk. You can use this parameter to specify multiple disk categories and specify the priority for each disk category. When a disk category is unavailable, the system changes the disk category. Valid values:
 
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   cloud\_essd: ESSD
 -   cloud: basic disk |
-|DataDiskConfig.N.DiskCategory|String|No|cloud\_efficiency|The category of data disk N. You can use this parameter to specify multiple disk categories and specify the priority for each disk category. When a disk category is unavailable, the system changes the disk category. Valid values:
+|DataDiskConfig.N.DiskCategory|String|No|cloud\_efficiency|Category N of the data disk. You can use this parameter to specify multiple disk categories and specify the priority for each disk category. When a disk category is unavailable, the system changes the disk category. Valid values:
 
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
@@ -301,7 +301,7 @@ When both the LaunchTemplateId and LaunchConfiguration.\* parameters are specifi
 |ErrorMsg|String|Specific parameter is not valid.|The error message returned when the instance fails to be created. |
 |InstanceIds|List|\["i-bp67acfmxazb4p\*\*\*\*"\]|The IDs of instances created. |
 |InstanceType|String|ecs.g5.large|The instance type of the instance. |
-|SpotStrategy|String|NoSpot|The preemption policy for the pay-as-you-go instance. Valid values:
+|SpotStrategy|String|NoSpot|The preemption policy for the pay-as-you-go instance. Valid value:
 
 -   NoSpot: The instance is created as a regular pay-as-you-go instance.
 -   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
