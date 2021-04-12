@@ -193,6 +193,11 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
 -   ecs.g5
 -   ecs.re4
 -   ecs.t5
+
+    其中，以下实例规格因为内存小于1.5 GiB，不满足RHEL最低内存要求，因此不建议使用。
+
+    -   ecs.t5-lc2m1.nano
+    -   ecs.t5-lc1m1.small
 -   ecs.hfc5
 -   ecs.hfg5
 -   ecs.i2
@@ -203,10 +208,11 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
 -   ecs.sn2
 -   ecs.se1
 
-更多详情请参见：
+更多信息，请参见：
 
 -   [Red Hat Enterprise Linux认证信息](https://catalog.redhat.com/cloud/images/detail/3245731)
 -   [Red Hat Enterprise Linux认证的ECS实例规格列表](https://access.redhat.com/solutions/3336161)
+-   [Red Hat Enterprise Linux对实例配置的限制](https://access.redhat.com/articles/rhel-limits)
 
 ## Windows系统不同版本的内存限制有何不同？
 
