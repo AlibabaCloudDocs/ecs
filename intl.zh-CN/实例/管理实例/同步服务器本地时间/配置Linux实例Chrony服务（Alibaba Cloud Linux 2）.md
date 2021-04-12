@@ -15,7 +15,7 @@ Alibaba Cloud Linux 2系统中使用Chrony工具实现本地时间与标准时�
 
 ## 修改Linux系统实例时区
 
-1.  远程连接Linux实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+1.  远程连接Linux实例。具体操作，请参见[通过密码认证登录Linux实例](/intl.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
 2.  运行以下命令查看时区列表。
 
@@ -59,7 +59,7 @@ Alibaba Cloud Linux 2系统中使用Chrony工具实现本地时间与标准时�
 
 ## 启用Chrony服务
 
-1.  远程连接Linux实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+1.  远程连接Linux实例。具体操作，请参见[通过密码认证登录Linux实例](/intl.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
 2.  运行以下命令启动chronyd服务并设置开机自启动。
 
@@ -83,37 +83,7 @@ Alibaba Cloud Linux 2系统中使用Chrony工具实现本地时间与标准时�
 
 ## 配置Chrony服务
 
-1.  远程连接Linux实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
-
-2.  运行以下命令打开chrony配置文件。
-
-    ```
-    vim /etc/chrony.conf
-    ```
-
-3.  找到`server <NTP服务器> minpoll 4 maxpoll 10 iburst`的信息后，按i键开始编辑文件，给您暂时不需要的NTP服务器句首加上`#`隐藏起来。
-
-4.  新添加一行NTP服务器信息，格式为：`server <需要添加的NTP服务器> minpoll 4 maxpoll 10 iburst`。完成编辑后按Esc键并输入`:wq`保存退出。
-
-    NTP服务器信息请参见[阿里云NTP服务器](/intl.zh-CN/实例/管理实例/同步服务器本地时间/阿里云NTP服务器.md)。
-
-5.  运行以下命令启动chronyd服务并设置开机自启动。
-
-    ```
-    systemctl start chronyd.service
-    systemctl enable chronyd.service
-    ```
-
-6.  运行以下命令查看时间同步服务器列表。
-
-    ```
-    chronyc -n sources -v
-    ```
-
-
-## 配置Chrony服务
-
-1.  远程连接Linux实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+1.  远程连接Linux实例。具体操作，请参见[通过密码认证登录Linux实例](/intl.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
 2.  运行以下命令打开chrony配置文件。
 
