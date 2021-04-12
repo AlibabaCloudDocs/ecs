@@ -8,7 +8,7 @@ Asynchronous Block Storage Replication \(ABSR\) is a feature that can asynchrono
 
 To use ABSR to replicate data between disks, you must call the CreateDiskReplicaPair operation to create a replication relationship, and then call the [StartDiskReplicaPair](~~209199~~) operation to start the relationship.
 
-Before you can create a replication relationship for a primary disk, you must create a secondary disk in the destination region. The secondary disk must have the same specifications and capacity as the primary disk. You can call the [DescribeDisks](~~25514~~) operation to query the specifications and capacity of the primary disk, and call the [CreateDisk](~~25513~~)operation to create the secondary disk in the destination region.
+Before you can create a replication relationship for a primary disk, you must create a secondary disk in the destination region. The secondary disk must have the same specifications and capacity as the primary disk. You can call the [DescribeDisks](~~25514~~) operation to query the specifications and capacity of the primary disk, and call the [CreateDisk](~~25513~~) operation to create the secondary disk in the destination region.
 
 ## Debugging
 
