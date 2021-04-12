@@ -21,7 +21,12 @@
 |CommandId|String|否|c-hz0jdfwcsr\*\*\*\*|命令ID。您可以通过接口[DescribeCommands](~~64843~~)查询所有可用的CommandId。 |
 |CommandName|String|否|CommandTestName|命令名称。 |
 |CommandType|String|否|RunShellScript|命令类型。 |
-|Timed|Boolean|否|true|命令是否为周期执行。
+|Timed|Boolean|否|true|查询的命令是否在将来会自动执行。取值范围：
+
+ -   true：查询在调用`RunCommand`或`InvokeCommand`执行命令时，`RepeatMod`参数取值为`Period`、`NextRebootOny`或者`EveryReboot`，且处于未被取消或停止的未完成状态的命令。
+-   false：查询以下两种状态的命令：
+    -   在调用`RunCommand`或`InvokeCommand`执行命令时，`RepeatMod`参数取值为`Once`。
+    -   已被取消、被停止或者已完成执行的命令。
 
  默认值：false |
 |InvokeStatus|String|否|Finished|命令执行的总执行状态。总执行状态取决于创建执行中的一台或多台实例的共同执行状态。取值范围：
@@ -77,7 +82,7 @@
 |CommandType|String|RunShellScript|命令类型。 |
 |CreationTime|String|2020-01-19T09:15:46Z|任务的创建时间。 |
 |Frequency|String|0 \*/20 \* \* \* \*|周期执行命令的执行周期。该参数值结构以[Cron表达式](~~64769~~)为准。 |
-|InvocationStatus|String|Pending|命令执行的总执行状态，总执行状态取决于本次调用的全部实例的共同执行状态，可能值：
+|InvocationStatus|String|Running|命令执行的总执行状态，总执行状态取决于本次调用的全部实例的共同执行状态，可能值：
 
  -   Pending：系统正在校验或发送命令。存在至少一台实例的命令执行状态为Pending，则总执行状态为Pending。
 -   Scheduled：周期执行的命令已发送，等待运行。存在至少一台实例的命令执行状态为Scheduled，则总执行状态为Scheduled。
@@ -175,17 +180,24 @@
 -   若执行方式为周期执行，则值为执行过多少次。 |
 |StartTime|String|2019-12-20T06:15:55Z|命令在实例中开始执行的时间。 |
 |StopTime|String|2020-01-19T09:15:47Z|若调用了`StopInvocation`，表示调用的时间。 |
+|Timed|Boolean|false|查询的命令是否在将来会自动执行。 |
 |UpdateTime|String|2020-01-19T09:15:47Z|命令状态的更新时间。 |
 |InvokeStatus|String|Finished|命令总的执行状态。
 
  **说明：** 不推荐查看该返回值，推荐您查看`InvocationStatus`的返回值。 |
 |Parameters|String|\{\}|命令中的自定义参数。 |
-|Timed|Boolean|false|是否为周期执行。 |
+|RepeatMode|String|Once|命令执行的方式。可能值：
+
+ -   Once：立即执行命令。
+-   Period：定时执行命令。
+-   NextRebootOnly：当实例下一次启动时，自动执行命令。
+-   EveryReboot：实例每一次启动都将自动执行命令。 |
+|Timed|Boolean|false|查询的命令是否在将来会自动执行。 |
 |Username|String|root|ECS实例中执行命令的用户名称。 |
 |PageNumber|Long|1|查询结果的页码。 |
 |PageSize|Long|10|每页行数。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
-|TotalCount|Long|2|命令总个数。 |
+|TotalCount|Long|1|命令总个数。 |
 
 ## 示例
 
@@ -212,41 +224,44 @@ https://ecs.aliyuncs.com/?Action=DescribeInvocations
 
 ```
 <DescribeInvocationsResponse>
-      <TotalCount>5</TotalCount>
-      <RequestId>634562E9-F291-4289-B60B-FC511A43CD34</RequestId>
-      <PageSize>1</PageSize>
+      <TotalCount>1</TotalCount>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <PageSize>10</PageSize>
       <PageNumber>1</PageNumber>
       <Invocations>
             <Invocation>
-                  <CommandContent>cnBtIC1xYSB8IGdyZXAgdnNm****</CommandContent>
-                  <InvocationStatus>Failed</InvocationStatus>
-                  <InvokeStatus>Finished</InvokeStatus>
+                  <InvocationStatus>Running</InvocationStatus>
                   <Parameters>{}</Parameters>
-                  <CommandType>RunShellScript</CommandType>
                   <Timed>false</Timed>
-                  <CreationTime>2020-05-11T09:01:39Z</CreationTime>
-                  <Frequency></Frequency>
-                  <CommandId>c-hz0jdfwcsr****</CommandId>
-                  <CommandName>AutoTest</CommandName>
-                  <InvokeId>t-hz0jdfwd9f****</InvokeId>
                   <InvokeInstances>
                         <InvokeInstance>
                               <Dropped>0</Dropped>
-                              <InvocationStatus>Failed</InvocationStatus>
+                              <InvocationStatus>Success</InvocationStatus>
                               <InstanceId>i-bp1i7gg30r52z2em****</InstanceId>
+                              <Timed>false</Timed>
                               <InstanceInvokeStatus>Finished</InstanceInvokeStatus>
-                              <ExitCode>1</ExitCode>
-                              <ErrorInfo>the command execution exit code is not zero.</ErrorInfo>
-                              <StartTime>2020-05-11T09:01:40Z</StartTime>
-                              <Repeats>1</Repeats>
-                              <FinishTime>2020-05-11T09:01:41Z</FinishTime>
-                              <Output></Output>
-                              <CreationTime>2020-05-11T09:01:39Z</CreationTime>
-                              <UpdateTime>2020-05-11T09:01:41Z</UpdateTime>
-                              <ErrorCode>ExitCodeNonzero</ErrorCode>
-                              <StopTime></StopTime>
+                              <ExitCode>0</ExitCode>
+                              <ErrorInfo></ErrorInfo>
+                              <StartTime>2019-12-20T06:15:55Z</StartTime>
+                              <Repeats>0</Repeats>
+                              <FinishTime>2019-12-20T06:15:56Z</FinishTime>
+                              <Output>OutPutTestmsg</Output>
+                              <CreationTime>2019-12-20T06:15:54Z</CreationTime>
+                              <UpdateTime>2020-01-19T09:15:47Z</UpdateTime>
+                              <ErrorCode></ErrorCode>
+                              <StopTime>2020-01-19T09:15:47Z</StopTime>
                         </InvokeInstance>
                   </InvokeInstances>
+                  <CommandContent>cnBtIC1xYSB8IGdyZXAgdnNm****</CommandContent>
+                  <RepeatMode>Once</RepeatMode>
+                  <InvokeStatus>Finished</InvokeStatus>
+                  <CommandType>RunShellScript</CommandType>
+                  <Username>root</Username>
+                  <CreationTime>2020-01-19T09:15:46Z</CreationTime>
+                  <Frequency></Frequency>
+                  <CommandId>c-hz0jdfwcsr****</CommandId>
+                  <CommandName>CommandTestName</CommandName>
+                  <InvokeId>t-hz0jdfwd9f****</InvokeId>
             </Invocation>
       </Invocations>
 </DescribeInvocationsResponse>
@@ -256,47 +271,50 @@ https://ecs.aliyuncs.com/?Action=DescribeInvocations
 
 ```
 {
-	"TotalCount": 5,
-	"RequestId": "634562E9-F291-4289-B60B-FC511A43CD34",
-	"PageSize": 1,
-	"PageNumber": 1,
-	"Invocations": {
-		"Invocation": [
-			{
-				"CommandContent": "cnBtIC1xYSB8IGdyZXAgdnNm****",
-				"InvocationStatus": "Failed",
-				"InvokeStatus": "Finished",
-				"Parameters": "{}",
-				"CommandType": "RunShellScript",
-				"Timed": false,
-				"CreationTime": "2020-05-11T09:01:39Z",
-				"Frequency": "",
-				"CommandId": "c-hz0jdfwcsr****",
-				"CommandName": "AutoTest",
-				"InvokeId": "t-hz0jdfwd9f****",
-				"InvokeInstances": {
-					"InvokeInstance": [
-						{
-							"Dropped": 0,
-							"InvocationStatus": "Failed",
-							"InstanceId": "i-bp1i7gg30r52z2em****",
-							"InstanceInvokeStatus": "Finished",
-							"ExitCode": 1,
-							"ErrorInfo": "the command execution exit code is not zero.",
-							"StartTime": "2020-05-11T09:01:40Z",
-							"Repeats": 1,
-							"FinishTime": "2020-05-11T09:01:41Z",
-							"Output": "",
-							"CreationTime": "2020-05-11T09:01:39Z",
-							"UpdateTime": "2020-05-11T09:01:41Z",
-							"ErrorCode": "ExitCodeNonzero",
-							"StopTime": ""
-						}
-					]
-				}
-			}
-		]
-	}
+  "TotalCount": 1,
+  "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+  "PageSize": 10,
+  "PageNumber": 1,
+  "Invocations": {
+    "Invocation": [
+      {
+        "InvocationStatus": "Running",
+        "Parameters": "{}",
+        "Timed": false,
+        "InvokeInstances": {
+          "InvokeInstance": [
+            {
+              "Dropped": 0,
+              "InvocationStatus": "Success",
+              "InstanceId": "i-bp1i7gg30r52z2em****",
+              "Timed": false,
+              "InstanceInvokeStatus": "Finished",
+              "ExitCode": 0,
+              "ErrorInfo": "",
+              "StartTime": "2019-12-20T06:15:55Z",
+              "Repeats": 0,
+              "FinishTime": "2019-12-20T06:15:56Z",
+              "Output": "OutPutTestmsg",
+              "CreationTime": "2019-12-20T06:15:54Z",
+              "UpdateTime": "2020-01-19T09:15:47Z",
+              "ErrorCode": "",
+              "StopTime": "2020-01-19T09:15:47Z"
+            }
+          ]
+        },
+        "CommandContent": "cnBtIC1xYSB8IGdyZXAgdnNm****",
+        "RepeatMode": "Once",
+        "InvokeStatus": "Finished",
+        "CommandType": "RunShellScript",
+        "Username": "root",
+        "CreationTime": "2020-01-19T09:15:46Z",
+        "Frequency": "",
+        "CommandId": "c-hz0jdfwcsr****",
+        "CommandName": "CommandTestName",
+        "InvokeId": "t-hz0jdfwd9f****"
+      }
+    ]
+  }
 }
 ```
 
