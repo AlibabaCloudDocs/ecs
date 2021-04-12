@@ -264,7 +264,7 @@
  -   NoSpot：正常按量付费实例。
 -   SpotWithPriceLimit：设置上限价格的抢占式实例。
 -   SpotAsPriceGo：系统自动出价，最高按量付费价格。 |
-|StartTime|String|2017-12-10T04:04Z|实例的创建时间。以ISO8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO8601](~~25696~~)。 |
+|StartTime|String|2017-12-10T04:04Z|实例最近一次的启动时间。以ISO8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO8601](~~25696~~)。 |
 |Status|String|Running|实例状态。 |
 |StoppedMode|String|KeepCharging|实例停机后是否继续收费。可能值：
 
