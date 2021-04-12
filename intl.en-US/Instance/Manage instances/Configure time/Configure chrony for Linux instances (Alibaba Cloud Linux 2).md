@@ -13,7 +13,7 @@ For more information, visit [Chrony](https://chrony.tuxfamily.org/index.html).
 
 ## Modify the time zone of a Linux instance
 
-1.  Connect to the instance. For more information,see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+1.  Connect to the instance. For more information,see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
 
 2.  Run the following command to view the time zone list:
 
@@ -57,7 +57,7 @@ For more information, visit [Chrony](https://chrony.tuxfamily.org/index.html).
 
 ## Enable chrony
 
-1.  Connect to the instance. For more information,see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+1.  Connect to the instance. For more information,see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
 
 2.  Run the following commands to start the chronyd service and configure it to run on system startup:
 
@@ -81,37 +81,7 @@ For more information, visit [Chrony](https://chrony.tuxfamily.org/index.html).
 
 ## Configure chrony
 
-1.  Connect to the instance. For more information,see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
-
-2.  Run the following command to open the configuration file of chrony:
-
-    ```
-    vim /etc/chrony.conf
-    ```
-
-3.  Find `server <NTP server> minpoll 4 maxpoll 10 iburst` and press the I key to edit the file. Add `#` at the beginnings of sentences that contain the NTP servers that you want to hide.
-
-4.  Add a row of NTP server information in the `server <Required NTP server> minpoll 4 maxpoll 10 iburst` format. Then, press the Esc key and enter `:wq` to save the file and exit.
-
-    For more information about NTP servers, see [Alibaba Cloud NTP server](/intl.en-US/Instance/Manage instances/Configure time/Alibaba Cloud NTP server.md).
-
-5.  Run the following commands to start the chronyd service and configure it to run on system startup:
-
-    ```
-    systemctl start chronyd.service
-    systemctl enable chronyd.service
-    ```
-
-6.  Run the following command to view the list of servers that have chrony enabled:
-
-    ```
-    chronyc -n sources -v
-    ```
-
-
-## Configure chrony
-
-1.  Connect to the instance. For more information,see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using VNC.md).
+1.  Connect to the instance. For more information,see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
 
 2.  Run the following command to open the configuration file of chrony:
 
