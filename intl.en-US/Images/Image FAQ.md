@@ -38,7 +38,7 @@ This topic provides answers to commonly asked questions about ECS images.
     -   [How long does it take to copy a custom image?](#section_wzx_44c_ghb)
     -   [How am I charged when I copy a custom image?](#section_nbz_q4c_ghb)
     -   [What limits apply to the original image \(image copied\) and the new image \(image copy\) during an image copy process?](#section_inj_s4c_ghb)
-    -   [How do I copy images in my Alibaba Cloud account to other regions within other Alibaba Cloud accounts?](#section_kyv_54c_ghb)
+    -   [How do I copy images within my Alibaba Cloud account to other regions within other Alibaba Cloud accounts?](#section_kyv_54c_ghb)
     -   [Do size limits apply to copying an image?](#section_k14_x4c_ghb)
     -   [Can I copy a custom image derived from an Alibaba Cloud Marketplace image across regions?](#section_1w2_og0_5js)
     -   [How do I migrate data from regions outside mainland China to regions inside mainland China?](#section_oqq_9z9_t00)
@@ -57,7 +57,7 @@ This topic provides answers to commonly asked questions about ECS images.
     -   [Is Bring Your Own License \(BYOL\) supported when I import custom images?](#section_dhc_07k_xgz)
     -   [What kinds of licenses can be used when I import custom images?](#section_988_25j_qkp)
     -   [How are the imported BYOL images charged?](#section_bn1_o19_a61)
-    -   [How are BYOL licenses authenticated and subscribed in Alibaba Cloud when their subscriptions expire?](#section_gko_ai0_s3o)
+    -   [How are BYOL licenses authenticated and subscribed through Alibaba Cloud when their subscriptions expire?](#section_gko_ai0_s3o)
 -   FAQ about exporting images
     -   [I want to export an image to my computer for testing. What do I do?](#section_9dl_9cs_oba)
 -   FAQ about deleting images
@@ -68,7 +68,7 @@ This topic provides answers to commonly asked questions about ECS images.
 -   FAQ about replacing images or operating systems
     -   [When I replace a system disk, can I select an image that contains data disk snapshots?](#section_053_0tw_h6a)
     -   [I want to replace the operating system of my ECS instance by using an existing image. What do I do?](#section_69i_52e_jfd)
-    -   [Can I use an image created from an instance within Account A to replace a system disk within Account B?](#section_oww_crp_0j9)
+    -   [Can I use an image created from an instance in Account A to replace a system disk in Account B?](#section_oww_crp_0j9)
 -   FAQ about image pricing
     -   [I am creating an ECS instance. Why is the total instance cost displayed when I select a custom image higher than that displayed when I select a public image?](#section_k04_yg7_uoa)
 -   FAQ about commercial availability of images
@@ -138,6 +138,7 @@ This topic provides answers to commonly asked questions about ECS images.
     -   [After I use a CentOS or Windows ECS instance for an extended period of time without restarting it, the instance is disconnected from the network, the network is no longer available, or the public or private IP address of the instance cannot be pinged. What do I do?](#section_29l_kc7_8hw)
     -   [The "UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY." error is reported when an ECS instance starts. What do I do?](#section_1qr_p2r_fp0)
     -   [How do I upgrade RHEL 7 to RHEL 8?](#section_d8g_9su_f1e)
+    -   [How do I enable a program to distinguish different ECS instances when I deploy a business?](#section_n0c_nxo_1hi)
 
 ## Can I replace the selected image of an ECS instance?
 
@@ -156,7 +157,7 @@ Images and snapshots differ in the following ways:
 -   Images can be used to create ECS instances, whereas snapshots cannot.
 -   A snapshot can be a data backup of the system disk or a data disk of an ECS instance, whereas an image must contain the system disk data of an ECS instance.
 -   Snapshots can be used only to restore data of disks on existing instances, whereas images can be used to replace the system disks of other instances or create instances.
--   Images and snapshots apply to different scenarios. Here are some scenarios to which snapshots and custom images are suited:
+-   Images and snapshots apply to different scenarios. The following section describes some scenarios to which snapshots and custom images are suitable:
 
     Snapshots can be used to:
 
@@ -218,7 +219,7 @@ You can run the fdisk command to view the partition information of a data disk. 
 
 ## How do I unmount file systems and delete disk table data?
 
-Assume that /dev/hda5 is mounted to /mnt/hda5. You can run one of the following commands to unmount the file system:
+If /dev/hda5 is mounted to /mnt/hda5, you can run one of the following commands to unmount the file system:
 
 -   ```
 umount /dev/hda5
@@ -235,7 +236,7 @@ umount /dev/hda5 /mnt/hda5
 
 /etc/fstab is an important configuration file in Linux systems. It contains detailed information about the file systems and storage devices that are automatically mounted on system startup.
 
-If you do not want a partition to be automatically mounted on instance startup, you must delete the corresponding statement from the /etc/fstab file. For example, after the following statement is deleted from the /etc/fstab file, xvdb1 is not mounted on startup.
+If you do not want a partition to be automatically mounted on instance startup, you must delete the corresponding statement from the /etc/fstab file. For example, after the following statement is deleted from the /etc/fstab file, xvdb1 is not mounted on system startup:
 
 ```
 /dev/xvdb1 /leejd ext4 defaults 0 0
@@ -258,11 +259,11 @@ The following table lists other important configuration files in Linux systems.
 
 ## Does a custom image still exist after the instance from which the image was created is released?
 
-Yes, the custom image still exists after the instance from which the image was created is released. After an instance is manually or automatically released, the custom image created from the instance is not affected.
+Yes, the custom image still exists after the instance from which the image was created is released. After an instance is manually or automatically released, the custom images created from the instance are unaffected.
 
 ## When an instance expires or its data is deleted, are custom images that were created from the instance affected? Are instances created from the custom images affected?
 
-No, the custom images created from the instance and the instances created from the custom images are not affected. When an instance expires or is manually released, the custom images created from the instance and the instances created from the custom images are not affected.
+No, the custom images and the instances created from the custom images are not affected. After an instance is automatically released when it expires or manually released, the custom images created from the instance and the instances created from the custom images are unaffected.
 
 ## Can I replace the operating system of an instance created from a custom image? Can the custom image still be used after the operating system is replaced?
 
@@ -367,7 +368,7 @@ You can clone the environment and data of an existing ECS instance within your a
 -   Method 1: Manually clone an ECS instance within the same region by using the ECS console.
     1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
     2.  Find the ECS instance that you want to clone and create a custom image from the instance. For more information, see [Create a custom image from an instance](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from an instance.md).
-    3.  Use the created custom image to create an ECS instance by following the instructions in [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). When you are creating the ECS instance, pay attention to the following parameters:
+    3.  Use the created custom image to create an ECS instance by following the instructions in [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). When you are creating the ECS instance, take note of the following parameters:
         -   Region: You must select the region where the custom image is located.
         -   Image: In the **Image** section, select **Custom Image**. Then, select the custom image that you created in the previous step from the drop-down list.
 
@@ -375,19 +376,19 @@ You can clone the environment and data of an existing ECS instance within your a
 
 -   Method 2: Manually clone an ECS instance across regions by using the ECS console.
     1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
-    2.  Select the ECS instance that you want to clone and create snapshots for its system disk and data disks. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md).
+    2.  Select the ECS instance that you want to clone and create snapshots for its system disk and data disks. For more information, see [Create a snapshot for a disk](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md).
 
         **Note:** To ensure data consistency, create snapshots only when the instance is in the **Stopped** state.
 
     3.  Copy the snapshots to a different region in which you want to create an instance. For more information, see [Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md).
     4.  Create a custom image from the copy of the system disk snapshot. In the Create Image dialog box, select **Add Data Disk Snapshot** and click **Add** to add one or more data disk snapshots to the image. For more information, see [Create a custom image from a snapshot](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from a snapshot.md).
-    5.  Use the created custom image to create an ECS instance by following the instructions in [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). When you are creating the ECS instance, pay attention to the following parameters:
+    5.  Use the created custom image to create an ECS instance by following the instructions in [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). When you are creating the ECS instance, take note of the following parameters:
         -   Region: You must select the region where the custom image is located.
         -   Image: In the **Image** section, select **Custom Image**. Then, select the custom image that you created in the previous step from the drop-down list.
 
             **Note:** If the selected custom image contains one or more data disk snapshots, an equal number of data disks are automatically created from the snapshots. Each disk has the same size as the snapshot from which it is created. You can extend a data disk but cannot shrink it.
 
-    6.  Use the created custom image to create an ECS instance by following the instructions in [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). When you are creating the ECS instance, pay attention to the following parameters:
+    6.  Use the created custom image to create an ECS instance by following the instructions in [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). When you are creating the ECS instance, take note of the following parameters:
         -   Region: You must select the region where the custom image is located.
         -   Image: In the **Image** section, select **Custom Image**. Then, select the custom image that you created in the previous step from the drop-down list.
 
@@ -431,7 +432,7 @@ All Alibaba Cloud regions support copying custom images.
 
 When you copy a custom image across regions, the image file is transmitted from one region to another. The amount of time it takes to copy a custom image depends on the network transmission speed and the number of transmission tasks in the queue.
 
-To copy a large image such as an image larger than 2 TiB in size across regions, you can first copy the associated snapshots to the destination region and then create a custom image from these snapshots in the destination region. This procedure takes less time than the procedure to directly copy the image. For more information, see [Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md) and [Create a custom image from a snapshot](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from a snapshot.md). For snapshot charges, see [Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
+To copy a large image such as an image larger than 2 TiB in size across regions, you can first copy the associated snapshots to the destination region and then create a custom image from these snapshots in the destination region. This procedure takes less time than the procedure to copy the image directly. For more information, see [Copy a snapshot](/intl.en-US/Snapshots/Use snapshots/Copy a snapshot.md) and [Create a custom image from a snapshot](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from a snapshot.md). For snapshot charges, see [Snapshots](/intl.en-US/Pricing/Billing items/Snapshots.md).
 
 ## How am I charged when I copy a custom image?
 
@@ -449,9 +450,9 @@ You may be charged the following fees for the preceding operations:
 
 During an image copy process, the original image cannot be deleted, and the new image cannot be used to replace a system disk or create an ECS instance. The image copy process can be canceled.
 
-## How do I copy images in my Alibaba Cloud account to other regions within other Alibaba Cloud accounts?
+## How do I copy images within my Alibaba Cloud account to other regions within other Alibaba Cloud accounts?
 
-You must copy your own images to the destination regions and then share the images to the intended Alibaba Cloud accounts. After the images are shared, they are displayed in the shared image lists within those accounts.
+You must copy your own images to the destination regions and then share the images to the intended Alibaba Cloud accounts. After the images are shared, they are displayed in the shared image lists of those accounts.
 
 ## Do size limits apply to copying an image?
 
@@ -508,7 +509,7 @@ Yes, after you share an image to another account, you can still use the image to
 ## Can an image created from Instance A in one region be used by Instance B in a different region?
 
 -   If Instances A and B belong to the same account, you can copy the image to the region where Instance B is located and then apply the image to Instance B. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md).
--   If Instances A and B belong to different accounts, you can copy the image to the region where Instance B is located and then share the image to the account to which Instance B belongs. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md) and [Share or unshare custom images](/intl.en-US/Images/Custom image/Share or unshare custom images.md).
+-   If instances A and B belong to different accounts, you can copy the image to the region where Instance B is located and then share the image to the account to which Instance B belongs. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md) and [Share or unshare custom images](/intl.en-US/Images/Custom image/Share or unshare custom images.md).
 
 ## Is Bring Your Own License \(BYOL\) supported when I import custom images?
 
@@ -530,7 +531,7 @@ When you import custom images, you can select one of the following license types
 
         Microsoft BYOL licenses are used in the following scenarios:
 
-        -   BYOL implemented by using Software Assurance \(SA\)
+        -   BYOL implemented through Software Assurance \(SA\)
 
             BYOL can be implemented for software programs such as SQL Server and SharePoint that support License Mobility when ECS instances are created.
 
@@ -540,7 +541,7 @@ When you import custom images, you can select one of the following license types
 
             For this kind of ECS instances, Alibaba Cloud does not provide KMS, WSUS, or software technical support. You can contact Microsoft for software technical support.
 
-        -   No SA or no support for BYOL implemented by using SA
+        -   No SA or no support for BYOL implemented through SA
 
             This scenario is similar to the Windows operating system scenario. You can reuse software licenses that you have purchased and download and deploy software programs in a dedicated hardware environment.
 
@@ -559,7 +560,7 @@ When you import custom images, you can select one of the following license types
 
 No fees are charged for operating system components of BYOL images. This rule is applicable to newly created, renewed, or re-initialized ECS instances as well as ECS instances that have their configurations upgraded or downgraded.
 
-## How are BYOL licenses authenticated and subscribed in Alibaba Cloud when their subscriptions expire?
+## How are BYOL licenses authenticated and subscribed through Alibaba Cloud when their subscriptions expire?
 
 You can change BYOL images to public images provided by Alibaba Cloud or Alibaba Cloud Marketplace images.
 
@@ -596,7 +597,7 @@ For information about how to use an existing image to replace the operating syst
 
 **Note:** We recommend that you create snapshots to back up data before you proceed.
 
-## Can I use an image created from an instance within Account A to replace a system disk within Account B?
+## Can I use an image created from an instance in Account A to replace a system disk in Account B?
 
 Yes, you can use an image created from an instance in Account A to replace a system disk in Account B. You can share the image to Account B and then replace the system disk. For more information, see [Share or unshare custom images](/intl.en-US/Images/Custom image/Share or unshare custom images.md).
 
@@ -607,7 +608,7 @@ Yes, you can use an image created from an instance in Account A to replace a sys
 This situation may occur in the following circumstances:
 
 -   The custom image contains data disk snapshots. When such an image is selected, the costs of the data disks cause the total cost of the instance to be higher than that of an instance created from a public image.
--   The custom image was created based on a paid public image such as a Windows Server or RHEL image.
+-   The custom image was derived from a paid public image such as a Windows Server or RHEL image.
 
 ## What features do Alibaba Cloud Marketplace images provide?
 
@@ -689,7 +690,7 @@ No, no fees are charged if you replace the system disk of the instance.
 
 2.  Select the version and region of the image and then purchase the image.
 
-    An image can be used only on ECS instances that are deployed within the same region in which the image was purchased. In addition, you can purchase only one image at a time. If you want to create multiple ECS instances, you must purchase multiple images.
+    An image can be used only on ECS instances that are deployed within the same region in which the image was purchased. In addition, you can purchase only one image at a time. If you need to create multiple ECS instances, you must purchase multiple images.
 
 3.  You can use the image that you purchase to create an ECS instance or replace a system disk.
 
@@ -763,7 +764,7 @@ Image prices are set by the image providers.
 
 When a subscription image expires, it cannot be used unless it is renewed in a timely manner.
 
-You cannot renew a subscription image separately. If you want to continue to use the image, you must renew the image together with the corresponding ECS instance. After the image is renewed, you can continue to use it.
+You cannot separately renew a subscription image. If you want to continue to use the image, you must renew the image together with the corresponding ECS instance. After the image is renewed, you can continue to use it.
 
 ## After I purchase a subscription image, can I request a refund if I no longer want to use it?
 
@@ -802,7 +803,7 @@ In the following situations, you can use the FreeBSD kernel source code to insta
 -   If you use a FreeBSD image that is not provided by Alibaba Cloud or a custom image derived from such a FreeBSD image to create an ECS instance of an instance family in Generation V or later, the instance may fail to start.
 -   If you use a FreeBSD public image to create an ECS instance of an instance family in Generation V or later and use freebsd-update to update the kernel with new patches, the instance may fail to start.
 
-This example demonstrates how to use the FreeBSD kernel source code to install patches and compile the kernel. FreeBSD 12.1 is used in this example.
+In this example, the FreeBSD kernel source code is used to demonstrates how to install patches and compile the kernel. FreeBSD 12.1 is used in this example.
 
 1.  Download and decompress the FreeBSD kernel source code package.
 
@@ -838,7 +839,7 @@ This example demonstrates how to use the FreeBSD kernel source code to install p
 
     ```
     rm -rf /usr/src/*
-    rm -rf /usr/src/. *
+    rm -rf /usr/src/.*
     ```
 
 
@@ -866,10 +867,10 @@ The Windows Server and Red Hat public images are charged. The fees depend on ins
 
 ## Can I install or upgrade the operating systems of ECS instances on my own?
 
-You can use one of the following methods to install or upgrade the operating system:
+No, you cannot install or upgrade the operating systems of ECS instances on your own. ECS instances must use images provided by Alibaba Cloud, which you cannot add or upgrade on your own. However, you can perform the following operations:
 
--   Replace system disks and select new operating systems. For more information, see [Change the operating system](/intl.en-US/Images/Change the operating system.md) or [Upgrade the operating systems in batches]().
--   Create ECS instances from custom images that are imported from computers. For information about how to import an image, see [Instructions for importing images](/intl.en-US/Images/Custom image/Import images/Instructions for importing images.md). For more information about how to create ECS instances from a custom image, see [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md).
+-   Replace system disks and select new operating systems. For more information, see [Change the operating system](/intl.en-US/Images/Change the operating system.md).
+-   Create ECS instances from custom images that are imported from your computers. For information about how to import an image, see [Instructions for importing images](/intl.en-US/Images/Custom image/Import images/Instructions for importing images.md). For more information about how to create ECS instances from a custom image, see [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md).
 -   Patch operating systems.
 
 ## Do operating systems have graphical interfaces?
@@ -896,9 +897,9 @@ SUSE Linux Enterprise Server \(SLES\) operating systems that are sold in Alibaba
 
 ## If an image was manually created from an ECS instance, can I retrieve the instance data after the instance is released on expiration?
 
-Yes, you can retrieve instance data by using one of the following methods:
+Yes, you can retrieve instance data in one of the following ways:
 
--   Create a new instance from the previously created image. For more information, see [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md).
+-   Create an instance from the previously created image. For more information, see [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md).
 -   Use the previously created image to replace the system disk of an existing instance. For more information, see [Replace a system disk \(non-public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace a system disk (non-public images).md).
 
     **Note:** When you replace the system disk, take note of the following items:
@@ -917,20 +918,20 @@ Make sure that you have shared the image to the account to which the newly purch
 -   If the shared image and the instance are located in the same region, replace the system disk of the instance and select the shared image for the new system disk. For more information, see [Replace a system disk \(non-public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace a system disk (non-public images).md).
 -   If the shared image and the instance are not located in the same region, copy the image to the region where the instance is located. Then, replace the system disk of the instance and select this image for the new system disk. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md) and [Replace a system disk \(non-public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace a system disk (non-public images).md).
 
-**Note:** The following risks are associated with the replacement of the system disk of an instance:
+**Note:** The following risks may arise when you replace system disk of an instance:
 
--   The original system disk is released. We recommend that you create a snapshot to back up your data in advance.
--   You must stop the instance before you can replace its system disk. When the instance is stopped, the services that are running on the instance are interrupted.
+-   The original system disk will be released. We recommend that you create a snapshot to back up your data in advance.
+-   You must stop the instance before you can replace its system disk. When the instance is stopped, the services that run on the instance are interrupted.
 -   After you replace the system disk, you must re-deploy the service environment on the new system disk. This may cause services on the instance to be interrupted for an extended period of time.
--   When the system disk is being replaced, a new system disk with a different disk ID is allocated to the instance. The snapshots of the original system disk cannot be used to roll back the new system disk.
+-   When the system disk is replaced, a new system disk with a different disk ID is allocated to the instance. The snapshots of the original system disk cannot be used to roll back the new system disk.
 
 ## I have multiple Alibaba Cloud accounts. I want to transfer an instance from Account A to Account B or migrate the environment and applications of an instance within Account A to an instance within Account B. What do I do?
 
-You can perform the following operations:
+You can perform the following steps:
 
-1.  Create a custom image from the instance in Account A. For more information, see [Create a custom image from an instance](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from an instance.md).
+1.  Create a custom image from the instance within Account A. For more information, see [Create a custom image from an instance](/intl.en-US/Images/Custom image/Create custom image/Create a custom image from an instance.md).
 2.  Share the image to Account B. For more information, see [Share or unshare custom images](/intl.en-US/Images/Custom image/Share or unshare custom images.md).
-3.  Create an instance in Account B from the shared image. For more information, see [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md).
+3.  Create an instance within Account B from the shared image. For more information, see [Create an ECS instance by using a custom image](/intl.en-US/Instance/Create an instance/Create an ECS instance by using a custom image.md).
 
 ## How do I migrate data between ECS instances?
 
@@ -1104,7 +1105,7 @@ Some RHEL images do not have the kdump service enabled by default. You can submi
 
 ## How do I enable the kdump service on an instance that uses a Red Hat 8.1 image?
 
-By default, the kdump service is disabled in Red Hat 8.1 v1 images. To enable the kdump service, run the following command:
+By default, the kdump service is disabled in Red Hat 8.1 v1 images. To enable the kdump service, run the following commands:
 
 ```
 systemctl enable kdump
@@ -1125,9 +1126,21 @@ For the cause of and solution to this issue, see [Troubleshoot IP address faults
 
 ## The "UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY." error is reported when an ECS instance starts. What do I do?
 
-This indicates that a file system error occurs due to data loss in the memory of the ECS instance, which may be caused by conditions such as poweroff. For more information about the problem and the solution to it, see [How to solve the "UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY." error returned when the ECS instance operating system fails to start](https://www.alibabacloud.com/help/doc-detail/136317.html).
+This indicates that a file system error occurs due to data loss in the memory of the ECS instance, which may be caused by conditions such as poweroff. For more information about the problem and the solution to it, see [How to solve the "UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY."error returned when the ECS instance operating system fails to start](https://www.alibabacloud.com/help/doc-detail/136317.html).
 
 ## How do I upgrade RHEL 7 to RHEL 8?
 
 For information about how to upgrade RHEL 7 to RHEL 8, see [Upgrading from RHEL 7 to RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/upgrading_to_rhel_8/index).
+
+## How do I enable a program to distinguish different ECS instances when I deploy a business?
+
+If you want your program to distinguish different ECS instances when you deploy a business on Linux, you can run the systemd-machine-id-setup command to reset /etc/machine-id. In this case, you must re-generate the machine ID on each ECS instance. To avoid excess operations, we recommend that you use the /sys/class/dmi/id/product\_uuid file to distinguish different ECS instances. The /sys/class/dmi/id/product\_uuidis file is one of the unique external identifiers of an instance and easy to use. It can replace the /etc/machine-id file. You need to obtain only the UUID of the corresponding instance. You can run the following command to view the /sys/class/dmi/id/product\_uuid file of an ECS instance:
+
+```
+cat /sys/class/dmi/id/product_uuid
+```
+
+The following figure shows a sample command output.
+
+![product_uuid](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3106487161/p244711.png)
 
