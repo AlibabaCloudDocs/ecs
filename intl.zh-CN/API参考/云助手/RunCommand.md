@@ -63,13 +63,29 @@
 |EnableParameter|Boolean|否|false|命令中是否包含自定义参数。
 
  默认值：false |
+|RepeatMode|String|否|Once|设置命令执行的方式。取值范围：
+
+ -   Once：立即执行命令。
+-   Period：定时执行命令。当该参数取值为`Period`时，必须同时指定`Timed=true`参数值以及`Frequency`参数。
+-   NextRebootOnly：当实例下一次启动时，自动执行命令。
+-   EveryReboot：实例每一次启动都将自动执行命令。
+
+ 默认值：
+
+ -   当不指定`Timed=true`参数值以及`Frequency`参数时，默认值为`Once`。
+-   当指定`Timed=true`参数值以及`Frequency`参数时，无论是否已设置了该参数值，都将按照`Period`处理。
+
+ 注意事项：
+
+ -   当该参数取值`Period`、`NextRebootOnly`或者`EveryReboot`时，您可以调用[StopInvocation](~~64838~~)停止待执行的命令或周期执行的命令。
+-   当该参数取值`Period`或者`EveryReboot`时，您可以调用[DescribeInvocationResults](~~64845~~)，然后指定`IncludeHistory=true`查看命令周期执行的历史记录。 |
 |Timed|Boolean|否|true|是否周期执行命令。取值范围：
 
  -   true：根据参数`Frequency`设置的时间频率定时执行。上次的执行结果不对下一次执行产生任何影响。
 -   false：只执行一次。
 
  默认值：false |
-|Frequency|String|否|0 \*/20 \* \* \* \*|周期执行命令的执行周期。当参数Timed的值为True时，参数Frequency为必需参数。两次周期执行的命令时间间隔不能低于10秒。
+|Frequency|String|否|0 \*/20 \* \* \* \*|周期执行命令的执行周期。当参数`Timed`的值为`true`时，该参数为必选参数。两次周期执行的命令时间间隔不能低于10秒。
 
  该参数取值遵循Cron表达式，请参见[设置定时执行命令](~~64769~~)。 |
 |Parameters|Json|否|\{"name":"Jack", "accessKey":"LTAIdyvdIqaRY\*\*\*\*"\}|命令中包含自定义参数时，执行命令时传入的自定义参数的键值对。例如，命令内容为`echo {{name}}`，则可以通过`Parameter`参数传入键值对`{"name":"Jack"}`。自定义参数将自动替换变量值`name`，得到一条新的命令，实际执行的是`echo Jack`。
