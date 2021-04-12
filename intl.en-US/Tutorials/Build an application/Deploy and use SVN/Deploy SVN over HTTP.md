@@ -3,39 +3,29 @@
 This topic describes how to deploy Apache Subversion \(SVN\) over HTTP.
 
 -   An Alibaba Cloud account is created. To create an Alibaba Cloud account, go to the [account registration page](https://account.alibabacloud.com/register/intl_register.htm).
--   An instance that is of the ecs.c6.large instance type and runs the CentOS operating system is created. For more information, see [Creation method overview](/intl.en-US/Instance/Create an instance/Creation method overview.md).
+-   An instance that runs a CentOS operating system is created. For more information, see [Creation method overview](/intl.en-US/Instance/Create an instance/Creation method overview.md).
 -   Inbound rules are added to security groups of the instance to allow traffic on port 3690, which is the default port of SVN. For more information, see [Add security group rules](/intl.en-US/Security/Security groups/Add security group rules.md).
 
-In this topic, the following software versions are used to manually deploy SVN. Choose appropriate software versions when you deploy SVN.
+In this topic, the following instance configurations and software versions are used to manually deploy SVN. The procedure may vary based on your actual configurations.
 
--   Operating system: a CentOS 7.2 64-bit public image
--   SVN: version 1.7.14
+-   Instance type: ecs.c6.large
+-   Operating system: CentOS 7.2 64-bit public image
+-   SVN: 1.7.14
 -   Apache HTTP Server: 2.4.6
 
-You can also use Alibaba Cloud Marketplace images to deploy SVN. For example, you can use SVN images provided on Alibaba Cloud Marketplace to deploy SVN. For more information, see the "User guide" section in [SVN images \(CentOS 64-bit\)](https://market.aliyun.com/products/55530001/jxsc000061.html).
-
-## Procedure
-
-To deploy SVN over HTTP, perform the following steps:
-
-1.  [Step 1: Install SVN](#section_gyu_lbx_856)
-2.  [Step 2: Install Apache](#section_ily_okj_kbz)
-3.  [Step 3: Install mod\_dav\_svn](#section_gbn_l1r_5yj)
-4.  [Step 4: Configure SVN](#section_ed8_meq_o0d)
-5.  [Step 5: Configure Apache](#section_dk7_05x_t3w)
-6.  [Step 6: Use a browser to test access to SVN](#section_svb_rm4_e81)
+You can also use Alibaba Cloud Marketplace images to deploy SVN. For example, you can use SVN images provided by Alibaba Cloud Marketplace to deploy SVN. For more information, see the "User guide" section on the [SVN version control \(CentOS 64-bit\)](https://market.aliyun.com/products/55530001/jxsc000061.html) page.
 
 ## Step 1: Install SVN
 
-1.  [Connect to the Linux instance](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using a username and password.md).
+1.  [Connect to the Linux instance](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using a username and password.md).
 
 2.  Run the following command to install SVN:
 
     ```
-    yum install subversion
+    yum install subversion -y
     ```
 
-3.  Run the following command to check the SVN version:
+3.  Run the following command to check the SVN version.
 
     ```
     svnserve --version
@@ -47,7 +37,7 @@ To deploy SVN over HTTP, perform the following steps:
 1.  Run the following command to install httpd:
 
     ```
-    yum install httpd
+    yum install httpd -y
     ```
 
 2.  Run the following command to check the httpd version:
@@ -62,7 +52,7 @@ To deploy SVN over HTTP, perform the following steps:
 Run the following command to install mod\_dav\_svn:
 
 ```
-yum install mod_dav_svn
+yum install mod_dav_svn -y
 ```
 
 ## Step 4: Configure SVN
@@ -94,7 +84,7 @@ yum install mod_dav_svn
     ls
     ```
 
-    ![Check files in the SVN repository](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1829919951/p12529.png)
+    ![Check files in the SVN repository](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1829919951/p12529.png)
 
     The following table describes the SVN directories.
 
@@ -143,7 +133,7 @@ yum install mod_dav_svn
         userTest=rw
         ```
 
-        ![permission](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1829919951/p110705.png)
+        ![permission](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1829919951/p110705.png)
 
     4.  Press the `Esc` key to exit the edit mode, and enter `:wq` to save and close the file.
 
@@ -165,7 +155,7 @@ yum install mod_dav_svn
         realm = /var/svn/svnrepos # This specifies the authorization realm of the repository.
         ```
 
-        ![Modify the configurations of the SVN service](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1829919951/p12532.png)
+        ![Modify the configurations of the SVN service](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1829919951/p12532.png)
 
     4.  Press the `Esc` key to exit the edit mode, and enter `:wq` to save and close the file.
 
@@ -181,12 +171,16 @@ yum install mod_dav_svn
 
     If the following code returned, the SVN service is started.
 
-    ![Check the SVN service status](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/2829919951/p12533.png)
+    ![Check the SVN service status](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9040977161/p12533.png)
 
 
 ## Step 5: Configure Apache
 
-1.  Run the `vim /etc/httpd/conf.d/subversion.conf` command to open the httpd configuration file.
+1.  Run the following command to add and edit the httpd configuration file:
+
+    ```
+    vim /etc/httpd/conf.d/subversion.conf
+    ```
 
 2.  Press the `I` key to enter the edit mode.
 
@@ -204,7 +198,7 @@ yum install mod_dav_svn
     </Location>
     ```
 
-4.  Press the `Esc` key, and enter `:wq` to save and close the file.
+4.  Press the `Esc` key and enter `:wq` to save and close the file.
 
 5.  Run the following command to start the Apache service:
 
@@ -215,14 +209,14 @@ yum install mod_dav_svn
 
 ## Step 6: Use a browser to test access to SVN
 
-1.  Open the browser in the local computer.
+1.  Open the browser in the computer.
 
-2.  In the address bar, enter a URL in the `http://<Public IP address of the ECS instance>/svn/<SVN repository name>` format, and press the Enter key. In this example, the SVN repository name is svnrepos.
+2.  In the address bar, enter a URL in the `http://<Public IP address of the ECS instance\>/svn/<SVN repository name\>` format and press the Enter key. In this example, the SVN repository name is svnrepos.
 
 3.  Enter your username and password that you configured in the passwd file. In this example, the username is userTest and the password is passWDTest.
 
-    The following response indicates that you have accessed the created SVN repository.
+    The following command output indicates that you have accessed the created SVN repository.
 
-    ![result](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1790600061/p101777.png)
+    ![result](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1790600061/p101777.png)
 
 
