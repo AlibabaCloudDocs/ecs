@@ -5,7 +5,7 @@ You can call this operation to query the pricing information about the new insta
 ## Description
 
 -   The pricing information can be queried for subscription ECS instances that have expired only when their configurations are upgraded. The pricing information cannot be queried when their configurations are downgraded.
--   The pricing information cannot be queried for pay-as-you-go ECS instances when their configurations are changed. Prices of pay-as-you-go ECS instances whose configurations are changed are the same as those of newly purchased pay-as-you-go instances. You can call the [DescribePrice](~~107829~~)operation to query the latest prices of ECS instances.
+-   The pricing information cannot be queried for pay-as-you-go ECS instances when their configurations are changed. Prices of pay-as-you-go ECS instances whose configurations are changed are the same as those of newly purchased pay-as-you-go instances. You can call the [DescribePrice](~~107829~~) operation to query the latest prices of ECS instances.
 -   Before you upgrade the configurations of an instance, we recommend that you call the [DescribeResourcesModification](~~66187~~) operation to query the instance types that can be used for upgrade in the specified zone.
 
 ## Debugging
@@ -21,43 +21,43 @@ You can call this operation to query the pricing information about the new insta
 |RegionId|String|Yes|cn-hangzhou|The region ID of the instance. |
 |InstanceType|String|No|ecs.g6e.large|The new instance type. We recommend that you call the [DescribeResourcesModification](~~66187~~) operation to query the instance types that are available for use in the specified zone.
 
- **Note:** When you call the DescribeInstanceModificationPrice operation, you must specify at least one of the following parameters: `InstanceType` and `DataDisk.N.*`. |
-|SystemDisk.Category|String|No|cloud\_ssd|The category of the system disk. This parameter is required only when you upgrade a retired instance type to an available one and upgrade a non-I/O optimized instance type to an I/O optimized one. For more information about instance types, see [Instance families](~~25378~~) and[Retired instance types](~~55263~~).
+**Note:** When you call the DescribeInstanceModificationPrice operation, you must specify at least one of the following parameters: `InstanceType` and `DataDisk.N.*`. |
+|SystemDisk.Category|String|No|cloud\_ssd|The category of the system disk. This parameter is required only when you upgrade a retired instance type to an available one and upgrade a non-I/O optimized instance type to an I/O optimized one. For more information about instance types, see [Instance families](~~25378~~) and [Retired instance types](~~55263~~).
 
- Valid values:
+Valid values:
 
- -   cloud\_efficiency: ultra disk
+-   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 
- This parameter is empty by default. |
+This parameter is empty by default. |
 |DataDisk.N.Category|String|No|cloud\_essd|The category of data disk N. You can specify this parameter if you want to query the prices of newly attached subscription data disks. Valid values of N: 1 to 16. Valid values:
 
- -   cloud\_efficiency: ultra disk
+-   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   cloud\_essd: enhanced SSD \(ESSD\)
 -   cloud: basic disk
 
- This parameter is empty by default.
+This parameter is empty by default.
 
- **Note:** When you call the DescribeInstanceModificationPrice operation, you must specify at least one of the following parameters: `InstanceType` and `DataDisk.N.*`. |
+**Note:** When you call the DescribeInstanceModificationPrice operation, you must specify at least one of the following parameters: `InstanceType` and `DataDisk.N.*`. |
 |DataDisk.N.Size|Integer|No|100|The capacity of data disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
 
- -   Valid values when DataDisk.N.Category is set to cloud\_efficiency: 20 to 32768
+-   Valid values when DataDisk.N.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud\_essd: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud: 5 to 2000
 
- The default value is the minimum capacity value that corresponds to the specified data disk category. |
+The default value is the minimum capacity value that corresponds to the specified data disk category. |
 |DataDisk.N.PerformanceLevel|String|No|PL1|Specifies the performance level of the data disk that is an ESSD. The N value must be the same as that in DataDisk.N.Category when `DataDisk.N.Category` is set to cloud\_essd. Valid values:
 
- -   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+-   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
 -   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 
- Default value: PL1.
+Default value: PL1.
 
- For more information about ESSD performance levels, see [Enhanced SSDs](~~122389~~). |
+For more information about ESSD performance levels, see [Enhanced SSDs](~~122389~~). |
 
 ## Response parameters
 
@@ -67,7 +67,7 @@ You can call this operation to query the pricing information about the new insta
 |Price|Struct| |The price. |
 |Currency|String|CNY|The currency unit. Valid values:
 
- -   CNY
+-   CNY
 -   USD |
 |DiscountPrice|Float|61.320|The discount. |
 |OriginalPrice|Float|175.200|The original price. |
