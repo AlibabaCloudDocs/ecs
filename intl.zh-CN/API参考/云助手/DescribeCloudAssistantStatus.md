@@ -39,6 +39,7 @@
 |CloudAssistantVersion|String|2.2.0.106|云助手客户端版本号。 |
 |InstanceId|String|i-bp1iudwa5b1tqa\*\*\*\*|实例ID。 |
 |InvocationCount|Long|2|已执行的命令的总数量。 |
+|LastHeartbeatTime|String|2021-03-15T09:00:00Z|云助手最近一次心跳时间。 |
 |LastInvokedTime|String|2021-03-15T08:00:00Z|最近一次命令执行的时间。 |
 |OSType|String|Linux|实例操作系统类型。可能值：
 
@@ -79,6 +80,7 @@ https://ecs.aliyuncs.com/?Action=DescribeCloudAssistantStatus
                   <InvocationCount>2</InvocationCount>
                   <ActiveTaskCount>0</ActiveTaskCount>
                   <LastInvokedTime>2021-03-15T08:00:00Z</LastInvokedTime>
+                  <LastHeartbeatTime>2021-03-15T09:00:00Z</LastHeartbeatTime>
             </InstanceCloudAssistantStatus>
       </InstanceCloudAssistantStatusSet>
 </DescribeCloudAssistantStatusResponse>
@@ -101,7 +103,8 @@ https://ecs.aliyuncs.com/?Action=DescribeCloudAssistantStatus
         "OSType": "Linux",
         "InvocationCount": 2,
         "ActiveTaskCount": 0,
-        "LastInvokedTime": "2021-03-15T08:00:00Z"
+        "LastInvokedTime": "2021-03-15T08:00:00Z",
+        "LastHeartbeatTime": "2021-03-15T09:00:00Z"
       }
     ]
   }
