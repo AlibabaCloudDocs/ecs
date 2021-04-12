@@ -29,6 +29,22 @@
 |CommandId|String|是|c-e996287206324975b5fbe1d\*\*\*\*|命令ID。您可以通过接口[DescribeCommands](~~64843~~)查询所有可用的CommandId。 |
 |InstanceId.N|RepeatList|是|i-bp185dy2o3o6n\*\*\*\*|需要执行命令的实例列表，最多能指定50台实例ID。N的取值范围：1~50 |
 |RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
+|RepeatMode|String|否|Once|设置命令执行的方式。取值范围：
+
+ -   Once：立即执行命令。
+-   Period：定时执行命令。当该参数取值为`Period`时，必须同时指定`Timed=true`参数值以及`Frequency`参数。
+-   NextRebootOnly：当实例下一次启动时，自动执行命令。
+-   EveryReboot：实例每一次启动都将自动执行命令。
+
+ 默认值：
+
+ -   当不指定`Timed=true`参数值以及`Frequency`参数时，默认值为`Once`。
+-   当指定`Timed=true`参数值以及`Frequency`参数时，无论是否已设置了该参数值，都将按照`Period`处理。
+
+ 注意事项：
+
+ -   当该参数取值`Period`、`NextRebootOnly`或者`EveryReboot`时，您可以调用[StopInvocation](~~64838~~)停止待执行的命令或周期执行的命令。
+-   当该参数取值`Period`或者`EveryReboot`时，您可以调用[DescribeInvocationResults](~~64845~~)，然后指定IncludeHistory=true查看命令周期执行的历史记录。 |
 |Timed|Boolean|否|true|命令是否为周期执行。
 
  默认值：false |
