@@ -613,8 +613,8 @@ c7t is in invitational preview. To use c7t, [submit a ticket](https://workorder-
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c7t.large|2|4.0|2.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
 |ecs.c7t.xlarge|4|8.0|4.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
 |ecs.c7t.2xlarge|8|16.0|8.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
@@ -761,8 +761,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.c6t.large|2|4.0|None|Burstable up to 10.0|900|Yes|Yes|Up to 250|2|3|6|20|1.0|
 |ecs.c6t.xlarge|4|8.0|None|Burstable up to 10.0|1,000|Yes|Yes|Up to 250|4|4|15|40|1.5|
 |ecs.c6t.2xlarge|8|16.0|None|Burstable up to 10.0|1,600|Yes|Yes|Up to 250|8|4|15|50|2.0|
@@ -922,8 +922,8 @@ r7t is in invitational preview. To use r7t, [submit a ticket](https://workorder-
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|TPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|-----------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|-----------------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.r7t.large|2|16.0|8.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
 |ecs.r7t.xlarge|4|32.0|16.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
 |ecs.r7t.2xlarge|8|64.0|32.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
