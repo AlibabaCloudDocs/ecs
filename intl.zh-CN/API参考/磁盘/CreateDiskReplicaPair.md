@@ -25,13 +25,14 @@
 |PairName|String|是|TestReplicaPair|复制关系名称。 |
 |RegionId|String|是|cn-beijing|主盘所属地域。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |Description|String|否|TestReplicaPairDescription|复制关系的描述信息。 |
+|AsyncCycle|Integer|否|900|最小同步周期。单位为秒，取值：900。 |
 
 ## 返回数据
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |PairId|String|rp-dsaf233kj23j2j35\*\*\*\*|复制关系ID。 |
-|RequestId|String|20758A-585D-4A41-A9B2-28DA8F4F534F|请求ID。 |
+|RequestId|String|E69EF3CC-94CD-42E7-8926-F133B86387C0|请求ID。 |
 
 ## 示例
 
