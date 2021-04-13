@@ -27,9 +27,8 @@
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
-|NextToken|String|AAAAAdDWBF2\*\*\*\*|本次调用返回的查询凭证值。 |
-|ReplicaPairs|Array of ReplicaPair| |复制关系信息组成的集合。 |
-|ReplicaPair| | | |
+|DiskReplicaPairs|Array of DiskReplicaPair| |复制关系信息组成的集合。 |
+|DiskReplicaPair| | | |
 |Description|String|TestReplicaPairDescription|复制关系的描述信息。 |
 |DestinationDiskId|String|d-asdfjl2342kj2l3k4\*\*\*\*|从盘的云盘ID。 |
 |DestinationRegion|String|cn-shanghai|从盘所属地域。 |
@@ -39,12 +38,13 @@
 |SourceRegion|String|cn-beijing|主盘所属地域。 |
 |Status|String|active|复制关系的状态。取值如下：
 
- -   `inactive`：待激活
--   `active`：激活
--   `paused`：暂停
--   `pausing`：暂停中
--   `starting`：启动中
--   `deleting`：删除中 |
+ -   inactive：待激活
+-   active：激活
+-   paused：暂停
+-   pausing：暂停中
+-   starting：启动中
+-   deleting：删除中 |
+|NextToken|String|AAAAAdDWBF2\*\*\*\*|本次调用返回的查询凭证值。 |
 |RequestId|String|E69EF3CC-94CD-42E7-8926-F133B86387C0|请求ID。 |
 
 ## 示例
@@ -64,8 +64,10 @@ https://ecs.aliyuncs.com/?Action=DescribeDiskReplicaPairs
 
 ```
 <DescribeDiskReplicaPairsResponse>
-      <ReplicaPairs>
-            <ReplicaPair>
+      <NextToken>AAAAAdDWBF2****</NextToken>
+      <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
+      <DiskReplicaPairs>
+            <DiskReplicaPair>
                   <Status>active</Status>
                   <Description>TestReplicaPairDescription</Description>
                   <DestinationDiskId>d-asdfjl2342kj2l3k4****</DestinationDiskId>
@@ -74,10 +76,8 @@ https://ecs.aliyuncs.com/?Action=DescribeDiskReplicaPairs
                   <ReplicaPairId>rp-dsaf233kj23j2j35****</ReplicaPairId>
                   <SourceRegion>cn-beijing</SourceRegion>
                   <SourceDiskId>d-bp131n0q38u3a4zi****</SourceDiskId>
-            </ReplicaPair>
-      </ReplicaPairs>
-      <NextToken>AAAAAdDWBF2****</NextToken>
-      <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
+            </DiskReplicaPair>
+      </DiskReplicaPairs>
 </DescribeDiskReplicaPairsResponse>
 ```
 
@@ -85,8 +85,10 @@ https://ecs.aliyuncs.com/?Action=DescribeDiskReplicaPairs
 
 ```
 {
-	"ReplicaPairs": {
-		"ReplicaPair": [{
+	"NextToken": "AAAAAdDWBF2****",
+	"RequestId": "E69EF3CC-94CD-42E7-8926-F133B86387C0",
+	"DiskReplicaPairs": {
+		"DiskReplicaPair": [{
 			"Status": "active",
 			"Description": "TestReplicaPairDescription",
 			"DestinationDiskId": "d-asdfjl2342kj2l3k4****",
@@ -96,9 +98,7 @@ https://ecs.aliyuncs.com/?Action=DescribeDiskReplicaPairs
 			"SourceRegion": "cn-beijing",
 			"SourceDiskId": "d-bp131n0q38u3a4zi****"
 		}]
-	},
-	"NextToken": "AAAAAdDWBF2****",
-	"RequestId": "E69EF3CC-94CD-42E7-8926-F133B86387C0"
+	}
 }
 ```
 
