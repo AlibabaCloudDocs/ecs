@@ -12,29 +12,34 @@ ABSR is supported between the following regions:
     -   US \(Silicon Valley\): Zone A and Zone B
     -   US \(Virginia\): Zone A and Zone B
 
-In a replication relationship, the primary disk is a data disk of the enhanced SSD \(ESSD\) disk category and cannot be a secondary disk in another replication relationship. The secondary disk is a cloud disk that has the same specifications and capacity as the primary disk. Each cloud disk \(primary or secondary disk\) can have only a single replication relationship.
+In a replication relationship, the primary disk is a pay-as-you-go data disk of the enhanced SSD \(ESSD\) disk category and cannot be a secondary disk in another replication relationship. The secondary disk is a cloud disk that has the same specifications and capacity as the primary disk. Each cloud disk \(primary or secondary disk\) can have only a single replication relationship.
 
 The following table describes the limits on the primary and secondary disks after a replication relationship is configured.
 
 |Item|Support for the primary disk|Support for the secondary disk|
 |----|----------------------------|------------------------------|
 |Read and write operations|Yes|No|
-|Deletion|Yes|No|
+|Deletion|No\*|No\*|
 |Re-initialization|No|No|
 |Resizing|No|No|
-|Attachment|Yes|No|
-|Snapshot creation|Yes|Yes|
+|Attachment|Yes|No\*|
+|Snapshot creation|Yes|No\*|
 |Performance type modification|No|No|
+|Encryption|No|No|
+
+**Note:** \*: The operation is supported after the replication relationship is deleted.
 
 ## Step 1: Create a replication relationship
 
 To use the ABSR feature, you must create a replication relationship first.
 
-1.  Go to the Asynchronous Block Storage Replication page.
+1.  Go to the Asynchronous replication of cloud disks page.
 
     1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
     2.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Asynchronous Replication Relationship**.
+
+    3.  In the top navigation bar, select a region.
 
 2.  Click **Create asynchronous replication of cloud disks**.
 
@@ -44,7 +49,7 @@ To use the ABSR feature, you must create a replication relationship first.
 
     |Parameter|Description|
     |---------|-----------|
-    |Region and Zone|Select the region and zone of the primary disk whose data you want to synchronize.|
+    |Region and zone|Select the region and zone of the primary disk whose data you want to synchronize.|
     |Cloud disk|Select the primary disk whose data you want to synchronize.|
 
 4.  In the **Create target site resources** step, create a secondary disk. Then, click **Order cloud disk**.
@@ -53,8 +58,8 @@ To use the ABSR feature, you must create a replication relationship first.
 
     |Parameter|Description|
     |---------|-----------|
-    |Region and Zone copied|The destination region and zone of the secondary disk.|
-    |Billing Method|Select the billing method of the secondary disk. Only the pay-as-you-go billing method is supported.|
+    |Region and zone copied|The destination region and zone of the secondary disk.|
+    |Type of payment|Select the billing method of the secondary disk. Only the pay-as-you-go billing method is supported.|
     |Cloud disk name|Specify the name of the secondary disk|
     |Label|Configure the tag key and value of the secondary disk. You can use tags to manage disks.|
     |Service Agreement|Read and select cloud server ECS Terms of Service.|
@@ -74,12 +79,12 @@ To use the ABSR feature, you must create a replication relationship first.
 
 ## Step 2: Activate the replication relationship
 
-After a replication relationship is created, it is in the **Inactive** \(`inactive`\) state. You must activate the replication relationship before data can be periodically synchronized to the secondary disk.
+After a replication relationship is created, it is in the **To be activated** \(`inactive`\) state. You must activate the replication relationship before data can be periodically synchronized to the secondary disk.
 
 1.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Asynchronous Replication Relationship**.
 
 2.  Find the replication relationship that you want to activate and click **Activation** in the **Operation** column.
 
-    After the replication relationship is activated, data on the primary disk is automatically synchronized to the secondary disk based on the synchronization period to implement geo-disaster recovery.
+    After the replication relationship is activated, data on the primary disk is automatically synchronized to the secondary disk based on the synchronization cycle to implement geo-disaster recovery.
 
 
