@@ -15,21 +15,20 @@ In the response, you can view all the replication relationships in the specified
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|DescribeDiskReplicaPairs|The operation that you want to perform. Set the value to DescribeDiskReplicaPairs. |
-|RegionId|String|Yes|cn-beijing|The ID of the region. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|RegionId|String|Yes|cn-beijing|The region ID of the primary or secondary disk. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |MaxResults|Integer|No|50|The maximum number of entries to return on each page. Valid values: 1 to 500.
 
- Default value: 10. |
+Default value: 10. |
 |NextToken|String|No|AAAAAdDWBF2\*\*\*\*|The query token.
 
- Use `NextToken` to configure the query token. Set this parameter to the `NextToken` value returned in the last call to the `DescribeDiskReplicaPairs` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page. |
+Use `NextToken` to configure the query token. Set this parameter to the `NextToken` value returned in the last call to the `DescribeDiskReplicaPairs` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page. |
 
 ## Response parameters
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
-|NextToken|String|AAAAAdDWBF2\*\*\*\*|The query token returned in this call. |
-|ReplicaPairs|Array of ReplicaPair| |Details about the replication relationships. |
-|ReplicaPair| | | |
+|DiskReplicaPairs|Array of DiskReplicaPair| |Details about the replication relationships. |
+|DiskReplicaPair| | | |
 |Description|String|TestReplicaPairDescription|The description of the replication relationship. |
 |DestinationDiskId|String|d-asdfjl2342kj2l3k4\*\*\*\*|The ID of the secondary disk. |
 |DestinationRegion|String|cn-shanghai|The region ID of the secondary disk. |
@@ -39,12 +38,13 @@ In the response, you can view all the replication relationships in the specified
 |SourceRegion|String|cn-beijing|The region ID of the primary disk. |
 |Status|String|active|The status of the replication relationship. Valid values:
 
- -   `inactive`
--   `active`
--   `paused`
--   `pausing`
--   `starting`
--   `deleting` |
+-   inactive
+-   active
+-   paused
+-   pausing
+-   starting
+-   deleting |
+|NextToken|String|AAAAAdDWBF2\*\*\*\*|The query token returned in this call. |
 |RequestId|String|E69EF3CC-94CD-42E7-8926-F133B86387C0|The ID of the request. |
 
 ## Examples
@@ -64,8 +64,10 @@ Sample success responses
 
 ```
 <DescribeDiskReplicaPairsResponse>
-      <ReplicaPairs>
-            <ReplicaPair>
+      <NextToken>AAAAAdDWBF2****</NextToken>
+      <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
+      <DiskReplicaPairs>
+            <DiskReplicaPair>
                   <Status>active</Status>
                   <Description>TestReplicaPairDescription</Description>
                   <DestinationDiskId>d-asdfjl2342kj2l3k4****</DestinationDiskId>
@@ -74,10 +76,8 @@ Sample success responses
                   <ReplicaPairId>rp-dsaf233kj23j2j35****</ReplicaPairId>
                   <SourceRegion>cn-beijing</SourceRegion>
                   <SourceDiskId>d-bp131n0q38u3a4zi****</SourceDiskId>
-            </ReplicaPair>
-      </ReplicaPairs>
-      <NextToken>AAAAAdDWBF2****</NextToken>
-      <RequestId>E69EF3CC-94CD-42E7-8926-F133B86387C0</RequestId>
+            </DiskReplicaPair>
+      </DiskReplicaPairs>
 </DescribeDiskReplicaPairsResponse>
 ```
 
@@ -85,20 +85,20 @@ Sample success responses
 
 ```
 {
-	"ReplicaPairs": {
-		"ReplicaPair": [{
-			"Status": "active",
-			"Description": "TestReplicaPairDescription",
-			"DestinationDiskId": "d-asdfjl2342kj2l3k4****",
-			"PairName": "TestReplicaPair",
-			"DestinationRegion": "cn-shanghai",
-			"ReplicaPairId": "rp-dsaf233kj23j2j35****",
-			"SourceRegion": "cn-beijing",
-			"SourceDiskId": "d-bp131n0q38u3a4zi****"
-		}]
-	},
-	"NextToken": "AAAAAdDWBF2****",
-	"RequestId": "E69EF3CC-94CD-42E7-8926-F133B86387C0"
+    "NextToken": "AAAAAdDWBF2****",
+    "RequestId": "E69EF3CC-94CD-42E7-8926-F133B86387C0",
+    "DiskReplicaPairs": {
+        "DiskReplicaPair": [{
+            "Status": "active",
+            "Description": "TestReplicaPairDescription",
+            "DestinationDiskId": "d-asdfjl2342kj2l3k4****",
+            "PairName": "TestReplicaPair",
+            "DestinationRegion": "cn-shanghai",
+            "ReplicaPairId": "rp-dsaf233kj23j2j35****",
+            "SourceRegion": "cn-beijing",
+            "SourceDiskId": "d-bp131n0q38u3a4zi****"
+        }]
+    }
 }
 ```
 
@@ -106,8 +106,8 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|404|InvalidDiskId.NotFound|The specified disk does not exist.|The error message returned because the specified disk does not exist.|
-|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
+|404|InvalidDiskId.NotFound|The specified disk does not exist.|The error message returned because the specified disk does not exist. Check whether the disk ID is correct.|
+|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the error persists, submit a ticket.|
 |400|IncompleteParamter|Some fields can not be null in this request.|The error message returned because some required parameters are not specified.|
 |400|InvalidParamter|Some parameters are invalid in this request.|The error message returned because the request contains invalid parameters.|
 
