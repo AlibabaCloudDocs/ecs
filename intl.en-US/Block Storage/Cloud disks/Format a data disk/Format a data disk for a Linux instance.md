@@ -19,7 +19,7 @@ By default, the device names of data disks are assigned by the system based on t
 
 The following section describes the risks of formatting a data disk:
 
--   Disk partitioning and formatting are high-risk operations. Exercise caution when you partition and format disks. The procedure in this topic applies only to new data disks. If your data disk contains data, create a snapshot for the data disk to avoid data loss. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md).
+-   Disk partitioning and formatting are high-risk operations. Exercise caution when you partition and format disks. The procedure in this topic applies only to new data disks. If your data disk contains data, create a snapshot for the data disk to avoid data loss. For more information, see [Create a snapshot for a disk](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md).
 -   Only **data disks** can be partitioned. You cannot partition **system disks**. If you use a third-party tool to forcibly partition a system disk, unknown risks such as system failures and data loss may occur. You can extend partitions or add new partitions only for system disks that have been extended. For more information, see [Resize disks online for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Linux instances.md).
 
 **Note:** The commands in the example also apply to CentOS 7.
@@ -28,7 +28,7 @@ The following section describes the risks of formatting a data disk:
 
 1.  Connect to an ECS instance.
 
-    For more information, see [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using VNC.md).
+    For more information, see [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
 
 2.  View information about the data disks attached to the ECS instance.
 
@@ -120,7 +120,7 @@ In this example, an ext4 file system is created.
 
 Write the information of the new partition to /etc/fstab to enable this partition to be automatically mounted on instance startup.
 
-**Note:** We recommend that you use a universally unique identifier \(UUID\) to reference the new partition in /etc/fstab.
+**Note:** We recommend you use a universally unique identifier \(UUID\) to reference the new partition in the /etc/fstab file because operations such as releasing a disk may lead to the change in the device names of other disks.
 
 1.  Back up /etc/fstab.
 
