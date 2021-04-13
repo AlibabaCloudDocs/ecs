@@ -6,24 +6,26 @@ After a replication relationship is stopped and deleted, the primary disk stops 
 
 ## Step 1: Stop a replication relationship
 
-When a replication relationship is in the **Active** \(`active`\) state, you can stop the relationship.
+You can stop a replication relationship when it is in the **Activated** \(`active`\) state.
 
-1.  Go to the Asynchronous Block Storage Replication page.
+1.  Go to the Asynchronous replication of cloud disks page.
 
     1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
     2.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Asynchronous Replication Relationship**.
 
-2.  Find the replication relationship that you want to stop and click **Stop** in the Actions column.
+    3.  In the top navigation bar, select a region.
+
+2.  Find the replication relationship that you want to stop and click **Stop** in the Operation column.
 
 
 ## Step 2: Delete the replication relationship
 
-After the replication relationship is stopped, it is in the **Paused** \(`paused`\) state. You can delete the replication relationship.
+After the replication relationship is stopped, it is in the **Suspended** \(`paused`\) state. You can delete the replication relationship.
 
 1.  In the left-side navigation pane, choose **Storage & Snapshots** \> **Asynchronous Replication Relationship**.
 
-2.  Find the replication relationship that is stopped and click **Delete** in the Actions column.
+2.  Find the replication relationship that is stopped and click **Delete** in the Operation column.
 
 3.  In the message that appears, click **OK**.
 
