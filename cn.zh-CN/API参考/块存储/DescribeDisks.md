@@ -169,6 +169,7 @@
 -   ephemeral：（已停售）本地盘
 -   ephemeral\_ssd：（已停售）本地SSD盘 |
 |CreationTime|String|2018-01-01T01:01:22Z|创建时间。 |
+|DedicatedBlockStorageClusterId|String|dbsc-f8zfynww0vzuhg4w\*\*\*\*|云盘所属的专属块存储集群ID。如果您的云盘在公共云块存储集群中，此参数为空。 |
 |DeleteAutoSnapshot|Boolean|false|是否同时删除自动快照。可能值：
 
  -   true：删除云盘上的快照。
@@ -296,6 +297,7 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
                   <KMSKeyId></KMSKeyId>
                   <Size>40</Size>
                   <Description></Description>
+                  <DedicatedBlockStorageClusterId></DedicatedBlockStorageClusterId>
                   <BdfId></BdfId>
                   <ProductCode></ProductCode>
                   <Portable>false</Portable>
@@ -354,6 +356,7 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 				"KMSKeyId": "",
 				"Size": 40,
 				"Description": "",
+                "DedicatedBlockStorageClusterId": "",
 				"BdfId": "",
 				"ProductCode": "",
 				"Portable": false,
@@ -399,7 +402,6 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 |403|InvalidDiskIds.Malformed|The amount of specified disk Ids exceeds the limit.|指定的磁盘ID格式不正确。|
 |404|InvalidDiskChargeType.NotFound|The DiskChargeType does not exist in our records|指定的磁盘计费方式不存在。|
 |404|InvalidLockReason.NotFound|The specified LockReason is not found|指定的锁定类型不存在。|
-|404|InvalidFilterKey.NotFound| |指定的起始时间或到期时间参数错误。|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|指定的Tag.N.Key和Tag.N.Value不匹配。|
 |400|InvalidTagCount|The specified tags are beyond the permitted range.|指定的标记超出取值范围。|
 |400|InvalidRegion.NotFound|The specified parameter RegionId is not valid.|RegionId参数不合法。|
