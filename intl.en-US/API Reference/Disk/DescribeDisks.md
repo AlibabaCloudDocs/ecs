@@ -1,6 +1,6 @@
 # DescribeDisks
 
-You can call this operation to query one or more Elastic Block Storage \(EBS\) devices that you have created, including cloud disks and local disks.
+You can call this operation to query one or more Elastic Block Storage \(EBS\) devices that you created, including cloud disks and local disks.
 
 ## Description
 
@@ -10,10 +10,10 @@ You can call this operation to query one or more Elastic Block Storage \(EBS\) d
     -   Method 1: Use `NextToken` to configure the query token. Set this parameter to the `NextToken` value returned in the last call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
     -   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the number of the page to return.
 
-        You can use only one of the preceding methods. If a large number of entries are returned, we recommend that you use method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        You can use only one of the preceding methods. If a large number of entries are returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
 
 
-When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [CLI parameter formats](~~110340~~).
+When you call an API operation by using Alibaba Cloud Command Line Interface \(CLI\), you must specify request parameter values of different data types in required formats. For more information, see [CLI parameter formats](~~110340~~).
 
 ## Debugging
 
@@ -48,7 +48,7 @@ Default value: all |
 -   ephemeral\_ssd: retired local SSD
 
 Default value: all |
-|Status|String|No|All|The status of the disk. For more information, see [Cloud disk status](~~25689~~). Valid values: Valid values:
+|Status|String|No|All|The status of the cloud disk. For more information, see [Disk states](~~25689~~). Valid values:
 
 -   In\_use
 -   Available
@@ -59,24 +59,24 @@ Default value: all |
 -   All
 
 Default value: All |
-|SnapshotId|String|No|s-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot used to create the disk. |
+|SnapshotId|String|No|s-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot used to create the cloud disk. |
 |Portable|Boolean|No|false|Specifies whether the disk is removable. Valid values:
 
 -   true: The disk is removable. A removable disk can exist independently and can be attached to or detached from an instance within the same zone.
 -   false: The disk is not removable. A disk that is not removable cannot exist independently or be detached from one instance and then attached to another instance within the same zone.
 
-When the `Portable` attribute of the following disks is set to `false`, these disks share the same lifecycle with their associated instances:
+The `Portable` attribute of the following disks is `false`, and these disks share the same lifecycle with their associated instances:
 
 -   Local disks
 -   Local SSDs
 -   Subscription data disks |
-|DeleteWithInstance|Boolean|No|false|Specifies whether the disk is released when its associated instance is released. Valid values:
+|DeleteWithInstance|Boolean|No|false|Specifies whether the cloud disk is released when its associated instance is released. Valid values:
 
--   true: The disk is released when its associated instance is released.
--   false: The disk is not released but is retained as a pay-as-you-go data disk when its associated instance is released.
+-   true: The cloud disk is released when its associated instance is released.
+-   false: The cloud disk is not released but is retained as a pay-as-you-go data disk when its associated instance is released.
 
 Default value: false |
-|DeleteAutoSnapshot|Boolean|No|false|Specifies whether the automatic snapshots of the disk are deleted when the disk is released.
+|DeleteAutoSnapshot|Boolean|No|false|Specifies whether the automatic snapshots of the cloud disk are deleted when the disk is released.
 
 Default value: false |
 |PageNumber|Integer|No|1|The number of the page to return.
@@ -86,7 +86,7 @@ Pages start from page 1.
 Default value: 1 |
 |PageSize|Integer|No|10|The number of entries to return on each page.
 
-Valid values: 1 to 100.
+Maximum value: 100
 
 Default value: 10 |
 |NextToken|String|No|AAAAAdDWBF2\*\*\*\*|The query token. Set the value to the `NextToken` value returned in the last call to the DescribeDisks operation.
@@ -96,33 +96,33 @@ For more information about how to check the responses returned by this operation
 
 Default value: 10 |
 |DiskName|String|No|testDiskName|The name of the disk. |
-|AutoSnapshotPolicyId|String|No|sp-m5e2w2jutw8bv31\*\*\*\*|The ID of the automatic snapshot policy applied to the disk. |
-|EnableAutoSnapshot|Boolean|No|true|Specifies whether the automatic snapshot policy feature is enabled for the disk.
+|AutoSnapshotPolicyId|String|No|sp-m5e2w2jutw8bv31\*\*\*\*|The ID of the automatic snapshot policy applied to the cloud disk. |
+|EnableAutoSnapshot|Boolean|No|true|Specifies whether the automatic snapshot policy feature is enabled for the cloud disk.
 
--   true: The automatic snapshot policy feature is enabled for the disk.
--   false: The automatic snapshot policy feature is disabled for the disk.
+-   true: The automatic snapshot policy feature is enabled for the cloud disk.
+-   false: The automatic snapshot policy feature is disabled for the cloud disk.
 
-**Note:** By default, the automatic snapshot policy feature is enabled for created disks. You need only to apply an automatic snapshot policy to a disk before you can use the automatic snapshot policy. |
-|EnableAutomatedSnapshotPolicy|Boolean|No|false|Specifies whether an automatic snapshot policy is applied to the disk.
+**Note:** By default, the automatic snapshot policy feature is enabled for created cloud disks. You need only to apply an automatic snapshot policy to a cloud disk before you can use the automatic snapshot policy. |
+|EnableAutomatedSnapshotPolicy|Boolean|No|false|Specifies whether an automatic snapshot policy is applied to the cloud disk.
 
--   true: An automatic snapshot policy is applied to the disk.
--   false: No automatic snapshot policy is applied to the disk.
+-   true: An automatic snapshot policy is applied to the cloud disk.
+-   false: No automatic snapshot policy is applied to the cloud disk.
 
 Default value: false |
-|DiskChargeType|String|No|PostPaid|The billing method of the disk. Valid values:
+|DiskChargeType|String|No|PostPaid|The billing method of the disk.
 
 -   PrePaid: subscription
 -   PostPaid: pay-as-you-go |
 |LockReason|String|No|recycling|The reason why the disk is locked. Valid values:
 
--   financial: overdue payments.
--   security: security reasons.
+-   financial: The disk is locked due to overdue payments.
+-   security: The disk is locked due to security reasons.
 -   recycling: The preemptible instance is locked and pending for release.
 -   dedicatedhostfinancial: The instance is locked due to overdue payments for the dedicated host. |
 |Filter.1.Key|String|No|CreationStartTime|The key of filter 1 used to query resources. Set the value to CreationStartTime. |
 |Filter.2.Key|String|No|CreationEndTime|The key of filter 2 used to query resources. Set the value to CreationEndTime. |
-|Filter.1.Value|String|No|2017-12-05T22:40:00Z|The value of filter 1 used to query resources. The value must be the beginning of the time range to query. |
-|Filter.2.Value|String|No|2017-12-06T22:40:00Z|The value of filter 2 used to query resources. The value must be the end of the time range to query. |
+|Filter.1.Value|String|No|2017-12-05T22:40:00Z|The value of filter 1 used to query resources. Set the value to the beginning of the time range to query. |
+|Filter.2.Value|String|No|2017-12-06T22:40:00Z|The value of filter 2 used to query resources. Set the value to the end of the time range to query. |
 |Tag.N.value|String|No|null|The value of tag N of the disk.
 
 **Note:** We recommend that you use the Tag.N.Value parameter to ensure future compatibility. |
@@ -135,7 +135,7 @@ If a single tag is specified to query resources, up to 1,000 resources that are 
 |Tag.N.Value|String|No|TestValue|The value of tag N of the disk. Valid values of N: 1 to 20. |
 |ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the disk belongs. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response. |
 |EnableShared|Boolean|No|false|Specifies whether the disk is a Shared Block Storage device. |
-|Encrypted|Boolean|No|false|Specifies whether to query only encrypted disks.
+|Encrypted|Boolean|No|false|Specifies whether to query only encrypted cloud disks.
 
 Default value: false |
 |AdditionalAttributes.N|RepeatList|No|IOPS|Other attribute values. Set the value to IOPS, which indicates the maximum IOPS of the disk. |
@@ -145,7 +145,7 @@ Default value: false |
 -   false: The validity of the request is checked. If the check succeeds, a 2XX HTTP status code is returned and the request is made.
 
 Default value: false |
-|KMSKeyId|String|No|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|The ID of the KMS key used by the disk. |
+|KMSKeyId|String|No|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|The ID of the KMS key used by the cloud disk. |
 
 ## Response parameters
 
@@ -155,9 +155,9 @@ Default value: false |
 |Disk| | | |
 |AttachedTime|String|2018-01-01T01:04:22Z|The time when the disk was attached. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
 
-This parameter is valid only when the value of `Status` is `Available`. |
-|AutoSnapshotPolicyId|String|sp-bp67acfmxazb4p\*\*\*\*|The ID of the automatic snapshot policy applied to the disk. |
-|BdfId|String|null|This parameter is in invitational preview and not available. |
+This parameter is valid only when the `Status` value is `Available`. |
+|AutoSnapshotPolicyId|String|sp-bp67acfmxazb4p\*\*\*\*|The ID of the automatic snapshot policy applied to the cloud disk. |
+|BdfId|String|null|This parameter is in invitational preview and unavailable. |
 |Category|String|cloud\_ssd|The category of the disk. Valid values:
 
 -   cloud: basic disk
@@ -169,47 +169,48 @@ This parameter is valid only when the value of `Status` is `Available`. |
 -   ephemeral: retired local disk
 -   ephemeral\_ssd: retired local SSD |
 |CreationTime|String|2018-01-01T01:01:22Z|The time when the disk was created. |
-|DeleteAutoSnapshot|Boolean|false|Indicates whether the automatic snapshots of the disk are deleted when the disk is released. Valid values:
+|DedicatedBlockStorageClusterId|String|dbsc-f8zfynww0vzuhg4w\*\*\*\*|The ID of the dedicated block storage cluster to which the cloud disk belongs. If your cloud disk belongs to the public block storage cluster, this parameter is empty. |
+|DeleteAutoSnapshot|Boolean|false|Indicates whether the automatic snapshots of the cloud disk are deleted when the disk is released. Valid values:
 
--   true: The automatic snapshots of the disk are deleted when the disk is released.
--   false: The automatic snapshots of the disk are retained when the disk is released.
+-   true: The automatic snapshots of the cloud disk are deleted when the disk is released.
+-   false: The automatic snapshots of the cloud disk are retained when the disk is released.
 
 Snapshots created by calling the [CreateSnapshot](~~25524~~) operation or by using the ECS console are retained and not affected by this parameter. |
-|DeleteWithInstance|Boolean|true|Indicates whether the disk is released when its associated instance is released. Valid values:
+|DeleteWithInstance|Boolean|true|Indicates whether the cloud disk is released when its associated instance is released. Valid values:
 
--   true: The disk is released when its associated instance is released.
--   false: The disk is retained when its associated instance is released. |
+-   true: The cloud disk is released when its associated instance is released.
+-   false: The cloud disk is retained when its associated instance is released. |
 |Description|String|testDescription|The description of the disk. |
-|DetachedTime|String|2018-01-08T01:01:22Z|The time when the disk was detached.
+|DetachedTime|String|2018-01-08T01:01:22Z|The time when the cloud disk was detached.
 
-This parameter is valid only when the value of `Status` is `Available`. |
+This parameter is valid only when the `Status` value is `Available`. |
 |Device|String|/dev/xvdb|The device name of the disk on its associated instance. Example: /dev/xvdb.
 
-This parameter has a value only when the value of `Status` is `In_use`.
+This parameter has a value only when the `Status` value is `In_use`.
 
-**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
 |DiskChargeType|String|PostPaid|The billing method of the disk. Valid values:
 
 -   PrePaid: subscription
 -   PostPaid: pay-as-you-go |
 |DiskId|String|d-bp18um4r4f2fve24\*\*\*\*|The ID of the disk. |
 |DiskName|String|testDiskName|The name of the disk. |
-|EnableAutoSnapshot|Boolean|false|Indicates whether the automatic snapshot policy feature was enabled for the disk. |
-|EnableAutomatedSnapshotPolicy|Boolean|false|Indicates whether an automatic snapshot policy was applied to the disk. |
-|Encrypted|Boolean|false|Indicates whether the disk was encrypted. |
-|ExpiredTime|String|2018-01-10T01:01:22Z|The time when the subscription disk expires. |
+|EnableAutoSnapshot|Boolean|false|Indicates whether the automatic snapshot policy feature was enabled for the cloud disk. |
+|EnableAutomatedSnapshotPolicy|Boolean|false|Indicates whether an automatic snapshot policy was applied to the cloud disk. |
+|Encrypted|Boolean|false|Indicates whether the cloud disk was encrypted. |
+|ExpiredTime|String|2018-01-10T01:01:22Z|The time when the subscription cloud disk expires. |
 |IOPS|Integer|4000|The number of input/output operations per second \(IOPS\). |
 |IOPSRead|Integer|2000|The number of I/O reads per second. |
 |IOPSWrite|Integer|2000|The number of I/O writes per second. |
-|ImageId|String|m-bp13aqm171qynt3u\*\*\*|The ID of the image used to create the instance. This parameter is empty unless the disk was created from an image. The value of this parameter remains unchanged throughout the lifecycle of the disk. |
+|ImageId|String|m-bp13aqm171qynt3u\*\*\*|The ID of the image used to create the instance. This parameter is empty unless the cloud disk was created from an image. This parameter value remains unchanged throughout the lifecycle of the cloud disk. |
 |InstanceId|String|i-bp1j4i2jdf3owlheb\*\*\*|The ID of the instance to which the disk is attached.
 
-This parameter has a value only when the value of `Status` is `In_use`. |
-|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb408\*\*\*|The ID of the KMS key used by the disk. |
+This parameter has a value only when the `Status` value is `In_use`. |
+|KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb408\*\*\*|The ID of the KMS key used by the cloud disk. |
 |MountInstanceNum|Integer|1|The number of instances to which the Shared Block Storage device is attached. |
 |MountInstances|Array of MountInstance| |The attaching information of the disk. |
 |MountInstance| | | |
-|AttachedTime|String|2017-12-05T2340:00Z|The time when the disk was attached. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
+|AttachedTime|String|2017-12-05T2340:00Z|The time when the cloud disk was attached. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |Device|String|/dev/xvda|The mount point of the disk. |
 |InstanceId|String|i-bp1j4i2jdf3owlhe\*\*\*\*|The ID of the instance to which the disk is attached. |
 |OperationLocks|Array of OperationLock| |The reasons why the disk was locked. |
@@ -217,8 +218,9 @@ This parameter has a value only when the value of `Status` is `In_use`. |
 |LockReason|String|security|The security reason why the disk was locked. |
 |PerformanceLevel|String|PL2|The performance level of the ESSD. Valid values:
 
+-   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
--   PL2: A single enhanced SSD can deliver up to 100,000 random read/write IOPS.
+-   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS. |
 |Portable|Boolean|false|Indicates whether the disk is removable. |
 |ProductCode|String|jxsc000204|The product code in Alibaba Cloud Marketplace. |
@@ -226,10 +228,10 @@ This parameter has a value only when the value of `Status` is `In_use`. |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the disk belongs. |
 |SerialNumber|String|bp18um4r4f2fve2\*\*\*\*|The serial number of the disk. |
 |Size|Integer|2000|The size of the disk. Unit: GiB. |
-|SourceSnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot used to create the disk.
+|SourceSnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot used to create the cloud disk.
 
-This parameter is empty unless the disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the disk. |
-|Status|String|Available|The status of the disk. Valid values:
+This parameter is empty unless the cloud disk was created from a snapshot. This parameter value remains unchanged throughout the lifecycle of the cloud disk. |
+|Status|String|Available|The status of the cloud disk. Valid values:
 
 -   In\_use
 -   Available
@@ -248,7 +250,7 @@ This parameter is empty unless the disk was created from a snapshot. The value o
 -   system: system disk
 -   data: data disk |
 |ZoneId|String|cn-hangzhou-g|The zone ID of the disk. |
-|NextToken|String|AAAAAdDWBF2\*\*\*\*|The query token that is returned in this call. |
+|NextToken|String|AAAAAdDWBF2\*\*\*\*|The query token returned in this call. |
 |PageNumber|Integer|1|The page number of the returned page. |
 |PageSize|Integer|1|The number of entries returned per page. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
@@ -295,6 +297,7 @@ Sample success responses
                   <KMSKeyId></KMSKeyId>
                   <Size>40</Size>
                   <Description></Description>
+                  <DedicatedBlockStorageClusterId></DedicatedBlockStorageClusterId>
                   <BdfId></BdfId>
                   <ProductCode></ProductCode>
                   <Portable>false</Portable>
@@ -353,6 +356,7 @@ Sample success responses
                 "KMSKeyId": "",
                 "Size": 40,
                 "Description": "",
+                "DedicatedBlockStorageClusterId": "",
                 "BdfId": "",
                 "ProductCode": "",
                 "Portable": false,
@@ -398,11 +402,10 @@ Sample success responses
 |403|InvalidDiskIds.Malformed|The amount of specified disk Ids exceeds the limit.|The error message returned because the specified DiskIds parameter is invalid.|
 |404|InvalidDiskChargeType.NotFound|The DiskChargeType does not exist in our records|The error message returned because the specified DiskChargeType parameter does not exist.|
 |404|InvalidLockReason.NotFound|The specified LockReason is not found|The error message returned because the specified LockReason parameter does not exist.|
-|404|InvalidFilterKey.NotFound| |The error message returned because the specified start time or end time is invalid.|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|The error message returned because the specified Tag.N.Key and Tag.N.Value parameters do not match.|
 |400|InvalidTagCount|The specified tags are beyond the permitted range.|The error message returned because the number of specified tags exceeds the upper limit.|
 |400|InvalidRegion.NotFound|The specified parameter RegionId is not valid.|The error message returned because the specified RegionId parameter is invalid.|
-|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
+|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error occurred. Try again later. If the error persists, submit a ticket.|
 |400|InvalidZoneId.NotFound|The zoneId provided does not exist in our records.|The error message returned because the specified ZoneId parameter does not exist.|
 |400|MissingParamter.RegionId|The regionId should not be null.|The error message returned because the required RegionId parameter is not specified.|
 |400|InvalidParameter.DiskIds|The specified parameter diskIds is not valid.|The error message returned because the specified DiskIds parameter is invalid.|
