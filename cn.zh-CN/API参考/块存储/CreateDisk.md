@@ -7,10 +7,9 @@
 创建云盘需要通过实名认证。请前往会员信息中[实名认证](https://account.console.aliyun.com/#/auth/home)。
 
 -   创建云盘会涉及到资源计费，建议您提前了解云服务器ECS的计费方式。更多详情，请参见[计费概述](~~25398~~)。
--   创建云盘时，默认在删除云盘时删除其自动快照，即DeleteAutoSnapshot取值为true，可以通过[ModifyDiskAttribute](~~25517~~)修改该参数。
+-   创建云盘时，默认在删除云盘时删除其自动快照，即`DeleteAutoSnapshot`取值为`true`，可以通过[ModifyDiskAttribute](~~25517~~)修改该参数。
 -   创建ESSD云盘时，如果您不设置云盘性能等级，默认为PL1等级。您可以通过[ModifyDiskSpec](~~123780~~)修改云盘性能等级。
--   创建的云盘默认Portable属性为true，计费方式默认为按量付费。
--   必须指定一项请求参数Size或SnapshotId。请求参数Size指定云盘容量大小，请求参数SnapshotId使用快照创建云盘。
+-   创建的云盘默认`Portable`属性为`true`，计费方式默认为按量付费。
 
 ## 调试
 
@@ -26,16 +25,26 @@
 
  -   如果您不设置InstanceId，则ZoneId为必填参数。
 -   您不能同时指定ZoneId和InstanceId。 |
-|SnapshotId|String|否|s-bp67acfmxazb4p\*\*\*\*|创建云盘使用的快照。指定该参数后，Size会被忽略，实际创建的云盘大小为指定快照的大小。2013年7月15日及以前的快照不能用来创建云盘。 |
+|SnapshotId|String|否|s-bp67acfmxazb4p\*\*\*\*|创建云盘使用的快照。2013年7月15日及以前的快照不能用来创建云盘。
+
+ `SnapshotId`参数和`Size`参数存在以下限制：
+
+ -   如果`SnapshotId`参数对应的快照容量大于设置的`Size`参数值，实际创建的云盘大小为指定快照的大小。
+-   如果`SnapshotId`参数对应的快照容量小于设置的`Size`参数值，实际创建的云盘大小为指定的`Size`参数值。 |
 |DiskName|String|否|testDiskName|云盘名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。
 
  默认值：空 |
-|Size|Integer|否|2000|容量大小，以GiB为单位。指定该参数后，其取值必须≥指定快照ID的容量大小。取值范围：
+|Size|Integer|否|2000|容量大小。单位：GiB。您必须为该参数传入参数值。取值范围：
 
  -   cloud：5~2000
 -   cloud\_efficiency：20~32768
 -   cloud\_ssd：20~32768
--   cloud\_essd：20~32768 |
+-   cloud\_essd：20~32768
+
+ 如果您指定了`SnapshotId`参数，`SnapshotId`参数和`Size`参数存在以下限制：
+
+ -   如果`SnapshotId`参数对应的快照容量大于设置的`Size`参数值，实际创建的云盘大小为指定快照的大小。
+-   如果`SnapshotId`参数对应的快照容量小于设置的`Size`参数值，实际创建的云盘大小为指定的`Size`参数值。 |
 |DiskCategory|String|否|cloud\_ssd|数据盘的云盘种类。取值范围：
 
  -   cloud：普通云盘
@@ -61,13 +70,17 @@
 |KMSKeyId|String|否|0e478b7a-4262-4802-b8cb-00d3fb40826X|云盘使用的KMS密钥ID。 |
 |PerformanceLevel|String|否|PL1|创建一块ESSD云盘时，设置云盘的性能等级。取值范围：
 
- -   PL1（默认）：单盘最高随机读写IOPS 5万
+ -   PL0：单盘最高随机读写IOPS 1万
+-   PL1：单盘最高随机读写IOPS 5万
 -   PL2：单盘最高随机读写IOPS 10万
 -   PL3：单盘最高随机读写IOPS 100万
+
+ 默认值：PL1
 
  有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。 |
 |StorageSetId|String|否|ss-bp67acfmxazb4p\*\*\*\*|存储集ID。 |
 |StorageSetPartitionNumber|Integer|否|3|存储集分区数。 |
+|DedicatedBlockStorageClusterId|String|否|dbsc-f8zfynww0vzuhg4w\*\*\*\*|专属块存储集群ID。如果您需要在指定的专属块存储集群中创建云盘，需要指定此参数。 |
 
 ## 返回数据
 
@@ -101,7 +114,7 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateDiskResponse>
@@ -110,12 +123,12 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 </CreateDiskResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-    "DiskId": "d-bp131n0q38u3a4zi****",
+    "DiskId": "d-bp131n0q38u3a4zi****"
 }
 ```
 
@@ -171,6 +184,7 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 |403|InvalidRegion.NotSupport|The specified region does not support byok.|该地域不支持BYOK。|
 |403|UserNotInTheWhiteList|The user is not in byok white list.|您不在byok白名单中，请加入白名单后重试。|
 |400|InvalidParameter.EncryptedIllegal|The specified parameter Encrypted must be true when kmsKeyId is not empty.|设置参数KMSKeyId后，您必须开启加密属性。|
+|403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |404|InvalidParameter.KMSKeyId.NotFound|The specified KMSKeyId does not exist.|指定的参数KMSKeyId不存在。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |403|SecurityRisk.3DVerification|We have detected a security risk with your default credit or debit card. Please proceed with verification via the link in your email.|我们检测到您的默认信用卡或借记卡存在安全风险。请通过电子邮件中的链接进行验证。|
@@ -183,6 +197,7 @@ https://ecs.aliyuncs.com/?Action=CreateDisk
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
 |404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
 |403|OperationDenied.SnapshotNotAllowed|The specified snapshot is not allowed to create disk.|指定的快照不支持创建磁盘。|
+|403|LastTokenProcessing|The last token request is processing.|正在处理上一条令牌请求，请您稍后再试。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
