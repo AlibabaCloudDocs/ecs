@@ -4,7 +4,7 @@ You can call this operation to create a replication relationship to asynchronous
 
 ## Description
 
-Asynchronous Block Storage Replication \(ABSR\) is a feature that can asynchronously replicate data from one cloud disk to another cloud disk within a different region. This approach provides data redundancy and reduces or prevents data loss if an exception occurs on the primary disk \(source disk\). Services can be resumed based on the secondary disk \(destination disk\). This way, service continuity is ensured. For more information, see [Asynchronous Block Storage Replication](~~208904~~).
+Asynchronous Block Storage Replication \(ABSR\) is a feature that can asynchronously replicate data from one cloud disk to another cloud disk within a different region. This approach provides data redundancy and reduces or prevents data loss if an exception occurs on the primary disk \(source disk\). Services can be resumed based on the secondary disk \(destination disk\). This way, service continuity is ensured. For more information, see [What is Asynchronous Block Storage Replication?](~~208904~~)
 
 To use ABSR to replicate data between disks, you must call the CreateDiskReplicaPair operation to create a replication relationship, and then call the [StartDiskReplicaPair](~~209199~~) operation to start the relationship.
 
@@ -25,13 +25,14 @@ Before you can create a replication relationship for a primary disk, you must cr
 |PairName|String|Yes|TestReplicaPair|The name of the replication relationship. |
 |RegionId|String|Yes|cn-beijing|The region ID of the primary disk. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |Description|String|No|TestReplicaPairDescription|The description of the replication relationship. |
+|AsyncCycle|Integer|No|900|The minimum synchronization cycle. Unit: seconds. Set the value to 900. |
 
 ## Response parameters
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
 |PairId|String|rp-dsaf233kj23j2j35\*\*\*\*|The ID of the replication relationship. |
-|RequestId|String|20758A-585D-4A41-A9B2-28DA8F4F534F|The ID of the request. |
+|RequestId|String|E69EF3CC-94CD-42E7-8926-F133B86387C0|The ID of the request. |
 
 ## Examples
 
@@ -71,7 +72,7 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|404|InvalidDiskId.NotFound|The specified disk does not exist.|The error message returned because the specified disk does not exist.|
+|404|InvalidDiskId.NotFound|The specified disk does not exist.|The error message returned because the specified disk does not exist. Check whether the disk ID is correct.|
 |403|IncorrectDiskStatus|The operation is not supported in this status.|The error message returned because the operation is not supported while the disk is in the current state. Make sure that the disk is available and you have no overdue payments for it.|
 |400|IncompleteParamter|Some fields can not be null in this request.|The error message returned because some required parameters are not specified.|
 
