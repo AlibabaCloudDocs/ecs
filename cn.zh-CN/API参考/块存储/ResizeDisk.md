@@ -58,7 +58,7 @@ https://ecs.aliyuncs.com/?Action=ResizeDisk
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ResizeDiskResponse>
@@ -67,7 +67,7 @@ https://ecs.aliyuncs.com/?Action=ResizeDisk
 </ResizeDiskResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -112,6 +112,7 @@ https://ecs.aliyuncs.com/?Action=ResizeDisk
 |403|InvalidInstanceStatus.NotRunning|The status of instance to which the disk attachs must be running when resizing online.|在线调整磁盘大小时，磁盘连接到的实例的状态必须正在运行。|
 |403|IncorrectDiskStatus|The current status of the resource does not support resize online|当前资源的状态不支持在线扩容。|
 |400|LastOrderProcessing|The previous order is still processing, please try again later.|订单正在处理中，稍后重试。|
+|403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|SecurityRisk.3DVerification|We have detected a security risk with your default credit or debit card. Please proceed with verification via the link in your email.|我们检测到您的默认信用卡或借记卡存在安全风险。请通过电子邮件中的链接进行验证。|
