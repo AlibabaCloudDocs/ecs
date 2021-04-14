@@ -89,7 +89,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceChargeType
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyInstanceChargeTypeResponse>
@@ -110,7 +110,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceChargeType
 </ModifyInstanceChargeTypeResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -159,6 +159,7 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceChargeType
 |400|Throttling|%s|请求被流控。|
 |400|QuotaExceed.AfterpayInstance|The maximum number of Pay-As-You-Go instances is exceeded: %s|按量付费的实例库存不足，请减少创建数量。|
 |400|InvalidParameter.Bandwidth|%s|指定的带宽无效，请检查参数是否正确。|
+|400|QuotaExceed.RufundVcpu|The maximum number of refund vcpu is exceeded: %s|退款规则中vCPU配额超过了最大数量限制，具体限制请参见错误信息中%s占位符的实际信息。|
 |400|InvalidPeriod.UnitMismatch|The specified Period must be correlated with the PeriodUnit.|指定的时长必须与PeriodUnit关联。|
 |400|InvalidImageType.NotSupported|%s|指定的镜像类型无效，请查询本地域是否支持此镜像类型。|
 |400|InvalidPeriod.ExceededDedicatedHost|Instance expired date can't exceed dedicated host expired date.|实例过期日期不能超过专有宿主机的过期日期。|
@@ -169,10 +170,12 @@ https://ecs.aliyuncs.com/?Action=ModifyInstanceChargeType
 |400|InvalidSystemDiskCategory.ValueNotSupported|%s|当前操作不支持此系统磁盘类型。|
 |500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|RealNameAuthenticationError|Your account has not passed the real-name authentication yet.|您的帐户尚未通过实名认证，请先实名认证后再操作。|
+|400|InvalidInstance.NotFoundSystemDisk|The specified instance has no system disk.|指定的实例没有挂载系统盘。请确保指定的实例已挂载了系统盘。您可以调用DescribeInstances查询指定实例的信息。|
 |403|QuotaExceed.ElasticQuota|No additional quota is available for the specified ECS instance type.|您在当前地域选择的实例规格所要创建的台数超出系统限额，您可以选择其他地域、实例规格或减少台数重新购买，也可以前往ECS管理控制台或配额中心申请提高限额。|
 |403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type.|您在当前地域选择的实例规格所要创建的台数超出系统限额，您可以选择其他地域、实例规格或减少台数重新购买，也可以前往ECS管理控制台或配额中心申请提高限额。|
 |403|QuotaExceed.ElasticQuota|The number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|您的全实例规格vCPU配额超出系统限额，您可以前往ECS管理控制台或配额中心申请提高限额。|
 |403|QuotaExceed.ElasticQuota|The number of the specified ECS instances has exceeded the quota of the specified instance type, or the number of vCPUs assigned to the ECS instances has exceeded the quota in the zone.|您在当前地域选择的实例规格所要创建的台数超出系统限额，或者全实例规格vCPU配额超出系统限额，您可以前往ECS管理控制台或配额中心申请提高限额。|
+|400|InvalidPeriod|The specified period is not valid.|指定的时段不合法。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
