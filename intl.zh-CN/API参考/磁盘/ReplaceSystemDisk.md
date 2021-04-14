@@ -30,7 +30,7 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|ReplaceSystemDisk|系统规定参数。取值：ReplaceSystemDisk |
-|InstanceId|String|是|i-m-bp67acfmxazb4ph\*\*\*\*|指定实例的ID。 |
+|InstanceId|String|是|i-bp67acfmxazb4ph\*\*\*\*|指定实例的ID。 |
 |ImageId|String|否|m-bp67acfmxazb4ph\*\*\*\*|重置系统时使用的镜像ID。 |
 |SystemDisk.Size|Integer|否|80|新的系统盘容量，单位为GiB。取值范围：Max\{20, 参数ImageId对应的镜像大小\}~500
 
@@ -102,7 +102,7 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ReplaceSystemDiskResponse>
@@ -111,7 +111,7 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 </ReplaceSystemDiskResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -144,7 +144,7 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 |403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|指定的镜像不支持I/O优化型实例。|
 |403|ImageNotSupportInstanceType|The specified image don not support the InstanceType instance.|指定的镜像不支持此类实例规格。|
 |403|QuotaExceed.BuyImage|The specified image is from the image market,You have not bought it or your quota has been exceeded.|您暂时不能使用指定的市场镜像。|
-|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SytemDisk.Size小于镜像文件大小数值。|
+|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
 |404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the min size.|指定的系统盘小于最低容量。|
 |404|NoSuchResource|The specified resource is not found.|指定的资源不存在。|
 |400|InvalidSystemDiskSize.ImageNotSupportResize|The specified image does not support resize.|指定的镜像不支持扩容。|
@@ -154,7 +154,7 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 |400|InvalidPassword.Malformed|The specified parameter "Password" is not valid.|指定的Password参数不合法。|
 |400|InvalidPasswordParam.Mismatch|The input password should be null when passwdInherit is true.|启用PasswdInherit后，用户名密码应该设置为空。|
 |400|OperationDenied|The specified image contains the snapshot of the data disk,does not support this operation.|包含了数据盘快照的镜像，不支持此操作。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的DiskCategory参数有误。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |403|OperationDenied.InstanceCreating|The specified instance is creating.|指定的实例已存在。|
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
@@ -174,7 +174,9 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 |400|InvalidSystemDiskSize.ValueNotSupported|The specified SystemDiskSize is not valid.|指定的SystemDisk.Size不合法。|
 |400|MissingParameter|The input parameter "ImageId" that is mandatory for processing this request is not supplied.|参数ImageId不得为空。|
 |403|ImageNotSupportInstanceType|The specified instanceType is not supported by instance with marketplace image.|指定的市场镜像不支持该实例规格。|
+|400|InvalidInstance.NotFoundSystemDisk|The specified instance has no system disk.|指定的实例没有挂载系统盘。请确保指定的实例已挂载了系统盘。您可以调用DescribeInstances查询指定实例的信息。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|403|OperationDenied.UnpaidOrder|The specified instance has unpaid order.|指定的实例ID已存在未支付订单，您可以登录ECS管理控制台支付。|
 |403|OperationDenied.ImageNotValid|%s|当前镜像不支持此操作。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
