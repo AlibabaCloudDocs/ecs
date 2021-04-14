@@ -61,15 +61,15 @@ keyword: [Docker, 容器, Linux, ECS, 云服务器, 阿里云, Alibaba Cloud Lin
     systemctl start docker
     ```
 
-4.  检查安装结果。
+4.  查看Docker版本信息，确认是否成功安装Docker。
 
     ```
-    docker info
+    docker --version
     ```
 
-    出现以下说明信息则表明安装成功。
+    出现以下信息则表明安装成功。
 
-    ![site](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4712649951/p128549.png)
+    ![site](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9669638161/p128549.png)
 
 
 ## 使用Docker
