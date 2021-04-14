@@ -166,7 +166,7 @@ FTP支持以下三种认证模式：
         pasv_max_port=<port number>
         ```
 
-        更多参数的详细信息，请参见[vsftp配置文件及参数说明](#section_t9a_ors_44c)。
+        更多参数的详细信息，请参见[vsftp配置文件及参数说明](/intl.zh-CN/建站教程/搭建应用/搭建FTP站点/手动搭建FTP站点（CentOS 7）.md)。
 
     4.  按Esc退出编辑模式，然后输入:wq并回车以保存并关闭文件。
 
@@ -266,7 +266,7 @@ FTP客户端、Windows命令行工具或浏览器均可用来测试FTP服务器�
     6.  单击**应用**，然后单击**确定**。
 -   问题二：在Windows系统中，使用命令行工具、浏览器等方式连接FTP服务器报错如何处理？
 
-    您可以根据FTP的报错信息手动排查问题。当您的报错难以排查解决时，建议您使用第三方FTP客户端连接工具。例如：FileZilla。下载地址为[FileZilla](https://filezilla-project.org/download.php)。本文将介绍使用FileZilla连接匿名模式的FTP服务器。
+    您可以根据FTP的报错信息手动排查问题。当您的报错难以排查解决时，建议您使用第三方FTP客户端连接工具。例如：FileZilla。下载地址为[FileZilla](https://filezilla-project.org/download.php)。本示例介绍使用FileZilla连接匿名模式的FTP服务器。
 
     **说明：** 如果连接FTP服务器时的报错始终无法解决，建议您[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
 
@@ -312,7 +312,7 @@ FTP客户端、Windows命令行工具或浏览器均可用来测试FTP服务器�
         3.  在**站点管理器**对话框的左下角，单击**新站点**。
         4.  输入新站点的名称，并完成站点配置。
 
-            ![filezilla](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5531787161/p261708.png)
+            ![filezilla](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7690838161/p261708.png)
 
             具体的配置项说明如下：
 
@@ -320,9 +320,10 @@ FTP客户端、Windows命令行工具或浏览器均可用来测试FTP服务器�
             -   协议：FTP-文件传输协议。
             -   主机：FTP服务器公网IP地址。本文中为Linux实例的公网IP地址，例如`121.43.XX.XX`。
             -   端口：21。
-            -   登录类型：正常。
-            -   用户：访问FTP服务器的用户名。本文中仅配置了匿名模式，因此设置为`anonymous`。
-            -   密码：访问FTP服务器的密码。本文中仅配置了匿名模式，因此不设置值。
+            -   登录类型：匿名。
+
+                本示例中使用FTP客户端连接匿名模式的FTP服务器。如果您需要使用FTP用户密码连接FTP服务器，则登录类型需要设置为正常，并需要配置用户和密码信息。
+
         5.  单击**连接**。
 
             连接成功后，您可以对文件进行上传、下载和删除等操作。FileZilla工具界面如下图所示。
@@ -334,8 +335,8 @@ FTP客户端、Windows命令行工具或浏览器均可用来测试FTP服务器�
             |序号|说明|
             |--|--|
             |①|显示命令、FTP连接状态和任务执行结果。|
-            |②|本地区域，即本地硬盘。|
-            |③|远程区域，即站点区域。双击目录图标可进入相关目录。|
+            |②|本地区域，显示本地主机的目录信息。|
+            |③|远程区域，显示FTP服务器的目录信息。匿名模式下，默认目录为/pub。|
             |④|记录区域，可查看FTP任务的队列信息和日志信息。|
 
 
