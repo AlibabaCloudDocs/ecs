@@ -6,9 +6,7 @@ keyword: [搭建FTP, CentOS 8.2搭建FTP, CentOS 8搭建FTP]
 
 vsftpd（very secure FTP daemon）是Linux下的一款小巧轻快、安全易用的FTP服务器软件。本教程介绍如何在Linux实例上安装并配置vsftpd。
 
--   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.aliyun.com/register/register.htm?)。
--   已完成实名认证。如还未认证，请先完成[实名认证](https://account.console.aliyun.com/v2/#/authc/types)。
--   已创建ECS实例并为实例分配了公网IP地址。若尚未创建，请参见[创建方式导航](/cn.zh-CN/实例/创建实例/创建方式导航.md)。
+已创建ECS实例并为实例分配了公网IP地址。若尚未创建，请参见[创建方式导航](/cn.zh-CN/实例/创建实例/创建方式导航.md)。
 
 FTP（File Transfer Protocol）是一种文件传输协议，基于客户端/服务器架构，支持以下两种工作模式：
 
@@ -23,14 +21,13 @@ FTP支持以下三种认证模式：
 -   本地用户模式：通过Linux系统本地账号进行验证的模式，相较于匿名用户模式更安全。
 -   虚拟用户模式：FTP服务器的专有用户。虚拟用户只能访问Linux系统为其提供的FTP服务，而不能访问Linux系统的其它资源，进一步增强了FTP服务器的安全性。
 
-本教程中主要介绍的FTP服务器被动模式下，匿名用户及本地用户的配置方法。
+本文主要介绍被动模式下，使用本地用户访问FTP服务器的配置方法。关于匿名模式的配置方式、第三方FTP客户端工具使用方式等介绍，请参见[常见问题](/cn.zh-CN/建站教程/搭建应用/搭建FTP站点/手动搭建FTP站点（CentOS 7）.md)。
 
 本教程示例步骤使用以下资源版本：
 
 -   实例规格：ecs.g6.large
 -   操作系统：CentOS 8.2 64位
 -   vsftpd：3.0.3
--   浏览器：Google Chrome
 
 当您使用不同软件版本时，可能需要根据实际情况调整命令和参数配置。
 
@@ -38,7 +35,7 @@ FTP支持以下三种认证模式：
 
 1.  远程连接Linux实例。
 
-    连接方法，请参见[连接方式介绍](/cn.zh-CN/实例/连接实例/连接方式概述.md)。
+    远程连接的具体操作，请参见[连接方式介绍](/cn.zh-CN/实例/连接实例/连接方式概述.md)。
 
 2.  运行以下命令安装vsftpd。
 
@@ -48,7 +45,7 @@ FTP支持以下三种认证模式：
 
     出现如下图所示界面时，表示安装成功。
 
-    ![vsftpd 3.0.3](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0819459951/p149272.png)
+    ![vsftpd 3.0.3](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0819459951/p149272.png)
 
 3.  运行以下命令设置FTP服务开机自启动。
 
@@ -74,55 +71,14 @@ FTP支持以下三种认证模式：
 
     出现如下图所示界面，表示FTP服务已启动，监听的端口号为21。
 
-    ![ftp port](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0819459951/p149274.png)
+    ![ftp port](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0819459951/p149274.png)
 
     此时，vsftpd默认已开启本地用户模式，您还需要继续进行配置才能正常使用FTP服务。
 
 
 ## 步骤二：配置vsftpd
 
-本示例提供两种方式配置vsftpd：匿名用户模式或本地用户模式。请根据您的需求选择其中一种方式进行配置。
-
-方式一：配置匿名用户上传文件权限。
-
-1.  修改配置文件/etc/vsftpd/vsftpd.conf。
-
-    1.  运行以下命令打开配置文件。
-
-        ```
-        vim /etc/vsftpd/vsftpd.conf
-        ```
-
-    2.  按i进入编辑模式。
-
-    3.  修改配置项信息。
-
-        -   将模式修改为匿名用户模式：
-            -   将`anonymous_enable=NO`修改为`anonymous_enable=YES`。
-            -   将`local_enable=YES`修改为`local_enable=NO`
-        -   将匿名上传权限的注释去掉，修改为`anon_upload_enable=YES`。
-        修改后的配置文件，如下图所示。
-
-        ![vsftpd.conf](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0819459951/p149294.png)
-
-    4.  按Esc退出编辑模式，然后输入:wq并回车以保存并关闭文件。
-
-2.  运行以下命令更改/var/ftp/pub目录的权限，为FTP用户添加写权限。
-
-    /var/ftp/pub为FTP服务默认的文件目录。
-
-    ```
-    chmod o+w /var/ftp/pub/
-    ```
-
-3.  运行以下命令重新加载配置文件。
-
-    ```
-    systemctl restart vsftpd.service
-    ```
-
-
-方式二：配置本地用户访问FTP服务器。
+为保证数据安全，本文主要介绍被动模式下，使用本地用户访问FTP服务器的配置方法。
 
 1.  运行以下命令为FTP服务创建一个Linux用户。本示例中，该用户名为ftptest。
 
@@ -136,21 +92,33 @@ FTP支持以下三种认证模式：
     passwd ftptest
     ```
 
+    运行命令后，根据命令行提示完成FTP用户的密码修改。
+
 3.  运行以下命令创建一个供FTP服务使用的文件目录。
 
     ```
     mkdir /var/ftp/test
     ```
 
-4.  运行以下命令更改/var/ftp/test目录的拥有者为ftptest。
+4.  运行以下命令，创建测试文件。
+
+    该测试文件用于FTP客户端访问FTP服务器时使用。
+
+    ```
+    touch /var/ftp/test/testfile.txt
+    ```
+
+5.  运行以下命令更改/var/ftp/test目录的拥有者为ftptest。
 
     ```
     chown -R ftptest:ftptest /var/ftp/test
     ```
 
-5.  修改vsftpd.conf配置文件。
+6.  修改vsftpd.conf配置文件。
 
-    1.  运行以下命令打开配置文件。
+    1.  运行以下命令，打开vsftpd的配置文件。
+
+        如果您在安装vsftpd时，使用的是`apt install vsftpd`安装命令，则配置文件路径为/etc/vsftpd.conf。
 
         ```
         vim /etc/vsftpd/vsftpd.conf
@@ -158,50 +126,55 @@ FTP支持以下三种认证模式：
 
     2.  按i进入编辑模式。
 
-    3.  根据如下内容，修改或添加相关配置参数。
+    3.  配置FTP服务器为被动模式。
+
+        具体的配置参数说明如下：
 
         **说明：** 修改和添加配置文件内的信息时，请注意格式问题。例如，添加多余的空格会造成无法重启服务的结果。
 
         ```
-        #除下面提及的参数外，其他参数保持默认值即可。
+        #除下面提及的参数，其他参数保持默认值即可。
         
-        #修改下列参数的值
-        #禁止匿名登录FTP服务器
+        #修改下列参数的值：
+        #禁止匿名登录FTP服务器。
         anonymous_enable=NO
-        #允许本地用户登录FTP服务器
+        #允许本地用户登录FTP服务器。
         local_enable=YES
-        #监听IPv4 sockets
+        #监听IPv4 sockets。
         listen=YES
-        #在行首添加#注释掉以下参数，关闭监听IPv6 sockets
+        
+        #在行首添加#注释掉以下参数：
+        #关闭监听IPv6 sockets。
         #listen_ipv6=YES
         
-        #添加下列参数
-        #设置本地用户登录后所在目录
+        #在配置文件的末尾添加下列参数：
+        #设置本地用户登录后所在目录。
         local_root=/var/ftp/test
-        #全部用户被限制在主目录
+        #全部用户被限制在主目录。
         chroot_local_user=YES
-        #启用例外用户名单
+        #启用例外用户名单。
         chroot_list_enable=YES
-        #指定例外用户列表文件，列表中用户不被锁定在主目录
+        #指定例外用户列表文件，列表中用户不被锁定在主目录。
         chroot_list_file=/etc/vsftpd/chroot_list
-        #开启被动模式
+        #开启被动模式。
         pasv_enable=YES
         allow_writeable_chroot=YES
-        #本教程中为Linux实例公网IP
+        #本教程中为Linux实例的公网IP。
         pasv_address=<FTP服务器公网IP地址>
-        #设置被动模式下，建立数据传输可使用的端口范围的最小值
+        #设置被动模式下，建立数据传输可使用的端口范围的最小值。
+        #建议您把端口范围设置在一段比较高的范围内，例如50000~50010，有助于提高访问FTP服务器的安全性。
         pasv_min_port=<port number>
-        #设置被动模式下，建立数据传输可使用的端口范围的最大值
+        #设置被动模式下，建立数据传输可使用的端口范围的最大值。
         pasv_max_port=<port number>
         ```
 
-        **说明：** 建议您把端口范围设置在一段比较高的范围内，例如50000~50010，有助于提高访问FTP服务器的安全性。
+        更多参数的详细信息，请参见[vsftp配置文件及参数说明](/cn.zh-CN/建站教程/搭建应用/搭建FTP站点/手动搭建FTP站点（CentOS 7）.md)。
 
     4.  按Esc退出编辑模式，然后输入:wq并回车以保存并关闭文件。
 
-6.  创建chroot\_list文件，并在文件中写入例外用户名单。
+7.  创建chroot\_list文件，并在文件中写入例外用户名单。
 
-    1.  运行以下命令创建chroot\_list文件。
+    1.  运行以下命令，创建chroot\_list文件。
 
         ```
         vim /etc/vsftpd/chroot_list
@@ -215,7 +188,7 @@ FTP支持以下三种认证模式：
 
     **说明：** 没有例外用户时，也必须创建chroot\_list文件，内容可为空。
 
-7.  运行以下命令重启vsftpd服务。
+8.  运行以下命令重启vsftpd服务。
 
     ```
     systemctl restart vsftpd.service
@@ -224,35 +197,30 @@ FTP支持以下三种认证模式：
 
 ## 步骤三：设置安全组
 
-搭建好FTP站点后，在实例安全组的入方向添加规则并放行下列FTP端口。具体步骤，请参见[添加安全组规则](/cn.zh-CN/安全/安全组/添加安全组规则.md)。
+搭建好FTP站点后，在实例安全组的入方向添加规则并放行下列FTP端口。具体操作，请参见[添加安全组规则](/cn.zh-CN/安全/安全组/添加安全组规则.md)。
 
 **说明：** 大多数客户端位于局域网中，IP地址是经过转换的，因此ipconfig或ifconfig命令返回的IP不一定是客户端的真实公网IP地址。若后续客户端无法登录FTP服务器，请重新确认其公网IP地址。
 
-FTP被动模式需要开放端口，配置详情如下表所示。
+被动模式需开放21端口，以及配置文件/etc/vsftpd/vsftpd.conf中参数pasv\_min\_port和pasv\_max\_port之间的所有端口。配置详情如下表所示。
 
 |规则方向|授权策略|协议类型|端口范围|授权对象|
 |----|----|----|----|----|
 |入方向|允许|自定义TCP|21/21|所有要访问FTP服务器的客户端公网IP地址，多个地址之间用逗号隔开。 允许所有客户端访问时，授权对象为0.0.0.0/0。 |
-|入方向|允许|自定义TCP|不同模式的开放端口范围如下：-   匿名用户模式：1024/65535
--   本地用户模式：配置文件/etc/vsftpd/vsftpd.conf中配置项pasv\_min\_port和pasv\_max\_port之间的端口。即pasv\_min\_port/pasv\_max\_port
-
-|所有要访问FTP服务器的客户端公网IP地址，多个地址之间用逗号隔开。 允许所有客户端访问时，授权对象为0.0.0.0/0。 |
+|入方向|允许|自定义TCP|pasv\_min\_port/pasv\_max\_port。例如：50000/50010|所有要访问FTP服务器的客户端公网IP地址，多个地址之间用逗号隔开。 允许所有客户端访问时，授权对象为0.0.0.0/0。 |
 
 ## 步骤四：客户端测试
 
-FTP客户端、Windows命令行工具或浏览器均可用来测试FTP服务器。本教程以Google Chrome浏览器为例，介绍FTP服务器的访问步骤。
+FTP客户端、Windows命令行工具或浏览器均可用来测试FTP服务器。本文以Windows Server 2012 R2 64位系统的本地主机作为FTP客户端，介绍FTP服务器的访问步骤。
 
-**说明：** 使用浏览器访问FTP服务器出错时，建议您清除浏览器缓存后再尝试。
+1.  在本地主机，打开**这台电脑**。
 
-1.  打开客户端的Google Chrome浏览器。
+2.  在地址栏中输入`ftp://<FTP服务器公网IP地址>:FTP端口`，本文中为Linux实例的公网IP地址。例如：`ftp://121.43.XX.XX:21`
 
-2.  在地址栏中输入`ftp://<FTP服务器公网IP地址>:21`。
+3.  在弹出的**登录身份**对话框中，输入已设置的FTP用户名和密码，然后单击**登录**。
 
-    本教程中为Linux实例的公网IP地址。
+    登录后，您可以查看到FTP服务器指定目录下的文件，例如：测试文件testfile.txt。
 
-3.  在弹出的对话框中，输入用户名ftptest和对应的密码，即可对FTP文件进行相应权限的操作。
-
-    **说明：** 此步骤仅适用于本地用户，匿名用户无需输入用户名和密码即可登录FTP服务器。
+    ![ftp client](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5531787161/p261663.png)
 
 
 ## vsftp配置文件及参数说明
@@ -264,16 +232,6 @@ FTP客户端、Windows命令行工具或浏览器均可用来测试FTP服务器�
 -   /etc/vsftpd/user\_list是白名单文件，此文件中的用户允许访问FTP服务器。
 
 配置文件vsftpd.conf参数说明如下：
-
--   工作模式说明如下表所示。
-
-    |参数|说明|
-    |--|--|
-    |pasv\_enable=YES|开启被动模式|
-    |pasv\_enable=NO|开启主动模式|
-    |不设置该参数|配置文件中默认不设置该参数，表示使用被动模式|
-
-    **说明：** 当您需要开启主动模式时，ECS实例的安全组规则需要放行20与21端口。
 
 -   用户登录控制参数说明如下表所示。
 
