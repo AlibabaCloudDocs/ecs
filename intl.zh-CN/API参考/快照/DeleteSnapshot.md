@@ -8,7 +8,7 @@
 
 -   如果指定的快照ID不存在，请求将被忽略。
 -   如果快照已经被用于创建自定义镜像，将不能执行删除操作。您需要先删除已创建的自定义镜像（[DeleteImage](~~25537~~)），才能继续删除快照。
--   如果快照已经被用于创建云盘，将不能执行删除操作。如果您确定要删除快照，请设置`Force=true`进行强制删除，快照被强制删除后对应的云盘将不能执行重新初始化。
+-   如果快照已经被用于创建云盘，且未设置`Force`参数或`Force=false`时，不能直接删除快照。如果您确定要删除快照，请设置`Force=true`进行强制删除，快照被强制删除后对应的云盘将不能执行重新初始化。
 
 ## 调试
 
@@ -66,7 +66,7 @@ https://ecs.aliyuncs.com/?Action=DeleteSnapshot
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
 |403|SnapshotCreatedImage|The snapshot has been used to create user defined image\(s\).|如果快照已经被用于创建自定义镜像，将不能执行删除操作。您需要先删除已创建的自定义镜像（DeleteImage），才能继续删除快照。|
-|403|SnapshotCreatedDisk|The snapshot has been used to create disk\(s\).|指定的快照已经用于创建云盘，将不能执行删除操作。如果您确定要删除快照，请设置Force参数值为true进行强制删除，快照被强制删除后对应的云盘将不能执行重新初始化。|
+|403|SnapshotCreatedDisk|The snapshot has been used to create disk\(s\).|指定的快照已经用于创建云盘，当未设置Force参数或Force参数值为false时，不能直接删除快照。如果您确定要删除快照，请设置Force参数值为true进行强制删除，快照被强制删除后对应的云盘将不能执行重新初始化。|
 |400|MissingParameter|The input parameter SnapshotId that is mandatory for processing this request is not supplied.|参数SnapshotId不得为空。|
 |500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |404|InvalidSnapshotId.NotFound|The specified snapshot is not found|指定的快照不存在。|
