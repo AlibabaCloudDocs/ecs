@@ -4,10 +4,16 @@
 
 ## 接口说明
 
--   请求中至少指定一个参数：`ResourceId.N`、`Tag.N`（`Tag.N.Key`与`Tag.N.Value`）或者`TagFilter.N`，以确定查询对象。
--   同时指定下列参数时，返回结果中仅包含同时满足这两个条件的ECS资源。
-    -   `Tag.N`和`ResourceId.N`
-    -   `TagFilter.N`和`ResourceId.N`
+请求中至少指定以下任一参数，以确定查询对象。
+
+-   `ResourceId.N`
+-   `Tag.N`（`Tag.N.Key`与`Tag.N.Value`）
+-   `TagFilter.N`
+
+同时指定下列参数时，返回结果中仅包含同时满足这两个条件的ECS资源。
+
+-   `Tag.N`和`ResourceId.N`
+-   `TagFilter.N`和`ResourceId.N`
 
 ## 调试
 
@@ -38,8 +44,8 @@
 
  `TagFilter.N`用于模糊查找绑定了指定标签的ECS资源，由一个键和一个或多个值组成。模糊查询可能会有2秒延时，仅支持模糊过滤后资源数小于等于5000的情况。
 
- -   通过标签键（`TagFilter.N.TagKey`）模糊查找ECS资源时，标签值（`TagFilter.N.TagValues.N`）必须为空。例如，模糊搜索标签键为`environment`的ECS资源时，`TagFilter.1.TagKey`可以设置为`env`，而`TagFilter.1.TagValues`必须为空。
--   通过标签值（`TagFilter.N.TagValues.N`）模糊查找ECS资源时，标签键（`TagFilter.N.TagKey`）必须设置为精确值。例如，模糊搜索标签键为`env`，标签值为`product`的ECS资源时，`TagFilter.1.TagKey`必须精确设置为`env`，`TagFilter.1.TagValues.1`可以设置为`proc`。
+ -   通过标签键（`TagFilter.N.TagKey`）模糊查找ECS资源时，标签值（`TagFilter.N.TagValues.N`）必须为空。例如，模糊搜索标签键为`environment`的ECS资源时，`TagFilter.1.TagKey`可以设置为`env*`（前缀匹配的模糊搜索方式）、`*env*`（两边匹配的模糊搜索方式）或者`env`（精确搜索方式），而`TagFilter.1.TagValues`必须为空。
+-   通过标签值（`TagFilter.N.TagValues.N`）模糊查找ECS资源时，标签键（`TagFilter.N.TagKey`）必须设置为精确值。例如，模糊搜索标签键为`env`，标签值为`product`的ECS资源时，`TagFilter.1.TagKey`必须精确设置为`env`，`TagFilter.1.TagValues.1`可以设置为`proc*`（前缀匹配的模糊搜索方式）、`*proc*`（两边匹配的模糊搜索方式）或者`proc`（精确搜索方式）。同一个`TagKey`下只能用同一种搜索方式，如果设置了多个不同的搜索方式，则以第一个方式为准。
 -   标签键之间为交集关系，即仅同时满足您指定的所有标签键的ECS资源才会被查找到。
 -   同一标签键下的标签值之间为并集关系，即满足您为该标签键指定的任一标签值的ECS资源均会被查找到。
 
@@ -53,7 +59,7 @@
 -   仅指定`Tag.N.Value`，则报错`InvalidParameter.TagValue`。
 -   同时指定多个标签键值对时，仅同时满足所有标签键值对的ECS资源会被查找到。 |
 |Tag.N.Value|String|否|TestValue|精确查找ECS资源时使用的标签值。标签值长度的取值范围：1~128。N的取值范围：1~20 |
-|TagFilter.N.TagValues.N|RepeatList|否|TestTagFilter|模糊查找ECS资源时使用的标签值。标签值长度的取值范围：1~128。N的取值范围：1~5 |
+|TagFilter.N.TagValues.N|RepeatList|否|TestTagFilter|模糊查找ECS资源时使用的标签值。标签值长度的取值范围：1~128。N的取值范围：1~5。具体的参数说明请参见`TagFilter.N.TagKey`参数描述。 |
 |NextToken|String|否|caeba0bbb2be03f84eb48b699f0a4883|下一个查询开始Token。 |
 
 ## 返回数据
@@ -83,7 +89,7 @@ https://ecs.aliyuncs.com/?Action=ListTagResources
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ListTagResourcesResponse>
@@ -99,7 +105,7 @@ https://ecs.aliyuncs.com/?Action=ListTagResources
 </ListTagResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -134,8 +140,8 @@ https://ecs.aliyuncs.com/?Action=ListTagResources
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
 |404|InvalidResourceId.NotFound|The specified ResourceIds are not found in our records.|指定的资源不存在，请检查参数ResourceId是否正确。|
 |404|InvalidResourceType.NotFound|The ResourceType provided does not exist in our records.|指定的资源类型不存在。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键不合法。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值不合法。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |400|OperationDenied.QuotaExceed|The quota of tags on resource is beyond permitted range.|资源标签已达上限。|
 |403|InvalidResourceId.NotSupported|The specified ResourceId does not support tagging.|指定的资源ID不支持标记。|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|指定的Tag.N.Key和Tag.N.Value不匹配。|
