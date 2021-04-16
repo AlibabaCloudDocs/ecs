@@ -204,7 +204,7 @@ RabbitMQ使用Erlang语言编写服务器端，并支持多种客户端，如Pyt
 
     |参数|说明|取值或示例值|
     |--|--|------|
-    |RegionId|ECS实例所在的地域ID。|示例值：`cn-hangzhou`。|
+    |RegionId|ECS实例所在的地域ID。|示例值：`cn-hangzhou`|
     |Name|云助手命令的名称。|示例值：`start-rabbitmq`|
     |Type|运维命令的语言类型。|取值：`RunShellScript`|
     |CommandContent|命令的明文内容。|取值：`/root/rabbitmq_server-3.7.8/sbin/rabbitmq-server -detached`**说明：** 该命令用于启动RabbitMQ。 |
