@@ -1,167 +1,224 @@
 # 部署RabbitMQ
 
-本教程介绍如何通过ECS实例部署RabbitMQ。
+RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件，用于在分布式系统中存储转发消息，有良好的易用性、扩展性和高可用性。本文介绍如何通过ECS实例部署RabbitMQ。
 
--   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
--   已创建网络类型为专有网络的安全组，并且安全组的入方向添加规则并放行80、5672及15672端口，如果您使用SSH远程连接Linux实例，还需要放行22端口。 具体操作请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
+已创建网络类型为专有网络的安全组，并且在安全组的入方向添加规则并放行80、5672及15672端口，如果您使用SSH远程连接Linux实例，还需要放行22端口。 具体操作，请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
 
-RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件，用于在分布式系统中存储转发消息，有良好的易用性、扩展性和高可用性。RabbitMQ使用Erlang语言编写服务器端，并支持多种客户端，如Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP和STOMP，同时也支持AJAX。
+RabbitMQ使用Erlang语言编写服务器端，并支持多种客户端，如Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP和STOMP，同时也支持AJAX。
 
 手动部署：适合对Linux命令有基本了解的用户，能够个性化部署。手动部署使用以下操作系统和软件版本：
 
--   操作系统：公共镜像CentOS 7.3 64位
--   RabbitMQ版本：rabbitmq-server -3.6.9
--   erlang版本：erlang19.3
--   JDK版本：JDK1.8.0\_121
+-   操作系统：公共镜像CentOS 7.8 64位
+-   RabbitMQ版本：3.7.8
+-   erlang版本：21.1
+-   JDK版本：1.8.0\_282
 
 ## 手动部署RabbitMQ
 
-1.  安装依赖包。
+1.  创建并远程连接Linux实例。
 
-    ```
-    yum -y install make gcc gcc-c++ m4 ncurses-devel openssl-devel unixODBC-devel
-    ```
+    1.  创建实例。
+
+        具体操作，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。配置资源时您需要注意：
+
+        -   为实例分配公网IPv4地址。
+        -   选择前提条件中已配置的安全组。
+        -   其他配置您可以按需选择。
+    2.  远程连接实例。
+
+        具体操作，请参见[通过密码或密钥认证登录Linux实例]()。
 
 2.  安装erlang。
 
-    1.  下载erlang安装包。
+    1.  运行以下命令，安装erlang所需要的依赖包。
 
         ```
-        wget http://erlang.org/download/otp_src_19.3.tar.gz
+        yum install -y make gcc gcc-c++ m4 openssl openssl-devel ncurses-devel unixODBC unixODBC-devel java java-devel
         ```
 
-    2.  解压缩erlang安装包。
+    2.  运行以下命令，下载erlang安装包。
 
         ```
-        tar xzf otp_src_19.3.tar.gz
+        wget http://erlang.org/download/otp_src_21.1.tar.gz
         ```
 
-    3.  创建一个文件夹。
+    3.  运行以下命令，解压erlang安装包。
 
         ```
-        mkdir /usr/local/erlang
+        tar -zxvf otp_src_21.1.tar.gz
         ```
 
-    4.  编译并安装erlang。
-
-        依次执行以下命令。
+    4.  运行以下命令，进入erlang安装包的解压路径，并为erlang创建一个新的目录。
 
         ```
-        cd otp_src_19.3
-        ./configure --prefix=/usr/local/erlang --without-javac
+        cd otp_src_21.1
+        mkdir -p /usr/local/erlang
+        ```
+
+    5.  依次运行以下命令，编译并安装erlang。
+
+        ```
+        ./configure --prefix=/usr/local/erlang
         ```
 
         ```
         make && make install
         ```
 
-3.  修改profile配置文件。
-
-    1.  运行以下命令打开profile配置文件。
+    6.  安装完成后，运行以下命令，为erlang配置环境变量。
 
         ```
-        vi /etc/profile
+        echo 'export PATH=$PATH:/usr/local/erlang/bin' >> /etc/profile
         ```
 
-    2.  按下i键，然后在文件末尾处添加如下内容：
-
-        ```
-        export PATH=$PATH:/usr/local/erlang/bin
-        ```
-
-    3.  按下Esc键，然后输入`:wq`并回车，保存并关闭文件。
-
-4.  生效环境变量并检查。
-
-    1.  运行以下命令使环境变量生效。
+    7.  运行以下命令，使环境变量立即生效。
 
         ```
         source /etc/profile
         ```
 
-    2.  运行以下命令检查安装结果。
+    8.  运行以下命令，返回系统的/root目录，然后查看erlang版本，确认是否安装成功。
 
         ```
+        cd
         erl -version
         ```
 
-5.  下载并安装RabbitMQ。
+        返回如下信息表示erlang已成功安装。
 
-    1.  下载RabbitMQ安装包。
+        ![erl version](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9845938161/p263785.png)
 
-        ```
-        wget -P /root "https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.9/rabbitmq-server-3.6.9-1.el7.noarch.rpm"
-        ```
+3.  下载并安装RabbitMQ。
 
-    2.  导入签名密钥。
+    RabbitMQ对Erlang的版本具有一定限制，更多信息，请参见[RabbitMQ Erlang Version Requirements](https://www.rabbitmq.com/which-erlang.html)。本示例使用的Erlang为21.1版本，因此选择下载RabbitMQ 3.7.8版本。
 
-        ```
-        sudo rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-        ```
-
-    3.  安装RabbitMQ Server。
+    1.  运行以下命令，下载RabbitMQ安装包。
 
         ```
-        cd /root
-        sudo yum install rabbitmq-server-3.6.9-1.el7.noarch.rpm
+        wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.8/rabbitmq-server-generic-unix-3.7.8.tar.xz
         ```
 
-6.  配置RabbitMQ。
-
-    1.  允许RabbitMQ开机自启动。
+    2.  运行以下命令，解压RabbitMQ安装包。
 
         ```
-        sudo systemctl enable rabbitmq-server
+        tar -xvf rabbitmq-server-generic-unix-3.7.8.tar.xz
         ```
 
-    2.  启动RabbitMQ。
+    3.  解压完成后，运行以下命令，为RabbitMQ配置环境变量。
 
         ```
-        sudo systemctl start rabbitmq-server
+        echo 'export PATH=$PATH:/root/rabbitmq_server-3.7.8/sbin' >> /etc/profile
         ```
 
-    3.  为保证数据安全，建议您删除默认用户。
-
-        RabbitMQ默认的账号用户名和密码都是guest。
+    4.  运行以下命令，使环境变量立即生效。
 
         ```
-        sudo rabbitmqctl delete_user guest
+        source /etc/profile
         ```
 
-    4.  创建管理员用户
+4.  配置RabbitMQ。
 
-        1.  创建一个新用户。
+    1.  运行以下命令，启动RabbitMQ并后台运行。
+
+        ```
+        rabbitmq-server -detached
+        ```
+
+        **说明：** 该命令只在当前运行的系统环境下启动RabbitMQ，一旦服务器重启，RabbitMQ服务将不会自动启动。因此，建议您通过阿里云的云助手功能，设置RabbitMQ开机自启动。具体操作，请参见[通过云助手设置RabbitMQ开机自启动](#section_9ke_67a_pwt)。
+
+    2.  为保证数据安全，建议您运行以下命令，删除默认用户。
+
+        RabbitMQ默认的账号用户名和密码都是`guest`。
+
+        ```
+        rabbitmqctl delete_user guest
+        ```
+
+    3.  创建RabbitMQ管理员用户。
+
+        1.  运行以下命令，创建一个新用户。
 
             ```
-            sudo rabbitmqctl add_user <用户名> <密码>
+            rabbitmqctl add_user <用户名\> <密码\>
             ```
 
-        2.  将创建的新用户设置为管理员。
+            其中，<用户名\>和<密码\>为您自定义的信息。
+
+        2.  运行以下命令，将创建的新用户设置为管理员。
 
             ```
-            sudo rabbitmqctl set_user_tags <用户名> administrator
+            rabbitmqctl set_user_tags <用户名\> administrator
             ```
 
-        3.  赋予新创建的用户所有权限。
+        3.  运行以下命令，赋予新创建的用户所有权限。
 
             ```
-            sudo rabbitmqctl set_permissions -p / <用户名> ".*" ".*" ".*"
+            rabbitmqctl set_permissions -p / <用户名\> ".*" ".*" ".*"
             ```
 
-7.  运行以下命令，启用RabbitMQ的web管理界面。
-
-    ```
-    sudo rabbitmq-plugins enable rabbitmq_management
-    ```
-
-8.  使用浏览器访问`http://公网IP:15672`。
+5.  在本地主机中，使用浏览器访问`Linux实例的公网IP:15672`。
 
     显示如下页面，说明RabbitMQ安装成功。
 
-    ![RabbitMQ登录页](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0912649951/p39377.png)
+    ![RabbitMQ登录页](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9845938161/p39377.png)
 
-9.  输入之前创建的用户名和密码后单击**Login**，进入RabbitMQ管理界面。
+6.  输入已创建的RabbitMQ管理员用户名和密码后，单击**Login**，进入RabbitMQ管理界面。
 
-    ![RabbitMQ主页](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0912649951/p39379.png)
+    RabbitMQ管理界面展示信息如下所示：
+
+    ![RabbitMQ主页](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9845938161/p39379.png)
+
+
+## 通过云助手设置RabbitMQ开机自启动
+
+1.  配置RabbitMQ的rabbitmq-server文件。
+
+    1.  运行以下命令，编辑rabbitmq-server文件。
+
+        ```
+        vim /root/rabbitmq_server-3.7.8/sbin/rabbitmq-server
+        ```
+
+    2.  按下shift+:组合键，然后输入`set nu`查看文件的行号。
+
+    3.  按下shift+:组合键，然后输入`189`跳转至189行。
+
+    4.  按下i键，进入编辑模式。
+
+        在189行新增以下内容：
+
+        ```
+        export PATH=$PATH:/usr/local/erlang/bin
+        export HOME=/root/rabbitmq_server-3.7.8/
+        ```
+
+        配置完成后，如下图所示。
+
+        ![rabbitmq-server](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9845938161/p263925.png)
+
+    5.  按下Esc键，然后输入`:wq`并回车，保存退出文件。
+
+2.  调用ECS API [RunCommand](/intl.zh-CN/API参考/云助手/RunCommand.md)，设置RabbitMQ开机自启动。
+
+    调用API的具体操作，请参见[快速入门](/intl.zh-CN/API参考/快速入门.md)。设置RabbitMQ开机自启动，您必须设置以下参数：
+
+    |参数|说明|取值或示例值|
+    |--|--|------|
+    |RegionId|ECS实例所在的地域ID。|示例值：`cn-hangzhou`。|
+    |Name|云助手命令的名称。|示例值：`start-rabbitmq`|
+    |Type|运维命令的语言类型。|取值：`RunShellScript`|
+    |CommandContent|命令的明文内容。|取值：`/root/rabbitmq_server-3.7.8/sbin/rabbitmq-server -detached`**说明：** 该命令用于启动RabbitMQ。 |
+    |RepeatMode|设置命令执行的方式。|取值：`EveryReboot`|
+    |InstanceId.N|部署RabbitMQ的ECS实例ID。|示例值：`i-bp12f1b0i3r7adm3****`|
+
+    调用成功的JSON返回示例值如下所示，后续当您重启ECS实例后，都会触发启动RabbitMQ的云助手命令。
+
+    ```
+    {
+      "RequestId": "8B4BFE47-F1E3-48D1-B405-CA783B697046",
+      "CommandId": "c-hz01gvo1ri9****",
+      "InvokeId": "t-hz01gvo1rig****"
+    }
+    ```
 
 
