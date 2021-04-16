@@ -13,9 +13,9 @@ RunInstances批量创建实例接口可以帮助您一次创建多台ECS按量�
 -   创建实例的时候指定了InternetMaxBandwidthOut，则自动为您分配公网IP，不需要您再调用分配IP的操作。
 -   您也可以一次创建100台抢占式实例，充分满足您的弹性需求。
 -   创建的参数保持和CreateInstance保持兼容，增加了Amount参数来设定创建的个数，以及AutoReleaseTime参数来设定自动释放时间，不需要您再额外设置自动释放时间。
--   创建返回一个InstanceIdSets会记录相关的InstanceIds，您只需要根据实例ID轮询实例状态即可。详情请参见[DescribeInstanceStatus](/intl.zh-CN/API参考/实例/DescribeInstanceStatus.md)。
+-   创建返回一个InstanceIdSets会记录相关的InstanceIds，您只需要根据实例ID轮询实例状态即可。更多信息，请参见[DescribeInstanceStatus](/intl.zh-CN/API参考/实例/DescribeInstanceStatus.md)。
 
-本文提供了批量创建ECS实例的完整代码示例请参见[完整代码](#section_v50_4ex_kmq)，并提供了代码示例解析，请参见：
+本文提供了批量创建ECS实例的完整代码示例。更多信息，请参见[完整代码](#section_v50_4ex_kmq)，并提供了代码示例解析，请参见：
 
 -   [批量创建实例](#Createinstances)
 -   [批量创建实例并自动分配公网IP](#section_lsw_clk_kfb)
@@ -258,7 +258,7 @@ def create_multiple_instances_with_public_ip():
 
 ## 批量创建实例并自动设置自动释放时间
 
-相比批量创建实例的代码，只需要添加一行属性，指定实例的自动释放时间即可。自动释放时间按照ISO8601标准表示，并需要使用UTC时间，格式为`yyyy-MM-ddTHH:mm:ssZ`。最短在当前时间之后半小时，最长不能超过当前时间起三年。详情请参见[时间格式](/intl.zh-CN/API参考/附录/时间格式.md)。
+相比批量创建实例的代码，只需要添加一行属性，指定实例的自动释放时间即可。自动释放时间按照ISO8601标准表示，并需要使用UTC时间，格式为`yyyy-MM-ddTHH:mm:ssZ`。最短在当前时间之后半小时，最长不能超过当前时间起三年。更多信息，请参见[时间格式](/intl.zh-CN/API参考/附录/时间格式.md)。
 
 ```
 # 创建ECS实例并设置自动释放时间。
