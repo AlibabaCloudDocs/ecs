@@ -10,11 +10,11 @@ The g7t, c7t, and r7t security-enhanced instance families provide encrypted memo
 
 ## Build an SGX encrypted computing environment
 
-Before you can develop SGX programs, you must install the runtime and SDK on the vSGX instance and configure the remote attestation service. We recommend that you use Alibaba Cloud Linux 2.1903 64-bit \(UEFI\) for a better user experience. Alibaba Cloud Linux 2.1903 64-bit \(UEFI\) is equipped with the SGX driver and provides TEE SDK that is completely compatible with Intel® SGX SDK.
+Before you can develop SGX programs, you must install the runtime and SDK on the vSGX instance and configure the remote attestation service. We recommend that you use Alibaba Cloud Linux 2.1903 64-bit \(UEFI\) for a better user experience. Alibaba Cloud Linux 2.1903 64-bit \(UEFI\) is equipped with the SGX driver and provides Alibaba Cloud TEE SDK that is completely compatible with Intel® SGX SDK.
 
 1.  Install the Alibaba Cloud SGX runtime.
 
-    **Note:** If you create a vSGX instance by using the ECS console, the Alibaba Cloud SGX runtime is automatically installed. You can skip this step and continue to install the Alibaba Cloud TEE SDK.
+    **Note:** If you create a vSGX instance by using the ECS console, the Alibaba Cloud SGX runtime is automatically installed. You can skip this step and install Alibaba Cloud TEE SDK.
 
     1.  Install protobuf.
 
@@ -110,7 +110,7 @@ This section describes the example of how to verify whether the installed SGX SD
 
 1.  Install devtoolset.
 
-    1.  Open Alibaba Cloud software repositories.
+    1.  Open the Alibaba Cloud experimentals repository.
 
         ```
         rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
@@ -168,7 +168,7 @@ This section describes the example of the SGX remote attestation service \(Quote
 
 1.  Install devtoolset.
 
-    1.  Open Alibaba Cloud software repositories.
+    1.  Open the Alibaba Cloud experimentals repository.
 
         ```
         rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
@@ -238,7 +238,7 @@ This section describes the example of the SGX remote attestation service \(Quote
     To release an official version of an enclave, you must provide the signature key to sign the enclave.
 
     ```
-    /opt/alibaba/teesdk/intel/sgxsdk/bin/x64/sgx_sign sign -key Enclave/Enclave_private_sample.pem -enclave enclave.so -out enclave.signed.so -config Enclave/Enclave.config.xml
+    sgx_sign sign -key Enclave/Enclave_private_sample.pem -enclave enclave.so -out enclave.signed.so -config Enclave/Enclave.config.xml
     ```
 
     ![sign-enclave](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0705017161/p256827.png)
