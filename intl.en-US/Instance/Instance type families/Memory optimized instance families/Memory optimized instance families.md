@@ -7,6 +7,7 @@ keyword: [Alibaba Cloud, ECS, server, elastic computing]
 This topic describes the features of memory optimized instance families and lists the instance types of each family.
 
 -   Recommended instance families
+    -   [r7, memory optimized instance family](#r7)
     -   [r7t, security-enhanced memory optimized instance family](#section_kni_2nn_01u)
     -   [re6p, persistent memory optimized instance family](#section_k8y_u9u_vax)
     -   [r6a, memory optimized instance family](#section_zx4_s2u_rlk)
@@ -20,27 +21,70 @@ This topic describes the features of memory optimized instance families and list
     -   [se1ne, memory optimized instance family with enhanced network performance](#section_k1p_8hm_72f)
     -   [se1, memory optimized instance family](#section_s5w_lh9_07j)
 
+## r7, memory optimized instance family
+
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
+-   Supports the vTPM feature and implements trusted boots based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips to provide ultra-high security capabilities. During a trusted boot, all modules in the boot chain from the underlying server to the ECS instance are measured and verified.
+-   Compute:
+    -   Offers a CPU-to-memory ratio of 1:8.
+    -   Uses third-generation Intel® Xeon® Scalable processors for consistent computing performance.
+    -   Allows you to enable or disable Hyper-Threading.
+-   Storage:
+    -   Is an instance family in which all instances are I/O optimized.
+    -   Supports enhanced SSDs \(ESSDs\) only.
+    -   Provides burstable storage I/O performance on low-specification instances.
+    -   Provides high storage I/O performance based on large computing capacity.
+-   Network:
+    -   Provides ultra-high packet forwarding rates.
+    -   Provides burstable network performance on low-specification instances.
+    -   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
+    -   High-performance and in-memory databases
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Data analysis, data mining, and distributed memory caching
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
+    -   Scenarios that require secure and trusted computing
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.r7.large|2|16.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.xlarge|4|32.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.2xlarge|8|64.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.3xlarge|12|96.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.4xlarge|16|128.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.6xlarge|24|192.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.r7.8xlarge|32|256.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.r7.16xlarge|64|512.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.r7.32xlarge|128|1024.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+
 ## r7t, security-enhanced memory optimized instance family
 
 r7t is in invitational preview. To use r7t, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 -   Supports up to 512 GiB encrypted memory and encrypted computing based on Intel® SGX to protect the confidentiality and integrity of key code and data from malware attacks.
 -   Supports SGX technology applicable to virtual machines and allows you to select instance types based on your needs.
--   Implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
+-   Implements trusted boots based on TCM or TPM chips. During a trusted boot, all modules in the boot chain from the underlying server hardware to the guest OS are measured and verified.
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:8. About 50% of memory is encrypted.
-    -   Uses third-generation Intel® Xeon® Scalable processors that deliver consistent computing performance.
+    -   Uses third-generation Intel® Xeon® Scalable processors for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
-    -   Supports enhanced SSDs \(ESSDs\) only.
+    -   Supports ESSDs only.
     -   Provides high storage I/O performance based on large computing capacity.
 -   Network:
     -   Provides ultra-high packet forwarding rates.
     -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Confidential computing applications for databases
+    -   Encrypted computing applications for databases
     -   Scenarios that involve sensitive information such as personal identity information, healthcare information, financial information, and intellectual property data
     -   Scenarios where confidential data is shared among multiple parties
     -   Blockchain scenarios
@@ -60,7 +104,7 @@ Instance types
 |ecs.r7t.6xlarge|24|192.0|96.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
 |ecs.r7t.8xlarge|32|256.0|128.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
 |ecs.r7t.16xlarge|64|512.0|256.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
-|ecs.r7t.32xlarge|128|1,024.0|512.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+|ecs.r7t.32xlarge|128|1024.0|512.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
 
 **Note:**
 
@@ -81,7 +125,7 @@ Features
 
     **Note:** For more information, see [Configure the usage mode of persistent memory](/intl.en-US/Instance/Instance type families/Memory optimized instance families/Configure the usage mode of persistent memory.md).
 
--   Provides the ecs.re6p-redis.<nx\>large instances types for Redis applications.
+-   Provides the ecs.re6p-redis.<nx\>large instances types exclusively for Redis applications.
 
     These instance types are in invitational preview. To use these instance types, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
@@ -101,8 +145,8 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|DRAM \(GiB\)|AEP memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-----------|------------------|---------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|------------|-----------------|----------|:---------------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Persistent Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|-------------------------|---------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|------------|-----------------|----------|:---------------------------------|---------------|-------------------------|
 |ecs.re6p.large|2|8.0|31.5|None|1.0|3.0|300|Yes|Up to 250|2|2|10|1.0|
 |ecs.re6p.xlarge|4|16.0|63.0|None|1.5|5.0|500|Yes|Up to 250|4|3|20|1.5|
 |ecs.re6p.2xlarge|8|32.0|126.0|None|2.5|10.0|800|Yes|Up to 250|8|4|25|2.0|
@@ -145,7 +189,7 @@ Features
     -   Scenarios where large volumes of packets are received and transmitted
     -   In-memory databases
     -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
-    -   Scenarios where applications are developed and tested, such as DevOps scenarios
+    -   Scenarios where applications such as DevOps applications are developed and tested
 
 Instance types
 
@@ -155,7 +199,7 @@ Instance types
 |ecs.r6a.xlarge|4|32.0|None|1.5|10.0|1,000|Yes|3|20|1.5|
 |ecs.r6a.2xlarge|8|64.0|None|2.5|10.0|1,600|Yes|4|30|2.0|
 |ecs.r6a.4xlarge|16|128.0|None|5.0|10.0|2,000|Yes|8|60|3.0|
-|ecs.r6a.8xlarge|32|256.0|None|8.0|10.0|3,000|Yes|7|75|4.0|
+|ecs.r6a.8xlarge|32|256.0|None|8.0|10.0|3,000|Yes|7|75|4,0|
 |ecs.r6a.16xlarge|64|512.0|None|16.0|None|6,000|Yes|8|150|8.0|
 |ecs.r6a.32xlarge|128|1024.0|None|32.0|None|12,000|Yes|15|300|16.0|
 |ecs.r6a.64xlarge|256|2048.0|None|64.0|None|24,000|Yes|15|600|32.0|
@@ -269,7 +313,7 @@ Features
 -   Offers a CPU-to-memory ratio of 1:15 and up to 3 TiB memory.
 -   Suits the following scenarios:
     -   High-performance databases and in-memory databases such as SAP HANA
-    -   Memory intensive applications
+    -   Memory-intensive applications
     -   Big data processing engines such as Apache Spark and Presto
 
 Instance types
@@ -334,8 +378,8 @@ Features
 -   Supports standard SSDs and ultra disks only.
 -   Suits the following scenarios:
     -   High-performance databases and in-memory databases such as SAP HANA
-    -   Memory intensive applications
-    -   Big data processing engines such as Apache Spark and Presto
+    -   Memory-intensive applications
+    -   Big data processing engines such as Apache Spark and Presto.
 
 Instance types
 
@@ -361,7 +405,7 @@ Features
 -   Offers a CPU-to-memory ratio of 1:24 and up to 3,840 GiB memory.
 -   Suits the following scenarios:
     -   High-performance databases and in-memory databases such as SAP HANA
-    -   Memory intensive applications
+    -   Memory-intensive applications
     -   Big data processing engines such as Apache Spark and Presto
 
 Instance types
