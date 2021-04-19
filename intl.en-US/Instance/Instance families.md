@@ -21,7 +21,8 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 |Enterprise-level computing instance families based on the x86 architecture|
 |--------------------------------------------------------------------------|
 |Recommended intance families|Other available instance families|
-|-   [g7t, security-enhanced general purpose instance family](#g7t)
+|-   [g7, general purpose instance family](#g7)
+-   [g7t, security-enhanced general purpose instance family](#g7t)
 -   [g7ne, network enhanced instance family](#g7ne)
 -   [g6, general purpose instance family](#g6)
 -   [g6se, storage enhanced instance family](#g6se)
@@ -31,6 +32,7 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 -   [g5, general purpose instance family](#g5)
 -   [g5se, storage enhanced instance family](#g5se)
 -   [g5ne, network enhanced instance family](#g5ne)
+-   [c7, compute optimized instance family](#c7)
 -   [c7t, security-enhanced compute optimized instance family](#c7t)
 -   [c6, compute optimized instance family](#c6)
 -   [c6a, compute optimized instance family](#c6a)
@@ -38,6 +40,7 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 -   [c6e, compute optimized instance family with enhanced performance](#c6e)
 -   [c5, compute optimized instance family](#c5)
 -   [ic5, compute intensive instance family](#ic5)
+-   [r7, memory optimized instance family](#r7)
 -   [r7t, security-enhanced memory optimized instance family](#r7t)
 -   [r6, memory optimized instance family](#r6)
 -   [re6p, persistent memory optimized instance family](#re6p)
@@ -131,6 +134,52 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 -   [xn4, n4, mn4, and e4, previous-generation shared instance families](#xn4-n4-mn4-e4) |
 
 For information about retired instance families, see [Retired instance types](/intl.en-US/Instance/Instance type families/Retired instance types.md).
+
+## g7, general purpose instance family
+
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
+-   Supports the vTPM feature and implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
+-   Compute:
+    -   Offers a CPU-to-memory ratio of 1:4.
+    -   Uses third-generation Intel® Xeon® scalable processors for consistent computing performance.
+    -   Allows you to enable or disable Hyper-Threading.
+-   Storage:
+    -   Is an instance family in which all instances are I/O optimized.
+    -   Supports enhanced SSDs \(ESSDs\) only.
+    -   Provides burstable storage I/O performance on low-specification instances.
+    -   Provides high storage I/O performance based on large computing capacity.
+-   Network:
+    -   Provides ultra-high packet forwarding rates.
+    -   Provides burstable network performance on low-specification instances.
+    -   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Game servers
+    -   Small and medium-sized database systems, caches, and search clusters
+    -   Enterprise-level applications of various types and sizes
+    -   Websites and application servers
+    -   Data analysis and computing
+    -   Scenarios that require secure and trusted computing
+    -   Blockchain scenarios
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.g7.large|2|8.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.xlarge|4|16.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.2xlarge|8|32.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.3xlarge|12|48.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.4xlarge|16|64.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.6xlarge|24|96.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.g7.8xlarge|32|128.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.g7.16xlarge|64|256.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.g7.32xlarge|128|512.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## g7t, security-enhanced general purpose instance family
 
@@ -584,6 +633,52 @@ Instance types
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
+## c7, compute optimized instance family
+
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
+-   Supports the vTPM feature and implements trusted boots based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips to provide high security capabilities. During a trusted boot, all modules in the boot chain from the underlying server to the ECS instance are measured and verified.
+-   Compute:
+    -   Offers a CPU-to-memory ratio of 1:2.
+    -   Uses the third-generation Intel® Xeon® Scalable processors for consistent computing performance.
+    -   Allows you to enable or disable Hyper-Threading.
+-   Storage:
+    -   Is an instance family in which all instances are I/O optimized.
+    -   Supports enhanced SSDs \(ESSDs\) only.
+    -   Provides burstable storage I/O performance for low-specification instances.
+    -   Provides high storage I/O performance based on large computing capacity.
+-   Network:
+    -   Provides an ultra-high packet forwarding rate.
+    -   Provides burstable network performance for low-specification instances.
+    -   Provides high network performance based on large computing capacity.
+-   Scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Frontend servers of massively multiplayer online \(MMO\) games
+    -   Web frontend servers
+    -   Data analysis, batch processing, and video encoding
+    -   High-performance scientific and engineering applications
+    -   Scenarios that require secure and trusted computing
+    -   Enterprise-level applications of various types and sizes
+    -   Blockchain scenarios
+
+Instance types
+
+|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.c7.large|2|4.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7.xlarge|4|8.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7.2xlarge|8|16.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7.3xlarge|12|24.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7.4xlarge|16|32.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.c7.6xlarge|24|48.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.c7.8xlarge|32|64.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.c7.16xlarge|64|128.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.c7.32xlarge|128|256.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
 ## c7t, security-enhanced compute optimized instance family
 
 c7t is in invitational preview. To use c7t, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
@@ -886,6 +981,49 @@ Instance types
 |ecs.ic5.2xlarge|8|8.0|None|2.5|800|No|2|4|10|
 |ecs.ic5.3xlarge|12|12.0|None|4.0|900|No|4|6|10|
 |ecs.ic5.4xlarge|16|16.0|None|5.0|1,000|No|4|8|20|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## r7, memory optimized instance family
+
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
+-   Supports the vTPM feature and implements trusted boots based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips to provide ultra-high security capabilities. During a trusted boot, all modules in the boot chain from the underlying server to the ECS instance are measured and verified.
+-   Compute:
+    -   Offers a CPU-to-memory ratio of 1:8.
+    -   Uses third-generation Intel® Xeon® Scalable processors for consistent computing performance.
+    -   Allows you to enable or disable Hyper-Threading.
+-   Storage:
+    -   Is an instance family in which all instances are I/O optimized.
+    -   Supports enhanced SSDs \(ESSDs\) only.
+    -   Provides burstable storage I/O performance on low-specification instances.
+    -   Provides high storage I/O performance based on large computing capacity.
+-   Network:
+    -   Provides ultra-high packet forwarding rates.
+    -   Provides burstable network performance on low-specification instances.
+    -   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
+    -   High-performance and in-memory databases
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Data analysis, data mining, and distributed memory caching
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
+    -   Scenarios that require secure and trusted computing
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.r7.large|2|16.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.xlarge|4|32.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.2xlarge|8|64.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.3xlarge|12|96.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.4xlarge|16|128.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.r7.6xlarge|24|192.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.r7.8xlarge|32|256.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.r7.16xlarge|64|512.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.r7.32xlarge|128|1024.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
 
 **Note:**
 
