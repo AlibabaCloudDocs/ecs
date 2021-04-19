@@ -7,6 +7,7 @@ keyword: [Alibaba Cloud, ECS, server, elastic computing]
 This topic describes the features of general purpose instance families of ECS and lists the instance types of each family.
 
 -   Recommended instance families
+    -   [g7, general purpose instance family](#g7)
     -   [g7t, security-enhanced general purpose instance family](#section_bew_6jv_c0k)
     -   [g7ne, general purpose instance family with enhanced network performance](#section_srt_k9b_at3)
     -   [g6se, storage enhanced instance family](#section_aky_rag_mve)
@@ -21,21 +22,67 @@ This topic describes the features of general purpose instance families of ECS an
     [sn2ne, general purpose instance family with enhanced network performance](#section_1ki_kxs_w47)
 
 
-## g7t, security-enhanced general purpose instance family
+## g7, general purpose instance family
 
-g7t is in invitational preview. To use g7t, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
--   Supports confidential computing based on Intel® SGX and up to 256 GiB encrypted memory to protect the confidentiality and integrity of key codes and data from malware attacks.
--   Supports SGX technology applicable to virtual machines and allows you to select instance types based on your needs.
--   Implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
+-   Supports the vTPM feature and implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
 -   Compute:
-    -   Offers a CPU-to-memory-to-encrypted memory ratio of 1:2:2.
-    -   Uses the third-generation Intel® Xeon® scalable processors that deliver consistent computing performance.
+    -   Offers a CPU-to-memory ratio of 1:4.
+    -   Uses third-generation Intel® Xeon® scalable processors for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
     -   Supports enhanced SSDs \(ESSDs\) only.
+    -   Provides burstable storage I/O performance on low-specification instances.
+    -   Provides high storage I/O performance based on large computing capacity.
+-   Network:
+    -   Provides ultra-high packet forwarding rates.
+    -   Provides burstable network performance on low-specification instances.
+    -   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Game servers
+    -   Small and medium-sized database systems, caches, and search clusters
+    -   Enterprise-level applications of various types and sizes
+    -   Websites and application servers
+    -   Data analysis and computing
+    -   Scenarios that require secure and trusted computing
+    -   Blockchain scenarios
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.g7.large|2|8.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.xlarge|4|16.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.2xlarge|8|32.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.3xlarge|12|48.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.4xlarge|16|64.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7.6xlarge|24|96.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.g7.8xlarge|32|128.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.g7.16xlarge|64|256.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.g7.32xlarge|128|512.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+
+## g7t, security-enhanced general purpose instance family
+
+g7t is in invitational preview. To use g7t, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+
+-   Supports encrypted computing based on Intel® SGX and up to 256 GiB encrypted memory to protect the confidentiality and integrity of key codes and data from malware attacks.
+-   Supports SGX technology applicable to virtual machines and allows you to select instance types based on your needs.
+-   Implements trusted boot based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Compute:
+    -   Offers a CPU-to-memory ratio of 1: 4. About 50% of memory is encrypted.
+    -   Uses third-generation Intel® Xeon® scalable processors for consistent computing performance.
+    -   Allows you to enable or disable Hyper-Threading.
+-   Storage:
+    -   Is an instance family in which all instances are I/O optimized.
+    -   Supports ESSDs only.
     -   Provides high storage I/O performance based on large computing capacity.
 -   Network:
     -   Provides ultra-high packet forwarding rates.
@@ -50,17 +97,17 @@ g7t is in invitational preview. To use g7t, [submit a ticket](https://workorder-
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Encrypted memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.g7t.large|2|4.0|4.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.xlarge|4|8.0|8.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.2xlarge|8|16.0|16.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.3xlarge|12|24.0|24.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.4xlarge|16|32.0|32.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
-|ecs.g7t.6xlarge|24|48.0|48.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
-|ecs.g7t.8xlarge|32|64.0|64.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
-|ecs.g7t.16xlarge|64|128.0|128.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
-|ecs.g7t.32xlarge|128|256.0|256.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Encrypted portion of memory|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|vTPM support|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|---------------------------|:--------------------|-----------------------------------|:---------------------------------------------|------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.g7t.large|2|8.0|4.0|None|Burstable up to 10.0|900|Yes|Yes|2|3|6|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.xlarge|4|16.0|8.0|None|Burstable up to 10.0|1,000|Yes|Yes|4|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.2xlarge|8|32.0|16.0|None|Burstable up to 10.0|1,600|Yes|Yes|8|4|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.3xlarge|12|48.0|24.0|None|Burstable up to 10.0|2,400|Yes|Yes|8|8|15|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.4xlarge|16|64.0|32.0|None|Burstable up to 25.0|3,000|Yes|Yes|8|8|30|Burstable up to 100|Burstable up to 6.0|
+|ecs.g7t.6xlarge|24|96.0|48.0|None|Burstable up to 25.0|4,500|Yes|Yes|12|8|30|100|6.0|
+|ecs.g7t.8xlarge|32|128.0|64.0|None|Burstable up to 25.0|6,000|Yes|Yes|16|8|30|150|8.0|
+|ecs.g7t.16xlarge|64|256.0|128.0|None|32.0|12,000|Yes|Yes|32|8|30|300|16.0|
+|ecs.g7t.32xlarge|128|512.0|256.0|None|64.0|24,000|Yes|Yes|32|15|30|600|32.0|
 
 **Note:**
 
@@ -74,7 +121,7 @@ g7ne is in invitational preview. To use g7ne, [submit a ticket](https://workorde
 -   Improves the network bandwidth and packet forwarding rate of a single instance.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Uses Intel® Xeon® Platinum 8369HB \(Cooper Lake\) or Intel® Xeon® Platinum 8369HC \(Cooper Lake\) processors that deliver a maximum turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
+    -   Uses Intel ® Xeon ® Platinum 8369HB \(Cooper Lake\) or Intel ® Xeon ® Platinum 8369HC \(Cooper Lake\) processors that deliver a turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
     -   Supports ESSDs only and provides ultra-high I/O performance.
@@ -91,9 +138,9 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.g7ne.large|2|8.0|None|1.5|25.0|900|Yes|450|2|3|10|10|0.75|
-|ecs.g7ne.xlarge|4|16.0|None|3.0|25.0|1,000|Yes|900|4|4|15|20|1.0|
-|ecs.g7ne.2xlarge|8|32.0|None|6.0|25.0|1,500|Yes|1,750|8|6|15|25|1.5|
+|ecs.g7ne.large|2|8.0|None|1.5|10.0|900|Yes|450|2|3|10|10|0.75|
+|ecs.g7ne.xlarge|4|16.0|None|3.0|10.0|1,000|Yes|900|4|4|15|20|1.0|
+|ecs.g7ne.2xlarge|8|32.0|None|6.0|15.0|1,500|Yes|1,750|8|6|15|25|1.5|
 |ecs.g7ne.4xlarge|16|64.0|None|12.5|25.0|3,000|Yes|3,500|16|8|30|40|2.5|
 |ecs.g7ne.8xlarge|32|128.0|None|25.0|None|6,000|Yes|7,000|16|8|30|75|5.0|
 |ecs.g7ne.12xlarge|48|192.0|None|40.0|None|12,000|Yes|8,000|32|8|30|100|8.0|
@@ -112,6 +159,10 @@ g6se is in invitational preview. To use g6se, [submit a ticket](https://workorde
 Features
 
 -   Delivers a sequential read/write performance of up to 32 Gbit/s per instance.
+-   Can have up to 64 data disks attached.
+
+    **Note:** You can attach a maximum of 16 data disks to an instance when you create the instance. If the instance needs more data disks, attach more data disks after the instance is created. For more information, see [Attach a data disk](/intl.en-US/Block Storage/Cloud disks/Attach a data disk.md).
+
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
@@ -133,15 +184,15 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.g6se.large|2|8.0|None|0.7|10.0|300|Yes|2|2|6|30|1.5|
-|ecs.g6se.xlarge|4|16.0|None|1.0|10.0|500|Yes|4|3|10|60|2.0|
-|ecs.g6se.2xlarge|8|32.0|None|1.5|10.0|800|Yes|8|4|10|90|3.0|
-|ecs.g6se.4xlarge|16|64.0|None|3.0|10.0|1,000|Yes|8|8|20|150|5.0|
-|ecs.g6se.8xlarge|32|128.0|None|6.0|None|2,000|Yes|16|8|20|300|10.0|
-|ecs.g6se.13xlarge|52|192.0|None|8.0|None|3,000|Yes|32|7|20|500|16.0|
-|ecs.g6se.26xlarge|104|384.0|None|16.0|None|6,000|Yes|52|15|20|900|32.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Maximum attached data disks|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|--------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|----------|:---------------------------------|----------------------------|---------------------------|---------------|-------------------------|
+|ecs.g6se.large|2|8.0|None|0.7|10.0|300|Yes|2|2|6|16|30|1.5|
+|ecs.g6se.xlarge|4|16.0|None|1.0|10.0|500|Yes|4|3|10|16|60|2.0|
+|ecs.g6se.2xlarge|8|32.0|None|1.5|10.0|800|Yes|8|4|10|16|90|3.0|
+|ecs.g6se.4xlarge|16|64.0|None|3.0|10.0|1,000|Yes|8|8|20|24|150|5.0|
+|ecs.g6se.8xlarge|32|128.0|None|6.0|None|2,000|Yes|16|8|20|32|300|10.0|
+|ecs.g6se.13xlarge|52|192.0|None|8.0|None|3,000|Yes|32|7|20|48|500|16.0|
+|ecs.g6se.26xlarge|104|384.0|None|16.0|None|6,000|Yes|52|15|20|64|900|32.0|
 
 **Note:**
 
@@ -154,7 +205,7 @@ Features
 
 -   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
-    -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a maximum turbo frequency of 3.3 GHz for consistent computing performance.
+    -   Uses 2.6 GHz AMD EPYC TM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
     -   Offers a CPU-to-memory ratio of 1:4.
     -   Allows you to enable or disable Hyper-Threading.
 
@@ -176,7 +227,7 @@ Features
     -   Websites and application servers
     -   Small and medium-sized database systems, caches, and search clusters
     -   Game servers
-    -   Test and development, such as DevOps
+    -   Scenarios where applications such as DevOps applications are developed and tested
     -   Other general-purpose enterprise-level applications
 
 Instance types
@@ -207,7 +258,7 @@ Features
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+    -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
         **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
@@ -256,7 +307,7 @@ Features
 
 -   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
 -   Offers a CPU-to-memory ratio of 1:4.
--   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
 -   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
@@ -269,7 +320,7 @@ Features
 
 -   Provides ultra-high packet forwarding rates.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
@@ -314,13 +365,13 @@ Features
 
     **Note:** The maximum performance of disks varies with instance families. A single instance of this instance family can deliver up to 200,000 IOPS. For higher storage I/O performance, we recommend that you use g6se.
 
--   Provides high storage I/O performance based on large compute capacity.
+-   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Provides ultra-high packet forwarding rates.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Provides high network performance based on large computing capacity.
 -   Supports changes to instance types in the c6 or r6 instance family.
@@ -365,7 +416,7 @@ Features
 
 -   Provides ultra-high packet forwarding rates.
 
-    **Note:** The maximum network performance varies with instance families. For higher concurrent connection capabilities, we recommend that you use g5ne.
+    **Note:** The network performance varies based on the instance family. For higher concurrent connection and network packet forwarding capabilities, we recommend that you use g7ne.
 
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
