@@ -48,13 +48,13 @@ Alibaba Cloud Linux 3是免费镜像，但当您选用Alibaba Cloud Linux 3镜�
 
 ## 更新记录
 
-关于Alibaba Cloud Linux 3镜像发布记录的更多信息，请参见[Alibaba Cloud Linux 3镜像发布记录]()。
+关于Alibaba Cloud Linux 3镜像发布记录的更多信息，请参见[Alibaba Cloud Linux 3镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 3/Alibaba Cloud Linux 3镜像发布记录.md)。
 
 ## 技术支持
 
 阿里云为Alibaba Cloud Linux 3提供如下技术支持：
 
--   您可以通过以下方式获得免费的技术支持：
+-   为期8年的长期支持，包括安全更新和问题修复，于2029年04月30日结束版本生命周期。您可以通过以下方式获得免费的技术支持：
     -   [提交工单](https://selfservice.console.aliyun.com/ticket/createIndex.htm)
     -   [阿里云开发者社区](https://developer.aliyun.com/ask/?spm=a2c6h.13524658#/?_k=npz51r)
     -   [GitHub](https://alibaba.github.io/cloud-kernel/os.html?spm=5176.cnalinux.0.0.1f8323d1WpS5ZY&aly_as=32Di8ZOj)
