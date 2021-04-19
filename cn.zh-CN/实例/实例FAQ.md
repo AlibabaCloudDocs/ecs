@@ -629,9 +629,9 @@ SCC实例支持包年包月和按周付费。
 
 支持使用预留实例券的规格族包括：
 
--   通用型：g6e、g6、g5、g5ne、sn2ne
--   计算型：c6e、c6、c5、ic5、sn1ne
--   内存型：r6e、r6、r5、re6、re4、se1ne
+-   通用型：g7、g6e、g6、g5、g5ne、sn2ne
+-   计算型：c7、c6e、c6、c5、ic5、sn1ne
+-   内存型：r7、r6e、r6、r5、re6、re4、se1ne
 -   大数据型：d2s
 -   本地SSD型：i2、i2g
 -   高主频型：hfc6、hfc5、hfg6、hfg5、hfr6
