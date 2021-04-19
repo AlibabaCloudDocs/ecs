@@ -347,6 +347,16 @@
  -   `CpuOptions.ThreadPerCore=1`表示关闭CPU超线程。
 -   仅部分实例规格支持设置CPU线程数。 |
 |CpuOptions.Numa|String|否|1|CPU Numa节点数。 |
+|SecurityOptions.TrustedSystemMode|String|否|vTPM|可信系统模式。取值：vTPM
+
+ 目前，可信系统模式支持的实例规格族：g7、c7、r7以及七代安全增强型（g7t、c7t、r7t）。
+
+ 当您创建以上实例规格族的ECS实例时，需要设置该参数。具体说明如下：
+
+ -   如果您使用阿里云可信系统，请将该参数值设置为vTPM，在实例启动时即可通过阿里云可信系统完成可信校验。
+-   如果您不使用阿里云可信系统，可以不设置该参数值。
+
+ 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。 |
 |HttpEndpoint|String|否|enabled|是否启用实例元数据的访问通道。取值范围：
 
  -   enabled：启用
