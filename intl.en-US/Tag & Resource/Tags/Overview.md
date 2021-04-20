@@ -99,10 +99,6 @@ The following table lists Alibaba Cloud services and resources that support tags
 -   Unbind a tag: [UntagResources]()
 -   Search for resources based on tags: [DescribeCens]() |
 |Smart Access Gateway \(SAG\)|Cloud Connect Network \(CCN\)|Query resources based on tags: [DescribeCloudConnectNetworks](/intl.en-US/API Reference/Cloud Connect Network/DescribeCloudConnectNetworks.md)|
-|Cloud Security Scanner|Assets|-   Create assets with tags: [AddAssets](/intl.en-US/API Reference/Assets/AddAssets.md)
--   Query assets based on tags: [DescribeAssetsByTags](/intl.en-US/API Reference/Assets/DescribeAssetsByTags.md)
--   Add a tag: [AddAssetTags](/intl.en-US/API Reference/Assets/AddAssetTags.md)
--   Query the tags of the current user: [DescribeUserTags](/intl.en-US/API Reference/Assets/DescribeUserTags.md) |
 |Operation Orchestration Service \(OOS\)|-   OOS template
 -   OOS operation tasks
 
