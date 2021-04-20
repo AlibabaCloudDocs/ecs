@@ -126,7 +126,15 @@ RabbitMQ使用Erlang语言编写服务器端，并支持多种客户端，如Pyt
 
         **说明：** 该命令只在当前运行的系统环境下启动RabbitMQ，一旦服务器重启，RabbitMQ服务将不会自动启动。因此，建议您通过阿里云的云助手功能，设置RabbitMQ开机自启动。具体操作，请参见[通过云助手设置RabbitMQ开机自启动](#section_9ke_67a_pwt)。
 
-    2.  为保证数据安全，建议您运行以下命令，删除默认用户。
+    2.  运行以下命令，启动RabbitMQ监控插件。
+
+        ```
+        rabbitmq-plugins enable rabbitmq_management
+        ```
+
+        如果您需要关闭RabbitMQ监控插件，可以运行`rabbitmq-plugins disable rabbitmq_management`命令。
+
+    3.  为保证数据安全，建议您运行以下命令，删除默认用户。
 
         RabbitMQ默认的账号用户名和密码都是`guest`。
 
@@ -134,7 +142,7 @@ RabbitMQ使用Erlang语言编写服务器端，并支持多种客户端，如Pyt
         rabbitmqctl delete_user guest
         ```
 
-    3.  创建RabbitMQ管理员用户。
+    4.  创建RabbitMQ管理员用户。
 
         1.  运行以下命令，创建一个新用户。
 
