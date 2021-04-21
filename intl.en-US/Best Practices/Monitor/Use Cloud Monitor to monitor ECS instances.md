@@ -10,6 +10,8 @@ Before you begin, perform the following operations:
 
 The dashboard feature of Cloud Monitor provides you with system-wide visibility into resource utilization and operational health. In this topic, the CPU utilization, memory usage, and disk usage of ECS instances are separately displayed and the four metrics of ApsaraDB RDS instances are displayed in two groups.
 
+![Dashboard metrics](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5134798161/p73804.png)
+
 In this example, a website is used to describe how to configure Cloud Monitor. ECS, ApsaraDB RDS, OSS, and SLB instances are used.
 
 ![Architecture](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5414488951/p12496.png)
