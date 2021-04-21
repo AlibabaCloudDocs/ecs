@@ -60,7 +60,7 @@ In addition to initiative alert, you can also configure custom alert rules for y
 
 **Note:**
 
-        -   For information about the ECS metrics of alert rules, see[Metrics](/intl.en-US/Host monitoring/Metrics.md).
+        -   For information about the ECS metrics of alert rules, see [Metrics](/intl.en-US/Host monitoring/Metrics.md).
         -   You can click **Add Alert Rule** to create multiple alert rules. |
         |**Mute For**|Specifies the mute period. If the alert is not cleared within the mute period, a new alert notification is sent when the mute period ends.|
         |**Validity Period**|Specifies the period during which the alert rule is in effect. The system monitors the metrics and generates alerts only when the alert rule is in effect.|
