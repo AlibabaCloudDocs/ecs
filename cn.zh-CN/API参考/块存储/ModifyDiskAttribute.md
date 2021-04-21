@@ -16,6 +16,7 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|ModifyDiskAttribute|系统规定参数。取值：ModifyDiskAttribute |
+|RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |DiskId|String|否|d-bp1famypsnar20bv\*\*\*\*|待修改明细的磁盘ID。
 
  **说明：** `DiskId`和`DiskIds.N`两个参数不能同时被调用，请您根据需求任选其一传值。 |
@@ -52,6 +53,7 @@
 
 ```
 https://ecs.aliyuncs.com/?Action=ModifyDiskAttribute
+&RegionId=cn-hangzhou
 &DiskId=d-bp1famypsnar20bv****
 &DiskName=MyDiskName
 &<公共请求参数>
@@ -59,7 +61,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskAttribute
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyDiskAttributeResponse>
@@ -67,7 +69,7 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskAttribute
 </ModifyDiskAttributeResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
