@@ -979,7 +979,7 @@ View the details about and solution to the CentOS DNS resolution timeout problem
 
     You can perform the following steps to solve this problem:
 
-    1.  Download the [fix\_dns.sh](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/59344/cn_zh/1505957231428/fix_dns%20%281%29.sh) script.
+    1.  Download the [fix\_dns.sh](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/59344/cn_zh/1505957231428/fix_dns%20%281%29.sh) script.
     2.  Place the downloaded script in the /tmp directory of the CentOS system.
     3.  Run the bash /tmp/fix\_dns.sh command to execute the script.
 -   Script role
