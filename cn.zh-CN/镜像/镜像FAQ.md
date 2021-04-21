@@ -997,7 +997,7 @@ ECS实例间迁移步骤如下：
 
     请按下列步骤操作修复此问题：
 
-    1.  下载脚本[fix\_dns.sh](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/59344/cn_zh/1505957231428/fix_dns%20%281%29.sh)。
+    1.  下载脚本[fix\_dns.sh](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/59344/cn_zh/1505957231428/fix_dns%20%281%29.sh)。
     2.  将下载的脚本放至CentOS系统的/tmp目录下。
     3.  运行bash /tmp/fix\_dns.sh命令，执行脚本。
 -   脚本作用
