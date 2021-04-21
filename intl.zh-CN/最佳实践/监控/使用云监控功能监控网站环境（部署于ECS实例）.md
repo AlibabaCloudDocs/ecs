@@ -9,7 +9,7 @@
 
 利用云监控的Dashboard功能，给您业务系统的云资源设置一个全局监控总览，可随时检查整个业务系统资源的健康状态。为了更好地监控大屏展示效果，这里将ECS的CPU、内存、磁盘的使用率单独分组展示，将RDS的四项指标分两组展示。
 
-![指标展示效果图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9575688951/p73804.png)
+![指标展示效果图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3034798161/p73804.png)
 
 本文中以一个网站为示例，介绍如何配置使用云监控。本示例中，使用了ECS、RDS、OSS和负载均衡。
 
@@ -48,7 +48,7 @@
 
 在云服务器外层的监控服务，站点监控主要用于模拟真实用户访问情况，实时测试业务可用性，有助于排查处理故障。
 
-![设置站点监控](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9575688951/p37762.png)
+![设置站点监控](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4257888161/p37762.png)
 
 如果以上监控选项不能满足您的实际业务监控需求，您可以使用自定义监控。详情请参见[概览](/intl.zh-CN/自定义监控/概览.md)。
 
