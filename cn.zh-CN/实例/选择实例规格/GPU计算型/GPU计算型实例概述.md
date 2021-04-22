@@ -53,10 +53,12 @@ gn7包括的实例规格及指标数据如下表所示。
 
 ## 轻量级GPU计算型实例规格族vgn6i
 
-该规格族正在邀测中，如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)。
-
 vgn6i的特点如下：
 
+-   如果您需要vgn6i实例支持OpenGL图形显示等图形功能，请使用NVIDIA vGPU相关软件，软件License的获取方式和实例规格、实例镜像类型有关：
+    -   ecs.vgn6i-m4-vws.xlarge和ecs.vgn6i-m8-vws.2xlarge：已包含NVIDIA Quadro vWS的软件License，您可以使用任意镜像类型。
+    -   其他vgn6i实例（Windows镜像）：创建实例时在镜像市场中搜索关键词GRID，并选用预装GRID驱动的收费镜像。这些收费镜像带有已经激活License的GRID驱动，不用再手动安装GRID驱动。关于如何选择镜像市场镜像，请参见[创建配备NVIDIA GPU的实例]()。
+    -   其他vgn6i实例（Linux镜像）：请自行向[NVIDIA](https://www.nvidia.com/object/nvidia-enterprise-account.html)购买GRID License，并在创建实例后手动安装GRID驱动和激活License。关于如何安装GRID驱动，请参见[在GPU虚拟化型实例中安装GRID驱动（Linux）](/cn.zh-CN/实例/选择实例规格/GPU计算型/在vgn6i和vgn5i实例中安装GRID驱动（Linux）.md)。
 -   计算：
     -   采用NVIDIA T4 GPU计算加速器
     -   实例包含分片虚拟化后的虚拟GPU
@@ -83,6 +85,8 @@ vgn6i包括的实例规格及指标数据如下表所示。
 |:---|:---|:------|:--|:----|:-----------|:----------|:--|:---|-------|
 |ecs.vgn6i-m4.xlarge|4|23.0|NVIDIA T4 \* 1/4|16GB \* 1/4|3.0|50|2|4|10|
 |ecs.vgn6i-m8.2xlarge|10|46.0|NVIDIA T4 \* 1/2|16GB \* 1/2|4.0|80|4|5|20|
+|ecs.vgn6i-m4-vws.xlarge|4|23.0|NVIDIA T4 \* 1/4|16GB \* 1/4|3.0|50|2|4|10|
+|ecs.vgn6i-m8-vws.2xlarge|10|46.0|NVIDIA T4 \* 1/2|16GB \* 1/2|4.0|80|4|5|20|
 
 **说明：**
 
@@ -211,6 +215,9 @@ gn6v包括的实例规格及指标数据如下表所示。
 
 vgn5i的特点如下：
 
+-   如果您需要vgn5i实例支持OpenGL图形显示等图形功能，请使用NVIDIA vGPU相关软件，软件License的获取方式和实例镜像类型有关：
+    -   vgn5i实例（Windows镜像）：创建实例时在镜像市场中搜索关键词GRID，并选用预装GRID驱动的收费镜像。这些收费镜像带有已经激活License的GRID驱动，不用再手动安装GRID驱动。关于如何选择镜像市场镜像，请参见[创建配备NVIDIA GPU的实例]()。
+    -   vgn5i实例（Linux镜像）：请自行向[NVIDIA](https://www.nvidia.com/object/nvidia-enterprise-account.html)购买GRID License，并在创建实例后手动安装GRID驱动和激活License。关于如何安装GRID驱动，请参见[在GPU虚拟化型实例中安装GRID驱动（Linux）](/cn.zh-CN/实例/选择实例规格/GPU计算型/在vgn6i和vgn5i实例中安装GRID驱动（Linux）.md)。
 -   计算：
     -   采用NVIDIA P4 GPU计算加速器
     -   实例包含分片虚拟化后的虚拟GPU
