@@ -142,7 +142,7 @@ To run Cloud Assistant commands only on Linux instances, you can perform the fol
 
 ## Run Cloud Assistant commands on Windows instances as a regular user
 
-To run Cloud Assistant commands on Windows instances, you must provide the username and password. For data security, you must host your logon password in Operation Orchestration Service \(OOS\) and perform encryption by using Key Management Service \(KMS\). For more information, see [Introduction to OOS](https://www.alibabacloud.com/help/doc-detail/120556.htm)and [What is Key Management Service?](/intl.en-US/Product Introduction/What is Key Management Service?.md)
+To run Cloud Assistant commands on Windows instances, you must provide the username and password. For data security, you must host your logon password in Operation Orchestration Service \(OOS\) and perform encryption by using Key Management Service \(KMS\). For more information, see [Introduction to OOS](https://www.alibabacloud.com/help/doc-detail/120556.htm) and [What is Key Management Service?](/intl.en-US/Product Introduction/What is Key Management Service?.md)
 
 You can perform the following operations to limit a RAM user from running Cloud Assistant commands as the root or system user.
 
@@ -326,7 +326,7 @@ You can perform the following operations to limit a RAM user from running Cloud 
 
     4.  Configure the RAM role for the ECS instance. For more information, see [Bind an instance RAM role](/intl.en-US/Security/Instance RAM roles/Bind an instance RAM role.md).
 
-6.  Create encryption parameters in OOS to manage the logon passwords for Windows instances. For more information, see[Manage encryption parameters]().
+6.  Create encryption parameters in OOS to manage the logon passwords for Windows instances.
 
     **Note:** The encryption parameters must be located within the same region as the ECS instance. Otherwise, the logon password of the ECS instance cannot be hosted in OOS.
 
