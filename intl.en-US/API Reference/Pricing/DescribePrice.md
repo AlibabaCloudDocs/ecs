@@ -7,7 +7,7 @@ You can call this operation to query the most recent prices of ECS resources.
 -   The required parameters vary with types of resources whose prices you are querying.
     -   When the `ResourceType` parameter is set to instance, you must specify the `InstanceType` parameter.
     -   When the `ResourceType` parameter is set to disk, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the ResourceType parameter is set to `disk`, only pay-as-you-go disk prices are returned. This means that the `PriceUnit` parameter can be set only to `Hour`.
-    -   When the `ResourceType`parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
+    -   When the `ResourceType` parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
 -   When the `ResourceType` parameter is set to bandwidth, only prices calculated based on the `PayByTraffic` billing method are returned.
 -   When the `ResourceType` parameter is set to instance, the prices of up to four data disks can be queried.
 -   By default, the `ChargeType` parameter is set to `PostPaid`. You can specify the `PriceUnit` parameter to query prices of ECS resources that have different billing cycles.
