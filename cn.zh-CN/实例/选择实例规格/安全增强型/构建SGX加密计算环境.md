@@ -10,47 +10,45 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
 
 ## 构建SGX加密计算环境
 
-为开发SGX程序，您需要在vSGX实例上安装运行时（runtime）、SDK并配置远程证明服务。建议您使用Alibaba Cloud Linux 2.1903 64位UEFI版镜像获得更好的使用体验。Alibaba Cloud Linux 2.1903 64位UEFI版镜像已搭载SGX驱动，并提供完全兼容Intel® SGX SDK的阿里云TEE SDK。
+为开发SGX程序，您需要在vSGX实例上安装运行时（runtime）、SDK，并配置远程证明服务。建议您使用Alibaba Cloud Linux 2.1903 64位UEFI版镜像获得更好的使用体验。Alibaba Cloud Linux 2.1903 64位UEFI版镜像已搭载SGX驱动，并提供完全兼容Intel® SGX SDK的阿里云TEE SDK。
 
 1.  安装阿里云SGX运行时。
 
     **说明：** 如果您通过ECS管理控制台创建vSGX实例，会自动安装阿里云SGX运行时。您可以跳过本步骤，直接开始安装阿里云TEE SDK。
 
-    1.  安装protobuf。
+    1.  导入阿里云加密计算yum软件源。
+
+        -   公网地址格式：`https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/repo/alinux/enclave-expr.repo`。
+        -   VPC内网地址格式：`https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/repo/alinux/enclave-expr.repo`。
+        请将上述地址中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如，华北2（北京）地域中的VPC内网导入示例：
 
         ```
-        yum install -y protobuf
+        sudo yum install -y yum-utils && \
+            sudo yum-config-manager --add-repo \
+            https://enclave-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/repo/alinux/enclave-expr.repo
         ```
 
-    2.  下载阿里云SGX运行时安装文件。
-
-        -   公网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin`。
-        -   VPC内网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin`。
-        请将上述地址中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如，华北2（北京）地域中的VPC内网下载示例：
+    2.  安装阿里云SGX运行时。
 
         ```
-        wget https://enclave-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/download/linux/x86_64/sgx_runtime/sgx_linux_x64_runtime_2.13.100.4.bin
-        ```
-
-    3.  安装阿里云SGX运行时。
-
-        ```
-        sh sgx_linux_x64_runtime_2.13.100.4.bin
+        yum install -y \
+            libsgx-ae-le libsgx-ae-pce libsgx-ae-qe3 libsgx-ae-qve \
+            libsgx-aesm-ecdsa-plugin libsgx-aesm-launch-plugin libsgx-aesm-pce-plugin libsgx-aesm-quote-ex-plugin \
+            libsgx-dcap-default-qpl libsgx-dcap-ql libsgx-dcap-quote-verify \
+            libsgx-enclave-common libsgx-launch libsgx-pce-logic libsgx-qe3-logic libsgx-quote-ex \
+            libsgx-ra-network libsgx-ra-uefi libsgx-uae-service libsgx-urts sgx-ra-service \
+            sgx-aesm-service
         ```
 
         **说明：** SGX AESM（Architectural Enclave Service Manager）负责管理启动Enclave、密钥配置、远程认证等服务，默认安装路径为/opt/intel/sgx-aesm-service。
 
 2.  安装阿里云TEE SDK。
 
+    ```
+    yum install -y teesdk
+    ```
+
     阿里云TEE SDK完全兼容Intel® SGX SDK，安装阿里云TEE SDK后，您可以参见[Intel® SGX Developer Reference](https://download.01.org/intel-sgx/sgx-linux/2.13/docs/Intel_SGX_Developer_Reference_Linux_2.13_Open_Source.pdf)开发SGX程序。
-
-    -   公网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID].aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm`。
-    -   VPC内网下载地址格式：`https://enclave-[Region-ID].oss-[Region-ID]-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm`。
-    请将上述地址中的\[Region-ID\]替换为vSGX实例所在地域的ID。例如，华北2（北京）地域中的VPC内网安装示例：
-
-    ```
-    yum install -y https://enclave-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/sdk/installer/teesdk-0.1.0-1.1.al7.x86_64.rpm
-    ```
 
     **说明：** 阿里云TEE SDK中包含的Intel® SGX SDK的默认安装目录为/opt/alibaba/teesdk/intel/sgxsdk/。
 
@@ -149,15 +147,11 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
         make
         ```
 
-        ![make-enclave](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1874007161/p256785.png)
-
 4.  运行编译出的可执行文件。
 
     ```
     ./app
     ```
-
-    ![run-enclave](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2874007161/p256812.png)
 
 
 ## 验证SGX功能示例二：SGX远程证明示例
@@ -207,15 +201,11 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
         make
         ```
 
-        ![make-quote-generation](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2874007161/p256814.png)
-
 4.  运行编译出的可执行文件生成Quote。
 
     ```
     ./app
     ```
-
-    ![run-quote-generation](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2874007161/p256819.png)
 
 5.  编译挑战方示例代码QuoteVerificationSample。
 
@@ -231,8 +221,6 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
         make
         ```
 
-        ![make-quote-verification](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2874007161/p256822.png)
-
 6.  对QuoteVerificationSample Enclave进行签名。
 
     发布对外的正式版Enclave时，您需要提供签名密钥进行签名操作。
@@ -241,14 +229,10 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
     sgx_sign sign -key Enclave/Enclave_private_sample.pem -enclave enclave.so -out enclave.signed.so -config Enclave/Enclave.config.xml
     ```
 
-    ![sign-enclave](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2874007161/p256827.png)
-
 7.  运行编译出的可执行文件验证Quote。
 
     ```
     ./app
     ```
-
-    ![run-quote-verification](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2874007161/p256828.png)
 
 
