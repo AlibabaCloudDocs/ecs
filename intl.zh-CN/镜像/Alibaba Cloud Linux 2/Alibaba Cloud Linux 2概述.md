@@ -14,8 +14,8 @@ Alibaba Cloud Linux 2适用于下列场景。
 
 -   各种云场景工作负载。例如数据库、云原生容器、数据分析、Web应用程序，以及生产环境中的其他工作负载。
 -   多种实例规格族，包括弹性裸金属服务器。详情请参见[实例规格族](/intl.zh-CN/实例/实例规格族.md)。
-    -   支持的实例vCPU范围为1 vCPU~160 vCPU。
-    -   支持的实例内存范围为0.5 GiB~3840 GiB。
+    -   支持的实例vCPU范围为1 vCPU~768 vCPU。
+    -   支持的实例内存范围为0.5 GiB~12288 GiB。
     -   不支持非I/O优化实例。
 
 ## 优势
@@ -48,8 +48,8 @@ Alibaba Cloud Linux 2适用于下列场景。
 
 |镜像|最新版本镜像ID|说明|
 |--|--------|--|
-|Alibaba Cloud Linux 2.1903 LTS 64位|aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd|Alibaba Cloud Linux 2操作系统的默认标准镜像。|
-|Alibaba Cloud Linux 2.1903 64位 快速启动版|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210218.vhd|该镜像支持Qboot（quick boot）快速启动，基于Alibaba Cloud Kernel，并直接从内核引导虚拟机启动的定制化镜像。使用该镜像创建的ECS实例相比其它镜像创建的ECS实例，启动速度得到了极大的提升，并且默认运行时与标准镜像完全一致。快速启动版镜像的相关说明如下：
+|Alibaba Cloud Linux 2.1903 LTS 64位|aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd|Alibaba Cloud Linux 2操作系统的默认标准镜像。|
+|Alibaba Cloud Linux 2.1903 64位 快速启动版|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210325.vhd|该镜像支持Qboot（quick boot）快速启动，基于Alibaba Cloud Kernel，并直接从内核引导虚拟机启动的定制化镜像。使用该镜像创建的ECS实例相比其它镜像创建的ECS实例，启动速度得到了极大的提升，并且默认运行时与标准镜像完全一致。快速启动版镜像的相关说明如下：
 
 -   只对实例的初次启动加速，后续启动实例的速度将保持正常水准。
 -   优化加速内存初始化的过程，模块化了启动耗时的鼠标等设备，加速内核引导速度。
@@ -57,8 +57,8 @@ Alibaba Cloud Linux 2适用于下列场景。
 -   该镜像的内核版本无法修改内核启动参数。
 -   不支持的实例规格族：GPU计算型、GPU虚拟化型、FPGA计算型、NPU计算型、异构服务型、超级计算集群（SCC）、安全增强型等。
 -   支持的地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）。 |
-|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像，实例规格族包括ecs.ebmg6a、ecs.ebmc6a、ecs.ebmr6a。 |
-|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210218.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像，实例规格族包括ecs.g6t、ecs.c6t。 |
+|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/intl.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
+|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/intl.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
 
 ## 费用
 
