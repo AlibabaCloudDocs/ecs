@@ -127,5 +127,5 @@ After the fstab file is configured, the system automatically attaches the data d
 
 ## FAQ
 
-[System startup exceptions due to the configuration error of the /etc/fstab file on Linux instances](https://help.aliyun.com/knowledge_detail/41460.html)
+[The/etc/fstab file of a Linux instance is incorrectly configured, leading to a system startup exception.](https://www.alibabacloud.com/help/faq-detail/41460.htm)
 
