@@ -53,10 +53,9 @@ gn7包括的实例规格及指标数据如下表所示。
 
 ## 轻量级GPU计算型实例规格族vgn6i
 
-该规格族正在邀测中，如需使用，请[提交工单](https://workorder-intl.console.aliyun.com/console.htm)。
-
 vgn6i的特点如下：
 
+-   如果您需要vgn6i实例支持OpenGL图形显示等图形功能，请自行向[NVIDIA](https://www.nvidia.com/object/nvidia-enterprise-account.html)购买GRID License，并在创建实例后手动安装GRID驱动和激活License。
 -   计算：
     -   采用NVIDIA T4 GPU计算加速器
     -   实例包含分片虚拟化后的虚拟GPU
@@ -211,6 +210,7 @@ gn6v包括的实例规格及指标数据如下表所示。
 
 vgn5i的特点如下：
 
+-   如果您需要vgn5i实例支持OpenGL图形显示等图形功能，请自行向[NVIDIA](https://www.nvidia.com/object/nvidia-enterprise-account.html)购买GRID License，并在创建实例后手动安装GRID驱动和激活License。
 -   计算：
     -   采用NVIDIA P4 GPU计算加速器
     -   实例包含分片虚拟化后的虚拟GPU
