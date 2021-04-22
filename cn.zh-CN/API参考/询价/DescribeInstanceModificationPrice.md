@@ -18,7 +18,7 @@
 |--|--|----|---|--|
 |Action|String|否|DescribeInstanceModificationPrice|系统规定参数。取值：DescribeInstanceModificationPrice |
 |InstanceId|String|是|i-bp1f2o4ldh8l\*\*\*\*|需要查询升配价格的实例ID。 |
-|RegionId|String|是|cn-hangzhou|地域ID。需要与您指定的实例ID所在地域保持一致。 |
+|RegionId|String|是|cn-hangzhou|地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |InstanceType|String|否|ecs.g6e.large|实例升配的目标实例规格。建议您先调用[DescribeResourcesModification](~~66187~~)查询指定可用区内可升配的实例规格信息。
 
  **说明：** 查询时，实例规格参数（`InstanceType`）和数据盘参数（`DataDisk.N.*`）不得同时为空，必须至少指定一个。 |
