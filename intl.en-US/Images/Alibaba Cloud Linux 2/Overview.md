@@ -14,8 +14,8 @@ Alibaba Cloud Linux 2 is suitable for the following scenarios:
 
 -   Various workloads in cloud environments, such as databases, cloud native containers, data analytics, web applications, and other workloads in the production environment.
 -   Various instance families including ECS Bare Metal Instance families. For more information, see [Instance families](/intl.en-US/Instance/Instance families.md).
-    -   Alibaba Cloud Linux 2 supports instance types that have 1 to 160 vCPUs.
-    -   Alibaba Cloud Linux 2 supports instance types that have memory of 0.5 GiB to 3,840 GiB.
+    -   Alibaba Cloud Linux 2 supports instance types that have 1 to 768 vCPUs.
+    -   Alibaba Cloud Linux 2 supports instance types that have memory of 0.5 GiB to 12,288 GiB.
     -   Alibaba Cloud Linux 2 does not support non-I/O optimized instances.
 
 ## Benefits
@@ -30,7 +30,7 @@ Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following
 ## Features
 
 -   Alibaba Cloud Linux 2 is distributed with the latest version of the Alibaba Cloud kernel. The kernel has the following features:
-    -   The Alibaba Cloud kernel is based on Linux kernel V4.19 with the LTS from the kernel community. The Alibaba Cloud kernel is optimized for cloud-based scenarios, improved performance, and bug fixes. For more information, see [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes.md).
+    -   The Alibaba Cloud kernel is based on Linux kernel V4.19 with the LTS from the kernel community. The Alibaba Cloud kernel is optimized for cloud-based scenarios, improved performance, and bug fixes. For more information, see [Release notes](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes.md).
     -   Alibaba Cloud Linux 2 provides customized and optimized kernel startup parameters and system configuration parameters for the ECS instance environment.
     -   Alibaba Cloud Linux 2 provides kdump, which is a kernel dumping mechanism used in case of operating system failures. You can enable or disable this feature without restarting the operating system.
     -   Alibaba Cloud Linux 2 provides Kernel Live Patching \(KLP\).
@@ -48,8 +48,8 @@ Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following
 
 |Image|ID of the latest version|Description|
 |-----|------------------------|-----------|
-|Alibaba Cloud Linux 2.1903 LTS 64-bit|aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd|The default standard image version of Alibaba Cloud Linux 2.|
-|Alibaba Cloud Linux 2.1903 64-bit \(Quick Start\)|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210120.vhd|This image is a customized image based on the Alibaba Cloud kernel. It supports quick boot \(Qboot\) and starts instances directly from the kernel. Instances created from images of this version start faster than those created from other images, and have the same default runtime environment as those created from images of standard versions. This image version has the following characteristics:
+|Alibaba Cloud Linux 2.1903 LTS 64-bit|aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd|The default standard image version of Alibaba Cloud Linux 2.|
+|Alibaba Cloud Linux 2.1903 64-bit \(Quick Start\)|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210325.vhd|This image is a customized image based on the Alibaba Cloud kernel. It supports quick boot \(Qboot\) and starts instances directly from the kernel. Instances created from images of this version start faster than those created from other images, and have the same default runtime environment as those created from images of standard versions. This image version has the following characteristics:
 
 -   It accelerates only the initial startup of instances, and subsequently starts instances at a normal speed.
 -   It optimizes and accelerates the process of initializing memory, modularizes devices such as mice that take time to start, and speeds up the kernel boot.
@@ -57,8 +57,8 @@ Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following
 -   Images of this version are available in the following regions: China \(Hangzhou\), China \(Shenzhen\), China \(Beijing\), China \(Zhangjiakou\), and China \(Hong Kong\).
 
 **Note:** The kernel startup parameters of the quick start version cannot be modified. |
-|Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210120.vhd|This image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud AMD-compatible instances. This image version supports only the Unified Extensible Firmware Interface \(UEFI\) boot mode. **Note:** Images of this version can be used to create instances of only the following Alibaba Cloud AMD-compatible Bare Metal Instance families: ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a. |
-|Alibaba Cloud Linux 2.1903 64-bit \(Trusted\)|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210120.vhd|The image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud trusted instances. **Note:** Images of this version can be used to create instances of only the ecs.g6t and ecs.c6t trusted instance families. |
+|Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|This image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud AMD-compatible instances. This image version supports only the Unified Extensible Firmware Interface \(UEFI\) boot mode. **Note:** Images of this version can be used to create instances of only the following Alibaba Cloud AMD-compatible Bare Metal Instance families: ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a. |
+|Alibaba Cloud Linux 2.1903 64-bit \(Trusted\)|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|The image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud trusted instances. **Note:** Images of this version can be used to create instances of only the ecs.g6t and ecs.c6t trusted instance families. |
 
 ## Billing
 
@@ -207,7 +207,7 @@ You can use the following methods to obtain and use Alibaba Cloud Linux 2 images
 
 ## Update history
 
--   For information about the release notes of Alibaba Cloud Linux 2, see [Release notes of Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes.md).
+-   For information about the release notes of Alibaba Cloud Linux 2, see [Release notes](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes.md).
 -   For information about the CVE updates of Alibaba Cloud Linux 2, see [Alibaba Cloud Linux 2.1903 Security Advisories](http://mirrors.aliyun.com/alinux/cve/alinux2.xml).
 
 ## Technical support
