@@ -73,6 +73,14 @@
 -   Stopping：停止中
 -   Stopped：已停止 |
 |LockReason|String|否|security|资源被锁定的原因。 |
+|Filter.1.Key|String|否|CreationStartTime|查询资源时的筛选键，取值必须为`CreationStartTime`。同时设置`Filter.1.Key`和`Filter.1.Value`可以查询在指定时间点后创建的资源信息。 |
+|Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键，取值必须为`CreationEndTime`。同时设置`Filter.2.Key`和`Filter.2.Value`可以查询在指定时间点前创建的资源信息。 |
+|Filter.3.Key|String|否|ExpiredStartTime|查询资源时的筛选键，取值必须为`ExpiredStartTime`。同时设置`Filter.3.Key`和`Filter.3.Value`可以查询在指定时间点后到期的资源信息。 |
+|Filter.4.Key|String|否|ExpiredEndTime|查询资源时的筛选键，取值必须为`ExpiredEndTime`。同时设置`Filter.4.Key`和`Filter.4.Value`可以查询在指定时间点前到期的资源信息。 |
+|Filter.1.Value|String|否|2017-12-05T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
+|Filter.2.Value|String|否|2017-12-06T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.2.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
+|Filter.3.Value|String|否|2017-12-07T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.3.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
+|Filter.4.Value|String|否|2017-12-08T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.4.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
 |IoOptimized|Boolean|否|true|是否是I/O优化型实例。 |
 |Tag.N.value|String|否|valueTest|标签值。
 
@@ -298,7 +306,7 @@
 https://ecs.aliyuncs.com/?Action=DescribeInstances
 &RegionId=cn-hangzhou
 &PageSize=1
-PageNumber=1
+&PageNumber=1
 &<公共请求参数>
 ```
 
