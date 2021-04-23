@@ -1,6 +1,6 @@
 # Instance families that support instance type changes
 
-This topic describes the instance types and instance families that support instance type changes. If your current instance type does not meet your business needs, check whether the instance type can be changed. If yes, choose a method to change the instance type.
+This topic describes which instances types and families support instance type changes. Before you change the instance type of an instance, check whether the instance type can be changed and identify the compatible instance types. If the instance type can be changed, select a method to change the instance type.
 
 ## Impacts of instance type changes
 
@@ -16,8 +16,9 @@ The impact of an instance type change varies based on the network type of the in
 
 ## Instance families that do not support instance type changes
 
-The following instance families do not support instance type changes across instance families or within the same instance family:
+The following instance families do not support instance type changes across different instance families or within the same instance family:
 
+-   Security-enhanced instance families: g7t, c7t, and r7t
 -   Big data instance families: d2c, d2s, d1, and d1ne
 -   Instance families equipped with local SSDs: i1, i2, i2g, i2ne, i2gne, i3, and i3g
 -   GPU-accelerated compute optimized instance families: vgn5i and gn5
@@ -32,7 +33,7 @@ The following instance families do not support instance type changes across inst
 
 The following tables list instance families that support instance type changes. The instance types of subscription and pay-as-you-go instances can be changed across or within these instance families. For more information about how to change instance types, see [Overview of instance upgrade and downgrade](/intl.en-US/Instance/Change configurations/Overview of instance upgrade and downgrade.md).
 
-**Note:** The available instance types and instance families can be affected by limits such as zones. The information actually displayed in the console prevails. You can also go to the [ECS Instance Types Available for Each Region](https://ecs-buy.aliyun.com/instanceTypes) page to query available instance types.
+**Note:** The compatible instance types and instance families can be affected by limits such as zones. The information actually displayed in the console prevails. You can also go to the [ECS Instance Types Available for Each Region](https://ecs-buy.aliyun.com/instanceTypes) page to query available instance types.
 
 |Original instance family|Compatible instance family|
 |------------------------|--------------------------|
@@ -49,29 +50,34 @@ The following tables list instance families that support instance type changes. 
 
 |Original instance family|Compatible instance family and type|
 |------------------------|-----------------------------------|
+|g7, c7, and r7|g7, c7, and r7|
 |g7ne|-   g7ne
+-   g7, c7, and r7
 -   hfc7, hfg7, and hfr7 |
 |g6, c6, and r6|-   g6, c6, and r6
--   hfc7, hfg7, and hfr7
+-   g7, c7, and r7
+-   hfg7, hfc7, and hfr7
 -   g6e, c6e, and r6e
--   re6, hfc6, hfg6, and hfr6
+-   re6, hfg6, hfc6, and hfr6
 -   t6 and s6
 
 **Note:**
 
--   To upgrade an instance of the g6, c6, or r6 instance family to an instance type that belongs to an enhanced sixth-generation instance family \(g6e, c6e, or r6e\) or to a seventh-generation instance family \(hfc7, hfg7, or hfr7\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete.
--   Instances of the enhanced sixth-generation instance families \(g6e, c6e, and r6e\) and of the seventh-generation instance families \(hfc7, hfg7, and hfr7\) support only enhanced SSDs \(ESSDs\). If an instance has disks of other categories attached, the disks are replaced with ESSDs when you upgrade the instance to an instance type that belongs to a seventh-generation or enhanced sixth-generation instance family. Data on the disks must be manually migrated to the ESSDs. For information about the pricing of ESSDs, see [ECS Pricing](https://www.alibabacloud.com/product/ecs). |
+-   To upgrade an instance of the g6, c6, or r6 instance family to an enhanced sixth-generation instance family \(g6e, c6e, or r6e\) or a seventh-generation instance family \(hfc7, hfg7, hfr7, g7, c7, or r7\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete.
+-   Instances of the enhanced sixth-generation instance families \(g6e, c6e, and r6e\) and of the seventh-generation instance families \(hfc7, hfg7, hfr7, g7, c7, and r7\) support only enhanced SSDs \(ESSDs\). If an instance has disks of other categories attached, the disks are replaced with ESSDs when you upgrade the instance to a seventh-generation or enhanced sixth-generation instance family. Data on the disks must be manually migrated to the ESSDs. For information about the pricing of ESSDs, see [ECS Pricing](https://www.alibabacloud.com/product/ecs). |
 |g6se|-   g6se
+-   g7, c7, and r7
 -   g6e, c6e, and r6e |
 |g6a, c6a, and r6a|g6a, c6a, and r6a|
 |g6t and c6t|g6t and c6t|
 |g6e, c6e, and r6e|-   g6e, c6e, and r6e
 -   ebmg6e, ebmc6e, and ebmr6e
 -   g6se
+-   g7, c7, and r7
 -   hfc7, hfg7, and hfr7
 -   g7ne
 
-**Note:** To upgrade an instance of the g6e, c6e, or r6e instance family to an instance type that belongs to a seventh-generation instance family \(hfc7, hfg7, or hfr7\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete. |
+**Note:** To upgrade an instance of the g6e, c6e, or r6e instance family to a seventh-generation instance family \(hfc7, hfg7, hfr7, or g7ne\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete. |
 |ebmg6a, ebmc6a, and ebmr6a|ebmg6a, ebmc6a, and ebmr6a|
 |ebmg6e, ebmc6e, and ebmr6e|-   ebmg6e, ebmc6e, and ebmr6e
 -   g6e, c6e, and r6e |
@@ -80,8 +86,8 @@ The following tables list instance families that support instance type changes. 
 
 **Note:**
 
--   To upgrade an instance of a basic fifth-generation instance family \(g5, c5, r5, or ic5\) to an instance type that belongs to an enhanced sixth-generation instance family \(g6e, c6e, or r6e\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete.
--   Instances of the enhanced sixth-generation instance families \(g6e, c6e, and r6e\) support only ESSDs. If an instance has disks of other categories attached, the disks are replaced with ESSDs when you upgrade the instance to an instance type that belongs to an enhanced sixth-generation instance family. Data on the disks must be manually migrated to the ESSDs. For information about the pricing of ESSDs, see [ECS Pricing](https://www.alibabacloud.com/product/ecs). |
+-   To upgrade an instance of a basic fifth-generation instance family \(g5, c5, r5, or ic5\) to an enhanced sixth-generation instance family \(g6e, c6e, or r6e\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete.
+-   Instances of the enhanced sixth-generation instance families \(g6e, c6e, and r6e\) support only ESSDs. If an instance has disks of other categories attached, the disks are replaced with ESSDs when you upgrade the instance to an enhanced sixth-generation instance family. Data on the disks must be manually migrated to the ESSDs. For information about the pricing of ESSDs, see [ECS Pricing](https://www.alibabacloud.com/product/ecs). |
 |sn1ne, sn2ne, and se1ne|-   sn1ne, sn2ne, and se1ne
 -   c4, cm4, ce4, hfc5, hfg5, g5, g5ne, r5, c5, ic5, re4, t5, n4, mn4, xn4, and e4 |
 |se1|-   se1
@@ -96,6 +102,7 @@ The following tables list instance families that support instance type changes. 
 
 **Note:** You can change the instance types of instances among ecs.ebmre6-6t.52xlarge, ecs.re6.26xlarge, ecs.re4.40xlarge, and ecs.re4e.40xlarge. |
 |hfc7, hfg7, and hfr7|-   hfc7, hfg7, and hfr7
+-   g7, c7, and r7
 -   g7ne |
 |hfc6, hfg6, and hfr6|-   hfc6, hfg6, and hfr6
 -   hfc7, hfg7, and hfr7
@@ -104,8 +111,8 @@ The following tables list instance families that support instance type changes. 
 
 **Note:**
 
--   To upgrade an instance of the hfc6, hfg6, or hfr6 instance family to an instance type that belongs to a seventh-generation instance family \(hfc7, hfg7, or hfr7\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete.
--   Instances of the seventh-generation instance families \(hfc7, hfg7, and hfr7\) support only ESSDs. If an instance has disks of other categories attached, the disks are replaced with ESSDs when you upgrade the instance to an instance type that belongs to a seventh-generation instance family. Data on the disks must be manually migrated to the ESSDs. For information about the pricing of ESSDs, see [ECS Pricing](https://www.alibabacloud.com/product/ecs). |
+-   To upgrade an instance of the hfc6, hfg6, or hfr6 instance family to a seventh-generation instance family \(hfc7, hfg7, or hfr7\), [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm). You cannot downgrade the instance type of the instance after the upgrade is complete.
+-   Instances of the seventh-generation instance families \(hfc7, hfg7, and hfr7\) support only ESSDs. If an instance has disks of other categories attached, the disks are replaced with ESSDs when you upgrade the instance to a seventh-generation instance family. Data on the disks must be manually migrated to the ESSDs. For information about the pricing of ESSDs, see [ECS Pricing](https://www.alibabacloud.com/product/ecs). |
 |hfc5 and hfg5|-   hfc5 and hfg5
 -   sn1ne, sn2ne, se1ne, c4, cm4, ce4, g5, r5, c5, ic5, re4, t5, n4, mn4, xn4, and e4 |
 |gn7|gn7|
