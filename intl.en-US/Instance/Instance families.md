@@ -1,18 +1,18 @@
 ---
-keyword: [ECS instance family, instance family]
+keyword: [ECS instance families, instance families]
 ---
 
 # Instance families
 
-An ECS instance is the smallest unit that can provide compute capabilities and services for your business. Compute capabilities vary based on instance types. This topic describes available ECS instance families, including their features, specifications, and application scenarios.
+An Elastic Compute Service \(ECS\) instance is the smallest unit that can provide compute capabilities and services for your business. Compute capabilities vary based on instance types. This topic describes available ECS instance families, including their features, specifications, and application scenarios.
 
 ECS instances are categorized into different instance families based on their usage scenarios. Each instance family is divided into different instance types based on their CPU and memory specifications. ECS instance type defines the basic properties of an ECS instance, such as CPU, clock speed, and memory. In addition to the instance type, you must also configure the Elastic Block Storage \(EBS\) devices, image, and network type when you create an ECS instance.
 
 **Note:** The available instance families and types vary based on regions. You can go to the [ECS Instance Types Available for Each Region](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) page to view the available instance types in each region.
 
-Enterprise scenarios have high requirements for business stability. Alibaba Cloud ECS instance families are divided into enterprise-level and shared instance families based on whether the instance families are suitable for enterprise scenarios. Enterprise-level instance families offer consistent performance and dedicated resources. In enterprise-level instance families, each vCPU corresponds to a hyperthread of the Intel® Xeon® core. For more information about the differences between enterprise-level and shared instance families, see [Instance FAQ](/intl.en-US/Instance/Instance FAQ.md).
+Enterprise scenarios have high requirements for business stability. Alibaba Cloud ECS instance families are divided into enterprise-level and shared instance families based on whether the instance families are suitable for enterprise scenarios. Enterprise-level instance families offer consistent performance and dedicated resources. Each vCPU in an enterprise-level instance family corresponds to a hyperthread of the Intel ® Xeon ® core. For more information about the differences between enterprise-level and shared instance families, see [Instance FAQ](/intl.en-US/Instance/Instance FAQ.md).
 
-You can upgrade or downgrade instance types within an instance family or across instance families. For more information, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Change instance types/Instance families that support instance type changes.md).
+You can upgrade or downgrade instance types within an instance family or across instance families. For more information, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Instance families that support instance type changes.md).
 
 For information about how to choose instance families based on scenarios, see [Best practices for instance type selection](/intl.en-US/Best Practices/Best practices for instance type selection.md).
 
@@ -51,6 +51,7 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 -   [d2c, compute intensive big data instance family](#d2c)
 -   [d2s, storage intensive big data instance family](#d2s)
 -   [d1ne, big data instance family with enhanced network performance](#d1ne)
+-   [i3g, instance family with local SSDs](#i3g)
 -   [i3, instance family with local SSDs](#i3)
 -   [i2, instance family with local SSDs](#i2)
 -   [i2g, instance family with local SSDs](#i2g)
@@ -76,7 +77,7 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 
 |Enterprise-level heterogeneous computing instance families|
 |----------------------------------------------------------|
-|Recommended instance families|Other available instance families|
+|Recommended intance families|Other available instance families|
 |-   [gn7, GPU-accelerated compute optimized instance family](#gn7)
 -   [vgn6i, lightweight GPU-accelerated compute optimized instance family](#vgn6i)
 -   [gn6i, GPU-accelerated compute optimized instance family](#gn6i)
@@ -91,7 +92,7 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 
 |ECS Bare Metal Instance families and Super Computing Cluster \(SCC\) instance families|
 |--------------------------------------------------------------------------------------|
-|Recommended instance families|Other available instance families|
+|Recommended intance families|Other available instance families|
 |-   [ebmgn7, GPU-accelerated compute optimized ECS Bare Metal Instance family](#ebmgn7)
 -   [ebmgn6e, GPU-accelerated compute optimized ECS Bare Metal Instance family](#ebmgn6e)
 -   [ebmgn6v, GPU-accelerated compute optimized ECS Bare Metal Instance family](#ebmgn6v)
@@ -105,16 +106,20 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 -   [ebmr6a, memory optimized ECS Bare Metal Instance family](#ebmr6a)
 -   [ebmr6e, memory optimized ECS Bare Metal Instance family with enhanced performance](#ebmr6e)
 -   [ebmr6, memory optimized ECS Bare Metal Instance family](#ebmr6)
--   [ebmhfc6, compute optimized ECS Bare Metal Instance family with high clock speed](#ebmhfc6)
--   [ebmhfg6, general purpose ECS Bare Metal Instance family with high clock speed](#ebmhfg6)
--   [ebmhfr6, memory optimized ECS Bare Metal Instance family with high clock speed](#ebmhfr6)
 -   [ebmre6p, persistent memory optimized ECS Bare Metal Instance family with enhanced performance](#ebmre6p)
 -   [ebmre6-6t, memory optimized ECS Bare Metal Instance family with enhanced performance](#ebmre6-6t)
+-   [ebmhfg7, general purpose ECS Bare Metal Instance family with high clock speeds](#ebmhfg7)
+-   [ebmhfc7, compute optimized ECS Bare Metal Instance family with high clock speeds](#ebmhfc7)
+-   [ebmhfr7, memory optimized ECS Bare Metal Instance family with high clock speeds](#ebmhfr7)
+-   [ebmhfg6, general purpose ECS Bare Metal Instance family with high clock speed](#ebmhfg6)
+-   [ebmhfc6, compute optimized ECS Bare Metal Instance family with high clock speed](#ebmhfc6)
+-   [ebmhfr6, memory optimized ECS Bare Metal Instance family with high clock speed](#ebmhfr6)
 -   [scchfc6, compute optimized SCC instance family with high clock speed](#scchfc6)
 -   [scchfg6, general purpose SCC instance family with high clock speed](#scchfg6)
 -   [scchfr6, memory optimized SCC instance family with high clock speed](#scchfr6)
 -   [scch5, SCC instance family with high clock speed](#scch5)
 -   [sccg5, general purpose SCC instance family](#sccg5)
+-   [sccgn6e, GPU-accelerated compute optimized SCC instance family](#sccgn6e)
 -   [sccgn6, GPU-accelerated compute optimized SCC instance family](#sccgn6)
 
 |-   [ebmc5s, compute optimized ECS Bare Metal Instance family with enhanced network performance](#ebmc5s)
@@ -126,7 +131,7 @@ Alibaba Cloud ECS instance families are divided into the following categories ba
 
 |Shared computing instance families based on the x86 architecture|
 |----------------------------------------------------------------|
-|Recommended instance families|Other available instance families|
+|Recommended intance families|Other available instance families|
 |-   [t6, burstable instance family](#t6)
 
 |-   [t5, burstable instance family](#t5)
@@ -1434,6 +1439,39 @@ Instance types
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## i3g, instance family with local SSDs
+
+This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+
+Features
+
+-   Is attached with high-performance local NVMe SSDs that deliver high IOPS, high I/O throughput, and low latency.
+-   Offers a CPU-to-memory ratio of 1:4, which is designed for high-performance databases.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports enhanced SSDs \(ESSDs\) only.
+-   Provides high network performance based on large computing capacity.
+-   Suits the following scenarios:
+    -   Online transaction processing \(OLTP\) and high-performance relational databases
+    -   NoSQL databases such as Cassandra, MongoDB, and HBase
+    -   Search scenarios that use solutions such as Elasticsearch
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.i3g.2xlarge|8|32.0|1 × 447|3.0|10|1,750|Yes|250|8|4|15|52.5|2.0|
+|ecs.i3g.4xlarge|16|64.0|1 × 894|5.0|10|3,500|Yes|300|8|8|15|84|3.0|
+|ecs.i3g.8xlarge|32|128.0|2 × 894|12.0|None|7,000|Yes|600|8|8|300|157.5|5.0|
+|ecs.i3g.13xlarge|52|192.0|3 × 894|16.0|None|12,000|Yes|900|16|8|300|252|8.0|
+|ecs.i3g.26xlarge|104|384.0|6 × 894|32.0|None|24,000|Yes|1,800|32|15|300|500|16.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about the performance metrics of local SSDs, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
 
 ## i3, instance family with local SSDs
 
@@ -2986,94 +3024,6 @@ Instance types
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## ebmhfc6, compute optimized ECS Bare Metal Instance family with high clock speeds
-
-Features
-
--   Provides dedicated hardware resources and physical isolation.
--   Offers a CPU-to-memory ratio of 1:2.4.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core frequency of 3.5 GHz.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
--   Suits the following scenarios:
-    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
-    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
-    -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
-    -   Containers including Docker, Clear Containers, and Pouch
-    -   Video encoding, decoding, and rendering
-
-Instance types
-
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.ebmhfc6.20xlarge|80|192.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
-
-**Note:**
-
--   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
-
-## ebmhfg6, general purpose ECS Bare Metal Instance family with high clock speeds
-
-Features
-
--   Provides dedicated hardware resources and physical isolation.
--   Offers a CPU-to-memory ratio of 1:4.8.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
--   Suits the following scenarios:
-    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
-    -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
-    -   Containers including Docker, Clear Containers, and Pouch
-    -   Enterprise-level applications such as large and medium-sized databases
-    -   Video encoding, decoding, and rendering
-
-Instance types
-
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.ebmhfg6.20xlarge|80|384.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
-
-**Note:**
-
--   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
-
-## ebmhfr6, memory optimized ECS Bare Metal Instance family with high clock speeds
-
-Features
-
--   Provides dedicated hardware resources and physical isolation.
--   Offers a CPU-to-memory ratio of 1:9.6.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
--   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
--   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
--   Suits the following scenarios:
-    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
-    -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
-    -   Containers including Docker, Clear Containers, and Pouch
-    -   High-performance and in-memory databases
-    -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
-
-Instance types
-
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.ebmhfr6.20xlarge|80|768.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
-
-**Note:**
-
--   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
-
 ## ebmre6p, persistent memory optimized ECS Bare Metal Instance family with enhanced performance
 
 To use ebmre6p, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
@@ -3128,6 +3078,187 @@ Instance types
 |Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.ebmre6-6t.52xlarge|208|6,144.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## ebmhfg7, general purpose ECS Bare Metal Instance family with high clock speeds
+
+Features
+
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:4.
+-   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency of not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs only and provides ultra-high I/O performance.
+-   Supports VPCs only.
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
+    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Enterprise-level applications of various types and sizes
+    -   Game servers
+    -   Small and medium-sized database systems, caches, and search clusters
+    -   High-performance scientific computing
+    -   Video encoding applications
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfg7.48xlarge|192|768.0|None|64.0|24,000|Yes|32|31|10|600|32.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## ebmhfc7, compute optimized ECS Bare Metal Instance family with high clock speeds
+
+Features
+
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:2.
+-   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs only and provides ultra-high I/O performance.
+-   Supports VPCs only.
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
+    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   High-performance frontend server clusters
+    -   Frontend servers of MMO games
+    -   Data analysis, batch processing, and video encoding
+    -   High-performance scientific and engineering applications
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfc7.48xlarge|192|384.0|None|64.0|24,000|Yes|32|31|10|600|32.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## ebmhfr7, memory optimized ECS Bare Metal Instance family with high clock speeds
+
+Features
+
+-   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:8.
+-   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs only and provides ultra-high I/O performance.
+-   Supports VPCs only.
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
+-   Suits the following scenarios:
+    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   High-performance and in-memory databases
+    -   Data analysis, data mining, and distributed memory caching
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfr7.48xlarge|192|1,536.0|None|64.0|24,000|Yes|32|31|10|600|32.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## ebmhfg6, general purpose ECS Bare Metal Instance family with high clock speeds
+
+Features
+
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:4.8.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
+-   Supports VPCs only.
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
+    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
+    -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
+    -   Containers including Docker, Clear Containers, and Pouch
+    -   Enterprise-level applications such as large and medium-sized databases
+    -   Video encoding, decoding, and rendering
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfg6.20xlarge|80|384.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## ebmhfc6, compute optimized ECS Bare Metal Instance family with high clock speeds
+
+Features
+
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:2.4.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core frequency of 3.5 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
+-   Supports VPCs only.
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
+    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
+    -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
+    -   Containers including Docker, Clear Containers, and Pouch
+    -   Video encoding, decoding, and rendering
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfc6.20xlarge|80|192.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## ebmhfr6, memory optimized ECS Bare Metal Instance family with high clock speeds
+
+Features
+
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:9.6.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
+-   Supports VPCs only.
+-   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
+-   Suits the following scenarios:
+    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
+    -   Third-party virtualization including Xen and KVM, and AnyStack including OpenStack and ZStack
+    -   Containers including Docker, Clear Containers, and Pouch
+    -   High-performance and in-memory databases
+    -   Data analysis, data mining, and distributed memory caching
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.ebmhfr6.20xlarge|80|768.0|None|32.0|6,000|Yes|1,800|32|10|200|16.0|
 
 **Note:**
 
@@ -3306,6 +3437,45 @@ Instance types
 |Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|GPUs|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
 |:------------|:----|:-------------|:--------------------|:---|:----------------------------------|:---------------------------------------------|----------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.sccgn6.24xlarge|96|384.0|None|V100 × 8|30|4,500|25 × 2|Yes|8|32|10|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
+## sccgn6e, GPU-accelerated compute optimized SCC instance family
+
+To use sccgn6e, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+
+Features
+
+-   Is an instance family in which all instances are I/O optimized.
+-   Offers a CPU-to-memory ratio of 1:8.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors for consistent computing performance.
+-   Provides all features of ECS Bare Metal Instance.
+-   Storage:
+    -   Supports ESSDs, standard SSDs, and ultra disks.
+    -   Supports high performance cloud parallel file systems \(CPFSs\).
+-   Networking:
+    -   Supports VPCs.
+    -   Supports RoCE v2 networks, which are dedicated to low-latency RDMA communication.
+-   Uses NVIDIA V100 GPUs \(SXM2-based\) that feature:
+    -   Innovative Volta architecture
+    -   32 GB HBM2 GPU memory
+    -   5,120 CUDA cores
+    -   640 Tensor cores
+    -   GPU memory bandwidth of up to 900 Gbit/s
+    -   Support for up to six NVLink connections and total bandwidth of 300 GB/s \(25 GB/s per connection\)
+-   Suits the following scenarios:
+    -   Ultra-large-scale training for machine learning on a distributed GPU cluster
+    -   Large-scale high-performance scientific computing and simulations
+    -   Large-scale data analysis, batch processing, and video encoding
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|GPUs|GPU memory \(GB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|RoCE bandwidth \(bidirectional\), Gbit/s|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:---|-----------------|:----------------------------------|:---------------------------------------------|----------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|ecs.sccgn6e.24xlarge|96|768.0|None|V100 × 8|256|32.0|4,800|25 × 2|Yes|8|32|10|
 
 **Note:**
 
@@ -3705,9 +3875,9 @@ Instance types of e4
 
 |Specification|Description|
 |-------------|-----------|
-|local storage|Local storage, also called cache disks or local disks, refers to the disks attached to the physical servers where ECS instances are hosted. Local storage provides temporary block storage for instances. Local storage capacity is measured in GiB. Data stored on local disks may be lost when the computing resources \(vCPUs and memory\) of an instance are released or when an instance is failed over to a normal physical server upon a physical server failure. For more information, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).|
-|bandwidth|The maximum sum of inbound and outbound bandwidth values. **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
-|packet forwarding rate|The maximum sum of inbound and outbound packet forwarding rates. For information about how to test the packet forwarding rate, see [Test network performance](https://www.alibabacloud.com/help/faq-detail/55757.htm). **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as instance load and image version. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
+|local storage|Local storage, also called cache disks or local disks, refers to the disks attached to the physical servers where ECS instances are hosted. Local storage provides temporary block storage for instances. Local storage capacity is measured in GiB. Data stored on local disks may be lost when the computing resources of an instance are released or when an instance is failed over to a normal physical server. Computing resources include vCPUs and memory. For more information, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).|
+|bandwidth|The maximum sum of inbound and outbound bandwidth values. **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as the instance load and networking model. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
+|packet forwarding rate|The maximum sum of inbound and outbound packet forwarding rates. For information about how to test the packet forwarding rate, see[Test network performance](https://www.alibabacloud.com/help/faq-detail/55757.htm). **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as the instance load, image version, and networking model. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
 |connections|Connections, also called sessions, are the process of establishing connections and transferring data between a client and a server. A connection is uniquely defined by the network communication quintuple that consists of a source IP address, a destination IP address, a source port, a destination port, and a protocol. Connections of an ECS instance include TCP, UDP, and ICMP connections.|
-|NIC queues|The maximum number of NIC queues that the primary NIC of an instance supports. If your instance type is not a member of an ECS Bare Metal Instance family, the maximum number of NIC queues supported by a secondary NIC is the same as that supported by the primary NIC.|
+|NIC queues|The maximum number of NIC queues supported by the primary NIC of an instance. If your instance type is not a member of an ECS Bare Metal Instance family, the maximum number of NIC queues supported by a secondary NIC is the same as that supported by the primary NIC.|
 
