@@ -4,7 +4,7 @@ keyword: [Alibaba Cloud, ECS, server, elastic computing]
 
 # Overview
 
-This topic describes the features of ECS Bare Metal Instance families and lists the instance types of each family.
+This topic describes the features of Elastic Compute Service \(ECS\) Bare Metal Instance families and lists the instance types of each family.
 
 -   Recommended instance families
     -   General purpose instance families:
@@ -60,7 +60,7 @@ ECS Bare Metal Instance provides the following benefits based on technological i
 
 -   Exclusive computing resources
 
-    ECS Bare Metal Instance is a cloud-based elastic computing service that provides the same performance and resource isolation capabilities as physical machines. It can ensure the exclusivity of computing resources without virtualization overheads or feature loss. ECS Bare Metal Instance supports 8, 32, 80, 96, or 104 vCPUs and high clock speeds. An ECS bare metal instance that has eight vCPUs can deliver a core frequency of up to 3.7 GHz to 4.1 GHz and provide better performance and faster response for gaming and finance businesses than peer services.
+    ECS Bare Metal Instance is a cloud-based elastic computing service that provides the same performance and resource isolation capabilities as physical machines. It can ensure the exclusivity of computing resources without virtualization overheads or feature loss. ECS Bare Metal Instance supports high clock speeds and 8, 32, 80, 96, and 104 vCPUs. An ECS bare metal instance that has eight vCPUs can have a maximum clock speed of 3.7 GHz to 4.1 GHz and provide better performance and faster response for gaming and finance businesses than peer services.
 
 -   Chip-level security
 
@@ -103,7 +103,7 @@ The following table compares the features of ECS bare metal instances, physical 
 
 ## ebmg6a, general purpose ECS Bare Metal Instance family
 
-ebmg6a is in invitational preview. To use ebmg6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+The instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -113,7 +113,7 @@ Features
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports enhanced SSDs \(ESSDs\), standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -143,8 +143,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -179,7 +179,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -203,7 +203,7 @@ Instance types
 
 ## ebmc6a, compute optimized ECS Bare Metal Instance family
 
-ebmc6a is in invitational preview. To use ebmc6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+The instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -213,7 +213,7 @@ Features
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -242,8 +242,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -275,7 +275,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -298,7 +298,7 @@ Instance types
 
 ## ebmr6a, memory optimized ECS Bare Metal Instance family
 
-ebmr6a is in invitational preview. To use ebmr6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+The instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -308,7 +308,7 @@ Features
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -338,8 +338,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:8.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -353,8 +353,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.ebmr6e.26xlarge|104|768.0|None|32.0|24,000|Yes|1,800|32|10|480|16.0|
 
 **Note:**
@@ -371,7 +371,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -400,11 +400,11 @@ Features
 
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses the Intel ® OptaneTM persistent memory and is tuned for Redis applications in an end-to-end manner to provide cost-effectiveness.
--   Supports a maximum of 1,920 GiB memory \(384 GiB DRAM memory + 1,536 GiB Intel® OptaneTM persistent memory\), offers a CPU-to-memory ratio of 1:20, and can meet the needs of memory-intensive applications.
+-   Supports a maximum of 1,920 GiB memory \(384 GiB DRAM + 1,536 GiB Intel® OptaneTM persistent memory\), offers a CPU-to-memory ratio of 1:20, and can meet the needs of memory-intensive applications.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   In-memory databases such as Redis
@@ -433,11 +433,11 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
-    -   High-performance and in-memory databases such as SAP HANA
+    -   High-performance and in-memory databases such as SAP HANA databases
     -   Memory-intensive applications
     -   Big data processing engines such as Apache Spark and Presto
 
@@ -461,8 +461,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency of not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -493,8 +493,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -524,8 +524,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:8.
 -   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -551,10 +551,10 @@ Features
 
 -   Provides dedicated hardware resources and physical isolation.
 -   Offers a CPU-to-memory ratio of 1:4.8.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -580,10 +580,10 @@ Features
 
 -   Provides dedicated hardware resources and physical isolation.
 -   Offers a CPU-to-memory ratio of 1:2.4.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core frequency of 3.5 GHz.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
@@ -612,7 +612,7 @@ Features
 -   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -641,12 +641,12 @@ Features
 -   Uses NVIDIA A100 GPUs. NVSwitches are used to establish connections between NVIDIA A100 GPUs. The GPUs feature:
     -   Innovative Ampere architecture
     -   40 GB HBM2 memory per GPU
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications, such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications that have high GPU workloads such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
@@ -678,7 +678,7 @@ Features
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
@@ -700,7 +700,7 @@ Features
 -   Uses NVIDIA V100 GPUs.
 -   Uses NVIDIA V100 GPUs \(SXM2-based\) that feature:
     -   Innovative Volta architecture
-    -   16 GB HBM2 memory per GPU \(900 Gbit/s bandwidth\).
+    -   16 GB HBM2 memory per GPU \(900 Gbit/s bandwidth\)
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
@@ -710,7 +710,7 @@ Features
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
@@ -730,7 +730,7 @@ Features
 
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Uses NVIDIA T4 GPUs that feature:
-    -   New NVIDIA Turing architecture
+    -   Innovative NVIDIA Turing architecture
     -   16 GB memory \(320 GB/s bandwidth\) per GPU
     -   2,560 CUDA cores per GPU
     -   Up to 320 Turing Tensor cores per GPU
@@ -768,7 +768,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -796,8 +796,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Supports VPCs only.
+-   Supports only standard SSDs and ultra disks.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -826,7 +826,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
@@ -854,8 +854,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) processors that deliver a turbo frequency of 3.0 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Supports VPCs only.
+-   Supports only standard SSDs and ultra disks.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -884,7 +884,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -918,8 +918,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 3.7 GHz Intel® Xeon® E3-1240v6 \(Skylake\) processors that deliver a turbo frequency of 4.1 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Supports VPCs only.
+-   Supports only standard SSDs and ultra disks.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 2,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
