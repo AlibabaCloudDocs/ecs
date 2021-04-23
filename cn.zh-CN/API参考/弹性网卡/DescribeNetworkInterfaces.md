@@ -1,6 +1,6 @@
 # DescribeNetworkInterfaces
 
-调用DescribeNetworkInterfaces查看弹性网卡（ENI）列表。
+调用DescribeNetworkInterfaces查询一个或多个弹性网卡（ENI）的详细信息。
 
 ## 接口说明
 
@@ -31,12 +31,15 @@
 |VpcId|String|否|vsw-bp16usj2p27htro3\*\*\*\*|网卡所属的专有网络VPC ID。 |
 |PrimaryIpAddress|String|否|192.168.\*\*.\*\*|弹性网卡主私网IP地址。 |
 |PrivateIpAddress.N|RepeatList|否|192.168.\*\*.\*\*|弹性网卡的辅助私网IP地址。N的取值范围：1~100 |
-|SecurityGroupId|String|否|sg-bp144yr32sx6ndw\*\*\*\*|安全组ID。 |
+|SecurityGroupId|String|否|sg-bp144yr32sx6ndw\*\*\*\*|辅助网卡对应的安全组ID。
+
+ -   如果您需要通过安全组ID查询辅助网卡的信息，请指定该参数。
+-   如果您需要通过安全组ID查询主网卡信息，请调用[DescribeInstances](~~25506~~)指定`SecurityGroupId`参数进行查询。 |
 |NetworkInterfaceName|String|否|test-eni-name|弹性网卡的名称。 |
 |Type|String|否|Secondary|弹性网卡类型。取值范围：
 
  -   Primary：主网卡
--   Secondary：辅助弹性网卡
+-   Secondary：辅助网卡
 
  默认值：空，表示查询所有类型。 |
 |InstanceId|String|否|i-bp1e2l6djkndyuli\*\*\*\*|弹性网卡当前关联的实例ID。 |
@@ -45,10 +48,10 @@
 |Status|String|否|Available|网卡状态。取值范围：
 
  -   Creating：创建中
--   Available：未挂载
--   Attaching：挂载中
--   InUse：已挂载
--   Detaching：分离中
+-   Available：可用
+-   Attaching：绑定中
+-   InUse：已绑定
+-   Detaching：解绑中
 -   Deleting：删除中
 -   CreateFailed：创建失败，属于异常状态
 
@@ -78,7 +81,7 @@
 |--|--|---|--|
 |NetworkInterfaceSets|Array of NetworkInterfaceSet| |弹性网卡信息组成的集合。 |
 |NetworkInterfaceSet| | | |
-|AssociatedPublicIp|Struct| |弹性网卡辅助私有IP地址关联的公网IP。 |
+|AssociatedPublicIp|Struct| |弹性网卡辅助私有IP地址关联的弹性公网IP。 |
 |AllocationId|String|eip-2ze88m67qx5z\*\*\*\*|EIP的ID。 |
 |PublicIpAddress|String|116.62.\*\*.\*\*|公网IP地址。 |
 |Attachment|Struct| |**说明：** 该参数正在邀测中，暂未开放使用。 |
@@ -96,14 +99,18 @@
 |MacAddress|String|00:16:3e:12:e7:\*\*|弹性网卡的MAC地址。 |
 |NetworkInterfaceId|String|eni-bp125p95hhdhn3ot\*\*\*\*|弹性网卡ID。 |
 |NetworkInterfaceName|String|my-eni-name|弹性网卡的名称。 |
+|NetworkInterfaceTrafficMode|String|null|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |OwnerId|String|123456\*\*\*\*|弹性网卡的所属账号ID。 |
 |PrivateIpAddress|String|172.17.\*\*.\*\*|弹性网卡的私网IP地址。 |
 |PrivateIpSets|Array of PrivateIpSet| |PrivateIpSet组成的集合。 |
 |PrivateIpSet| | | |
-|AssociatedPublicIp|Struct| |弹性网卡关联的公有IP。 |
+|AssociatedPublicIp|Struct| |弹性网卡关联的弹性公网IP。 |
 |AllocationId|String|eip-2ze88m67qx5z\*\*\*\*|EIP的ID。 |
 |PublicIpAddress|String|116.62.\*\*.\*\*|实例的公网IP。 |
-|Primary|Boolean|true|是否是主私网IP地址。 |
+|Primary|Boolean|true|是否是主私网IP地址。可能值：
+
+ -   true：主私网IP
+-   false：辅助私网IP |
 |PrivateIpAddress|String|172.17.\*\*.\*\*|实例的私网IP地址。 |
 |QueueNumber|Integer|8|网卡的队列数。
 
@@ -111,6 +118,7 @@
 -   如果辅助网卡修改过队列数，则返回修改后的队列数。
 -   如果辅助网卡是未挂载（Available）状态且未修改过队列数，则返回值为空。
 -   主网卡返回实例规格默认的主网卡队列数。 |
+|QueuePairNumber|Integer|0|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |ResourceGroupId|String|rg-2ze88m67qx5z\*\*\*\*|资源组ID。 |
 |SecurityGroupIds|List|sg-bp18kz60mefsicfg\*\*\*\*|所属的安全组集合。 |
 |ServiceID|Long|12345678910|弹性网卡对应的虚商ID。 |
@@ -145,7 +153,7 @@ https://ecs.aliyuncs.com/?Action=DescribeNetworkInterfaces
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeNetworkInterfacesResponse>
@@ -195,7 +203,7 @@ https://ecs.aliyuncs.com/?Action=DescribeNetworkInterfaces
 </DescribeNetworkInterfacesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -274,6 +282,7 @@ https://ecs.aliyuncs.com/?Action=DescribeNetworkInterfaces
 |403|InvalidSecurityGroupId.NotVpc|%s|参数SecurityGroupId无效，该安全组的网络类型不是专有网络。|
 |403|InvalidOperation.InvalidEniType|%s|当前弹性网卡的类型不支持此操作。|
 |400|Forbidden.RegionId|%s|当前地域暂时没有提供该服务。|
+|403|InvalidVpc.Empty|%s|指定的VPC下没有创建交换机，具体信息请参见错误信息%s占位符的实际返回结果。|
 |400|InvalidRegionId.MalFormed|The specified parameter RegionId is not valid.|指定的RegionId不合法。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
