@@ -22,22 +22,22 @@ Before you call this operation, take note of the following items:
 |AutoProvisioningGroupId|String|No|apg-bp67acfmxazb4ph\*\*\*\*|The ID of the auto provisioning group. |
 |ExcessCapacityTerminationPolicy|String|No|no-termination|Specifies whether to release scaled-in instances when the real-time capacity of the auto provisioning group exceeds the target capacity and the group is triggered to scale in. Valid values:
 
- -   termination: releases the scaled-in instances.
+-   termination: releases the scaled-in instances.
 -   no-termination: removes the scaled-in instances from the auto provisioning group but not releases the instances. |
 |DefaultTargetCapacityType|String|No|Spot|The billing method of supplemental instances. The target capacity of the auto provisioning group must be at least the sum of the capacity of pay-as-you-go instances specified by the PayAsYouGoTargetCapacity parameter and the capacity of preemptible instances specified by the SpotTargetCapacity parameter. Valid values:
 
- -   PayAsYouGo: pay-as-you-go
+-   PayAsYouGo: pay-as-you-go
 -   Spot: preemptible instance |
 |TerminateInstancesWithExpiration|Boolean|No|false|Specifies whether to release instances in the auto provisioning group when the auto provisioning group expires. Valid values:
 
- -   true: releases instances in the auto provisioning group.
+-   true: releases instances in the auto provisioning group.
 -   false: removes the instances in the group from the auto provisioning group but not releases the instances. |
 |MaxSpotPrice|Float|No|0.5|The maximum price of preemptible instances in the auto provisioning group.
 
- **Note:** If both the MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice parameters are specified, the maximum price is the lower value of the two parameters. The LaunchTemplateConfig.N.MaxPrice parameter is set when the auto provisioning group is created, and cannot be modified. |
+**Note:** If both the MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice parameters are specified, the maximum price is the lower value of the two parameters. The LaunchTemplateConfig.N.MaxPrice parameter is set when the auto provisioning group is created, and cannot be modified. |
 |TotalTargetCapacity|String|No|70|The target capacity of the auto provisioning group. The parameter value is a positive integer.
 
- The target capacity of the auto provisioning group must be at least the sum of the capacity of pay-as-you-go instances specified by the PayAsYouGoTargetCapacity parameter and the capacity of preemptible instances specified by the SpotTargetCapacity parameter. |
+The target capacity of the auto provisioning group must be at least the sum of the capacity of pay-as-you-go instances specified by the PayAsYouGoTargetCapacity parameter and the capacity of preemptible instances specified by the SpotTargetCapacity parameter. |
 |PayAsYouGoTargetCapacity|String|No|30|The target capacity of pay-as-you-go instances in the auto provisioning group. Valid values: Set this parameter to a value smaller than the TotalTargetCapacity value. |
 |SpotTargetCapacity|String|No|30|The target capacity of preemptible instances in the auto provisioning group. Valid values: Set this parameter to a value smaller than the TotalTargetCapacity value. |
 |AutoProvisioningGroupName|String|No|apg-test|The name of the auto provisioning group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\). |
@@ -46,9 +46,9 @@ Before you call this operation, take note of the following items:
 |LaunchTemplateConfig.N.VSwitchId|String|No|vsw-sn5bsitu4lfzgc5o7\*\*\*\*|The ID of the vSwitch in extended configuration N. The zone of the ECS instances created from the extended configurations is determined by the vSwitch. |
 |LaunchTemplateConfig.N.WeightedCapacity|Double|No|2|The weight of the instance type specified in extended configuration N. A greater weight indicates that a single instance has more computing power, and as a result fewer instances are required. This parameter value must be greater than 0.
 
- The weight is calculated based on the computing power of the specified instance type and the minimum computing power of a single node of the cluster. For example, if the minimum computing power of a single node is 8 vCPUs and 60 GiB:
+The weight is calculated based on the computing power of the specified instance type and the minimum computing power of a single node of the cluster. For example, if the minimum computing power of a single node is 8 vCPUs and 60 GiB:
 
- -   The weight of the instance type with 8 vCPUs and 60 GiB can be set to 1.
+-   The weight of the instance type with 8 vCPUs and 60 GiB can be set to 1.
 -   The weight of the instance type with 16 vCPUs and 120 GiB can be set to 2. |
 |LaunchTemplateConfig.N.Priority|Integer|No|1|The priority of extended configuration N. A value of 0 indicates the highest priority. This parameter value must be greater than 0. |
 
@@ -91,8 +91,8 @@ Sample success responses
 
 ## Error codes
 
-|HttpCode|Error code|Error message|Description|
-|--------|----------|-------------|-----------|
+|HTTP status code|Error code|Error message|Description|
+|----------------|----------|-------------|-----------|
 |403|Forbidden.RAM|User not authorized to operate on the specified resource, or this API doesn't support RAM.|The error message returned because you are not authorized to manage this resource, or this API operation does not support RAM roles.|
 |400|OperationDenied|%s|The error message returned because the operation is denied.|
 
