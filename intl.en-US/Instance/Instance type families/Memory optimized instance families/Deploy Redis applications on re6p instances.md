@@ -1,6 +1,6 @@
 # Deploy Redis applications on re6p instances
 
-You can run Redis applications on persistent memory optimized instances to reduce memory costs per GiB. To ensure performance, you must modify your Redis applications. To reduce your modification costs, Alibaba Cloud provides re6p instance types for Redis applications. You can deploy Redis applications on re6p instances by running several commands. In this topic, Alibaba Cloud Linux and CentOS are used to demonstrate how to deploy Redis applications on re6p instances.
+You can run Redis applications on persistent memory optimized instances to reduce memory costs per GiB. To ensure performance, you must modify your Redis applications. To reduce your modification costs, Alibaba Cloud provides re6p instance types for Redis applications. You can deploy Redis applications on re6p instances by running several commands. In this topic, Alibaba Cloud Linux 2 and CentOS are used to demonstrate how to deploy Redis applications on re6p instances.
 
 The procedures described in this topic apply only to the following instance types:
 
@@ -18,11 +18,11 @@ If you deploy Redis applications in other operating systems, make sure that you 
 -   Ubuntu 18.10 or later
 -   SUSE Linux 12 SP4 or later
 
-## Deploy Redis applications on an re6p instance that runs Alibaba Cloud Linux
+## Deploy Redis applications on an re6p instance that runs Alibaba Cloud Linux 2
 
-Alibaba Cloud Linux is tuned for Redis applications. Redis applications deployed on Alibaba Cloud Linux outperform those deployed on community-supported operating systems by more than 20%.
+Alibaba Cloud Linux 2 is tuned for Redis applications. Redis applications deployed on Alibaba Cloud Linux 2 outperform those deployed on community-supported Linux operating systems by more than 20%.
 
-Alibaba Cloud Linux has the built-in YUM repositories of Redis 6.0.5 and Redis 3.2.12. You can run the yum install command to deploy Redis 6.0.5 and Redis 3.2.12. You can also manually deploy Redis of other versions. For more information, see [Deploy Redis applications on an re6p instance that runs CentOS](#section_gx2_rzq_8rk).
+Alibaba Cloud Linux 2 has the built-in YUM repositories of Redis 6.0.5 and Redis 3.2.12. You can run the yum install command to deploy Redis 6.0.5 and Redis 3.2.12. You can also manually deploy Redis of other versions. For more information, see [Deploy Redis applications on an re6p instance that runs CentOS](#section_gx2_rzq_8rk).
 
 The following configurations are used in this example:
 
@@ -39,23 +39,27 @@ The following configurations are used in this example:
 
     For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
 
-3.  Deploy Redis applications.
+3.  Install the Alibaba Cloud experimentals repository.
+
+    ```
+    yum install -y alinux-release-experimentals
+    ```
+
+4.  Deploy Redis applications.
 
     -   Run the following commands to deploy Redis 6.0.5:
 
         ```
-        yum install -y alinux-release-experimentals
         yum install -y redis-6.0.5
         ```
 
     -   Run the following commands to deploy Redis 3.2.12:
 
         ```
-        yum install -y alinux-release-experimentals
-        yum install –y redis-3.2.12
+        yum install -y redis-3.2.12
         ```
 
-4.  Configure network interface controller \(NIC\) multi-queue.
+5.  Configure network interface controller \(NIC\) multi-queue.
 
     NIC multi-queue helps improve the performance of Redis applications.
 
@@ -91,32 +95,55 @@ The following configurations are used in this example:
         systemctl start ecs_mq
         ```
 
-5.  Configure the default sizes of DRAM and persistent memory for the Redis service.
+6.  Check the available amounts of regular memory and persistent memory.
 
-    **Note:** If applications such as NGINX that are not optimized are assigned memory addresses of persistent memory, performance problems may arise. To prevent the performance problems, we recommend that you allocate all persistent memory to Redis applications when you start the Redis applications.
+    1.  Install numactl.
 
-    Sample commands:
+        ```
+        yum install -y numactl
+        ```
 
-    -   To set the port number to 6379, the DRAM to 4 GiB, and the persistent memory to 32 GiB, run the following command:
+    2.  Check the available amounts of regular memory and persistent memory.
+
+        ```
+        numactl -H
+        ```
+
+        **Note:** `node 0 free` indicates the amount of regular memory available for use by applications. `node 1 free` indicates the amount of persistent memory available for use by applications.
+
+        ![available-mem](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8668988161/p259154.png)
+
+7.  Start the Redis service.
+
+    1.  Set environment variables.
 
         ```
         export MEMKIND_DAX_KMEM_NODES=1
-        redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
         ```
 
-    -   To set the port number to 6379, the DRAM to 2 GiB, and the persistent memory to 32 GiB, run the following command:
+    2.  Start Redis and configure the default amounts of regular memory and persistent memory allocated to Redis.
 
-        ```
-        export MEMKIND_DAX_KMEM_NODES=1
-        redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
-        ```
+        **Note:** If unoptimized applications such as NGINX are assigned memory addresses of persistent memory, performance problems may arise. To prevent the problems, we recommend that you allocate all persistent memory to Redis applications when you start the applications.
 
-    -   To set the port number to 6379, the DRAM to 0 GiB, and the persistent memory to 32 GiB, run the following command:
+        Sample commands:
 
-        ```
-        export MEMKIND_DAX_KMEM_NODES=1
-        redis-server /etc/redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
-        ```
+        -   Run the following command to set the port number to 6379, the allocated amount of regular memory to 4 GiB, and the allocated amount of persistent memory to 32 GiB:
+
+            ```
+            redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
+            ```
+
+        -   Run the following command to set the port number to 6379, the allocated amount of regular memory to 2 GiB, and the allocated amount of persistent memory to 32 GiB:
+
+            ```
+            redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
+            ```
+
+        -   Run the following command to set the port number to 6379, the allocated amount of regular memory to 0 GiB, and the allocated amount of persistent memory to 32 GiB:
+
+            ```
+            redis-server /etc/redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
+            ```
 
 
 ## Deploy Redis applications on an re6p instance that runs CentOS
@@ -143,58 +170,125 @@ The following configurations are used in this example:
 
 3.  Prepare the compiling environment.
 
-    ```
-    export MEMKIND_DAX_KMEM_NODES=1
-    yum -y install numactl-devel.x86_64
-    yum -y groupinstall 'Development Tools'
-    ```
+    1.  Set environment variables.
 
-    **Note:** Development tools include the GCC compiler.
+        ```
+        export MEMKIND_DAX_KMEM_NODES=1
+        ```
 
-4.  Download the Redis installation package.
+    2.  Download the dependency.
 
-    ```
-    wget https://github.com/redis-io/redis/archive/4.0.14.tar.gz
-    tar xzvf 4.0.14.tar.gz
-    ```
+        ```
+        yum -y install numactl-devel.x86_64
+        ```
 
-5.  Download and install patches that enable Redis applications to use persistent memory.
+    3.  Download the toolkit.
 
-    For more information, see [Download patches that enable Redis applications to use persistent memory](#section_7l0_0ys_dm0).
+        ```
+        yum -y groupinstall 'Development Tools'
+        ```
 
-    ```
-    wget https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff -O redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
-    cd redis-4.0.14
-    git apply --ignore-whitespace ../redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
-    ```
+        **Note:** The toolkit includes the GCC compiler.
 
-6.  Install memkind.
+4.  Prepare the Redis 4.0.14 installation package.
+
+    1.  Download the installation package.
+
+        ```
+        wget https://github.com/redis-io/redis/archive/4.0.14.tar.gz
+        ```
+
+    2.  Decompress the package.
+
+        ```
+        tar xzvf 4.0.14.tar.gz
+        ```
+
+5.  Download and install the patch that enables Redis applications to use persistent memory.
+
+    1.  Download the patch.
+
+        ```
+        wget https://github.com/redis/redis/compare/4.0.14...memKeyDB:4.0.14-devel.diff -O redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
+        ```
+
+        **Note:** For information about how to download patches for more Redis versions, see [Download patches that enable Redis applications to use persistent memory](#section_7l0_0ys_dm0).
+
+    2.  Switch to the directory where Redis 4.0.14 is installed.
+
+        ```
+        cd redis-4.0.14
+        ```
+
+    3.  Install the patch.
+
+        ```
+        git apply --ignore-whitespace ../redis_4.0.14_eca56e845aa19d2e79e7c70207e860f8385541f9.patch
+        ```
+
+6.  Prepare the memkind installation package.
 
     memkind is a memory management tool used to allocate and manage persistent memory.
 
-    ```
-    wget https://github.com/memkind/memkind/archive/v1.10.1-rc2.tar.gz
-    tar xzvf v1.10.1-rc2.tar.gz
-    mv memkind-1.10.1-rc2/* ./deps/memkind/
-    ```
+    1.  Download the memkind installation package.
 
-7.  Adjust Makefile if the version of glibc is earlier than 2.17.
+        ```
+        wget https://github.com/memkind/memkind/archive/v1.10.1-rc2.tar.gz
+        ```
 
-    ```
-    cd ./deps/memkind/
-    wget https://github.com/memKeyDB/memKeyDB/wiki/files/0001-Use-secure_getenv-when-possible.patch
-    git apply --ignore-whitespace 0001-Use-secure_getenv-when-possible.patch
-    ```
+    2.  Decompress the memkind installation package.
 
-8.  Perform compilation in the redis-4.0.14 directory.
+        ```
+        tar xzvf v1.10.1-rc2.tar.gz
+        ```
 
-    **Note:** If you did not switch to the ./deps/memkind/ directory to adjust Makefile, you are still in the redis-4.0.14 directory. In this case, you do not need to run the `cd ../..` command to switch the directory.
+    3.  Move the memkind installation package to the ./deps/memkind/ path.
 
-    ```
-    cd /root/redis-4.0.14
-    make clean;make distclean;make MALLOC=memkind -j 4
-    make install
-    ```
+        ```
+        mv memkind-1.10.1-rc2/* ./deps/memkind/
+        ```
+
+7.  Run the `ldd --version` command to view the version of glibc and determine whether to adjust Makefile.
+
+    **Note:** If the version of glibc is earlier than 2.17, perform the following operations to adjust Makefile. If the version of glibc is not earlier than 2.17, skip the following operations and compile Redis 4.0.14.
+
+    1.  Switch to the ./deps/memkind/ path.
+
+        ```
+        cd ./deps/memkind/
+        ```
+
+    2.  Download the patch.
+
+        ```
+        wget https://github.com/memKeyDB/memKeyDB/wiki/files/0001-Use-secure_getenv-when-possible.patch
+        ```
+
+    3.  Install the patch.
+
+        ```
+        git apply --ignore-whitespace 0001-Use-secure_getenv-when-possible.patch
+        ```
+
+    4.  Go back to the redis-4.0.14 directory.
+
+        ```
+        cd /root/redis-4.0.14
+        ```
+
+8.  Compile and install Redis 4.0.14 in the redis-4.0.14 directory.
+
+    1.  Compile Redis 4.0.14.
+
+        ```
+        make clean;make distclean;make MALLOC=memkind -j 4
+        ```
+
+    2.  Install Redis 4.0.14.
+
+        ```
+        make install
+        ```
 
 9.  Configure NIC multi-queue.
 
@@ -230,28 +324,51 @@ The following configurations are used in this example:
 
         ```
         systemctl start ecs_mq
+        ```
+
+    6.  Go back to the redis-4.0.14 directory.
+
+        ```
         cd /root/redis-4.0.14
         ```
 
-10. Configure the default sizes of DRAM and persistent memory for the Redis service.
+10. Check the available amounts of regular memory and persistent memory.
 
-    **Note:** If applications such as NGINX that are not optimized are assigned memory addresses of persistent memory, performance problems may arise. To prevent the performance problems, we recommend that you allocate all persistent memory to Redis applications when you start the Redis applications.
+    1.  Install numactl.
+
+        ```
+        yum install -y numactl
+        ```
+
+    2.  Check the available amounts of regular memory and persistent memory.
+
+        ```
+        numactl -H
+        ```
+
+        **Note:** `node 0 free` indicates the amount of regular memory available for use by applications. `node 1 free` indicates the amount of persistent memory available for use by applications.
+
+        ![available-mem](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8668988161/p259154.png)
+
+11. Start Redis and configure the default amounts of regular memory and persistent memory allocated to Redis.
+
+    **Note:** If unoptimized applications such as NGINX are assigned memory addresses of persistent memory, performance problems may arise. To prevent the problems, we recommend that you allocate all persistent memory to Redis applications when you start the applications.
 
     Sample commands:
 
-    -   To set the port number to 6379, the DRAM to 4 GiB, and the persistent memory to 32 GiB, run the following command:
+    -   Run the following command to set the port number to 6379, the allocated amount of regular memory to 4 GiB, and the allocated amount of persistent memory to 32 GiB:
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
         ```
 
-    -   To set the port number to 6379, the DRAM to 2 GiB, and the persistent memory to 32 GiB, run the following command:
+    -   Run the following command to set the port number to 6379, the allocated amount of regular memory to 2 GiB, and the allocated amount of persistent memory to 32 GiB:
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
         ```
 
-    -   To set the port number to 6379, the DRAM to 0 GiB, and the persistent memory to 32 GiB, run the following command:
+    -   Run the following command to set the port number to 6379, the allocated amount of regular memory to 0 GiB, and the allocated amount of persistent memory to 32 GiB:
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
