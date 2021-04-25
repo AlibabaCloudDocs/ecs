@@ -4,13 +4,13 @@ You can call this operation to query information of one or more auto provisionin
 
 ## Debugging
 
-[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeAutoProvisioningGroups&type=RPC&version=2014-05-26)
+OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer.OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
 ## Request parameters
 
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
-|Action|String|Yes|DescribeAutoProvisioningGroups|The operation that you want to perform. Set the value to DescribeAutoProvisioningGroups. |
+|Action|String|Yes|DescribeAutoProvisioningGroups|The operation that you want to perform.Set the value to DescribeAutoProvisioningGroups. |
 |RegionId|String|Yes|cn-hangzhou|The region ID of the auto provisioning group. |
 |AutoProvisioningGroupId.N|RepeatList|No|apg-sn54avj8htgvtyh8\*\*\*\*|The ID of auto provisioning group N. Valid values of N: 1 to 20. |
 |AutoProvisioningGroupName|String|No|testAutoProvisioningGroupName|The name of the auto provisioning group. |
@@ -29,7 +29,7 @@ Default value: 1. |
 -   submitted: The auto provisioning group is created and has not started to execute scheduling tasks.
 -   active: The auto provisioning group is executing scheduling tasks.
 -   deleted: The auto provisioning group is deleted.
--   delete-running: The auto provisioning group is being deleted.
+-   deleted-running: The auto provisioning group is being deleted.
 -   modifying: The auto provisioning group is being modified. |
 
 ## Response parameters
@@ -42,22 +42,20 @@ Default value: 1. |
 |AutoProvisioningGroupName|String|EcsDocTest|The name of the auto provisioning group. |
 |AutoProvisioningGroupType|String|maintain|The delivery type of the auto provisioning group. Valid values:
 
--   request: one-time delivery. After the auto provisioning group is started, it attempts to deliver an instance cluster once. If the cluster fails to be delivered, the group does not retry the operation.
--   maintain: continuous delivery. After the auto provisioning group is started, it continuously attempts to create and deliver an instance cluster. The auto provisioning group compares the real-time capacity and the target cluster capacity. If the cluster does not meet the target capacity, the group creates instances until the cluster meets the target capacity. |
+-   request: one-time delivery.After the auto provisioning group is started, it attempts to deliver an instance cluster once. If the cluster fails to be delivered, the group does not retry the operation.
+-   maintain: continuous delivery.After the auto provisioning group is started, it continuously attempts to deliver an instance cluster. The auto provisioning group compares the real-time capacity and the target cluster capacity. If the cluster does not meet the target capacity, the group creates instances until the cluster meets the target capacity. |
 |CreationTime|String|2019-04-01T15:10:20Z|The time when the auto provisioning group was created. |
-|ExcessCapacityTerminationPolicy|String|termination|Indicates whether to stop excess preemptible instances when the target capacity of the auto provisioning group is exceeded. Valid values:
+|ExcessCapacityTerminationPolicy|String|termination|Indicates whether to release the scaled-in instances when the real-time capacity exceeds the target capacity and the group is triggered to scale in. Valid values:
 
--   no-termination: continues to run excess preemptible instances.
--   termination: stops excess preemptible instances. The action to be performed on these stopped instances is specified by the SpotInstanceInterruptionBehavior parameter.
-
-**Note:** The ExcessCapacityTerminationPolicy parameter is set when the auto provisioning group is created, and cannot be modified. For more information, see [CreateAutoProvisioningGroup](~~122738~~). |
+-   termination: releases the scaled-in instances.
+-   no-termination: removes the scaled-in instances from the auto provisioning group but not releases the instances. |
 |LaunchTemplateConfigs|Array of LaunchTemplateConfig| |Details about the extended configurations. |
 |LaunchTemplateConfig| | | |
-|InstanceType|String|ecs.g5.large|The instance type specified in the extended configuration. |
-|MaxPrice|Float|3|The maximum price of the instance type specified in the extended configuration. |
-|Priority|Float|1|The priority of the instance type specified in the extended configuration. A value of 0 indicates the highest priority. |
-|VSwitchId|String|vsw-sn5bsitu4lfzgc5o7\*\*\*\*|The ID of the VSwitch specified in the extended configuration. |
-|WeightedCapacity|Float|2|The weight of the instance type specified in the extended configuration. |
+|InstanceType|String|ecs.g5.large|The instance type specified in the extended configurations. |
+|MaxPrice|Float|3|The maximum price of the instance type specified in the extended configurations. |
+|Priority|Float|1|The priority of the instance type specified in the extended configurations. A value of 0 indicates the highest priority. |
+|VSwitchId|String|vsw-sn5bsitu4lfzgc5o7\*\*\*\*|The ID of the vSwitch specified in the extended configurations. |
+|WeightedCapacity|Float|2|The weight of the instance type specified in the extended configurations. |
 |LaunchTemplateId|String|lt-bp1fgzds4bdogu03\*\*\*\*|The ID of the launch template associated with the auto provisioning group. |
 |LaunchTemplateVersion|String|1|The version of the launch template associated with the auto provisioning group. |
 |MaxSpotPrice|Float|2|The maximum price for preemptible instances in the auto provisioning group.
@@ -68,20 +66,20 @@ The LaunchTemplateConfig.N.MaxPrice parameter is set when the auto provisioning 
 |PayAsYouGoOptions|Struct| |The policies related to pay-as-you-go instances. |
 |AllocationStrategy|String|prioritized|The provisioning policy for pay-as-you-go instances. Valid values:
 
--   lowest-price: the cost optimization policy. This policy indicates that instance types of the lowest cost are used to create instances.
--   prioritized: the priority-based policy. This policy indicates that instances are created based on the priority specified by the LaunchTemplateConfig.N.Priority parameter.
+-   lowest-price: the cost optimization policy.This policy indicates that instance types of the lowest cost are used to create instances.
+-   prioritized: the priority-based policy.This policy indicates that instances are created based on the priority specified by the LaunchTemplateConfig.N.Priority parameter.
 
 **Note:** The LaunchTemplateConfig.N.Priority parameter is set when the auto provisioning group is created, and cannot be modified. |
 |RegionId|String|cn-hangzhou|The region ID of the auto provisioning group. |
 |SpotOptions|Struct| |The policy related to preemptible instances. |
 |AllocationStrategy|String|diversified|The provisioning policy for preemptible instances. Valid values:
 
--   lowest-price: the cost optimization policy. This policy indicates that instance types of the lowest cost are used to create instances.
--   diversified: the distribution balancing policy. This policy indicates that instances are created evenly across multiple zones specified in the extended configuration. |
-|InstanceInterruptionBehavior|String|stop|The action to be performed after the excess preemptible instances are stopped. Valid values:
+-   lowest-price: the cost optimization policy.This policy indicates that instance types of the lowest cost are used to create instances.
+-   diversified: balanced distribution policy.This policy indicates that instances are created evenly across multiple zones specified in the extended configurations. |
+|InstanceInterruptionBehavior|String|stop|The action to be performed after the extra preemptible instances are stopped. Valid values:
 
--   stop: retains the excess preemptible instances in the stopped state.
--   terminate: releases the excess preemptible instances. |
+-   stop: retains the extra preemptible instances in the stopped state.
+-   terminate: releases the extra preemptible instances. |
 |InstancePoolsToUseCount|Integer|2|The number of instances that the auto provisioning group used the instance type of the lowest cost to create.
 
 **Note:** This parameter is set when the auto provisioning group is created, and cannot be modified. |
@@ -96,10 +94,10 @@ The LaunchTemplateConfig.N.MaxPrice parameter is set when the auto provisioning 
 -   submitted: The auto provisioning group is created and has not started to execute scheduling tasks.
 -   active: The auto provisioning group is executing scheduling tasks.
 -   deleted: The auto provisioning group is deleted.
--   delete-running: The auto provisioning group is being deleted.
+-   deleted-running: The auto provisioning group is being deleted.
 -   modifying: The auto provisioning group is being modified. |
 |TargetCapacitySpecification|Struct| |The settings of the target capacity of the auto provisioning group. |
-|DefaultTargetCapacityType|String|Spot|The type of supplemental instances. The target capacity of the auto provisioning group must be at least the sum of the capacity of pay-as-you-go instances specified by the PayAsYouGoTargetCapacity parameter and the capacity of preemptible instances specified by the SpotTargetCapacity parameter. Valid values:
+|DefaultTargetCapacityType|String|Spot|The billing method of supplemental instances. The target capacity of the auto provisioning group must be at least the sum of the pay-as-you-go instance capacity specified by the PayAsYouGoTargetCapacity parameter and the preemptible instance capacity specified by the SpotTargetCapacity parameter. Valid values:
 
 -   PayAsYouGo: pay-as-you-go
 -   Spot: preemptible instance |
@@ -110,15 +108,16 @@ The LaunchTemplateConfig.N.MaxPrice parameter is set when the auto provisioning 
 -   PayAsYouGoTargetCapacity
 -   SpotTargetCapacity
 -   The supplemental capacity besides instance capacities specified by the PayAsYouGoTargetCapacity and SpotTargetCapacity parameters |
-|TerminateInstances|Boolean|false|Indicates whether instances are released together with the auto provisioning group to which the instances belong. |
-|TerminateInstancesWithExpiration|Boolean|true|Indicates whether the preemptible instances are stopped when the auto provisioning group expires. Valid values:
+|TerminateInstances|Boolean|false|Indicates whether to release the instances in the auto provisioning group when the auto provisioning group is deleted. Valid values:
 
--   true: The preemptible instances are stopped. The action to be performed on these stopped instances is specified by the SpotInstanceInterruptionBehavior parameter.
--   false: The preemptible instances continue to run.
+-   true: releases the instances.
+-   false: retains the instances. |
+|TerminateInstancesWithExpiration|Boolean|true|Indicates whether to release instances in the auto provisioning group when the auto provisioning group expires. Valid values:
 
-**Note:** The SpotInstanceInterruptionBehavior parameter is set when the auto provisioning group is created, and cannot be modified. |
-|ValidFrom|String|2019-04-01T15:10:20Z|The time when the auto provisioning group was started. The period of time between this point in time and the point in time specified by the `ValidUntil` parameter is the effective time period of the auto provisioning group. |
-|ValidUntil|String|2019-06-01T15:10:20Z|The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `ValidFrom` parameter is the effective time period of the auto provisioning group. |
+-   true: releases the instances.
+-   false: removes the instances in the group from the auto provisioning group but not releases the instances. |
+|ValidFrom|String|2019-04-01T15:10:20Z|The time when the auto provisioning group was started. The period of time between this point in time and the point in time specified by the ValidUntil parameter is the effective time period of the auto provisioning group. |
+|ValidUntil|String|2019-06-01T15:10:20Z|The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the ValidFrom parameter is the effective time period of the auto provisioning group. |
 |PageNumber|Integer|1|The page number of the returned page. |
 |PageSize|Integer|10|The number of entries returned per page. |
 |RequestId|String|745CEC9F-0DD7-4451-9FE7-8B752F39\*\*\*\*|The ID of the request. |
@@ -277,7 +276,7 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|400|MissingParamter.RegionId|The regionId should not be null.|The error message returned because the required RegionId parameter is not specified.|
+|400|MissingParamter.RegionId|The regionId should not be null.|The error message returned because the RegionId parameter is not specified.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
