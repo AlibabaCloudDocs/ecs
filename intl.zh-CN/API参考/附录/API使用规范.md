@@ -1,4 +1,4 @@
-# API使用规范 {#EcsApiAgreements .reference}
+# API使用规范
 
-Please check the latest API Terms of Use [here](https://www.alibabacloud.com/help/zh/doc-detail/63893.htm).
+Please check the latest API Terms of Use [here](https://www.alibabacloud.com/help/doc-detail/63893.htm).
 
