@@ -72,5 +72,5 @@ Auto Provisioning is available free of charge. However, you are charged for ECS 
 -   Auto provisioning groups cannot provide resources across regions.
 -   An auto provisioning group can include a maximum of 20 resource pools, each of which is a combination of a zone and an instance type.
 -   A maximum of 1,000 instances can be created in an auto provisioning group.
--   You can specify a single version of a launch template as the configuration source of an auto provisioning group, but you can extend the configurations of the template.For more information, see .
+-   You can specify a single version of a launch template as the configuration source of an auto provisioning group, but you can extend the configurations of the template.For more information, see [Create an auto provisioning group](/intl.en-US/Elasticity/Manage auto provisioning groups/Create an auto provisioning group.md).
 
