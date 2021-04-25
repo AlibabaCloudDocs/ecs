@@ -1631,69 +1631,69 @@ Instance types
 -   For more information about the specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 -   For more information about the performance metrics of local SSDs, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
 
-## hfc7, compute optimized instance family with high clock speed
+## hfc7, compute optimized instance family with high clock speeds
 
 Features
 
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
--   I/O optimized.
--   Supports enhanced SSDs \(ESSDs\) and provides ultra-high I/O performance.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports only enhanced SSDs \(ESSDs\) and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Offers a CPU-to-memory ratio of 1:2.
--   Provides an ultra-high packet forwarding rate.
--   Equipped with Intel ® Xeon ® Platinum 8369HB \(Cooper Lake\) or Intel ® Xeon ® Platinum 8369HC \(Cooper Lake\) processors that deliver a maximum turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
--   Allows you to enable or disable hyper-threading.
+-   Provides ultra-high packet forwarding rates.
+-   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
+-   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are transmitted and received
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   High-performance frontend server clusters
     -   Frontend servers of massively multiplayer online \(MMO\) games
     -   Data analysis, batch processing, and video encoding
-    -   High-performance science and engineering applications
+    -   High-performance scientific and engineering applications
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfc7.large|2|4.0|None|1.2|10.0|900|Yes|2|2|6|20|1.0|
-|ecs.hfc7.xlarge|4|8.0|None|2.0|10.0|1,000|Yes|4|3|15|30|1.5|
-|ecs.hfc7.2xlarge|8|16.0|None|3.0|10.0|1,600|Yes|8|4|15|45|2.0|
-|ecs.hfc7.3xlarge|12|24.0|None|4.5|10.0|2,000|Yes|8|6|15|60|2.5|
-|ecs.hfc7.4xlarge|16|32.0|None|6.0|10.0|2,500|Yes|8|8|30|75|3.0|
-|ecs.hfc7.6xlarge|24|48.0|None|8.0|10.0|3,000|Yes|12|8|30|90|4.0|
-|ecs.hfc7.8xlarge|32|64.0|None|10.0|None|4,000|Yes|16|8|30|105|5.0|
-|ecs.hfc7.12xlarge|48|96.0|None|16.0|None|6,000|Yes|24|8|30|150|8.0|
-|ecs.hfc7.24xlarge|96|192.0|None|32.0|None|12,000|Yes|32|15|30|300|16.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.hfc7.large|2|4.0|None|1.2|10.0|900|Yes|250|2|2|6|20|1.0|
+|ecs.hfc7.xlarge|4|8.0|None|2.0|10.0|1,000|Yes|250|4|3|15|30|1.5|
+|ecs.hfc7.2xlarge|8|16.0|None|3.0|10.0|1,600|Yes|250|8|4|15|45|2.0|
+|ecs.hfc7.3xlarge|12|24.0|None|4.5|10.0|2,000|Yes|250|8|6|15|60|2.5|
+|ecs.hfc7.4xlarge|16|32.0|None|6.0|10.0|2,500|Yes|300|8|8|30|75|3.0|
+|ecs.hfc7.6xlarge|24|48.0|None|8.0|10.0|3,000|Yes|450|12|8|30|90|4.0|
+|ecs.hfc7.8xlarge|32|64.0|None|10.0|None|4,000|Yes|600|16|8|30|105|5.0|
+|ecs.hfc7.12xlarge|48|96.0|None|16.0|None|6,000|Yes|1,000|24|8|30|150|8.0|
+|ecs.hfc7.24xlarge|96|192.0|None|32.0|None|12,000|Yes|1,800|32|15|30|300|16.0|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## hfc6, compute optimized instance family with high clock speed
+## hfc6, compute optimized instance family with high clock speeds
 
 Features
 
--   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
--   I/O optimized.
+-   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Offers a CPU-to-memory ratio of 1:2.
--   Provides an ultra-high packet forwarding rate.
--   Equipped with 3.1 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz for consistent computing performance.
+-   Provides ultra-high packet forwarding rates.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.5 GHz for consistent computing performance.
 
-    **Note:** The CPU of this instance family provides a 3.1 GHz clock speed. The Intel System Studio \(ISS\) feature may cause a lower clock speed to be displayed. Alibaba Cloud is working on to resolve this issue. This issue does not affect the actual clock speed of your instances.
+    **Note:** The CPUs used by this instance family have a clock speed of 3.1 GHz. The Intel System Studio \(ISS\) feature may cause a lower clock speed to be displayed. Alibaba Cloud is working on this issue. This issue does not affect the actual clock speeds of your instances.
 
-    You can run the following commands separately and use the turbostat tool to view the actual clock speed.
+    You can separately run the following commands and use the turbostat tool to view the actual clock speeds:
 
     ```
     yum install kernel-tools
@@ -1703,13 +1703,13 @@ Features
     turbostat
     ```
 
--   Allows you to enable or disable hyper-threading.
+-   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are transmitted and received
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   Web frontend servers
     -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
@@ -1717,8 +1717,8 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.hfc6.large|2|4.0|None|1.0|3.0|300|Yes|2|2|6|10|1.0|
 |ecs.hfc6.xlarge|4|8.0|None|1.5|5.0|500|Yes|4|3|10|20|1.5|
 |ecs.hfc6.2xlarge|8|16.0|None|2.5|8.0|800|Yes|8|4|10|25|2.0|
@@ -1735,27 +1735,27 @@ Instance types
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## hfg7, general purpose instance family with high clock speed
+## hfg7, general purpose instance family with high clock speeds
 
 Features
 
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
--   I/O optimized.
--   Supports ESSDs and provides ultra-high I/O performance.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports only ESSDs and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Offers a CPU-to-memory ratio of 1:4.
--   Provides an ultra-high packet forwarding rate.
--   Equipped with Intel ® Xeon ® Platinum 8369HB \(Cooper Lake\) or Intel ® Xeon ® Platinum 8369HC \(Cooper Lake\) processors that deliver a maximum turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
--   Allows you to enable or disable hyper-threading.
+-   Provides ultra-high packet forwarding rates.
+-   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
+-   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are transmitted and received
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   Enterprise-level applications of various types and sizes
     -   Game servers
     -   Small and medium-sized database systems, caches, and search clusters
@@ -1764,41 +1764,41 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfg7.large|2|8.0|None|1.2|10.0|900|Yes|2|2|6|20|1.0|
-|ecs.hfg7.xlarge|4|16.0|None|2.0|10.0|1,000|Yes|4|3|15|30|1.5|
-|ecs.hfg7.2xlarge|8|32.0|None|3.0|10.0|1,600|Yes|8|4|15|45|2.0|
-|ecs.hfg7.3xlarge|12|48.0|None|4.5|10.0|2,000|Yes|8|6|15|60|2.5|
-|ecs.hfg7.4xlarge|16|64.0|None|6.0|10.0|2,500|Yes|8|8|30|75|3.0|
-|ecs.hfg7.6xlarge|24|96.0|None|8.0|10.0|3,000|Yes|12|8|30|90|4.0|
-|ecs.hfg7.8xlarge|32|128.0|None|10.0|None|4,000|Yes|16|8|30|105|5.0|
-|ecs.hfg7.12xlarge|48|192.0|None|16.0|None|6,000|Yes|24|8|30|150|8.0|
-|ecs.hfg7.24xlarge|96|384.0|None|32.0|None|12,000|Yes|32|15|30|300|16.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.hfg7.large|2|8.0|None|1.2|10.0|900|Yes|250|2|2|6|20|1.0|
+|ecs.hfg7.xlarge|4|16.0|None|2.0|10.0|1,000|Yes|250|4|3|15|30|1.5|
+|ecs.hfg7.2xlarge|8|32.0|None|3.0|10.0|1,600|Yes|250|8|4|15|45|2.0|
+|ecs.hfg7.3xlarge|12|48.0|None|4.5|10.0|2,000|Yes|250|8|6|15|60|2.5|
+|ecs.hfg7.4xlarge|16|64.0|None|6.0|10.0|2,500|Yes|300|8|8|30|75|3.0|
+|ecs.hfg7.6xlarge|24|96.0|None|8.0|10.0|3,000|Yes|450|12|8|30|90|4.0|
+|ecs.hfg7.8xlarge|32|128.0|None|10.0|None|4,000|Yes|600|16|8|30|105|5.0|
+|ecs.hfg7.12xlarge|48|192.0|None|16.0|None|6,000|Yes|1,000|24|8|30|150|8.0|
+|ecs.hfg7.24xlarge|96|384.0|None|32.0|None|12,000|Yes|1,800|32|15|30|300|16.0|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about the specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## hfg6, general purpose instance family with high clock speed
+## hfg6, general purpose instance family with high clock speeds
 
 Features
 
--   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
--   I/O optimized.
+-   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Provides high storage I/O performance based on large compute capacity.
+-   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Offers a CPU-to-memory ratio of 1:4.
--   Provides an ultra-high packet forwarding rate.
--   Equipped with 3.1 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz for consistent computing performance.
+-   Provides ultra-high packet forwarding rates.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.5 GHz for consistent computing performance.
 
-    **Note:** The CPU of this instance family provides a 3.1 GHz clock speed. The Intel System Studio \(ISS\) feature may cause a lower clock speed to be displayed. Alibaba Cloud is working on to resolve this issue. This issue does not affect the actual clock speed of your instances.
+    **Note:** The CPUs used by this instance family have a clock speed of 3.1 GHz. The Intel System Studio \(ISS\) feature may cause a lower clock speed to be displayed. Alibaba Cloud is working on this issue. This issue does not affect the actual clock speeds of your instances.
 
-    You can run the following commands separately and use the turbostat tool to view the actual clock speed.
+    You can separately run the following commands and use the turbostat tool to view the actual clock speeds:
 
     ```
     yum install kernel-tools
@@ -1808,24 +1808,24 @@ Features
     turbostat
     ```
 
--   Allows you to enable or disable hyper-threading.
+-   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are transmitted and received
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
     -   Game servers
     -   Small and medium-sized database systems, caches, and search clusters
     -   Data analysis and computing
-    -   Compute clusters and memory intensive data processing
+    -   Compute clusters and memory-intensive data processing
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.hfg6.large|2|8.0|None|1.0|3.0|300|Yes|2|2|6|10|1.0|
 |ecs.hfg6.xlarge|4|16.0|None|1.5|5.0|500|Yes|4|3|10|20|1.5|
 |ecs.hfg6.2xlarge|8|32.0|None|2.5|8.0|800|Yes|8|4|10|25|2.0|
@@ -1842,68 +1842,68 @@ Instance types
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## hfr7, memory optimized instance family with high clock speed
+## hfr7, memory optimized instance family with high clock speeds
 
 Features
 
--   Uses the third-generation SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
--   I/O optimized.
--   Supports ESSDs and provides ultra-high I/O performance.
+-   Uses the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports only ESSDs and provides ultra-high I/O performance.
 -   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Offers a CPU-to-memory ratio of 1:8.
--   Provides an ultra-high packet forwarding rate.
--   Equipped with Intel ® Xeon ® Platinum 8369HB \(Cooper Lake\) or Intel ® Xeon ® Platinum 8369HC \(Cooper Lake\) processors that deliver a maximum turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
--   Allows you to enable or disable hyper-threading.
+-   Provides ultra-high packet forwarding rates.
+-   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
+-   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are transmitted and received
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   High-performance and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfr7.large|2|16.0|None|1.2|10.0|900|Yes|2|2|6|20|1.0|
-|ecs.hfr7.xlarge|4|32.0|None|2.0|10.0|1,000|Yes|4|3|15|30|1.5|
-|ecs.hfr7.2xlarge|8|64.0|None|3.0|10.0|1,600|Yes|8|4|15|45|2.0|
-|ecs.hfr7.3xlarge|12|96.0|None|4.5|10.0|2,000|Yes|8|6|15|60|2.5|
-|ecs.hfr7.4xlarge|16|128.0|None|6.0|10.0|2,500|Yes|8|8|30|75|3.0|
-|ecs.hfr7.6xlarge|24|192.0|None|8.0|10.0|3,000|Yes|12|8|30|90|4.0|
-|ecs.hfr7.8xlarge|32|256.0|None|10.0|None|4,000|Yes|16|8|30|105|5.0|
-|ecs.hfr7.12xlarge|48|384.0|None|16.0|None|6,000|Yes|24|8|30|150|8.0|
-|ecs.hfr7.24xlarge|96|768.0|None|32.0|None|12,000|Yes|32|15|30|300|16.0|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|ecs.hfr7.large|2|16.0|None|1.2|10.0|900|Yes|250|2|2|6|20|1.0|
+|ecs.hfr7.xlarge|4|32.0|None|2.0|10.0|1,000|Yes|250|4|3|15|30|1.5|
+|ecs.hfr7.2xlarge|8|64.0|None|3.0|10.0|1,600|Yes|250|8|4|15|45|2.0|
+|ecs.hfr7.3xlarge|12|96.0|None|4.5|10.0|2,000|Yes|250|8|6|15|60|2.5|
+|ecs.hfr7.4xlarge|16|128.0|None|6.0|10.0|2,500|Yes|300|8|8|30|75|3.0|
+|ecs.hfr7.6xlarge|24|192.0|None|8.0|10.0|3,000|Yes|450|12|8|30|90|4.0|
+|ecs.hfr7.8xlarge|32|256.0|None|10.0|None|4,000|Yes|600|16|8|30|105|5.0|
+|ecs.hfr7.12xlarge|48|384.0|None|16.0|None|6,000|Yes|1,000|24|8|30|150|8.0|
+|ecs.hfr7.24xlarge|96|768.0|None|32.0|None|12,000|Yes|1,800|32|15|30|300|16.0|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about the specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## hfr6, memory optimized instance family with high clock speed
+## hfr6, memory optimized instance family with high clock speeds
 
 Features
 
--   Uses the SHENLONG architecture to provide predictable and consistent high performance and reduce virtualization overheads.
--   I/O optimized.
+-   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Provides high storage I/O performance based on large compute capacity.
+-   Provides high storage I/O performance based on large computing capacity.
 
     **Note:** For more information about the storage I/O performance of the new generation of enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
 
 -   Offers a CPU-to-memory ratio of 1:8.
--   Provides an ultra-high packet forwarding rate.
--   Equipped with 3.1 GHz Intel ® Xeon ® Platinum 8269 \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz for consistent computing performance.
+-   Provides ultra-high packet forwarding rates.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.5 GHz for consistent computing performance.
 
-    **Note:** The CPU of this instance family provides a 3.1 GHz clock speed. The Intel System Studio \(ISS\) feature may cause a lower clock speed to be displayed. Alibaba Cloud is working on to resolve this issue. This issue does not affect the actual clock speed of your instances.
+    **Note:** The CPUs used by this instance family have a clock speed of 3.1 GHz. The Intel System Studio \(ISS\) feature may cause a lower clock speed to be displayed. Alibaba Cloud is working on this issue. This issue does not affect the actual clock speeds of your instances.
 
-    You can run the following commands separately and use the turbostat tool to view the actual clock speed.
+    You can separately run the following commands and use the turbostat tool to view the actual clock speeds:
 
     ```
     yum install kernel-tools
@@ -1913,21 +1913,21 @@ Features
     turbostat
     ```
 
--   Allows you to enable or disable hyper-threading.
+-   Allows you to enable or disable Hyper-Threading.
 
     **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
 
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
-    -   Scenarios such as on-screen video comments and telecom data forwarding where large volumes of packets are transmitted and received
+-   Suits the following scenarios:
+    -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   High-performance and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Base bandwidth \(Gbit/s\)|Burstable bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:--------------------|:------------------------|------------------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.hfr6.large|2|16.0|None|1.0|3.0|300|Yes|2|2|6|10|1.0|
 |ecs.hfr6.xlarge|4|32.0|None|1.5|5.0|500|Yes|4|3|10|20|1.5|
 |ecs.hfr6.2xlarge|8|64.0|None|2.5|8.0|800|Yes|8|4|10|25|2.0|
@@ -1942,7 +1942,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about the specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## sn2ne, general purpose instance family with enhanced network performance
 
@@ -2199,25 +2199,25 @@ Instance types
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 -   For more information about the performance metrics of local SSDs, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).
 
-## hfc5, compute optimized instance family with high clock speed
+## hfc5, compute optimized instance family with high clock speeds
 
 Features
 
--   I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Provides consistent computing performance.
--   Equipped with 3.1 GHz Intel ® Xeon ® Gold 6149 \(Skylake\) processors.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports only standard SSDs and ultra disks.
+-   Offers consistent computing performance.
+-   Uses 3.1 GHz Intel® Xeon® Gold 6149 \(Skylake\) processors.
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
+-   Suits the following scenarios:
     -   High-performance web frontend servers
     -   High-performance scientific and engineering applications
     -   MMO gaming and video encoding
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:----|:-------------|:--------------------|:-------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.hfc5.large|2|4.0|None|1.0|300|No|2|2|6|
 |ecs.hfc5.xlarge|4|8.0|None|1.5|500|No|2|3|10|
 |ecs.hfc5.2xlarge|8|16.0|None|2.0|1,000|No|2|4|10|
@@ -2229,27 +2229,27 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about the specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
-## hfg5, general purpose instance family with high clock speed
+## hfg5, general purpose instance family with high clock speeds
 
 Features
 
--   I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Provides consistent computing performance.
--   Equipped with 3.1 GHz Intel ® Xeon ® Gold 6149 \(Skylake\) processors.
--   Offers a CPU-to-memory ratio of 1:4 \(excluding the instance type with 56 vCPUs\).
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports only standard SSDs and ultra disks.
+-   Offers consistent computing performance.
+-   Uses 3.1 GHz Intel® Xeon® Gold 6149 \(Skylake\) processors.
+-   Offers a CPU-to-memory ratio of 1:4 \(excluding the instance type that has 56 vCPUs\).
 -   Provides high network performance based on large computing capacity.
--   Suitable for the following scenarios:
+-   Suits the following scenarios:
     -   High-performance web frontend servers
     -   High-performance scientific and engineering applications
     -   MMO gaming and video encoding
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(Kpps\)|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:----|:-------------|:--------------------|:-------------------|:------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|:---------|:---------------------------------|----------------------------|
 |ecs.hfg5.large|2|8.0|None|1.0|300|No|2|2|6|
 |ecs.hfg5.xlarge|4|16.0|None|1.5|500|No|2|3|10|
 |ecs.hfg5.2xlarge|8|32.0|None|2.0|1,000|No|2|4|10|
@@ -2615,12 +2615,12 @@ Features
 -   Uses NVIDIA A100 GPUs. NVSwitches are used to establish connections between NVIDIA A100 GPUs. The GPUs feature:
     -   Innovative Ampere architecture
     -   40 GB HBM2 memory per GPU
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors.
+-   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications, such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications that have high GPU workloads such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
@@ -2652,7 +2652,7 @@ Features
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
@@ -2674,7 +2674,7 @@ Features
 -   Uses NVIDIA V100 GPUs.
 -   Uses NVIDIA V100 GPUs \(SXM2-based\) that feature:
     -   Innovative Volta architecture
-    -   16 GB HBM2 memory per GPU \(900 Gbit/s bandwidth\).
+    -   16 GB HBM2 memory per GPU \(900 Gbit/s bandwidth\)
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
@@ -2684,7 +2684,7 @@ Features
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
@@ -2704,7 +2704,7 @@ Features
 
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Uses NVIDIA T4 GPUs that feature:
-    -   New NVIDIA Turing architecture
+    -   Innovative NVIDIA Turing architecture
     -   16 GB memory \(320 GB/s bandwidth\) per GPU
     -   2,560 CUDA cores per GPU
     -   Up to 320 Turing Tensor cores per GPU
@@ -2735,7 +2735,7 @@ Instance types
 
 ## ebmc6a, compute optimized ECS Bare Metal Instance family
 
-ebmc6a is in invitational preview. To use ebmc6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+The instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -2745,7 +2745,7 @@ Features
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2774,8 +2774,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2807,7 +2807,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2830,7 +2830,7 @@ Instance types
 
 ## ebmg6a, general purpose ECS Bare Metal Instance family
 
-ebmg6a is in invitational preview. To use ebmg6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+The instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -2840,7 +2840,7 @@ Features
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports enhanced SSDs \(ESSDs\), standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2870,8 +2870,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2906,7 +2906,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2930,7 +2930,7 @@ Instance types
 
 ## ebmr6a, memory optimized ECS Bare Metal Instance family
 
-ebmr6a is in invitational preview. To use ebmr6a, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+The instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -2940,7 +2940,7 @@ Features
 -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2970,8 +2970,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:8.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -2985,8 +2985,8 @@ Features
 
 Instance types
 
-|Instance type|vCPU|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:---|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Local storage \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|IPv6 support|Connections \(K\)|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:--------------------|:----------------------------------|:---------------------------------------------|:-----------|-----------------|:---------------------------------|----------------------------|---------------|-------------------------|
 |ecs.ebmr6e.26xlarge|104|768.0|None|32.0|24,000|Yes|1,800|32|10|480|16.0|
 
 **Note:**
@@ -3003,7 +3003,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3032,11 +3032,11 @@ Features
 
 -   Provides dedicated hardware resources and physical isolation.
 -   Uses the Intel ® OptaneTM persistent memory and is tuned for Redis applications in an end-to-end manner to provide cost-effectiveness.
--   Supports a maximum of 1,920 GiB memory \(384 GiB DRAM memory + 1,536 GiB Intel® OptaneTM persistent memory\), offers a CPU-to-memory ratio of 1:20, and can meet the needs of memory-intensive applications.
+-   Supports a maximum of 1,920 GiB memory \(384 GiB DRAM + 1,536 GiB Intel® OptaneTM persistent memory\), offers a CPU-to-memory ratio of 1:20, and can meet the needs of memory-intensive applications.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   In-memory databases such as Redis
@@ -3065,11 +3065,11 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
-    -   High-performance and in-memory databases such as SAP HANA
+    -   High-performance and in-memory databases such as SAP HANA databases
     -   Memory-intensive applications
     -   Big data processing engines such as Apache Spark and Presto
 
@@ -3093,8 +3093,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency of not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3125,8 +3125,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3156,8 +3156,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:8.
 -   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports ESSDs only and provides ultra-high I/O performance.
--   Supports VPCs only.
+-   Supports only ESSDs and provides ultra-high I/O performance.
+-   Supports only VPCs.
 -   Provides ultra-high network performance with a packet forwarding rate of 24,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3183,10 +3183,10 @@ Features
 
 -   Provides dedicated hardware resources and physical isolation.
 -   Offers a CPU-to-memory ratio of 1:4.8.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.5 GHz.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3212,10 +3212,10 @@ Features
 
 -   Provides dedicated hardware resources and physical isolation.
 -   Offers a CPU-to-memory ratio of 1:2.4.
--   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core frequency of 3.5 GHz.
+-   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
@@ -3244,7 +3244,7 @@ Features
 -   Uses 3.1 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.5 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 6,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3491,7 +3491,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
@@ -3520,7 +3520,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3549,7 +3549,7 @@ Features
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
--   Supports VPCs only.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,500 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3578,8 +3578,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8163 \(Skylake\) processors that deliver an all-core turbo frequency of 2.7 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Supports VPCs only.
+-   Supports only standard SSDs and ultra disks.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3612,8 +3612,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:4.
 -   Uses 3.7 GHz Intel® Xeon® E3-1240v6 \(Skylake\) processors that deliver a turbo frequency of 4.1 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Supports VPCs only.
+-   Supports only standard SSDs and ultra disks.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 2,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3640,8 +3640,8 @@ Features
 -   Offers a CPU-to-memory ratio of 1:2.
 -   Uses 2.5 GHz Intel® Xeon® E5-2682 v4 \(Broadwell\) processors that deliver a turbo frequency of 3.0 GHz.
 -   Is an instance family in which all instances are I/O optimized.
--   Supports standard SSDs and ultra disks only.
--   Supports VPCs only.
+-   Supports only standard SSDs and ultra disks.
+-   Supports only VPCs.
 -   Provides high network performance with a packet forwarding rate of 4,000 Kpps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
@@ -3877,7 +3877,7 @@ Instance types of e4
 |-------------|-----------|
 |local storage|Local storage, also called cache disks or local disks, refers to the disks attached to the physical servers where ECS instances are hosted. Local storage provides temporary block storage for instances. Local storage capacity is measured in GiB. Data stored on local disks may be lost when the computing resources of an instance are released or when an instance is failed over to a normal physical server. Computing resources include vCPUs and memory. For more information, see [Local disks](/intl.en-US/Block Storage/Block Storage overview/Local disks.md).|
 |bandwidth|The maximum sum of inbound and outbound bandwidth values. **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as the instance load and networking model. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
-|packet forwarding rate|The maximum sum of inbound and outbound packet forwarding rates. For information about how to test the packet forwarding rate, see[Test network performance](https://www.alibabacloud.com/help/faq-detail/55757.htm). **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as the instance load, image version, and networking model. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
+|packet forwarding rate|The maximum sum of inbound and outbound packet forwarding rates. For information about how to test the packet forwarding rate, see [Test network performance](https://www.alibabacloud.com/help/faq-detail/55757.htm). **Note:** Each instance specification is verified and obtained in a test environment. In actual scenarios, the performance of an instance may vary based on other factors such as the instance load, image version, and networking model. We recommend that you perform business stress tests on instances to choose appropriate instance types. |
 |connections|Connections, also called sessions, are the process of establishing connections and transferring data between a client and a server. A connection is uniquely defined by the network communication quintuple that consists of a source IP address, a destination IP address, a source port, a destination port, and a protocol. Connections of an ECS instance include TCP, UDP, and ICMP connections.|
 |NIC queues|The maximum number of NIC queues supported by the primary NIC of an instance. If your instance type is not a member of an ECS Bare Metal Instance family, the maximum number of NIC queues supported by a secondary NIC is the same as that supported by the primary NIC.|
 
