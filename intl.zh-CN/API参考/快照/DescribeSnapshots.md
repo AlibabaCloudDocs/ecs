@@ -46,10 +46,10 @@
  -   auto：自动创建快照。
 -   user：手动创建快照。
 -   all（默认）：所有的快照创建类型。 |
-|Filter.1.Key|String|否|CreationStartTime|查询资源时的筛选键。取值必须为CreationStartTime。 |
-|Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键。取值必须为CreationEndTime。 |
-|Filter.1.Value|String|否|2019-12-13T17:00Z|查询资源时的筛选值。取值必须为资源创建的开始时间（CreationStartTime）的取值。 |
-|Filter.2.Value|String|否|2019-12-13T22:00Z|查询资源时的筛选值。取值必须为资源创建的结束时间（CreationEndTime）的取值。 |
+|Filter.1.Key|String|否|CreationStartTime|查询资源时的筛选键，取值必须为`CreationStartTime`。同时设置`Filter.1.Key`和`Filter.1.Value`可以查询在指定时间点后创建的资源信息。 |
+|Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键，取值必须为`CreationEndTime`。同时设置`Filter.2.Key`和`Filter.2.Value`可以查询在指定时间点前创建的资源信息。 |
+|Filter.1.Value|String|否|2019-12-13T17:00Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
+|Filter.2.Value|String|否|2019-12-13T22:00Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.2.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
 |Usage|String|否|none|快照是否被用作创建镜像或云盘。取值范围：
 
  -   image：使用快照创建了自定义镜像。
