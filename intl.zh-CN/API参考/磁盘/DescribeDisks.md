@@ -119,10 +119,10 @@
 -   security：因安全原因被锁定。
 -   recycling：抢占式实例的待释放锁定状态。
 -   dedicatedhostfinancial：因为专有宿主机欠费导致ECS实例被锁定。 |
-|Filter.1.Key|String|否|CreationStartTime|查询资源时的筛选键。取值必须为CreationStartTime。 |
-|Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键。取值必须为CreationEndTime。 |
-|Filter.1.Value|String|否|2017-12-05T22:40:00Z|查询资源时的筛选值。取值必须为资源创建的开始时间点（CreationStartTime）。 |
-|Filter.2.Value|String|否|2017-12-06T22:40:00Z|查询资源时的筛选值。取值必须为资源创建的结束时间点（CreationEndTime）。 |
+|Filter.1.Key|String|否|CreationStartTime|查询资源时的筛选键，取值必须为`CreationStartTime`。同时设置`Filter.1.Key`和`Filter.1.Value`可以查询在指定时间点后创建的资源信息。 |
+|Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键，取值必须为`CreationEndTime`。同时设置`Filter.2.Key`和`Filter.2.Value`可以查询在指定时间点前创建的资源信息。 |
+|Filter.1.Value|String|否|2017-12-05T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
+|Filter.2.Value|String|否|2017-12-06T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.2.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
 |Tag.N.value|String|否|null|云盘或本地盘的标签值。
 
  **说明：** 为提高代码兼容性，请尽量使用Tag.N.Value参数。 |
