@@ -4,7 +4,7 @@ keyword: [Alibaba Cloud, Alibaba Cloud Linux, ECS, native Linux]
 
 # Overview
 
-Alibaba Cloud Linux 2 \(formerly known as Aliyun Linux 2\) is an operating system provided by Alibaba Cloud. It provides a safe, stable, and high-performance customized environment for applications on ECS instances. Alibaba Cloud Linux 2 is optimized for the cloud infrastructure and aims to deliver a better runtime experience. You can create an instance from an Alibaba Cloud Linux 2 image. Alibaba Cloud Linux 2 images are free to use, and Alibaba Cloud provides long-term technical support \(LTS\) for them.
+Alibaba Cloud Linux 2 \(formerly known as Aliyun Linux 2\) is an operating system provided by Alibaba Cloud. It provides a safe, stable, and high-performance customized environment for applications on Elastic Compute Service \(ECS\) instances. Alibaba Cloud Linux 2 is optimized for the cloud infrastructure and aims to deliver a better runtime experience. You can create an instance from an Alibaba Cloud Linux 2 image. Alibaba Cloud Linux 2 images are free to use, and Alibaba Cloud provides long-term technical support \(LTS\) for them.
 
 For more information, see the [Alibaba Cloud Linux 2 product page](https://www.alibabacloud.com/en/products/alinux).
 
@@ -32,7 +32,7 @@ Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following
 -   Alibaba Cloud Linux 2 is distributed with the latest version of the Alibaba Cloud kernel. The kernel has the following features:
     -   The Alibaba Cloud kernel is based on Linux kernel V4.19 with the LTS from the kernel community. The Alibaba Cloud kernel is optimized for cloud-based scenarios, improved performance, and bug fixes. For more information, see [Release notes](/intl.en-US/Images/Alibaba Cloud Linux 2/Release notes.md).
     -   Alibaba Cloud Linux 2 provides customized and optimized kernel startup parameters and system configuration parameters for the ECS instance environment.
-    -   Alibaba Cloud Linux 2 provides kdump, which is a kernel dumping mechanism used in case of operating system failures. You can enable or disable this feature without restarting the operating system.
+    -   Alibaba Cloud Linux 2 provides kdump, which is a kernel dumping mechanism used when the operating system fails. You can enable or disable this feature without restarting the operating system.
     -   Alibaba Cloud Linux 2 provides Kernel Live Patching \(KLP\).
 -   Alibaba Cloud Linux 2 has software pre-installed or updated.
     -   The user-mode package is compatible with the latest version of CentOS 7 and can run on Alibaba Cloud Linux 2.
@@ -54,9 +54,9 @@ Compared with other Linux distributions, Alibaba Cloud Linux 2 has the following
 -   It accelerates only the initial startup of instances, and subsequently starts instances at a normal speed.
 -   It optimizes and accelerates the process of initializing memory, modularizes devices such as mice that take time to start, and speeds up the kernel boot.
 -   It replaces the cloud-init service with the latest AliyunInit service. This reduces the amount of time required to initialize the operating system.
--   Images of this version are available in the following regions: China \(Hangzhou\), China \(Shenzhen\), China \(Beijing\), China \(Zhangjiakou\), and China \(Hong Kong\).
-
-**Note:** The kernel startup parameters of the quick start version cannot be modified. |
+-   The kernel startup parameter of the Quick Start version cannot be modified.
+-   The following instance families are not supported: GPU-accelerated compute optimized instance families, vGPU-accelerated instance families, FPGA-accelerated compute optimized instance families, NPU-accelerated compute optimized instance families, heterogeneous service type instance families, Super Computing Cluster \(SCC\) instance families, and security-enhanced instance families.
+-   Images of this version are available in the following regions: China \(Hangzhou\), China \(Shenzhen\), China \(Beijing\), China \(Zhangjiakou\), and China \(Hong Kong\). |
 |Alibaba Cloud Linux 2.1903 LTS 64-bit \(AMD-compatible\)|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|This image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud AMD-compatible instances. This image version supports only the Unified Extensible Firmware Interface \(UEFI\) boot mode. **Note:** Images of this version can be used to create instances of only the following Alibaba Cloud AMD-compatible Bare Metal Instance families: ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a. |
 |Alibaba Cloud Linux 2.1903 64-bit \(Trusted\)|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|The image version is derived from Alibaba Cloud Linux 2.1903 LTS 64-bit and can be used to create Alibaba Cloud trusted instances. **Note:** Images of this version can be used to create instances of only the ecs.g6t and ecs.c6t trusted instance families. |
 
@@ -71,7 +71,7 @@ You can use the following methods to obtain and use Alibaba Cloud Linux 2 images
 -   ECS instances
     -   When you create an ECS instance, select **Public Image**, and then select Alibaba Cloud Linux 2 and its version.
         -   For information about how to create an instance, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
-        -   For the differences among Alibaba Cloud Linux 2 images, see [What are the differences among Alibaba Cloud Linux 2 images?](/intl.en-US/Images/Alibaba Cloud Linux 2/FAQ.md).
+        -   For information about the differences among Alibaba Cloud Linux 2 images, see [What are the differences among Alibaba Cloud Linux 2 images?](/intl.en-US/Images/Alibaba Cloud Linux 2/FAQ.md).
     -   You can change the operating system of an existing ECS instance to Alibaba Cloud Linux 2 by replacing the system disk. For more information, see [Replace the system disk \(public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace the system disk (public images).md).
 -   On-premises environments such as a KVM-based virtualization environment
 
