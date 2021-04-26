@@ -1,12 +1,12 @@
 # Export a custom image
 
-You can export a new custom image to an OSS bucket and download the image to local computers. This topic describes how to export custom images and what precautions must be taken.
+You can export a created custom image to an Object Storage Service \(OSS\) bucket and download the image to local computers. This topic describes how to export custom images and what notes must be taken of.
 
--   An OSS bucket is available within the same region as the custom image to be exported.
+-   An OSS bucket is available in the same region as the custom image to be exported.
 
-    If you have not created any OSS buckets, create one. For more information, see [Create buckets](/intl.en-US/Quick Start/Create buckets.md).
+    If you do not have OSS buckets available in the region, create an OSS bucket. For information about how to create an OSS bucket, see [Create buckets](/intl.en-US/Quick Start/OSS console/Create buckets.md).
 
-    **Note:** When you export a custom image, OSS storage and traffic fees are incurred for image download. For more information, see [Overview](/intl.en-US/Pricing/Billing items and methods/Overview.md).
+    **Note:** When you export a custom image, you are charged for OSS storage and the traffic generated for image download. For more information, see [Overview](/intl.en-US/Pricing/Billing items and methods/Overview.md).
 
 -   The custom image to be exported meets the following requirements:
     -   It is not created based on an Alibaba Cloud Marketplace image.
@@ -24,7 +24,8 @@ Before you export a custom image, take note of the following points:
     Objects whose names contain system are system disk snapshots. Objects whose names contain data are data disk snapshots. The identifier of a data disk snapshot is the mount point of the source data disk, such as xvdb and xvdc.
 
 -   To use the exported image to create identical Linux instances, make sure that the storage location and storage space division of files recorded in /etc/fstab are consistent with the exported data disk snapshot information.
--   If the cloud disk does not contain any data when the custom image is created, the decompressed image file also does not contain any data.
+-   If the cloud disk does not contain data when the custom image is created, the decompressed image file also does not contain data.
+-   The exported image may not be normally started on instances that run operating systems different from the images, but you can mount the disk in the image to obtain data.
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
@@ -34,11 +35,11 @@ Before you export a custom image, take note of the following points:
 
 4.  Authorize ECS to access OSS.
 
-    1.  Choose **More** \> **Export Image** in the **operation** column corresponding to an image.
+    1.  Find the image that you want to export. In the **Actions** column, click the ![The More icon](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8508037061/p171570.png) icon, and then click **Export Image**.
 
     2.  In the Export Image dialog box, click **Verify** in the notes.
 
-        ![Export an image](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4073559951/p4655.png)
+        ![Export an image](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4073559951/p4655.png)
 
     3.  In the Cloud Resource Access Authorization dialog box, click **Confirm Authorization Policy** to allow ECS to access your OSS resources.
 
@@ -50,7 +51,7 @@ Before you export a custom image, take note of the following points:
 
     -   Image Format: Select a format in which to export the custom image. Valid values: RAW, VHD, QCOW2, VDI, and VMDK.
 
-        **Note:** The select image export format feature is currently available in some regions and will be made available in more regions in the future.
+        **Note:** The feature of selecting image export formats is available only in some regions.
 
     -   OSS Bucket Address: Select an OSS bucket that belongs to the same region as the custom image.
     -   OSS Object Prefix: Set the prefix of the object name for the custom image. For example, if you set OSS Object Prefix to Demo, the exported image is named Demo-<Automatically generated object name\>.
