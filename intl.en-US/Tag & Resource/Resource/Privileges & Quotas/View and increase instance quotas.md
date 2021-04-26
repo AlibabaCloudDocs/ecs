@@ -8,8 +8,6 @@ Instance quotas are allocated based on zones, instance types, billing methods, a
 
 Instance quotas are classified into total quotas, reserved quotas, and base quotas based on the extent to which the provision of resources is guaranteed. Total quotas specify the maximum amounts of guaranteed available instance resources, whereas base quotas specify the minimum amounts of guaranteed available instance resources. To ensure that the automatic increases in your total quota match the increases in your daily resource usage, the system periodically adjusts your instance quotas based on your instance usage. If a total quota is insufficient for your requirements, you can apply to increase it.
 
-**Note:** Reserved quotas specify the amounts of instance resources reserved by elasticity assurances or immediate capacity reservations. For more information, see [Overview of Resource Assurance]().
-
 Both the total and usage amounts of the total and base quotas are cumulative values of the last 15 days \(including the current day\). You do not need to apply for additional quotas when quotas are insufficient due to a large number of instances in your account. Examples:
 
 -   When you query the total quota on August 16, the total amount displayed is the total quota for August 2 to August 16, and the displayed usage amount is the number of instances created and running from August 2 to August 16.
@@ -57,8 +55,6 @@ In addition, an instance quota can be classified into an instance type-specific 
 After the total quota is increased to the specified value, the system keeps the total quota from falling below this value when the system automatically adjusts the total quota within at least 30 days.
 
 **Note:** When you create ECS instances beyond the base quota, the availability of required resources is not guaranteed. |
-    |**Reserved Quota**|Reserved quotas specify the amounts of instance resources reserved by resource reservations. When you create instances within a reserved quota, the requested resources are guaranteed. You can create the following resource reservations to increase reserved quotas:    -   [Elasticity assurances]()
-    -   [Immediate capacity reservations]() |
     |**Base Quota**|Base quotas are automatically adjusted and allocated before the tenth day of each month based on the usage of your ECS resources. You cannot apply to increase the base quotas. **Note:** The base quota is used preferentially when you create instances. When you create instances within the base quota, their corresponding resources are guaranteed to be available. |
 
     In the **Total Quota**, **Reserved Quota**, and **Base Quota** columns, you can check the usage of quotas based on the color of the progress bar. Different colors convey different meanings:
