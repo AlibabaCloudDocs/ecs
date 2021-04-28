@@ -317,8 +317,6 @@ You can purchase both SCUs and savings plans at the same time. However, SCUs hav
 
 No, savings plans do not provide resource reservations. No resources are specified when you purchase savings plans.
 
-**Note:** To reserve resources when you have savings plans or reserved instances, you can purchase immediate capacity reservations. For more information, see [Overview of Immediate Capacity Reservation]().
-
 ## Do savings plans provide discounts for preemptible instances?
 
 No, savings plans cannot be applied to preemptible instances.
@@ -383,7 +381,7 @@ An order is created when you change the billing method of your instance from pay
 
 The pay-as-you-go instance whose billing method you want to change must meet the following requirements:
 
--   The instance type of the instance is not retired. For more information, see [Retired instance types](/intl.en-US/Instance/Retired instance types.md).
+-   The instance type of the instance is not retired. For more information, see [Retired instance types](/intl.en-US/Instance/Instance type families/Retired instance types.md).
 -   The instance is not a preemptible instance.
 -   No unpaid orders related to the instance exist.
 
@@ -492,7 +490,7 @@ You may be charged the following fees for the preceding operations:
 This situation may occur in the following circumstances:
 
 -   The custom image contains data disk snapshots. When such an image is selected, the costs of the data disks cause the total cost of the instance to be higher than that of an instance created from a public image.
--   The custom image was created based on a paid public image such as a Windows Server or RHEL image.
+-   The custom image was derived from a paid public image such as a Windows Server or RHEL image.
 
 ## Are Alibaba Cloud Marketplace images refundable?
 
@@ -542,9 +540,9 @@ Yearly, monthly, or weekly subscription Alibaba Cloud Marketplace images are ima
 
 A subscription image can be used only on a subscription instance with the same subscription duration.
 
-## How do I purchase a subscription image? Can I purchase it separately?
+## How do I purchase a subscription image? Can I separately purchase it?
 
-No, you cannot purchase a subscription image separately.
+No, you cannot separately purchase a subscription image.
 
 You can use one of the following methods to purchase a subscription image:
 
@@ -567,7 +565,7 @@ Image prices are set by the image providers.
 
 When a subscription image expires, it cannot be used unless it is renewed in a timely manner.
 
-You cannot renew a subscription image separately. If you want to continue to use the image, you must renew the image together with the corresponding ECS instance. After the image is renewed, you can continue to use it.
+You cannot separately renew a subscription image. If you want to continue to use the image, you must renew the image together with the corresponding ECS instance. After the image is renewed, you can continue to use it.
 
 ## After I purchase a subscription image, can I request a refund if I no longer want to use it?
 
