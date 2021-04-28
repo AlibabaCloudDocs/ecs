@@ -16,7 +16,7 @@ Alibaba Cloud Linux 3适用于下列场景。
     -   支持的实例内存范围为0.5 GiB~12288 GiB。
     -   不支持非I/O优化实例。
 
-**说明：** Alibaba Cloud Linux 3操作系统目前支持华东1（杭州）地域，地域数量持续增加中。
+**说明：** Alibaba Cloud Linux 3操作系统目前支持华北1（青岛）、华北2（北京）、华东1（杭州）、西南1（成都）、中国（香港）、新加坡地域，地域数量持续增加中。
 
 ## 优势
 
@@ -33,7 +33,7 @@ Alibaba Cloud Linux 3继承Alibaba Cloud Linux 2的全部优势，并与其他Li
 
 |镜像|最新版本镜像ID|说明|
 |--|--------|--|
-|Alibaba Cloud Linux 3.2104 64位|aliyun\_3\_x64\_20G\_alibase\_20210415.vhd|Alibaba Cloud Linux 3操作系统的默认标准镜像。|
+|Alibaba Cloud Linux 3.2104 64位|aliyun\_3\_x64\_20G\_alibase\_20210425.vhd|Alibaba Cloud Linux 3操作系统的默认标准镜像。|
 
 ## 费用
 
