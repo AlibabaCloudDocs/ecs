@@ -18,24 +18,24 @@ keyword: [创建ECS实例, 新手入门, 快速购买]
 
     **说明：** 您可以单击图片，放大查看配置细节。如果您想要查看操作演示动画，请参见[选购和连接ECS实例示例](#section_zh1_gfe_ttp)。
 
-    ![快速创建实例1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0098032061/p167374.png)
+    ![快速创建实例1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0098032061/p167374.png)
 
-    ![快速创建实例2](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1326330061/p167375.png)
+    ![快速创建实例2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1326330061/p167375.png)
 
-    ![快速创建实例3](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1326330061/p167376.png)
+    ![快速创建实例3](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1326330061/p167376.png)
 
-    ![快速创建实例4](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1326330061/p167377.png)
+    ![快速创建实例4](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1326330061/p167377.png)
 
 
 **说明：** 如果需要详细了解各配置项，请参见[使用向导创建实例](/cn.zh-CN/实例/创建实例/使用向导创建实例.md)。
 
 ## 连接ECS实例
 
-您可以通过ECS控制台远程连接ECS实例。
+您可以通过[ECS控制台](https://ecs.console.aliyun.com/#/server)远程连接ECS实例。
 
 **说明：** 默认情况下，Linux实例的用户名为root，Windows实例的用户名为Administrator。如果您忘记了登录密码，请在连接前重置密码，操作步骤请参见[重置实例登录密码](/cn.zh-CN/实例/管理实例/重置实例登录密码.md)。
 
-![连接ECS实例](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5489222061/p131461.png)
+![连接ECS实例](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5489222061/p131461.png)
 
 **说明：** 如果想要通过其它方式连接ECS实例，请参见[连接方式概述](/cn.zh-CN/实例/连接实例/连接方式概述.md)。
 
@@ -60,5 +60,5 @@ keyword: [创建ECS实例, 新手入门, 快速购买]
 
 ## 选购和连接ECS实例示例
 
-![控制台快速创建实例](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1098032061/p103885.gif)
+![控制台快速创建实例](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1098032061/p103885.gif)
 
