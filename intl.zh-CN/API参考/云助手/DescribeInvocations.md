@@ -23,7 +23,7 @@
 |CommandType|String|否|RunShellScript|命令类型。 |
 |Timed|Boolean|否|true|查询的命令是否在将来会自动执行。取值范围：
 
- -   true：查询在调用`RunCommand`或`InvokeCommand`执行命令时，`RepeatMod`参数取值为`Period`、`NextRebootOny`或者`EveryReboot`，且处于未被取消或停止的未完成状态的命令。
+ -   true：查询在调用`RunCommand`或`InvokeCommand`执行命令时，`RepeatMod`参数取值为`Period`、`NextRebootOny`或者`EveryReboot`，且处于未被取消的未完成状态命令或者未被停止的未完成状态命令。
 -   false：查询以下两种状态的命令：
     -   在调用`RunCommand`或`InvokeCommand`执行命令时，`RepeatMod`参数取值为`Once`。
     -   已被取消、被停止或者已完成执行的命令。
