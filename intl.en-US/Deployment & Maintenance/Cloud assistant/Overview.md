@@ -1,28 +1,28 @@
 ---
-keyword: [Cloud Assistant, remote command, O&M plug-in, Alibaba Cloud, ECS]
+keyword: [Cloud Assistant, remote commands, O&M plug-ins, send files]
 ---
 
 # Overview
 
-Cloud Assistant is an Alibaba Cloud proprietary tool used to perform O&M and deployment tasks for ECS. Cloud Assistant can automatically run batch, PowerShell, or shell commands on multiple instances at a time without the need to connect to the instances. You can use Cloud Assistant to perform different tasks such as running automated O&M scripts, polling processes, installing or uninstalling software, updating applications, and installing patches.
+Cloud Assistant is a native automated operations and maintenance \(O&M\) tool designed for Elastic Compute Service \(ECS\). It can batch maintain ECS instances, execute shell, PowerShell and batch scripts, and send files on ECS instances. You do not need to enter passwords, log on to instances, or use jump servers when you perform these operations. Typically, you can use Cloud Assistant to install and uninstall software, start and stop services, distribute configuration files, and execute other commands or scripts.
 
 ## Features
 
-After you install the Cloud Assistant client on ECS instances, you can use Cloud Assistant to perform the following operations on the instances in the ECS console or by calling API operations:
+After ECS instances that are installed with the Cloud Assistant client enter the **Running** \(`Running`\) state, you can use Cloud Assistant to perform the following operations on the instances by using the ECS console or by calling API operations:
 
--   Run batch, PowerShell \(for Windows instances\), or shell \(for Linux instances\) commands on one or more instances that are in the **Running** \(`Running`\) state.
--   Run the same command on multiple instances. The execution status and results on different instances do not affect each other.
+-   Run batch and PowerShell scripts on Windows instances, or run shell scripts on Linux instances.
+-   Upload files to the instances.
+-   Run the same command on multiple instances. The execution status and results on an instance do not affect other instances.
 -   Configure custom parameters in Cloud Assistant commands to adapt the commands to the needs of different scenarios.
 
-    **Note:** Cloud Assistant does not proactively initiate operations. You have full control over all Cloud Assistant operations.
-
+**Note:** Cloud Assistant does not proactively initiate operations. You have full control over all Cloud Assistant operations.
 
 ## Scenarios
 
 Cloud Assistant can help you perform deployment and O&M tasks on ECS instances. The following list provides some examples:
 
 -   Uploading and running automated O&M scripts
--   Running existing scripts on instances
+-   Running existing scripts installed on instances
 -   Managing software lifecycle
 -   Deploying code or applications
 -   Polling processes
@@ -38,15 +38,16 @@ However, you may be charged for the ECS resources used by Cloud Assistant to dep
 
 ## Service limits
 
--   Only API operations can be used to configure scheduled invocations. The scheduled interval cannot be less than 10 seconds.
--   For each command, the total size of the Base64-encoded batch, PowerShell, or shell command together with the custom parameters cannot exceed 16 KB.
+-   Only API operations can be used to configure the recurring executions of a Cloud Assistant command. The interval at which the command is run cannot be less than 10 seconds.
+-   For each command, the total size of the Base64-encoded batch, PowerShell, or shell scripts together with the Base64-encoded custom parameters cannot exceed 16 KB.
+-   The Base64-encoded file to send cannot exceed 32 KB in size.
 -   Each command can contain a maximum of 20 custom parameters.
 -   Cloud Assistant commands can be run only on instances that use the following operating systems:
     -   Alibaba Cloud Linux
     -   CentOS 6, CentOS 7, CentOS 8, and later
     -   CoreOS
     -   Debian 8, Debian 9, Debian 10, and later
-    -   openSUSE
+    -   OpenSUSE
     -   Red Hat 5, Red Hat 6, Red Hat 7, and later
 
         For Red Hat instances, you must download the RPM package to install the Cloud Assistant client. For more information, see [Install the Cloud Assistant client](/intl.en-US/Deployment & Maintenance/Cloud assistant/Configure the Cloud Assistant client/Install the Cloud Assistant client.md).
@@ -55,7 +56,7 @@ However, you may be charged for the ECS resources used by Cloud Assistant to dep
     -   Ubuntu 12, Ubuntu 14, Ubuntu 16, Ubuntu 18, and later
     -   Windows Server 2012, Windows Server 2016, Windows Server 2019, and later
 
-For the limits and service quotas of Cloud Assistant, see the "Cloud Assistant limits" section of the [Limits](/intl.en-US/Product Introduction/Limits.md) topic.
+For more information about the limits and service quotas of Cloud Assistant, see the "Cloud Assistant limits" section of [Limits](/intl.en-US/Product Introduction/Limits.md).
 
 ## Terms
 
@@ -63,10 +64,10 @@ The following table describes relevant terms in Cloud Assistant.
 
 |Term|Description|
 |:---|:----------|
-|Cloud Assistant|A tool provided by Alibaba Cloud that can automatically perform routine maintenance tasks on ECS instances and ECS bare metal instances. Cloud Assistant is available in all Alibaba Cloud regions.|
-|Cloud Assistant client|A lightweight plug-in that can be installed on ECS instances to run Cloud Assistant commands on the instances. -   In Windows instances, the process of the client program is AliyunService.
+|Cloud Assistant|A tool provided by Alibaba Cloud that can help you perform routine maintenance tasks on multiple ECS instances and ECS bare metal instances at a time. Cloud Assistant is available in all Alibaba Cloud regions.|
+|Cloud Assistant client|A lightweight plug-in that can be installed on ECS instances to run Cloud Assistant commands. -   In Windows instances, the process of the client program is AliyunService.
 -   In Linux instances, the process of the client program is aliyun.service. |
-|Cloud Assistant daemon process|A daemon process that is used to monitor the resource consumption of the Cloud Assistant client, report the running status of the client, and restart the client when the client fails.-   Service name: `AssistDaemon`
+|Cloud Assistant daemon process|A daemon process that is used to monitor the resource consumption of the Cloud Assistant client, report the running status of the client, and restart the client when the client fails. -   Service name: `AssistDaemon`
 -   Path: /usr/local/share/assist-daemon/assist\_daemon
 
 **Note:** The Cloud Assistant daemon process is available only for Linux instances. |
@@ -75,56 +76,56 @@ The following table describes relevant terms in Cloud Assistant.
 -   Linux: /tmp
 -   Windows: <Installation path of Cloud Assistant\>/work/script |
 |command|A specific command such as a shell script or a PowerShell script that can be run on ECS instances.|
-|custom parameter|A variable that you set in the \{\{key\}\} format in a command. You can set a custom parameter and its value in the \{\{"key":"value"\}\} format when you run a command. You can have a limited number of Cloud Assistant commands in each Alibaba Cloud region. To adapt Cloud Assistant commands to multiple scenarios, we recommend that you configure custom parameters.|
-|one-time invocation|A task \(`Invocation`\) that runs one command once on one or more instances.|
-|scheduled invocation|A task in which you can specify the time series or period to run one command periodically on one or more instances.|
-|task status|The execution status of a command task. For more information, see the [t9581.md\#](/intl.en-US/Deployment & Maintenance/Cloud assistant/Overview.md) section.|
+|custom parameter|A variable that you configure in the \{\{key\}\} format in a command. You can configure a custom parameter and its value in the \{\{"key":"value"\}\} format when you create a task to run the command. You can have a limited number of Cloud Assistant commands in each Alibaba Cloud region. To adapt Cloud Assistant commands to multiple scenarios, we recommend that you configure custom parameters.|
+|one-time execution|An execution \(`Invocation`\) that runs a command only once on one or more instances.|
+|recurring execution|An execution that periodically runs a command on one or more instances based on your specified time series or interval.|
+|execution status|The relationships among different types of execution status. For more information, see the [t9581.md\#](/intl.en-US/Deployment & Maintenance/Cloud assistant/Overview.md) section.|
 
-## Execution status of a command task
+## Execution status
 
-The following table describes the execution status of a task that runs a command on an instance. The corresponding API parameter is InvocationStatus.
+The following table describes the instance-level execution status of a command that is run only once on a single instance. The InvocationStatus parameter in API indicates the execution status of the command.
 
-|Status in an API operation|Status in the console|Description|
-|--------------------------|:--------------------|:----------|
-|`Running`|Task Running|The task is being run.|
-|`Stopping`|Task Stopping|The task is being stopped.|
-|`Stopped`|Manually Stopped|The task is stopped.|
-|`Finished`|Task Completed|The task is complete. This does not indicate that the task succeeds. You can check whether the task succeeds based on the output \(`Output`\) and the exit code \(`ExitCode`\).|
-|`Failed`|Task Failed|The task cannot be run or the execution process exceeds the timeout period specified by `Timeout`.|
+|Status in an API operation|Status in the ECS console|Description|
+|--------------------------|:------------------------|:----------|
+|`Running`|Task Running|The command is being run.|
+|`Stopping`|Task Stopping|The command is being stopped.|
+|`Stopped`|Manually Stopped|The command is stopped.|
+|`Finished`|Task Completed|The command is run to completion. This does not indicate that the command succeeds. You can check whether the command succeeds based on the output \(`Output`\) and the exit code \(`ExitCode`\).|
+|`Failed`|Task Failed|The command cannot be run or the command process is not run to completion before the timeout period specified by `Timeout` expires.|
 
-## Execution status of a batch task
+## Status of batch executions and recurring executions
 
-Every time a command task is executed on an instance, an execution record is generated with execution status. To better manage batch tasks and scheduled invocations, you can manage the lifecycle of a task from the perspectives of the overall execution status, the instance-level execution status, and the record-level execution status. The corresponding API parameter is InvokeStatus. The following figure shows the relationships among the three types of execution status.
+To better manage batch executions and recurring executions, you can manage the lifecycles of the executions from the perspectives of the overall execution status, the instance-level execution status, and the record-level execution status. The InvokeStatus parameter in API indicates the execution status of a command. The following figure shows the relationships among the three types of execution status.
 
 ![Relationships among the three types of execution status](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7497919951/p5245.png)
 
--   The following table shows the overall execution status of a batch task that runs a command on multiple instances.
+-   The following table shows the overall execution status of a command that is run on multiple instances at the same time.
 
-    |Status in an API operation|Status in the console|Description|Priority|
-    |--------------------------|---------------------|-----------|--------|
-    |`Running`|Task Running|The task is running on some or all instances.|1|
-    |`Stopping`|Task Stopping|The task is being stopped on some or all instances.|2|
-    |`Stopped`|Manually Stopped|The task is stopped on all instances.|3|
-    |`Failed`|Task Failed|The task fails on all instances or the task fails on some instances and is stopped on the other instances.|4|
-    |`Finished`|Task Completed|The task is complete on all instances or the task is complete on some instances and is stopped on the other instances.|5|
-    |`PartialFailed`|Partially Failed|The task fails on some instances and is complete on the other instances.|6|
+    |Status in an API operation|Status in the ECS console|Description|Priority|
+    |--------------------------|-------------------------|-----------|--------|
+    |`Running`|Task Running|The instance-level execution status is Running on some or all instances.|1|
+    |`Stopping`|Task Stopping|The instance-level execution status is Stopping on some or all instances.|2|
+    |`Stopped`|Manually Stopped|The instance-level execution status is Stopped on all instances.|3|
+    |`Failed`|Task Failed|The instance-level execution status is Failed on all instances, or is Failed on some instances and is Stopped on the other instances.|4|
+    |`Finished`|Task Completed|The instance-level execution status is Finished on all instances, or is Finished on some instances and is Stopped on the other instances.|5|
+    |`PartialFailed`|Partially Failed|The instance-level execution status is Failed on some instances and is Finished on the other instances.|6|
 
-    The following figure shows the relationship between the overall execution status and the instance-level execution status of a one-time batch invocation that runs a command on three instances at a time.
+    The following figure shows the relationship between the overall execution status and the instance-level execution status of the execution that runs a command on three instances at the same time.
 
-    ![Lifecycle of a one-time batch invocation](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7497919951/p5246.png)
+    ![Lifecycle of a one-time execution on multiple instances](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7497919951/p5246.png)
 
--   The following table shows the execution status of a scheduled invocation.
+-   The following table shows the status of recurring executions of a command.
 
     |Status|Description|
     |:-----|:----------|
-    |Overall execution status|The overall execution status is always **Running** \(`Running`\) unless you stop the task from running on all the instances.|
-    |Instance-level execution status|The execution status on a single instance is always **Running** \(`Running`\) unless you stop the task from running on the instance.|
+    |Overall execution status|The overall execution status is always **Running** \(`Running`\) unless you stop the command on all the instances.|
+    |Instance-level execution status|The instance-level execution status is always **Running** \(`Running`\) unless you stop the command on the instance.|
     |Record-level execution status|For more information, see the [t9581.md\#](/intl.en-US/Deployment & Maintenance/Cloud assistant/Overview.md) section.|
 
 
 ## API operations
 
-You can use Cloud Assistant in the ECS console or by calling an API operation.
+You can use Cloud Assistant by using the ECS console or by calling an API operation.
 
 |Business requirement|Reference|API operation|
 |--------------------|---------|-------------|
