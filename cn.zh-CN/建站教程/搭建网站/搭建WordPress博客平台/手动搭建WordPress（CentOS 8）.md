@@ -22,7 +22,7 @@ WordPress是使用PHP语言开发的博客平台，在支持PHP和MySQL数据库
 
     1.  远程连接ECS实例。
 
-        详情请参见[使用用户名密码验证连接Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/使用用户名密码验证连接Linux实例.md)。
+        详情请参见[使用用户名密码验证连接Linux实例](/cn.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用用户名密码验证连接Linux实例.md)。
 
     2.  进入MySQL数据库。
 
@@ -81,7 +81,7 @@ WordPress是使用PHP语言开发的博客平台，在支持PHP和MySQL数据库
         wget https://wordpress.org/wordpress-5.4.2.zip
         ```
 
-        **说明：** 下载过慢或失败时，可以尝试运行命令wget http://cn.wp101.net/latest-zh\_CN.zip下载WordPress（请注意站点的安全性）。此时，后续操作中压缩包的名称需要替换为`latest-zh_CN.zip`。
+        **说明：** 下载过慢或失败时，可以尝试运行命令wget http://cn.wp101.net/latest-zh\_CN.zip下载WordPress（`cn.wp101.net`为WordPress简体中文网站，通过该命令下载的WordPress默认为中文版本）。同时您需要注意，后续操作中压缩包的名称必须替换为`latest-zh_CN.zip`。
 
     2.  解压WordPress压缩包。
 
