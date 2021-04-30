@@ -4,10 +4,10 @@ keyword: [Docker, container, Linux, ECS, cloud server, Alibaba Cloud, Alibaba Cl
 
 # Deploy and use Docker on Alibaba Cloud Linux 2 instances
 
-This topic describes how to deploy and use Docker on an ECS instance that runs an Alibaba Cloud Linux 2.1903 LTS 64-bit operating system. This tutorial is intended for developers who are familiar with Linux but new to Alibaba Cloud ECS.
+This topic describes how to deploy and use Docker on an Elastic Compute Service \(ECS\) instance that runs an Alibaba Cloud Linux 2.1903 LTS 64-bit operating system. This topic is intended for developers who are familiar with Linux but new to Alibaba Cloud elastic ECS.
 
 -   An Alibaba Cloud account is created. To create an Alibaba Cloud account, go to the [account registration page](https://account.alibabacloud.com/register/intl_register.htm).
--   At least one instance is created. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
+-   At least one ECS instance is created. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 
     The following instance configurations are used in the examples:
 
@@ -16,7 +16,7 @@ This topic describes how to deploy and use Docker on an ECS instance that runs a
 
         **Note:** The operation commands described in this example can also be used in the CentOS 7 operating system.
 
-    -   Network type: VPC
+    -   Network type: Virtual Private Cloud \(VPC\)
     -   IP address: a public IP address
 
 This topic describes the following operations:
@@ -28,7 +28,7 @@ This topic describes the following operations:
 
 ## Deploy Docker
 
-This section describes how to manually install Docker. You can also purchase the required image from [Alibaba Cloud Marketplace](https://market.aliyun.com/software) and easily deploy Docker.
+This section describes how to manually install Docker. You can also purchase a Docker image from [Alibaba Cloud Marketplace](https://market.aliyun.com/software) to deploy Docker on an ECS instance.
 
 1.  Remotely connect to an ECS instance. For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
 
@@ -61,15 +61,15 @@ This section describes how to manually install Docker. You can also purchase the
     systemctl start docker
     ```
 
-4.  Check the installation result.
+4.  Check the Docker version information and verify whether Docker is installed.
 
     ```
-    docker info
+    docker --version
     ```
 
-    If the following information is displayed, Docker is installed.
+    A command output similar to the following one indicates that Docker is installed.
 
-    ![site](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9629919951/p128549.png)
+    ![site](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7750579161/p128549.png)
 
 
 ## Use Docker
@@ -91,7 +91,7 @@ You can use Docker in the following ways:
     docker pull registry.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5
     ```
 
-    -   Modify the tags of images from Alibaba Cloud Container Registry to simplify image identification.
+    -   Modify the tags of images from Alibaba Cloud Container Registry to make the images easy to identify.
 
         ```
         docker tag registry.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5:latest aliweb:v1
@@ -179,7 +179,7 @@ You can use Docker in the following ways:
         MAINTAINER DTSTACK
         #The commands that you want to run before the container starts. You must append these commands to the end of the RUN command. Dockerfile can contain only a maximum of 127 lines. If you have commands that exceed 127 lines, we recommend that you write these commands to a script.
         RUN mkdir /dtstact
-        #The commands that run on system startup. The last command must be a frontend command that runs constantly. Otherwise, the container exits after all commands are run.
+        #The commands that are run on system startup. The last command must be a frontend command that runs constantly. Otherwise, the container exits after all commands are run. 
         ENTRYPOINT ping www.aliyun.com
         ```
 
@@ -204,16 +204,16 @@ You can use Docker in the following ways:
 4.  Create an image.
 
     ```
-    docker commit fb2844b6**** dtstackweb:v1     #Append the container ID and the name and version number of the new image to the end of the commit parameter.
+    docker commit fb2844b6**** dtstackweb:v1     #Append the container ID and the name and version number of the new image to the end of the commit parameter. 
     docker images                                #Query images that are downloaded and created on premises.
     ```
 
 5.  Push the image to a remote repository.
 
-    By default, the image is pushed to Docker Hub. You must log on to Docker, bind a tag to the image, and then name the image in the `<Docker username/image name:tag>` format. Then the push is complete.
+    By default, the image is pushed to Docker Hub. You must log on to Docker, bind a tag to the image, and then name the image in the `<Docker username>/<image name>:<tag>` format. Then the push is complete.
 
     ```
-    docker login --username=dtstack_plus registry.cn-shanghai.aliyuncs.com #Specify the password of the image repository. Enter the password after you run this command.
+    docker login --username=dtstack_plus registry.cn-shanghai.aliyuncs.com #Enter the password of the image registry after you run this command.
     docker tag [ImageId] registry.cn-shanghai.aliyuncs.com/dtstack123/test:[Tag]
     docker push registry.cn-shanghai.aliyuncs.com/dtstack123/test:[Tag]
     ```
