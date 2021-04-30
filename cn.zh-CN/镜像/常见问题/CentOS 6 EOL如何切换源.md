@@ -76,7 +76,7 @@ CentOS 6操作系统版本结束了生命周期（EOL），Linux社区已不再�
         failovermethod=priority
         baseurl=http://mirrors.aliyuncs.com/centos-vault/6.10/updates/$basearch/
         gpgcheck=1
-        gpgkey=http://mirrors.aliyuncs.comm/centos-vault/RPM-GPG-KEY-CentOS-6
+        gpgkey=http://mirrors.aliyuncs.com/centos-vault/RPM-GPG-KEY-CentOS-6
         
         [extras]
         name=CentOS-6.10
