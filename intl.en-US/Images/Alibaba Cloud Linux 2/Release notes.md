@@ -4,7 +4,7 @@ keyword: [release notes, ECS, Alibaba Cloud Linux]
 
 # Release notes
 
-This topic describes the updates to Alibaba Cloud Linux 2 images. The release notes are ordered by release date, from the latest to the oldest.
+This topic describes the updates to Alibaba Cloud Linux 2 images. The release notes are ordered by release date, from the latest to the earliest.
 
 ## Background information
 
@@ -27,8 +27,10 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
     -   Intel SGX is supported.
     -   The network diagnosis tool Ping Trace is supported.
     -   Cgroups can be created in a lightweight manner in scenarios in which multiple instances are deployed on a single server. This can effectively reduce the amount of time required to create cgroups.
-    -   Intel IceLake MCA is supported.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), China \(Hong Kong\), and Singapore \(Singapore\). |
+    -   Intel IceLake MCA is supported. |
+|aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210325.vhd|2021-03-25|-   The `Alibaba Cloud Linux 2.1903 64-bit (Quick Start)` image is updated.
+-   This image is derived from the aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd version of the `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image.
+-   Applicable regions: China \(Hangzhou\), China \(Beijing\), China \(Zhangjiakou\), China \(Shenzhen\), China \(Hong Kong\), Singapore \(Singapore\), Malaysia \(Kuala Lumpur\), and US \(Virginia\). |
 |aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210218.vhd|2021-02-18|-   The `Alibaba Cloud Linux 2.1903 64-bit (Quick Start)` image is updated.
 -   The default network configuration service is switched to network-scripts.
 -   The CVE-2021-3156 sudo vulnerability in Linux is fixed. For more information, see [Vulnerability announcement \| Linux sudo permission vulnerability \(CVE-2021-3156\)](/intl.en-US/Announcements & Updates/Security announcement/Vulnerability announcement | Linux sudo permission vulnerability (CVE-2021-3156).md).
@@ -46,7 +48,7 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
     -   The performance debugging of Intel IceLake PMU Topdown is supported.
     -   The read capability of io\_uring buffer is optimized.
     -   blk-throttle is optimized.
-    -   The Chinese cryptographic algorithm SM2 and the standard X509-formatted certificate that uses SM2-with-SM3 Chinese cryptographic algorithm are supported.
+    -   The Chinese cryptographic algorithm SM2 and the standard X509-formatted certificate that uses the SM2-with-SM3 Chinese cryptographic algorithm are supported.
     -   blk-mq batch requests are supported.
     -   The PCIe Error recover feature is supported.
     -   Swap is optimized to significantly improve the memory overselling stability.
@@ -132,7 +134,7 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
         -   CVE-2019-11479 |
 |aliyun-2.1903-x64-20G-alibase-20190507.vhd|2019-05-07|-   The `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image is updated to the latest software version.
 -   The issue of time synchronization latency on instance startup is fixed.
--   The kernel is updated to the kernel-4.19.34-11.al7.x86\_64 version and other issues are fixed. |
+-   The kernel is updated to the kernel-4.19.34-11.al7.x86\_64 version, and other issues are fixed. |
 |aliyun-2.1903-x64-20G-alibase-20190327.vhd|2019-03-27|-   The `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image is released.
 -   The kernel-4.19.24-9.al7.x86\_64 kernel version is used in the base image. |
 
@@ -140,13 +142,20 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
 
 |Image ID|Release date|Applicable instance family|Description|
 |--------|------------|--------------------------|-----------|
+|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|2021-03-25|Trusted instance families:-   ecs.g6t
+-   ecs.c6t
+
+|-   The `Alibaba Cloud Linux 2.1903 64-bit (Trusted)` image is updated.
+-   This image is derived from the aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd version of the `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image.
+-   Boot mode is changed to the Unified Extensible Firmware Interface \(UEFI\) mode. This is the only supported mode.
+-   The kernel is updated to the kernel-kernel-kernel-4.19.91-23.al7 version. |
 |aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210218.vhd|2021-02-18|Trusted instance families:-   ecs.g6t
 -   ecs.c6t
 
 |-   The `Alibaba Cloud Linux 2.1903 64-bit (Trusted)` image is updated.
 -   The default network configuration service is switched to network-scripts.
 -   The CVE-2021-3156 sudo vulnerability in Linux is fixed. For more information, see [Vulnerability announcement \| Linux sudo permission vulnerability \(CVE-2021-3156\)](/intl.en-US/Announcements & Updates/Security announcement/Vulnerability announcement | Linux sudo permission vulnerability (CVE-2021-3156).md).
--   Boot mode is changed to the Unified Extensible Firmware Interface \(UEFI\) mode. This is the only supported mode.
+-   Boot mode is changed to the UEFI mode. This is the only supported mode.
 -   The kernel is updated to the kernel-4.19.91-22.2.al7 version. |
 |aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|2021-02-18|Instance families with AMD processors:-   ecs.ebmg6a
 -   ecs.ebmc6a
