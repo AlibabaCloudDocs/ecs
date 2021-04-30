@@ -8,6 +8,7 @@ When you call this operation, take note of the following items:
 
 -   If the specified snapshot ID does not exist, the request is ignored.
 -   A snapshot that has been used to create custom images cannot be deleted. The snapshot can be deleted only after the created custom images are deleted \([DeleteImage](~~25537~~)\).
+-   A snapshot that has been used to create disks cannot be deleted. If you do want to delete the snapshot, set the `Force` parameter to true to force delete the snapshot. The disks created from the snapshot cannot be re-initialized after the snapshot is force deleted.
 
 ## Debugging
 
@@ -18,10 +19,13 @@ When you call this operation, take note of the following items:
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|DeleteSnapshot|The operation that you want to perform. Set the value to DeleteSnapshot. |
-|SnapshotId|String|Yes|s-bp1c0doj0taqyzzl\*\*\*\*|The ID of the snapshot to be deleted. |
-|Force|Boolean|No|false|Specifies whether to forcibly delete the snapshot that has been used to create disks.
+|SnapshotId|String|Yes|s-bp1c0doj0taqyzzl\*\*\*\*|The ID of the snapshot. |
+|Force|Boolean|No|false|Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
 
-**Note:** After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized. |
+-   true: force deletes the snapshot. After the snapshot is force deleted, the disks created from this snapshot cannot be re-initialized.
+-   false: does not force delete the snapshot.
+
+Default value: false |
 
 ## Response parameters
 
@@ -61,10 +65,10 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|403|SnapshotCreatedImage|The snapshot has been used to create user defined image\(s\).|The error message returned because the specified snapshot has been used to create custom images. You must delete the created custom images before you can delete the snapshot. If you forcibly delete the snapshot, the images created from the snapshot become unavailable.|
-|403|SnapshotCreatedDisk|The snapshot has been used to create disk\(s\).|The error message returned because the specified snapshot has been used to create disks.|
+|403|SnapshotCreatedImage|The snapshot has been used to create user defined image\(s\).|The error message returned because the snapshot has been used to create custom images and cannot be deleted. The snapshot can be deleted only after the custom images created from the snapshot are deleted \(DeleteImage\).|
+|403|SnapshotCreatedDisk|The snapshot has been used to create disk\(s\).|The error message returned because the snapshot has been used to create disks and cannot be deleted. If you do want to delete the snapshot, set the Force parameter to true to force delete the snapshot. The disks created from the snapshot cannot be re-initialized after the snapshot is force deleted.|
 |400|MissingParameter|The input parameter SnapshotId that is mandatory for processing this request is not supplied.|The error message returned because the required SnapshotId parameter is not specified.|
-|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
+|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the error persists, submit a ticket.|
 |404|InvalidSnapshotId.NotFound|The specified snapshot is not found|The error message returned because the specified SnapshotId parameter does not exist.|
 |403|Operation.Conflict|The operation may conflicts with others, please retry later.|The error message returned because the operation conflicts with other operations. Try again later.|
 
