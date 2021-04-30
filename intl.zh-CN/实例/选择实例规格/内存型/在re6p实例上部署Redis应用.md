@@ -127,19 +127,19 @@ Alibaba Cloud Linux 2操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您
 
         示例命令如下：
 
-        -   端口号6379、普通内存4 GiB、持久内存32 GiB
+        -   端口号6379、内存36 GiB（其中普通内存4 GiB、持久内存32 GiB）
 
             ```
             redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
             ```
 
-        -   端口号6379、普通内存2 GiB、持久内存32 GiB
+        -   端口号6379、内存34 GiB（其中普通内存2 GiB、持久内存32 GiB）
 
             ```
             redis-server /etc/redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
             ```
 
-        -   端口号6379、普通内存0 GiB、持久内存32 GiB
+        -   端口号6379、内存32 GiB（其中普通内存0 GiB、持久内存32 GiB）
 
             ```
             redis-server /etc/redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
@@ -356,19 +356,19 @@ Alibaba Cloud Linux 2操作系统内置Redis 6.0.5和Redis 3.2.12的yum源，您
 
     示例命令如下：
 
-    -   端口号6379、普通内存4 GiB、持久内存32 GiB
+    -   端口号6379、内存36 GiB（其中普通内存4 GiB、持久内存32 GiB）
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 8 --maxmemory 36G
         ```
 
-    -   端口号6379、普通内存2 GiB、持久内存32 GiB
+    -   端口号6379、内存34 GiB（其中普通内存2 GiB、持久内存32 GiB）
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy ratio --dram-pmem-ratio 1 16 --maxmemory 34G
         ```
 
-    -   端口号6379、普通内存0 GiB、持久内存32 GiB
+    -   端口号6379、内存32 GiB（其中普通内存0 GiB、持久内存32 GiB）
 
         ```
         redis-server redis.conf --port 6379 --memory-alloc-policy only-pmem --maxmemory 32G
