@@ -42,7 +42,7 @@ https://ecs.aliyuncs.com/?Action=ReActivateInstances
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ReActivateInstancesResponse>
@@ -50,7 +50,7 @@ https://ecs.aliyuncs.com/?Action=ReActivateInstances
 </ReActivateInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
