@@ -4,7 +4,7 @@ keyword: [release note, released updates, ECS, Linux, Windows]
 
 # Release notes
 
-This topic describes the updates to Elastic Compute Service \(ECS\) public images. The release notes are ordered by release date, from the latest to the oldest.
+This topic describes the updates to Elastic Compute Service \(ECS\) public images. The release notes are ordered by release date, from the latest to the earliest.
 
 ## Background information
 
@@ -20,13 +20,11 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |CentOS 8.3|centos\_8\_3\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.18.0-240.15.1.el8\_3.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Supported NVME drivers.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
+    -   Supported NVME drivers. |
 |CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 3.10.0-1160.15.2.el7.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Supported NVME drivers.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
+    -   Supported NVME drivers. |
 |CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
@@ -139,11 +137,9 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
 |Debian 10.9|debian\_10\_9\_x86\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.19.0-16-amd64.
--   Changes: updated to include the latest patches.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
+-   Changes: updated to include the latest patches. |
 |Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.9.0-15-amd64.
--   Changes: updated to include the latest patches.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
+-   Changes: updated to include the latest patches. |
 |Debian 10.7|debian\_10\_7\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.19.0-13-amd64.
 -   Changes:
     -   Updated to include the latest patches.
@@ -230,12 +226,14 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
     -   Upgraded the cloud-init version.
     -   Enabled the chrony \(time synchronization\) service.
     -   Set GRUB\_TIMEOUT to 1.
--   Known issues: [classic network configuration issues](/intl.en-US/Images/Public image/Known issues.md). |
+-   Known issue: [classic network configuration issues](/intl.en-US/Images/Public image/Known issues.md). |
 
 ## FreeBSD
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|FreeBSD 11.4|freebsd\_11\_4\_x64\_30G\_alibase\_20210319.vhd|2021-03-19|-   Kernel version: 11.4-RELEASE.
+-   Changes: updated to include the latest patches. |
 |FreeBSD 12.1|freebsd\_12\_1\_x64\_30G\_alibase\_20201022.vhd|2020-10-22|-   Kernel version: 12.1-RELEASE.
 -   Changes: updated to include the latest patches. |
 |FreeBSD 11.3|freebsd\_11\_3\_x64\_30G\_alibase\_20200803.vhd|2020-08-03|-   Kernel version: 11.3-RELEASE.
@@ -251,82 +249,79 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.4.0-67-generic.
--   Changes: updated to include the latest patches.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.15.0-139-generic.
--   Changes: updated to include the latest patches.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.4.0-67-generic.
+-   Changes: updated to include the latest patches. |
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.15.0-139-generic.
+-   Changes: updated to include the latest patches. |
 |Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.4.0-206-generic.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.4.0-65-generic.
+    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.4.0-65-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.15.0-135-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.15.0-135-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.4.0-58-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.4.0-58-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.15.0-128-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.15.0-128-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.4.0-198-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.4.0-198-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.4.0-54-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.4.0-54-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.15.0-124-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.15.0-124-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.4.0-194-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.4.0-194-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.4.0-47-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.4.0-47-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.15.0-117-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.15.0-117-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.4.0-189-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.4.0-189-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.15.0-112-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.15.0-112-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.4.0-187-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.4.0-187-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.15.0-111-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.15.0-111-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.4.0-185-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.4.0-185-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.15.0-106-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.15.0-106-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.4.0-184-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.4.0-184-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release.
 -   Kernel version: 5.4.0-31-generic. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 4.4.0-179-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 4.4.0-179-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200521.vhd|2020-05-21|-   Kernel version: 4.15.0-101-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200521.vhd|2020-05-21|-   Kernel version: 4.15.0-101-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.15.0-96-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.15.0-96-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.4.0-177-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.4.0-177-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200329.vhd|2020-03-29|-   Kernel version: 4.15.0-91-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200329.vhd|2020-03-29|-   Kernel version: 4.15.0-91-generic.
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Enabled IPv6 by default. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200319.vhd|2020-03-19|-   Kernel version: 4.4.0-176-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200319.vhd|2020-03-19|-   Kernel version: 4.4.0-176-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.15.0-88-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.15.0-88-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.4.0-174-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.4.0-174-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.15.0-72-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.15.0-72-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.4.0-170-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.4.0-170-generic.
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu 18.04|ubuntu\_18\_04\_64\_20G\_alibase\_20190624.vhd|2019-6-24|-   Kernel version: 4.15.0-52-generic.
 -   Changes: updated to include the latest operating system patches and fixed the CVE-2019-11477 vulnerability. |
@@ -336,8 +331,8 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu 18.04|ubuntu\_18\_04\_64\_20G\_alibase\_20190509.vhd|2019-5-9|-   Kernel version: 4.15.0-48-generic.
 -   Changes:
-    -   Upgraded cloud-init to speed up boot time.
-    -   Updated to the latest operating system patches. |
+    -   Upgraded cloud-init to speed up system boot.
+    -   Updated to include the latest operating system patches. |
 |Ubuntu 16.04|ubuntu\_16\_04\_64\_20G\_alibase\_20190301.vhd|2019-3-1|-   Kernel version: 4.4.0-142-generic.
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu 18.04|ubuntu\_18\_04\_64\_20G\_alibase\_20190223.vhd|2019-2-23|-   Kernel version: 4.15.0-45-generic.
@@ -371,43 +366,42 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |CoreOS 2303\_3.0|coreos\_2303\_3\_x64\_30G\_alibase\_20191223.vhd|2019-12-23|-   Kernel version: 4.19.86-coreos.
 -   Changes: updated to include the latest operating system patches. |
 
-## openSUSE
+## OpenSUSE
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.3.18-lp152.66-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.3.18-lp152.66-default.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Supported NVME drivers.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.3.18-lp152.60-default.
+    -   Supported NVME drivers. |
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.3.18-lp152.60-default.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
 -   Changes: updated to include the latest patches. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
 -   Updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
 -   Changes: updated to include the latest patches. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200818.vhd|2020-08-18|-   Kernel version: 5.3.18-lp152.33-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200818.vhd|2020-08-18|-   Kernel version: 5.3.18-lp152.33-default.
 -   Changes: updated to include the latest patches. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 5.3.18-lp152.20.7-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 5.3.18-lp152.20.7-default.
 -   Updated to include the latest patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200623.vhd|2020-06-23|-   Kernel version: 4.12.14-lp151.28.52-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200623.vhd|2020-06-23|-   Kernel version: 4.12.14-lp151.28.52-default.
 -   Changes: updated to include the latest patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200520.vhd|2020-05-20|-   Kernel version: 4.12.14-lp151.28.48-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200520.vhd|2020-05-20|-   Kernel version: 4.12.14-lp151.28.48-default.
 -   Updated to include the latest patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.12.14-lp151.28.48-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.12.14-lp151.28.48-default.
 -   Changes:
     -   Enabled IPv6 by default.
     -   Updated to include the latest operating system patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200331.vhd|2020-03-31|-   Kernel version: 4.12.14-lp151.28.44-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200331.vhd|2020-03-31|-   Kernel version: 4.12.14-lp151.28.44-default.
 -   Changes: updated to include the latest operating system patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200222.vhd|2020-02-22|-   Kernel version: 4.12.14-lp151.28.36-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200222.vhd|2020-02-22|-   Kernel version: 4.12.14-lp151.28.36-default.
 -   Changes: updated to include the latest operating system patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20191219.vhd|2019-12-19|-   Kernel version: 4.12.14-lp151.28.36-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20191219.vhd|2019-12-19|-   Kernel version: 4.12.14-lp151.28.36-default.
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Upgraded cloud-init to version 19.1. |
@@ -442,6 +436,16 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |SUSE Linux Enterprise Server 15 SP1|sles\_15\_sp1\_x64\_20G\_alibase\_20200218.vhd|2020-02-18|Updated to include the latest patches.|
 |SUSE Linux Enterprise Server 15 SP1|sles\_15\_sp1\_x64\_20G\_alibase\_20200107.vhd|2020-01-07|New release.|
 
+## Fedora CoreOS
+
+|Release|Image ID|Release date|Description|
+|:------|--------|------------|:----------|
+|Fedora CoreOS 33.20210217.3.0\_3|fcos\_33.20210217.3.0\_3\_x86\_20G\_alibase\_20210331.vhd|2021-03-31|-   New release.
+-   Kernel version: 5.10.12--200.fc33.x86\_64.
+-   When you use this image, take note of the following items:
+    -   When you create an instance or replace the system disk for an instance, you can use only a key pair as your logon credential. You can use only the key pair that you initially configured for your instance to log on to the instance. You cannot change or unbind the key pair.
+    -   When you have created an instance or replaced the system disk for an instance, you cannot change the password for the instance. |
+
 ## Fedora
 
 |Release|Image ID|Release date|Description|
@@ -449,8 +453,7 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |Fedora 33 64-bit|fedora\_33\_0\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.11.7-200.fc33.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Supported NVME drivers.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), and Singapore \(Singapore\). |
+    -   Supported NVME drivers. |
 |Fedora 33 64-bit|fedora\_33\_0\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   New release.
 -   Kernel version: 5.10.10-200.fc33.x86\_64.
 -   Changes:
@@ -484,6 +487,10 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Zhangjiakou\), China \(Hohhot\), China \(Chengdu\), Singapore \(Singapore\), and US \(Virginia\). |
 |Ubuntu 20.04|ubuntu\_20\_04\_amd\_x64\_20G\_alibase\_20200820.vhd|2020-08-20|-   New release.
 -   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Guangzhou\), Singapore \(Singapore\), China \(Hangzhou\), and China \(Chengdu\). |
+|CentOS 7.8|centos\_7\_8\_amd\_x64\_20G\_alibase\_20200806.vhd|2020-08-06|-   New release.
+-   Applicable regions: China \(Hangzhou\), China \(Shanghai\), China \(Beijing\), China \(Ulanqab\), and China \(Shenzhen\). |
+|CentOS 8.2|centos\_8\_2\_amd\_x64\_20G\_alibase\_20200804.vhd|2020-08-04|-   New release.
+-   Applicable regions: China \(Hangzhou\), China \(Shanghai\), China \(Beijing\), China \(Ulanqab\), and China \(Shenzhen\). |
 |Ubuntu 18.04|ubuntu\_18\_04\_amd\_x64\_20G\_alibase\_20200804.vhd|2020-08-04|-   New release.
 -   Applicable regions: China \(Beijing\), China \(Ulanqab\), China \(Shenzhen\), China \(Shanghai\), China \(Hangzhou\), and China \(Chengdu\). |
 
@@ -880,7 +887,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
--   .Upgraded .NET Framework to version 4.8. |
+-   Upgraded .NET Framework to version 4.8. |
 |Windows Server 2019 Datacenter|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190528.vhd
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190528.vhd
 
