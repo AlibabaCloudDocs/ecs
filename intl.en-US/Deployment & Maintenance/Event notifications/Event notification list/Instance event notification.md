@@ -1,10 +1,10 @@
 ---
-keyword: [event notification, system event, automation, notification message, ecs]
+keyword: [event notification, system event, automation, message notification, ECS]
 ---
 
 # Instance event notification
 
-ECS can send notifications for instance events such as system events, instance status changes, and release of preemptible instances.
+Elastic Compute Service \(ECS\) can send notifications for instance events such as system events, instance status changes, and release of preemptible instances.
 
 ## Events
 
@@ -12,8 +12,8 @@ ECS can send notifications for the following instance events:
 
 -   [System events](#section_gu3_yxb_yt4)
 -   [Instance status changes](#section_kzt_1pq_eau)
--   [Release of preemptible instances](#section_7ef_g8g_x02)
--   [Hot migration of ECS instances between dedicated hosts](#section_hzp_hcm_aib)
+-   [Release of a preemptible instance](#section_7ef_g8g_x02)
+-   [Hot migration of ECS instances on a dedicated host](#section_hzp_hcm_aib)
 -   [Changes in the performance mode of burstable instances](#section_muf_u1g_ohb)
 -   [Limited performance of burstable instances](#section_glx_g6x_cn4)
 
@@ -47,7 +47,7 @@ The following examples show notifications in the JSON format for an **Instance r
     }
     ```
 
--   If you restart the instance before the time specified by the notBefore field, the system event is avoided and ECS sends a notification indicating that the event status is changed to **Avoided** \(Avoided\).
+-   If you restart the instance before the time specified by the notBefore subparameter, the system event is avoided and ECS sends a notification which indicates that the event status is changed to **Avoided** \(Avoided\).
 
     ```
     {
@@ -74,18 +74,18 @@ The following examples show notifications in the JSON format for an **Instance r
     ```
 
 
-The following table describes the subfields contained in the content field.
+The following table describes the subparameters contained in the content parameter.
 
-|Subfield|Description|Example|
-|--------|-----------|-------|
+|Subparameter|Description|Example|
+|------------|-----------|-------|
 |eventId|The ID of the system event.|e-t4navn7\*\*\*\*\*\*\*\*6x5no|
 |publishTime|The time when the system event is pushed.|2019-04-09T04:18:26Z|
-|notBefore|The scheduled start time of the event. This field is available only for system maintenance events.|2019-04-12T01:01:01Z|
+|notBefore|The scheduled start time of the event. This subparameter is available only for system maintenance events.|2019-04-12T01:01:01Z|
 |instanceId|The ID of the affected instance.|i-bp1ecr\*\*\*\*\*\*\*\*5go2go|
-|eventType|The type of the system event. For the field values, see [Overview](/intl.en-US/Deployment & Maintenance/System events/Overview.md).|SystemMaintenance.Reboot|
-|eventStatus|The status of the system event. For the field values, see [Overview](/intl.en-US/Deployment & Maintenance/System events/Overview.md).|Avoided|
-|executeStartTime|The start time of the system event. It is in UTC.|2019-04-10T08:01:01Z|
-|executeFinishTime|The end time of the system event. It is in UTC. **Note:** The executeStartTime and and executeFinishTime fields are available only for events in the **Executing** \(Executing\), **Executed** \(Executed\), **Canceled** \(Canceled\), or **Avoided** \(Avoided\) state.
+|eventType|The type of the system event. For more information about the subparameter values, see [Overview](/intl.en-US/Deployment & Maintenance/System events/Overview.md).|SystemMaintenance.Reboot|
+|eventStatus|The status of the system event. For more information about the subparameter values, see [Overview](/intl.en-US/Deployment & Maintenance/System events/Overview.md).|Avoided|
+|executeStartTime|The start time of the event. It is in UTC.|2019-04-10T08:01:01Z|
+|executeFinishTime|The end time of the event. It is in UTC. **Note:** The executeStartTime and and executeFinishTime subparameters are available only for events in the **Executing** \(Executing\), **Executed** \(Executed\), **Canceled** \(Canceled\), or **Avoided** \(Avoided\) state.
 
 |2019-04-10T08:01:01Z|
 
@@ -114,22 +114,23 @@ The following example shows a notification for the event that the status of an i
 }
 ```
 
-The following table describes the subfields contained in the content parameter.
+The following table describes the subparameters contained in the content parameter.
 
-|Subfield|Description|Example|
-|--------|-----------|-------|
+|Subparameter|Description|Example|
+|------------|-----------|-------|
 |resourceId|The ID of the instance.|i-bp1ecr\*\*\*\*\*\*\*\*5go2go|
-|resourceType|The resource type. Valid value: ALIYUN::ECS::Instance.|ALIYUN::ECS::Instance|
-|state|The status of the instance. Valid values: -   Pending
--   Starting
--   Running
--   Stopping
--   Stopped
--   Deleted
+|resourceType|The type of the resource. Set the value to ALIYUN::ECS::Instance.|ALIYUN::ECS::Instance|
+|state|The status of the instance. Valid values: -   Pending: The instance is being prepared.
+-   Created: The instance is created. This event notification is sent only once when the instance is created.
+-   Starting: The instance is being started.
+-   Running: The instance is running.
+-   Stopping: The instance is being stopped or restarted.
+-   Stopped: The instance is stopped.
+-   Deleted: The instance is released.
 
 |Running|
 
-## Release of preemptible instances
+## Release of a preemptible instance
 
 Preemptible instances may be released due to fluctuations in market prices or insufficient resources. Five minutes before a preemptible instance is released, ECS sends an event notification to warn you about the interruption of the instance. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Overview.md).
 
@@ -153,14 +154,14 @@ The following example shows such an event notification in the JSON format:
 }
 ```
 
-The following table describes the subfields contained in the content parameter.
+The following table describes the subparameters contained in the content parameter.
 
-|Subfield|Description|Example|
-|--------|-----------|-------|
+|Subparameter|Description|Example|
+|------------|-----------|-------|
 |instanceId|The ID of the preemptible instance.|i-bp1ecr\*\*\*\*\*\*\*\*5go2go|
-|action|The action on the preemptible instance. Valid value: delete.|delete|
+|action|The action on the preemptible instance. Set the value to delete.|delete|
 
-## Hot migration of ECS instances between dedicated hosts
+## Hot migration of ECS instances on a dedicated host
 
 You can call the [ModifyInstanceDeployment](/intl.en-US/API Reference/Dedicated hosts/ModifyInstanceDeployment.md) operation to perform hot migration of ECS instances between dedicated hosts. Hot migration of ECS instances is asynchronous, and the status of the ECS instances does not change during the migration. You can configure notifications for the Instance:LiveMigrationAcrossDDH event to receive updates about the migration progress.
 
@@ -241,10 +242,10 @@ The following examples show the event notifications in the JSON format:
     ```
 
 
-The following table describes the subfields contained in the content parameter.
+The following table describes the subparameters contained in the content parameter.
 
-|Subfield|Description|Example|
-|--------|-----------|-------|
+|Subparameter|Description|Example|
+|------------|-----------|-------|
 |instanceId|The ID of the instance.|i-bp1ecr\*\*\*\*\*\*\*\*5go2go|
 |sourceDedicatedHostId|The ID of the source dedicated host.|dh-2ze3lm\*\*\*\*\*\*\*\*t8nr82|
 |destinationDedicatedHostId|The ID of the destination dedicated host.|dh-2ze3lm\*\*\*\*\*\*\*\*t8nr83|
@@ -281,17 +282,17 @@ The following example shows such an event notification in the JSON format:
 }
 ```
 
-The following table describes the subfields contained in the content parameter.
+The following table describes the subparameters contained in the content parameter.
 
-|Subfield|Description|Example|
-|--------|-----------|-------|
+|Subparameter|Description|Example|
+|------------|-----------|-------|
 |instanceId|The ID of the instance.|i-bp1ecr\*\*\*\*\*\*\*\*5go2go|
 |creditSpecification|The new performance mode of the burstable instance. Valid values: -   Standard: standard mode
 -   Unlimited: unlimited mode
 
 |Standard|
 |operator|The operator that triggers the event. Valid values: -   User: You change the performance mode of the instance by using the ECS console or by calling API operations.
--   System: The system automatically changes the performance mode of the instance. The performance mode of your burstable instance may be automatically changed if the instance depletes its CPU credits, if the No Fees for Stopped Instances \(VPC-Connected\) feature is triggered, or if you have overdue payments in your account. For more information, see [Switch the performance mode of a burstable instance](/intl.en-US/Instance/Instance type families/Burstable performance instances/Switch the performance mode of a burstable instance.md).
+-   System: The system automatically changes the performance mode of the instance. The performance mode of your burstable instance may be automatically changed if the instance depletes its CPU credits, if the No Fees for Stopped Instances \(VPC-Connected\) feature is triggered, or if you have overdue payments in your account. For more information, see [Switch the performance mode of a burstable instance](/intl.en-US/Instance/Instance type families/Burstable instance types/Switch the performance mode of a burstable instance.md).
 
 |User|
 
@@ -299,7 +300,7 @@ The following table describes the subfields contained in the content parameter.
 
 When a burstable instance depletes its CPU credits, the instance is limited to its baseline performance and runs in standard mode. An Instance:BurstablePerformanceRestricted event is generated.
 
-**Note:** Each Instance:BurstablePerformanceRestricted event spans a period of one hour. That is, the interval between the start time and end time of the event is one hour. This event indicates only that the instance once gets limited to its baseline performance during the event period, but does not indicate that the instance keeps limited to its baseline performance throughout the period. If the instance keeps limited to its baseline performance for an extended period of time, an Instance:BurstablePerformanceRestricted event is generated every hour.
+**Note:** Each Instance:BurstablePerformanceRestricted event spans a period of one hour. That means the interval between the start time and end time of the event is 1 hour. This event indicates only that the instance gets limited to its baseline performance during the event period, but does not necessarily indicate that the instance keeps limited to its baseline performance throughout the period. If the instance keeps limited to its baseline performance for an extended period of time, an Instance:BurstablePerformanceRestricted event is generated every hour.
 
 The following example shows the event notification in the JSON format:
 
@@ -322,10 +323,10 @@ The following example shows the event notification in the JSON format:
 }
 ```
 
-The following table describes the subfields contained in the content parameter.
+The following table describes the subparameters contained in the content parameter.
 
-|Subfield|Description|Example|
-|--------|-----------|-------|
+|Subparameter|Description|Example|
+|------------|-----------|-------|
 |instanceId|The ID of the instance.|i-bp1ecr\*\*\*\*\*\*\*\*5go2go|
 |intervalStart|The start time of the event. It is in UTC.|2019-11-11T11:00Z|
 |intervalEnd|The end time of the event. It is in UTC.|2019-11-11T12:00Z|
