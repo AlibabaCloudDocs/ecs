@@ -8,7 +8,7 @@ Packer是一款轻量级的镜像定义工具，能够运行在常用的主流�
 
 1.  连接并登录到Linux服务器。
 
-    登录ECS Linux实例服务器，请参见[使用用户名密码验证连接Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/使用用户名密码验证连接Linux实例.md)。
+    登录ECS Linux实例服务器，请参见[使用用户名密码验证连接Linux实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/使用用户名密码验证连接Linux实例.md)。
 
 2.  执行命令`cd /usr/local/bin`进入/usr/local/bin目录。
 
@@ -27,7 +27,7 @@ Packer是一款轻量级的镜像定义工具，能够运行在常用的主流�
 
 ## 步骤二：定义Packer模板
 
-使用Packer创建自定义镜像时，需要创建一个JSON格式的模板文件。在该模板文件中，您需要指定创建自定义镜像的生成器和配置器。详情请参见[Alicloud Image Builder（生成器）](https://www.packer.io/docs/builders/alicloud-ecs.html)和[Provisioners（配置器）](https://www.packer.io/docs/templates/provisioners)。Packer具有多种配置器，可用于配置自定义镜像的内容生成方式，以下以常用的Shell配置器为例，定义Packer模板。
+使用Packer创建自定义镜像时，需要创建一个JSON格式的模板文件。在该模板文件中，您需要指定创建自定义镜像的生成器和配置器。详情请参见[Alicloud Image Builder（生成器）](https://www.packer.io/docs/builders/alicloud-ecs.html)和[Provisioners（配置器）](https://www.packer.io/docs/provisioners)。Packer具有多种配置器，可用于配置自定义镜像的内容生成方式，以下以常用的Shell配置器为例，定义Packer模板。
 
 在Linux服务器中创建名为alicloud的json文件并粘贴以下内容。
 
@@ -70,7 +70,7 @@ Packer是一款轻量级的镜像定义工具，能够运行在常用的主流�
 |source\_image|基础镜像的名称，可以从阿里云公共镜像列表获得。|
 |instance\_type|创建自定义镜像时生成的临时实例的类型。|
 |internet\_charge\_type|创建自定义镜像时临时实例的公网带宽付费类型。|
-|provisioners|创建自定义镜像时使用的Packer配置器类型。详情请参见[Packer配置器](https://www.packer.io/docs/templates/provisioners)。|
+|provisioners|创建自定义镜像时使用的Packer配置器类型。详情请参见[Packer配置器](https://www.packer.io/docs/provisioners)。|
 
 ## 步骤三：使用Packer创建自定义镜像
 
