@@ -8,7 +8,7 @@ A Linux instance is used in the following examples. For more information about h
 
 1.  Connect to a Linux instance.
 
-    For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using a username and password.md).
+    For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using a username and password.md).
 
 2.  Run the `cd /usr/local/bin` command to access the /usr/local/bin directory.
 
@@ -27,7 +27,7 @@ A Linux instance is used in the following examples. For more information about h
 
 ## Step 2: Define a Packer template
 
-If you want to use Packer to create a custom image, you must create a template in the JSON format. In the template, you must specify the image builder and provisioner. For more information, visit [Alicloud Image Builder](https://www.packer.io/docs/builders/alicloud-ecs.html) and [Provisioners](https://www.packer.io/docs/templates/provisioners). Packer provides a variety of provisioners that allow you to configure the content generation mode for custom images. A Shell provisioner is used to define a Packer template in the following example.
+If you want to use Packer to create a custom image, you must create a template in the JSON format. In the template, you must specify the image builder and provisioner. For more information, visit [Alicloud Image Builder](https://www.packer.io/docs/builders/alicloud-ecs.html) and [Provisioners](https://www.packer.io/docs/provisioners). Packer provides a variety of provisioners that allow you to configure the content generation mode for custom images. A Shell provisioner is used to define a Packer template in the following example.
 
 Create a JSON file named alicloud in the Linux instance and paste the following information to the file:
 
@@ -70,7 +70,7 @@ The following table describes the parameters that you must specify.
 |source\_image|The name of the source image used to create the custom image. You can obtain the name from the public image list of Alibaba Cloud.|
 |instance\_type|The type of the temporary instance used to create the custom image.|
 |internet\_charge\_type|The billing method for network usage of the temporary instance used to create the custom image.|
-|provisioners|The provisioner used to create the custom image. For more information, visit [Provisioners](https://www.packer.io/docs/templates/provisioners).|
+|provisioners|The provisioner used to create the custom image. For more information, visit [Provisioners](https://www.packer.io/docs/provisioners).|
 
 ## Step 3: Create a custom image by using Packer
 
