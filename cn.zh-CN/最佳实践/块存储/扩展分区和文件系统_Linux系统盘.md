@@ -152,7 +152,7 @@
 
         **说明：** 不同版本的xfs\_growfs命令可能存在差异，您可以运行`xfs_growfs --help`查看对应的命令。
 
-5.  运行以下命令查看云盘分区大小。
+5.  运行以下命令检查云盘扩容结果。
 
     ```
     df -h
@@ -176,9 +176,11 @@
 
 本节以CentOS 6操作系统为例，说明扩展分区和文件系统的步骤。
 
-**说明：** CentOS 6操作系统版本结束了生命周期（EOL），您需要临时切换CentOS 6的软件源地址才可以正常安装软件包。具体操作，请参见[CentOS 6 EOL如何切换源](/cn.zh-CN/镜像/常见问题/CentOS 6 EOL如何切换源.md)。
+1.  切换CentOS 6的yum软件源。
 
-1.  运行以下命令安装dracut-modules-growroot工具。
+    CentOS 6操作系统版本结束了生命周期（EOL），如果您需要在CentOS 6上通过yum安装软件，需要先切换yum软件源。具体操作，请参见[CentOS 6 EOL如何切换源](/cn.zh-CN/镜像/常见问题/CentOS 6 EOL如何切换源.md)。
+
+2.  运行以下命令安装dracut-modules-growroot工具。
 
     ```
     yum install -y dracut-modules-growroot
@@ -186,47 +188,49 @@
 
     **说明：** 如果您使用的是其他软件包管理器，请将yum修改为对应的命令。
 
-2.  运行以下命令覆盖已有的initramfs文件。
+3.  运行以下命令覆盖已有的initramfs文件。
 
     ```
     dracut -f
     ```
 
-3.  运行以下命令查看现有云盘大小。
+4.  运行以下命令查看云盘和分区信息。
 
-    ```
-    fdisk -l
-    ```
+    -   查看云盘大小：
 
-    以下示例返回云盘（/dev/vda1）容量是100GiB。
+        ```
+        fdisk -l
+        ```
 
-    ```
-    [root@ecshost ~]# fdisk -l
-    Disk /dev/vda: 107.4 GB, 107374182400 bytes
-    255 heads, 63 sectors/track, 13054 cylinders
-    Units = cylinders of 16065 * 512 = 8225280 bytes
-    Sector size (logical/physical): 512 bytes / 512 bytes
-    I/O size (minimum/optimal): 512 bytes / 512 bytes
-    Disk identifier: 0x0003a7b4
-    
-       Device Boot      Start         End      Blocks   Id  System
-    /dev/vda1   *           1        2611    20970496   83  Linux
-    ```
+        以下示例返回云盘（/dev/vda）容量是100GiB。
 
-4.  运行以下命令查看云盘分区大小和文件系统类型。
+        ```
+        [root@ecshost ~]# fdisk -l
+        Disk /dev/vda: 107.4 GB, 107374182400 bytes
+        255 heads, 63 sectors/track, 13054 cylinders
+        Units = cylinders of 16065 * 512 = 8225280 bytes
+        Sector size (logical/physical): 512 bytes / 512 bytes
+        I/O size (minimum/optimal): 512 bytes / 512 bytes
+        Disk identifier: 0x0003a7b4
+        
+           Device Boot      Start         End      Blocks   Id  System
+        /dev/vda1   *           1        2611    20970496   83  Linux
+        ```
 
-    ```
-    df -Th
-    ```
+    -   查看云盘分区和文件系统类型：
 
-    以下示例返回分区（/dev/vda1）容量是20 GiB，文件系统类型为ext4。
+        ```
+        df -Th
+        ```
 
-    ```
-    [root@ecshost ~]# df -h
-    Filesystem     Type      Size  Used Avail Use% Mounted on
-    /dev/vda1      ext4       20G  1.1G   18G   6% /
-    tmpfs          tmpfs     7.8G     0  7.8G   0% /dev/shm
-    ```
+        以下示例返回分区（/dev/vda1）容量是20 GiB，文件系统类型为ext4。
+
+        ```
+        [root@ecshost ~]# df -h
+        Filesystem     Type      Size  Used Avail Use% Mounted on
+        /dev/vda1      ext4       20G  1.1G   18G   6% /
+        tmpfs          tmpfs     7.8G     0  7.8G   0% /dev/shm
+        ```
 
 5.  运行以下命令扩容分区。
 
