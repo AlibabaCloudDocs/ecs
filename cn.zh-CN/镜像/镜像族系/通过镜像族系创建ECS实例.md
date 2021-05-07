@@ -2,9 +2,9 @@
 
 本文介绍如何通过镜像族系创建ECS实例。目前只支持通过调用RunInstances或CreateInstance接口设置镜像族系参数来创建ECS实例。
 
-已经创建一个或多个可用的自定义镜像并设置了相同的镜像族系，详情请参见[设置镜像族系](/cn.zh-CN/镜像/镜像族系/设置镜像族系.md)。本示例中镜像族系为`image-test`。
+已经创建一个或多个可用的自定义镜像并设置了相同的镜像族系，具体操作，请参见[设置镜像族系](/cn.zh-CN/镜像/镜像族系/设置镜像族系.md)。本示例中镜像族系为`image-test`。
 
-通过镜像族系创建ECS实例时，系统会自动选取镜像族系内可用的最新自定义镜像。最新自定义镜像的判断依据为镜像族系内可用自定义镜像的创建时间，创建时间最晚的自定义镜像为最新自定义镜像。例如，您的镜像族系内有两个可用的自定义镜像。一个是2020年1月1日创建的，另一个是2020年1月3日创建的，那么通过该镜像族系创建ECS实例时，系统将默认选择2020年1月3日创建的自定义镜像。
+通过镜像族系创建ECS实例时，系统会自动选取镜像族系内可用的最新自定义镜像。最新自定义镜像的判断依据为镜像族系内可用自定义镜像的创建时间，创建时间最晚的自定义镜像为最新自定义镜像。例如，您的镜像族系内有两个可用的自定义镜像。一个是2020年01月01日创建的，另一个是2020年01月03日创建的，那么通过该镜像族系创建ECS实例时，系统将默认选择2020年01月03日创建的自定义镜像。
 
 创建ECS实例的接口详情请参见[RunInstances](/cn.zh-CN/API参考/实例/RunInstances.md)或[CreateInstance](/cn.zh-CN/API参考/实例/CreateInstance.md)。本文以RunInstances接口为例创建ECS实例。
 
@@ -60,7 +60,8 @@
     ![if8](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5425209951/p93653.png)
 
 
-[DescribeInstances](/cn.zh-CN/API参考/实例/DescribeInstances.md)
+## 相关文档
 
-[DescribeImageFromFamily](/cn.zh-CN/API参考/镜像/DescribeImageFromFamily.md)
+-   [DescribeInstances](/cn.zh-CN/API参考/实例/DescribeInstances.md)
+-   [DescribeImageFromFamily](/cn.zh-CN/API参考/镜像/DescribeImageFromFamily.md)
 
