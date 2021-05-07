@@ -35,7 +35,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
 1.  运行以下命令更新YUM源。
 
     ```
-    rpm -Uvh  http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+    rpm -Uvh  https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
     ```
 
 2.  运行以下命令安装MySQL。
@@ -52,9 +52,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
 
     返回结果如下，表示MySQL安装成功。
 
-    ```
-    mysql  Ver 14.14 Distrib 5.7.33, for Linux (x86_64) using  EditLine wrapper
-    ```
+    ![mysql版本信息](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4942730261/p271404.png)
 
 
 ## 步骤三：配置MySQL
@@ -83,7 +81,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
     2020-04-08T08:12:07.893939Z 1 [Note] A temporary password is generated for root@localhost: xvlo1lZs7>uI
     ```
 
-    **说明：** 示例中的`xvlo1lZs7>uI`为初始密码，下一步对MySQL进行安全性配置时，会使用该初始密码。
+    **说明：** 示例末尾的`xvlo1lZs7>uI`为初始密码，下一步对MySQL进行安全性配置时，会使用该初始密码。
 
 4.  运行下列命令对MySQL进行安全性配置。
 
@@ -92,6 +90,8 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
     ```
 
     1.  重置root用户的密码。
+
+        **说明：** 在输入密码时，系统为了最大限度的保证数据安全，命令行将不做任何回显。您只需要输入正确的密码信息，然后按Enter键即可。
 
         ```
         Enter password for user root: #输入上一步获取的root用户初始密码
@@ -137,7 +137,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
         All done!
         ```
 
-    安全性配置的更多详情，请参见[MySQL官方文档](https://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html)。
+    安全性配置的更多信息，请参见[MySQL官方文档](https://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html)。
 
 
 ## 步骤四：远程访问MySQL数据库
@@ -171,7 +171,7 @@ MySQL是一个关系型数据库管理系统，常用于LAMP和LNMP等网站场�
 
 4.  单击**新增数据库**。
 
-5.  配置自建数据库信息。 配置详情，请参见[管理ECS实例自建数据库](/cn.zh-CN/建站教程/搭建应用/在ECS上部署数据库/管理ECS实例自建数据库.md)。
+5.  配置自建数据库信息。 具体操作，请参见[管理ECS实例自建数据库](/cn.zh-CN/建站教程/搭建应用/在ECS上部署数据库/管理ECS实例自建数据库.md)。
 
 6.  单击**登录**。
 
