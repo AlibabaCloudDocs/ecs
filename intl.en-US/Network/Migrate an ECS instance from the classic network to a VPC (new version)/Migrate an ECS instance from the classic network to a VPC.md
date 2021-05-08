@@ -71,7 +71,7 @@ The following table describes the impacts of migrating an ECS instance from the 
         |**Plan Name**|Enter a name for the migration plan.|
         |**Select a destination zone**|Select a destination zone from the drop-down list to migrate the ECS instance. The available zones are automatically planned by the system based on resources. If you want to specify a zone for your business, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
- **Note:** You can configure only one zone for a single migration plan. If you want to configure multiple zones, you must create multiple migration plans. |
+**Note:** You can configure only one zone for a single migration plan. If you want to configure multiple zones, you must create multiple migration plans. |
         |**Destination VPC**|Select a destination VPC from the drop-down list to migrate the ECS instance.         -   Select **\(Default\) Automatically create a VPC, CIDR block: 10.0.0.0/8**: This option is suitable for scenarios where you have not created a VPC that has the 10.0.0.0/8 CIDR block and want to retain the internal IP address of the ECS instance.
 
 If you select this option, the system automatically creates a VPC that has the 10.0.0.0/8 CIDR block.
@@ -96,7 +96,7 @@ If you set **Destination VPC** to **\(Default\) Automatically create a VPC, CIDR
 **Note:** Inappropriate security group settings can affect your network access. Make sure that your security group rules are correct. |
         |**Mac Address Retention Policy**|Select the MAC address that you want to retain. Valid values: **\(Default\) Private Mac Address** and **Public Mac Address**. In the classic network, if an instance has a public IP address, the instance has a public MAC address and a private MAC address. In a VPC, an instance has only a private MAC address. The public IP address of the instance is mapped in NAT mode.
 
-         -   If your business system is associated with a MAC address, retain the associated MAC address. For example, if a MAC address is configured in your business system, some software is registered by using the associated MAC address.
+        -   If your business system is associated with a MAC address, retain the associated MAC address. For example, if a MAC address is configured in your business system, some software is registered by using the associated MAC address.
         -   If your business system is not associated with a MAC address, you can select \(Default\) Private Mac Address or Public Mac Address. |
 
     3.  Configure the instance network connectivity.
@@ -116,7 +116,7 @@ If you set **Destination VPC** to **\(Default\) Automatically create a VPC, CIDR
 **Note:** If you have created a vSwitch but you cannot find it in the drop-down list, the migrated instance and the vSwitch are not in the same zone. You must create a vSwitch in the destination zone. For more information, see [Work with vSwitches](/intl.en-US/VPCs and vSwitchs/Work with vSwitches.md). |
         |**Ensure interconnections between the migrated instances and the classic network-type instances specified in the plan over the internal network**|Specify whether the ECS instance to be migrated to a VPC can communicate with other ECS instances in the classic network over the internal network. Valid values: **Yes** and **\(Default\) No**. If you select **Yes**, configure the following settings based on your migration plan:
 
-         -   If you choose to retain the internal IP address, you must select all the classic network-type instances that require connectivity over the internal network in the **Select Instances** step. These selected instances include the ECS instances to be migrated to a VPC and the ECS instances that remain in the classic network. Classic network-type instances that are not included in the migration plan cannot communicate with the instances in VPCs. After the instances are configured, you cannot add or remove ECS instances.
+        -   If you choose to retain the internal IP address, you must select all the classic network-type instances that require connectivity over the internal network in the **Select Instances** step. These selected instances include the ECS instances to be migrated to a VPC and the ECS instances that remain in the classic network. Classic network-type instances that are not included in the migration plan cannot communicate with the instances in VPCs. After the instances are configured, you cannot add or remove ECS instances.
         -   If you choose not to retain the internal IP address, you must configure ClassicLink of classic network-type instances and enable classic network-type instances to communicate with those in VPCs. For more information about how to bind a RAM role to an ECS instance, see [Connect a classic network to a VPC](/intl.en-US/Network/Connect a classic network to a VPC.md). |
 
 6.  In the **Select Instances** step, select the ECS instance to be migrated and click **Next**.
@@ -187,7 +187,7 @@ After the migration plan is created, the system automatically migrates the ECS i
 3.  The zone of the ECS instance may change. Associated services including ApsaraDB RDS, ApsaraDB for Redis, and ApsaraDB for MongoDB are affected. Adjust your application configurations in a timely manner to ensure your business availability. For more information, see [Migrate an ApsaraDB RDS for MySQL instance across zones in the same region](/intl.en-US/RDS MySQL Database/Instance Change/Migrate an ApsaraDB RDS for MySQL instance across zones in the same region.md).
 4.  If you have not restarted or upgraded the kernel for an extended period of time, problems may occur after your ECS instance is migrated. For example, a file system check may be performed, related configuration changes may become invalid, and the kernel may fail to be restarted.
 5.  \(Optional\) The authorization code of your software changes because the network interface controller \(NIC\) is deleted. If the software on your ECS instance is associated with the MAC address of the NIC and the software vendor approves the migration certificate issued by Alibaba Cloud, you can re-authorize the software. If an error occurs, you must modify or roll back the ECS instance based on the actual situation.
-6.  \(Optional\) If your ECS instance has not been restarted for an extended period of time or has not been restarted after its kernel is upgraded, the system checks the file system and updates related configurations when the instance is restarted. If your ECS instance fails to be restarted, contact Alibaba Cloud[Submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+6.  \(Optional\) If your ECS instance has not been restarted for an extended period of time or has not been restarted after its kernel is upgraded, the system checks the file system and updates related configurations when the instance is restarted. If your ECS instance fails to be restarted, contact Alibaba Cloud [Submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 
 ## References
 
