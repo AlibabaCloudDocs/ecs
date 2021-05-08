@@ -86,8 +86,11 @@
 
  -   CreateEcs（默认）：创建实例。
 -   ChangeOS：更换系统盘/更换操作系统。 |
-|Filter.N.Key|String|否|CreationStartTime|指定过滤类型的Key。 |
-|Filter.N.Value|String|否|2017-12-05T22:40:00Z|指定过滤类型的Value。 |
+|Filter.N.Key|String|否|CreationStartTime|查询资源时的筛选键。取值范围：
+
+ -   当该参数取值为`CreationStartTime`时，可以查询在指定时间点（`Filter.N.Value`）后创建的资源信息。
+-   当该参数取值为`CreationEndTime`时，可以查询在指定时间点（`Filter.N.Value`）前创建的资源信息。 |
+|Filter.N.Value|String|否|2017-12-05T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.N.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
 |ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|自定义镜像所在的企业资源组ID。使用该参数过滤资源时，资源数量不能超过1000个。 |
 
 ## 返回数据
