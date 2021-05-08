@@ -19,6 +19,7 @@
 
 |文档链接|说明|
 |----|--|
+|[增强容器资源可见性](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/增强容器资源可见性.md)|Alibaba Cloud Linux 2在内核层面提供了容器资源视图功能的相关接口，实现对容器资源的可见性增强。|
 |[启用cgroup writeback功能](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/启用cgroup writeback功能.md)|Alibaba Cloud Linux 2在内核版本4.19.36-12.al7中，对内核接口cgroup v1新增了控制群组回写（cgroup writeback）功能。该功能使您在使用内核接口cgroup v1时，可以对缓存异步I/O \(Buffered I/O\) 进行限速。|
 |[blk-iocost权重限速](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/blk-iocost权重限速.md)|Alibaba Cloud Linux 2在内核版本4.19.81-17.al7.x86\_64开始支持基于成本模型（cost model）的权重限速功能，即blk-iocost功能。该功能是对内核中IO子系统（blkcg）基于权重的磁盘限速功能的进一步完善。|
 |[在cgroup v1接口开启PSI功能](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/在cgroup v1接口开启PSI功能.md)|Alibaba Cloud Linux 2在内核版本4.19.81-17.al7中为cgroup v1接口提供了PSI功能。PSI（Pressure Stall Information）是一个可以监控CPU、内存及IO性能异常的内核功能。|
