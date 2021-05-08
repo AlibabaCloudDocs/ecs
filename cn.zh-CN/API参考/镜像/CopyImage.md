@@ -25,16 +25,19 @@
 |ImageId|String|是|m-bp1h46wfpjsjastc\*\*\*\*|源自定义镜像的ID。 |
 |RegionId|String|是|cn-hangzhou|源自定义镜像的地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |DestinationRegionId|String|否|cn-shanghai|复制到目标地域的ID。 |
-|DestinationImageName|String|否|YourImageName|复制后的镜像的名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https:// 开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。
+|DestinationImageName|String|否|YourImageName|复制后的镜像的名称。长度为2~128个字符。必须以大小字母或中文开头，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。可以包含数字、半角句号（.）、半角冒号（:）、下划线（\_）或者短划线（-）。
 
  默认值：空 |
-|DestinationDescription|String|否|This is a description example.|复制后的镜像的描述信息。长度为2~256个英文或中文字符，不能以http://和https://开头。
+|DestinationDescription|String|否|This is a description example.|复制后的镜像的描述信息。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。
 
  默认值：空 |
 |Encrypted|Boolean|否|false|是否加密复制后的镜像。
 
  默认值：false |
+|Tag.N.Key|String|否|TestKey|复制后的镜像的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。 |
+|Tag.N.Value|String|否|TestValue|复制后的镜像的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。 |
 |KMSKeyId|String|否|e522b26d-abf6-4e0d-b5da-04b7\*\*\*\*\*\*3c|加密镜像使用的密钥ID。 |
+|ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|复制后的镜像的资源组ID。 |
 
 ## 返回数据
 
@@ -56,7 +59,7 @@ https://ecs.aliyuncs.com/?Action=CopyImage
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CopyImageResponse>
@@ -65,7 +68,7 @@ https://ecs.aliyuncs.com/?Action=CopyImage
 </CopyImageResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -79,7 +82,7 @@ https://ecs.aliyuncs.com/?Action=CopyImage
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
 |401|InvalidAliUid.IsNull|The aliUid must not be null|参数aliUid不得为空。|
-|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称不合法。长度为2~128个字符，以英文字母或中文开头，可包含数字，点号（.），下划线（\_）或连字符（-）。 不能以http://和https://开头。|
+|400|InvalidImageName.Malformed|The specified Image name is wrongly formed.|镜像名称格式错误。长度为2~128个字符。必须以大小字母或中文开头，不能以aliyun和acs:开头，不能包含http://或者https://。可以包含数字、半角句号（.）、半角冒号（:）、下划线（\_）或者短划线（-）。|
 |403|Forbbiden|User not authorized to operate on the specified resource.|用户未被授权操作指定的资源。|
 |400|InvalidImageName.Malformed|The specified destination Image name is wrongly formed.|镜像名称不合法。限制条件请参见DestinationImageName参数说明。|
 |400|InvalidDescription.Malformed|The specified destination description is wrongly formed.|指定的资源描述格式不合法。长度为2-256个字符，不能以http://和https://开头。|
@@ -97,11 +100,12 @@ https://ecs.aliyuncs.com/?Action=CopyImage
 |403|InvalidSnapshot.TooOld|This operation is denied because the specified snapshot is created before 2013-07-15.|该操作被拒绝。因为指定的快照创建于2013-07-15之前。|
 |403|OperationDenied|The specified snapshot is not allowed to create image.|指定快照不允许创建镜像。|
 |403|IncorrectDestinationRegion|The destination region is not equal the target region.|复制镜像的源地域不能等于目标地域。|
-|403|SizeExceed.Image|The image exceeds the maximum size. Please open a ticket to add the account to the white list.|镜像的大小已超过可操作的最大值，请联系客服添加白名单。|
+|403|SizeExceed.Image|The image exceeds the maximum size. Please open a ticket to add the account to the white list.|镜像的大小已超过可操作的最大值。|
 |403|OperationDeined.EncryptedSnapshot|The image contains encrypted snapshots, which do not support copying.|指定的镜像含有加密快照，不支持复制这种镜像。|
 |403|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|OperationDenied.SameRegionOnly|The image shared from others can not be copied to another region directly.|其他人分享的镜像不能复制到另一个地域。|
 |403|OperationDenied.NotPublished|The operation is denied because corresponding marketplace image is not published in destination region.|由于目标地域不支持该类型镜像，导致操作被拒绝。|
+|403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |404|InvalidParameter.KMSKeyId.NotFound|The specified KMSKeyId does not exist.|指定的参数KMSKeyId不存在。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
