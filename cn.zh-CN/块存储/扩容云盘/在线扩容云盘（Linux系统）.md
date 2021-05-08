@@ -181,7 +181,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
         resize2fs /dev/vda1    
         ```
 
-        扩容数据盘/dev/vdb1的文件系统
+        扩容数据盘/dev/vdb1的文件系统。
 
         ```
         resize2fs /dev/vdb1          
