@@ -1,14 +1,14 @@
 ---
-keyword: [Alibaba Cloud, ecs, disk resizing, extend disk capacity, Elastic Block Storage]
+keyword: [Alibaba Cloud, ECS, disk resizing, extend disk capacity, Elastic Bock Storage]
 ---
 
 # Resize partitions and file systems of Linux data disks
 
-When you resize disks, only the storage capacity of the disks is extended. File systems of the disks are not affected. Perform the following steps in this topic to resize file systems to extend the capacity of ECS instances.
+When you resize disks, only the storage capacity of the disks is extended. File systems of the ECS instances are not affected. Perform the operations in this topic to resize file systems to extend the capacity of ECS instances.
 
 1.  A snapshot is created to back up data.
 
-    To prevent data loss caused by incorrect operations, we recommend that you create a snapshot to back up your data. For more information, see [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md).
+    To prevent data loss caused by incorrect operations, we recommend that you create a snapshot to back up your data. For more information, see [Create a snapshot for a disk](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md).
 
 2.  A data disk is resized in the console.
 
@@ -19,10 +19,10 @@ When you resize disks, only the storage capacity of the disks is extended. File 
 The following configurations are used in the examples of this topic:
 
 -   Operating system of the ECS instance: Alibaba Cloud Linux 2.1903 LTS 64-bit public image
--   Data disk: an ultra disk
+-   Data disk: ultra disk
 -   Device name of the data disk: /dev/vdb
 
-Adjust the command or parameter settings based on the actual operating system and device name of the data disk.
+Adjust the commands or parameter settings based on the actual operating system and device name of the data disk.
 
 ## Check the partition table format and the file system type
 
@@ -34,8 +34,8 @@ Adjust the command or parameter settings based on the actual operating system an
 
     In this example, the disk has a partition named /dev/vdb1.
 
-    -   If the value of `System` is Linux, the data disk uses the MBR partition table format.
-    -   If the value of `System` is GPT, the data disk uses the GPT partition table format.
+    -   If the value of `System` is `Linux`, the data disk uses the MBR partition table format.
+    -   If the value of `System` is `GPT`, the data disk uses the GPT partition table format.
     ```
     [root@ecshost ~]# fdisk -lu /dev/vdb
     Disk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
@@ -62,13 +62,25 @@ Adjust the command or parameter settings based on the actual operating system an
     /dev/vdb1: UUID="e97bf1e2-fc84-4c11-9652-73********24" TYPE="ext4"
     ```
 
-    **Note:** No results are returned if a data disk does not have partitions or file systems, or if a data disk has partitions but not file systems.
+    **Note:** No results are returned if a data disk does not have partitions or file systems, or if a data disk has partitions but no file systems.
 
 3.  Run the following command to check the status of the file system:
 
-    -   ext\* file system: `e2fsck -n /dev/vdb1`
-    -   XFS file system: `xfs_repair -n /dev/vdb1`
+    -   ext\* file system:
+
+        ```
+        e2fsck -n /dev/vdb1
+        ```
+
+    -   XFS file system:
+
+        ```
+        xfs_repair -n /dev/vdb1
+        ```
+
     **Note:** In this example, the file system is in the clean state, which indicates that the file system is normal. If the file system is not in the clean state, troubleshoot the file system.
+
+    A command output similar to the following one is displayed:
 
     ```
     [root@ecshost ~]# e2fsck -n /dev/vdb1
@@ -78,28 +90,28 @@ Adjust the command or parameter settings based on the actual operating system an
     ```
 
 
-## Select a method to resize partitions or file systems
+## Choose a method to resize partitions or file systems
 
-Select a resizing method based on the partition format and file system type.
+Choose a resizing method based on the partition format and file system type.
 
 |Scenario|Resizing method|
 |--------|---------------|
-|The data disk has partitions and file systems.|-   To resize the existing MBR partitions of the data disk, see [Option 1: Resize existing MBR partitions](#section_vvb_gcs_bhm).
--   To resize the disk to create more MBR partitions, see [Option 2: Add and format MBR partitions](#section_gg7_ilv_h3j).
--   To resize the existing GPT partitions of the data disk, see [Option 3: Resize existing GPT partitions](#section_oi9_qp8_f04).
--   To resize the disk to create more GPT partitions, see [Option 4: Add and format GPT partitions](#section_4hl_5l7_87s). |
-|The new data disk does not have partitions or file systems.|After you resize the data disk in the console, see [Partition and format a data disk](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Linux instance.md) or [Partition and format a data disk larger than 2 TiB](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Partition and format a data disk larger than 2 TiB.md).|
+|The data disk has partitions and file systems.|-   To resize the existing MBR partitions of the data disk, see [\#section\_vvb\_gcs\_bhm](#section_vvb_gcs_bhm).
+-   To resize the disk to create more MBR partitions, see [\#section\_gg7\_ilv\_h3j](#section_gg7_ilv_h3j).
+-   To resize the existing GPT partitions of the data disk, see [\#section\_oi9\_qp8\_f04](#section_oi9_qp8_f04).
+-   To resize the disk to create more GPT partitions, see [\#section\_4hl\_5l7\_87s](#section_4hl_5l7_87s). |
+|The new data disk does not have partitions or file systems.|After you resize the data disk in the console, see [Format a data disk for a Linux instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Linux instance.md) or [Partition and format a data disk larger than 2 TiB in size](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Partition and format a data disk larger than 2 TiB in size.md).|
 |The raw data disk has a file system but no partitions.|After you resize the data disk in the console, see [Option 5: Resize the file system of a raw data disk](#section_f88_ax7_y8i).|
-|The data disk is not attached to any instance.|After you attach the data disk to an instance, perform the following steps in this topic to resize the data disk.|
+|The data disk is not attached to instances.|After you attach the data disk to an instance, perform the following operations in this topic to resize the data disk.|
 
 **Note:**
 
--   If a data disk contains an MBR partition, the data disk cannot be resized to 2 TiB or larger. To prevent data loss, we recommend that you create a disk larger than 2 TiB. Format a GPT partition and copy the data in the MBR partition to the GPT partition. For more information, see [Partition and format a data disk larger than 2 TiB](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Partition and format a data disk larger than 2 TiB.md).
--   If data disks fail to be resized due to the problem of the resizing or formatting tool, you can upgrade the tool version, or uninstall and reinstall the tool.
+-   If a data disk contains an MBR partition, the data disk cannot be resized to 2 TiB or larger. To prevent data loss, we recommend that you create a disk larger than 2 TiB, format a GPT partition, and then copy the data in the MBR partition to the GPT partition. For more information, see [Partition and format a data disk larger than 2 TiB in size](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Partition and format a data disk larger than 2 TiB in size.md).
+-   If data disks fail to be resized due to a problem of the resizing or formatting tool, you can upgrade the tool version or re-install the tool.
 
 ## Option 1: Resize existing MBR partitions
 
-**Note:** To prevent data loss, we recommend that you do not resize partitions and file systems that are mounted to ECS instances. Unmount the mounted partitions \(umount\) first. After you resize the partitions and they can be normally used, mount the partitions \(mount\) again. We recommend that you use the following methods for different Linux kernel versions:
+**Note:** To prevent data loss, we recommend that you do not resize partitions and file systems that are mounted to ECS instances. Unmount the mounted partitions \(umount\) first. After the partitions are resized and can be used properly, mount the partitions \(mount\) again. We recommend that you use the following methods for different Linux kernel versions:
 
 -   If the instance kernel version is earlier than 3.6, unmount the partition, modify the partition table, and then resize the file system.
 -   If the instance kernel version is 3.6 or later, modify the corresponding partition table, notify the kernel to update the partition table, and then resize the file system.
@@ -108,17 +120,16 @@ Perform the following operations to resize an existing MBR partition:
 
 1.  Modify the partition table.
 
-    1.  Run the following command to view the partition information and record the start and end sectors of the existing partition:
+    1.  Run the following command to view the partition information, and record the start and end sectors of the existing partition:
 
         ```
         fdisk -lu /dev/vdb
         ```
 
-        In this example, the start sector number of the /dev/vdb1 partition is 2048 and the end sector number is 41943039.
+        In this example, the start sector number of the /dev/vdb1 partition is 2048, and the end sector number is 41943039.
 
         ```
-        [root@ecshost ~]# fdisk -lu /dev/vdb
-        Disk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
+        [root@ecshost ~]# fdisk -lu /dev/vdbDisk /dev/vdb: 42.9 GB, 42949672960 bytes, 83886080 sectors
         Units = sectors of 1 * 512 = 512 bytes
         Sector size (logical/physical): 512 bytes / 512 bytes
         I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -131,11 +142,31 @@ Perform the following operations to resize an existing MBR partition:
 
     2.  View the mount path of the data disk. Unmount the partition based on the returned file path and wait until the partition is unmounted.
 
+        View the mount information.
+
         ```
-        [root@ecshost ~]# mount \| grep "/dev/vdb"
+        mount | grep "/dev/vdb"
+        ```
+
+        Cancel the mounting of the data disk.
+
+        ```
+        umount /dev/vdb1
+        ```
+
+        View the operation result.
+
+        ```
+        mount | grep "/dev/vdb"
+        ```
+
+        A command output similar to the following one is displayed:
+
+        ```
+        [root@ecshost ~]# mount | grep "/dev/vdb"
         /dev/vdb1 on /mnt type ext4 (rw,relatime,data=ordered)
         [root@ecshost ~]# umount /dev/vdb1
-        [root@ecshost ~]# mount \| grep "/dev/vdb"
+        [root@ecshost ~]# mount | grep "/dev/vdb"
         ```
 
     3.  Run the fdisk command to delete the existing partition.
@@ -145,11 +176,12 @@ Perform the following operations to resize an existing MBR partition:
         1.  Run the `fdisk -u /dev/vdb` command to partition the data disk.
         2.  Enter p to show the partition table.
         3.  Enter d to delete the partition.
-        4.  Enter p to confirm that the partition has been deleted.
+        4.  Enter p to confirm whether the partition is deleted.
         5.  Enter w to save changes and exit.
+        The following sample code shows that the partition is deleted:
+
         ```
-        [root@ecshost ~]# fdisk -u /dev/vdb
-        Welcome to fdisk (util-linux 2.23.2).
+        [root@ecshost ~]# fdisk -u /dev/vdbWelcome to fdisk (util-linux 2.23.2).
         Changes will remain in memory only, until you decide to write them.
         Be careful before using the write command.
         Command (m for help): p
@@ -187,10 +219,10 @@ Perform the following operations to resize an existing MBR partition:
         5.  Enter <partition number\> to select the partition number. In this example, 1 is selected.
         6.  Set the start and end sector numbers for the new partition.
 
-            **Warning:** The start sector number of the new partition must be the same as that of the existing partition. The end sector number must be greater than that of the existing partition. Otherwise, the resizing operation will fail.
+            **Warning:** The start sector number of the new partition must be the same as that of the existing partition. The end sector number must be greater than that of the existing partition. Otherwise, the resizing operation fails.
 
         7.  Enter w to save changes and exit.
-        In this example, the /dev/vdb1 partition is resized from 20 GiB to 40 GiB.
+        The following sample code shows that the partition is resized. In this example, the /dev/vdb1 partition is resized from 20 GiB to 40 GiB.
 
         ```
         [root@ecshost ~]# fdisk -u /dev/vdb
@@ -221,13 +253,27 @@ Perform the following operations to resize an existing MBR partition:
         Syncing disks.
         ```
 
-    5.  Notify the kernel that the partition table of the data disk has been updated.
+    5.  Run one of the following commands to notify the kernel to update the partition table:
 
-        Run the `partprobe /dev/vdb` or `partx -u /dev/vdb1` command to notify the kernel that the partition table of the data disk has been modified and the kernel must be synchronized.
+        ```
+        partprobe /dev/vdb
+        ```
 
-    6.  Run the `lsblk /dev/vdb` command to verify that the partition table has been resized.
+        ```
+        partx -u /dev/vdb1
+        ```
 
-    7.  Run the `e2fsck -f /dev/vdb1` command to check the file system again and verify that the file system is in the clean state after the partition is resized.
+    6.  Run the following command to verify that the partition table is added:
+
+        ```
+        lsblk /dev/vdb
+        ```
+
+    7.  Run the following command to check the file system again and verify whether the file system is in the clean state after the partition is resized:
+
+        ```
+        e2fsck -f /dev/vdb1
+        ```
 
         **Note:** If the file system is not in the clean state after you run the preceding command, you can run the `e2fsck -n /dev/vdb1` command to check the file system again.
 
@@ -235,41 +281,46 @@ Perform the following operations to resize an existing MBR partition:
 
     -   For an ext\* file system such as ext3 or ext4, run the following commands in sequence to resize the ext\* file system and remount the partition:
 
+        Resize the ext\* file system.
+
         ```
-        [root@ecshost ~]# resize2fs /dev/vdb1
-        resize2fs 1.43.5 (04-Aug-2017)
-        Resizing the filesystem on /dev/vdb1 to 7864320 (4k) blocks.
-        The filesystem on /dev/vdb1 is now 7864320 blocks long.
-        [root@ecshost ~]# mount /dev/vdb1 /mnt
+        resize2fs /dev/vdb1
+        ```
+
+        Mount the partition to /mnt.
+
+        ```
+        mount /dev/vdb1 /mnt
         ```
 
     -   For an XFS file system, run the following commands in sequence to remount the partition and then resize the XFS file system:
 
-        **Note:** The new version xfs\_growfs identifies the device to be resized based on the mount point. Example: `xfs_growfs /mnt`. You can run the `xfs_growfs --help` command to check how to use xfs\_growfs of different versions.
+        Mount the partition to /mnt.
 
         ```
-        [root@ecshost ~]# mount /dev/vdb1 /mnt/
-        [root@ecshost ~]# xfs\_growfs /mnt
-        meta-data=/dev/vdb1              isize=512    agcount=4, agsize=1310720 blks
-                 =                       sectsz=512   attr=2, projid32bit=1
-                 =                       crc=1        finobt=0 spinodes=0
-        data     =                       bsize=4096   blocks=5242880, imaxpct=25
-                 =                       sunit=0      swidth=0 blks
-        naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-        log      =internal               bsize=4096   blocks=2560, version=2
-                 =                       sectsz=512   sunit=0 blks, lazy-count=1
-        realtime =none                   extsz=4096   blocks=0, rtextents=0
-        data blocks changed from 5242880 to 7864320
+        mount /dev/vdb1 /mnt
         ```
+
+        Resize the XFS file system.
+
+        ```
+        xfs_growfs /mnt
+        ```
+
+        **Note:** The new version xfs\_growfs identifies the device to be resized based on the mount point. Example: `xfs_growfs /mnt`. You can run the `xfs_growfs --help` command to check how to use xfs\_growfs of different versions.
 
 
 ## Option 2: Add and format MBR partitions
 
 If you want to resize the disk to create more MBR partitions, perform the following operations to resize the file system of the instance:
 
-1.  Run the `fdisk -u /dev/vdb` command to create a partition.
+1.  Run the following command to create a partition:
 
-    In this example, the /dev/vdb2 partition is created for the newly added 20 GiB disk space.
+    ```
+    fdisk -u /dev/vdb
+    ```
+
+    The following sample code shows that a partition is created. In this example, the /dev/vdb2 partition is created for the newly added 20 GiB disk.
 
     ```
     [root@ecshost ~]# fdisk -u /dev/vdb
@@ -309,7 +360,13 @@ If you want to resize the disk to create more MBR partitions, perform the follow
     Syncing disks.
     ```
 
-2.  Run the `lsblk /dev/vdb` command to view the partition.
+2.  Run the following command to view the partition:
+
+    ```
+    lsblk /dev/vdb
+    ```
+
+    A command output similar to the following one is displayed:
 
     ```
     [root@ecshost ~]# lsblk /dev/vdb
@@ -319,42 +376,50 @@ If you want to resize the disk to create more MBR partitions, perform the follow
     └─vdb2 253:18   0  20G  0 part
     ```
 
-3.  Format the new partition.
+3.  Create a file system:
 
-    -   To create an ext4 file system, run the `mkfs.ext4 /dev/vdb2` command.
+    -   Run the following command to create an ext4 file system:
 
         ```
-        [root@ecshost ~]# mkfs.ext4 /dev/vdb2
-        Filesystem label=
-        OS type: Linux
-        Block size=4096 (log=2)
-        Fragment size=4096 (log=2)
-        Stride=0 blocks, Stripe width=0 blocks
-        1310720 inodes, 5242880 blocks
-        262144 blocks (5.00%) reserved for the super user
-        First data block=0
-        Maximum filesystem blocks=2153775104
-        160 block groups
-        32768 blocks per group, 32768 fragments per group
-        8192 inodes per group
-        Superblock backups stored on blocks:
-                32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
-                4096000
-        
-        Allocating group tables: done
-        Writing inode tables: done
-        Creating journal (32768 blocks): done
-        Writing superblocks and filesystem accounting information: done
-        [root@ecshost ~]# blkid /dev/vdb2
-        /dev/vdb2: UUID="e3f336dc-d534-4fdd-****-b6ff1a55bdbb" TYPE="ext4"
+        mkfs.ext4 /dev/vdb2
         ```
 
-    -   To create an ext3 file system, run the `mkfs.ext3 /dev/vdb2` command.
-    -   To create an XFS file system, run the `mkfs.xfs -f /dev/vdb2` command.
-    -   To create a btrfs file system, run the `mkfs.btrfs /dev/vdb2` command.
-4.  Run the `mount /dev/vdb2 /mnt` command to mount the partition.
+    -   Run the following command to create an XFS file system:
 
-5.  Run the `df -h` command to check the current capacity and usage of the data disk.
+        ```
+        mkfs.xfs -f /dev/vdb2
+        ```
+
+    -   Run the following command to create a Btrfs file system:
+
+        ```
+        mkfs.btrfs /dev/vdb2
+        ```
+
+4.  Run the following command to view the information about the file system:
+
+    ```
+    blkid /dev/vdb2
+    ```
+
+    A command output similar to the following one is displayed:
+
+    ```
+    [root@ecshost ~]# blkid /dev/vdb2
+    /dev/vdb2: UUID="e3f336dc-d534-4fdd-****-b6ff1a55bdbb" TYPE="ext4"
+    ```
+
+5.  Run the following command to mount the partition:
+
+    ```
+    mount /dev/vdb2 /mnt
+    ```
+
+6.  Run the following command to view the space and usage of the data disk:
+
+    ```
+    df -h
+    ```
 
     If information about the new file system is displayed, the partition is mounted.
 
@@ -377,28 +442,60 @@ Perform the following operations to resize an existing GPT partition:
 
 1.  View the mount path of the data disk. Unmount the partition based on the returned file path and wait until the partition is unmounted.
 
+    View the mount information.
+
     ```
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    mount | grep "/dev/vdb"
+    ```
+
+    Cancel the mounting of the data disk.
+
+    ```
+    umount /dev/vdb1
+    ```
+
+    View the operation result.
+
+    ```
+    mount | grep "/dev/vdb"
+    ```
+
+    A command output similar to the following one is displayed:
+
+    ```
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     /dev/vdb1 on /mnt type ext4 (rw,relatime,data=ordered)
     [root@ecshost ~]# umount /dev/vdb1
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     ```
 
 2.  Use the Parted tool to allocate capacity for the existing GPT partition.
 
-    1.  Run the `parted /dev/vdb` command to start the parted tool.
+    1.  Run the following command to start the Parted partition tool:
+
+        ```
+        parted /dev/vdb
+        ```
 
         To view the Parted tool instructions, run the `help` command.
 
-    2.  Run the `print` command to view the partition information and record the partition number and start sector value of the existing partition.
+    2.  Run the following command to view the partition information, and record the partition number and start sector value of the existing partition:
+
+        ```
+        print
+        ```
 
         If `Fix/Ignore/Cancel?` or `Fix/Ignore?` is displayed, enter Fix.
 
         In this example, the size of the existing partition is 1 TiB. The partition number \(the value of `Number`\) is `1`. The start sector number \(the value of `Start`\) is `1049kB`.
 
-        ![resize-gpt-start](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1314488951/p70886.png)
+        ![resize-gpt-start](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1314488951/p70886.png)
 
-    3.  Run the `rm <Partition number>` command to unmount the existing partition.
+    3.  Run the following command to delete the existing partition:
+
+        ```
+        rm <Partition number>
+        ```
 
         In this example, the partition number of the existing partition is `1`. Therefore, the following command is used:
 
@@ -406,23 +503,35 @@ Perform the following operations to resize an existing GPT partition:
         rm 1
         ```
 
-    4.  Run the `mkpart primary <the start sector number of the existing partition> <the percentage of allocated capacity>` command to recreate the primary partition.
+    4.  Run the following command to recreate the primary partition:
 
-        In this example, the start sector number of the existing partition is `1049kB` and the 3 TiB of total capacity is allocated to the partition. Therefore, the following command is used:
+        ```
+        mkpart primary <Start sector number of the existing partition> <Percentage of allocated capacity>
+        ```
+
+        In this example, the start sector number of the existing partition is `1049kB`, and the 3 TiB total capacity is allocated to the partition. Therefore, the following command is used:
 
         ```
         mkpart primary 1049kB 100%
         ```
 
-    5.  Run the `print` command to check whether the new partition is created.
+    5.  Run the following command to check whether the new partition is created:
 
-        The following figure shows that the new GPT partition number is still 1, but the capacity of the partition has been increased to 3 TiB.
+        ```
+        print
+        ```
 
-        ![GPT partitioning result](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/1314488951/p71219.png)
+        The following figure shows that the new GPT partition number is still 1, but the capacity of the partition is increased to 3 TiB.
 
-    6.  Run the `quit` command to exit the Parted tool.
+        ![The GPT partitioning result](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1314488951/p71219.png)
 
-    The following section shows the complete sample code:
+    6.  Run the following command to exit the Parted tool:
+
+        ```
+        quit
+        ```
+
+    The following sample code shows the process.
 
     ```
     [root@ecshost ~]# parted /dev/vdb
@@ -463,7 +572,13 @@ Perform the following operations to resize an existing GPT partition:
     Information: You may need to update /etc/fstab.
     ```
 
-3.  Run the `fsck -f /dev/vdb1` command to check the file system for consistency.
+3.  Run the following command to check the file system for consistency:
+
+    ```
+    fsck -f /dev/vdb1
+    ```
+
+    A command output similar to the following one is displayed:
 
     ```
     [root@ecshost ~]# fsck -f /dev/vdb1
@@ -479,31 +594,48 @@ Perform the following operations to resize an existing GPT partition:
 
 4.  Resize the file system corresponding to the partition and remount the partition.
 
-    -   For an ext\* file system such as ext3 or ext4, run the following commands in sequence to resize the ext\* file system of the new partition and remount the partition:
+    -   ext\* file system such as ext3 and ext4:
+
+        Run the following command to resize the ext\* file system of the new partition:
 
         ```
-        [root@ecshost ~]# resize2fs /dev/vdb1
-        resize2fs 1.43.5 (04-Aug-2017)
-        Resizing the filesystem on /dev/vdb1 to 805305856 (4k) blocks.
-        The filesystem on /dev/vdb1 is now 805305856 blocks long.
-        [root@ecshost ~]# mount /dev/vdb1 /mnt
+        resize2fs /dev/vdb1
         ```
 
-    -   For an XFS file system, run the following commands in sequence to remount the partition and then resize the XFS file system.
+        Run the following command to remount the partition:
+
+        ```
+        mount /dev/vdb1 /mnt
+        ```
+
+    -   XFS file system:
+
+        Run the following command to remount the partition:
+
+        ```
+        mount /dev/vdb1 /mnt
+        ```
+
+        Run the following command to resize the XFS file system:
+
+        ```
+        xfs_growfs /mnt
+        ```
 
         **Note:** The new version xfs\_growfs identifies the device to be resized based on the mount point. Example: `xfs_growfs /mnt`. You can run the `xfs_growfs --help` command to check how to use xfs\_growfs of different versions.
-
-        ```
-        [root@ecshost ~]# mount /dev/vdb1 /mnt/
-        [root@ecshost ~]# xfs\_growfs /mnt
-        ```
 
 
 ## Option 4: Add and format GPT partitions
 
-If new disk space is added to create more GPT partitions, perform the following operations to resize the file system of the instance: In this example, a data disk of 32 TiB is used. The existing partition /dev/vdb1 has a 4.8 TiB capacity. The /dev/vdb2 partition is to be created.
+If you want to resize the disk to create more GPT partitions, perform the following operations to resize the file system of the instance: In this example, a 32 TiB data disk is used. The existing partition /dev/vdb1 has a 4.8 TiB capacity. The /dev/vdb2 partition is to be created.
 
-1.  Run the fdisk command to view information about the existing partition.
+1.  Run the following command to view the information of existing partitions in the data disk:
+
+    ```
+    fdisk -l
+    ```
+
+    A command output similar to the following one is displayed:
 
     ```
     [root@ecshost ~]# fdisk -l
@@ -529,11 +661,19 @@ If new disk space is added to create more GPT partitions, perform the following 
      1         2048  10307921919    4.8T  Microsoft basic mnt                    
     ```
 
-2.  Use the parted tool to create a new partition and allocate capacity for it.
+2.  Use the Parted tool to create a partition and allocate capacity for it.
 
-    1.  Run the `parted /dev/vdb` command to start the Parted tool.
+    1.  Run the following command to start the Parted tool:
 
-    2.  Run the `print free` command to view the disk capacity to be allocated. Record the start and end sectors and capacity of the existing partition.
+        ```
+        parted /dev/vdb
+        ```
+
+    2.  Run the following command to view the disk capacity to be allocated. Record the start and end sectors and capacity of the existing partition.
+
+        ```
+        print free
+        ```
 
         In this example, the start sector number of /dev/vdb1 is 1,049 KB, the end sector number is 5,278 GB, and the capacity is 5,278 GiB.
 
@@ -551,14 +691,27 @@ If new disk space is added to create more GPT partitions, perform the following 
                 5278GB  35.2TB  29.9TB  Free Space                    
         ```
 
-    3.  Run the `mkpart <the partition name> <the start sector number> <the percentage of allocated capacity>` command.
+    3.  Run the following command to set the start and end sectors and capacity of the existing partition:
+
+        ```
+        mkpart <The partition name> <The start and end sector numbers> <The percentage of the allocated capacity>
+        ```
 
         In this example, the /dev/vdb2 partition named test is created. The start sector number of the new partition is the end sector number of the existing partition. The new capacity is allocated to the new partition.
 
-    4.  Run the `print` command to check whether the capacity \(Size\) of the partition is changed.
+        ```
+        mkpart test 5278GB 100%
+        ```
+
+    4.  Run the following command to check whether the capacity \(Size\) of the partition is changed:
 
         ```
-        (parted) mkpart test 5278GB 100%
+        print
+        ```
+
+        A command output similar to the following one is displayed:
+
+        ```
         (parted) print
         Model: Virtio Block Device (virtblk)
         Disk /dev/vdb: 35.2TB
@@ -571,14 +724,38 @@ If new disk space is added to create more GPT partitions, perform the following 
          2      5278GB  35.2TB  29.9TB               test                    
         ```
 
-    5.  Run the `quit` command to exit the parted tool.
+    5.  Run the following command to exit the Parted tool:
+
+        ```
+        quit
+        ```
 
 3.  Create a file system for the new partition.
 
-    -   To create an ext4 file system, run the `mkfs.ext4 /dev/vdb2` command.
-    -   To create an ext3 file system, run the `mkfs.ext3 /dev/vdb2` command.
-    -   To create an XFS file system, run the `mkfs.xfs -f /dev/vdb2` command.
-    -   To create a btrfs file system, run the `mkfs.btrfs /dev/vdb2` command.
+    -   Run the following command to create an ext4 file system:
+
+        ```
+        mkfs.ext4 /dev/vdb2
+        ```
+
+    -   Run the following command to create an ext3 file system:
+
+        ```
+        mkfs.ext3 /dev/vdb2
+        ```
+
+    -   Run the following command to create an XFS file system:
+
+        ```
+        mkfs.xfs -f /dev/vdb2
+        ```
+
+    -   Run the following command to create a Btrfs file system:
+
+        ```
+        mkfs.btrfs /dev/vdb2
+        ```
+
     In this example, an XFS file system is created.
 
     ```
@@ -594,7 +771,13 @@ If new disk space is added to create more GPT partitions, perform the following 
     realtime =none                   extsz=4096   blocks=0, rtextents=0               
     ```
 
-4.  Run the `fdisk -l` command to view the change of partition capacity.
+4.  Run the following command to view changes of the partition capacity:
+
+    ```
+    fdisk -l
+    ```
+
+    A command output similar to the following one is displayed:
 
     ```
     [root@ecshost ~]# fdisk -l
@@ -621,7 +804,13 @@ If new disk space is added to create more GPT partitions, perform the following 
      2  10307921920  68719474687   27.2T  Microsoft basic test  
     ```
 
-5.  Run the blkid command to view the file system types.
+5.  Run the following command to view the file system types:
+
+    ```
+    blkid
+    ```
+
+    A command output similar to the following one is displayed:
 
     ```
     [root@ecshost ~]# blkid
@@ -633,26 +822,46 @@ If new disk space is added to create more GPT partitions, perform the following 
 6.  Mount the new partition.
 
     ```
-    [root@ecshost ~]# mount /dev/vdb2 /mnt
+    mount /dev/vdb2 /mnt
     ```
 
 
 ## Option 5: Resize the file system of a raw data disk
 
-If a raw data disk contains a file system but no partitions, perform the following operations to directly resize the file system:
+If a raw data disk contains a file system but no partitions, perform the following operations to resize the file system:
 
 1.  View the mount path of the data disk and unmount the partition based on the returned file path.
 
+    View the mount information.
+
     ```
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    mount | grep "/dev/vdb"
+    ```
+
+    Cancel the mounting of the data disk.
+
+    ```
+    umount /dev/vdb
+    ```
+
+    View the operation result.
+
+    ```
+    mount | grep "/dev/vdb"
+    ```
+
+    A command output similar to the following one is displayed:
+
+    ```
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     /dev/vdb on /mnt type ext4 (rw,relatime,data=ordered)
     [root@ecshost ~]# umount /dev/vdb
-    [root@ecshost ~]# mount \| grep "/dev/vdb"
+    [root@ecshost ~]# mount | grep "/dev/vdb"
     ```
 
-2.  Run different commands based on the file system type.
+2.  Run one of the following commands based on the file system type:
 
-    -   For an ext\* file system, run the resize2fs command as the root user to resize the file system. Example:
+    -   For an ext\* file system, run the resize2fs command as the root user to resize the file system.
 
         ```
         resize2fs /dev/vdb
@@ -660,19 +869,11 @@ If a raw data disk contains a file system but no partitions, perform the followi
 
     -   For an XFS file system, run the xfs\_growfs command as the root user to resize the file system.
 
+        ```
+        xfs_growfs /mnt
+        ```
+
         **Note:** The new version xfs\_growfs identifies the device to be resized based on the mount point. Example: `xfs_growfs /mnt`. You can run the `xfs_growfs --help` command to check how to use xfs\_growfs of different versions.
-
-        -   xfs\_growfs of the new version
-
-            ```
-            xfs_growfs /mnt
-            ```
-
-        -   xfs\_growfs that is not updated
-
-            ```
-            xfs_growfs /dev/vdb
-            ```
 
 3.  Mount the disk to the mount point.
 
@@ -682,7 +883,11 @@ If a raw data disk contains a file system but no partitions, perform the followi
 
 4.  Run the `df -h` command to view the result of data disk resizing.
 
-    The file system has a larger capacity, which indicates that the file system is resized.
+    ```
+    df -h
+    ```
+
+    The following command output shows that the file system has a larger capacity, which indicates that the file system is resized.
 
     ```
     [root@ecshost ~]# df -h
@@ -699,6 +904,8 @@ If a raw data disk contains a file system but no partitions, perform the followi
 
 **Related topics**  
 
+
+[Resize disks online for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Linux instances.md)
 
 [Resize disks online for Windows instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Windows instances.md)
 
