@@ -67,7 +67,7 @@ You can leave this parameter empty to disable the custom parameter feature. |
 You can also specify other usernames that already exist in the ECS instance to run the command. It is safer for you to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](~~203771~~). |
 |WindowsPasswordName|String|No|axtSecretPassword|The name of the password used to run the command on a Windows instance.
 
-If you want to use a username other than the default System username to run the command on the Windows instance, you must specify both the WindowsPasswordName and `Username` parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service \(OOS\) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter. For more information, see [Encrypt parameters](~~186828~~) and [Configure a regular user to run Cloud Assistant commands](~~203771~~).
+If you want to use a username other than the default System username to run the command on the Windows instance, you must specify both the WindowsPasswordName and `Username` parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service \(OOS\) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter. For more information, see [Configure a regular user to run Cloud Assistant commands](~~203771~~).
 
 **Note:** When you use the root username for Linux instances or the System username for Windows instances to run the command, you do not need to specify this parameter. |
 
