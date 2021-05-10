@@ -4,14 +4,14 @@ You can call this operation to query the execution list and status of Cloud Assi
 
 ## Description
 
--   After you run a command, it may not succeed or achieve the expected results. You can call this operation to query the actual execution results.
--   You can query the execution information within the last two weeks. A maximum of 100,000 pieces of execution information can be retained.
+-   After you run a command, the command may not succeed or achieve the expected results. You can call this operation to query the execution results.
+-   You can query the execution information that is generated in the last two weeks. A maximum of 100,000 pieces of execution information can be retained.
 
 ## Debugging
 
 [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeInvocations&type=RPC&version=2014-05-26)
 
-## Request Parameter
+## Request parameters
 
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
@@ -21,14 +21,19 @@ You can call this operation to query the execution list and status of Cloud Assi
 |CommandId|String|No|c-hz0jdfwcsr\*\*\*\*|The ID of the command. You can call the [DescribeCommands](~~64843~~) operation to query all available command IDs. |
 |CommandName|String|No|CommandTestName|The name of the command. |
 |CommandType|String|No|RunShellScript|The type of the command. |
-|Timed|Boolean|No|true|Specifies whether to periodically run the command.
+|Timed|Boolean|No|true|Specifies whether to query the commands to be automatically run. Valid values:
+
+-   true: queries the commands that are to be run by calling the `RunCommand` or `InvokeCommand` operation and setting the `RepeatMode` parameter to `Period`, `NextRebootOny`, or `EveryReboot`. The executions of these commands are not canceled or stopped and not complete.
+-   false: queries commands that meet the following requirements:
+    -   Commands that are to be run by calling the `RunCommand` or `InvokeCommand` operation and setting the `RepeatMode` parameter to `Once`.
+    -   Commands whose executions are canceled, stopped, or complete.
 
 Default value: false. |
-|InvokeStatus|String|No|Finished|The overall status of the execution. The value is determined by the execution status of the command on all the involved instances. Valid values:
+|InvokeStatus|String|No|Finished|The overall execution status of the command. The value of this parameter depends on the execution status on all the involved instances \(InstanceInvokeStatus\). Valid values:
 
 -   Running:
-    -   Recurring execution: Before you manually stop the command, the overall execution status is always Running.
-    -   One-time execution: If the command is being run on one or more instances, the overall execution status is Running.
+    -   Recurring execution: Before you manually stop the execution of the command, the overall execution status is always Running.
+    -   One-time execution: If the execution is in progress on one or more instances, the overall execution status is Running.
 -   Finished:
     -   Recurring execution: The overall execution status can never be Finished.
     -   One-time execution: The execution is complete on all instances, or the execution is manually stopped on some instances and is complete on the other instances.
@@ -44,13 +49,13 @@ Default value: Running. |
 |InstanceId|String|No|i-bp1i7gg30r52z2em\*\*\*\*|The ID of the instance. When you specify this parameter, the system queries all the execution records of the instance. |
 |ContentEncoding|String|No|PlainText|The encoding mode of the `CommandContent` and `Output` response parameters. Valid values:
 
--   PlainText: returns the original command content and command output.
--   Base64: returns the Base64-encoded command content and command output.
+-   PlainText: returns the original command content and command outputs.
+-   Base64: returns the Base64-encoded command content and command outputs.
 
 Default value: Base64. |
 |IncludeOutput|Boolean|No|false|Specifies whether to return the command outputs in the response.
 
--   true: returns the command outputs. When this parameter is set to true, you must specify `InvokeId`, `InstanceId`, or both of them.
+-   true: returns the command outputs. When this parameter is set to true, you must specify `InvokeId`, `InstanceId` or both.
 -   false: does not return the command outputs.
 
 Default value: false. |
@@ -69,35 +74,35 @@ Default value: 10. |
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
-|Invocations|Array of Invocation| |Details of execution records. |
+|Invocations|Array of Invocation| |Details of the command executions. |
 |Invocation| | | |
 |CommandContent|String|cnBtIC1xYSB8IGdyZXAgdnNm\*\*\*\*|The Base64-encoded command content. |
 |CommandId|String|c-hz0jdfwcsr\*\*\*\*|The ID of the command. |
 |CommandName|String|CommandTestName|The name of the command. |
 |CommandType|String|RunShellScript|The type of the command. |
 |CreationTime|String|2020-01-19T09:15:46Z|The time when the task was created. |
-|Frequency|String|0 \*/20 \* \* \* \*|The time when recurring executions of the command take place. For more information about the value pattern, see [Cron expression](~~64769~~). |
-|InvocationStatus|String|Pending|The overall execution status. This value is determined by the overall execution status on all the involved instances. Valid values:
+|Frequency|String|0 \*/20 \* \* \* \*|The schedule on which the recurring execution of the command takes place. For more information about the value specifications, see [Cron expression](~~64769~~). |
+|InvocationStatus|String|Running|The overall execution status of the command. The value of this parameter depends on the execution status on all the involved instances. Valid values:
 
 -   Pending: The system is verifying or sending the command. When the execution status on at least one instance is Pending, the overall execution status is Pending.
--   Scheduled: The recurring command was sent and waiting to be run. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
--   Running: The command is being run on the instance. When the execution status on at least one instance is Running, the overall execution status is Running.
--   Success: When the execution status on all instances is Stopped or Success and the execution status on at least one instance is Success, the overall execution status is Success.
-    -   One-time execution: The execution is complete and the exit code is zero.
-    -   Recurring execution: The last execution succeeds, the exit code is zero, and the specified cycle ends.
+-   Scheduled: The recurring command \(command that is to be run in a recurring manner\) was sent and waiting to be run. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
+-   Running: The execution is in progress on the instances. When the execution status on at least one instance is Running, the overall execution status is Running.
+-   Success: When the execution status on at least one instance is Success and the execution status on the other instances is Stopped, the overall execution status is Success.
+    -   One-time execution: The execution is complete and the exit code is 0.
+    -   Recurring execution: The last execution succeeds and the exit code is 0. The specified recurring period during which the command is run ends.
 -   Failed: When the execution status on all instances is Stopped or Failed, the overall execution status is Failed. When the execution status on an instance is one of the following values, Failed is returned as the overall execution status:
     -   Invalid: The command is invalid.
     -   Aborted: The command fails to be sent.
-    -   Failed: The execution is complete but the exit code is a non-zero value.
+    -   Failed: The execution is complete but the exit code is not 0.
     -   Timeout: The execution times out.
-    -   Error: An error occurs while the execution is in progress.
+    -   Error: The execution is abnormal.
 -   Stopping: The execution is being stopped. When the execution status on at least one instance is Stopping, the overall execution status is Stopping.
 -   Stopped: The execution is stopped. When the execution status on all instances is Stopped, the overall execution status is Stopped. When the execution status on an instance is one of the following values, Stopped is returned as the overall execution status:
     -   Cancelled: The execution is canceled.
     -   Terminated: The execution is terminated.
--   PartialFailed: The execution succeeds on some instances and fails on the other instances. If the execution status is Success on some instances, and is Failed or Stopped on the other instances, the overall execution status is PartialFailed.
+-   PartialFailed: The execution succeeds on some instances and fails on some other instances. When the execution status is Success on some instances and is Failed or Stopped on the other instances, the overall execution status is PartialFailed.
 
-**Note:** The `InvokeStatus` parameter is similar to this parameter, but we recommend that you check this parameter. |
+**Note:** The `InvokeStatus` response parameter is similar to this parameter, but we recommend that you check the return value of this parameter. |
 |InvokeId|String|t-hz0jdfwd9f\*\*\*\*|The ID of the execution. |
 |InvokeInstances|Array of InvokeInstance| |Details of the instances on which the command is run. |
 |InvokeInstance| | | |
@@ -108,11 +113,11 @@ Default value: 10. |
 -   If this parameter is empty, the command is run normally.
 -   InstanceNotExists: The instance does not exist or is released.
 -   InstanceReleased: The instance is released while the command is being run.
--   InstanceNotRunning: The instance is not running when the command begins to be run.
+-   InstanceNotRunning: The instance is not running when the command starts to be run.
 -   CommandNotApplicable: The command is not applicable to the specified instance.
 -   AccountNotExists: The specified account does not exist.
 -   DirectoryNotExists: The specified directory does not exist.
--   BadCronExpression: The specified cron expression for the execution cycle is invalid.
+-   BadCronExpression: The specified cron expression for the execution schedule is invalid.
 -   ClientNotRunning: The Cloud Assistant client is not running.
 -   ClientNotResponse: The Cloud Assistant client does not respond.
 -   ClientIsUpgrading: The Cloud Assistant client is being upgraded.
@@ -121,8 +126,8 @@ Default value: 10. |
 -   ExecutionTimeout: The execution times out.
 -   ExecutionException: An exception occurs when the command is being run.
 -   ExecutionInterrupted: The execution is interrupted.
--   ExitCodeNonzero: The execution is complete but the exit code is a non-zero value. |
-|ErrorInfo|String|the specified instance does not exists|The detailed cause why a command failed to be sent or run. Valid values:
+-   ExitCodeNonzero: The execution is complete but the exit code is not 0. |
+|ErrorInfo|String|the specified instance does not exists|The details of the cause why the command failed to be sent or run. Valid values:
 
 -   If this parameter is empty, the command is run normally.
 -   the specified instance does not exists
@@ -141,51 +146,58 @@ Default value: 10. |
 -   the command execution got an exception
 -   the command execution has been interrupted
 -   the command execution exit code is not zero |
-|ExitCode|Long|0|The exit code of the execution.
+|ExitCode|Long|0|The exit code of the execution. Valid values:
 
 -   For Linux instances, the exit code is the exit code of the shell process.
 -   For Windows instances, the exit code is the exit code of the batch or PowerShell process. |
 |FinishTime|String|2019-12-20T06:15:56Z|The end time of the execution. |
 |InstanceId|String|i-bp1i7gg30r52z2em\*\*\*\*|The ID of the instance. |
-|InstanceInvokeStatus|String|Finished|**Note:** We recommend that you ignore this parameter and check the returned values of the `InvocationStatus` parameter for the overall execution status. |
+|InstanceInvokeStatus|String|Finished|**Note:** We recommend that you ignore this parameter and check the return value of the `InvocationStatus` parameter for the overall execution status. |
 |InvocationStatus|String|Success|The execution status on a single instance. Valid values:
 
 -   Pending: The system is verifying or sending the command.
 -   Invalid: The specified command type or parameter is invalid.
--   Aborted: The command fails to be sent. The instance must be in the Running state and the command must be sent within 1 minute so that the command can be sent to the instance.
--   Running: The command is being run on the instance.
+-   Aborted: The command fails to be sent. To send a command to an instance, make sure that the instance must be in the Running state and that the command can be sent within 1 minute.
+-   Running: The command is running on the instance.
 -   Success:
-    -   One-time execution: The execution is complete and the exit code is zero.
-    -   Recurring execution: The last execution succeeds, the exit code is zero, and the specified cycle ends.
+    -   One-time execution: The execution is complete and the exit code is 0.
+    -   Recurring execution: The previous occurrence of the execution succeeds and the exit code is 0. The specified recurring period during which the command is run ends.
 -   Failed:
-    -   One-time execution: The execution is complete but the exit code is a non-zero value.
-    -   Recurring execution: The last execution is complete, the exit code is a non-zero value, and the specified cycle is about to end.
+    -   One-time execution: The execution is complete but the exit code is not 0.
+    -   Recurring execution: The previous occurrence of the execution is complete and the exit code is not 0. The specified recurring period during which the command is run is about to end.
 -   Error: The execution cannot proceed due to an exception.
 -   Timeout: The execution times out.
--   Cancelled: The execution is canceled and the command is not started.
+-   Cancelled: The execution has been canceled and the command has not been started.
 -   Stopping: The execution is being stopped.
 -   Terminated: The command is terminated when it is being run.
 -   Scheduled:
     -   One-time execution: not applicable.
     -   Recurring execution: The command is waiting to be run. |
 |Output|String|OutPutTestmsg|The output of the command. |
-|Repeats|Integer|0|The number of executions on the instance.
+|Repeats|Integer|0|The number of times that the command is run on the instance.
 
--   For one-time executions, the value is 0 or 1.
--   For recurring executions, the value is the number of executions that have occurred on the instance. |
+-   If the execution is a one-time execution, the value is 0 or 1.
+-   If the execution is a recurring execution, the value is the number of times that the command is run. |
 |StartTime|String|2019-12-20T06:15:55Z|The time when the command started to be run on the instance. |
-|StopTime|String|2020-01-19T09:15:47Z|The time when the command stopped being run on the instance. If you called the `StopInvocation` operation to manually stop the execution, the value is the time when you called the operation. |
+|StopTime|String|2020-01-19T09:15:47Z|The time when the command stopped being run on the instance. If you called the `StopInvocation` operation to manually stop the execution, the value is the time when you call the operation. |
+|Timed|Boolean|false|Indicates whether the command is to be automatically run. |
 |UpdateTime|String|2020-01-19T09:15:47Z|The time when the execution status was updated. |
-|InvokeStatus|String|Finished|The overall execution status.
+|InvokeStatus|String|Finished|The overall execution status of the command.
 
-**Note:** We recommend that you ignore this parameter and check the returned values of the `InvocationStatus` parameter for the overall execution status. |
+**Note:** We recommend that you ignore this parameter and check the return value of the `InvocationStatus` parameter for the overall execution status. |
 |Parameters|String|\{\}|The custom parameters in the command. |
-|Timed|Boolean|false|Indicates whether the execution is a recurring execution. |
-|Username|String|root|The username that was used to run the command on the ECS instance. |
+|RepeatMode|String|Once|Indicates the execution mode of the command. Valid values:
+
+-   Once: The command is immediately run.
+-   Period: The command is run on a regular basis.
+-   NextRebootOnly: The command is automatically run the next time the instance starts.
+-   EveryReboot: The command is automatically run every time the instance starts. |
+|Timed|Boolean|false|Indicates whether the command is to be automatically run. |
+|Username|String|root|The username that was used to run the command on the instance. |
 |PageNumber|Long|1|The page number of the returned page. |
 |PageSize|Long|10|The number of entries returned per page. |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|The ID of the request. |
-|TotalCount|Long|2|The total number of commands. |
+|TotalCount|Long|1|The total number of commands. |
 
 ## Examples
 
@@ -212,41 +224,44 @@ Sample success responses
 
 ```
 <DescribeInvocationsResponse>
-      <TotalCount>5</TotalCount>
-      <RequestId>634562E9-F291-4289-B60B-FC511A43CD34</RequestId>
-      <PageSize>1</PageSize>
+      <TotalCount>1</TotalCount>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <PageSize>10</PageSize>
       <PageNumber>1</PageNumber>
       <Invocations>
             <Invocation>
-                  <CommandContent>cnBtIC1xYSB8IGdyZXAgdnNm****</CommandContent>
-                  <InvocationStatus>Failed</InvocationStatus>
-                  <InvokeStatus>Finished</InvokeStatus>
+                  <InvocationStatus>Running</InvocationStatus>
                   <Parameters>{}</Parameters>
-                  <CommandType>RunShellScript</CommandType>
                   <Timed>false</Timed>
-                  <CreationTime>2020-05-11T09:01:39Z</CreationTime>
-                  <Frequency></Frequency>
-                  <CommandId>c-hz0jdfwcsr****</CommandId>
-                  <CommandName>AutoTest</CommandName>
-                  <InvokeId>t-hz0jdfwd9f****</InvokeId>
                   <InvokeInstances>
                         <InvokeInstance>
                               <Dropped>0</Dropped>
-                              <InvocationStatus>Failed</InvocationStatus>
+                              <InvocationStatus>Success</InvocationStatus>
                               <InstanceId>i-bp1i7gg30r52z2em****</InstanceId>
+                              <Timed>false</Timed>
                               <InstanceInvokeStatus>Finished</InstanceInvokeStatus>
-                              <ExitCode>1</ExitCode>
-                              <ErrorInfo>the command execution exit code is not zero.</ErrorInfo>
-                              <StartTime>2020-05-11T09:01:40Z</StartTime>
-                              <Repeats>1</Repeats>
-                              <FinishTime>2020-05-11T09:01:41Z</FinishTime>
-                              <Output></Output>
-                              <CreationTime>2020-05-11T09:01:39Z</CreationTime>
-                              <UpdateTime>2020-05-11T09:01:41Z</UpdateTime>
-                              <ErrorCode>ExitCodeNonzero</ErrorCode>
-                              <StopTime></StopTime>
+                              <ExitCode>0</ExitCode>
+                              <ErrorInfo></ErrorInfo>
+                              <StartTime>2019-12-20T06:15:55Z</StartTime>
+                              <Repeats>0</Repeats>
+                              <FinishTime>2019-12-20T06:15:56Z</FinishTime>
+                              <Output>OutPutTestmsg</Output>
+                              <CreationTime>2019-12-20T06:15:54Z</CreationTime>
+                              <UpdateTime>2020-01-19T09:15:47Z</UpdateTime>
+                              <ErrorCode></ErrorCode>
+                              <StopTime>2020-01-19T09:15:47Z</StopTime>
                         </InvokeInstance>
                   </InvokeInstances>
+                  <CommandContent>cnBtIC1xYSB8IGdyZXAgdnNm****</CommandContent>
+                  <RepeatMode>Once</RepeatMode>
+                  <InvokeStatus>Finished</InvokeStatus>
+                  <CommandType>RunShellScript</CommandType>
+                  <Username>root</Username>
+                  <CreationTime>2020-01-19T09:15:46Z</CreationTime>
+                  <Frequency></Frequency>
+                  <CommandId>c-hz0jdfwcsr****</CommandId>
+                  <CommandName>CommandTestName</CommandName>
+                  <InvokeId>t-hz0jdfwd9f****</InvokeId>
             </Invocation>
       </Invocations>
 </DescribeInvocationsResponse>
@@ -256,47 +271,50 @@ Sample success responses
 
 ```
 {
-    "TotalCount": 5,
-    "RequestId": "634562E9-F291-4289-B60B-FC511A43CD34",
-    "PageSize": 1,
-    "PageNumber": 1,
-    "Invocations": {
-        "Invocation": [
+  "TotalCount": 1,
+  "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+  "PageSize": 10,
+  "PageNumber": 1,
+  "Invocations": {
+    "Invocation": [
+      {
+        "InvocationStatus": "Running",
+        "Parameters": "{}",
+        "Timed": false,
+        "InvokeInstances": {
+          "InvokeInstance": [
             {
-                "CommandContent": "cnBtIC1xYSB8IGdyZXAgdnNm****",
-                "InvocationStatus": "Failed",
-                "InvokeStatus": "Finished",
-                "Parameters": "{}",
-                "CommandType": "RunShellScript",
-                "Timed": false,
-                "CreationTime": "2020-05-11T09:01:39Z",
-                "Frequency": "",
-                "CommandId": "c-hz0jdfwcsr****",
-                "CommandName": "AutoTest",
-                "InvokeId": "t-hz0jdfwd9f****",
-                "InvokeInstances": {
-                    "InvokeInstance": [
-                        {
-                            "Dropped": 0,
-                            "InvocationStatus": "Failed",
-                            "InstanceId": "i-bp1i7gg30r52z2em****",
-                            "InstanceInvokeStatus": "Finished",
-                            "ExitCode": 1,
-                            "ErrorInfo": "the command execution exit code is not zero.",
-                            "StartTime": "2020-05-11T09:01:40Z",
-                            "Repeats": 1,
-                            "FinishTime": "2020-05-11T09:01:41Z",
-                            "Output": "",
-                            "CreationTime": "2020-05-11T09:01:39Z",
-                            "UpdateTime": "2020-05-11T09:01:41Z",
-                            "ErrorCode": "ExitCodeNonzero",
-                            "StopTime": ""
-                        }
-                    ]
-                }
+              "Dropped": 0,
+              "InvocationStatus": "Success",
+              "InstanceId": "i-bp1i7gg30r52z2em****",
+              "Timed": false,
+              "InstanceInvokeStatus": "Finished",
+              "ExitCode": 0,
+              "ErrorInfo": "",
+              "StartTime": "2019-12-20T06:15:55Z",
+              "Repeats": 0,
+              "FinishTime": "2019-12-20T06:15:56Z",
+              "Output": "OutPutTestmsg",
+              "CreationTime": "2019-12-20T06:15:54Z",
+              "UpdateTime": "2020-01-19T09:15:47Z",
+              "ErrorCode": "",
+              "StopTime": "2020-01-19T09:15:47Z"
             }
-        ]
-    }
+          ]
+        },
+        "CommandContent": "cnBtIC1xYSB8IGdyZXAgdnNm****",
+        "RepeatMode": "Once",
+        "InvokeStatus": "Finished",
+        "CommandType": "RunShellScript",
+        "Username": "root",
+        "CreationTime": "2020-01-19T09:15:46Z",
+        "Frequency": "",
+        "CommandId": "c-hz0jdfwcsr****",
+        "CommandName": "CommandTestName",
+        "InvokeId": "t-hz0jdfwd9f****"
+      }
+    ]
+  }
 }
 ```
 
@@ -304,7 +322,7 @@ Sample success responses
 
 |HTTP status code|Error code|Error message|Description|
 |----------------|----------|-------------|-----------|
-|400|RegionId.ApiNotSupported|The api is not supported in this region.|The error message returned because this API operation cannot be called in the specified region. Check whether the RegionId parameter is valid.|
+|400|RegionId.ApiNotSupported|The api is not supported in this region.|The error message returned because this API operation cannot be called in the specified region. Check whether the specified RegionId parameter is valid.|
 |500|InternalError.Dispatch|An error occurred when you dispatched the request.|The error message returned because an error occurred while the request was being sent. Try again later.|
 |403|InvalidParam.PageNumber|The specified parameter is invalid.|The error message returned because the specified PageNumber parameter is invalid.|
 |403|InvalidParam.PageSize|The specified parameter is invalid.|The error message returned because the specified PageSize parameter is invalid.|
