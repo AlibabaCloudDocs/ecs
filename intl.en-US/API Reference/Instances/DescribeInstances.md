@@ -298,8 +298,8 @@ Sample requests
 https://ecs.aliyuncs.com/?Action=DescribeInstances
 &RegionId=cn-hangzhou
 &PageSize=1
-&PageNumber=1
-&<公共请求参数>
+PageNumber=1
+&<Common request parameters>
 ```
 
 Sample success responses
@@ -314,7 +314,7 @@ Sample success responses
                   <Memory>16384</Memory>
                   <InstanceChargeType>PostPaid</InstanceChargeType>
                   <Cpu>8</Cpu>
-                  <OSName>CentOS  7.4 64 位</OSName>
+                  <OSName>CentOS  7.4 64-bit</OSName>
                   <InstanceNetworkType>vpc</InstanceNetworkType>
                   <InnerIpAddress>
             </InnerIpAddress>
@@ -422,7 +422,7 @@ Sample success responses
       <PageSize>10</PageSize>
       <PageNumber>1</PageNumber>
       <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken>
-</DescribeInstancesResponse> 
+</DescribeInstancesResponse>
 ```
 
 `JSON` format
