@@ -26,44 +26,44 @@ Before you migrate an instance to a dedicated host or change the instance type o
 |RegionId|String|Yes|cn-hangzhou|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |DeploymentSetId|String|No|ds-bp67acfmxazb4ph\*\*\*\*|The ID of the deployment set.
 
- This parameter is required when you add an ECS instance to a deployment set or change the deployment set of an instance.
+This parameter is required when you add an ECS instance to a deployment set or change the deployment set of an instance.
 
- **Note:** You cannot change the deployment set when you modify the dedicated host-related parameters, including `Tenancy`, `Affinity`, and `DedicatedHostId`. |
+**Note:** You cannot change the deployment set when you modify the dedicated host-related parameters, including `Tenancy`, `Affinity`, and `DedicatedHostId`. |
 |Force|Boolean|No|false|Specifies whether to forcibly change the host of the instance. Valid values:
 
- -   true: forcibly changes the host of the instance. You can restart instances that are in the **Running \(Running\)** or **Stopped \(Stopped\)** state. The instances in the Stopped state do not include pay-as-you-go instances that have the No Fees for Stopped Instances \(VPC-Connected\) feature enabled.
+-   true: forcibly changes the host of the instance. You can restart instances that are in the **Running \(Running\)** or **Stopped \(Stopped\)** state. The instances in the Stopped state do not include pay-as-you-go instances that have the No Fees for Stopped Instances \(VPC-Connected\) feature enabled.
 
 **Note:** If the ECS instance that you specified is attached with local disks, the local disks are forcibly changed, which may cause data loss in the local disks when the host of the instance is changed. Proceed with caution.
 
 -   false: does not forcibly change the host of the instance. You can add the instance to a deployment set only when the instance resides on the current host. When the Force parameter is set to this value, the deployment set may fail to be replaced.
 
- Default value: false. |
+Default value: false. |
 |DedicatedHostId|String|No|dh-bp67acfmxazb4ph\*\*\*\*|The ID of the dedicated host. You can call the [DescribeDedicatedHosts](~~134242~~) operation to query available dedicated hosts.
 
- When you migrate the instance from a shared host to a dedicated host or migrate the instance from a dedicated host to another one:
+When you migrate the instance from a shared host to a dedicated host or migrate the instance from a dedicated host to another one:
 
- -   To migrate the instance to a specific dedicated host, you must specify this parameter.
+-   To migrate the instance to a specific dedicated host, you must specify this parameter.
 -   To migrate the instance to a system-selected dedicated host, you must leave this parameter empty and set `Tenancy` to host.
 
- For more information about the automatic deployment feature, see [Features of dedicated hosts](~~118938~~). |
+For more information about the automatic deployment feature, see [Features of dedicated hosts](~~118938~~). |
 |Tenancy|String|No|host|Specifies whether to deploy the instance on a dedicated host. Set the value to host to deploy the instance on a dedicated host. |
 |Affinity|String|No|host|Specifies whether to associate the instance with a dedicated host. Valid values:
 
- -   host: associates with a dedicated host. When an instance that has the No Fees for Stopped Instances \(VPC-Connected\) feature enabled is restarted, the instance still resides on the original dedicated host.
+-   host: associates with a dedicated host. When an instance that has the No Fees for Stopped Instances \(VPC-Connected\) feature enabled is restarted, the instance still resides on the original dedicated host.
 -   default: does not associates with a dedicated host. When an instance that has the No Fees for Stopped Instances \(VPC-Connected\) feature enabled is restarted, the instance can be automatically deployed to another dedicated host in the automatic deployment resource pool if resources of the original dedicated host are insufficient.
 
- If you want to migrate the instance from a shared host to a dedicated host, use the default value. Default value: default. |
+If you want to migrate the instance from a shared host to a dedicated host, use the default value. Default value: default. |
 |MigrationType|String|No|live|Specifies whether to stop the instance before it is migrated to the destination dedicated host. Valid values:
 
- -   reboot: stops the instance before it is migrated.
+-   reboot: stops the instance before it is migrated.
 -   live: migrates the instance without stopping it. If the MigrationType parameter is set to this value, you must specify the DedicatedHostId parameter. In this case, you cannot change the instance type of the instance when the instance is migrated.
 
- Default value: reboot. |
+Default value: reboot. |
 |InstanceType|String|No|ecs.c6.large|The instance type to which the instance is changed. You can call the [DescribeInstanceTypes](~~25620~~) operation to query the most recent list of instance types.
 
- You can change the instance type of an instance when you migrate the instance to a dedicated host. The new instance type must match the type of the specified dedicated host. For more information, see [Dedicated host types](~~68564~~).
+You can change the instance type of an instance when you migrate the instance to a dedicated host. The new instance type must match the type of the specified dedicated host. For more information, see [Dedicated host types](~~68564~~).
 
- -   If you specify this parameter, you must also specify the `DedicatedHostId` parameter.
+-   If you specify this parameter, you must also specify the `DedicatedHostId` parameter.
 -   You cannot change the instance type of an instance if you use the automatic deployment feature to migrate the instance. |
 |DedicatedHostClusterId|String|No|dc-bp67acfmxazb4ph\*\*\*\*|The ID of the dedicated host cluster. |
 
@@ -93,7 +93,7 @@ Sample success responses
 
 ```
 <ModifyInstanceDeploymentResponse>
-	  <RequestId>04F0F334-1335-436C-A1D7-6C044FE73368</RequestId>
+      <RequestId>04F0F334-1335-436C-A1D7-6C044FE73368</RequestId>
 </ModifyInstanceDeploymentResponse>
 ```
 
