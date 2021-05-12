@@ -1,49 +1,46 @@
-# 使用自定义数据配置管理员账号
+# Create a new account with the root user privilege
 
-本文档主要介绍在创建Linux实例时如何使用实例自定义数据配置管理员账号。您也可以使用脚本自定义 Windows 实例的管理员账号。
+This topic describes how to use a user-defined script to create a new account with the root user privilege when creating a Linux instance. User-defined scripts can also be used to create a new account with the administrator privilege for a Windows instance.
 
-购买 ECS 实例时，您可以使用实例自定义数据达到以下效果。
+## Scenarios
 
--   不使用 ECS 实例默认自带的 root 用户作为管理员。
--   创建一个新的管理员账号，并自定义用户名。
--   新创建的管理员账号在管理该实例的时候只使用 SSH 密钥对进行远程登录，不使用用户密码。
--   该用户如果需要进行与管理员权限相关的操作，可在免密码的情况下使用`sudo`提权。
+Use user-defined scripts of instances if you want to achieve the following results when creating a Linux ECS instance:
 
-1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
+-   Disable the default root account that comes with a Linux ECS instance. You can use the script to customize how to disable the root user and how many root user privileges are disabled.
+-   Create a new account with the root user privilege and customize the account name.
+-   Use only SSH key pairs, but not user passwords, for remote logon to manage the instance by using the new account with the root user privilege.
+-   If this new account is required to perform operations that can only be done by a user with root user privilege, the `sudo` command can be used without a password for privilege escalation.
 
-2.  登录[ECS管理控制台](https://partners-intl.console.aliyun.com/#/ecs)。
+## Procedure
 
-3.  在左侧导航栏，选择**实例与镜像** \> **实例**。
+To create a new account with the root user privilege, follow these steps:
 
-4.  创建一台实例。具体步骤请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
+1.  Create an instance by referring to [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). Be aware of the following configuration items:
+    -   On the Basic Configurations page, note the following customized configurations:
+        -   **Instance Type**: Select an I/O-optimized instance.
+        -   **Image**: Select a supported image type, for example, CentOS 7.2 on the **Public Image** tab.
+2.  On the **Networking** page, set **Network Type** to VPC
+3.  On the System Configurations page, enter the following script in the **User Data** text box in the **Advanced** area:
 
-    在配置过程中，需要注意以下配置项：
+    ```
+    #! /bin/sh
+    useradd test
+    echo "test   ALL=(ALL)        NOPASSWD:ALL" | tee -a /etc/sudoers
+    mkdir /home/test/.ssh
+    touch /home/test/.ssh/authorized_keys
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhGqhEh/rGbIMCGItFVtYpsXPQrCaunGJKZVIWtINrGZwusLc290qDZ93KCeb8o6X1Iby1Wm+psZY8THE+/BsXq0M0HzfkQZD2vXuhRb4xi1z98JHskX+0jnbjqYGY+Brgai9BvKDXTTSyJtCYUnEKxvcK+d1ZwxbNuk2QZ0ryHESDbSaczlNFgFQEDxhCrvko+zWLjTVnomVUDhdMP2g6fZ0tgFVwkJFV0bE7oob3NOVcrx2TyhfcAjA4M2/Ry7U2MFADDC+EVkpoVDm0SOT/hYJgaVM1xMDlSeE7kzX7yZbJLR1XAWV1xzZkNclY5w1kPnW8qMYuSwhpXzt4gsF0w== rsa-key-20170217" | tee -a /home/test/.ssh/authorized_keys
+    					
+    ```
 
-    -   在基础配置页面中，注意以下实例自定义数据相关的配置。
-        -   **实例规格**：选择 I/O 优化实例。
-        -   **镜像**：选择支持的镜像，例如，公共镜像的 CentOS 7.2。
-    -   在网络和安全组页面中，注意**网络类型**配置为**专有网络**。
-    -   在系统配置页面中，在自定义数据输入框中输入如下内容：
+    **Note:**
 
-        ```
-        #!/bin/sh
-        useradd test
-        echo "test   ALL=(ALL)        NOPASSWD:ALL" | tee -a /etc/sudoers
-        mkdir /home/test/.ssh
-        touch /home/test/.ssh/authorized_keys
-        echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhGqhEh/rGbIMCGItFVtYpsXPQrCaunGJKZVIWtINrGZwusLc290qDZ93KCeb8o6X1Iby1Wm+psZY8THE+/BsXq0M0HzfkQZD2vXuhRb4xi1z98JHskX+0jnbjqYGY+Brgai9BvKDXTTSyJtCYUnEKxvcK+d1ZwxbNuk2QZ0ryHESDbSaczlNFgFQEDxhCrvko+zWLjTVnomVUDhdMP2g6fZ0tgFVwkJFV0bE7oob3NOVcrx2TyhfcAjA4M2/Ry7U2MFADDC+EVkpoVDm0SOT/hYJgaVM1xMDlSeE7kzX7yZbJLR1XAWV1xzZkNclY5w1kPnW8qMYuSwhpXzt4gsF0w== rsa-key-20170217" | tee -a /home/test/.ssh/authorized_keys
-        							
-        ```
+    -   The first line must be `#!. /bin/sh`, with no leading space.
+    -   Do not enter unnecessary spaces or carriage return characters in the text.
+    -   The last line is your public key. You can define it.
+    -   You can add other configuration in the script as you need.
+    -   The example script only applies to CentOS 7.2. If you are using other images, customize the script according to the operating system types.
 
-        **说明：**
+After the instance is started, you can use the new **test** user to connect to the instance by using an SSH private key. You can also escalate the permission level by using the `sudo` command and run operations that require the root user privilege, as shown in the following figure.
 
-        -   第一行必须是`#!/bin/sh`，前面不能带空格。
-        -   全文不要有多余的空格和回车。
-        -   最后一行的密钥为您的公钥，您可以自定义。
-        -   如果需要做其他的配置，可以直接在脚本中添加。
-        -   示例脚本仅限于 CentOS 7.2 镜像，其他镜像请根据操作系统类型进行自定义修改。
-
-实例启动完成后，您可以使用自定义的**test**用户通过 SSH 私钥登录到实例中，同时也可以使用`sudo`提权，并执行各种需要管理员权限的操作，如图中示例所示。
-
-![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2214359951/p12173.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/9824/156678802912173_en-US.png)
 
