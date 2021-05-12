@@ -1,52 +1,52 @@
 ---
-keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute performance benchmark scores for mainstream instances, benchmarks]
+keyword: [ECS, Alibaba Cloud, delivery verification, computing performance benchmark scores for major instance families, compute performance benchmark scores for mainstream instances, benchmarks]
 ---
 
-# 压测实例计算性能
+# Computing performance stress testing for instances
 
-本章节介绍如何采用SPEC CPU 2017基准测试工具测试Linux系统和Windows系统下ECS实例的计算性能。
+This topic describes how to use SPEC CPU® 2017 to test the computing performance of Linux and Windows instances.
 
-如果您需要测试性能，请确保您已经创建了一台ECS实例。详细步骤请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
+An instance is created. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 
--   操作系统：选用公共镜像
-    -   Windows Server系统：Windows Server 2016或更高版本，本示例采用win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
-    -   Linux系统：CentOS 7或更高版本，本示例采用centos\_7\_04\_64\_20G\_alibase\_201701015.vhd
--   实例规格族：选用通用平衡增强型g6e、计算平衡增强型c6e或者内存平衡增强型r6e
--   网络类型：选用专有网络VPC
+-   Operating system: public images.
+    -   Windows Server: Windows Server 2016 or later. In this example, win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd is used.
+    -   Linux: CentOS 7 or later. In this example, centos\_7\_04\_64\_20G\_alibase\_201701015.vhd is used.
+-   Instance family: g6e general purpose instance family with enhanced performance, c6e compute optimized instance family with enhanced performance, or r6e memory optimized instance family with enhanced performance.
+-   Network type: VPC.
 
-**说明：** 本文示例操作涉及第三方商业软件，步骤仅供参考，请联系您的服务经理获取测试套件并根据实际条件进行测试。本文示例操作采用的测试模式为intrate，有关runcpu的不同测试模式说明，请访问[SPEC CPU 2017官方文档](https://www.spec.org/cpu2017/Docs/overview.html#benchmarks)。
+**Note:** Operations in this topic involve third-party software. The procedure is for reference only. Contact your service manager for the test suite and perform the test based on your actual conditions. In this topic, the intrate test set is used. For more information about different test sets of the runcpu command, visit [SPEC CPU®2017 Overview / What's New?](https://www.spec.org/cpu2017/Docs/overview.html#benchmarks)
 
-## Linux系统操作步骤
+## Procedure for Linux
 
-1.  远程连接ECS实例。连接方式请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
+1.  Remotely connect to an ECS instance. For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
 
-2.  下载相关测试工具。
+2.  Download the test tools.
 
-    1.  前往[SPEC官网](https://www.spec.org/cpu2017/)下载SPEC CPU 2017测试工具。
+    1.  Download the SPEC CPU® 2017 tool from the [official SPEC website](https://www.spec.org/cpu2017/).
 
-        **说明：** 本示例采用的版本为1.0.5，建议您下载1.0.5或更高版本的SPEC CPU 2017。
+        **Note:** In this example, SPEC CPU® 2017 Version 1.0.5 is used. We recommend that you use Version 1.0.5 or later.
 
-    2.  下载版本gcc7编译工具，本示例采用的gcc版本为7.3.0。
+    2.  Download the gcc-7 package. In this example, GCC v7.3.0 is used.
 
         ```
         wget https://benchmark-packages.oss-cn-qingdao.aliyuncs.com/gcc7.zip
         ```
 
-    3.  下载测试时需要的配置文件。
+    3.  Download the configuration files required for the test.
 
         ```
         wget https://benchmark-packages.oss-cn-qingdao.aliyuncs.com/speccpu2017_config.zip
         ```
 
-    4.  如果当前实例缺失解压工具，下载unzip解压工具。
+    4.  If no decompression tools are available in the current instance, download a decompression tool.
 
         ```
         yum -y install unzip
         ```
 
-3.  安装测试工具。
+3.  Install the test tools.
 
-    1.  解压gcc7.zip文件。
+    1.  Decompress the gcc7.zip file.
 
         ```
         unzip gcc7.zip
@@ -54,121 +54,121 @@ keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute per
         bash make_gcc.sh
         ```
 
-    2.  安装您下载的SPEC CPU 2017工具。
+    2.  Install SPEC CPU® 2017.
 
-        本次测试示例中，SPEC CPU 2017工具的安装目录为./cpu2017。
+        In this example, SPEC CPU® 2017 is installed in the ./cpu2017 directory.
 
-    3.  解压speccpu2017\_config.zip配置文件到SPEC CPU 2017工具到指定目录（例如cpu2017/config/）。
+    3.  Extract the speccpu2017\_config.zip configuration file to a specified directory of SPEC CPU® 2017. For example, extract it to cpu2017/config/.
 
         ```
         unzip speccpu2017_config.zip -d cpu2017/config/
         ```
 
-    4.  进入SPEC CPU 2017工具的挂载目录。
+    4.  Go to the directory of SPEC CPU® 2017.
 
         ```
         cd ./cpu2017
         ```
 
-    5.  执行安装脚本。
+    5.  Run the installation script.
 
         ```
         ./install.sh
         ```
 
-        如果实例提示安装路径是否正确，输入yes。
+        If the system prompts you to confirm whether the installation directory is correct, enter yes.
 
-        ![安装测试工具验证页面输入yes](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4099588951/p97390.png)
+        ![Enter yes on the confirmation page](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7710688951/p97390.png)
 
-    6.  验证是否已成功安装工具，例如运行以下命令查看工具帮助信息。
+    6.  Check whether SPEC CPU® 2017 is installed. For example, run the following command to view the help information of the tool:
 
         ```
         ./bin/runcpu --help
         ```
 
-4.  压测实例计算性能。
+4.  Perform the computing performance stress testing.
 
-    1.  查看当前实例的vCPU数。
+    1.  View the number of vCPUs of the instance.
 
         ```
         cat /proc/cpuinfo | grep process | wc -l
         ```
 
-        ![查看实例的vCPU数量](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4099588951/p97397.png)
+        ![View the number of vCPUs of the instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7710688951/p97397.png)
 
-    2.  运行测试命令，例如进行intrate测试。
+    2.  Run a test command. For example, run the following command to perform an intrate test:
 
         ```
         ./bin/runcpu --config=spec17-opti-gcc7.3.cfg --copies=4 --loose intrate
         ```
 
-        **说明：** copies参数的取值必须等于当前实例的vCPU数。
+        **Note:** The value of the copies parameter must be equal to the number of vCPUs of the instance.
 
 
-## Windows系统操作步骤
+## Procedure for Windows
 
-1.  远程连接ECS实例。连接方式请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
+1.  Remotely connect to an ECS instance. For more information, see [Overview](/intl.en-US/Instance/Connect to instances/Overview.md).
 
-2.  获取相关测试工具。
+2.  Download the test tools.
 
-    **说明：** 本示例测试Windows系统ECS实例时采用了SPEC CPU ® 2017和编译后的ICC（Intel ® C++编译器），由于涉及第三方商业软件，步骤仅供参考，请联系您的服务经理获取测试套件并根据实际条件进行测试。建议您使用1.1.0或更高版本的SPEC CPU 2017。
+    **Note:** In this example, SPEC CPU®2017 and Intel® C++ Compiler \(ICC\) are used. Operations in this topic involve third-party software. The procedure is for reference only. Contact your service manager for the test suite and perform the test based on your actual conditions. We recommend that you use SPEC CPU® 2017 Version 1.1.0 or later.
 
-3.  安装测试工具。
+3.  Install the test tools.
 
-    1.  新建Extract文件夹，作为解压目录使用。
+    1.  Create a folder named Extract and decompress packages to this folder.
 
-    2.  将已下载的SPEC CPU 2017工具和speccpu2017\_config.zip压缩文件解压至Extract目录。
+    2.  Extract the SPEC CPU® 2017 and speccpu2017\_config.zip files to the Extract directory.
 
-    3.  进入Extract\\specCpu2017-105\\cpu2017目录，给以下文件添加可执行权限。
+    3.  Go to the Extract\\specCpu2017-105\\cpu2017 directory and grant the execute permission on the following files:
 
         -   install.bat
         -   tools\\bin\\windows-x64\\\*
-    4.  打开命令提示符CMD，在install.bat所在的目录下执行以下安装命令，将工具安装到指定目录（例如speccpu2017）。
+    4.  Open the Command Prompt and go to the directory in which install.bat resides. Run the following command to install the tools. In this example, the tools are installed to the speccpu2017 directory.
 
         ```
         ./install.bat ../speccpu2017
         ```
 
-        ![Windows安装specCPU工具](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4099588951/p97432.png)
+        ![Install SPEC CPU® 2017 in Windows](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7710688951/p97432.png)
 
-        如果实例提示要求验证，按回车键Enter跳过。
+        If the system prompts for a verification, press the Enter key to skip it.
 
-    5.  在文件系统中，进入C:\\Users\\SPECCP~1目录（即speccpu2017）。
+    5.  In the file system, go to the speccpu2017 directory that is located in the C:\\Users\\SPECCP~1 directory.
 
-    6.  找到speccpu2017\\shrc.bat文件，按以下命令行中的注释修改文件。
+    6.  Find the speccpu2017\\shrc.bat file and modify the file based on the comments in the following command lines:
 
         ```
-        # 修改前为：
+        # The original file content:
         # rem set SHRC_PRECOMPILED=yes
-        # 删除rem，表示完成安装工具
-        # 修改后为：
+        # Delete rem. This indicates that the tools are installed.
+        # The modified file content:
         set SHRC_PRECOMPILED=yes
         ```
 
-    7.  将ICC编译好的二进制文件解压到目录speccpu2017下。
+    7.  Extract the binary file compiled by ICC to the speccpu2017 directory.
 
-        **说明：** 这一步阿里云使用ICC编译好的二进制文件解压到安装目录speccpu2017，可以省去编译步骤。
+        **Note:** The binary file compiled by ICC is extracted to the speccpu2017 directory, which allows you to skip the compilation process.
 
-    8.  复制文件speccpu2017\\sh11.6-64\\SHW64.DLL到目录speccpu2017\\bin\\下。
+    8.  Copy the speccpu2017\\sh11.6-64\\SHW64.DLL file to the speccpu2017\\bin\\ directory.
 
-    9.  复制测试配置文件windows-icc-binary-avx512-r.cfg和windows-icc-binary-avx2-r.cfg到目录speccpu2017\\config\\下。
+    9.  Copy the windows-icc-binary-avx512-r.cfg and windows-icc-binary-avx2-r.cfg configuration files to the speccpu2017\\config\\ directory.
 
-4.  返回命令提示符CMD，压测实例计算性能。
+4.  Go back to the Command Prompt and perform stress testing on the instance.
 
-    1.  在speccpu2017\\shrc.bat所在目录下执行以下命令加载运行目录。
+    1.  Run the following command in the directory in which speccpu2017\\shrc.bat resides to load the execution directory:
 
         ```
         shrc
         ```
 
-    2.  运行测试命令，例如进行intrate测试。
+    2.  Run a test command. For example, run the following command to perform an intrate test:
 
         ```
         runcpu --config=windows-icc-binary-avx512-r.cfg -N --threads=4 --copies=4 intrate
         ```
 
-        **说明：** copies和threads参数的取值必须等于当前实例的vCPU数。
+        **Note:** The values of the copies and threads parameters must be equal to the number of vCPUs of the instance.
 
 
-[主流实例计算性能评测]()
+[Computing performance benchmark scores for major instance families]()
 
