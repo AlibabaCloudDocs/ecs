@@ -1,0 +1,6 @@
+# Create an NVIDIA GPU-accelerated instance
+
+NVIDIA GPU-accelerated instances must be installed with drivers to use the GPUs. You can configure the drivers to be automatically installed when you create instances or manually install the drivers after the instances are created.
+
+For more information, see [Create a NVIDIA GPU-accelerated instance]().
+
