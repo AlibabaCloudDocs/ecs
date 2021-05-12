@@ -1,99 +1,174 @@
 ---
-keyword: [ECS, Alibaba Cloud, delivery verification, computing performance benchmark scores for major instance families, compute performance benchmark scores for mainstream instances, benchmarks]
+keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute performance benchmark scores for mainstream instances, benchmarks]
 ---
 
-# Computing performance benchmark scores for major instance families
+# 压测实例计算性能
 
-Alibaba Cloud ECS provides a variety of instance families for different cloud scenarios. This topic describes how to use the Standard Performance Evaluation Corporation, Integer \(SPECInt\) benchmark suite to test the computing performance of Linux and Windows ECS instances. In the examples, the g6e general purpose instance family with enhanced performance, c6e compute optimized instance family with enhanced performance, and r6e memory optimized instance family with enhanced performance are used.
+本章节介绍如何采用SPEC CPU 2017基准测试工具测试Linux系统和Windows系统下ECS实例的计算性能。
 
-## Description of test results
+如果您需要测试性能，请确保您已经创建了一台ECS实例。详细步骤请参见[使用向导创建实例](/cn.zh-CN/实例/创建实例/使用向导创建实例.md)。
 
-The example benchmark scores provided in this topic are calculated by running the SPEC CPU® 2017 suite on the tested instance types. The instance types are tested 20 times in total based on the performance benchmarks in the benchmark suite. Then, the average scores and standard deviations of the 20 tests are calculated. In these examples, SPECrate® 2017 Integer is used. When you perform the test, the number of vCPUs in the ECS instances is the same as the number of copies, which is the value of the copies parameter. You can run multiple copies on the instances based on the performance benchmarks in SPECrate® 2017 Integer. A higher score indicates a higher throughput per unit of time.
+-   操作系统：选用公共镜像
+    -   Windows Server系统：Windows Server 2016或更高版本，本示例采用win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
+    -   Linux系统：CentOS 7或更高版本，本示例采用centos\_7\_04\_64\_20G\_alibase\_201701015.vhd
+-   实例规格族：选用通用平衡增强型g6e、计算平衡增强型c6e或者内存平衡增强型r6e
+-   网络类型：选用专有网络VPC
 
--   For more information about how to obtain the SPEC benchmark suite, visit [SPEC CPU® 2017](https://www.spec.org/cpu2017/).
--   For more information about instance types, see [Instance families](/intl.en-US/Instance/Instance families.md).
--   For more information about how to test the computing performance of ECS instances, see [Computing performance stress testing for instances]().
--   The test results are updated every six months.
+**说明：** 本文示例操作涉及第三方商业软件，步骤仅供参考，请联系您的服务经理获取测试套件并根据实际条件进行测试。本文示例操作采用的测试模式为intrate，有关runcpu的不同测试模式说明，请访问[SPEC CPU 2017官方文档](https://www.spec.org/cpu2017/Docs/overview.html#benchmarks)。
 
-The following table compares the testing environments of Linux and Windows Server operating systems used in the tests.
+## Linux系统操作步骤
 
-|Item|Linux|Windows Server|
-|----|-----|--------------|
-|Cloud server vendor|Alibaba Cloud|
-|Compiler|gcc v7.3.0|Intel C++ Compiler \(ICC\)|
-|SPEC tool|SPEC CPU® 2017 \(version: 1.0.5\)|
-|Benchmark suite|SPECrate®2017 Integer|
-|Alibaba Cloud image ID|centos\_7\_04\_64\_20G\_alibase\_201701015.vhd|win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd|
-|CPU model of tested instance|Intel® Xeon® Platinum 8269 \(Cascade\)|
+1.  远程连接ECS实例。连接方式请参见[连接方式概述](/cn.zh-CN/实例/连接实例/连接方式概述.md)。
 
-## Test results
+2.  下载相关测试工具。
 
-The c6e.26xlarge, g6e.26xlarge, and r6e.26xlarge instance types are configured with the non-uniform memory access \(NUMA\) architecture. When the computing performance of Windows instances of these instance types is tested, the test results are optimized based on NUMA.
+    1.  前往[SPEC官网](https://www.spec.org/cpu2017/)下载SPEC CPU 2017测试工具。
 
--   c6e, compute optimized instance family
+        **说明：** 本示例采用的版本为1.0.5，建议您下载1.0.5或更高版本的SPEC CPU 2017。
 
-    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
-    |-------------|-----|--------------|-----|-------------|------------------|
-    |ecs.c6e.large|2|4|20|4.4049|0.05421|
-    |ecs.c6e.xlarge|4|8|20|8.6029|0.06949|
-    |ecs.c6e.2xlarge|8|16|20|16.96225|0.05393|
-    |ecs.c6e.4xlarge|16|32|20|32.56355|0.06535|
-    |ecs.c6e.8xlarge|32|64|20|60.37595|0.46321|
-    |ecs.c6e.13xlarge|52|96|20|89.1016|0.2374|
-    |ecs.c6e.26xlarge|104|192|20|171.2426|1.87202|
+    2.  下载版本gcc7编译工具，本示例采用的gcc版本为7.3.0。
 
-    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
-    |-------------|-----|--------------|-----|-------------|------------------|
-    |ecs.c6e.large|2|4|20|5.9847|0.11016|
-    |ecs.c6e.xlarge|4|8|20|11.8197|0.10352|
-    |ecs.c6e.2xlarge|8|16|20|23.1075|0.04388|
-    |ecs.c6e.4xlarge|16|32|20|44.697|0.49022|
-    |ecs.c6e.8xlarge|32|64|20|83.06745|0.79488|
-    |ecs.c6e.13xlarge|52|96|20|118.3309|1.35039|
-    |ecs.c6e.26xlarge|104|192|20|227.2049|4.37292|
+        ```
+        wget https://benchmark-packages.oss-cn-qingdao.aliyuncs.com/gcc7.zip
+        ```
 
--   g6e, general purpose instance family
+    3.  下载测试时需要的配置文件。
 
-    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
-    |-------------|-----|--------------|-----|-------------|------------------|
-    |ecs.g6e.large|2|8|20|4.4224|0.05121|
-    |ecs.g6e.xlarge|4|16|20|8.599|0.17457|
-    |ecs.g6e.2xlarge|8|32|20|16.95045|0.0398|
-    |ecs.g6e.4xlarge|16|64|20|32.97195|0.23905|
-    |ecs.g6e.8xlarge|32|128|20|62.10585|0.17469|
-    |ecs.g6e.13xlarge|52|192|20|89.76435|0.59106|
-    |ecs.g6e.26xlarge|104|384|20|178.849|0.71898|
+        ```
+        wget https://benchmark-packages.oss-cn-qingdao.aliyuncs.com/speccpu2017_config.zip
+        ```
 
-    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
-    |-------------|-----|--------------|-----|-------------|------------------|
-    |ecs.g6e.large|2|8|20|6.0221|0.10016|
-    |ecs.g6e.xlarge|4|16|20|11.8376|0.11892|
-    |ecs.g6e.2xlarge|8|32|20|23.16855|0.07014|
-    |ecs.g6e.4xlarge|16|64|20|44.6713|0.19868|
-    |ecs.g6e.8xlarge|32|128|20|84.4509|0.7341|
-    |ecs.g6e.13xlarge|52|192|20|123.4441|1.9251|
-    |ecs.g6e.26xlarge|104|384|20|233.6841|2.02886|
+    4.  如果当前实例缺失解压工具，下载unzip解压工具。
 
--   r6e, memory optimized instance family
+        ```
+        yum -y install unzip
+        ```
 
-    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
-    |-------------|-----|--------------|-----|-------------|------------------|
-    |ecs.r6e.large|2|16|20|4.4711|0.04049|
-    |ecs.r6e.xlarge|4|32|20|8.9133|0.06478|
-    |ecs.r6e.2xlarge|8|64|20|17.2401|0.21711|
-    |ecs.r6e.4xlarge|16|128|20|33.1304|0.20148|
-    |ecs.r6e.8xlarge|32|256|20|62.73225|0.13354|
-    |ecs.r6e.13xlarge|52|384|20|90.03615|1.20993|
-    |ecs.r6e.26xlarge|104|768|20|182.4561|0.39651|
+3.  安装测试工具。
 
-    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
-    |-------------|-----|--------------|-----|-------------|------------------|
-    |ecs.r6e.large|2|16|20|5.99845|0.08916|
-    |ecs.r6e.xlarge|4|32|20|11.74425|0.11798|
-    |ecs.r6e.2xlarge|8|64|20|23.1586|0.06444|
-    |ecs.r6e.4xlarge|16|128|20|44.6009|0.22506|
-    |ecs.r6e.8xlarge|32|256|20|84.59745|0.75026|
-    |ecs.r6e.13xlarge|52|384|20|121.7566|0.57354|
-    |ecs.r6e.26xlarge|104|768|20|228.1608|2.58667|
+    1.  解压gcc7.zip文件。
 
+        ```
+        unzip gcc7.zip
+        cd gcc7
+        bash make_gcc.sh
+        ```
+
+    2.  安装您下载的SPEC CPU 2017工具。
+
+        本次测试示例中，SPEC CPU 2017工具的安装目录为./cpu2017。
+
+    3.  解压speccpu2017\_config.zip配置文件到SPEC CPU 2017工具到指定目录（例如cpu2017/config/）。
+
+        ```
+        unzip speccpu2017_config.zip -d cpu2017/config/
+        ```
+
+    4.  进入SPEC CPU 2017工具的挂载目录。
+
+        ```
+        cd ./cpu2017
+        ```
+
+    5.  执行安装脚本。
+
+        ```
+        ./install.sh
+        ```
+
+        如果实例提示安装路径是否正确，输入yes。
+
+        ![安装测试工具验证页面输入yes](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4099588951/p97390.png)
+
+    6.  验证是否已成功安装工具，例如运行以下命令查看工具帮助信息。
+
+        ```
+        ./bin/runcpu --help
+        ```
+
+4.  压测实例计算性能。
+
+    1.  查看当前实例的vCPU数。
+
+        ```
+        cat /proc/cpuinfo | grep process | wc -l
+        ```
+
+        ![查看实例的vCPU数量](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4099588951/p97397.png)
+
+    2.  运行测试命令，例如进行intrate测试。
+
+        ```
+        ./bin/runcpu --config=spec17-opti-gcc7.3.cfg --copies=4 --loose intrate
+        ```
+
+        **说明：** copies参数的取值必须等于当前实例的vCPU数。
+
+
+## Windows系统操作步骤
+
+1.  远程连接ECS实例。连接方式请参见[连接方式概述](/cn.zh-CN/实例/连接实例/连接方式概述.md)。
+
+2.  获取相关测试工具。
+
+    **说明：** 本示例测试Windows系统ECS实例时采用了SPEC CPU ® 2017和编译后的ICC（Intel ® C++编译器），由于涉及第三方商业软件，步骤仅供参考，请联系您的服务经理获取测试套件并根据实际条件进行测试。建议您使用1.1.0或更高版本的SPEC CPU 2017。
+
+3.  安装测试工具。
+
+    1.  新建Extract文件夹，作为解压目录使用。
+
+    2.  将已下载的SPEC CPU 2017工具和speccpu2017\_config.zip压缩文件解压至Extract目录。
+
+    3.  进入Extract\\specCpu2017-105\\cpu2017目录，给以下文件添加可执行权限。
+
+        -   install.bat
+        -   tools\\bin\\windows-x64\\\*
+    4.  打开命令提示符CMD，在install.bat所在的目录下执行以下安装命令，将工具安装到指定目录（例如speccpu2017）。
+
+        ```
+        ./install.bat ../speccpu2017
+        ```
+
+        ![Windows安装specCPU工具](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4099588951/p97432.png)
+
+        如果实例提示要求验证，按回车键Enter跳过。
+
+    5.  在文件系统中，进入C:\\Users\\SPECCP~1目录（即speccpu2017）。
+
+    6.  找到speccpu2017\\shrc.bat文件，按以下命令行中的注释修改文件。
+
+        ```
+        # 修改前为：
+        # rem set SHRC_PRECOMPILED=yes
+        # 删除rem，表示完成安装工具
+        # 修改后为：
+        set SHRC_PRECOMPILED=yes
+        ```
+
+    7.  将ICC编译好的二进制文件解压到目录speccpu2017下。
+
+        **说明：** 这一步阿里云使用ICC编译好的二进制文件解压到安装目录speccpu2017，可以省去编译步骤。
+
+    8.  复制文件speccpu2017\\sh11.6-64\\SHW64.DLL到目录speccpu2017\\bin\\下。
+
+    9.  复制测试配置文件windows-icc-binary-avx512-r.cfg和windows-icc-binary-avx2-r.cfg到目录speccpu2017\\config\\下。
+
+4.  返回命令提示符CMD，压测实例计算性能。
+
+    1.  在speccpu2017\\shrc.bat所在目录下执行以下命令加载运行目录。
+
+        ```
+        shrc
+        ```
+
+    2.  运行测试命令，例如进行intrate测试。
+
+        ```
+        runcpu --config=windows-icc-binary-avx512-r.cfg -N --threads=4 --copies=4 intrate
+        ```
+
+        **说明：** copies和threads参数的取值必须等于当前实例的vCPU数。
+
+
+[主流实例计算性能评测]()
 
