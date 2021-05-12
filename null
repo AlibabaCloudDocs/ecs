@@ -1,212 +1,99 @@
 ---
-keyword: [SHENLONG architecture, local device, local disk monitoring, ECS Bare Metal Instance]
+keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute performance benchmark scores for mainstream instances, benchmarks]
 ---
 
-# Install the monitoring plug-in
+# 主流实例计算性能评测
 
-This topic describes two methods to install the xdragon\_hardware\_detect\_plugin monitoring plug-in. These methods are applicable to ECS bare metal instances that are equipped with local disks.
+云服务器ECS提供了丰富的适用于云场景的实例规格族，本章节以通用平衡增强型g6e、计算平衡增强型c6e、内存平衡增强型r6e规格族为例，采用SPECInt（Standard Performance Evaluation Corporation，Integer）基准测试程序测试了Linux系统和Windows系统下ECS实例的计算性能。
 
-You can install the monitoring plug-in on an ECS bare metal instance only when the instance meets the following requirements:
+## 评测数据说明
 
--   The instance is located in the China \(Beijing\), China \(Shanghai\), China \(Hangzhou\), China \(Shenzhen\), or China \(Zhangjiakou-Beijing Winter Olympics\) region.
--   The instance runs a Linux operating system.
--   To install the monitoring plug-in on multiple instances at a time by using Operation Orchestration Service \(OOS\) and use a tag to select ECS bare metal instances, the tag must be bound to the instances. For more information, see [Create or bind a tag](/intl.en-US/Tag & Resource/Tags/Create or bind a tag.md).
--   To manually install the monitoring plug-in, you must make sure that the Cloud Assistant client is installed. For more information, see [Install the Cloud Assistant client](/intl.en-US/Deployment & Maintenance/Cloud assistant/Configure the Cloud Assistant client/Install the Cloud Assistant client.md).
+本示例获测分数是阿里云在受测的实例规格上运行SPEC CPU ®2017工具计算得出的，采用测试程序中的性能基准总共运行了20次，然后计算出20次的平均分和标准差数据。以SPECrate ®2017 Integer为例，进行测试时，ECS实例的vCPU数和副本（copies）数保持一致，根据SPECrate ®2017 Integer中的性能基准运行并发副本，分数越高表明单位时间内的吞吐量越高。
 
-    **Note:** ECS instances that are created from public images after December 1, 2017 are pre-installed with the Cloud Assistant client.
+-   有关如何获取SPEC评测工具，请访问[SPEC CPU 2017](https://www.spec.org/cpu2017/)。
+-   有关实例规格的产品详情，请参见[实例规格族](/cn.zh-CN/实例/实例规格族.md)。
+-   有关在ECS实例上测试计算性能的步骤，请参见[压测实例计算性能]()。
+-   测试结果每半年更新一次。
 
+下表列举了本次测试中两种操作系统的测试环境对比信息。
 
-If you are using an ECS bare metal instance equipped with a local disk, you must monitor and diagnose the health status of the local disk by using the xdragon\_hardware\_detect\_plugin plug-in.
+|信息项|Linux系统环境|Windows Server系统环境|
+|---|---------|------------------|
+|云服务器厂商|阿里云（aliyun）|
+|编译器|gcc v7.3.0|ICC（Intel C++ Compiler）|
+|SPEC基准测试工具|speccpu\_2017（版本：1.0.5）|
+|SPEC CPU 2017测试程序|SPECrate ®2017 Integer|
+|阿里云镜像ID|centos\_7\_04\_64\_20G\_alibase\_201701015.vhd|win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd|
+|受测实例CPU型号|Intel ® Xeon ® Platinum 8269（Cascade）|
 
-The xdragon\_hardware\_detect\_plugin plug-in can check the health status of local disks on ECS bare metal instances on a regular basis. If an exception occurs to a local disk, the plug-in automatically reports the exception as a system event of the local disk. The corresponding system event code is `SystemMaintenance.ReInitErrorDisk`. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
+## 评测结果数据
 
-## Install the monitoring plug-in on multiple instances at a time by using OOS
+使用Windows Server系统测试实例计算性能时，c6e.26xlarge、g6e.26xlarge、r6e.26xlarge实例规格配置了NUMA（Non-uniform memory access）内存架构，因此相应的评测数据是基于NUMA优化后的结果。
 
-OOS can automatically install the xdragon\_hardware\_detect\_plugin monitoring plug-in by using a public template.
+-   计算型c6e实例规格族
 
-1.  Log on to the [OOS console](https://oos.console.aliyun.com/).
+    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
+    |----|------|-------|----|----|----|
+    |ecs.c6e.large|2|4|20|4.4049|0.05421|
+    |ecs.c6e.xlarge|4|8|20|8.6029|0.06949|
+    |ecs.c6e.2xlarge|8|16|20|16.96225|0.05393|
+    |ecs.c6e.4xlarge|16|32|20|32.56355|0.06535|
+    |ecs.c6e.8xlarge|32|64|20|60.37595|0.46321|
+    |ecs.c6e.13xlarge|52|96|20|89.1016|0.2374|
+    |ecs.c6e.26xlarge|104|192|20|171.2426|1.87202|
 
-2.  In the top navigation bar, select a region.
+    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
+    |----|------|-------|----|----|----|
+    |ecs.c6e.large|2|4|20|5.9847|0.11016|
+    |ecs.c6e.xlarge|4|8|20|11.8197|0.10352|
+    |ecs.c6e.2xlarge|8|16|20|23.1075|0.04388|
+    |ecs.c6e.4xlarge|16|32|20|44.697|0.49022|
+    |ecs.c6e.8xlarge|32|64|20|83.06745|0.79488|
+    |ecs.c6e.13xlarge|52|96|20|118.3309|1.35039|
+    |ecs.c6e.26xlarge|104|192|20|227.2049|4.37292|
 
-3.  On the **Public Templates** page, enter ACS-ECS-InstallXDragonAndCloudMonitor to search for the template that is used to install the monitoring plug-in. Click **Create Execution**.
+-   通用型g6e实例规格族
 
-    ![Install the xdragon_hardware_detect_plugin monitoring plug-in on multiple instances at a time - Create Execution](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3060235951/p62648.png)
+    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
+    |----|------|-------|----|----|----|
+    |ecs.g6e.large|2|8|20|4.4224|0.05121|
+    |ecs.g6e.xlarge|4|16|20|8.599|0.17457|
+    |ecs.g6e.2xlarge|8|32|20|16.95045|0.0398|
+    |ecs.g6e.4xlarge|16|64|20|32.97195|0.23905|
+    |ecs.g6e.8xlarge|32|128|20|62.10585|0.17469|
+    |ecs.g6e.13xlarge|52|192|20|89.76435|0.59106|
+    |ecs.g6e.26xlarge|104|384|20|178.849|0.71898|
 
-4.  On the Create page, configure the following settings:
+    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
+    |----|------|-------|----|----|----|
+    |ecs.g6e.large|2|8|20|6.0221|0.10016|
+    |ecs.g6e.xlarge|4|16|20|11.8376|0.11892|
+    |ecs.g6e.2xlarge|8|32|20|23.16855|0.07014|
+    |ecs.g6e.4xlarge|16|64|20|44.6713|0.19868|
+    |ecs.g6e.8xlarge|32|128|20|84.4509|0.7341|
+    |ecs.g6e.13xlarge|52|192|20|123.4441|1.9251|
+    |ecs.g6e.26xlarge|104|384|20|233.6841|2.02886|
 
-    1.  In the **Basic Information** step, set **Execution Mode** to **Automatic** and retain the default values for other parameters. Click **Next: Parameter Settings**.
+-   内存型r6e实例规格族
 
-    2.  In the **Parameter Settings** step, set the following parameters and retain the default values for other parameters. Click **Next: OK** after you configure the settings.
+    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
+    |----|------|-------|----|----|----|
+    |ecs.r6e.large|2|16|20|4.4711|0.04049|
+    |ecs.r6e.xlarge|4|32|20|8.9133|0.06478|
+    |ecs.r6e.2xlarge|8|64|20|17.2401|0.21711|
+    |ecs.r6e.4xlarge|16|128|20|33.1304|0.20148|
+    |ecs.r6e.8xlarge|32|256|20|62.73225|0.13354|
+    |ecs.r6e.13xlarge|52|384|20|90.03615|1.20993|
+    |ecs.r6e.26xlarge|104|768|20|182.4561|0.39651|
 
-        -   targets: You can select one or more ECS bare metal instances to be polled and installed with the monitoring plug-in. You can select instances manually or by using tags.
-        -   action: You can select install to install the plug-in.
+    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
+    |----|------|-------|----|----|----|
+    |ecs.r6e.large|2|16|20|5.99845|0.08916|
+    |ecs.r6e.xlarge|4|32|20|11.74425|0.11798|
+    |ecs.r6e.2xlarge|8|64|20|23.1586|0.06444|
+    |ecs.r6e.4xlarge|16|128|20|44.6009|0.22506|
+    |ecs.r6e.8xlarge|32|256|20|84.59745|0.75026|
+    |ecs.r6e.13xlarge|52|384|20|121.7566|0.57354|
+    |ecs.r6e.26xlarge|104|768|20|228.1608|2.58667|
 
-            **Note:** This operation template can be used to install, update, or uninstall the monitoring plug-in. Set the action parameter based on your needs.
-
-        -   rateControl: You can select **Concurrency-based Control**, select % for **Concurrency**, and then set Concurrency to 100%.
-        ![Install the xdragon_hardware_detect_plugin monitoring plug-in on multiple instances at a time - Create Execution](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3060235951/p62665.png)
-
-    3.  Confirm the preceding settings and click **Create**.
-
-    After the execution is created, you can go to the **Executions** page to view the execution results.
-
-    -   If **Success** is displayed in the **Execution Status** column corresponding to an O&M task, the O&M task is successful.
-    -   If **Failed** is displayed in the **Execution Status** column corresponding to an O&M task, you can click **Details** in the **Actions** column and then click **Execution Logs**. Then, you can analyze and adjust the execution content based on the log information.
-
-## Manually install the monitoring plug-in
-
-You can perform the following operations to download and install the xdragon\_hardware\_detect\_plugin monitoring plug-in by using the aliyun\_installer tool provided by the Cloud Assistant client:
-
-1.  Connect to an ECS bare metal instance as a root user.
-
-2.  Run the `aliyun_installer -h` command to view the help information of the tool.
-
-3.  Run the aliyun\_installer command to install the xdragon\_hardware\_detect\_plugin monitoring plug-in.
-
-    ```
-    [root@EcsHost ~]# aliyun_installer -i xdragon_hardware_detect_plugin -e 1.0.0
-    ```
-
-4.  Save and run the shell script that is used to install the special version of the Cloud Monitor plug-in. For more information about the shell script, see the [sample script](#p_installingcmsagent) in the following section.
-
-    ```
-    [root@EcsHost ~]# bash <nameOfTheScript\>.sh
-    ```
-
-    **Note:** You must install the xdragon\_hardware\_detect\_plugin monitoring plug-in before you install the Cloud Monitor plug-in. If you have installed the Cloud Monitor plug-in first, run the `/usr/local/cloudmonitor/CmsGoAgent.linux-amd64 restart` command to restart the Cloud Monitor plug-in.
-
-5.  Run the `smartctl -V` command to check whether the local disk monitoring and analysis tool smartctl is installed on the instance.
-
-    If the version number of the smartctl tool is shown in the command output, the tool is installed on the instance.
-
-6.  If the version number of the smartctl tool is not shown in the command output, install the tool by using one of the following methods:
-
-    -   For CentOS:
-
-        ```
-        root@EcsHost ~]# yum install smartmontools
-        ```
-
-    -   For Ubuntu:
-
-        ```
-        root@EcsHost ~]# apt update &&  apt install smartmontools
-        ```
-
-    -   For more information about the installation methods for other Linux distributions, visit [smartmontools document](https://www.smartmontools.org/wiki/Download#Installfromthesourcetarball).
-
-Sample shell script for manually installing the special version of the Cloud Monitor plug-in:
-
-```
-#! /bin/bash
-echo "installing cms agent"
-
-if [ -z "${CMS_HOME}" ]; then
-  CMS_HOME="/usr/local/cloudmonitor"
-  [[ ! -z "`egrep -i coreos /etc/os-release`" ]] && CMS_HOME="/opt/cloudmonitor"
-fi
-
-if [ `uname -m` = "x86_64" ]; then
-    ARCH="amd64"
-else
-    ARCH="386"
-fi
-
-VERSION="2.1.57"
-ELF_NAME=CmsGoAgent.linux-${ARCH}
-DOWNLOAD_PATH="cms-go-agent/${VERSION}/${ELF_NAME}"
-DEST_UPDATE_FILE="$CMS_HOME/${ELF_NAME}"
-
-current_cms_version="0"
-# SHENLONG always x86 arch, judge version
-if [ -f /usr/local/cloudmonitor/CmsGoAgent.linux-amd64 ]; then
-    current_cms_version="$($DEST_UPDATE_FILE version)"
-fi
-
-if [ $current_cms_version = "2.1.57" ]; then
-    echo "CmsGoAgent already installed"
-    echo "Installation success."
-    exit 0
-fi
-
-if [ -z "${REGION_ID}" ]; then
-  REGION_ID="$(wget -q --timeout=1 -t 1 -O - 'http://100.100.100.200/latest/meta-data/region-id')"
-fi
-
-
-if [ -d $CMS_HOME ] ; then
-  if [ -f $CMS_HOME/wrapper/bin/cloudmonitor.sh ] ; then
-    $CMS_HOME/wrapper/bin/cloudmonitor.sh remove;
-    rm -rf $CMS_HOME;
-  elif [ -f $DEST_UPDATE_FILE ]; then
-    $DEST_UPDATE_FILE stop
-    #$DEST_UPDATE_FILE uninstall
-    ps aux | grep -v grep | grep $ELF_NAME
-  fi
-fi
-
-download()
-{
-  if [ -z "${REGION_ID}" ]; then
-    echo "networkType is classic"
-    OSS_URL="http://cms-agent-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/$DOWNLOAD_PATH"
-  else
-    echo "networkType is vpc, REGION_ID: $REGION_ID"
-    if [[ "$REGION_ID" = "cn-shenzhen-finance-1" ]]; then
-      OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
-      CMS_PROXY="szcmsproxy.aliyun.com:3128"
-    elif [[ "$REGION_ID" = "cn-shanghai-finance-1" ]]; then
-      OSS_URL="http://cms-agent-$REGION_ID.oss-$REGION_ID-pub-internal.aliyuncs.com/$DOWNLOAD_PATH"
-    elif [[ "$REGION_ID" = "ap-south-1" ]]; then
-      OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
-      CMS_PROXY="cmsproxy-ap-south-1.aliyuncs.com:8080"
-    elif [ "$REGION_ID" = "ap-southeast-3" -o "$REGION_ID" = "me-east-1" -o "$REGION_ID" = "cn-chengdu" ]; then
-      OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
-    else
-      OSS_URL="http://cms-agent-$REGION_ID.oss-$REGION_ID-internal.aliyuncs.com/$DOWNLOAD_PATH"
-    fi
-  fi
-  echo download from "$OSS_URL"
-  wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
-  if [ $? ! = 0 ]; then
-    echo "download fail, retry..."
-    CMS_PROXY="vpc-opencmsproxy.aliyun.com:8080";
-    OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
-    wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
-  fi
-  if [ $? ! = 0 ]; then
-    echo "download fail, retry..."
-    CMS_PROXY="opencmsproxy.aliyun.com:8080";
-    OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
-    wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
-  fi
-}
-
-mkdir -p $CMS_HOME && \
-chown -R root:root $CMS_HOME && \
-download && \
-chmod a+x $DEST_UPDATE_FILE
-$DEST_UPDATE_FILE check
-RC=$?
-if [ ${RC} -ne 0 ]; then
-    echo CmsGoAgent install failed, your platform is not supported
-    exit ${RC}
-fi
-
-$DEST_UPDATE_FILE install >/dev/null 2>&1 || true
-$DEST_UPDATE_FILE start
-ps aux | grep -v grep | grep $ELF_NAME
-
-ACT_VERSION=`$DEST_UPDATE_FILE version`
-if [ -n "$ACT_VERSION" ]; then
-    echo CmsGoAgent v$ACT_VERSION installed
-else
-    echo CmsGoAgent install failed
-    exit 1
-fi
-```
-
-After the xdragon\_hardware\_detect\_plugin monitoring plug-in is installed, you can view it in the /usr/local/xdragon\_hwqc directory. You can run the `aliyun_installer -d xdragon_hardware_detect_plugin` command to update the plug-in, or run the `aliyun_installer -u xdragon_hardware_detect_plugin` command to uninstall it.
-
-You can call an ECS API operation to isolate damaged local disks. When damaged local disks are isolated, the corresponding ECS bare metal instances are not migrated to a different physical machine. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
 
