@@ -1,39 +1,39 @@
 ---
-keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute performance benchmark scores for mainstream instances, benchmarks]
+keyword: [ECS, Alibaba Cloud, delivery verification, computing performance benchmark scores for major instance families, compute performance benchmark scores for mainstream instances, benchmarks]
 ---
 
-# 主流实例计算性能评测
+# Computing performance benchmark scores for major instance families
 
-云服务器ECS提供了丰富的适用于云场景的实例规格族，本章节以通用平衡增强型g6e、计算平衡增强型c6e、内存平衡增强型r6e规格族为例，采用SPECInt（Standard Performance Evaluation Corporation，Integer）基准测试程序测试了Linux系统和Windows系统下ECS实例的计算性能。
+Alibaba Cloud ECS provides a variety of instance families for different cloud scenarios. This topic describes how to use the Standard Performance Evaluation Corporation, Integer \(SPECInt\) benchmark suite to test the computing performance of Linux and Windows ECS instances. In the examples, the g6e general purpose instance family with enhanced performance, c6e compute optimized instance family with enhanced performance, and r6e memory optimized instance family with enhanced performance are used.
 
-## 评测数据说明
+## Description of test results
 
-本示例获测分数是阿里云在受测的实例规格上运行SPEC CPU ®2017工具计算得出的，采用测试程序中的性能基准总共运行了20次，然后计算出20次的平均分和标准差数据。以SPECrate ®2017 Integer为例，进行测试时，ECS实例的vCPU数和副本（copies）数保持一致，根据SPECrate ®2017 Integer中的性能基准运行并发副本，分数越高表明单位时间内的吞吐量越高。
+The example benchmark scores provided in this topic are calculated by running the SPEC CPU® 2017 suite on the tested instance types. The instance types are tested 20 times in total based on the performance benchmarks in the benchmark suite. Then, the average scores and standard deviations of the 20 tests are calculated. In these examples, SPECrate® 2017 Integer is used. When you perform the test, the number of vCPUs in the ECS instances is the same as the number of copies, which is the value of the copies parameter. You can run multiple copies on the instances based on the performance benchmarks in SPECrate® 2017 Integer. A higher score indicates a higher throughput per unit of time.
 
--   有关如何获取SPEC评测工具，请访问[SPEC CPU 2017](https://www.spec.org/cpu2017/)。
--   有关实例规格的产品详情，请参见[实例规格族](/intl.zh-CN/实例/实例规格族.md)。
--   有关在ECS实例上测试计算性能的步骤，请参见[压测实例计算性能]()。
--   测试结果每半年更新一次。
+-   For more information about how to obtain the SPEC benchmark suite, visit [SPEC CPU® 2017](https://www.spec.org/cpu2017/).
+-   For more information about instance types, see [Instance families](/intl.en-US/Instance/Instance families.md).
+-   For more information about how to test the computing performance of ECS instances, see [Computing performance stress testing for instances]().
+-   The test results are updated every six months.
 
-下表列举了本次测试中两种操作系统的测试环境对比信息。
+The following table compares the testing environments of Linux and Windows Server operating systems used in the tests.
 
-|信息项|Linux系统环境|Windows Server系统环境|
-|---|---------|------------------|
-|云服务器厂商|阿里云（aliyun）|
-|编译器|gcc v7.3.0|ICC（Intel C++ Compiler）|
-|SPEC基准测试工具|speccpu\_2017（版本：1.0.5）|
-|SPEC CPU 2017测试程序|SPECrate ®2017 Integer|
-|阿里云镜像ID|centos\_7\_04\_64\_20G\_alibase\_201701015.vhd|win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd|
-|受测实例CPU型号|Intel ® Xeon ® Platinum 8269（Cascade）|
+|Item|Linux|Windows Server|
+|----|-----|--------------|
+|Cloud server vendor|Alibaba Cloud|
+|Compiler|gcc v7.3.0|Intel C++ Compiler \(ICC\)|
+|SPEC tool|SPEC CPU® 2017 \(version: 1.0.5\)|
+|Benchmark suite|SPECrate®2017 Integer|
+|Alibaba Cloud image ID|centos\_7\_04\_64\_20G\_alibase\_201701015.vhd|win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd|
+|CPU model of tested instance|Intel® Xeon® Platinum 8269 \(Cascade\)|
 
-## 评测结果数据
+## Test results
 
-使用Windows Server系统测试实例计算性能时，c6e.26xlarge、g6e.26xlarge、r6e.26xlarge实例规格配置了NUMA（Non-uniform memory access）内存架构，因此相应的评测数据是基于NUMA优化后的结果。
+The c6e.26xlarge, g6e.26xlarge, and r6e.26xlarge instance types are configured with the non-uniform memory access \(NUMA\) architecture. When the computing performance of Windows instances of these instance types is tested, the test results are optimized based on NUMA.
 
--   计算型c6e实例规格族
+-   c6e, compute optimized instance family
 
-    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
-    |----|------|-------|----|----|----|
+    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
+    |-------------|-----|--------------|-----|-------------|------------------|
     |ecs.c6e.large|2|4|20|4.4049|0.05421|
     |ecs.c6e.xlarge|4|8|20|8.6029|0.06949|
     |ecs.c6e.2xlarge|8|16|20|16.96225|0.05393|
@@ -42,8 +42,8 @@ keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute per
     |ecs.c6e.13xlarge|52|96|20|89.1016|0.2374|
     |ecs.c6e.26xlarge|104|192|20|171.2426|1.87202|
 
-    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
-    |----|------|-------|----|----|----|
+    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
+    |-------------|-----|--------------|-----|-------------|------------------|
     |ecs.c6e.large|2|4|20|5.9847|0.11016|
     |ecs.c6e.xlarge|4|8|20|11.8197|0.10352|
     |ecs.c6e.2xlarge|8|16|20|23.1075|0.04388|
@@ -52,10 +52,10 @@ keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute per
     |ecs.c6e.13xlarge|52|96|20|118.3309|1.35039|
     |ecs.c6e.26xlarge|104|192|20|227.2049|4.37292|
 
--   通用型g6e实例规格族
+-   g6e, general purpose instance family
 
-    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
-    |----|------|-------|----|----|----|
+    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
+    |-------------|-----|--------------|-----|-------------|------------------|
     |ecs.g6e.large|2|8|20|4.4224|0.05121|
     |ecs.g6e.xlarge|4|16|20|8.599|0.17457|
     |ecs.g6e.2xlarge|8|32|20|16.95045|0.0398|
@@ -64,8 +64,8 @@ keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute per
     |ecs.g6e.13xlarge|52|192|20|89.76435|0.59106|
     |ecs.g6e.26xlarge|104|384|20|178.849|0.71898|
 
-    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
-    |----|------|-------|----|----|----|
+    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
+    |-------------|-----|--------------|-----|-------------|------------------|
     |ecs.g6e.large|2|8|20|6.0221|0.10016|
     |ecs.g6e.xlarge|4|16|20|11.8376|0.11892|
     |ecs.g6e.2xlarge|8|32|20|23.16855|0.07014|
@@ -74,10 +74,10 @@ keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute per
     |ecs.g6e.13xlarge|52|192|20|123.4441|1.9251|
     |ecs.g6e.26xlarge|104|384|20|233.6841|2.02886|
 
--   内存型r6e实例规格族
+-   r6e, memory optimized instance family
 
-    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
-    |----|------|-------|----|----|----|
+    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
+    |-------------|-----|--------------|-----|-------------|------------------|
     |ecs.r6e.large|2|16|20|4.4711|0.04049|
     |ecs.r6e.xlarge|4|32|20|8.9133|0.06478|
     |ecs.r6e.2xlarge|8|64|20|17.2401|0.21711|
@@ -86,8 +86,8 @@ keyword: [ecs, aliyun, 交付验证, 主流实例计算性能评测, Compute per
     |ecs.r6e.13xlarge|52|384|20|90.03615|1.20993|
     |ecs.r6e.26xlarge|104|768|20|182.4561|0.39651|
 
-    |实例规格|vCPU数量|内存（GiB）|评测次数|平均速率|标准偏差|
-    |----|------|-------|----|----|----|
+    |Instance type|vCPUs|Memory \(GiB\)|Tests|Average speed|Standard deviation|
+    |-------------|-----|--------------|-----|-------------|------------------|
     |ecs.r6e.large|2|16|20|5.99845|0.08916|
     |ecs.r6e.xlarge|4|32|20|11.74425|0.11798|
     |ecs.r6e.2xlarge|8|64|20|23.1586|0.06444|
