@@ -1,98 +1,212 @@
-# 检测GPU实例是否在使用测试许可证
+---
+keyword: [神龙架构, 本地设备, 本地磁盘监控, 弹性裸金属]
+---
 
-用于临时测试的许可证即将过期，过期后继续使用该许可证的GPU实例不能通过NVIDIA GRID获得GPU加速能力。为保证业务平稳运行，请您尽快确认GPU实例是否正在使用测试许可证，并作出相应处理。本文以Windows Server 2016和Ubuntu 18.04为例，介绍如何检测并处理。
+# 安装监控插件
 
-## Windows Server 2016系统的检测与处理
+本文介绍了安装监控插件xdragon\_hardware\_detect\_plugin的方式，适用于使用了本地盘的弹性裸金属服务器实例。
 
-1.  检测是否使用了测试许可证。
+待安装监控插件的弹性裸金属服务器实例必须满足以下条件：
 
-    1.  远程连接实例。
+-   所在地域为中国北京、中国上海、中国杭州、中国深圳或者中国张家口地域。
+-   操作系统为Linux系统。
+-   仅使用OOS批量安装监控插件：如果您根据标签匹配弹性裸金属服务器实例目标，目标实例必须已经绑定了标签。详细步骤请参见[创建或绑定标签](/cn.zh-CN/标签与资源/标签/创建或绑定标签.md)。
+-   仅手动安装监控插件：已安装云助手客户端。详细步骤请参见[安装云助手客户端](/cn.zh-CN/运维与监控/云助手/配置云助手客户端/安装云助手客户端.md)。
 
-        连接实例的操作，请参见[通过密码或密钥认证登录Windows实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Windows实例.md)。
-
-    2.  在桌面单击右键，然后选择**NVIDIA控制面板**。
-
-    3.  在**NVIDIA控制面板**页面，单击**许可** \> **管理许可证**。
-
-    4.  查看许可证服务器信息。
-
-        如果许可证服务器信息中包含以下任一组服务器和端口号，即表示GPU实例在使用测试许可证。
-
-        |一级许可证服务器或者二级许可证服务器|端口号|
-        |------------------|---|
-        |egs-hz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-bj.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-sh.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-sz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-zjk.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-hhht.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-cd.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-hy.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-xjp.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-useast.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-
-        示例如下图所示。
-
-        ![grid-license-windows](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3048058951/p141157.png)
-
-2.  如果使用了测试许可证，并且需要继续使用NVIDIA GRID提供GPU加速能力，则更换GPU实例的操作系统，改为阿里云镜像市场中已预装GRID驱动并激活许可证的收费镜像。
-
-    **警告：** 实例更换操作系统后，云盘ID会变更，原系统盘会被释放。如果需要保留数据，请在操作前做好备份。
-
-    1.  停止GPU实例。
-
-        具体操作请参见[停止实例](/cn.zh-CN/实例/管理实例/停止实例.md)。
-
-    2.  为GPU实例更换操作系统。
-
-        具体操作请参见[更换系统盘（非公共镜像）](/cn.zh-CN/块存储/云盘基础操作/更换系统盘/更换系统盘（非公共镜像）.md)。更换操作系统时，在镜像市场搜索关键字GRID，并根据您的操作系统选择镜像。
-
-        ![grid-imagemarket](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3048058951/p141179.png)
-
-        **说明：** 如果镜像市场暂未上线您需要的镜像类型，请自行获取许可证并搭建许可证服务器。
+    **说明：** 2017年12月01日之后使用公共镜像创建的ECS实例，默认预装云助手客户端。
 
 
-## Ubuntu 18.04系统的检测与处理
+如果您使用的是搭载了本地盘的弹性裸金属服务器实例规格，需要您自行监控和诊断本地盘健康状态。
 
-1.  检测是否使用了测试许可证。
+插件xdragon\_hardware\_detect\_plugin可以定期检测弹性裸金属服务器实例上的本地盘设备的健康状态，如果发生本地盘异常事件，插件会自动将异常事件反馈成本地盘系统事件。对应的系统事件代码为`SystemMaintenance.ReInitErrorDisk`。详情请参见[本地盘实例系统事件概述](/cn.zh-CN/运维与监控/系统事件/本地盘实例系统事件/本地盘实例系统事件概述.md)。
 
-    1.  远程连接实例。
+## 使用OOS批量安装监控插件
 
-        连接实例的操作，请参见[通过密码或密钥认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Linux实例.md)。
+运维编排服务OOS能通过公共模板自动安装监控插件xdragon\_hardware\_detect\_plugin。
 
-    2.  执行命令查看许可证服务器信息。
+1.  登录[OOS管理控制台](https://oos.console.aliyun.com/)。
+
+2.  在顶部菜单栏左上角处，选择地域。
+
+3.  在**公共模板**中，输入ACS-ECS-InstallXDragonAndCloudMonitor搜索批量安装神龙监控插件的模板，单击**创建执行**。
+
+    ![批量安装神龙监控插件-创建执行](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0732145951/p62648.png)
+
+4.  在创建执行的对话框中，完成以下配置：
+
+    1.  在**基本信息**处，为**执行模式**选择**自动执行**，其他配置保持系统默认。完成后单击**下一步：设置参数**。
+
+    2.  在**设置参数**处，完成以下配置，其他配置保持系统默认，完成后单击**下一步：确认**。
+
+        -   targets：选择一台或多台需要轮询并安装监控插件的弹性裸金属服务器实例，支持标签方式和手动选择方式。
+        -   action：选择install，即安装插件。
+
+            **说明：** 该运维模板同时支持安装、更新和卸载监控插件，您可以根据自身需要选择运维任务类型。
+
+        -   rateControl：选择**并发控制**，**并发速率**选择百分制，并设置为100%。
+        ![批量安装神龙监控插件-创建执行](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0732145951/p62665.png)
+
+    3.  确认模板配置信息后，单击**创建执行**。
+
+    创建了运维任务后，您可以在**执行管理**页面查看运维任务的结果。
+
+    -   当**执行状态**显示**成功**，表示运维任务已完成。
+    -   当**执行状态**显示**失败**，您可以单击**操作**列下的**详情**查看**执行日志**，并根据日志信息分析和调整执行内容。
+
+## 手动安装监控插件
+
+云助手客户端提供的aliyun\_installer工具可以下载并安装监控插件xdragon\_hardware\_detect\_plugin。
+
+1.  以root权限远程连接弹性裸金属服务器实例。
+
+2.  运行`aliyun_installer -h`查看工具帮助信息。
+
+3.  使用aliyun\_installer命令安装监控插件xdragon\_hardware\_detect\_plugin。
+
+    ```
+    [root@EcsHost ~]# aliyun_installer -i xdragon_hardware_detect_plugin -e 1.0.0
+    ```
+
+4.  保存并运行安装特殊版本云监控插件的Shell脚本。Shell脚本请参见下文[脚本示例](#p_installingcmsagent)。
+
+    ```
+    [root@EcsHost ~]# bash <nameOfTheScript\>.sh
+    ```
+
+    **说明：** 安装监控插件xdragon\_hardware\_detect\_plugin的步骤必须先于云监控插件，若您先安装了云监控插件，请执行`/usr/local/cloudmonitor/CmsGoAgent.linux-amd64 restart`重启云监控插件。
+
+5.  执行`smartctl -V`检测实例是否已安装本地盘监控和分析工具smartctl。
+
+    如果返回信息中显示工具版本号，表示实例已安装smartctl工具。
+
+6.  如果实例未安装smartctl工具，按以下方式安装：
+
+    -   CentOS系统：
 
         ```
-        cat /etc/nvidia/gridd.conf | grep 'ServerAddress\|ServerPort'
+        root@EcsHost ~]# yum install smartmontools
         ```
 
-        如果返回的许可证服务器信息中包含以下任一组服务器和端口号，即表示您的GPU实例在使用测试许可证。
+    -   Ubuntu系统：
 
-        |ServerAddress|ServerPort|
-        |-------------|----------|
-        |egs-hz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-bj.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-sh.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-sz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-zjk.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-hhht.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-cd.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-hy.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-xjp.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
-        |egs-useast.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        ```
+        root@EcsHost ~]# apt update &&  apt install smartmontools
+        ```
 
-        示例如下图所示。
+    -   其他Linux发行版安装方式，请参见[smartmontools相关文档](https://www.smartmontools.org/wiki/Download#Installfromthesourcetarball)。
 
-        ![查看测试License](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3048058951/p141108.png)
+手动安装特殊版本云监控插件的Shell脚本如下所示：
 
-2.  获取许可证并搭建许可证服务器。
+```
+#!/bin/bash
+echo "installing cms agent"
 
-    目前阿里云暂未提供激活许可证的Linux收费镜像。确认在使用测试许可证后，如果需要继续使用NVIDIA GRID提供GPU加速能力，您可以自行获取许可证并搭建许可证服务器。
+if [ -z "${CMS_HOME}" ]; then
+  CMS_HOME="/usr/local/cloudmonitor"
+  [[ ! -z "`egrep -i coreos /etc/os-release`" ]] && CMS_HOME="/opt/cloudmonitor"
+fi
 
-    1.  向NVIDIA购买许可证。
+if [ `uname -m` = "x86_64" ]; then
+    ARCH="amd64"
+else
+    ARCH="386"
+fi
 
-    2.  搭建许可证服务器。
+VERSION="2.1.57"
+ELF_NAME=CmsGoAgent.linux-${ARCH}
+DOWNLOAD_PATH="cms-go-agent/${VERSION}/${ELF_NAME}"
+DEST_UPDATE_FILE="$CMS_HOME/${ELF_NAME}"
 
-        搭建许可证服务器方法，请参见NVIDIA官方文档[Virtual GPU License Server Version 2020.05](http://grid-9-4-zyy.oss-cn-hangzhou.aliyuncs.com/grid-license-server-user-guide.pdf)。
+current_cms_version="0"
+# xdragon always x86 arch, judge version
+if [ -f /usr/local/cloudmonitor/CmsGoAgent.linux-amd64 ]; then
+    current_cms_version="$($DEST_UPDATE_FILE version)"
+fi
 
+if [ $current_cms_version = "2.1.57" ]; then
+    echo "CmsGoAgent already installed"
+    echo "Installation success."
+    exit 0
+fi
+
+if [ -z "${REGION_ID}" ]; then
+  REGION_ID="$(wget -q --timeout=1 -t 1 -O - 'http://100.100.100.200/latest/meta-data/region-id')"
+fi
+
+
+if [ -d $CMS_HOME ] ; then
+  if [ -f $CMS_HOME/wrapper/bin/cloudmonitor.sh ] ; then
+    $CMS_HOME/wrapper/bin/cloudmonitor.sh remove;
+    rm -rf $CMS_HOME;
+  elif [ -f $DEST_UPDATE_FILE ]; then
+    $DEST_UPDATE_FILE stop
+    #$DEST_UPDATE_FILE uninstall
+    ps aux | grep -v grep | grep $ELF_NAME
+  fi
+fi
+
+download()
+{
+  if [ -z "${REGION_ID}" ]; then
+    echo "networkType is classic"
+    OSS_URL="http://cms-agent-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/$DOWNLOAD_PATH"
+  else
+    echo "networkType is vpc, REGION_ID: $REGION_ID"
+    if [[ "$REGION_ID" = "cn-shenzhen-finance-1" ]]; then
+      OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
+      CMS_PROXY="szcmsproxy.aliyun.com:3128"
+    elif [[ "$REGION_ID" = "cn-shanghai-finance-1" ]]; then
+      OSS_URL="http://cms-agent-$REGION_ID.oss-$REGION_ID-pub-internal.aliyuncs.com/$DOWNLOAD_PATH"
+    elif [[ "$REGION_ID" = "ap-south-1" ]]; then
+      OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
+      CMS_PROXY="cmsproxy-ap-south-1.aliyuncs.com:8080"
+    elif [ "$REGION_ID" = "ap-southeast-3" -o "$REGION_ID" = "me-east-1" -o "$REGION_ID" = "cn-chengdu" ]; then
+      OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
+    else
+      OSS_URL="http://cms-agent-$REGION_ID.oss-$REGION_ID-internal.aliyuncs.com/$DOWNLOAD_PATH"
+    fi
+  fi
+  echo download from "$OSS_URL"
+  wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
+  if [ $? != 0 ]; then
+    echo "download fail, retry..."
+    CMS_PROXY="vpc-opencmsproxy.aliyun.com:8080";
+    OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
+    wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
+  fi
+  if [ $? != 0 ]; then
+    echo "download fail, retry..."
+    CMS_PROXY="opencmsproxy.aliyun.com:8080";
+    OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
+    wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
+  fi
+}
+
+mkdir -p $CMS_HOME && \
+chown -R root:root $CMS_HOME && \
+download && \
+chmod a+x $DEST_UPDATE_FILE
+$DEST_UPDATE_FILE check
+RC=$?
+if [ ${RC} -ne 0 ]; then
+    echo CmsGoAgent install failed, your platform is not supported
+    exit ${RC}
+fi
+
+$DEST_UPDATE_FILE install >/dev/null 2>&1 || true
+$DEST_UPDATE_FILE start
+ps aux | grep -v grep | grep $ELF_NAME
+
+ACT_VERSION=`$DEST_UPDATE_FILE version`
+if [ -n "$ACT_VERSION" ]; then
+    echo CmsGoAgent v$ACT_VERSION installed
+else
+    echo CmsGoAgent install failed
+    exit 1
+fi
+```
+
+安装后，监控插件xdragon\_hardware\_detect\_plugin所在目录为/usr/local/xdragon\_hwqc。更新插件可执行`aliyun_installer -d xdragon_hardware_detect_plugin`，卸载插件可执行`aliyun_installer -u xdragon_hardware_detect_plugin`。
+
+您可以调用ECS API隔离损坏的本地盘，隔离后，弹性裸金属服务器实例不会变更所宿物理机。详情请参见[本地盘实例系统事件](/cn.zh-CN/运维与监控/系统事件/本地盘实例系统事件/本地盘实例系统事件概述.md)。
 
