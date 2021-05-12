@@ -1,0 +1,6 @@
+# 创建配备NVIDIA GPU的实例
+
+本文介绍如何创建配备NVIDIA GPU的实例并安装相关驱动，配备NVIDIA GPU的实例必须安装驱动才可以使用GPU。
+
+最新内容，请参见[创建配备NVIDIA GPU的实例]()。
+
