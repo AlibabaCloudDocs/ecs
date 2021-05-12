@@ -1,46 +1,98 @@
-# Create a new account with the root user privilege
+# 检测GPU实例是否在使用测试许可证
 
-This topic describes how to use a user-defined script to create a new account with the root user privilege when creating a Linux instance. User-defined scripts can also be used to create a new account with the administrator privilege for a Windows instance.
+用于临时测试的许可证即将过期，过期后继续使用该许可证的GPU实例不能通过NVIDIA GRID获得GPU加速能力。为保证业务平稳运行，请您尽快确认GPU实例是否正在使用测试许可证，并作出相应处理。本文以Windows Server 2016和Ubuntu 18.04为例，介绍如何检测并处理。
 
-## Scenarios
+## Windows Server 2016系统的检测与处理
 
-Use user-defined scripts of instances if you want to achieve the following results when creating a Linux ECS instance:
+1.  检测是否使用了测试许可证。
 
--   Disable the default root account that comes with a Linux ECS instance. You can use the script to customize how to disable the root user and how many root user privileges are disabled.
--   Create a new account with the root user privilege and customize the account name.
--   Use only SSH key pairs, but not user passwords, for remote logon to manage the instance by using the new account with the root user privilege.
--   If this new account is required to perform operations that can only be done by a user with root user privilege, the `sudo` command can be used without a password for privilege escalation.
+    1.  远程连接实例。
 
-## Procedure
+        连接实例的操作，请参见[通过密码或密钥认证登录Windows实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Windows实例.md)。
 
-To create a new account with the root user privilege, follow these steps:
+    2.  在桌面单击右键，然后选择**NVIDIA控制面板**。
 
-1.  Create an instance by referring to [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). Be aware of the following configuration items:
-    -   On the Basic Configurations page, note the following customized configurations:
-        -   **Instance Type**: Select an I/O-optimized instance.
-        -   **Image**: Select a supported image type, for example, CentOS 7.2 on the **Public Image** tab.
-2.  On the **Networking** page, set **Network Type** to VPC
-3.  On the System Configurations page, enter the following script in the **User Data** text box in the **Advanced** area:
+    3.  在**NVIDIA控制面板**页面，单击**许可** \> **管理许可证**。
 
-    ```
-    #! /bin/sh
-    useradd test
-    echo "test   ALL=(ALL)        NOPASSWD:ALL" | tee -a /etc/sudoers
-    mkdir /home/test/.ssh
-    touch /home/test/.ssh/authorized_keys
-    echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhGqhEh/rGbIMCGItFVtYpsXPQrCaunGJKZVIWtINrGZwusLc290qDZ93KCeb8o6X1Iby1Wm+psZY8THE+/BsXq0M0HzfkQZD2vXuhRb4xi1z98JHskX+0jnbjqYGY+Brgai9BvKDXTTSyJtCYUnEKxvcK+d1ZwxbNuk2QZ0ryHESDbSaczlNFgFQEDxhCrvko+zWLjTVnomVUDhdMP2g6fZ0tgFVwkJFV0bE7oob3NOVcrx2TyhfcAjA4M2/Ry7U2MFADDC+EVkpoVDm0SOT/hYJgaVM1xMDlSeE7kzX7yZbJLR1XAWV1xzZkNclY5w1kPnW8qMYuSwhpXzt4gsF0w== rsa-key-20170217" | tee -a /home/test/.ssh/authorized_keys
-    					
-    ```
+    4.  查看许可证服务器信息。
 
-    **Note:**
+        如果许可证服务器信息中包含以下任一组服务器和端口号，即表示GPU实例在使用测试许可证。
 
-    -   The first line must be `#!. /bin/sh`, with no leading space.
-    -   Do not enter unnecessary spaces or carriage return characters in the text.
-    -   The last line is your public key. You can define it.
-    -   You can add other configuration in the script as you need.
-    -   The example script only applies to CentOS 7.2. If you are using other images, customize the script according to the operating system types.
+        |一级许可证服务器或者二级许可证服务器|端口号|
+        |------------------|---|
+        |egs-hz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-bj.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-sh.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-sz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-zjk.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-hhht.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-cd.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-hy.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-xjp.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-useast.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
 
-After the instance is started, you can use the new **test** user to connect to the instance by using an SSH private key. You can also escalate the permission level by using the `sudo` command and run operations that require the root user privilege, as shown in the following figure.
+        示例如下图所示。
 
-![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/9824/156678802912173_en-US.png)
+        ![grid-license-windows](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3048058951/p141157.png)
+
+2.  如果使用了测试许可证，并且需要继续使用NVIDIA GRID提供GPU加速能力，则更换GPU实例的操作系统，改为阿里云镜像市场中已预装GRID驱动并激活许可证的收费镜像。
+
+    **警告：** 实例更换操作系统后，云盘ID会变更，原系统盘会被释放。如果需要保留数据，请在操作前做好备份。
+
+    1.  停止GPU实例。
+
+        具体操作请参见[停止实例](/cn.zh-CN/实例/管理实例/停止实例.md)。
+
+    2.  为GPU实例更换操作系统。
+
+        具体操作请参见[更换系统盘（非公共镜像）](/cn.zh-CN/块存储/云盘基础操作/更换系统盘/更换系统盘（非公共镜像）.md)。更换操作系统时，在镜像市场搜索关键字GRID，并根据您的操作系统选择镜像。
+
+        ![grid-imagemarket](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3048058951/p141179.png)
+
+        **说明：** 如果镜像市场暂未上线您需要的镜像类型，请自行获取许可证并搭建许可证服务器。
+
+
+## Ubuntu 18.04系统的检测与处理
+
+1.  检测是否使用了测试许可证。
+
+    1.  远程连接实例。
+
+        连接实例的操作，请参见[通过密码或密钥认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用Workbench连接实例/通过密码或密钥认证登录Linux实例.md)。
+
+    2.  执行命令查看许可证服务器信息。
+
+        ```
+        cat /etc/nvidia/gridd.conf | grep 'ServerAddress\|ServerPort'
+        ```
+
+        如果返回的许可证服务器信息中包含以下任一组服务器和端口号，即表示您的GPU实例在使用测试许可证。
+
+        |ServerAddress|ServerPort|
+        |-------------|----------|
+        |egs-hz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-bj.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-sh.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-sz.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-zjk.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-hhht.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-cd.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-hy.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-xjp.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+        |egs-useast.alibaba-inc.com|您在添加许可证服务器时填写的端口号，默认为7070。|
+
+        示例如下图所示。
+
+        ![查看测试License](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3048058951/p141108.png)
+
+2.  获取许可证并搭建许可证服务器。
+
+    目前阿里云暂未提供激活许可证的Linux收费镜像。确认在使用测试许可证后，如果需要继续使用NVIDIA GRID提供GPU加速能力，您可以自行获取许可证并搭建许可证服务器。
+
+    1.  向NVIDIA购买许可证。
+
+    2.  搭建许可证服务器。
+
+        搭建许可证服务器方法，请参见NVIDIA官方文档[Virtual GPU License Server Version 2020.05](http://grid-9-4-zyy.oss-cn-hangzhou.aliyuncs.com/grid-license-server-user-guide.pdf)。
+
 
