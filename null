@@ -1,102 +1,46 @@
-# 远程连接FAQ
+---
+keyword: [包年包月, 续费, 统一到期日, 计费周期]
+---
 
-本章节介绍在远程连接ECS实例过程中可能存在的问题及相应解决方案。
+# 统一实例的到期日
 
-## 购买实例后，远程连接前
+本文介绍如何统一包年包月ECS实例的到期日。
 
-|问题|解决方案|
-|--|----|
-|入口在哪里，如何选择连接方式|-   [远程连接操作指南](/cn.zh-CN/快速入门/通过控制台使用ECS实例（快捷版）.md)
--   [更多远程连接方式](/cn.zh-CN/实例/连接实例/连接方式概述.md)
--   [开通一台云服务器需要多久？（初始化期间不要重启）](/cn.zh-CN/实例/实例FAQ.md) |
-|不知道或者忘记密码|-   [默认用户名和密码是什么？](/cn.zh-CN/实例/实例FAQ.md)
--   [忘记密码时重置登录密码](/cn.zh-CN/实例/管理实例/重置实例登录密码.md) |
+已经创建用于统一ECS实例到期日的日期，具体操作请参见[统一实例到期日](/cn.zh-CN/产品计费/续费实例/统一实例到期日.md)。
 
-## 无法远程连接，先检查安全组设置问题
+统一到期日功能具有以下限制：
 
-|问题|解决方案|
-|--|----|
-|如何设置安全组规则|-   [如何设置远程连接Windows实例的安全组](https://help.aliyun.com/knowledge_detail/52066.html)
--   [安全组应用案例](/cn.zh-CN/安全/安全组/安全组应用案例.md) |
+-   当前计费周期到期日与统一到期日之间的间隔不能少于1个月。
 
-## 远程连接时，无法连接Linux实例
+    如果间隔不足1个月，则设置时会将实际生效的到期日统一续费到30天后的第一个统一到期日。续费到统一到期日时，系统以按月价格计算续费价格。详细价格信息，请参见[云服务器ECS详细价格总览](https://www.aliyun.com/price/product#/ecs/detail)。
 
-|问题|解决方案|
-|--|----|
-|无法连接Linux实例|-   [常见报错排查](https://help.aliyun.com/knowledge_detail/34403.html)
--   [无法通过SSH远程登录Linux实例时的排查指引](https://help.aliyun.com/knowledge_detail/41470.html)
--   [使用SSH命令登录Linux系统的ECS实例时出现报错](https://help.aliyun.com/knowledge_detail/41482.html) |
-|（控制台）Workbench工具连接Linux时的问题|-   [Workbench工具远程连接Linux实例时提示连接超时](https://help.aliyun.com/knowledge_detail/167629.html)
--   [Workbench工具远程连接Linux实例时提示“用户名或密码不正确”](https://help.aliyun.com/knowledge_detail/167628.html) |
-|SSH连接Linux常见报错信息|-   [使用SSH登录ECS实例时提示“Host key verification failed”错误](https://help.aliyun.com/knowledge_detail/41471.html)
--   [使用root用户通过SSH登录Linux实例时报“Permission denied, please try again”的错误](https://help.aliyun.com/knowledge_detail/41487.html)
--   [SSH登录Linux实例时出现“Disconnected:No supported authentication methods available”错误](https://help.aliyun.com/knowledge_detail/41489.html)
--   [SSH登录ECS实例提示“ssh\_exchange\_identification: read: Connection reset by peer”错误](https://help.aliyun.com/knowledge_detail/41485.html)
--   [使用SSH登录Linux系统的ECS实例时提示“requirement "uid \>= 1000" not met by user "root"”错误](https://help.aliyun.com/knowledge_detail/41491.html)
--   [Linux实例中由于SELinux服务开启导致SSH远程连接异常](https://help.aliyun.com/knowledge_detail/41481.html)
--   [SSH服务启动时报“main process exited, code=exited”错误](https://help.aliyun.com/knowledge_detail/41474.html)
--   [启动SSH服务时出现“error while loading shared libraries”错误](https://help.aliyun.com/knowledge_detail/41478.html) |
+    例如：您持有2台包年包月ECS实例，到期日分别为2018-09-10和2018-05-17，设置统一到期日为每个月的1号。则统一两台ECS实例的到期日后，两台ECS实例将分别续费到2018-11-01和 2018-07-01。
 
-## 远程连接时，无法连接Windows实例
+-   仅支持未过期的包年包月ECS实例。
 
-|问题|解决方案|
-|--|----|
-|无法连接Windows实例|-   [【推荐】无法远程连接Windows实例的处理方法](https://help.aliyun.com/knowledge_detail/140763.html)
--   [远程桌面无法连接到Windows实例的快速排查方法](https://help.aliyun.com/knowledge_detail/40849.html) |
-|（控制台）Workbench工具连接Windows时的问题|-   [Workbench远程连接Windows实例时提示“请检查地址、端口、用户名、密码等信息是否填写正确”](https://help.aliyun.com/knowledge_detail/167983.html)
--   [Workbench工具远程连接Windows实例时提示连接超时](https://help.aliyun.com/knowledge_detail/167984.html) |
-|远程连接Windows常见报错信息|-   [远程连接Windows系统的ECS实例时提示协议错误](https://help.aliyun.com/knowledge_detail/40861.html)
--   [远程连接服务器闪退弹出报错窗口](https://help.aliyun.com/knowledge_detail/143646.html)
--   [Windows系统实例远程连接提示“终端服务器超出了最大允许连接”](https://help.aliyun.com/knowledge_detail/40889.html)
--   [远程连接Windows实例时发生验证错误](https://help.aliyun.com/knowledge_detail/38337.html)
--   [Windows服务器远程桌面提示“没有远程桌面授权服务器可以提供许可证”错误](https://help.aliyun.com/knowledge_detail/40859.html)
--   [远程连接Windows系统的ECS实例时提示协议错误](https://help.aliyun.com/knowledge_detail/40861.html)
--   [启用密码保护共享导致Windows系统远程访问出现“凭据无法工作”错误](https://help.aliyun.com/knowledge_detail/40865.html)
--   [远程桌面连接ECS实例时报“连接被拒绝，因为没有授权此用户帐户进行远程登录”错误](https://help.aliyun.com/knowledge_detail/40871.html) |
+    统一到期日时，如果选中的ECS实例中包括已到期的ECS实例，会导致操作失败。您需要先移除已到期的ECS实例，或者先手动续费ECS实例，再重新操作。
 
-## VNC远程连接常见问题
 
-|问题|解决方案|
-|--|----|
-|VNC远程连接问题|-   [（远程连接前）修改了远程连接密码还是连不上控制台VNC](https://help.aliyun.com/document_detail/108473.html#section-huk-e8x-b38)
--   [控制台VNC提示授权验证失败](https://help.aliyun.com/document_detail/108473.html#section-xl9-o6y-79k)
--   [连接到控制台VNC后出现黑屏](https://help.aliyun.com/document_detail/108473.html#section-xrm-6sm-10m)
--   [控制台VNC无法访问](https://help.aliyun.com/document_detail/108473.html#section-65w-3px-xpu)
--   [控制台VNC不支持多用户登录](https://help.aliyun.com/document_detail/108473.html#section-mdm-w4q-wgb) |
-|浏览器支持问题|-   [IE8.0无法使用控制台VNC](https://help.aliyun.com/document_detail/108473.html#section-82j-21b-xj0)
--   [Firefox浏览器打开控制台VNC报错安全连接失败](https://help.aliyun.com/document_detail/108473.html#section-l6t-kik-vmy) |
+1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-## 远程连接后常见问题
+2.  在左侧导航栏，选择**实例与镜像** \> **实例**。
 
-|问题|解决方案|
-|--|----|
-|远程连接后异常问题|-   [远程连接Windows实例后操作服务器速度缓慢](https://help.aliyun.com/knowledge_detail/159206.html)
--   [远程连接Windows系统的ECS服务器提示“您的会话将在60分钟后断开连接”错误](https://help.aliyun.com/knowledge_detail/148425.html)
--   [如何查看和修改Windows实例远程桌面的默认端口](https://help.aliyun.com/knowledge_detail/40857.html)
--   [如何查询ECS实例中的远程登录日志](https://help.aliyun.com/knowledge_detail/40873.html)
--   [Windows实例如何限制用户的远程桌面会话数量](https://help.aliyun.com/knowledge_detail/40886.html)
--   [Windows 2008与2012实例无法启用远程协助中的“允许远程协助连接这台计算机”选项](https://help.aliyun.com/knowledge_detail/40880.html)
--   [Windows Server实例远程连接数以及License授权服务器的相关说明](https://help.aliyun.com/knowledge_detail/40860.html) |
-|访问网站或应用异常问题|-   [无法访问ECS实例中运行的网站](https://help.aliyun.com/knowledge_detail/31710.html)
--   [Linux实例网站访问丢包延时高的排查方法](https://help.aliyun.com/knowledge_detail/52997.html)
--   [Windows实例网络访问丢包延时高的排查方法](https://help.aliyun.com/knowledge_detail/52866.html)
--   [使用ping命令测试ECS实例的IP地址间歇性丢包](https://help.aliyun.com/knowledge_detail/73247.html)
--   [访问Windows实例创建的FTP站点时报错“534 Policy requires SSL”](https://help.aliyun.com/knowledge_detail/40920.html) |
+3.  在顶部菜单栏左上角处，选择地域。
 
-## 无法ping通问题
+4.  选中待统一到期日的ECS实例。
 
-|问题|解决方案|
-|--|----|
-|ping不通ECS|-   [使用ping命令丢包或不通时的链路测试方法](https://help.aliyun.com/knowledge_detail/40573.html)
--   [能够ping通服务器的同时端口不通的排查方法](https://help.aliyun.com/knowledge_detail/40572.html)
--   [Linux系统的ECS中没有禁ping却ping不通的解决方法](https://help.aliyun.com/knowledge_detail/41332.html)
--   [无法访问ECS实例绑定的弹性网卡](https://help.aliyun.com/knowledge_detail/73607.html)
--   [Windows实例ping外网地址提示“一般故障”](https://help.aliyun.com/knowledge_detail/40726.html) |
+5.  在页面底部，单击**更多** \> **实例设置** \> **统一到期日**。
 
-## 其他（常用工具等）问题
+6.  单击**统一到期日**。
 
-|问题|解决方案|
-|--|----|
-|什么工具支持远程连接和远程传输文件|[Linux实例常用远程连接兼数据传输工具](https://help.aliyun.com/knowledge_detail/40797.html)|
-|网站无法访问如何处理|[检查TCP 80端口是否正常工作](https://help.aliyun.com/knowledge_detail/59367.html)|
+7.  选择用于统一包年包月实例到期日的日期，然后单击**确定**。
+
+8.  确认费用，然后单击**确定**。
+
+    如果存在已到期的ECS实例，该ECS实例的**费用**列下不会显示费用信息，请选择以下任一种方法处理，否则会操作失败。
+
+    -   移出已到期的ECS实例，然后继续统一到期日。
+    -   先手动续费已到期的ECS实例，然后重新统一到期日。
+9.  按页面提示完成支付。
+
 
