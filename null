@@ -1,0 +1,88 @@
+# 实例元数据访问模式
+
+访问实例元数据时支持普通模式和加固模式。加固模式下，ECS实例基于token鉴权访问实例元数据。加固模式相比普通模式，对SSRF攻击有更好的防范效果。
+
+## 实例元数据访问模式介绍
+
+SSRF（Server-Side Request Forgery）是指攻击者利用服务器漏洞，篡改获取资源的请求发给服务端，进而利用服务端访问其所在内网资源的攻击方式。由于访问实例元数据时，服务端通过URL方式分享数据内容，因此可能被恶意篡改用于攻击从外网无法访问的内部系统。针对SSRF攻击，建议您采用加固模式访问实例元数据。
+
+普通模式和加固模式的对比如下：
+
+|对比项|普通模式|加固模式|
+|---|----|----|
+|交互方式|请求/响应|会话|
+|安全校验|同VPC内源IP地址校验|基于token鉴权|
+|访问方法|通过curl命令直接访问endpoint|通过curl命令访问endpoint，请求中必须包含token标头|
+
+普通模式下，每次访问实例元数据时都需要建立新连接，且校验方式简单，请求完毕即释放连接。如果实例元数据服务器遭受攻击泄露RAM角色等敏感数据，会威胁到您的数据和资产。
+
+加固模式下，ECS实例和实例元数据服务器间建立一个会话，并在访问实例元数据时通过token验证身份，超过有效期后关闭会话并清除token。访问流程详情请参见[加固模式访问流程](#section_o7b_wye_3ok)。token具有以下特点：
+
+-   仅适用于一台ECS实例，将token文件复制到其它ECS实例使用，会被拒绝访问。
+-   必须定义token有效期，范围为1秒~21600秒（6小时）。在有效期内可以重复使用，方便您平衡安全性和用户体验。
+-   不接受代理访问，如果创建token的请求中包含`X-Forwarded-For`标头，则拒绝签发token。
+-   不限制向ECS实例签发的token数量。
+
+## 加固模式应用场景
+
+在以下场景中，建议您利用加固模式访问实例元数据，防范SSRF攻击，提高应用安全性。
+
+-   自建网络防火墙应用
+-   自建反向代理应用
+-   自建并提供转码、下载服务的Web应用
+
+## 加固模式访问流程
+
+以下为加固模式下创建token并使用token访问实例元数据的流程，但执行时可以通过一条curl命令实现。
+
+1.  使用PUT方法发起创建token请求。
+
+    必须指定token有效期，标头格式为`X-aliyun-ecs-metadata-token-ttl-seconds:<token有效期>`。
+
+2.  实例元数据服务器签发token。
+3.  访问实例元数据时填入实例元数据服务器endpoint和token标头。
+
+    token标头格式为`X-aliyun-ecs-metadata-token: $TOKEN`。
+
+4.  鉴权通过，实例元数据服务器返回实例元数据信息。
+
+创建并使用token示例：
+
+```
+TOKEN=`curl -X PUT "http://100.100.100.200/latest/api/token" -H "X-aliyun-ecs-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aliyun-ecs-metadata-token: $TOKEN"  http://100.100.100.200/latest/meta-data/instance-id
+```
+
+示例说明如下：
+
+-   通过PUT方法创建一个有效期为21600秒（6小时）的token。
+-   使用变量TOKEN存储token。
+-   访问实例元数据中的ECS实例ID，并在请求中填入了token变量名称$TOKEN。
+
+在token有效期内可以重复使用token，使用已有token示例：
+
+```
+curl -H "X-aliyun-ecs-metadata-token: $TOKEN"  http://100.100.100.200/latest/meta-data/instance-id
+```
+
+错误示例：
+
+-   有效期过长。
+
+    ```
+    curl -X PUT "http://100.100.100.200/latest/api/token" -H "X-aliyun-ecs-metadata-token-ttl-seconds: 21700"
+    ```
+
+-   创建token的请求中存在X-Forwarded-For标头。
+
+    ```
+    curl -X PUT "http://100.100.100.200/latest/api/token" -H "X-Forwarded-For: www.ba****.com"
+    ```
+
+-   访问实例元数据时指定的token无效。
+
+    ```
+    curl -H "X-aliyun-ecs-metadata-token: aaa" -v http://100.100.100.200/latest/meta-data/
+    ```
+
+
