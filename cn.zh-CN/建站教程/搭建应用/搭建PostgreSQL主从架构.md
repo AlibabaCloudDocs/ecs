@@ -4,7 +4,7 @@ keyword: PostgreSQL本地Slave搭建
 
 # 搭建PostgreSQL主从架构
 
-PostgreSQL被业界誉为最先进的开源数据库。目前阿里云数据库PostgreSQL版具有NoSQL兼容、高效查询、插件化管理、安全稳定的特性。本文档介绍在CentOS 7操作系统的ECS实例上搭建PostgreSQL主从架构的操作步骤。
+PostgreSQL被业界誉为最先进的开源数据库，支持NoSQL数据类型（JSON/XML/hstore）。本文档介绍在CentOS 7操作系统的ECS实例上搭建PostgreSQL主从架构的操作步骤。
 
 -   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.aliyun.com/register/register.htm?)。
 -   已在安全组入方向中添加规则放行5432端口。具体步骤，请参见[添加安全组规则](/cn.zh-CN/安全/安全组/添加安全组规则.md)。
