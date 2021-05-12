@@ -1,85 +1,85 @@
-# 实例元数据访问模式
+# Access mode of instance metadata
 
-访问实例元数据时支持普通模式和加固模式。加固模式下，ECS实例基于token鉴权访问实例元数据。加固模式相比普通模式，对SSRF攻击有更好的防范效果。
+The metadata of ECS instances can be accessed in normal or security-enhanced mode. In security-enhanced mode, ECS instances access instance metadata by using token-based authentication. Compared with the normal mode, the security-enhanced mode provides better protection against Server-Side Request Forgery \(SSRF\) attacks.
 
-## 实例元数据访问模式介绍
+## Overview
 
-SSRF（Server-Side Request Forgery）是指攻击者利用服务器漏洞，篡改获取资源的请求发给服务端，进而利用服务端访问其所在内网资源的攻击方式。由于访问实例元数据时，服务端通过URL方式分享数据内容，因此可能被恶意篡改用于攻击从外网无法访问的内部系统。针对SSRF攻击，建议您采用加固模式访问实例元数据。
+An SSRF is an attack in which an attacker takes advantage of vulnerabilities in a server to send crafted resource requests to the server and access resources located within the same internal network. When a request for instance metadata is received, the instance metadata server shares the requested metadata in URLs. These URLs are vulnerable to tampering and may be used to attack internal systems that are not accessible to external networks. To prevent SSRF attacks, we recommend that you access instance metadata in security-enhanced mode.
 
-普通模式和加固模式的对比如下：
+The following table compares the normal and security-enhanced modes.
 
-|对比项|普通模式|加固模式|
-|---|----|----|
-|交互方式|请求/响应|会话|
-|安全校验|同VPC内源IP地址校验|基于token鉴权|
-|访问方法|通过curl命令直接访问endpoint|通过curl命令访问endpoint，请求中必须包含token标头|
+|Comparison item|Normal mode|Security-enhanced mode|
+|---------------|-----------|----------------------|
+|Interaction mode|Interact with requests and responses.|Interact in sessions.|
+|Security verification|Verify source IP addresses within the same VPC.|Verify tokens for authentication.|
+|Access method|Use cURL commands to access the endpoint.|Use cURL commands to access the endpoint. Requests must include token headers.|
 
-普通模式下，每次访问实例元数据时都需要建立新连接，且校验方式简单，请求完毕即释放连接。如果实例元数据服务器遭受攻击泄露RAM角色等敏感数据，会威胁到您的数据和资产。
+In normal mode, a new connection is established with each request to access instance metadata, and the connection is released immediately after the request is complete. This mode uses a simple verification method. If the instance metadata server is attacked and sensitive data such as RAM roles is leaked, your data and assets are under threats.
 
-加固模式下，ECS实例和实例元数据服务器间建立一个会话，并在访问实例元数据时通过token验证身份，超过有效期后关闭会话并清除token。访问流程详情请参见[加固模式访问流程](#section_o7b_wye_3ok)。token具有以下特点：
+In security-enhanced mode, you can establish a session between an ECS instance and the instance metadata server. When you access instance metadata by using the ECS instance, the instance metadata server authenticates your identity based on a token. When the token expires, the instance metadata server closes the session and deletes the token. For more information about the access process, see [Procedure to access instance metadata in security-enhanced mode](#section_o7b_wye_3ok). The following limits apply to tokens:
 
--   仅适用于一台ECS实例，将token文件复制到其它ECS实例使用，会被拒绝访问。
--   必须定义token有效期，范围为1秒~21600秒（6小时）。在有效期内可以重复使用，方便您平衡安全性和用户体验。
--   不接受代理访问，如果创建token的请求中包含`X-Forwarded-For`标头，则拒绝签发token。
--   不限制向ECS实例签发的token数量。
+-   Each token can be used only for a single ECS instance. If you copy the token file of one ECS instance to another ECS instance, the instance metadata server denies access from the ECS instance by using the copied token file.
+-   Each token must have a defined validity period that ranges from 1 to 21,600 seconds \(six hours\). Tokens can be repeatedly used until they expire. This helps achieve a good balance between security and user experience.
+-   Proxy access is not supported. If a request used to create a token contains the `X-Forwarded-For` header, the instance metadata server refuses to issue the token.
+-   An unlimited number of tokens can be issued to each ECS instance.
 
-## 加固模式应用场景
+## Scenarios of the security-enhanced mode
 
-在以下场景中，建议您利用加固模式访问实例元数据，防范SSRF攻击，提高应用安全性。
+In the following scenarios, we recommend that you access instance metadata in security-enhanced mode to prevent SSRF attacks and improve the security of applications:
 
--   自建网络防火墙应用
--   自建反向代理应用
--   自建并提供转码、下载服务的Web应用
+-   Access self-managed network firewall applications.
+-   Access self-managed reverse proxy applications.
+-   Access self-managed web applications that provide transcoding and download services.
 
-## 加固模式访问流程
+## Procedure to access instance metadata in security-enhanced mode
 
-以下为加固模式下创建token并使用token访问实例元数据的流程，但执行时可以通过一条curl命令实现。
+This section describes how to run a cURL command to create and use a token to access instance metadata in security-enhanced mode.
 
-1.  使用PUT方法发起创建token请求。
+1.  Use the PUT method to initiate a request to create a token.
 
-    必须指定token有效期，标头格式为`X-aliyun-ecs-metadata-token-ttl-seconds:<token有效期>`。
+    You must specify the token validity period in the header in the following format: `X-aliyun-ecs-metadata-token-ttl-seconds:<token validity period>`.
 
-2.  实例元数据服务器签发token。
-3.  访问实例元数据时填入实例元数据服务器endpoint和token标头。
+2.  The instance metadata server issues the token.
+3.  When you access instance metadata, enter the endpoint of the instance metadata server and the token header.
 
-    token标头格式为`X-aliyun-ecs-metadata-token: $TOKEN`。
+    Token header format: `x-aliyun-ecs-metadata-token: $TOKEN`.
 
-4.  鉴权通过，实例元数据服务器返回实例元数据信息。
+4.  When authentication succeeds, the instance metadata server returns the requested instance metadata.
 
-创建并使用token示例：
+The following command is a sample command to create and use a token:
 
 ```
 TOKEN=`curl -X PUT "http://100.100.100.200/latest/api/token" -H "X-aliyun-ecs-metadata-token-ttl-seconds: 21600"` \
 && curl -H "X-aliyun-ecs-metadata-token: $TOKEN"  http://100.100.100.200/latest/meta-data/instance-id
 ```
 
-示例说明如下：
+The preceding sample command involves the following steps:
 
--   通过PUT方法创建一个有效期为21600秒（6小时）的token。
--   使用变量TOKEN存储token。
--   访问实例元数据中的ECS实例ID，并在请求中填入了token变量名称$TOKEN。
+-   Use the PUT method to create a token with a validity period of 21,600 seconds \(6 hours\).
+-   Use the TOKEN variable to store the token.
+-   Access the instance ID in instance metadata and include the $TOKEN variable in the request.
 
-在token有效期内可以重复使用token，使用已有token示例：
+Tokens can be repeatedly used until they expire. The following command is a sample command to use an existing token:
 
 ```
 curl -H "X-aliyun-ecs-metadata-token: $TOKEN"  http://100.100.100.200/latest/meta-data/instance-id
 ```
 
-错误示例：
+Error examples:
 
--   有效期过长。
+-   The validity period exceeds the allowed maximum length.
 
     ```
     curl -X PUT "http://100.100.100.200/latest/api/token" -H "X-aliyun-ecs-metadata-token-ttl-seconds: 21700"
     ```
 
--   创建token的请求中存在X-Forwarded-For标头。
+-   The request used to create a token contains the X-Forwarded-For header.
 
     ```
     curl -X PUT "http://100.100.100.200/latest/api/token" -H "X-Forwarded-For: www.ba****.com"
     ```
 
--   访问实例元数据时指定的token无效。
+-   The token specified for access to instance metadata is invalid.
 
     ```
     curl -H "X-aliyun-ecs-metadata-token: aaa" -v http://100.100.100.200/latest/meta-data/
