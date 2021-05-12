@@ -1,104 +1,104 @@
 ---
-keyword: [神龙架构, 本地设备, 本地磁盘监控, 弹性裸金属]
+keyword: [SHENLONG architecture, local device, local disk monitoring, ECS Bare Metal Instance]
 ---
 
-# 安装监控插件
+# Install the monitoring plug-in
 
-本文介绍了安装监控插件xdragon\_hardware\_detect\_plugin的方式，适用于使用了本地盘的弹性裸金属服务器实例。
+This topic describes two methods to install the xdragon\_hardware\_detect\_plugin monitoring plug-in. These methods are applicable to ECS bare metal instances that are equipped with local disks.
 
-待安装监控插件的弹性裸金属服务器实例必须满足以下条件：
+You can install the monitoring plug-in on an ECS bare metal instance only when the instance meets the following requirements:
 
--   所在地域为中国北京、中国上海、中国杭州、中国深圳或者中国张家口地域。
--   操作系统为Linux系统。
--   仅使用OOS批量安装监控插件：如果您根据标签匹配弹性裸金属服务器实例目标，目标实例必须已经绑定了标签。详细步骤请参见[创建或绑定标签](/intl.zh-CN/标签与资源/标签/创建或绑定标签.md)。
--   仅手动安装监控插件：已安装云助手客户端。详细步骤请参见[安装云助手客户端](/intl.zh-CN/运维与监控/云助手/配置云助手客户端/安装云助手客户端.md)。
+-   The instance is located in the China \(Beijing\), China \(Shanghai\), China \(Hangzhou\), China \(Shenzhen\), or China \(Zhangjiakou-Beijing Winter Olympics\) region.
+-   The instance runs a Linux operating system.
+-   To install the monitoring plug-in on multiple instances at a time by using Operation Orchestration Service \(OOS\) and use a tag to select ECS bare metal instances, the tag must be bound to the instances. For more information, see [Create or bind a tag](/intl.en-US/Tag & Resource/Tags/Create or bind a tag.md).
+-   To manually install the monitoring plug-in, you must make sure that the Cloud Assistant client is installed. For more information, see [Install the Cloud Assistant client](/intl.en-US/Deployment & Maintenance/Cloud assistant/Configure the Cloud Assistant client/Install the Cloud Assistant client.md).
 
-    **说明：** 2017年12月01日之后使用公共镜像创建的ECS实例，默认预装云助手客户端。
+    **Note:** ECS instances that are created from public images after December 1, 2017 are pre-installed with the Cloud Assistant client.
 
 
-如果您使用的是搭载了本地盘的弹性裸金属服务器实例规格，需要您自行监控和诊断本地盘健康状态。
+If you are using an ECS bare metal instance equipped with a local disk, you must monitor and diagnose the health status of the local disk by using the xdragon\_hardware\_detect\_plugin plug-in.
 
-插件xdragon\_hardware\_detect\_plugin可以定期检测弹性裸金属服务器实例上的本地盘设备的健康状态，如果发生本地盘异常事件，插件会自动将异常事件反馈成本地盘系统事件。对应的系统事件代码为`SystemMaintenance.ReInitErrorDisk`。详情请参见[本地盘实例系统事件概述](/intl.zh-CN/运维与监控/系统事件/本地盘实例系统事件/本地盘实例系统事件概述.md)。
+The xdragon\_hardware\_detect\_plugin plug-in can check the health status of local disks on ECS bare metal instances on a regular basis. If an exception occurs to a local disk, the plug-in automatically reports the exception as a system event of the local disk. The corresponding system event code is `SystemMaintenance.ReInitErrorDisk`. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
 
-## 使用OOS批量安装监控插件
+## Install the monitoring plug-in on multiple instances at a time by using OOS
 
-运维编排服务OOS能通过公共模板自动安装监控插件xdragon\_hardware\_detect\_plugin。
+OOS can automatically install the xdragon\_hardware\_detect\_plugin monitoring plug-in by using a public template.
 
-1.  登录[OOS管理控制台](https://oos.console.aliyun.com/)。
+1.  Log on to the [OOS console](https://oos.console.aliyun.com/).
 
-2.  在顶部菜单栏左上角处，选择地域。
+2.  In the top navigation bar, select a region.
 
-3.  在**公共模板**中，输入ACS-ECS-InstallXDragonAndCloudMonitor搜索批量安装神龙监控插件的模板，单击**创建执行**。
+3.  On the **Public Templates** page, enter ACS-ECS-InstallXDragonAndCloudMonitor to search for the template that is used to install the monitoring plug-in. Click **Create Execution**.
 
-    ![批量安装神龙监控插件-创建执行](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0732145951/p62648.png)
+    ![Install the xdragon_hardware_detect_plugin monitoring plug-in on multiple instances at a time - Create Execution](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3060235951/p62648.png)
 
-4.  在创建执行的对话框中，完成以下配置：
+4.  On the Create page, configure the following settings:
 
-    1.  在**基本信息**处，为**执行模式**选择**自动执行**，其他配置保持系统默认。完成后单击**下一步：设置参数**。
+    1.  In the **Basic Information** step, set **Execution Mode** to **Automatic** and retain the default values for other parameters. Click **Next: Parameter Settings**.
 
-    2.  在**设置参数**处，完成以下配置，其他配置保持系统默认，完成后单击**下一步：确认**。
+    2.  In the **Parameter Settings** step, set the following parameters and retain the default values for other parameters. Click **Next: OK** after you configure the settings.
 
-        -   targets：选择一台或多台需要轮询并安装监控插件的弹性裸金属服务器实例，支持标签方式和手动选择方式。
-        -   action：选择install，即安装插件。
+        -   targets: You can select one or more ECS bare metal instances to be polled and installed with the monitoring plug-in. You can select instances manually or by using tags.
+        -   action: You can select install to install the plug-in.
 
-            **说明：** 该运维模板同时支持安装、更新和卸载监控插件，您可以根据自身需要选择运维任务类型。
+            **Note:** This operation template can be used to install, update, or uninstall the monitoring plug-in. Set the action parameter based on your needs.
 
-        -   rateControl：选择**并发控制**，**并发速率**选择百分制，并设置为100%。
-        ![批量安装神龙监控插件-创建执行](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0732145951/p62665.png)
+        -   rateControl: You can select **Concurrency-based Control**, select % for **Concurrency**, and then set Concurrency to 100%.
+        ![Install the xdragon_hardware_detect_plugin monitoring plug-in on multiple instances at a time - Create Execution](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3060235951/p62665.png)
 
-    3.  确认模板配置信息后，单击**创建执行**。
+    3.  Confirm the preceding settings and click **Create**.
 
-    创建了运维任务后，您可以在**执行管理**页面查看运维任务的结果。
+    After the execution is created, you can go to the **Executions** page to view the execution results.
 
-    -   当**执行状态**显示**成功**，表示运维任务已完成。
-    -   当**执行状态**显示**失败**，您可以单击**操作**列下的**详情**查看**执行日志**，并根据日志信息分析和调整执行内容。
+    -   If **Success** is displayed in the **Execution Status** column corresponding to an O&M task, the O&M task is successful.
+    -   If **Failed** is displayed in the **Execution Status** column corresponding to an O&M task, you can click **Details** in the **Actions** column and then click **Execution Logs**. Then, you can analyze and adjust the execution content based on the log information.
 
-## 手动安装监控插件
+## Manually install the monitoring plug-in
 
-云助手客户端提供的aliyun\_installer工具可以下载并安装监控插件xdragon\_hardware\_detect\_plugin。
+You can perform the following operations to download and install the xdragon\_hardware\_detect\_plugin monitoring plug-in by using the aliyun\_installer tool provided by the Cloud Assistant client:
 
-1.  以root权限远程连接弹性裸金属服务器实例。
+1.  Connect to an ECS bare metal instance as a root user.
 
-2.  运行`aliyun_installer -h`查看工具帮助信息。
+2.  Run the `aliyun_installer -h` command to view the help information of the tool.
 
-3.  使用aliyun\_installer命令安装监控插件xdragon\_hardware\_detect\_plugin。
+3.  Run the aliyun\_installer command to install the xdragon\_hardware\_detect\_plugin monitoring plug-in.
 
     ```
     [root@EcsHost ~]# aliyun_installer -i xdragon_hardware_detect_plugin -e 1.0.0
     ```
 
-4.  保存并运行安装特殊版本云监控插件的Shell脚本。Shell脚本请参见下文[脚本示例](#p_installingcmsagent)。
+4.  Save and run the shell script that is used to install the special version of the Cloud Monitor plug-in. For more information about the shell script, see the [sample script](#p_installingcmsagent) in the following section.
 
     ```
     [root@EcsHost ~]# bash <nameOfTheScript\>.sh
     ```
 
-    **说明：** 安装监控插件xdragon\_hardware\_detect\_plugin的步骤必须先于云监控插件，若您先安装了云监控插件，请执行`/usr/local/cloudmonitor/CmsGoAgent.linux-amd64 restart`重启云监控插件。
+    **Note:** You must install the xdragon\_hardware\_detect\_plugin monitoring plug-in before you install the Cloud Monitor plug-in. If you have installed the Cloud Monitor plug-in first, run the `/usr/local/cloudmonitor/CmsGoAgent.linux-amd64 restart` command to restart the Cloud Monitor plug-in.
 
-5.  执行`smartctl -V`检测实例是否已安装本地盘监控和分析工具smartctl。
+5.  Run the `smartctl -V` command to check whether the local disk monitoring and analysis tool smartctl is installed on the instance.
 
-    如果返回信息中显示工具版本号，表示实例已安装smartctl工具。
+    If the version number of the smartctl tool is shown in the command output, the tool is installed on the instance.
 
-6.  如果实例未安装smartctl工具，按以下方式安装：
+6.  If the version number of the smartctl tool is not shown in the command output, install the tool by using one of the following methods:
 
-    -   CentOS系统：
+    -   For CentOS:
 
         ```
         root@EcsHost ~]# yum install smartmontools
         ```
 
-    -   Ubuntu系统：
+    -   For Ubuntu:
 
         ```
         root@EcsHost ~]# apt update &&  apt install smartmontools
         ```
 
-    -   其他Linux发行版安装方式，请参见[smartmontools相关文档](https://www.smartmontools.org/wiki/Download#Installfromthesourcetarball)。
+    -   For more information about the installation methods for other Linux distributions, visit [smartmontools document](https://www.smartmontools.org/wiki/Download#Installfromthesourcetarball).
 
-手动安装特殊版本云监控插件的Shell脚本如下所示：
+Sample shell script for manually installing the special version of the Cloud Monitor plug-in:
 
 ```
-#!/bin/bash
+#! /bin/bash
 echo "installing cms agent"
 
 if [ -z "${CMS_HOME}" ]; then
@@ -118,7 +118,7 @@ DOWNLOAD_PATH="cms-go-agent/${VERSION}/${ELF_NAME}"
 DEST_UPDATE_FILE="$CMS_HOME/${ELF_NAME}"
 
 current_cms_version="0"
-# xdragon always x86 arch, judge version
+# SHENLONG always x86 arch, judge version
 if [ -f /usr/local/cloudmonitor/CmsGoAgent.linux-amd64 ]; then
     current_cms_version="$($DEST_UPDATE_FILE version)"
 fi
@@ -168,13 +168,13 @@ download()
   fi
   echo download from "$OSS_URL"
   wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
-  if [ $? != 0 ]; then
+  if [ $? ! = 0 ]; then
     echo "download fail, retry..."
     CMS_PROXY="vpc-opencmsproxy.aliyun.com:8080";
     OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
     wget -q -e "http_proxy=$CMS_PROXY" "$OSS_URL" -O "$DEST_UPDATE_FILE" -t 3 --connect-timeout=2
   fi
-  if [ $? != 0 ]; then
+  if [ $? ! = 0 ]; then
     echo "download fail, retry..."
     CMS_PROXY="opencmsproxy.aliyun.com:8080";
     OSS_URL="http://cms-download.aliyun.com/$DOWNLOAD_PATH"
@@ -206,7 +206,7 @@ else
 fi
 ```
 
-安装后，监控插件xdragon\_hardware\_detect\_plugin所在目录为/usr/local/xdragon\_hwqc。更新插件可执行`aliyun_installer -d xdragon_hardware_detect_plugin`，卸载插件可执行`aliyun_installer -u xdragon_hardware_detect_plugin`。
+After the xdragon\_hardware\_detect\_plugin monitoring plug-in is installed, you can view it in the /usr/local/xdragon\_hwqc directory. You can run the `aliyun_installer -d xdragon_hardware_detect_plugin` command to update the plug-in, or run the `aliyun_installer -u xdragon_hardware_detect_plugin` command to uninstall it.
 
-您可以调用ECS API隔离损坏的本地盘，隔离后，弹性裸金属服务器实例不会变更所宿物理机。详情请参见[本地盘实例系统事件](/intl.zh-CN/运维与监控/系统事件/本地盘实例系统事件/本地盘实例系统事件概述.md)。
+You can call an ECS API operation to isolate damaged local disks. When damaged local disks are isolated, the corresponding ECS bare metal instances are not migrated to a different physical machine. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
 
