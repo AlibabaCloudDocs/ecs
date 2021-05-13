@@ -69,6 +69,14 @@
  最大值：50
 
  默认值：10 |
+|RepeatMode|String|否|Once|命令执行的方式。取值范围：
+
+ -   Once：立即执行命令。
+-   Period：定时执行命令。
+-   NextRebootOnly：当实例下一次启动时，自动执行命令。
+-   EveryReboot：实例每一次启动都将自动执行命令。
+
+ 默认值：空，表示查询全部。 |
 
 ## 返回数据
 
@@ -323,9 +331,9 @@ https://ecs.aliyuncs.com/?Action=DescribeInvocations
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
 |400|RegionId.ApiNotSupported|The api is not supported in this region.|指定地域下不支持调用API。请检查RegionId参数取值是否正确。|
-|500|InternalError.Dispatch|An error occurred when you dispatched the request.|发送请求时发生错误，请稍后重试。|
 |403|InvalidParam.PageNumber|The specified parameter is invalid.|指定的PageNumber参数无效。|
 |403|InvalidParam.PageSize|The specified parameter is invalid.|指定的PageSize参数无效。|
+|500|InternalError.Dispatch|An error occurred when you dispatched the request.|发送请求时发生错误，请稍后重试。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
