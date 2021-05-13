@@ -103,9 +103,11 @@
 
 ```
 
- 其中，Windows实例不能以斜线号（/）为密码首字符。
+ 您需要注意：
 
- **说明：** 如果传入`Password`参数，建议您使用HTTPS协议发送请求，避免密码泄露。 |
+ -   如果传入`Password`参数，建议您使用HTTPS协议发送请求，避免密码泄露。
+-   Windows实例不能以正斜线（/）为密码首字符。
+-   部分操作系统的实例不支持配置密码，仅支持配置密钥对。例如：Others Linux、Fedora CoreOS。 |
 |PasswordInherit|Boolean|否|false|是否使用镜像预设的密码。使用该参数时，Password参数必须为空，同时您需要确保使用的镜像已经设置了密码。 |
 |DeploymentSetId|String|否|ds-bp1brhwhoqinyjd6\*\*\*\*|部署集ID。 |
 |ZoneId|String|否|cn-hangzhou-g|实例所属的可用区ID。更多详情，请参见[DescribeZones](~~25610~~)获取可用区列表。
@@ -578,6 +580,7 @@ https://ecs.aliyuncs.com/?Action=CreateInstance
 |403|InvalidVSwitchId.IpInvalid|%s|指定的私网IP无效。|
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|指定的磁盘是不可移植的。|
 |403|QuotaExceed.Tags|%s|标签数超过可以配置的最大数量。|
+|400|InvalidParameter|%s|无效的参数。|
 |401|InvalidRamRole.NotEcsRole|The specified ram role is not authorized for ecs, please check your role policy.|指定的RAM角色无权使用ECS，请检查您的角色策略。|
 |403|EnterpriseGroupLimited.MutliGroupType|The specified instance can not join multi SecurityGroup types.|指定的实例不能同时加入普通安全组和企业安全组。您可以调用DescribeSecurityGroups查询指定安全组的类型。|
 |403|QuotaExceed.ElasticQuota|No additional quota is available for the specified ECS instance type.|您在当前地域选择的实例规格所要创建的台数超出系统限额，您可以选择其他地域、实例规格或减少台数重新购买，也可以前往ECS管理控制台或配额中心申请提高限额。|
