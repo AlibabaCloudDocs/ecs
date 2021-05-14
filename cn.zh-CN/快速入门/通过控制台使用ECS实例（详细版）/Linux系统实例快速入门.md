@@ -35,7 +35,7 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
     |**地域及可用区**|    -   地域：华东1（杭州）
     -   可用区：随机分配
 |实例创建后，无法直接更改地域和可用区，请谨慎选择。|
-    |**实例**|    -   规格族：通用型g6
+    |**实例规格**|    -   规格族：通用型g6
     -   规格：ecs.g6.large
 |可供选择的实例规格由您所选择的地域以及库存供应决定。 您可以前往[ECS实例可购买地域](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion)，查看实例在各地域的可购情况。 |
     |**镜像**|    -   类型：公共镜像
@@ -48,11 +48,7 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
     |**安全组**|\[默认\]sg-bp1bhjjsoiyx44hd\*\*\*\*|请您根据实际需求选择已创建的安全组。带**\[默认\]**前缀的资源由ECS控制台自动创建。|
     |**系统配置**|**登录凭证**|自定义密码|本文中选择**自定义密码**，并手动设置一个密码，用于远程连接并登录ECS实例。|
     |**登录密码**|Ecs123456|当**登录凭证**选择**自定义密码**时，需要设置此选项并确认密码，在后续连接ECS实例时，您需要输入用户名`root`和此处设置的密码。|
-    |**实例名称**|    ```
-EcsQuickStart
-    ```
-
-|本文中的实例一律使用EcsQuickStart指代。|
+    |**实例名称**|EcsQuickStart|本文中的实例一律使用EcsQuickStart指代。|
     |**分组设置**|**标签**|ECS:Documentation|有多台实例时，建议添加标签，方便管理。|
 
 3.  单击**下一步：确认订单**。在该页面确认**所选配置**，或者单击编辑图标![编辑-图标](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8366520061/p77356.png)返回修改配置。
@@ -105,17 +101,17 @@ EcsQuickStart
 
 ## 步骤三：连接ECS实例
 
-1.  单击下一步骤中的![cloud-shell-try-it](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9296958951/p77610.png)按钮，等待初始化CloudShell客户端。
-
-2.  使用ssh命令连接实例。
+1.  单击下方的![cloud-shell-try-it](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9296958951/p77610.png)按钮，等待初始化CloudShell客户端，然后使用ssh命令连接实例。
 
     ```
     ssh root@<实例公网IP地址>
     ```
 
-3.  提示ECS实例此次授信登录需要存储密钥指纹时，输入yes。
+    本文中，示例用户名为`root`。
 
-4.  输入ECS实例的用户名`root`和密码，并回车。
+2.  提示ECS实例此次授信登录需要存储密钥指纹时，输入yes。
+
+3.  输入ECS实例的密码，并回车。
 
     本文中，示例密码为`Ecs123456`。
 
