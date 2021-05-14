@@ -35,7 +35,7 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
     |**地域与可用区**|    -   地域：华东 1（杭州）
     -   可用区：随机分配
 |实例创建后，无法直接更改地域和可用区，请谨慎选择。|
-    |**实例**|    -   规格族：通用型g6
+    |**实例规格**|    -   规格族：通用型g6
     -   规格：ecs.g6.large
 |可供选择的实例规格由您所选择的地域以及库存供应决定。 您可以前往[ECS实例可购买地域](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion)，查看实例在各地域的可购情况。 |
     |**镜像**|    -   类型：公共镜像
@@ -44,16 +44,12 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
     |**网络和安全组**|**专有网络**|\[默认\]vpc-bp1opxu1zkhn00g\*\*\*\*\*\*|带**\[默认\]**前缀的资源由ECS控制台自动创建。|
     |**分配公网IPv4地址**|勾选|勾选后，自动分配一个公网IP（v4）地址。|
     |**带宽计费模式**|按使用流量|**按使用流量**模式只需为所消耗的公网流量付费。详情请参见[公网带宽计费](/cn.zh-CN/产品计费/计费项/公网带宽计费.md)。|
-    |**峰值带宽**|2 Mbps|无。|
+    |**带宽峰值**|2 Mbps|无。|
     |**安全组**|    -   安全组：\[默认\]sg-bp1bhjjsoiyx44\*\*\*\*\*\*
     -   安全组规则：勾选ICMP协议、SSH 22、RDP 3389、HTTP 80和HTTPS 443端口
 |带**\[默认\]**前缀的资源由ECS控制台自动创建。|
     |**系统配置**|**登录凭证**|自定义密码|请记录该配置，[连接ECS实例](#Connect)时您需要输入administrator密码。|
-    |**实例名称**|    ```
-EcsQuickStart
-    ```
-
-|本文中的实例一律使用EcsQuickStart指代。|
+    |**实例名称**|EcsQuickStart|本文中的实例一律使用EcsQuickStart指代。|
     |**分组设置**|**标签**|ECS:Documentation|有多台实例时，建议添加标签，方便管理。|
 
 3.  单击**下一步：确认订单**。在该页面确认**所选配置**，或者单击编辑图标![编辑-图标](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8366520061/p77356.png)返回修改配置。
@@ -116,9 +112,9 @@ EcsQuickStart
 
     -   **用户名**：填写administrator。
     -   **密码**：创建ECS实例时，在**登录凭证**处设置的**登录密码**。
-    ![Workbench连接Windows实例](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4396958951/p77413.png)
+    ![Workbench连接Windows实例](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8465780261/p77413.png)
 
-    弹出**EcsQuickStart - ECS-Workbench**终端后，连接实例成功。
+    弹出Windows桌面后，连接实例成功。
 
     如果报错请检查网络是否可达或者白名单设置，请返回[步骤二：添加安全组规则](#AddSecurityGroupRules)放行3389端口。
 
