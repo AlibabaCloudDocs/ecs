@@ -22,7 +22,7 @@
 
     本示例中，SSH协议的22端口和HTTP协议的8080端口。
 
-2.  远程连接Linux实例。具体步骤，请参见[通过VNC远程连接登录Linux实例](/intl.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+2.  远程连接Linux实例。具体步骤，请参见[通过密码认证登录Linux实例](/intl.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
 3.  关闭防火墙。
 
@@ -130,7 +130,7 @@
         export JAVA_HOME CLASSPATH PATH
         ```
 
-    4.  按下Ecs键，输入`:wq`并回车以保存并关闭文件。
+    4.  按下Esc键，输入`:wq`并回车以保存并关闭文件。
 
     5.  立即生效环境变量。
 
@@ -242,8 +242,10 @@
 
     2.  按下i键，添加以下内容。
 
+        指定`JAVA_OPTS`参数，用于设置JVM的内存信息以及编码格式。
+
         ```
-        JAVA_OPTS='-Djava.security.egd=file:/dev/./urandom -server -Xms256m -Xmx496m -Dfile.encoding=UTF-8'                          
+        JAVA_OPTS='-Djava.security.egd=file:/dev/./urandom -server -Xms256m -Xmx496m -Dfile.encoding=UTF-8'
         ```
 
     3.  按下esc键，输入`:wq`并回车以保存并关闭文件。
