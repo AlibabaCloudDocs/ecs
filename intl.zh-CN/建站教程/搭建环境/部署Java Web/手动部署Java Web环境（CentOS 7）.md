@@ -260,8 +260,10 @@
 
     2.  按下i键，添加以下内容。
 
+        指定`JAVA_OPTS`参数，用于设置JVM的内存信息以及编码格式。
+
         ```
-        JAVA_OPTS='-Djava.security.egd=file:/dev/./urandom -server -Xms256m -Xmx496m -Dfile.encoding=UTF-8'                          
+        JAVA_OPTS='-Djava.security.egd=file:/dev/./urandom -server -Xms256m -Xmx496m -Dfile.encoding=UTF-8'
         ```
 
     3.  按下esc键，输入`:wq`并回车以保存并关闭文件。
