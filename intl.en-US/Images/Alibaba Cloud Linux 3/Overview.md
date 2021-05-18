@@ -16,8 +16,6 @@ Alibaba Cloud Linux 3 is suitable for the following scenarios:
     -   Alibaba Cloud Linux 3 supports instance types that have 0.5 GiB to 12,288 GiB of memory.
     -   Alibaba Cloud Linux 3 does not support non-I/O optimized instances.
 
-**Note:** Alibaba Cloud Linux 3 is now available in the China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), China \(Hong Kong\), and Singapore \(Singapore\) regions. The number of supported regions is increasing.
-
 ## Benefits
 
 Alibaba Cloud Linux 3 inherits all of the benefits of Alibaba Cloud Linux 2. Compared with other Linux distributions, Alibaba Cloud Linux 3 provides the following advantages:
