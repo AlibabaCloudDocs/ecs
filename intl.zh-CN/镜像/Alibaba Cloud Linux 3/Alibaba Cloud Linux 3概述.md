@@ -16,8 +16,6 @@ Alibaba Cloud Linux 3适用于下列场景。
     -   支持的实例内存范围为0.5 GiB~12288 GiB。
     -   不支持非I/O优化实例。
 
-**说明：** Alibaba Cloud Linux 3操作系统目前支持华北1（青岛）、华北2（北京）、华东1（杭州）、西南1（成都）、中国（香港）、新加坡地域，地域数量持续增加中。
-
 ## 优势
 
 Alibaba Cloud Linux 3继承Alibaba Cloud Linux 2的全部优势，并与其他Linux系统相比，Alibaba Cloud Linux 3具有以下优势：
@@ -43,12 +41,17 @@ Alibaba Cloud Linux 3是免费镜像，但当您选用Alibaba Cloud Linux 3镜�
 
 您可通过下列方法获取并使用Alibaba Cloud Linux 3。
 
--   新创建ECS实例时选择**公共镜像**，并选择Alibaba Cloud Linux 3的相应版本。具体操作，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
--   已创建的ECS实例可通过更换系统盘，将现有操作系统更换为Alibaba Cloud Linux 3。具体操作，请参见[更换系统盘（公共镜像）](/intl.zh-CN/块存储/云盘/更换系统盘/更换系统盘（公共镜像）.md)。
+-   ECS实例
+    -   新创建ECS实例时选择**公共镜像**，并选择Alibaba Cloud Linux 3的相应版本。具体操作，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
+    -   已创建的ECS实例可通过更换系统盘，将现有操作系统更换为Alibaba Cloud Linux 3。具体操作，请参见[更换系统盘（公共镜像）](/intl.zh-CN/块存储/云盘/更换系统盘/更换系统盘（公共镜像）.md)。
+-   本地环境（基于KVM技术的虚拟化环境）
+
+    直接下载Alibaba Cloud Linux 3虚拟机镜像并安装启动。具体操作，请参见[在本地使用Alibaba Cloud Linux 3镜像](/intl.zh-CN/镜像/Alibaba Cloud Linux 3/Alibaba Cloud Linux 3支持的功能和接口/在本地使用Alibaba Cloud Linux 3镜像.md)。
+
 
 ## 更新记录
 
-关于Alibaba Cloud Linux 3镜像发布记录的更多信息，请参见[Alibaba Cloud Linux 3镜像发布记录]()。
+关于Alibaba Cloud Linux 3镜像发布记录的更多信息，请参见[Alibaba Cloud Linux 3镜像发布记录](/intl.zh-CN/镜像/Alibaba Cloud Linux 3/Alibaba Cloud Linux 3镜像发布记录.md)。
 
 ## 技术支持
 
