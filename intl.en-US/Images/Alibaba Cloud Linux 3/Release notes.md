@@ -5,8 +5,7 @@ This topic describes the updates to Alibaba Cloud Linux 3 images. The release no
 |Image ID|Release date|Description|
 |--------|------------|-----------|
 |aliyun\_3\_x64\_20G\_alibase\_20210425.vhd|2021-04-25|-   The `Alibaba Cloud Linux 3.2104 64-bit` base image is updated.
--   Kernel updates: The kernel is updated to the 5.10.23-5.al8.x86\_64 version.
--   Applicable regions: China \(Qingdao\), China \(Beijing\), China \(Hangzhou\), China \(Chengdu\), China \(Hong Kong\), and Singapore \(Singapore\). |
+-   Kernel updates: The kernel is updated to the 5.10.23-5.al8.x86\_64 version. |
 |aliyun\_3\_x64\_20G\_alibase\_20210415.vhd|2021-04-16|-   The `Alibaba Cloud Linux 3.2104 64-bit` base image is released.
 -   Kernel description:
     -   The kernel is based on the 5.10 kernel version supported in the Linux community. The 5.10.23-4.al8.x86\_64 kernel version is used in the base image.
