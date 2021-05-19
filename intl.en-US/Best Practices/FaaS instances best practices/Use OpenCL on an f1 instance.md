@@ -1,179 +1,212 @@
-# Use OpenCL on an f1 instance {#concept_61410_zh .concept}
+# Use OpenCL on an f1 instance
 
-This topic introduces how to use Open Computing Language \(OpenCL\) to create an image file, and then download the image to an FPGA chip.
+This topic describes how to use Open Computing Language \(OpenCL\) on an f1 instance to create an image and download the image to a Field Programmable Gate Array \(FPGA\).
 
-**Note:** 
+-   An Alibaba Cloud account is created. To create an Alibaba Cloud account, go to the [account registration page](https://account.alibabacloud.com/register/intl_register.htm).
+-   An f1 instance is created and can access the Internet.
 
--   All the operations described in this topic must be performed by one account in the same region.
--   We strongly recommend that you use an f1 instance as a RAM user. To avoid unwanted operations, you must authorize the RAM user to perform required actions only. You must create a role for the RAM user and grant temporary permissions to the role to access the OSS buckets. If you want to encrypt the IP address, grant the RAM user to use Key Management Service \(KMS\). If you want the RAM user to check permissions, authorize the RAM user to view the resources of an account. Before you begin, complete the following:
+    **Note:** Only FaaS F1 basic images from Alibaba Cloud Marketplace can be used in f1 instances. For more information, see [Create an f1 instance](/intl.en-US/Instance/Instance type families/Compute optimized type family with FPGA/Create an f1 instance.md).
 
-## Prerequisites {#section_b44_gr3_dfb .section}
+-   The rule for allowing traffic on SSH port 22 is configured for the security groups where the f1 instance resides.
+-   The ID of the f1 instance is obtained from the Instances page in the [ECS console](https://ecs.console.aliyun.com/#/home).
+-   An OSS bucket for FaaS is created.
 
--   Create an f1 instance and add a security group rule to allow Internet access to SSH Port 22 of the instance.
+    The OSS bucket and the f1 instance must be in the same account and the same region. For more information, see [Create buckets](/intl.en-US/Quick Start/OSS console/Create buckets.md).
 
-    **Note:** Only the image we share with you can be used on an f1 instance. For more information, see [Create an f1 instance](../../../../reseller.en-US/Instances/Instance type families/Compute optimized type family with FPGA/Create an f1 instance.md).
+-   To encrypt files, activate Key Management Service \(KMS\) first.
 
--   Log on to the [ECS console](https://partners-intl.console.aliyun.com/#/ecs) to obtain the instance ID.
--   [Create an OSS bucket](../../../../reseller.en-US/Quick Start/Create a bucket.md) to upload your custom bitstream files. The OSS bucket and the f1 instance must be owned by one account and in the same region.
--   To encrypt your bitstream, activate Key Management Service \(KMS\).
--   To operate an f1 instance as a RAM user, you must do the following operations:
-    -   [Create a RAM user](../../../../reseller.en-US/Quick Start/(Old Version) Quick Start/Create a RAM user.md) and [grant permissions](../../../../reseller.en-US/Quick Start/(Old Version) Quick Start/Authorize RAM users.md).
-    -   [Create a RAM role](../../../../reseller.en-US/User Guide/(Old Version) User Guide/Identities/RAM roles.md) and [grant permissions](../../../../reseller.en-US/User Guide/(Old Version) User Guide/Authorization management/Permission granting in RAM.md).
-    -   Create an AccessKey.
+    For more information, see [Activate KMS](/intl.en-US/Quick Start/Overview.md).
 
-## Procedure {#section_xn8_vv7_h90 .section}
+-   You must complete the following operations before you can manage FPGA-accelerated instances as a RAM user:
+    -   Create a RAM user and grant permissions to the RAM user. For more information, see [Create a RAM user](/intl.en-US/RAM User Management/Basic operations/Create a RAM user.md) and [Grant permissions to a RAM user](/intl.en-US/RAM User Management/Authorization management/Grant permissions to a RAM user.md).
 
-To configure the environment of FPGA Server Example, follow these steps.
+        The permissions you must grant to the RAM user include AliyunECSReadOnlyAccess, AliyunOSSFullAccess, and AliyunRAMFullAccess.
 
-## Step 1. Connect to your f1 instance {#section_gtn_u6n_tfu .section}
+    -   Go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunFAASDefaultRole%22%2C%20%22TemplateId%22%3A%20%22DefaultRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%23/home%22%2C%20%22Service%22%3A%20%22FAAS%22%7D) page to authorize FaaS to access your resources.
+    -   Obtain the AccessKey ID and AccessKey secret of the RAM user.
 
-[Connect to the Linux instance](../../../../reseller.en-US/Instances/Connect to instances/Connect to Linux instances/Connect to a Linux instance by using a password.md).
+Before you perform the operations, take note of the following items:
 
-## Step 2. Install the basic environment {#section_rza_ct9_ori .section}
+-   All operations described in this topic must be performed by a single account within the same region.
+-   We strongly recommend that you manage FPGA-accelerated instances as a RAM user. To avoid unwanted operations, you must only authorize the RAM user to perform required actions. You must create a role for the RAM user and grant temporary permissions to the role to access the specified OSS bucket. Then, you can download the original DCP project from the OSS bucket and manage the FPGA image. If you want to encrypt the IP address, you must authorize the RAM user to use KMS. If you want the RAM user to check permissions of Alibaba Cloud accounts, you must authorize the RAM user to view the resources of Alibaba Cloud accounts.
 
-Run the following script to install the base environment.
+## Procedure
 
-``` {#codeblock_906_fye_b9z .language-shell}
-source /opt/dcp1_1/script/f1_env_set.sh            
+Perform the following operations to use the OpenCL example on an f1 instance to create an image and download the image to an FPGA:
+
+1.  [Step 1: Connect to an f1 instance](#section_0xw_r1j_tak)
+2.  [Step 2: Install the basic environment](#section_gob_p8r_eox)
+3.  [Step 3: Copy the OpenCL example](#section_jrm_tz5_d4k)
+4.  [Step 4: Upload the configuration file](#section_hbq_4vp_q7d)
+5.  [Step 5: Download the image to the f1 instance](#section_nxl_txt_iep)
+6.  [Step 6: Download the FPGA image to an FPGA](#section_bcs_ojs_uae)
+
+## Step 1: Connect to an f1 instance
+
+For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using a username and password.md).
+
+## Step 2: Install the basic environment
+
+Run the following script to install the basic environment:
+
+```
+source /opt/dcp1_1/script/f1_env_set.sh
 ```
 
-## Step 3. Download the OpenCL Example {#section_nma_nzp_cq9 .section}
+## Step 3: Copy the OpenCL example
 
-Follow these steps to download the official opencl example.
+1.  Run the following commands in sequence to create and switch to the /opt/tmp directory:
 
-1.  Create the /opt/tmp directory, and change the current directory to it.
-
-    ``` {#codeblock_k4l_96w_xun .language-shell}
-    mkdir -p /opt/tmp
-    cd /opt/tmp                    
+    ```
+    mkdir -p /opt/tmp         
     ```
 
-    Now, you are at the /opt/tmp directory.
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9827/156677770411994_en-US.png)
-
-2.  Run the commands one by one to download and decompress the OpenCL Example file.
-
-    ``` {#codeblock_bj5_y93_tng .language-shell}
-    wget https://www.altera.com/content/dam/altera-www/global/en_US/others/support/examples/download/exm_opencl_matrix_mult_x64_linux.tgz
-    tar -zxvf exm_opencl_matrix_mult_x64_linux.tgz                    
+    ```
+    cd /opt/tmp            
     ```
 
-    The following figure displays the directory after decompression.
+    You are in the /opt/tmp directory.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9827/156677770411995_en-US.png)
+    ![Enter the tmp directory](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6514488951/p11994.png)
 
-3.  Change the current directory to the matrix\_mult directory and run the command for compilation.
+2.  Run the following command to copy the OpenCL example to the current directory:
 
-    ``` {#codeblock_8hy_iso_54w .language-shell}
-    cd matrix_mult
-    aoc -v -g --report ./device/matrix_mult.cl                    
+    ```
+    cp /opt/dcp1_1/opencl/exm_opencl_vector_add_x64_linux.tgz ./
     ```
 
-    The process of compilation takes several hours. You can open a new console, and run the `top` command to monitor processes and system resource usage on the instance and view the status of the compilation process.
+3.  Run the following commands in sequence to go to the vector\_add directory for compilation:
+
+    ```
+    cd vector_add             
+    ```
+
+    ```
+    aoc -v -g -report ./device/vector_add.cl             
+    ```
+
+    The compilation process may take a few hours. You can start another session, and run the top command to monitor system resource usage and view the compilation status.
 
 
-## Step 4. Upload the configuration file to the OSS bucket {#section_py6_0cb_v87 .section}
+## Step 4: Upload the configuration file
 
-Follow these steps to upload the configuration file.
+1.  Run the following commands in sequence to initialize the faascmd tool:
 
-1.  Run the commands to initialize the faascmd.
-
-    ``` {#codeblock_6u6_2y8_b9i .language-shell}
-    # If needed, add the environment variable and grant the permission to run the commands
+    ```
+    #Configure the environment variable.
     export PATH=$PATH:/opt/dcp1_1/script/
+    ```
+
+    ```
+    #Grant execute permissions to the faascmd tool.
     chmod +x /opt/dcp1_1/script/faascmd
-    # Replace hereIsYourSecretId with your AccessKey ID. Replace hereIsYourSecretKey with your AccessKey Secret
-    faascmd config --id=hereIsYourSecretId --key=hereIsYourSecretKey
-    # Replace hereIsYourBucket with the bucket name of your OSS in the Region China (Hangzhou).
-    faascmd auth --bucket=hereIsYourBucket                    
     ```
 
-2.  Change the current directory to the matrix\_mult/output\_files directory, and upload the configuration file.
-
-    ``` {#codeblock_42r_m2e_2en .language-shell}
-    cd matrix_mult/output_files # Now you are accessing/opt/tmp/matrix_mult/matrix_mult/output_files
-    faascmd upload_object --object=afu_fit.gbs --file=afu_fit.gbs                    
+    ```
+    #Replace <hereIsYourSecretId> in the command with your AccessKey ID. Replace <hereIsYourSecretKey> with your AccessKey secret.
+    faascmd config --id=<hereIsYourSecretId> --key=<hereIsYourSecretKey>
     ```
 
-3.  Use gbs to create an FPGA image.
-
-    ``` {#codeblock_twi_7xv_a1l .language-shell}
-    # Replace hereIsYourImageName with your image name. Replace hereIsYourImageTag with your image tag.
-    faascmd create_image --object=dma_afu.gbs --fpgatype=intel --name=hereIsYourImageName --tags=hereIsYourImageTag --encrypted=false --shell=V1.1                    
+    ```
+    #Replace <hereIsYourBucket> in the command with your bucket name.
+    faascmd auth --bucket=<hereIsYourBucket>
     ```
 
-4.  Run the `faascmd list_images` command to check whether the image is created. In the returned result, if `"State":"success"` is displayed, it means the image is created. Record the **FpgaImageUUID**.
+2.  Run the following commands in sequence to access the vector\_add/output\_files directory and upload the configuration file:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9827/156677770411996_en-US.png)
-
-
-## Step 5. Download the image to your f1 instance {#section_otd_7fx_rwk .section}
-
-To download the image to your f1 instance, follow these steps:
-
-1.  Run the command to obtain FPGA ID.
-
-    ``` {#codeblock_jf4_xfc_qkf .language-shell}
-    # Replace hereIsYourInstanceId with your f1 instance ID.
-    faascmd list_instances --instanceId=hereIsYourInstanceId                    
+    ```
+    cd vector_add/output_files         
     ```
 
-    Returned results sample: Record FpgaUUID in the returned result.
+    You are in the /opt/tmp/vector\_add/vector\_add/output\_files directory.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9827/156677770411997_en-US.png)
-
-2.  Run the command to download the image to your f1 instance.
-
-    ``` {#codeblock_oo8_95c_qmv .language-shell}
-    # Replace hereIsYourInstanceID with your f1 instance ID. Replace hereIsFpgaUUID with your FPGA UUID. Replace hereIsImageUUID with your image UUID.
-    faascmd download_image  --instanceId=hereIsYourInstanceID --fpgauuid=hereIsFpgaUUID --fpgatype=intel --imageuuid=hereIsImageUUID --imagetype=afu --shell=V0.11                    
+    ```
+    faascmd upload_object --object=afu_fit.gbs --file=afu_fit.gbs           
     ```
 
-3.  Run the command to check whether the image is downloaded.
+3.  Run the following command to use the GBS file to create an FPGA image:
 
-    ``` {#codeblock_fqi_wnc_2dk .language-shell}
-    # Replace hereIsYourInstanceID with your f1 instance ID. Replace hereIsFpgaUUID with your FPGA UUID.
-    faascmd fpga_status --fpgauuid=hereIsFpgaUUID --instanceId=hereIsYourInstanceID                    
+    ```
+    #Replace <hereIsYourImageName> in the command with your image name. Replace <hereIsYourImageTag> with your image tag.
+    faascmd create_image --object=dma_afu.gbs --fpgatype=intel --name=<hereIsYourImageName> --tags=<hereIsYourImageTag> --encrypted=false --shell=V1.1             
     ```
 
-    If "TaskStatus": "operating" exists in the returned result, it means the image is downloaded.
+4.  Run the following command to check whether the image is created:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/9827/156677770411998_en-US.png)
-
-
-## Step 6. Download the FPGA image to an FPGA chip {#section_6pr_jkf_8yb .section}
-
-To download the FPGA image to an FPGA chip, follow these steps:
-
-1.  Open the console in Step 1. If it is closed, repeat Step 1.
-2.  Run the following command to configure the runtime environment for OpenCL.
-
-    ``` {#codeblock_cj1_z3j_gfv .language-shell}
-    sh /opt/dcp1_1/opencl/opencl_bsp/linux64/libexec/setup_permissions.sh                    
+    ```
+    faascmd list_images
     ```
 
-3.  Run the command to go back to the parent directory.
+    If "State":"success" is displayed in the command output, the image is created. Record the FpgaImageUUID value in the command output for later use.
 
-    ``` {#codeblock_bul_ze6_ika .language-shell}
-    cd .. /.. # Now, you are at the /opt/tmp/matrix_mult directory                   
+    ![The image is created](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7514488951/p11996.png)
+
+
+## Step 5: Download the image to the f1 instance
+
+1.  Run the following command to obtain the ID of your FPGA instance:
+
+    ```
+    #Replace <hereIsYourInstanceId> in the command with the ID of your FPGA instance.
+    faascmd list_instances --instanceId=<hereIsYourInstanceId>                 
     ```
 
-4.  Run the command to compile.
+    The following figure shows an example of the command output. Record the FpgaUUID value.
 
-    ``` {#codeblock_4bv_kd1_7uf .language-shell}
+    ![fpgaUUID](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7514488951/p11997.png)
+
+2.  Run the following command to download the image to the f1 instance.
+
+    ```
+    #Replace <hereIsYourInstanceID> in the command with the instance ID that you recorded. Replace <hereIsFpgaUUID> with the FpgaUUID value that you recorded. Replace <hereIsImageUUID> with the FpgaImageUUID value that you recorded.
+    faascmd download_image  --instanceId=<hereIsYourInstanceID> --fpgauuid=<hereIsFpgaUUID> --fpgatype=intel --imageuuid=<hereIsImageUUID> --imagetype=afu --shell=V0.11                 
+    ```
+
+3.  Run the following command to check whether the image is downloaded:
+
+    ```
+    # Replace <hereIsYourInstanceID> in the command with the instance ID that you recorded. Replace <hereIsFpgaUUID> with the FpgaUUID value that you recorded.
+    faascmd fpga_status --fpgauuid=<hereIsFpgaUUID> --instanceId=<hereIsYourInstanceID>            
+    ```
+
+    If "TaskStatus":"operating" is displayed in the command output, the image is downloaded.
+
+    ![The image is downloaded](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7514488951/p11998.png)
+
+
+## Step 6: Download the FPGA image to an FPGA
+
+1.  Open the environment window in Step 2. If the window is closed, perform the operations in [Step 2](#section_gob_p8r_eox) again.
+
+2.  Run the following command to configure the runtime environment for OpenCL:
+
+    ```
+    sh /opt/dcp1_1/opencl/opencl_bsp/linux64/libexec/setup_permissions.sh                 
+    ```
+
+3.  Run the following command to go back to the parent directory:
+
+    ```
+    cd ../..           
+    ```
+
+    You are in the /opt/tmp/vector\_add directory.
+
+4.  Run the following commands for compilation:
+
+    ```
     make
-    # Output the environment configuration
+    # Show the environment configuration.
     export CL_CONTEXT_COMPILER_MODE_ALTERA=3
-    cp matrix_mult.aocx ./bin/matrix_mult.aocx
+    cp vector_add.aocx ./bin/vector_add.aocx
     cd bin
-    host matrix_mult.aocx                    
+    host vector_add.aocx               
     ```
 
-    If the following result is returned, it means the configuration is successful. Note that the last line must be `Verification: PASS`.
+    If the following output is displayed, the environment is configured. Note that the last line must be `Verification: PASS`.
 
-    ``` {#codeblock_hz1_4rg_hdl .language-shell}
-    [root@iZbpXXXXXZ bin]# ./host matrix_mult.aocx
+    ```
+    [root@iZbpXXXXXZ bin]# ./host vector_add.aocx
     Matrix sizes:
       A: 2048 x 1024
       B: 1024 x 1024
@@ -182,7 +215,7 @@ To download the FPGA image to an FPGA chip, follow these steps:
     Platform: Intel(R) FPGA SDK for OpenCL(TM)
     Using 1 device(s)
       skx_fpga_dcp_ddr : SKX DCP FPGA OpenCL BSP (acl0)
-    Using AOCX: matrix_mult.aocx
+    Using AOCX: vector_add.aocx
     Generating input matrices
     Launching for device 0 (global size: 1024, 2048)
     Time: 40.415 ms
@@ -190,7 +223,7 @@ To download the FPGA image to an FPGA chip, follow these steps:
     Throughput: 106.27 GFLOPS
     Computing reference output
     Verifying
-    Verification: PASS
+    Verification: PASS             
     ```
 
 
