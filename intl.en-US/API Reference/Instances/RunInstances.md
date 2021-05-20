@@ -39,225 +39,225 @@ You can call this operation to create one or more pay-as-you-go or subscription 
 |ImageId|String|No|aliyun\_2\_1903\_x64\_20G\_alibase\_20200324.vhd|The ID of the image used to create the instance. You can call the [DescribeImages](~~25534~~) operation to query the available images. If you do not use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify an instance launch template, or if you do not set the `ImageFamily` parameter to obtain the latest available custom image within the specified image family, you must specify the `ImageId` parameter. |
 |ImageFamily|String|No|hangzhou-daily-update|The name of the image family. You can set this parameter to obtain the latest available custom image within the specified image family to create instances.
 
- -   If you set the `ImageId` parameter, you cannot set the ImageFamily parameter.
+-   If you set the `ImageId` parameter, you cannot set the ImageFamily parameter.
 -   If you do not set the `ImageId` parameter, but you set the `ImageId` parameter in the launch template specified by the `LaunchTemplateId` or `LaunchTemplateName` parameter, you cannot set the ImageFamily parameter.
 -   If you do not set the `ImageId` parameter, and do not set the `ImageId` parameter in the launch template specified by the `LaunchTemplateId` or `LaunchTemplateName` parameter, you can set the ImageFamily parameter.
 -   If you do not set the `ImageId` parameter, or do not set the `LaunchTemplateId` or `LaunchTemplateName` parameter, you can set the ImageFamily parameter. |
 |InstanceType|String|No|ecs.g6.large|The instance type. If you do not set `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must set the `InstanceType` parameter.
 
- -   Selection of instance types: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn how to select instance types.
+-   Selection of instance types: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn how to select instance types.
 -   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. |
 |SecurityGroupId|String|No|sg-bp15ed6xe1yxeycg7\*\*\*\*|The ID of the security group to which to assign the instance. Instances in the same security group can communicate with each other. The number of instances that a security group can contain depends on the type of the security group. For more information, see the "Security group limits" section of the [Limits](~~25412~~) topic.
 
- **Note:** The SecurityGroupId parameter determines the network type of instances in the security group. For example, a security group of the VPC type can contain only VPC-type instances, and you must also specify the VSwitchId parameter for the instances.
+**Note:** The SecurityGroupId parameter determines the network type of instances in the security group. For example, a security group of the VPC type can contain only VPC-type instances, and you must also specify the VSwitchId parameter for the instances.
 
- If you do not use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify a launch template, you must set the `SecurityGroupId` parameter. |
+If you do not use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify a launch template, you must set the `SecurityGroupId` parameter. |
 |SecurityGroupIds.N|RepeatList|No|sg-bp15ed6xe1yxeycg7\*\*\*\*|The ID of security group N to which to assign the instance. Valid values of N are based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section of the [Limits](~~101348~~) topic.
 
- **Note:** You cannot specify both SecurityGroupId and SecurityGroupIds.N. |
+**Note:** You cannot specify both SecurityGroupId and SecurityGroupIds.N. |
 |VSwitchId|String|No|vsw-bp1s5fnvk4gn2tws0\*\*\*\*|The ID of the vSwitch to which to connect the instance. You must specify this parameter when you create a VPC-type instance. The vSwitch and security group must belong to the same VPC. You can call the [DescribeVSwitches](~~35748~~) operation to query the created vSwitches.
 
- **Note:** If you specify the `VSwitchId` parameter, the zone specified by the `ZoneId` parameter must be the same as the zone of the vSwitch. You can also leave the `ZoneId` parameter empty. Then, the system selects the zone where the vSwitch is located. |
+**Note:** If you specify the `VSwitchId` parameter, the zone specified by the `ZoneId` parameter must be the same as the zone of the vSwitch. You can also leave the `ZoneId` parameter empty. Then, the system selects the zone where the vSwitch is located. |
 |InstanceName|String|No|k8s-node-\[1,4\]-alibabacloud|The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons \(:\), underscores \(\_\), periods \(.\),and hyphens \(-\). The default value of this parameter is the `InstanceId` value.
 
- When you create multiple instances at a time, you can specify sequential names for the instances. For more information, see [Batch configure sequential names or hostnames for multiple instances](~~196048~~). |
+When you create multiple instances at a time, you can specify sequential names for the instances. For more information, see [Batch configure sequential names or hostnames for multiple instances](~~196048~~). |
 |Description|String|No|Instance\_Description|The description of the instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. |
 |InternetMaxBandwidthIn|Integer|No|10|The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 
- -   If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10 and the default value of this parameter is 10.
+-   If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10 and the default value of this parameter is 10.
 -   If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut` and the default value is the value of `InternetMaxBandwidthOut`. |
 |InternetMaxBandwidthOut|Integer|No|10|The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
 
- Default value: 0. |
+Default value: 0. |
 |HostName|String|No|k8s-node-\[1,4\]-ecshost|The hostname of the instance.
 
- -   The hostname cannot start or end with a period \(.\) or hyphen \(-\).It cannot contain consecutive periods \(.\) or hyphens \(-\).
+-   The hostname cannot start or end with a period \(.\) or hyphen \(-\).It cannot contain consecutive periods \(.\) or hyphens \(-\).
 -   For Windows instances, the hostname must be 2 to 15 characters in length and cannot contain periods \(.\) or contain only digits. It can contain letters, digits, and hyphens \(-\).
 -   For instances that run other operating systems such as Linux,
     -   the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\).
     -   You can use the `${instance_id}` placeholder to pass instance IDs into the hostnames specified by `HostName`. For example, if you set `HostName` to k8s-$\{instance\_id\} and the instance is assigned an ID of `i-123abc****` when the instance is created, the hostname of the instance is `k8s-i-123abc****`.
 
- When you create multiple instances, you can perform the following operations:
+When you create multiple instances, you can perform the following operations:
 
- -   Batch configure sequential hostnames for the instances. For more information, see [Batch configure sequential names or hostnames for multiple instances](~~196048~~).
--   Use the `HostNames.N` parameter to configure hostnames for the instances. You cannot specify both the `HostName`and `HostNames.N` parameters. |
+-   Batch configure sequential hostnames for the instances. For more information, see [Batch configure sequential names or hostnames for multiple instances](~~196048~~).
+-   Use the `HostNames.N` parameter to configure hostnames for the instances. You cannot specify both the `HostName` and `HostNames.N` parameters. |
 |HostNames.N|RepeatList|No|ecs-host-01|The hostname of instance N. You can use this parameter to specify different hostnames for multiple instances.
 
- -   The maximum value of N must be the same as the `Amount` value.
+-   The maximum value of N must be the same as the `Amount` value.
 -   You cannot specify both the `HostName` and `HostNames.N` parameters.
 -   The hostname cannot start or end with a period \(.\) or hyphen \(-\).It cannot contain consecutive periods \(.\) or hyphens \(-\).
 -   For Windows instances, the hostname must be 2 to 15 characters in length and cannot contain periods \(.\) or contain only digits. It can contain letters, digits, and hyphens \(-\).
 -   For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods \(.\) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens \(-\). |
 |UniqueSuffix|Boolean|No|true|Specifies whether to automatically append incremental suffixes to the hostnames specified by the `HostName` parameter and instance names specified by the `InstanceName` parameter when you create multiple instances at a time. The incremental suffixes range from 001 to 999. Valid values:
 
- -   true
+-   true
 -   false
 
- Default value: false.
+Default value: false.
 
- When the `HostName` or `InstanceName` value is set based on the specified sorting format and `name_suffix` is not specified, the hostnames or instance names are in the `name_prefix[begin_number,bits]` format, and the `UniqueSuffix` parameter does not take effect. The names are sorted in the specified sequence.
+When the `HostName` or `InstanceName` value is set based on the specified sorting format and `name_suffix` is not specified, the hostnames or instance names are in the `name_prefix[begin_number,bits]` format, and the `UniqueSuffix` parameter does not take effect. The names are sorted in the specified sequence.
 
- For more information, see [Batch configure sequential names or hostnames for multiple instances](~~196048~~). |
+For more information, see [Batch configure sequential names or hostnames for multiple instances](~~196048~~). |
 |Password|String|No|EcsV587!|The password of the instance. The password must be 8 to 30 characters in length and include at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
-
- ```
-
-( ) ` ~ ! @ # $ % ^ & * - _ + = | { } [ ] : ; ' < > , . ? /
 
 ```
 
- For Windows instances, the password cannot start with a forward slash \(/\).
+( ) ` ~ ! @ # $ % ^ & * - _ + = | { } [ ] : ; ' < > , . ? /
+                                
+```
 
- **Note:** For security reasons, we recommend that you use Hypertext Transfer Protocol Secure \(HTTPS\) to send requests if the `Password` parameter is specified. |
+For Windows instances, the password cannot start with a forward slash \(/\).
+
+**Note:** For security reasons, we recommend that you use Hypertext Transfer Protocol Secure \(HTTPS\) to send requests if the `Password` parameter is specified. |
 |PasswordInherit|Boolean|No|false|Specifies whether to use the password preset in the image. Valid values:
 
- -   true
+-   true
 -   false
 
- **Note:** If PasswordInherit is specified, leave Password empty and make sure that the selected image has a password preset. |
+**Note:** If PasswordInherit is specified, leave Password empty and make sure that the selected image has a password preset. |
 |ZoneId|String|No|cn-hangzhou-g|The ID of the zone in which to create the instance. You can call the [DescribeZones](~~25610~~) operation to query the zone list.
 
- **Note:** If you specify the `VSwitchId` parameter, the zone specified by the `ZoneId` parameter must be the same as the zone of the vSwitch. You can also leave the `ZoneId` parameter empty. Then, the system selects the zone where the vSwitch is located.
+**Note:** If you specify the `VSwitchId` parameter, the zone specified by the `ZoneId` parameter must be the same as the zone of the vSwitch. You can also leave the `ZoneId` parameter empty. Then, the system selects the zone where the vSwitch is located.
 
- This parameter is empty by default. |
+This parameter is empty by default. |
 |InternetChargeType|String|No|PayByTraffic|The billing method for network usage. Default value: PayByTraffic. Valid values:
 
- -   PayByBandwidth: pay-by-bandwidth
+-   PayByBandwidth: pay-by-bandwidth
 -   PayByTraffic: pay-by-traffic
 
- **Note:** When the **pay-by-traffic** billing method is used, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and for reference only. When resources are insufficient, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instances, use the **pay-by-bandwidth** billing method. |
+**Note:** When the **pay-by-traffic** billing method is used, the maximum inbound and outbound bandwidths are both the upper limits of bandwidths and for reference only. When resources are insufficient, these maximum bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instances, use the **pay-by-bandwidth** billing method. |
 |SystemDisk.Size|String|No|40|The size of the system disk. Unit: GiB. Valid values: 20 to 500.
 
- The value of this parameter must be at least 20 and greater than or equal to the image size.
+The value of this parameter must be at least 20 and greater than or equal to the image size.
 
- The default value is 40 or the size of the image, depending on whichever is greater. |
+The default value is 40 or the size of the image, depending on whichever is greater. |
 |SystemDisk.Category|String|No|cloud\_ssd|The category of the system disk. Valid values:
 
- -   cloud\_efficiency: ultra disk
+-   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   cloud\_essd: enhanced SSD \(ESSD\)
 -   cloud: basic disk
 
- For non-I/O optimized instances of the retired instance types, the default value is cloud. For other instances, the default value is cloud\_efficiency. |
+For non-I/O optimized instances of the retired instance types, the default value is cloud. For other instances, the default value is cloud\_efficiency. |
 |SystemDisk.DiskName|String|No|cloud\_ssdSystem|The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, periods \(.\), colons \(:\), underscores \(\_\), and hyphens \(-\).
 
- This parameter is empty by default. |
+This parameter is empty by default. |
 |SystemDisk.Description|String|No|SystemDisk\_Description|The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. |
 |SystemDisk.PerformanceLevel|String|No|PL0|The performance level of the ESSD used as the system disk. Default value: PL1. Valid values:
 
- -   PL0: A single ESSD can deliver up to 10,000 random read/write input/output operations per second \(IOPS\).
+-   PL0: A single ESSD can deliver up to 10,000 random read/write input/output operations per second \(IOPS\).
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
 -   PL2: A single ESSD delivers up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 
- For more information about ESSD performance levels, see [ESSDs](~~122389~~). |
+For more information about ESSD performance levels, see [ESSDs](~~122389~~). |
 |SystemDisk.AutoSnapshotPolicyId|String|No|sp-bp67acfmxazb4p\*\*\*\*|The ID of the automatic snapshot policy to be applied to the system disk. |
 |DataDisk.N.Size|Integer|No|2000|The size of data disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
 
- -   Valid values when DataDisk.N.Category is set to cloud\_efficiency: 20 to 32768
+-   Valid values when DataDisk.N.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DiskCategory is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud\_essd: 20 to 32768
 -   Valid values when DataDisk.N.Category is set to cloud: 5 to 2000
 
- The value of this parameter must be greater than or equal to the size of the snapshot specified by the `SnapshotId` parameter. |
+The value of this parameter must be greater than or equal to the size of the snapshot specified by the `SnapshotId` parameter. |
 |DataDisk.N.SnapshotId|String|No|s-bp17441ohwka0yuh\*\*\*\*|The ID of the snapshot used to create data disk N. Valid values of N: 1 to 16.
 
- When the `DataDisk.N.SnapshotId` parameter is specified, the `DataDisk.N.Size` parameter is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots created after July 15, 2013. Otherwise, an error message is returned and your request is rejected. |
+When the `DataDisk.N.SnapshotId` parameter is specified, the `DataDisk.N.Size` parameter is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots created after July 15, 2013. Otherwise, an error message is returned and your request is rejected. |
 |DataDisk.N.Category|String|No|cloud\_ssd|The category of data disk N. Valid values:
 
- -   cloud\_efficiency: ultra disk
+-   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   cloud\_essd: ESSD
 -   cloud: basic disk
 
- For I/O optimized instances, the default value is cloud\_efficiency. For non-I/O optimized instances, the default value is cloud. |
+For I/O optimized instances, the default value is cloud\_efficiency. For non-I/O optimized instances, the default value is cloud. |
 |DataDisk.N.Encrypted|String|No|false|Specifies whether to encrypt data disk N. Valid values:
 
- -   true: encrypts data disk N.
+-   true: encrypts data disk N.
 -   false: does not encrypt data disk N.
 
- Default value: false. |
+Default value: false. |
 |DataDisk.N.KMSKeyId|String|No|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|The ID of the Key Management Service \(KMS\) key to be used by data disk N. |
 |DataDisk.N.DiskName|String|No|cloud\_ssdData|The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, periods \(.\), colons \(:\), underscores \(\_\), and hyphens \(-\).
 
- This parameter is empty by default. |
+This parameter is empty by default. |
 |DataDisk.N.Description|String|No|DataDisk\_Description|The description of data disk N. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. |
 |DataDisk.N.Device|String|No|null|The mount point of data disk N.
 
- **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
+**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
 |DataDisk.N.DeleteWithInstance|Boolean|No|true|Specifies whether to release data disk N together with the instance. Valid values:
 
- -   true: releases data disk N together with the instance.
+-   true: releases data disk N together with the instance.
 -   false: does not release data disk N together with the instance.
 
- Default value: true. |
+Default value: true. |
 |DataDisk.N.PerformanceLevel|String|No|PL1|The performance level of the ESSD used as data disk N. The N value must be the same as that in DataDisk.N.Category when `DataDisk.N.Category` is set to cloud\_essd. Valid values:
 
- -   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+-   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
 -   PL2: A single ESSD delivers up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 
- For more information about ESSD performance levels, see [ESSDs](~~122389~~). |
+For more information about ESSD performance levels, see [ESSDs](~~122389~~). |
 |DataDisk.N.AutoSnapshotPolicyId|String|No|sp-bp67acfmxazb4p\*\*\*\*|The ID of the automatic snapshot policy to be applied to data disk N. |
 |IoOptimized|String|No|optimized|Specifies whether the instance is I/O optimized. For instances of retired instance types, the default value is none. For other instances, the default value is optimized. For more information, see [Retired instance types](~~55263~~). Valid values:
 
- -   none: The instance is not I/O optimized.
+-   none: The instance is not I/O optimized.
 -   optimized: The instance is I/O optimized. |
 |NetworkInterface.N.PrimaryIpAddress|String|No|172.16.\*\*.\*\*|The primary IP address of secondary elastic network interface \(ENI\) N. Set the value of N to 1.
 
- **Note:** You can bind only one secondary ENI when you create an ECS instance. After the instance is created, you can call the [CreateNetworkInterface](~~58504~~) and [AttachNetworkInterface](~~58515~~) operations to bind more secondary ENIs.
+**Note:** You can bind only one secondary ENI when you create an ECS instance. After the instance is created, you can call the [CreateNetworkInterface](~~58504~~) and [AttachNetworkInterface](~~58515~~) operations to bind more secondary ENIs.
 
- The default value is an IP address that is randomly selected from within the CIDR block of the vSwitch to which to connect the secondary ENI. |
+The default value is an IP address that is randomly selected from within the CIDR block of the vSwitch to which to connect the secondary ENI. |
 |NetworkInterface.N.VSwitchId|String|No|vsw-bp67acfmxazb4p\*\*\*\*|The ID of the vSwitch to which to connect secondary ENI N. Set the value of N to 1.
 
- Default value: the ID of the vSwitch to which to connect the instance. |
+Default value: the ID of the vSwitch to which to connect the instance. |
 |NetworkInterface.N.SecurityGroupId|String|No|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group to which to assign secondary ENI N. Set the value of N to 1.
 
- Default value: the ID of the security group to which to assign the instance. |
+Default value: the ID of the security group to which to assign the instance. |
 |NetworkInterface.N.SecurityGroupIds.N|RepeatList|No|sg-bp15ed6xe1yxeycg7\*\*\*\*|The ID of security group N to which to assign secondary ENI N. The valid values of N in `SecurityGroupIds.N` are based on the maximum number of security groups to which an ENI can belong. For more information, see [Limits](~~25412~~).
 
- **Note:** You cannot specify both the `NetworkInterface.N.SecurityGroupId` and `NetworkInterface.N.SecurityGroupIds.N` parameters. |
+**Note:** You cannot specify both the `NetworkInterface.N.SecurityGroupId` and `NetworkInterface.N.SecurityGroupIds.N` parameters. |
 |NetworkInterface.N.NetworkInterfaceName|String|No|Network\_Name|The name of secondary ENI N. Set the value of N to 1. |
 |NetworkInterface.N.Description|String|No|Network\_Description|The description of secondary ENI N. Set the value of N to 1. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. |
 |NetworkInterface.N.QueueNumber|Integer|No|8|The number of queues supported by secondary ENI N. Set the value of N to 1.
 
- -   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
+-   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
 -   The total number of queues for all ENIs bound to the instance cannot exceed the queue quota allowed for the instance type. To learn the maximum number of queues per ENI and the queue quota allowed for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters. |
 |UserData|String|No|ZWNobyBoZWxsbyBlY3Mh|The user data of the instance. User data must be encoded in Base64. The maximum size of raw data is 16 KB. |
 |KeyPairName|String|No|KeyPair\_Name|The name of the key pair.
 
- -   For Windows instances, this parameter is ignored and is empty by default. The `Password` parameter takes effect even if the KeyPairName parameter is specified.
+-   For Windows instances, this parameter is ignored and is empty by default. The `Password` parameter takes effect even if the KeyPairName parameter is specified.
 -   For Linux instances, the username and password logon method is disabled by default. |
 |RamRoleName|String|No|RAM\_Name|The name of the instance Resource Access Management \(RAM\) role. You can call the [ListRoles](~~28713~~) operation provided by RAM to query the instance RAM roles that you have created. |
 |Amount|Integer|No|3|The number of instances that you want to create. Valid values: 1 to 100.
 
- Default value : 1. |
+Default value : 1. |
 |MinAmount|Integer|No|2|The minimum number of instances that can be created. Valid values: 1 to 100.
 
- -   If the number of ECS instances that available resources are sufficient to create is less than the MinAmount value, instances cannot be created.
+-   If the number of ECS instances that available resources are sufficient to create is less than the MinAmount value, instances cannot be created.
 -   If the number of ECS instances that available resources are sufficient to create is greater than or equal to the MinAmount value, instances are created based on the number of available resources. |
 |AutoReleaseTime|String|No|2018-01-01T12:05:00Z|The automatic release time of the pay-as-you-go instance. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 
- -   If the value of the second \(`ss`\) is not `00`, the time is automatically rounded down to the nearest minute based on the value of the minute \(`mm`\).
+-   If the value of the second \(`ss`\) is not `00`, the time is automatically rounded down to the nearest minute based on the value of the minute \(`mm`\).
 -   The release time must be at least 30 minutes later than the current time.
 -   The release time must be at most three years from the current time. |
 |SpotStrategy|String|No|NoSpot|The preemption policy for the pay-as-you-go instance. This parameter takes effect only when the `InstanceChargeType` parameter is set to `PostPaid`. Default value: NoSpot. Valid values:
 
- -   NoSpot: The instance is created as a regular pay-as-you-go instance.
+-   NoSpot: The instance is created as a regular pay-as-you-go instance.
 -   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
 -   SpotAsPriceGo: The instance is created as a preemptible instance whose price is based on the market price at the time of purchase. |
 |SpotDuration|Integer|No|1|The protection period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
 
- -   Protection periods of 2, 3, 4, 5, and 6 hours are in invitational preview. If you want to set this parameter to one of these values, submit a ticket.
+-   Protection periods of 2, 3, 4, 5, and 6 hours are in invitational preview. If you want to set this parameter to one of these values, submit a ticket.
 -   If this parameter is set to 0, no protection period is configured for the preemptible instance.
 
- Default value: 1. |
+Default value: 1. |
 |SpotPriceLimit|Float|No|0.97|The maximum hourly price of the instance. This parameter takes effect only when the `SpotStrategy` parameter is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed. |
 |SpotInterruptionBehavior|String|No|Terminate|The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released. |
 |SecurityEnhancementStrategy|String|No|Active|Specifies whether to enable security hardening. Valid values:
 
- -   Active: enables security hardening. This value is applicable only to public images.
+-   Active: enables security hardening. This value is applicable only to public images.
 -   Deactive: does not enable security hardening. This value is applicable to all image types. |
 |ClientToken|String|No|123e4567-e89b-12d3-a456-426655440000|The client token that is used to ensure the idempotence of the request You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value must contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
 |Tag.N.Key|String|No|TestKey|The key of tag N to be bound to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://. |
@@ -265,138 +265,138 @@ You can call this operation to create one or more pay-as-you-go or subscription 
 |HpcClusterId|String|No|hpc-bp67acfmxazb4p\*\*\*\*|The ID of the Elastic High Performance Computing \(E-HPC\) cluster to which to assign the instance. |
 |DryRun|Boolean|No|false|Specifies whether to check the validity of the request without actually making the request. Default value: false. Valid values:
 
- -   true: The validity of the request is checked but the request is not made. Check items include the request format, service limits, available ECS resources, and whether required parameters are specified. If the check fails, the corresponding error code is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+-   true: The validity of the request is checked but the request is not made. Check items include the request format, service limits, available ECS resources, and whether required parameters are specified. If the check fails, the corresponding error code is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 -   false: The validity of the request is checked. If the check succeeds, the request is made. |
 |DedicatedHostId|String|No|dh-bp67acfmxazb4p\*\*\*\*|The ID of the dedicated host on which to create the instance. If the `DedicatedHostId` parameter is specified, the `SpotStrategy` and `SpotPriceLimit` parameters are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 
- You can call the [DescribeDedicatedHosts](~~134242~~) operation to query the dedicated host list. |
+You can call the [DescribeDedicatedHosts](~~134242~~) operation to query the dedicated host list. |
 |LaunchTemplateId|String|No|lt-bp1apo0bbbkuy0rj\*\*\*\*|The ID of the launch template. For more information, see [DescribeLaunchTemplates](~~73759~~).
 
- To use a launch template to create an instance, you must specify the launch template by using the `LaunchTemplateId` or `LaunchTemplateName` parameter. |
+To use a launch template to create an instance, you must specify the launch template by using the `LaunchTemplateId` or `LaunchTemplateName` parameter. |
 |LaunchTemplateName|String|No|LaunchTemplate\_Name|The name of the launch template.
 
- To use a launch template to create an instance, you must specify the launch template by using the `LaunchTemplateId` or `LaunchTemplateName` parameter. |
+To use a launch template to create an instance, you must specify the launch template by using the `LaunchTemplateId` or `LaunchTemplateName` parameter. |
 |LaunchTemplateVersion|Long|No|3|The version of the launch template. If you specify `LaunchTemplateId` or `LaunchTemplateName` but do not specify the version number of the launch template, the default template version is used. |
 |ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which to assign the instance. |
 |Period|Integer|No|1|The subscription period of the instance. The unit is specified by the `PeriodUnit` parameter. This parameter is valid and required only when `InstanceChargeType` is set to `PrePaid`. If the `DedicatedHostId` parameter is specified, the subscription period of the instance cannot be longer than that of the dedicated host. Valid values:
 
- -   Valid values when PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60. |
+-   Valid values when PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60. |
 |PeriodUnit|String|No|Month|The unit of the subscription period. Default value: Month. Valid values:
 
- -   Month |
+-   Month |
 |AutoRenew|Boolean|No|true|Specifies whether to enable auto-renewal for the instance. This parameter takes effect only when the `InstanceChargeType` parameter is set to `PrePaid`. Default value: false. Valid values:
 
- -   true: enables auto-renewal for the instance.
+-   true: enables auto-renewal for the instance.
 -   false: does not enable auto-renewal for the instance |
 |AutoRenewPeriod|Integer|No|1|The auto-renewal period of the instance. Valid values:
 
- -   Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+-   Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
 
- Default value: 1. |
+Default value: 1. |
 |InstanceChargeType|String|No|PrePaid|The billing method of the instance. Default value: PostPaid. Valid values:
 
- -   PrePaid: subscription
+-   PrePaid: subscription
 -   PostPaid: pay-as-you-go
 
- If you set this parameter to PrePaid, make sure that you have sufficient credit in your account. Otherwise, the `InvalidPayMethod` error is returned. |
+If you set this parameter to PrePaid, make sure that you have sufficient credit in your account. Otherwise, the `InvalidPayMethod` error is returned. |
 |DeploymentSetId|String|No|ds-bp1brhwhoqinyjd6\*\*\*\*|The ID of the deployment set to which to deploy the instance. |
 |PrivateIpAddress|String|No|10.1.\*\*.\*\*|The private IP address of the instance.
 
- To assign a private IP address to a VPC-type ECS instance, make sure that the IP address is an idle IP address within the CIDR block of the vSwitch specified by the `VSwitchId` parameter.
+To assign a private IP address to a VPC-type ECS instance, make sure that the IP address is an idle IP address within the CIDR block of the vSwitch specified by the `VSwitchId` parameter.
 
- **Note:** When you specify the `PrivateIpAddress` parameter, the `Amount` parameter must be set to 1. |
+**Note:** When you specify the `PrivateIpAddress` parameter, the `Amount` parameter must be set to 1. |
 |CreditSpecification|String|No|Standard|The performance mode of the burstable instance. Valid values:
 
- -   Standard: the standard mode. For more information, see the "Standard mode" section of the [Burstable instances](~~59977~~) topic.
+-   Standard: the standard mode. For more information, see the "Standard mode" section of the [Burstable instances](~~59977~~) topic.
 -   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section of the [Burstable instances](~~59977~~) topic.
 
- This parameter is empty by default. |
+This parameter is empty by default. |
 |Ipv6Address.N|RepeatList|No|Ipv6Address.1=2001:db8:1234:1a00::\*\*\*|IPv6 address N to be assigned to the primary ENI. Set the value of N to 1. Example: `Ipv6Address.1=2001:db8:1234:1a00::***`.
 
- **Note:** If the `Ipv6Address.N` parameter is specified, the `Amount` parameter must be set to 1 and the `Ipv6AddressCount` parameter must be empty. |
+**Note:** If the `Ipv6Address.N` parameter is specified, the `Amount` parameter must be set to 1 and the `Ipv6AddressCount` parameter must be empty. |
 |Ipv6AddressCount|Integer|No|1|The number of IPv6 addresses to be randomly generated for the primary ENI.
 
- **Note:** You cannot specify both the `Ipv6Addresses.N` and `Ipv6AddressCount` parameters. |
+**Note:** You cannot specify both the `Ipv6Addresses.N` and `Ipv6AddressCount` parameters. |
 |NetworkInterfaceQueueNumber|Integer|No|8|The number of queues supported by the primary ENI.
 
- -   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
+-   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
 -   The total number of queues for all ENIs bound to the instance cannot exceed the queue quota allowed for the instance type. To learn the maximum number of queues per ENI and the queue quota allowed for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters. |
 |DeletionProtection|Boolean|No|false|The release protection property of the instance. It specifies whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to manually release the instance. Default value: false. Valid values:
 
- -   true: Release protection is enabled.
+-   true: Release protection is enabled.
 -   false: Release protection is disabled.
 
- **Note:** This parameter is applicable only to pay-as-you-go instances. It can protect instances only against manual releases, not against automatic releases. |
+**Note:** This parameter is applicable only to pay-as-you-go instances. It can protect instances only against manual releases, not against automatic releases. |
 |Affinity|String|No|default|Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
 
- -   default: does not associate the instance with the dedicated host. When you restart an instance in the No Fees for Stopped Instances \(VPC-Connected\) state, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool if the available resources of the original dedicated host are insufficient.
+-   default: does not associate the instance with the dedicated host. When you restart an instance in the No Fees for Stopped Instances \(VPC-Connected\) state, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool if the available resources of the original dedicated host are insufficient.
 -   host: associates the instance with the dedicated host. When you restart an instance in the No Fees for Stopped Instances \(VPC-Connected\) state, the instance still resides on the original dedicated host. If the available resources of the original dedicated host are insufficient, the instance fails to restart.
 
- Default value: default. |
+Default value: default. |
 |Tenancy|String|No|default|Specifies whether to create the instance on a dedicated host. Valid values:
 
- -   default: creates the instance on a non-dedicated host.
+-   default: creates the instance on a non-dedicated host.
 -   host: creates the instance on a dedicated host. If you do not specify the `DedicatedHostId` parameter, Alibaba Cloud automatically selects a dedicated host for the instance.
 
- Default value: default. |
+Default value: default. |
 |StorageSetId|String|No|ss-bp67acfmxazb4p\*\*\*\*|The ID of the storage set. |
 |StorageSetPartitionNumber|Integer|No|2|The maximum number of partitions in the storage set. Valid values: greater than or equal to 2. |
 |CpuOptions.Core|Integer|No|2|The number of CPU cores. This parameter cannot be specified but only uses its default value. |
 |CpuOptions.ThreadsPerCore|Integer|No|2|The number of threads per core. The following formula is used to calculate the number of vCPUs of the instance: `CpuOptions.Core` value × `CpuOptions.ThreadPerCore` value.
 
- -   If the `CpuOptions.ThreadPerCore` parameter is set to 1, CPU Hyper-Threading is disabled.
+-   If the `CpuOptions.ThreadPerCore` parameter is set to 1, CPU Hyper-Threading is disabled.
 -   This parameter is applicable only to specific instance types. |
 |CpuOptions.Numa|String|No|1|The number of CPU Numa nodes. |
 |SecurityOptions.TrustedSystemMode|String|No|vTPM|The trusted system mode. Set the value to vTPM.
 
- The trusted system mode supports the g7, c7, and r7 instance families as well as the following seventh-generation security-enhanced instance families: g7t, c7t, and r7t.
+The trusted system mode supports the g7, c7, and r7 instance families as well as the following seventh-generation security-enhanced instance families: g7t, c7t, and r7t.
 
- To create instances of the preceding instance families, you must specify this parameter.
+To create instances of the preceding instance families, you must specify this parameter.
 
- -   To use the Alibaba Cloud trusted system, set this parameter to vTPM. Then, the Alibaba Cloud trusted system performs trust verifications when instances start.
+-   To use the Alibaba Cloud trusted system, set this parameter to vTPM. Then, the Alibaba Cloud trusted system performs trust verifications when instances start.
 -   If you do not want to use the Alibaba Cloud trusted system, leave this parameter empty.
 
- For more information about the trusted system, see [Overview](~~201394~~). |
+For more information about the trusted system, see [Overview](~~201394~~). |
 |HttpEndpoint|String|No|enabled|Specifies whether to enable the access channel for the instance metadata. Valid values:
 
- -   enabled: enables the access channel for instance metadata.
+-   enabled: enables the access channel for instance metadata.
 -   disabled: disables the access channel for instance metadata.
 
- Default value: enabled.
+Default value: enabled.
 
- **Note:** For more information about instance metadata, see [Overview](~~49122~~). |
+**Note:** For more information about instance metadata, see [Overview](~~49122~~). |
 |HttpTokens|String|No|optional|Specifies whether to forcibly use the security-enhanced mode \(IMDSv2\) to access instance metadata. Valid values:
 
- -   optional: does not forcibly use the security-enhanced mode \(IMDSv2\).
+-   optional: does not forcibly use the security-enhanced mode \(IMDSv2\).
 -   required: forcibly uses the security-enhanced mode \(IMDSv2\). After you set this parameter to required, you cannot access the instance metadata in normal mode.
 
- Default value: optional.
+Default value: optional.
 
- **Note:** For more information about the modes of accessing instance metadata, see [Access mode of instance metadata](~~150575~~). |
+**Note:** For more information about the modes of accessing instance metadata, see [Access mode of instance metadata](~~150575~~). |
 |PrivatePoolOptions.MatchCriteria|String|No|Open|The type of the private pool. After an elasticity assurance or capacity reservation takes effect, a private pool is generated. You can select a private pool when you create an instance. Valid values:
 
- -   Open: open private pool. The system selects a matching open private pool to create the instance. If no matching open private pools exist, resources in the public pool are used to create the instance. When this parameter is set to Open, the `PrivatePoolOptions.Id` parameter must be empty.
+-   Open: open private pool. The system selects a matching open private pool to create the instance. If no matching open private pools exist, resources in the public pool are used to create the instance. When this parameter is set to Open, the `PrivatePoolOptions.Id` parameter must be empty.
 -   Target: targeted private pool. The capacity in a specific private pool is used to create the instance. If the specified private pool is unavailable, the instance cannot be created. If the parameter is set to Target, the `PrivatePoolOptions.Id` parameter must be specified.
 -   None: no private pool. The capacity in private pools is not used to create the instance.
 
- Default value: None.
+Default value: None.
 
- In the following scenarios, the PrivatePoolOptions.MatchCriteria parameter can be set only to `None` or left empty:
+In the following scenarios, the PrivatePoolOptions.MatchCriteria parameter can be set only to `None` or left empty:
 
- -   The instance is a preemptible instance.
+-   The instance is a preemptible instance.
 -   The instance is in the classic network.
 -   The instance is created on a dedicated host. |
 |PrivatePoolOptions.Id|String|No|eap-bp67acfmxazb4\*\*\*\*|The ID of the private pool. The ID of a private pool is the same as that of the elasticity assurance or capacity reservation for which the private pool is generated. |
 |SchedulerOptions.DedicatedHostClusterId|String|No|dc-bp12wlf6am0vz9v2\*\*\*\*|The ID of the dedicated cluster in which to create the instance. The system selects one dedicated host from the cluster to create the instance.
 
- **Note:** This parameter takes effect only when the `Tenancy` parameter is set to `host`.
+**Note:** This parameter takes effect only when the `Tenancy` parameter is set to `host`.
 
- When you specify both `DedicatedHostId` and `SchedulerOptions.DedicatedHostClusterId`, take note of the following items:
+When you specify both `DedicatedHostId` and `SchedulerOptions.DedicatedHostClusterId`, take note of the following items:
 
- -   If the specified dedicated host belongs to the specified dedicated host cluster, the instance is preferentially deployed on the specified dedicated host.
+-   If the specified dedicated host belongs to the specified dedicated host cluster, the instance is preferentially deployed on the specified dedicated host.
 -   If the specified dedicated host does not belong to the specified dedicated host cluster, the instance cannot be created.
 
- You can call the [DescribeDedicatedHostClusters](~~184145~~) operation to query the dedicated host cluster list. |
+You can call the [DescribeDedicatedHostClusters](~~184145~~) operation to query the dedicated host cluster list. |
 
 ## Response parameters
 
