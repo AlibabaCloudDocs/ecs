@@ -195,5 +195,5 @@ Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直�
 
     关于libvirt和qemu-kvm命令的使用详情，请参见[Red Hat官方说明](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/virtualization_deployment_and_administration_guide/index?spm=a2c63.p38356.879954.8.19345311iQWknm#sect-Installing_virtualization_packages_on_an_existing_Red_Hat_Enterprise_Linux_system-Installing_the_virtualization_packages_with_yum)。
 
--   使用图形界面（virt-manger）启动KVM虚拟机。在启动虚拟机之前，您需要在本地找到KVM虚拟机的配置文件，在文件内添加seed.img镜像文件的绝对路径。
+-   使用图形界面（virt-manager）启动KVM虚拟机。在启动虚拟机之前，您需要在本地找到KVM虚拟机的配置文件，在文件内添加seed.img镜像文件的绝对路径。
 
