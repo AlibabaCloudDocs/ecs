@@ -6,20 +6,21 @@ keyword: [Alibaba Cloud, ECS, upgrade and downgrade, pay-as-you-go]
 
 This topic describes how to change the instance type \(vCPUs and memory\) of a pay-as-you-go instance.
 
-Make sure that the instance whose instance type you want to change meets the following requirements:
+Make sure that the instance for which you want to change the instance type meets the following requirements:
 
+-   The instance is a pay-as-you-go instance, excluding preemptible instances.
 -   The instance is in the **Stopped** \(`Stopped`\) state.
 
     **Note:**
 
-    -   Select **Retain Instance and Continue Charging After Instance is Stopped** for the stop mode when you attempt to stop the instance.
+    -   Set Stop Mode to **Retain Instance and Continue Charging After Instance is Stopped** if you want to stop the instance.
     -   Service interruptions may occur when you stop an instance. We recommend that you perform this operation during off-peak hours.
--   The instance family to which the instance belongs supports instance type changes. For more information, see [Change instance types of instances](/intl.en-US/Instance/Change configurations/Change instance types/Change instance types of instances.md).
+-   The instance family to which the instance belongs supports instance type changes. For more information, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Instance families that support instance type changes.md).
 
-Take note of the following limits when you use the instance type change feature:
+## Limits
 
--   The number of vCPUs and memory size can only be changed by changing the instance type. They cannot be changed seperately.
--   You can change the instance type of an instance multiple times, but you must wait at least five minutes between two consecutive operations.
+-   The number of vCPUs and the memory size of an instance can be changed only by changing the instance type of the instance. These configurations cannot be separately changed.
+-   The instance type of an instance can be changed as many times as needed, but you must wait at least 5 minutes between two consecutive operations.
 
 ## Change the instance type of a single instance
 
@@ -33,7 +34,7 @@ Take note of the following limits when you use the instance type change feature:
 
 5.  On the **Change Instance Type** page, select a new instance type.
 
-6.  Confirm the configuration costs and click **Change**.
+6.  Confirm the configuration fees and click **Change**.
 
 7.  Start the instance.
 
@@ -52,11 +53,11 @@ Take note of the following limits when you use the instance type change feature:
 
 5.  On the **Change Instance Type** page, select a new instance type.
 
-    If an instance does not have the same instance type as other instances or if it is located in a different zone from other instances, this instance is filtered out. You can continue to perform operations only on the qualified instances, as shown in the following figure.
+    If an instance does not have the same instance type as other instances or if the instance is located in a different zone from other instances, this instance is filtered out. Operations can be performed only on the instances that meet the filter conditions, as shown in the following figure.
 
-    ![Change the instance types of multiple instances](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/9249443061/p139381.png)
+    ![Change the instance types of multiple instances](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9249443061/p139381.png)
 
-6.  Confirm the configuration costs and click **Change**.
+6.  Confirm the configuration fees and click **Change**.
 
 7.  Start the instances.
 
