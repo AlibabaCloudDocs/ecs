@@ -4,7 +4,7 @@ keyword: [purchase an instance, enterprise-level instance, GPU-accelerated insta
 
 # Instance FAQ
 
-This topic provides answers to commonly asked questions about ECS instances.
+This topic provides answers to frequently asked questions about Elastic Compute Service \(ECS\) instances.
 
 -   FAQ about purchasing instances
     -   [How do I check which instance resources are available for purchase within a specific region or zone?](#section_dxe_iha_q0o)
@@ -12,7 +12,6 @@ This topic provides answers to commonly asked questions about ECS instances.
     -   [How do I select an instance type that is suitable for my business?](#section_j8t_fwz_mjf)
     -   [How long does it take to create an ECS instance?](#section_ska_yf3_rvx)
     -   [I paid for an ECS instance but no ECS instance was created. Why?](#section_gbw_acs_xwn)
-    -   [Why are some instance types not available on the instance buy page when I attempt to purchase a pay-as-you-go instance?](#section_ls5_e9e_kt3)
 -   FAQ about enterprise-level instances
     -   [What are enterprise-level instances? What are shared instances?](#section_2p8_osd_e5y)
     -   [What are the differences between enterprise-level and shared instances?](#section_cm4_dks_zu1)
@@ -22,13 +21,13 @@ This topic provides answers to commonly asked questions about ECS instances.
     -   [Which disk categories do enterprise-level instances support?](#section_9st_mh4_j3f)
     -   [Which image types do enterprise-level instances support?](#section_h1y_jjt_aer)
     -   [What are the limits on changing the instance types of enterprise-level instances?](#section_rxb_abg_ub7)
-    -   [Can I change a shared instance into an enterprise-level instance?](#section_90e_qq9_gmf)
+    -   [Can I change a shared instance to an enterprise-level instance?](#section_90e_qq9_gmf)
 -   FAQ about persistent memory optimized instances
     -   [What characteristics do persistent memory optimized instances have?](#section_rdv_89z_ile)
     -   [What requirements do persistent memory optimized instances have for operating systems?](#section_x40_ira_gbs)
     -   [After I purchase a persistent memory optimized instance, how do I configure its persistent memory as memory?](#section_npj_8f8_af1)
     -   [When persistent memory is used as memory on a persistent memory optimized instance, can I deploy and run Redis applications on the instance?](#section_6pv_zvt_cae)
-    -   [I already have a Redis cluster based on regular memory and want to migrate business from this cluster to persistent memory optimized instances. How do I do this? What items do I need to take note of?](#section_nrq_5r7_5mj)
+    -   [I already have a Redis cluster based on regular memory and want to migrate business from this cluster to persistent memory optimized instances. How do I do? What items do I need to take note of?](#section_nrq_5r7_5mj)
     -   [Can I deploy and run a parameter server \(PS\) architecture on persistent memory optimized instances where persistent memory is used as memory?](#section_cwc_6hc_uoy)
     -   [After I purchase a persistent memory optimized instance, how do I configure its persistent memory as local SSDs?](#section_ccq_ku3_xvg)
     -   [To which applications are local SSDs that can deliver higher performance applicable?](#section_6n2_u99_wgd)
@@ -37,7 +36,7 @@ This topic provides answers to commonly asked questions about ECS instances.
     -   [How reliable is persistent memory?](#section_j6f_n0c_e49)
 -   FAQ about GPU-accelerated instances
     -   [After the NVIDIA driver was installed, nvidia-smi did not work and an error message was returned indicating that the NVIDIA driver had not been installed. Why?](#section_6fo_f6k_wy9)
-    -   [Why doesn't Windows Graphics support DirectX-based functions?](#section_5mx_en9_guy)
+    -   [Why is Windows Graphics unable to support DirectX-based features?](#section_5mx_en9_guy)
     -   [Do GPU-accelerated instances support Android emulators?](#section_vwn_31g_4fn)
     -   [Can I change the configurations of GPU-accelerated instances?](#section_sbj_dzq_gb1)
     -   [Do pay-as-you-go GPU-accelerated instances support the No Fees for Stopped Instances \(VPC-Connected\) feature?](#section_pw6_mpa_a0f)
@@ -49,37 +48,37 @@ This topic provides answers to commonly asked questions about ECS instances.
     -   [Can ECS bare metal instances have their configurations upgraded or downgraded? Do they support failover?](#section_qzc_rb4_og4)
 -   FAQ about Super Computing Cluster \(SCC\)
     -   [How do I create an SCC instance?](#section_9as_2qf_ted)
-    -   [How are SCC instances billed?](#section_lew_64d_19y)
+    -   [How am I billed for SCC instances?](#section_lew_64d_19y)
     -   [How do I create an SCC by using E-HPC?](#section_pq2_wpe_y7q)
     -   [How do I use SCC RDMA?](#section_i2x_rle_0ql)
 -   FAQ about preemptible instances
-    -   [I do not have overdue payments in my account. Why have my preemptible instances been released?](#section_0ns_pj7_dxg)
-    -   [Will I be notified when my preemptible instances are about to be released? How will I be notified?](#section_b3n_69r_ccj)
+    -   [I do not have overdue payments within my account. Why have my preemptible instances been released?](#section_0ns_pj7_dxg)
+    -   [Am I notified when my preemptible instances are about to be released? How am I notified?](#section_b3n_69r_ccj)
     -   [Can the data of a preemptible instance be automatically retained when the instance is released?](#section_hqu_m54_1ac)
     -   [Can I cancel or reschedule the automatic release of a preemptible instance?](#section_4dz_4mk_utb)
     -   [Can preemptible instances be converted into subscription instances?](#section_4bx_hwo_gre)
     -   [To what resources are the prices of preemptible instances applicable?](#section_ns2_1jv_mbr)
     -   [How do I bid for a preemptible instance?](#section_vv0_a6s_5zd)
-    -   [What is the relationship between the user-defined maximum hourly price and the spot price of a preemptible instance?](#section_67i_s25_aqc)
+    -   [What is the relationship between the user-defined maximum hourly price and the current market price of a preemptible instance?](#section_67i_s25_aqc)
     -   [Am I charged the same price for all preemptible instances started at the same time?](#section_y3x_sk2_stu)
-    -   [For the first hour after a preemptible instance is created, am I charged at a price that fluctuates with the spot price?](#section_scn_g76_t1n)
-    -   [Can I view the spot price of an instance type when I purchase a preemptible instance?](#section_jxg_3ko_6xo)
+    -   [For the first hour after a preemptible instance is created, am I charged at a price that changes with the market price?](#section_scn_g76_t1n)
+    -   [Can I view the market price of an instance type when I purchase a preemptible instance?](#section_jxg_3ko_6xo)
     -   [Can I view the historical prices of a preemptible instance type? How?](#section_z9a_do7_ofi)
-    -   [Do preemptible instances continue to be billed after they are stopped?](#section_8yt_11m_q7i)
+    -   [Do I continue to be billed for preemptible instances after they are stopped?](#section_8yt_11m_q7i)
     -   [How many preemptible instances can be purchased by a single account?](#section_d2v_giu_8a4)
     -   [How do I increase my vCPU-based quotas?](#section_u2j_bsw_7vd)
     -   [Can the instance type of a preemptible instance be changed?](#section_yae_a2y_k7c)
     -   [Which instance families support preemptible instances?](#section_8ws_4pm_9cc)
     -   [In which regions can I create preemptible instances?](#section_0zt_ehb_pts)
-    -   [When I attempt to purchase an ECS instance, the Preemptible Instance option is not available on the instance buy page. Why?](#section_skn_5ct_zya)
-    -   FAQ about preemptible instances without a protection period
-        -   [Which is more cost-effective: a preemptible instance with a protection period or a preemptible instance without a protection period?](#section_8ph_ned_xbq)
-        -   [Is the release rate of preemptible instances without a protection period higher than that of preemptible instances with a protection period?](#section_su1_6fg_q9h)
-        -   [Are preemptible instances without a protection period prioritized for release over those with a protection period?](#section_ut8_cn4_od6)
-        -   [If I have created a preemptible instance without a protection period, do subsequently created preemptible instances also not have a protection period?](#section_le8_fur_3cx)
-        -   [Will I be notified 5 minutes before a preemptible instance is released even if it does not have a protection period?](#section_sdq_k1m_i7w)
-        -   [Are fewer resources provided for preemptible instances with a protection period than for those without a protection period?](#section_npx_jel_rj2)
-        -   [Can I convert between preemptible instances with and without a protection period?](#section_0c7_5a0_glg)
+    -   [When I attempt to purchase an ECS instance, the Preemptible Instance option is unavailable on the instance buy page. Why?](#section_skn_5ct_zya)
+    -   FAQ about preemptible instances that do not have protection periods
+        -   [Which is more cost-effective: a preemptible instance that has a protection period or a preemptible instance that does not have a protection period?](#section_8ph_ned_xbq)
+        -   [Is the release rate of preemptible instances that do not have protection periods higher than that of preemptible instances that have protection periods?](#section_su1_6fg_q9h)
+        -   [Are preemptible instances that do not have protection periods prioritized for release over those that have protection periods?](#section_ut8_cn4_od6)
+        -   [If I have created a preemptible instance that does not have a protection period, do subsequently created preemptible instances also not have protection periods?](#section_le8_fur_3cx)
+        -   [Am I notified 5 minutes before a preemptible instance is released even if the instance does not have a protection period?](#section_sdq_k1m_i7w)
+        -   [Are fewer resources provided for preemptible instances that have protection periods than for those that do not have protection periods?](#section_npx_jel_rj2)
+        -   [Can I convert between preemptible instances that have and do not have protection periods?](#section_0c7_5a0_glg)
 -   FAQ about reserved instances
     -   [What are reserved instances?](#section_et2_64u_fmh)
     -   [Does a reserved instance provide a resource reservation?](#section_5g6_eu4_b0f)
@@ -93,31 +92,31 @@ This topic provides answers to commonly asked questions about ECS instances.
     -   [How is the instance size flexibility of reserved instances applied?](#section_i9g_3my_drv)
     -   [Do zonal reserved instances provide instance size flexibility?](#section_tpd_tx9_9ri)
     -   [Do zonal reserved instances provide zone flexibility?](#section_qdz_h5b_f91)
-    -   [Can a zonal reserved instance be changed into a regional one?](#section_wry_8lc_jj4)
+    -   [Can a zonal reserved instance be changed to a regional one?](#section_wry_8lc_jj4)
     -   [Can the scope of a reserved instance be changed from one region to another?](#section_m89_45m_v6k)
     -   [Can reserved instances be used across accounts?](#section_6ta_i2c_mga)
-    -   [Can reserved instances be used to cover the storage and network usage charges of pay-as-you-go instances?](#section_prg_o9w_0de)
+    -   [Can reserved instances be used to offset the storage and network usage bills of pay-as-you-go instances?](#section_prg_o9w_0de)
     -   [Can I configure a reserved instance to be applied to a specified pay-as-you-go instance?](#section_30a_ovt_uhz)
-    -   [How are reserved instances billed?](#section_whe_bza_0u2)
+    -   [How am I billed for reserved instances?](#section_whe_bza_0u2)
     -   [When does a reserved instance take effect after it is purchased?](#section_cdy_tt0_n68)
-    -   [After I modify, split, or merge a reserved instance, when does the operation take effect?](#section_kfw_q23_shl)
-    -   [Why isn't the No Upfront payment option displayed on the buy page?](#section_95a_y2p_hcl)
+    -   [After I modify, split, or merge reserved instances, when does the operation take effect?](#section_kfw_q23_shl)
+    -   [Why is the No Upfront payment option not displayed on the buy page?](#section_95a_y2p_hcl)
     -   [Can the payment option of a reserved instance be changed?](#section_1ps_ydr_o6o)
     -   [Can reserved instances be resold?](#section_j9e_1zq_35v)
-    -   [Can I use reserved instances to cover the image costs of pay-as-you-go Windows instances?](#section_0w6_6mr_z27)
-    -   [Can reserved instances be used to cover the image costs of pay-as-you-go Linux instances?](#section_wm8_tf8_rgx)
+    -   [Can I use reserved instances to offset the bills of images of pay-as-you-go Windows instances?](#section_0w6_6mr_z27)
+    -   [Can reserved instances be used to offset the bills of images of pay-as-you-go Linux instances?](#section_wm8_tf8_rgx)
     -   [Are the consumption details of reserved instances refreshed every hour?](#section_q23_b4t_odg)
     -   [Can a reserved instance be applied to more than one pay-as-you-go instance at the same time?](#section_10f_gpz_w86)
 -   FAQ about connecting to instances
-    -   FAQ about VNC management terminals
-        -   [Does a VNC management terminal allow multiple users to log on simultaneously?](#section_mdm_w4q_wgb)
+    -   FAQ about Virtual Network Computing \(VNC\) management terminals
+        -   [Does a VNC management terminal allow multiple users to simultaneously log on?](#section_mdm_w4q_wgb)
         -   [What do I do if I forget the remote connection password?](#section_tym_x4q_wgb)
         -   [Why am I unable to connect to a VNC management terminal even after I reset my remote connection password?](#section_huk_e8x_b38)
         -   [I was prompted with an authentication failure when I attempted to connect to a VNC management terminal. What do I do?](#section_xl9_o6y_79k)
-        -   [What do I do if a black screen appears while I am connected to a VNC management terminal?](#section_xrm_6sm_10m)
+        -   [What do I do if a black screen appears after I am connected to a VNC management terminal?](#section_xrm_6sm_10m)
         -   [What do I do if a VNC management terminal cannot be accessed?](#section_65w_3px_xpu)
         -   [Why am I unable to use Internet Explorer 8 to access a VNC management terminal?](#section_82j_21b_xj0)
-        -   [When I use Firefox to access a VNC management terminal, an error message is returned indicating that the secure connection has failed. What do I do?](#section_l6t_kik_vmy)
+        -   [When I use Firefox to access a VNC management terminal, an error message appears, which indicates that the secure connection has failed. What do I do?](#section_l6t_kik_vmy)
         -   [How do I remotely log on to a Linux instance?](#section_tkz_v77_wbf)
         -   [What are the default username and password for remote logon to the operating system of an ECS instance?](#section_u82_ecw_928)
         -   [How do I adjust the desktop resolution of a Windows instance?](#section_a4f_aqv_1fi)
@@ -148,10 +147,10 @@ This topic provides answers to commonly asked questions about ECS instances.
     -   [Can load balancing be implemented for a single ECS instance?](#section_g6s_x91_9m2)
     -   [Can I change the region of an ECS instance?](#section_wm7_rby_mij)
     -   [Can I adjust the partition size of a purchased disk?](#section_nih_446_koq)
-    -   [How do I view subscription ECS instances within all regions in my account?](#section_s5o_w6z_95z)
+    -   [How do I view subscription ECS instances in all regions within my account?](#section_s5o_w6z_95z)
     -   [When can I forcibly stop an ECS instance? What are the consequences?](#section_nlp_9qg_6gq)
     -   [Why am I unable to reactivate my ECS instance?](#section_vk6_sjc_agd)
-    -   [Why has an ECS instance with release protection enabled been automatically released from a scaling group?](#section_so8_gdz_2i5)
+    -   [Why is an ECS instance that has release protection enabled automatically released from a scaling group?](#section_so8_gdz_2i5)
 -   FAQ about instance security
     -   [What is the AliVulfix process in an ECS instance?](#section_4ek_d0m_191)
     -   [How do I protect ECS instances against attacks?](#section_t6g_7b5_165)
@@ -170,11 +169,11 @@ This topic provides answers to commonly asked questions about ECS instances.
     -   [I cannot purchase more pay-as-you-go instances. What do I do?](#section_xt4_ax4_x66)
     -   [How do I query resource quotas?](#section_z6z_9bh_9is)
 -   FAQ about instance billing
-    -   [Am I still charged for a pay-as-you-go instance after it is stopped either manually or due to an overdue payment?](#section_bll_9fl_9qs)
+    -   [Am I still charged for a pay-as-you-go instance after it is stopped manually or due to an overdue payment?](#section_bll_9fl_9qs)
     -   [What do I do if an order cannot be placed to change the billing method of an instance from pay-as-you-go to subscription?](#section_ye3_pyk_bzl)
     -   [How long after an order is paid does it take to change the billing method of an instance from pay-as-you-go to subscription?](#section_07w_jp4_rlu)
     -   [What do I do if the billing method of an instance cannot be changed from pay-as-you-go to subscription?](#section_ulz_fn2_oxb)
-    -   [When I change the billing method of an instance from pay-as-you-go to subscription, does the billing method for network usage of the instance also change?](#section_4lm_u5o_2my)
+    -   [Does the billing method for network usage of an instance change when I change the billing method of the instance from pay-as-you-go to subscription?](#section_4lm_u5o_2my)
     -   [I have an unpaid order to change the billing method of an instance from pay-as-you-go to subscription. If I upgrade the configurations of the instance, is the order still valid?](#section_tih_umb_qaz)
     -   [What do I do if the billing method of an instance cannot be changed from subscription to pay-as-you-go?](#section_xqt_ua4_1cf)
     -   [When I attempt to change the billing method of a disk in an ECS instance, an error message is returned indicating that I have already changed the billing method three times. What does this mean?](#section_bxy_dkr_1f9)
@@ -187,13 +186,13 @@ You can go to the [ECS Instance Types Available for Each Region page](https://ec
 
 ## What do I do if resources are sold out when I attempt to purchase an instance within a specific region or zone?
 
-If the resources of a specific instance type are sold out when you attempt to purchase an instance of that instance type within a specific region or zone, take one of the following measures:
+If the resources of a specific instance type are sold out when you attempt to purchase an instance of that instance type within a specific region or zone, perform one of the following operations:
 
 -   Select another region.
 -   Select another zone.
 -   Select another instance type.
 
-If the resources that you want to purchase are still not available after you take all of the preceding measures, try again later. Instance resources are dynamic. When resources are insufficient, Alibaba Cloud replenishes them as soon as possible.
+If the resources that you want to purchase are still unavailable after you perform all of the preceding operations, try again later. Instance resources are dynamic. When resources are insufficient, Alibaba Cloud replenishes them as soon as possible.
 
 You can also use the arrival notice feature to receive notifications when resources become available.
 
@@ -211,9 +210,9 @@ Consider the following factors when you select an instance type. For more inform
 
 ## How long does it take to create an ECS instance?
 
-It takes a minute or two to create an ECS instance. After the instance is created:
+It takes 1 or 2 minutes to create an ECS instance. After the instance is created, you can perform the following operations:
 
--   For an ECS instance that runs a Linux operating system, you can connect to the instance without making any other configurations. For more information, see [Connect to an ECS instance]().
+-   For an ECS instance that runs a Linux operating system, you can connect to the instance without the need to make other configurations. For more information, see [Connect to an ECS instance]().
 -   For an ECS instance that runs a Windows operating system, you must use the Sysprep tool to initialize the operating system. Do not restart the instance while the operating system is being initialized. After the operating system is initialized, you can connect to the instance. For more information, see [Connect to an ECS instance](). The amount of time required to initialize the operating system is determined by the type of the instance.
     -   For an I/O optimized instance that runs a Windows operating system, 2 to 3 minutes are required to initialize the operating system.
     -   For a non-I/O optimized instance that runs a Windows operating system, 10 minutes are required to initialize the operating system.
@@ -222,25 +221,19 @@ It takes a minute or two to create an ECS instance. After the instance is create
 
 ## I paid for an ECS instance but no ECS instance was created. Why?
 
-If resources within the specified zone are insufficient to create an instance of your selected instance type, the instance fails to be created. Your account is automatically refunded the cost of the instance. If you do not receive a refund within half an hour, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+If resources within the specified zone are insufficient to create an instance of your selected instance type, the instance fails to be created. A refund is made to your account by the system. If you do not receive a refund within half an hour, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
-
-## Why are some instance types not available on the instance buy page when I attempt to purchase a pay-as-you-go instance?
-
-Some of the instance types that have 16 or more vCPUs are available only to authorized accounts when the pay-as-you-go billing method is selected. If an instance type is available on the instance buy page when the subscription billing method is selected but is not available when the pay-as-you-go billing method is selected, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm) to check whether your account is authorized to purchase pay-as-you-go instances of that instance type.
-
-If your account is authorized but the instance type is still not available, resources within the current region may be insufficient for you to create pay-as-you-go instances of that instance type. For more information, see [What do I do if resources are sold out when I attempt to purchase an instance within a specific region or zone?](#section_lxw_bwz_qgb).
 
 ## What are enterprise-level instances? What are shared instances?
 
 Enterprise-level instances belong to a series of instance families released by Alibaba Cloud in September 2016. Enterprise-level instances provide high performance, consistent computing power, and balanced network performance. Enterprise-level instances have exclusive and consistent computing, storage, and network resources, and are suitable for enterprise scenarios that require high business stability.
 
-Shared instances belong to a series of instance families that are targeted at individuals or small and medium-sized websites. Shared instances share resources, in contrast with enterprise-level instances that each have their own resources exclusively. As a result, shared instances do not provide consistent computing performance, but cost less.
+Shared instances belong to a series of instance families that are targeted at individuals or small and medium-sized websites. Compared with enterprise-level instances that each exclusively have their own resources, shared instances share resources. Therefore, shared instances do not provide consistent computing performance, but can help you reduce costs.
 
 ## What are the differences between enterprise-level and shared instances?
 
-Enterprise-level instances use a CPU-bound scheduling scheme. Each vCPU is bound to a CPU hyperthread. Instances do not compete for CPU resources and do provide consistent computing performance as guaranteed in the SLA.
+Enterprise-level instances use a CPU-bound scheduling scheme. Each vCPU is bound to a CPU hyperthread. Instances do not compete for CPU resources and provide consistent computing performance as guaranteed in the service-level agreement \(SLA\).
 
 Shared instances use a CPU-unbound scheduling scheme. Each vCPU is randomly allocated to an idle CPU hyperthread. vCPUs of different instances compete for CPU resources, which causes computing performance to fluctuate when traffic loads are heavy. Shared instances can guarantee only availability but cannot guarantee the performance that may be required in the SLA.
 
@@ -250,36 +243,36 @@ Among the [instance families](/intl.en-US/Instance/Instance families.md) that ar
 
 ## In what business scenarios do I need to purchase enterprise-level instances?
 
-For business scenarios to which different enterprise-level instances are applicable, see [Instance families](/intl.en-US/Instance/Instance families.md) and [Best practices for instance type selection](/intl.en-US/Best Practices/Best practices for instance type selection.md).
+For information about business scenarios to which different enterprise-level instances are applicable, see [Instance families](/intl.en-US/Instance/Instance families.md) and [Best practices for instance type selection](/intl.en-US/Best Practices/Best practices for instance type selection.md).
 
 ## How is the network performance of enterprise-level instances?
 
-The network performance of enterprise-level instances depends on their specifications. The higher their specifications are, the higher network performance the instances can deliver. For more information about the network performance of different instance specifications, see [Instance families](/intl.en-US/Instance/Instance families.md).
+The network performance of enterprise-level instances depends on their specifications. The higher the specifications of enterprise-level instances are, the higher network performance the instances can deliver. For more information about the network performance of different instance specifications, see [Instance families](/intl.en-US/Instance/Instance families.md).
 
 ## Which disk categories do enterprise-level instances support?
 
-For the disk categories that enterprise-level instances support, see [Disk categories](/intl.en-US/Block Storage/Block Storage overview/Cloud disks.md).
+For information about the disk categories that enterprise-level instances support, see [Disk categories](/intl.en-US/Block Storage/Block Storage overview/Cloud disks.md).
 
 ## Which image types do enterprise-level instances support?
 
-For the public images that enterprise-level instances support, see [Overview](/intl.en-US/Images/Public image/Overview.md).
+For information about the public images that enterprise-level instances support, see [Overview](/intl.en-US/Images/Public image/Overview.md).
 
 You can also import custom images. For more information, see [Import custom images](/intl.en-US/Images/Custom image/Import images/Import custom images.md).
 
 ## What are the limits on changing the instance types of enterprise-level instances?
 
-For the limits on changing the instance types of enterprise-level instances, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Change instance types/Instance families that support instance type changes.md).
+For information about the limits on changing the instance types of enterprise-level instances, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Instance families that support instance type changes.md).
 
-## Can I change a shared instance into an enterprise-level instance?
+## Can I change a shared instance to an enterprise-level instance?
 
-Yes, you can change a shared instance into an enterprise-level instance. For more information, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Change instance types/Instance families that support instance type changes.md).
+Yes, you can change a shared instance to an enterprise-level instance. For more information, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Instance families that support instance type changes.md).
 
 ## What characteristics do persistent memory optimized instances have?
 
-Persistent memory optimized instances use high-capacity persistent memory, and provide slower access and higher data durability than the instances that use regular memory do. When persistent memory optimized instances are stopped or restarted, data in their persistent memory is not lost. Persistent memory can be used as:
+Persistent memory optimized instances use high-capacity persistent memory and provide slower access and higher data durability than instances that use regular memory do. When persistent memory optimized instances are stopped or restarted, data in their persistent memory is not lost. Persistent memory can be used in the following ways:
 
--   Memory: You can move some data from regular memory to persistent memory, such as non-hot data that does not require high-speed storage access. Persistent memory offers large capacity at a low price per GiB and can help reduce the total cost of ownership \(TCO\) per GiB of memory.
--   Local SSDs: Persistent memory can be used as ultra-high performance SSDs to offer a read/write latency as low as 400 nanoseconds. You can use persistent memory for core application databases that require consistent response time. You can also replace cache disks with persistent memory to achieve higher IOPS, higher bandwidth, and lower latency and improve the business performance of the entire cluster.
+-   Memory: You can move some data from regular memory to persistent memory, such as non-hot data that does not require high-speed storage access. Persistent memory offers large capacity at a lower price per GiB and can help reduce the total cost of ownership \(TCO\) per GiB of memory.
+-   Local SSDs: Persistent memory can be used as ultra-high performance SSDs to offer a read/write latency as low as 400 nanoseconds. You can use persistent memory for core application databases that require consistent response time. You can also replace cache disks with persistent memory to obtain higher input/output operations per second \(IOPS\), higher bandwidth, and lower latency, and improve the business performance of the entire cluster.
 
 ## What requirements do persistent memory optimized instances have for operating systems?
 
@@ -293,21 +286,21 @@ You can use tools to configure the persistent memory as memory. For more informa
 
 ## When persistent memory is used as memory on a persistent memory optimized instance, can I deploy and run Redis applications on the instance?
 
-You can significantly reduce the TCO per GiB of memory for Redis applications by running them on persistent memory optimized instances. However, to ensure performance, we recommend that you modify the Redis applications by stratifying their data and storing the data in different places. You can store non-hot data in persistent memory and hot data in regular memory.
+You can significantly reduce the total cost of ownership \(TCO\) per GiB of memory for Redis applications by running them on persistent memory optimized instances. To ensure performance, we recommend that you modify the Redis applications by stratifying their data and storing the data in different places. You can store non-hot data in persistent memory and hot data in regular memory.
 
-To reduce your modification costs, Alibaba Cloud provides re6p instance types specifically for Redis applications. You can deploy Redis applications on instances of the re6p instance types by running several commands. For more information, see [Deploy Redis applications on re6p instances](/intl.en-US/Instance/Instance type families/Memory optimized instance families/Deploy Redis applications on re6p instances.md).
+To reduce your modification costs, Alibaba Cloud provides re6p instance types for Redis applications. You can deploy Redis applications on instances of the re6p instance types by running several commands. For more information, see [Deploy Redis applications on re6p instances](/intl.en-US/Instance/Instance type families/Memory optimized instance families/Deploy Redis applications on re6p instances.md).
 
-**Note:** When you purchase persistent memory optimized instances, select instance types named in the ecs.re6p-redis.<nx\>large format.
+**Note:** When you purchase persistent memory optimized instances, choose instance types named in the ecs.re6p-redis.<nx\>large format.
 
-## I already have a Redis cluster based on regular memory and want to migrate business from this cluster to persistent memory optimized instances. How do I do this? What items do I need to take note of?
+## I already have a Redis cluster based on regular memory and want to migrate business from this cluster to persistent memory optimized instances. How do I do? What items do I need to take note of?
 
-You must ensure business consistency and data reliability while you are migrating business from the Redis cluster to persistent memory optimized instances. We recommend that you first purchase a single persistent memory optimized instance and test it with a small amount of required business to check whether the basic performance and capacity model of the instance meet your business requirements. If the basic performance and capacity model of the instance meet your business requirements, you can scale out to more persistent memory optimized instances and take over business from the entire Redis cluster.
+Business consistency and data reliability must be ensured while you are migrating business from the Redis cluster to persistent memory optimized instances. We recommend that you first purchase a single persistent memory optimized instance and test it with a small amount of required business to check whether the basic performance and capacity model of the instance meet your business requirements. If the basic performance and capacity model of the instance meet your business requirements, you can purchase more persistent memory optimized instances and migrate your business from the Redis cluster.
 
 ## Can I deploy and run a parameter server \(PS\) architecture on persistent memory optimized instances where persistent memory is used as memory?
 
 Server nodes in a PS architecture store all training parameters of training clusters, traditionally in their memory. These parameters consume a large amount of memory and are expensive to store. When you run a PS architecture on persistent memory optimized instances where persistent memory is used as memory, we recommend that you store all parameters in persistent memory and only hash tables in regular memory. This way, the TCO of training clusters can be significantly reduced.
 
-You can modify the applications to suit your business requirements, or [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm) to contact Alibaba Cloud for technical support.
+You can modify the applications to suit your business requirements,or [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm) to contact Alibaba Cloud for technical support.
 
 ## After I purchase a persistent memory optimized instance, how do I configure its persistent memory as local SSDs?
 
@@ -315,19 +308,19 @@ You can use tools to configure the persistent memory as local SSDs. For more inf
 
 ## To which applications are local SSDs that can deliver higher performance applicable?
 
-To optimize performance or costs for I/O-intensive applications, you can select persistent memory optimized instances. You can use persistent memory optimized instances to solve common problems. Here are some of the problems:
+To optimize performance or costs for I/O-intensive applications, you can select persistent memory optimized instances. You can use persistent memory optimized instances to solve common problems. Examples:
 
--   The latency of single SQL queries is high or SQL queries require more consistent response time.
--   It takes too long to load resources on frontend servers of games, heavily loaded databases, and heavily loaded web servers.
--   You purchased large cloud disks or local disks for their high IOPS and bandwidth but now have unused capacity and unnecessary costs.
+-   The latency of single SQL queries is high, or SQL queries require more consistent response time.
+-   It takes an extended period of time to load resources on frontend servers of games, heavily loaded databases, and heavily loaded web servers.
+-   You purchased large cloud disks or local disks for their high input/output operations per second \(IOPS\) and bandwidth but now have unused capacity and unnecessary costs.
 
-You can use persistent memory optimized instances in typical I/O-intensive scenarios such as:
+You can use persistent memory optimized instances in typical I/O-intensive scenarios. Examples:
 
 -   Redis and other NoSQL databases such as Cassandra and MongoDB
 -   Structured databases such as MySQL
 -   I/O-intensive applications such as e-commerce, online games, and media applications
 -   Elasticsearch
--   Live video streaming, instant messaging, and room-based online games
+-   Live video streaming, instant messaging, and room-based online games that require persistent connections
 -   High-performance relational databases and online transaction processing \(OLTP\) systems
 
 ## Can I deploy Redis or MySQL applications on persistent memory optimized instances where persistent memory is used as local SSDs? Do I need to modify the applications in the same way as I do when persistent memory is used as memory?
@@ -355,11 +348,11 @@ When persistent memory optimized instances are released, data stored in their pe
 
 ## After the NVIDIA driver was installed, nvidia-smi did not work and an error message was returned indicating that the NVIDIA driver had not been installed. Why?
 
-Cause: The mismatch between the kernel and kernel-devel package versions resulted in a driver compilation error when the driver was installed from the .rpm file.
+Cause: The mismatch between the kernel and kernel-devel package versions caused a driver compilation error when the driver was installed from the .rpm file.
 
 Solution: Check the kernel version and download the corresponding kernel-devel package version. Then, run the `rpm –qa | grep kernel` command on the instance to check whether the kernel-devel package version matches the kernel version. Make sure that they match and then install the driver again.
 
-## Why doesn't Windows Graphics support DirectX-based functions?
+## Why is Windows Graphics unable to support DirectX-based features?
 
 Problem description: On Windows instances where the installed GPU driver has taken effect, Windows Remote Desktop Protocol \(RDP\) may not support DirectX- or OpenGL-based applications.
 
@@ -376,7 +369,7 @@ You cannot change the configurations of the following GPU-accelerated instances:
 -   GPU-accelerated instances with local storage
 -   vGPU-accelerated instances
 
-For information about the GPU-accelerated instance families that support instance type changes, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Change instance types/Instance families that support instance type changes.md).
+For information about the GPU-accelerated instance families that support instance type changes, see [Instance families that support instance type changes](/intl.en-US/Instance/Change configurations/Instance families that support instance type changes.md).
 
 ## Do pay-as-you-go GPU-accelerated instances support the No Fees for Stopped Instances \(VPC-Connected\) feature?
 
@@ -384,7 +377,7 @@ Instance families such as gn5 that are equipped with local storage do not suppor
 
 ## How do I view GPU monitoring data?
 
-You can log on to the [Cloud Monitor console](https://cloudmonitor.console.aliyun.com/) or call the [DescribeMetricList](/intl.en-US/API Reference/Monitoring data on time series metrics of cloud services/DescribeMetricList.md) operation to view GPU monitoring data. For more information, see [GPU monitoring](/intl.en-US/Host monitoring/GPU monitoring.md).
+You can log on to the [CloudMonitor console](https://cloudmonitor.console.aliyun.com/) or call the [DescribeMetricList](/intl.en-US/API Reference/Cloud Products/DescribeMetricList.md) operation to view GPU monitoring data. For more information, see [GPU monitoring](/intl.en-US/Host monitoring/GPU monitoring.md).
 
 ## What are the differences between ECS bare metal instances, traditional cloud hosts \(virtual machines\), and traditional physical machines?
 
@@ -392,26 +385,26 @@ For information about the differences, see [Overview](/intl.en-US/Instance/Insta
 
 ## How is the network performance of ECS bare metal instances?
 
-The network performance of ECS bare metal instances depends on their specifications. The higher their specifications are, the higher network performance the instances can deliver. For more information about the network performance of different ECS bare metal instance specifications, see [Instance families](/intl.en-US/Instance/Instance families.md).
+The network performance of ECS bare metal instances depends on their specifications. The higher the specifications of ECS bare metal instances are, the higher network performance the instances can deliver. For more information about the network performance of different ECS bare metal instance specifications, see [Instance families](/intl.en-US/Instance/Instance families.md).
 
 ## Which disk categories do ECS bare metal instances support? How many data disks can be attached to a single ECS bare metal instance?
 
-ECS bare metal instances support ultra disks and standard SSDs. Up to 16 data disks can be attached to a single ECS bare metal instance.
+ECS bare metal instances support enhanced SSDs \(ESSDs\), standard SSDs, and ultra disks. Up to 16 data disks can be attached to a single ECS bare metal instance.
 
 ## Can ECS bare metal instances have their configurations upgraded or downgraded? Do they support failover?
 
-ECS bare metal instances cannot have their configurations upgraded or downgraded. They do support failover. When the physical machine that hosts an ECS bare metal instance fails, the system fails the instance over to another physical machine. Data is retained in the data disks of the instance.
+ECS bare metal instances cannot have their configurations upgraded or downgraded. ECS bare metal instances support failover. When the physical machine that hosts an ECS bare metal instance fails, the system fails the instance over to another physical machine. Data is retained in the data disks of the instance.
 
 ## How do I create an SCC instance?
 
-You can create an SCC instance in one of the following ways:
+You can create an SCC instance by using one of the following methods:
 
--   If you only want to use the remote direct memory access \(RDMA\) feature, log on to the ECS console. Create an SCC instance as described in [Create an SCC instance](/intl.en-US/Instance/Instance type families/Super Computing Cluster instance type family/Create an SCC instance.md).
--   If you want to use the HPC scheduler and the cluster resizing service in addition to RDMA, log on to the [E-HPC console](https://ehpc.console.aliyun.com). Create an SCC and then create an SCC instance.
+-   If you want to use only the remote direct memory access \(RDMA\) feature, log on to the ECS console. Create an SCC instance as described in [Create an SCC instance](/intl.en-US/Instance/Instance type families/Super Computing Cluster instance type family/Create an SCC instance.md).
+-   If you want to use the HPC scheduler and the cluster resizing service in addition to RDMA, log on to the [E-HPC console](https://ehpc.console.aliyun.com). Create an SCC cluster and then create an SCC instance.
 
-## How are SCC instances billed?
+## How am I billed for SCC instances?
 
-SCC instances can be billed on a weekly, monthly, or yearly subscription basis.
+You are billed for SCC instances on a weekly, monthly, or yearly subscription basis.
 
 ## How do I create an SCC by using E-HPC?
 
@@ -419,25 +412,25 @@ You can log on to the [E-HPC console](https://ehpc.console.aliyun.com) or call t
 
 ## How do I use SCC RDMA?
 
-If you select an image that is customized for SCC and supports RDMA RoCE drivers and OFED stacks to create an SCC instance, you can use SCC RDMA by virtue of the IB verbs API or implement RDMA-based communication by using the MPI.
+If you select an image that is customized for SCC and supports RDMA RoCE drivers and OFED stacks to create an SCC instance, you can use SCC RDMA by using the IB verbs API or implement RDMA-based communication by using the MPI.
 
 ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2301359951/p50536.png)
 
-## I do not have overdue payments in my account. Why have my preemptible instances been released?
+## I do not have overdue payments within my account. Why have my preemptible instances been released?
 
-After the one-hour protection period of a preemptible instance expires, if the spot price \(the current price per hour of the preemptible instance\) exceeds the user-defined maximum hourly price or if resources are insufficient, the preemptible instance is automatically released.
+After the one-hour protection period of a preemptible instance expires, the preemptible instance is automatically released if the current market price of the preemptible instance exceeds the user-defined maximum hourly price or if resources are insufficient.
 
-## Will I be notified when my preemptible instances are about to be released? How will I be notified?
+## Am I notified when my preemptible instances are about to be released? How am I notified?
 
-Yes, you will be notified when your preemptible instances are about to be released. When your preemptible instance needs to be released due to a spot price change or insufficient resources, the instance first enters the To Be Released state and then is automatically released in 5 minutes.
+Yes, you are notified when your preemptible instances are about to be released. When your preemptible instance needs to be released due to a market price change or insufficient resources, the instance first enters the To Be Released state and then is automatically released in 5 minutes.
 
-You can use Cloud Monitor to subscribe to notifications for interrupted preemptible instances. For more information, see [Set event notifications](/intl.en-US/Deployment & Maintenance/Event notifications/Set event notifications.md).
+You can use CloudMonitor to subscribe to notifications for interrupted preemptible instances. For more information, see [Set event notifications](/intl.en-US/Deployment & Maintenance/Event notifications/Set event notifications.md).
 
-To check whether an instance is in the To Be Released state, you can view the [instance metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview.md), or call the [DescribeInstances](/intl.en-US/API Reference/Instances/DescribeInstances.md) operation and view the returned OperationLocks data.
+To check whether an instance is in the To Be Released state, you can view the [instance metadata](/intl.en-US/Instance/Manage instances/Manage instance metadata/Overview of ECS instance metadata.md) or call the [DescribeInstances](/intl.en-US/API Reference/Instances/DescribeInstances.md) operation to view the returned OperationLocks data.
 
 ## Can the data of a preemptible instance be automatically retained when the instance is released?
 
-No, the data of a preemptible instance cannot be automatically retained when the instance is released. When a preemptible instance is no longer needed, we recommend that you back up your data and environment by following the instructions in [Create a snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md) and then release the instance. You can purchase new preemptible instances at any time.
+No, the data of a preemptible instance cannot be automatically retained when the instance is released. When a preemptible instance is no longer needed, we recommend that you back up your data and environment by following the instructions in [Create a snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md) and then release the instance. You can purchase preemptible instances at any time.
 
 ## Can I cancel or reschedule the automatic release of a preemptible instance?
 
@@ -449,43 +442,43 @@ No, preemptible instances cannot be converted into subscription instances.
 
 ## To what resources are the prices of preemptible instances applicable?
 
-The prices of preemptible instances are applicable only to instance types. Other resources such as system disks, data disks, and network bandwidth are billed at the same prices as those of pay-as-you-go instances.
+The prices of preemptible instances are applicable only to instance types. You are billed for other resources such as system disks, data disks, and network bandwidth at the same prices as those of pay-as-you-go instances.
 
 ## How do I bid for a preemptible instance?
 
-To create a preemptible instance, you can specify a maximum hourly price to bid for an instance type. If the spot price does not exceed your specified maximum hourly price, the preemptible instance that you request is created and billed based on the spot price. For more information, see [Create a preemptible instance](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Create a preemptible instance.md).
+To create a preemptible instance, you can specify a maximum hourly price to bid for an instance type. If the current market price does not exceed your specified maximum hourly price, the preemptible instance that you request is created, and you are billed based on the current market price. For more information, see [Create a preemptible instance](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Create a preemptible instance.md).
 
-## What is the relationship between the user-defined maximum hourly price and the spot price of a preemptible instance?
+## What is the relationship between the user-defined maximum hourly price and the current market price of a preemptible instance?
 
-If the spot price does not exceed the user-defined maximum hourly price, the preemptible instance is created and billed based on the spot price. After a preemptible instance is created, it enters a protection period in which it cannot be automatically released due to insufficient resources or fluctuations in the spot price.
+If the current market price does not exceed the user-defined maximum hourly price, the preemptible instance is created, and you are billed based on the current market price. After a preemptible instance is created, the instance enters a protection period in which it cannot be automatically released due to insufficient resources or changes to the market price.
 
-After the protection period expires, the system checks the spot price and resource availability of the instance type every 5 minutes. If the spot price exceeds the user-defined maximum hourly price or if resources of the instance type are insufficient, the preemptible instance that is in the Running state is released.
+After the protection period expires, the system checks the current market price and resource availability of the instance type every 5 minutes. If the current market price exceeds the user-defined maximum hourly price or if resources of the instance type are insufficient, the preemptible instance that is in the Running state is released.
 
 ## Am I charged the same price for all preemptible instances started at the same time?
 
 Yes, you are charged the same price for all preemptible instances started at the same time.
 
-## For the first hour after a preemptible instance is created, am I charged at a price that fluctuates with the spot price?
+## For the first hour after a preemptible instance is created, am I charged at a price that changes with the market price?
 
 No, the hourly price of the first instance hour for a preemptible instance is set at the start of the hour and remains in effect for the whole hour.
 
-## Can I view the spot price of an instance type when I purchase a preemptible instance?
+## Can I view the market price of an instance type when I purchase a preemptible instance?
 
-Yes, when you create a preemptible instance in the ECS console, you can view the spot price and historical prices of each selected instance type. The total instance price \(including the instance type, storage, and bandwidth fees\) is displayed in the lower part of the instance buy page. The instance type fee is the spot price of the selected instance type.
+Yes, when you create a preemptible instance in the ECS console, you can view the market price and historical prices of each selected instance type. The total instance price is displayed in the lower part of the instance buy page. The total instance price includes the instance type, storage, and bandwidth fees. The instance type fee is the current market price of the selected instance type.
 
 ## Can I view the historical prices of a preemptible instance type? How?
 
 Yes, you can select an instance type to view its historical prices when you attempt to create a preemptible instance in the ECS console. You can also call the [DescribeSpotPriceHistory](/intl.en-US/API Reference/Instances/DescribeSpotPriceHistory.md) operation to view the historical prices of a preemptible instance type.
 
-## Do preemptible instances continue to be billed after they are stopped?
+## Do I continue to be billed for preemptible instances after they are stopped?
 
-Yes, preemptible instances continue to be billed after they are stopped. When a preemptible instance is no longer needed, we recommend that you back up your data and environment by following the instructions in [Create a snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md) and then release the instance. You can purchase new preemptible instances at any time.
+Yes, you continue to be billed for preemptible instances after they are stopped. When a preemptible instance is no longer needed, we recommend that you back up your data and environment by following the instructions in [Create a snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md) and then release the instance. You can purchase preemptible instances at any time.
 
-**Note:** Preemptible instances continue to be billed after you stop them by using the ECS console or by calling the StopInstance operation.
+**Note:** You continue to be billed for preemptible instances after you stop them by using the ECS console or by calling the StopInstance operation.
 
 ## How many preemptible instances can be purchased by a single account?
 
-vCPU-based quotas, instead of instance count-based quotas, apply to preemptible instances in each account. When you create a preemptible instance, you can view the available vCPU-based quota after you select an instance type. For more information, see the "Instance limits" section in [Limits](/intl.en-US/Product Introduction/Limits.mdsection_tbg_zdx_wdb).
+vCPU-based quotas apply to preemptible instances within each account. Instance-based quotas do not apply. When you create a preemptible instance, you can view the available vCPU-based quota after you select an instance type. For more information, see the "Instance limits" section in [Limits](/intl.en-US/Product Introduction/Limits.mdsection_tbg_zdx_wdb).
 
 ## How do I increase my vCPU-based quotas?
 
@@ -503,45 +496,45 @@ Instance families that support the pay-as-you-go billing method also support pre
 
 Preemptible instances can be created within all Alibaba Cloud regions. If preemptible instances cannot be created within a specific region due to insufficient resources, try a different region.
 
-## When I attempt to purchase an ECS instance, the Preemptible Instance option is not available on the instance buy page. Why?
+## When I attempt to purchase an ECS instance, the Preemptible Instance option is unavailable on the instance buy page. Why?
 
-Whether the Preemptible Instance option is available depends on your ECS usage.
+Whether the Preemptible Instance option is available depends on your ECS resource usage.
 
-## Which is more cost-effective: a preemptible instance with a protection period or a preemptible instance without a protection period?
+## Which is more cost-effective: a preemptible instance that has a protection period or a preemptible instance that does not have a protection period?
 
-Preemptible instances without a protection period are more cost-effective and have a discount of 10% off compared to preemptible instances with a protection period.
+Preemptible instances that do not have protection periods are more cost-effective and have a discount of 10% compared with preemptible instances that have protection periods.
 
-## Is the release rate of preemptible instances without a protection period higher than that of preemptible instances with a protection period?
+## Is the release rate of preemptible instances that do not have protection periods higher than that of preemptible instances that have protection periods?
 
-You can check the release rate of each instance type on the instance buy page in the ECS console regardless of whether you attempt to create preemptible instances with or without a protection period. For each instance type, the release rate is determined by the bidding policy and the supply-demand relationships of resources.
+You can check the release rate of each instance type on the instance buy page in the ECS console regardless of whether you attempt to create preemptible instances that have or do not have protection periods. For each instance type, the release rate is determined by the bidding policy and the supply and demand relationships of resources.
 
 ![release-rate](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6554873061/p170286.png)
 
-## Are preemptible instances without a protection period prioritized for release over those with a protection period?
+## Are preemptible instances that do not have protection periods prioritized for release over those that have protection periods?
 
-No, preemptible instances without a protection period are not prioritized for release over those with a protection period.
+No, preemptible instances that do not have protection periods are not prioritized for release over those that have protection periods.
 
-## If I have created a preemptible instance without a protection period, do subsequently created preemptible instances also not have a protection period?
+## If I have created a preemptible instance that does not have a protection period, do subsequently created preemptible instances also not have protection periods?
 
-No, preemptible instances are created without a protection period only if you choose not to configure a protection period for them. By default, each preemptible instance is created with a protection period of one hour.
+No, preemptible instances that do not have protection periods are created only if you choose not to configure a protection period for them. By default, each preemptible instance is created with a protection period of 1 hour.
 
 **Note:** The protection period of preemptible instances can be configured only when the instances are created by calling API operations. For more information, see the description of the SpotDuration parameter in [RunInstances](/intl.en-US/API Reference/Instances/RunInstances.md) and [CreateInstance](/intl.en-US/API Reference/Instances/CreateInstance.md).
 
-## Will I be notified 5 minutes before a preemptible instance is released even if it does not have a protection period?
+## Am I notified 5 minutes before a preemptible instance is released even if the instance does not have a protection period?
 
-Yes, you will be notified 5 minutes before a preemptible instance is released even if it does not have a protection period.
+Yes, you are notified 5 minutes before a preemptible instance is released even if the instance does not have a protection period.
 
-## Are fewer resources provided for preemptible instances with a protection period than for those without a protection period?
+## Are fewer resources provided for preemptible instances that have protection periods than for those that do not have protection periods?
 
-No, the same amount of resources are provided for preemptible instances with and without a protection period.
+No, the same amount of resources are provided for preemptible instances that have and do not have protection periods.
 
-## Can I convert between preemptible instances with and without a protection period?
+## Can I convert between preemptible instances that have and do not have protection periods?
 
-No, you cannot convert between preemptible instances with and without a protection period. By default, each preemptible instance is created with a protection period of one hour. The protection period of preemptible instances can be configured only when the instances are created by calling API operations. The protection period settings of preemptible instances cannot be changed after the instances are created.
+No, you cannot convert between preemptible instances that have and do not have protection periods. By default, each created preemptible instance has a protection period of one hour. The protection periods of preemptible instances can be configured only when the instances are created by calling API operations. The protection period settings of preemptible instances cannot be changed after the instances are created.
 
 ## What are reserved instances?
 
-Reserved instances automatically match pay-as-you-go instances \(excluding preemptible instances\) in your account to provide a billing discount. Reserved instances can also be used to reserve instance resources. A combination of reserved instances and pay-as-you-go instances provides higher cost-effectiveness and a higher degree of flexibility as compared with subscription instances.
+Reserved instances automatically match pay-as-you-go instances \(excluding preemptible instances\) within your account to offset the bills of the pay-as-you-go instances. Reserved instances can also be used to reserve instance resources. A combination of reserved instances and pay-as-you-go instances provides higher cost-effectiveness and a higher degree of flexibility compared with subscription instances.
 
 ## Does a reserved instance provide a resource reservation?
 
@@ -549,7 +542,7 @@ Zonal reserved instances provide resource reservations, but regional reserved in
 
 ## What operating systems do reserved instances support?
 
-Reserved instances support both Windows and Linux operating systems. For example, a reserved Linux instance can be applied to pay-as-you-go Linux instances that match its attributes regardless of the image type \(public images, custom images, shared images, or Alibaba Cloud Marketplace images\).
+Reserved instances support both Windows and Linux operating systems. For example, a reserved Linux instance can be applied to matched pay-as-you-go Linux instances regardless of the image type such as public images, custom images, shared images, or Alibaba Cloud Marketplace images.
 
 To apply a reserved instance to pay-as-you-go instances created from Bring Your Own License \(BYOL\) images, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
@@ -557,13 +550,13 @@ To apply a reserved instance to pay-as-you-go instances created from Bring Your 
 
 Reserved instances support the following instance families:
 
--   General purpose instance families: g6e, g6, g5, and sn2ne
--   Compute optimized instance families: c6e, c6, c5, ic5, and sn1ne
--   Memory optimized instance families: r6e, r6, r5, and se1ne
+-   General purpose instance families: g7, g6e, g6, g5, g5ne, and sn2ne
+-   Compute optimized instance families: c7, c6e, c6, c5, ic5, and sn1ne
+-   Memory optimized instance families: r7, r6e, r6, r5, re6, re4, and se1ne
 -   Big data instance family: d2s
 -   Instance families with local SSDs: i2 and i2g
--   Instance families with high clock speed: hfc6, hfc5, hfg6, hfg5, and hfr6
--   GPU-accelerated compute optimized instance families: gn6i and gn6e
+-   Instance families with high clock speeds: hfc6, hfc5, hfg6, hfg5, and hfr6
+-   GPU-accelerated compute optimized instance families: gn6i, gn6e, and gn6v
 -   ECS Bare Metal Instance families: ebmc6, ebmg6, ebmr6, ebmhfc6, ebmhfg6, and ebmhfr6
 -   Burstable instance families: t6 and t5
 
@@ -587,37 +580,37 @@ We recommend that you purchase regional reserved instances if you want to have a
 
 Only regional reserved instances provide zone flexibility. Example:
 
-Assume that you are running the following pay-as-you-go instance:
+You have the following pay-as-you-go instance:
 
 One ecs.c5.xlarge Linux instance in Qingdao Zone B. This instance is named C5PAYG-b.
 
-Assume that you have purchased the following reserved instance:
+You have purchased the following reserved instance:
 
-One regional ecs.c5.xlarge reserved instance in the China \(Qingdao\) region. This instance is named C5RI.
+One regional ecs.c5.xlarge reserved instance in the China \(Qingdao\) region. This reserved instance is named C5RI.
 
-C5RI is matched to C5PAYG-b.
+After you purchase the C5RI reserved instance, it matches the C5PAYG-b pay-as-you-go instance to offset the bills of the C5PAYG-b instance.
 
-You release C5PAYG-b and start another Linux instance of the same instance type named C5PAYG-c in Qingdao Zone C. C5RI is then matched to C5PAYG-c.
+You release C5PAYG-b and start another Linux instance of the same instance type named C5PAYG-c in Qingdao Zone C. The C5RI reserved instance continues to match C5PAYG-c.
 
 ## How is the instance size flexibility of reserved instances applied?
 
 Only regional reserved instances provide instance size flexibility. Example:
 
-Assume that you have one regional ecs.g5.4xlarge reserved instance. It can be applied to one ecs.g5.4xlarge pay-as-you-go instance, two ecs.g5.2xlarge pay-as-you-go instances, or four ecs.g5.xlarge pay-as-you-go instances.
+You have one regional ecs.g5.4xlarge reserved instance. It can be applied to offset the bills of one ecs.g5.4xlarge pay-as-you-go instance, two ecs.g5.2xlarge pay-as-you-go instances, or four ecs.g5.xlarge pay-as-you-go instances.
 
-Assume that you have a one-year regional ecs.g5.xlarge reserved instance. It can be applied to offset the bills of an ecs.g5.xlarge pay-as-you-go instance or 50% of the bills of an ecs.g5.2xlarge pay-as-you-go instance by hour for one year.
+You have a one-year regional ecs.g5.xlarge reserved instance. It can be applied to offset the bills of an ecs.g5.xlarge pay-as-you-go instance or 50% of the bills of an ecs.g5.2xlarge pay-as-you-go instance by hour for one year.
 
 ## Do zonal reserved instances provide instance size flexibility?
 
-No, zonal reserved instances do not provide instance size flexibility. A zonal reserved instance can be applied only to pay-as-you-go instances of the same instance type as it.
+No, zonal reserved instances do not provide instance size flexibility. A zonal reserved instance can be applied only to pay-as-you-go instances of the same instance type as that of the zonal reserved instance.
 
 ## Do zonal reserved instances provide zone flexibility?
 
-No, zonal reserved instances do not provide zone flexibility. A zonal reserved instance can be applied only to pay-as-you-go instances in the same zone as it.
+No, zonal reserved instances do not provide zone flexibility. A zonal reserved instance can be applied only to pay-as-you-go instances in the same zone where the zonal reserved instance resides.
 
-## Can a zonal reserved instance be changed into a regional one?
+## Can a zonal reserved instance be changed to a regional one?
 
-Yes, a zonal reserved instance can be changed into a regional one. You can change the scope of a reserved instance you purchased in the following ways:
+Yes, a zonal reserved instance can be changed to a regional one. You can change the scope of a purchased reserved instance in the following ways:
 
 -   From a zone to a region
 -   From a region to a zone
@@ -625,35 +618,35 @@ Yes, a zonal reserved instance can be changed into a regional one. You can chang
 
 ## Can the scope of a reserved instance be changed from one region to another?
 
-No, the scope of a reserved instance cannot be changed from one region to another. For example, if you have a zonal reserved instance in Hangzhou Zone B, you can change the instance scope to another zone within the China \(Hangzhou\) region or change the instance into a regional reserved instance scoped to the China \(Hangzhou\) region. However, you cannot change the scope of the zonal reserved instance to a zone of another region, or change the instance into a regional reserved instance scoped to another region.
+No, the scope of a reserved instance cannot be changed from one region to another. For example, if you have a zonal reserved instance in Hangzhou Zone B, you can change the instance scope to another zone within the China \(Hangzhou\) region or change the instance to a regional reserved instance in the China \(Hangzhou\) region. However, you cannot change the scope of the zonal reserved instance to a zone of another region, or change the instance to a regional reserved instance in another region.
 
 ## Can reserved instances be used across accounts?
 
 No, reserved instances cannot be used across accounts.
 
-## Can reserved instances be used to cover the storage and network usage charges of pay-as-you-go instances?
+## Can reserved instances be used to offset the storage and network usage bills of pay-as-you-go instances?
 
-No, reserved instances cannot be used to cover the storage or network usage charges of pay-as-you-go instances. Reserved instances cover the vCPU and memory costs of pay-as-you-go instances. For pay-as-you-go Windows instances, reserved instances also cover the image costs.
+No, reserved instances cannot be used to offset the storage or network usage bills of pay-as-you-go instances. Reserved instances are used to offset the bills of computing resources of pay-as-you-go instances, including vCPUs and memory. For pay-as-you-go Windows instances, reserved instances can also be used to offset the bills of images.
 
 ## Can I configure a reserved instance to be applied to a specified pay-as-you-go instance?
 
-No, you cannot configure a reserved instance to be applied to a specified pay-as-you-go instance. When multiple pay-as-you-go instances match the attributes of a reserved instance, the reserved instance is applied based on the optimized matching scheme.
+No, you cannot configure a reserved instance to be applied to a specified pay-as-you-go instance. When multiple pay-as-you-go instances match a reserved instance, the reserved instance is applied based on the optimized matching scheme.
 
-## How are reserved instances billed?
+## How am I billed for reserved instances?
 
-Reserved instances are billed separately and support the All Upfront, Partial Upfront, and No Upfront payment options.
+You are separately billed for reserved instances and can choose the All Upfront, Partial Upfront, or No Upfront payment option.
 
-The term of a reserved instance starts from when the instance is purchased. You are charged based on the payment option that you selected regardless of whether the reserved instance is matched to pay-as-you-go instances. The All Upfront option is most cost-effective.
+The term of a reserved instance starts from when the instance is purchased. You are charged based on the payment option that you selected, regardless of whether the reserved instance matches pay-as-you-go instances. The All Upfront payment option is most cost-effective.
 
 ## When does a reserved instance take effect after it is purchased?
 
-A reserved instance takes effect and is billed starting on the hour of your purchase. The reserved instance expires at 00:00:00 on the day after its term end date. For example, if you purchase a reserved instance with a term of one year at 13:45:00 on February 26, 2019, the reserved instance takes effect and is billed starting from 13:00:00 on February 26, 2019. The reserved instance expires at 00:00:00 on February 27, 2020. If you already have eligible pay-as-you-go instances when you purchase a reserved instance, the reserved instance is applied to offset the bills generated by the pay-as-you-go instances starting from the hour of 13:00 to 14:00 on February 26, 2019 until the reserved instance expires.
+A reserved instance takes effect and you are billed starting on the hour when the reserved instance is purchased. The reserved instance becomes invalid at 00:00:00 on the day after the reserved instance expires. For example, if you purchase a reserved instance with a term of one year at 13:45:00 on February 26, 2019, the reserved instance takes effect and you are billed starting from 13:00:00 on February 26, 2019. The reserved instance becomes invalid at 00:00:00 on February 27, 2020. If you already have eligible pay-as-you-go instances when you purchase a reserved instance, the reserved instance is applied to offset the bills generated by the pay-as-you-go instances starting from the hour of 13:00 to 14:00 on February 26, 2019 until the reserved instance becomes invalid.
 
-## After I modify, split, or merge a reserved instance, when does the operation take effect?
+## After I modify, split, or merge reserved instances, when does the operation take effect?
 
-When reserved instances are modified, split, or merged, new reserved instances are generated and the original ones become invalid. The new reserved instances take effect and the original ones become invalid. Both occur on the hours of the modification, splitting, or merging operations. Assume that you split one ecs.g5.2xlarge zonal reserved instance RI1 into two zonal ecs.g5.xlarge reserved instances RI2 and RI3 at 13:45:00 on February 26, 2019. At 13:00:00 on February 26, 2019, RI1 becomes invalid and RI2 and RI3 take effect. Starting from 13:00:00 on February 26, 2019, the instance type eligible for resource reservation and billing discounts is ecs.g5.xlarge, not ecs.g5.2xlarge any more. If RI2 and RI3 are matched to pay-as-you-go instances immediately after they take effect, RI2 and RI3 are also applied to offset the hourly bills of ecs.g5.xlarge pay-as-you-go instances starting from 13:00:00 on February 26, 2019.
+When reserved instances are modified, split, or merged, new reserved instances are generated, and the original ones become invalid. The new reserved instances take effect and the original ones become invalid on the hour when the modify, split, or merge operation is performed. For example, you split one ecs.g5.2xlarge zonal reserved instance RI1 into two zonal ecs.g5.xlarge reserved instances RI2 and RI3 at 13:45:00 on February 26, 2019. At 13:00:00 on February 26, 2019, RI1 becomes invalid, and RI2 and RI3 take effect. Starting from 13:00:00 on February 26, 2019, the instance type eligible for resource reservation and billing discounts is ecs.g5.xlarge, not ecs.g5.2xlarge any more. If RI2 and RI3 immediately match pay-as-you-go instances after they take effect, RI2 and RI3 are also applied to offset the hourly bills of ecs.g5.xlarge pay-as-you-go instances starting from 13:00:00 on February 26, 2019.
 
-## Why isn't the No Upfront payment option displayed on the buy page?
+## Why is the No Upfront payment option not displayed on the buy page?
 
 The availability of this option depends on your ECS usage.
 
@@ -665,13 +658,13 @@ No, the payment options of reserved instances cannot be changed.
 
 No, reserved instances cannot be resold.
 
-## Can I use reserved instances to cover the image costs of pay-as-you-go Windows instances?
+## Can I use reserved instances to offset the bills of images of pay-as-you-go Windows instances?
 
-Yes, reserved instances can be used to cover the image costs of pay-as-you-go Windows instances. This is because reserved Windows instances already include Windows images at no additional cost.
+Yes, reserved instances can be used to offset the bills of images of pay-as-you-go Windows instances. This is because the Windows reserved instance fees already include Windows image fees.
 
-## Can reserved instances be used to cover the image costs of pay-as-you-go Linux instances?
+## Can reserved instances be used to offset the bills of images of pay-as-you-go Linux instances?
 
-No, reserved instances cannot be used to cover the image costs of pay-as-you-go Linux instances.
+No, reserved instances cannot be used to offset the bills of images of pay-as-you-go Linux instances.
 
 ## Are the consumption details of reserved instances refreshed every hour?
 
@@ -679,29 +672,29 @@ Yes, the consumption details of reserved instances are refreshed every hour.
 
 ## Can a reserved instance be applied to more than one pay-as-you-go instance at the same time?
 
-Yes, a reserved instance can be applied to more than one pay-as-you-go instance at the same time. The reserved instance checks for eligible pay-as-you-go bills on an hourly basis and deducts fees based on its computing power.
+Yes, a reserved instance can be applied to more than one pay-as-you-go instance at the same time. Reserved instances check for eligible pay-as-you-go bills on an hourly basis and offset bills based on the computing power of the reserved instances.
 
-**Note:** The computing power and term of each reserved instance are fixed. You cannot increase the computing power of a reserved instance by shortening its term.
+**Note:** The computing power and term of each reserved instance are fixed. You cannot increase the computing power of a reserved instance by shortening the term of the reserved instance.
 
-Assume that you have a reserved instance with the following attributes:
+For example, you have a reserved instance that has the following attributes:
 
--   c5.large instance type
--   Instances: 1 \(indicating that the reserved instance can match one pay-as-you-go instance of the specified instance type\)
--   One-year term
+-   Instance type: c5.large
+-   Instance quantity: 1, which indicates that the reserved instance can match one pay-as-you-go instance of the specified instance type
+-   Term: one year
 
-The following examples demonstrate how the reserved instance is applied based on the pay-as-you-go instances that exist:
+The following examples demonstrate how the reserved instance is applied based on the running status of pay-as-you-go instances:
 
--   Six c5.large pay-as-you-go instances exist for one hour each. Each of these pay-as-you-go instances consumes one hour of computing power equal to that delivered by the c5.large reserved instance every hour. The reserved instance is randomly applied to one of the pay-as-you-go instances. You cannot configure the reserved instance to be applied to all six pay-as-you-go instances by shortening the term of the reserved instance to two months.
--   Six c5.large pay-as-you-go instances exist for 10 minutes each. The six instances consume 10 minutes of computing power each and in total consume the amount of computing power that the c5.large reserved instance can deliver every hour. The reserved instance is applied to all six pay-as-you-go instances.
--   Six c5.large pay-as-you-go instances exist for 15 minutes each. The six instances consume 15 minutes of computing power each, in total exceeding the amount of computing power that the c5.large reserved instance can deliver every hour. The reserved instance is randomly applied to the pay-as-you-go instances to offset the charges for one hour of computing power.
+-   Each of the six c5.large pay-as-you-go instances runs for 1 hour. Each of these pay-as-you-go instances consumes 1 hour of computing power equal to that delivered by the c5.large reserved instance every hour. The reserved instance is randomly applied to one of the pay-as-you-go instances. You cannot configure the reserved instance to be applied to all the six pay-as-you-go instances by shortening the term of the reserved instance to two months.
+-   Each of the six c5.large pay-as-you-go instances runs for 10 minutes. The six instances consume 10 minutes of computing power each and in total consume the amount of computing power that the c5.large reserved instance can deliver every hour. The reserved instance is applied to all the six pay-as-you-go instances.
+-   Each of the six c5.large pay-as-you-go instances runs for 15 minutes. The six instances consume 15 minutes of computing power each and in total consume the amount of computing power that exceeds the c5.large reserved instance can deliver every hour. The reserved instance is randomly applied to the pay-as-you-go instances to offset the bills for 1 hour of computing power.
 
-## Does a VNC management terminal allow multiple users to log on simultaneously?
+## Does a VNC management terminal allow multiple users to simultaneously log on?
 
-No, a VNC management terminal allows a single user to log on at a time.
+No, a VNC management terminal allows only a single user to log on at a time.
 
 ## What do I do if I forget the remote connection password?
 
-You can reset your remote connection password. For more information, see [Modify the VNC password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using VNC.md).
+You can reset your remote connection password. For more information, see [Change the VNC password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
 
 ## Why am I unable to connect to a VNC management terminal even after I reset my remote connection password?
 
@@ -711,54 +704,54 @@ If the instance to which you are connecting is not I/O optimized, you must resta
 
 ## I was prompted with an authentication failure when I attempted to connect to a VNC management terminal. What do I do?
 
-Authentication fails if the entered password is not correct. Perform the following troubleshooting operations:
+Authentication fails if the entered password is incorrect. Perform the following troubleshooting operations:
 
 1.  Enter the correct remote connection password.
-2.  If you forget your password, you can reset it and try again. For more information, see [Modify the VNC password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using VNC.md).
+2.  If you forget your password, you can reset it and try again. For more information, see [Change the VNC password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
 
     **Note:** If the instance to which you are connecting is not I/O optimized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect.
 
 
-## What do I do if a black screen appears while I am connected to a VNC management terminal?
+## What do I do if a black screen appears after I am connected to a VNC management terminal?
 
 A black screen indicates that the instance is in sleep mode. Perform the following operations based on your operating system:
 
 -   For a Linux instance, click your mouse or press any key to activate the instance.
--   For a Windows instance, you can choose **Send Remote Call** \> **CTRL+ALT+DELETE** in the upper-left corner to go to the logon interface.
+-   For a Windows instance, choose **Send Remote Call** \> **CTRL+ALT+DELETE** in the upper-left corner to go to the logon interface.
 
 ## What do I do if a VNC management terminal cannot be accessed?
 
-You can use a browser to access the VNC management terminal for troubleshooting. For example, use Google Chrome to access the VNC management terminal, and press the F12 key to open the developer tools panel. Then, click the **Console** tab and identify errors based on the information displayed.
+You can use a browser to access the VNC management terminal for troubleshooting. For example, use Google Chrome to access the VNC management terminal and press the F12 key to open the developer tools panel. Then, click the **Console** tab and identify errors based on the information displayed.
 
 ## Why am I unable to use Internet Explorer 8 to access a VNC management terminal?
 
-VNC management terminals support Internet Explorer 10 and later.
+VNC management terminals support only Internet Explorer 10 and later.
 
-We recommend that you use Google Chrome because it is most compatible with the Alibaba Cloud Management Console.
+We recommend that you use Google Chrome that is more compatible with the Alibaba Cloud Management Console.
 
-## When I use Firefox to access a VNC management terminal, an error message is returned indicating that the secure connection has failed. What do I do?
+## When I use Firefox to access a VNC management terminal, an error message appears, which indicates that the secure connection has failed. What do I do?
 
 This problem occurs if the encryption algorithm used by your version of Firefox is different from that used by the VNC management terminal.
 
-We recommend that you use Google Chrome because it is most compatible with the Alibaba Cloud Management Console.
+We recommend that you use Google Chrome that is more compatible with the Alibaba Cloud Management Console.
 
 ## How do I remotely log on to a Linux instance?
 
-Linux instances support SSH for remote connection. You can use one of the following methods to remotely log on to a Linux instance:
+Linux instances support SSH for remote connection. You can use one of the following methods to log on to a Linux instance:
 
--   [Connect to a Linux instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using VNC.md).
+-   [Connect to a Linux instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Linux instance by using password authentication.md).
 -   [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using a username and password.md).
 -   [Connect to a Linux instance by using an SSH key pair](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using an SSH key pair.md).
 -   [Connect to a Linux instance from a mobile device](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance from a mobile device.md).
 
 ## What are the default username and password for remote logon to the operating system of an ECS instance?
 
-The default username varies by operating system.
+The default username varies based on operating systems.
 
 -   For a Windows instance, the default username is `administrator`.
 -   For a Linux instance, the default username is `root`.
 
-The password for remote logon to the operating system of an instance is set by yourself when you create the instance. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). If you forget the password, you can reset it. For more information, see [Reset the logon password of an instance](/intl.en-US/Instance/Manage instances/Reset the logon password of an instance.md).
+When you create an instance, you must set the password for the operating system of the instance. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md). If you forget the password, you can reset it. For more information, see [Reset the logon password of an instance](/intl.en-US/Instance/Manage instances/Reset the logon password of an instance.md).
 
 **Note:** This password is used to remotely log on to the instance operating system, not to the VNC management terminal.
 
@@ -770,12 +763,12 @@ You can use one of the following methods to adjust the desktop resolution of a W
 
     The following example demonstrates how to adjust the desktop resolution of an instance that runs a `Windows Server 2019 Datacenter 64-bit` operating system:
 
-    1.  Connect to the ECS instance by using a VNC management terminal in the ECS console. For more information, see [Connect to a Windows instance by using VNC](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Windows instance by using VNC.md).
+    1.  Connect to the ECS instance by using a VNC management terminal in the ECS console. For more information, see [Connect to a Windows instance by using password authentication](/intl.en-US/Instance/Connect to instances/Connect to an instance by using VNC/Connect to a Windows instance by using password authentication.md).
     2.  On the Windows desktop, right-click a blank area and select **Display settings**.
     3.  In the **Scale and layout** section, adjust the resolution.
--   Use the Remote Desktop Connection \(RDC\) tool on your local computer.
+-   Use the Remote Desktop Connection \(RDC\) tool on your computer.
 
-    You cannot adjust the desktop resolution of a Windows instance after you connect to the instance from your local computer by using RDC. You must adjust the display settings in RDC on the local computer, and then connect to the instance by using RDC to apply the new display settings to the instance.
+    You cannot adjust the desktop resolution of a Windows instance after you connect to the instance from your computer by using RDC. You must adjust the display settings in RDC on your computer and then connect to the instance by using RDC to apply the new display settings to the instance.
 
     ![windows](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2337034061/p175572.png)
 
@@ -784,13 +777,13 @@ You can use one of the following methods to adjust the desktop resolution of a W
 
 We recommend that you deploy DPDK applications on g5ne instances. For more information about the g5ne instance types, see [Instance families](/intl.en-US/Instance/Instance families.md).
 
-If you deploy DPDK applications on ECS instances of the sixth-generation and later instance types \(such as g6, c6, and r6 instance types\), the bound igb\_uio port may not be detected when you use Pktgen-DPDK to perform tests, and the following error is reported:
+If you deploy DPDK applications on ECS instances of the sixth-generation and later instance families such as g6, c6, and r6, the bound igb\_uio port may not be detected when you use Pktgen-DPDK to perform tests, and the following error is reported:
 
 ```
 EAL: eal_parse_sysfs_value(): cannot open sysfs value /sys/bus/pci/devices/0000:00:09.0/uio/uio0/portio/port0/start
 ```
 
-If you are using DPDK 19.05, you can troubleshoot the problem by installing patches. You can [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm) to obtain the patches and run the following commands to install them:
+If you are using DPDK 19.05, you can troubleshoot the problem by installing patches. Youcan [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm) to obtain the patches and run the following commands to install them:
 
 ```
 cd dpdk
@@ -824,9 +817,12 @@ Pay-as-you-go instances must be stopped before their configurations can be upgra
 
 For information about how to upgrade ECS resources, see [Overview of instance upgrade and downgrade](/intl.en-US/Instance/Change configurations/Overview of instance upgrade and downgrade.md).
 
--   ECS instances, except those that use local storage, can have their CPU and memory resources scaled and their bandwidths upgraded while the instances are running. You can also downgrade the configurations of ECS instances.
--   A maximum of 16 data disks can be attached to each ECS instance. You cannot reduce the size of a data disk after it is extended.
--   The bandwidth of each ECS instance is measured in Mbit/s and can range from 0 Mbit/s to 200 Mbit/s. You can also temporarily upgrade the bandwidth of an ECS instance, or downgrade the configurations of the instance when you renew it.
+-   Except ECS instances that use local storage, ECS instances can have their CPU and memory resources scaled and their bandwidths upgraded while the instances are running. You can also downgrade the configurations of ECS instances.
+-   A maximum of 16 data disks can be attached to each ECS instance. You can resize a data disk but cannot reduce the size of a data disk after it is extended.
+
+    **Note:** Typically, a maximum of 16 data disks can be attached to a single instance. For some instance families such as g6se, more than 16 data disks can be attached to a single instance. For more information, see the "Elastic Block Storage \(EBS\) limits" section in [Limits](/intl.en-US/Product Introduction/Limits.mdBlockStorageQuota).
+
+-   The bandwidth of each ECS instance is measured in Mbit/s and can range from 0 Mbit/s to 200 Mbit/s. You can modify the bandwidth or change the billing method for network usage.
 
 ## I have upgraded the configurations of an instance but no changes have taken effect. Why?
 
@@ -834,7 +830,7 @@ After you upgrade the configurations of an instance, you must restart the instan
 
 ## What do I do if I cannot access a website that runs on an ECS instance?
 
-For information about how to solve this problem, see [Unable to access the website running on ECS instances](https://www.alibabacloud.com/help/faq-detail/31710.htm).
+For information about how to solve this problem,see [Unable to access the website running on ECS instances](https://www.alibabacloud.com/help/faq-detail/31710.htm).
 
 If the problem persists, submit a ticket.
 
@@ -856,36 +852,36 @@ Solution:
 
         **Note:** Make sure that you leave a space after each equal sign `(=)`.
 
-    2.  Find the registry key HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\services\\AliyunService, and change `c:\Program Files\AliyunService\AliyunService.exe -d` to `"c:\Program Files\AliyunService\AliyunService.exe" -d`.
+    2.  Find the registry key HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\services\\AliyunService and change `c:\Program Files\AliyunService\AliyunService.exe -d` to `"c:\Program Files\AliyunService\AliyunService.exe" -d`.
     3.  Restart the instance.
 
 ## How do I use f1 instances?
 
-After you create an f1 instance, Alibaba Cloud shares an FPGA development image to you. Currently, only CentOS 7u2 images are supported. The FPGA development image includes the complete Intel Quartus development suite and the f1 instance constraint files to provide a complete cloud development environment.
+After you create an f1 instance, Alibaba Cloud shares an FPGA development image to you. Only CentOS 7u2 images are supported. The FPGA development image includes the complete Intel Quartus development suite and the f1 instance constraint files to provide a complete cloud development environment.
 
 **Note:** You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 
 The following section describes the basic workflow to use an f1 instance:
 
-1.  After development is complete, you can generate an intermediate QAR file during the compilation stage and upload the file to an OSS bucket. Currently, you can upload this file only to an OSS bucket within the China \(Hangzhou\) region. Then, you can register the QAR file information with Alibaba Cloud by calling an API operation.
+1.  After the development is complete, you can generate an intermediate QAR file during the compilation stage and upload the file to an OSS bucket. You can upload this file only to an OSS bucket within the China \(Hangzhou\) region. Then, you can register the QAR file information with Alibaba Cloud by calling an API operation.
 
-    We recommend that you use the free Intel Quartus development suite to complete development, compilation, and simulation operations on the cloud.
+    We recommend that you use the free Intel Quartus development suite to complete development, compilation, and simulation operations in the cloud.
 
-2.  Alibaba Cloud verifies your registration request for the QAR file, and sends you an email that includes an FPGA image ID if the verification is successful.
+2.  Alibaba Cloud verifies your registration request for the QAR file and sends you an email that includes an FPGA image ID if the verification is successful.
 3.  To deploy the image, you can call an API operation with the f1 instance ID and FPGA image ID specified to associate the instance with the image.
 
     You can initiate the association operation in all scenarios where ECS API is available.
 
-    -   If the f1 instance has never been associated with any FPGA image, initiate the association operation.
+    -   If the f1 instance has never been associated with an FPGA image, initiate the association operation.
     -   If the f1 instance was previously associated with an FPGA image and had the image loaded, erase the FPGA image from the f1 instance before you initiate the association operation.
 4.  After you associate the FPGA image with the instance, call an API operation to load the image.
 
     You must initiate the load operation from the f1 instance. Then, the underlying service of Alibaba Cloud burns the associated FPGA image to the corresponding FPGA on the instance.
 
 
-If you want to restore the f1 instance to its initial state, call an API operation to erase the burned FPGA image from the f1 instance.
+If you want to restore the f1 instance to its initial status, call an API operation to erase the burned FPGA image from the f1 instance.
 
-For more instructions on how to manage f1 instances, see the following topics:
+For more information about how to manage f1 instances, see the following topics:
 
 -   [Create an f1 instance](/intl.en-US/Instance/Instance type families/Compute optimized type family with FPGA/Create an f1 instance.md)
 -   [Use OpenCL on an f1 instance](/intl.en-US/Best Practices/FaaS instances best practices/Use OpenCL on an f1 instance.md)
@@ -914,11 +910,11 @@ Method 2: Upload files by using a third-party tool
 
 1.  Download Yummy FTP.
 2.  Install Yummy FTP.
-3.  Enter the server IP address, username, and password. Set Protocol to Standard \(FTP\). Set Port to 21 or a different port number that you are using, and leave the SSH key field unselected.
+3.  Enter the server IP address, username, and password. Set Protocol to Standard \(FTP\). Set Port to 21 or a different port number that you are using and leave the SSH key field unselected.
 4.  Click **Connect**.
-5.  In the right-side pane, select the destination directory. In Windows, use the current working directory. In Linux, select the htdocs directory. In the left-side pane, select files and click the Upload icon to upload the files.
+5.  In the right-side panel, select the destination directory. In Windows, use the current working directory. In Linux, select the htdocs directory. In the left-side pane, select files and click the Upload icon to upload the files.
 
-    **Note:** If you attempt to install Yummy FTP and are prompted with a message similar to "Your security preferences only allow the installation of applications from the Mac App Store and authorized developers", perform the following steps:
+    **Note:** If you attempt to install Yummy FTP and are prompted with a message similar to "Your security preferences allow the installation of applications only from the Mac App Store and authorized developers", perform the following steps:
 
     1.  Choose **System Preference** \> **Security and Privacy**.
     2.  Click the security lock in the lower-left corner of the window and enter the administrator password.
@@ -934,7 +930,7 @@ For each ECS instance, you can apply for a limited quantity of service identific
 
 ## An ECS instance fails to load the kernel to start. What do I do?
 
-Problem description: The system does not respond when you select an option from the GRUB menu on system startup. After you have mounted the LiveCD image to the ECS instance, you can log on to the instance and confirm that the file system privileges are correct and that the message logs show no exceptions.
+Problem description: The system does not respond when you select an option from the GRUB menu on system startup. After you mount the LiveCD image to the ECS instance, you can log on to the instance and confirm that the file system privileges are correct and that the message logs show no exceptions.
 
 Cause: The system has been attacked by ransomware.
 
@@ -948,11 +944,11 @@ For information about how to change the logon password from within an instance, 
 
 ## Why am I unable to add sound or video cards to ECS instances?
 
-The servers that Alibaba Cloud ECS provides are not multimedia servers and do not provide sound or video card components. Sound or video cards cannot be added to ECS instances.
+The servers provided by Alibaba Cloud ECS are not multimedia servers and do not provide sound or video card components. Sound or video cards cannot be added to ECS instances.
 
 ## Can I transfer the unused time of an ECS instance to another ECS instance?
 
-No, the unused time of an ECS instance cannot be transferred to other ECS instances. If you want both higher flexibility and cost-effectiveness, we recommend that you use a combination of reserved instances and pay-as-you-go instances. For more information, see [Reserved instance overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Reserved instance overview.md).
+No, the unused time of an ECS instance cannot be transferred to other ECS instances. If you want both higher flexibility and cost-effectiveness, we recommend that you use a combination of reserved instances and pay-as-you-go instances. For more information, see [Overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Overview.md).
 
 ## Do ECS instances provide databases by default?
 
@@ -968,36 +964,35 @@ Yes, you can install database software and configure a database environment on a
 
 ## Do ECS instances support Oracle databases?
 
-Yes, ECS instances support Oracle databases. Before you install an Oracle database, we recommend that you perform a performance stress test on the ECS instance to ensure that the instance satisfies the read/write requirements of the database.
+Yes, ECS instances support Oracle databases. Before you install an Oracle database, we recommend that you perform a performance stress test on the ECS instance to ensure that the instance meets the read/write requirements of the database.
 
 ## Are public and private IP addresses independent? Can I specify or add IP addresses?
 
-In the classic network, public and private IP addresses are independent of each other. Private IP addresses in the classic network are used for communication between ECS instances and between ECS instances and OSS buckets or ApsaraDB RDS instances. If the public bandwidth of an ECS instance is set to 0 Mbit/s, no public IP address is assigned to the instance. In normal cases, public and private IP addresses in the classic network do not change. You cannot specify, select, or add IP addresses in the classic network.
+In the classic network, public and private IP addresses are independent of each other. Private IP addresses in the classic network are used for communication between ECS instances and between ECS instances and OSS buckets or ApsaraDB RDS instances. If the public bandwidth of an ECS instance is set to 0 Mbit/s, no public IP address is assigned to the instance. Typically, public and private IP addresses in the classic network do not change. You cannot specify, select, or add IP addresses in the classic network.
 
-In VPCs, NAT gateways map public IP addresses to private IP addresses. You can add IP addresses by specifying or automatically assigning secondary private IP addresses to ENIs.
+In VPCs, NAT gateways map public IP addresses to private IP addresses. You can add IP addresses by specifying or automatically assigning secondary private IP addresses to elastic network interfaces \(ENIs\).
 
 ## Can load balancing be implemented for a single ECS instance?
 
-Both Linux and Windows ECS instances can be load-balanced. Make sure that the configurations of ECS instances used as web servers meet the requirements for website code to run. Load balancing can be implemented for as few as one ECS instance in an account. However, we recommend you implement load balancing for two or more ECS instances.
+Both Linux and Windows ECS instances can be load-balanced. Make sure that the configurations of ECS instances used as web servers meet the requirements for website code to run. Load balancing can be implemented for as few as one ECS instance within an account. However, we recommend you implement load balancing for two or more ECS instances.
 
 ## Can I change the region of an ECS instance?
 
-No, the regions of purchased ECS instances cannot be changed. To change the region of an ECS instance, you can use the `ACS-ECS-CloneInstancesAcrossRegion` public template provided by [Operation Orchestration Service \(OOS\)](https://www.alibabacloud.com/help/product/119529.htm) to copy the instance to another region. The new and original instances have identical disk data but different IP addresses.
+No, the regions of purchased ECS instances cannot be changed. To change the region of an ECS instance, you can use the`ACS-ECS-CloneInstancesAcrossRegion` public template provided by [Operation Orchestration Service \(OOS\)](https://www.alibabacloud.com/help/product/119529.htm) to copy the instance to another region. The new and original instances have identical disk data but different IP addresses.
 
 ## Can I adjust the partition size of a purchased disk?
 
-For system security and stability purposes, system disks cannot be repartitioned on either Windows or Linux instances. If you use a third-party tool to repartition system disks, unknown exceptions such as system failures and data losses may occur.
+For system security and stability purposes, system disks cannot be repartitioned on Windows or Linux instances. If you use a third-party tool to repartition system disks, unknown exceptions such as system failures and data loss may occur.
 
 If you repartition a data disk, data may be lost. We recommend that you do not repartition data disks.
 
 ## How do I replace the automatically assigned public IP address of an ECS instance with an elastic IP address \(EIP\)?
 
-To replace the automatically assigned public IP address of an ECS instance with an EIP, make sure that the instance uses the pay-by-bandwidth billing method for network usage and that you have purchased an EIP. Then, use one of the following methods to do the replacement:
+To replace the automatically assigned public IP address of an ECS instance with an EIP, make sure that the instance uses the pay-by-bandwidth billing method for network usage and that you have purchased an EIP. Then, use one of the following methods:
 
 -   Method 1:
     1.  Change the billing method for network usage from pay-by-bandwidth to pay-by-traffic. For more information, see [Public bandwidth](/intl.en-US/Pricing/Billing items/Public bandwidth.md).
-    2.  Convert the automatically assigned public IP address into an EIP. For more information, see [Convert an automatically assigned public IP address to an EIP for a VPC-connected ECS instance](/intl.en-US/User Guide/Create an EIP/Convert an automatically assigned public IP address to an EIP for a VPC-connected
-         ECS instance.md).
+    2.  Convert the automatically assigned public IP address into an EIP. For more information, see [Convert an automatically assigned public IP address to an EIP for a VPC-connected ECS instance](/intl.en-US/User Guide/Create an EIP/Convert an automatically assigned public IP address to an EIP for a VPC-connected ECS instance.md).
     3.  Disassociate the EIP obtained in the previous step from the ECS instance. For more information, see [Disassociate an EIP from a cloud resource](/intl.en-US/User Guide/Disassociate an EIP from a cloud resource.md).
     4.  Associate the EIP that you purchased with the ECS instance. For more information, see [Associate an EIP with an ECS instance](/intl.en-US/User Guide/Associate an EIP with a cloud instance/Associate an EIP with an ECS instance.md).
 -   Method 2:
@@ -1005,29 +1000,29 @@ To replace the automatically assigned public IP address of an ECS instance with 
     In the OOS console, use the `ACS-ECS-ConvertsPublicIPToNewEIPByInstanceId` template to replace the automatically assigned public IP address of the ECS instance with an EIP. To perform this operation in the China \(Hangzhou\) region, access the [ACS-ECS-ConvertsPublicIPToNewEIPByInstanceId](https://oos.console.aliyun.com/cn-hangzhou/execution/create/ACS-ECS-ConvertsPublicIPToNewEIPByInstanceId) template in the OOS console by clicking the link, and select China \(Hangzhou\) from the drop-down region list in the top navigation bar.
 
 
-## How do I view subscription ECS instances within all regions in my account?
+## How do I view subscription ECS instances in all regions within my account?
 
-You can go to the Renewal page to view subscription ECS instances within all regions in your account.
+You can go to the Renewal page to view subscription ECS instances in all regions within your account.
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 2.  In the top navigation bar, choose **Expenses** \> **Renewal Management**.
 
 ## When can I forcibly stop an ECS instance? What are the consequences?
 
-If an instance cannot be stopped by a proper shutdown procedure, you can forcibly stop the instance. A forced stop is equivalent to disconnecting the power from the instance, and can result in loss of unsaved data.
+If an instance cannot be stopped by using a regular shutdown procedure, you can forcibly stop the instance. A forced stop is equivalent to disconnecting the power from the instance, and can cause loss of unsaved data.
 
 ## Why am I unable to reactivate my ECS instance?
 
 An instance may fail to be reactivated due to one of the following reasons:
 
--   You have overdue payments in your account. Pay the outstanding bills and try again.
+-   You have overdue payments within your account. Pay the outstanding bills and try again.
 -   The system is busy. Try again later.
 -   Resources of the specified instance type are sold out.
 
     **Note:** You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 
 
-## Why has an ECS instance with release protection enabled been automatically released from a scaling group?
+## Why is an ECS instance that has release protection enabled automatically released from a scaling group?
 
 Auto Scaling can automatically release an ECS instance created by a scale-out event even if you have enabled release protection for the instance by using the ECS console or by calling the [ModifyInstanceAttribute](/intl.en-US/API Reference/Instances/ModifyInstanceAttribute.md) operation.
 
@@ -1039,7 +1034,7 @@ The AliVulfix process is an Alibaba Cloud Security program that scans ECS instan
 
 ## How do I protect ECS instances against attacks?
 
-ECS instances use Alibaba Cloud Security to defend against DDoS attacks. Cloud Monitor deployed on ECS instances can automatically detect network attacks and scrub suspicious traffic. Alibaba Cloud implements black hole filtering to protect ECS instances against high-volume attacks. To strengthen security protection, we recommend that you install security software and disable ports that are not commonly used.
+ECS instances use Alibaba Cloud Security to defend against DDoS attacks. CloudMonitor deployed on ECS instances can automatically detect network attacks and scrub suspicious traffic. Alibaba Cloud implements black hole filtering to protect ECS instances against high-volume attacks. To strengthen security protection, we recommend that you install security software and disable ports that are not commonly used.
 
 ## What security services does Alibaba Cloud provide?
 
@@ -1058,16 +1053,16 @@ Solution:
 1.  Connect to the instance and run the following command to check whether the website service has been started:
 
     ```
-    # netstat -nltp //Check whether port 80 on the instance is being listened on.
+    # netstat -nltp //Check whether Port 80 on the instance is being listened on.
     ```
 
     ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3301359951/p41861.png)
 
-2.  If no information about port 80 is displayed in the command output, the website service has not been started. Run a command to manually start the website service and relevant services.
+2.  If no information about Port 80 is displayed in the command output, the website service has not been started. Run a command to manually start the website service and relevant services.
 
     In Linux, websites are typically developed based on PHP and MySQL.
 
-    -   In Apache, you only need to start the website service and MySQL.
+    -   In Apache, you need only to start the website service and MySQL.
 
         ```
         #/etc/init.d/httpd start          //Start the website service. This command is applicable to Apache.
@@ -1085,7 +1080,7 @@ Solution:
 3.  Check again whether the website service has been started.
 
     ```
-    #netstat -nltp //Check whether port 80 on the instance is being listened on.
+    #netstat -nltp //Check whether Port 80 on the instance is being listened on.
     ```
 
 4.  After the website service has been started, access the website again.
@@ -1106,13 +1101,13 @@ You can use the FTP service to upload files to a Linux instance.
 
 ## How do I change the owner and owner group of directories and files on a Linux instance?
 
-If the file or directory permissions are not correctly configured on the web server, a 403 error is reported when you access a website hosted on the instance. Before you adjust a file or directory, you must identify the identity under which the file or directory process is running.
+If the file or directory permissions are incorrectly configured on the web server, a 403 error is reported when you access a website hosted on the instance. Before you adjust a file or directory, you must identify the identity under which the file or directory process is running.
 
 You can run the ps and grep commands to query the identities under which processes are running.
 
 You can run the ls –l command to query the owners and owner groups of files and directories.
 
-To change the owners and owner groups, run the chown command. For example, you can run the chown -R www.www /alidata/www/phpwind/ command to change the owners and owner groups of all files and directories under the /alidata/www/phpwind directory to the www account.
+To change the owners and owner groups, run the chown command. For example, you can run the chown -R www.www /alidata/www/phpwind/ command to change the owners and owner groups of all files and directories in the /alidata/www/phpwind directory to the www account.
 
 ## How do I update the software repository for Linux instances?
 
@@ -1133,34 +1128,34 @@ The following limits apply to the transfer and change of public IP addresses of 
         -   This public IP address can be changed within 6 hours after the instance is created, and can be changed a maximum of three times. For more information, see [Change the public IP address of an ECS instance](/intl.en-US/Network/Change IPv4 addresses/Change the public IP address of an ECS instance.md).
         -   You can convert this public IP address to an EIP and then replace the EIP. For more information, see [Convert the public IP address of a VPC-type instance to an Elastic IP address](/intl.en-US/Network/Change IPv4 addresses/Convert the public IP address of a VPC-type instance to an Elastic IP address.md).
 
-If you have further questions, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+If the problem persists, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 ## Can I access amazon.com from my ECS instance?
 
-You can access amazon.com from your ECS instance if the instance can connect to the Internet properly.
+You can access amazon.com from your ECS instance if the instance can properly connect to the Internet.
 
 ## Why am I unable to access a website hosted outside mainland China after I log on to my ECS instance?
 
-You can access a website hosted outside mainland China from your ECS instance only when the website complies with the laws, regulations, and regulatory requirements of the country or region where your instance is located. Make sure that your ECS instance can connect to the Internet properly and that the website complies with the preceding laws, regulations, and regulatory requirements.
+You can access a website hosted outside mainland China from your ECS instance only when the website complies with the laws, regulations, and regulatory requirements of the country or region where your instance is located. Make sure that your ECS instance can properly connect to the Internet and that the website complies with the preceding laws, regulations, and regulatory requirements.
 
 ## I cannot purchase more pay-as-you-go instances. What do I do?
 
-If you have reached the maximum number of pay-as-you-go instances that you can purchase, you cannot purchase more pay-as-you-go instances. For more information, see the "Instance limits" section in [Limits](/intl.en-US/Product Introduction/Limits.mdsection_tbg_zdx_wdb). You can log on to the ECS console and click Privileges in the upper-right corner of the Overview page to view your resource quotas. For more information, see [View quotas \(old version\)]().
+If the maximum number of pay-as-you-go instances that you can purchase has been reached, you cannot purchase more pay-as-you-go instances. For more information, see the "Instance limits" section in [Limits](/intl.en-US/Product Introduction/Limits.mdsection_tbg_zdx_wdb). You can log on to the ECS console and click Privileges in the upper-right corner of the Overview page to view your resource quotas. For more information, see [View quotas \(old version\)]().
 
 ## How can I view the resource quota?
 
 For more information about how to view the limits and quotas of resources, see [Limits](/intl.en-US/Product Introduction/Limits.md).
 
-## Am I still charged for a pay-as-you-go instance after it is stopped either manually or due to an overdue payment?
+## Am I still charged for a pay-as-you-go instance after it is stopped manually or due to an overdue payment?
 
-**Stopped due to an overdue payment**: When a payment becomes overdue in your account, your pay-as-you-go instance is automatically stopped and billing for the instance stops. Instances do not always stay in the Stopped state after they are stopped due to overdue payments. For more information, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
+**Stopped due to an overdue payment**: When a payment becomes overdue within your account, your pay-as-you-go instance is automatically stopped, and billing for the instance stops. Instances do not always stay in the Stopped state after they are stopped due to overdue payments. For more information, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
 
 **Manually stopped**: You can stop a running pay-as-you-go instance by using the ECS console or by calling the StopInstance operation. When the instance is stopped, its status changes to **Stopped**. Billing for stopped pay-as-you-go instances is based on their network types.
 
 -   VPC: You can enable the No Fees for Stopped Instances \(VPC-Connected\) feature.
-    -   After the feature is enabled, billing for pay-as-you-go instances in VPCs starts when the instances are created, stops when the instances enter the **Stopped** state, and resumes when the instances are started. When a pay-as-you-go instance enters the Stopped state, the No Fees for Stopped Instances \(VPC-Connected\) feature stops billing only for the vCPUs, memory, and public IP address of the instance. Other resources such as disks and EIPs of the instance continue to be billed. For more information, see [No Fees for Stopped Instances \(VPC-Connected\)](/intl.en-US/Pricing/Billing methods/No Fees for Stopped Instances (VPC-Connected).md).
+    -   After the feature is enabled, billing for pay-as-you-go instances in VPCs starts when the instances are created, stops when the instances enter the **Stopped** state, and resumes when the instances are started. When a pay-as-you-go instance enters the Stopped state, the No Fees for Stopped Instances \(VPC-Connected\) feature stops billing only for the vCPUs, memory, and public IP address of the instance. You continue to be billed for other resources such as disks and EIPs of the instance. For more information, see [No Fees for Stopped Instances \(VPC-Connected\)](/intl.en-US/Pricing/Billing methods/No Fees for Stopped Instances (VPC-Connected).md).
     -   After the feature is disabled, billing for pay-as-you-go instances continues when they are stopped.
--   Classic network: ECS instances in the classic network are billed regardless of whether they are in the **Stopped** state.
+-   Classic network: You are billed for ECS instances in the classic network regardless of whether they are in the **Stopped** state.
 
 ## What do I do if an order cannot be placed to change the billing method of an instance from pay-as-you-go to subscription?
 
@@ -1171,23 +1166,23 @@ You may be unable to place the order due to one of the following reasons:
 -   Changes to the billing method are not allowed because the instance information has changed.
 -   A previous order to change the billing method of the instance has not been paid.
 
-If one of the preceding errors is reported, adjust the instance accordingly.
+If one of the preceding errors is reported, accordingly adjust the instance.
 
 ## How long after an order is paid does it take to change the billing method of an instance from pay-as-you-go to subscription?
 
-The billing method of your ECS instance is changed after the order is paid. It can take up to 4 seconds to change the billing method of 20 instances. After the change is complete, you can see that the billing method of your instance has been changed to **Subscription** in the ECS console.
+The billing method of your ECS instance is changed after the order is paid. It can take up to 4 seconds to change the billing method of 20 instances. After the billing method is changed, you can see that the billing method of your instance has been changed to **Subscription** in the ECS console.
 
 ## What do I do if the billing method of an instance cannot be changed from pay-as-you-go to subscription?
 
 [Submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 
-## When I change the billing method of an instance from pay-as-you-go to subscription, does the billing method for network usage of the instance also change?
+## Does the billing method for network usage of an instance change when I change the billing method of the instance from pay-as-you-go to subscription?
 
 No, the billing method for network usage of the instance does not change. Only the billing method of instances and disks can be changed from pay-as-you-go to subscription. For information about how to change the billing method for network usage, see [Overview of instance upgrade and downgrade](/intl.en-US/Instance/Change configurations/Overview of instance upgrade and downgrade.md).
 
 ## I have an unpaid order to change the billing method of an instance from pay-as-you-go to subscription. If I upgrade the configurations of the instance, is the order still valid?
 
-An order is created when you change the billing method of your instance from pay-as-you-go to subscription. You must pay for the order to complete the change. If you upgrade the configurations of the instance before the order is paid, the order payment cannot be completed because the instance components are different and the original order no longer matches. If you still want to change the billing method of your instance, you must cancel the unpaid order and place a new order.
+An order is created when you change the billing method of your instance from pay-as-you-go to subscription. You must pay for the order to complete the change. If you upgrade the configurations of the instance before the order is paid, the order cannot be paid because the instance components are different and the original order no longer matches. If you still want to change the billing method of your instance, you must cancel the unpaid order and place a new order.
 
 ## What do I do if the billing method of an instance cannot be changed from subscription to pay-as-you-go?
 
@@ -1197,7 +1192,7 @@ You may be unable to change the billing method of an instance from subscription 
 -   The instance is in the **Expired** state.
 -   The instance information has changed. For example, the bandwidth of the instance has been temporarily upgraded.
 
-If one of the preceding errors is reported, adjust the instance accordingly. If the problem persists, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+If one of the preceding errors is reported, accordingly adjust the instance. If the problem persists, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 
 ## When I attempt to change the billing method of a disk in an ECS instance, an error message is returned indicating that I have already changed the billing method three times. What does this mean?
 
@@ -1207,7 +1202,7 @@ Each ECS instance can have its configurations downgraded a maximum of three time
 
 The pay-as-you-go instance whose billing method you want to change must meet the following requirements:
 
--   The instance type of the instance is not retired. For more information, see [Retired instance types](/intl.en-US/Instance/Retired instance types.md).
+-   The instance type of the instance is not retired. For more information, see [Retired instance types](/intl.en-US/Instance/Instance type families/Retired instance types.md).
 -   The instance is not a preemptible instance.
 -   No unpaid orders related to the instance exist.
 
