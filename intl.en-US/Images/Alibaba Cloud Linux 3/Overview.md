@@ -11,14 +11,14 @@ Alibaba Cloud Linux 3 is the third release of the Linux operating system provide
 Alibaba Cloud Linux 3 is suitable for the following scenarios:
 
 -   Various workloads in cloud environments, such as databases, cloud native containers, data analytics, web applications, and other workloads in the production environment.
--   Various instance families including ECS Bare Metal Instance families. For more information, see [Instance families](/intl.en-US/Instance/Instance families.md).
+-   Various instance families, including ECS Bare Metal Instance families. For more information, see [Instance families](/intl.en-US/Instance/Instance families.md).
     -   Alibaba Cloud Linux 3 supports instance types that have up to 768 vCPUs.
     -   Alibaba Cloud Linux 3 supports instance types that have 0.5 GiB to 12,288 GiB of memory.
     -   Alibaba Cloud Linux 3 does not support non-I/O optimized instances.
 
 ## Benefits
 
-Alibaba Cloud Linux 3 inherits all of the benefits of Alibaba Cloud Linux 2. Compared with other Linux distributions, Alibaba Cloud Linux 3 provides the following advantages:
+Alibaba Cloud Linux 3 inherits all of the benefits of Alibaba Cloud Linux 2. Compared with other Linux distributions, Alibaba Cloud Linux 3 has the following advantages:
 
 -   Alibaba Cloud provides free software maintenance and technical support for Alibaba Cloud Linux 3 until April 30, 2029.
 -   Alibaba Cloud Linux 3 uses Linux Kernel 5.10 LTS as the kernel to provide the latest enhanced operating system features from the Linux community to power cloud-based application environments.
@@ -52,7 +52,7 @@ For more information about the release notes of Alibaba Cloud Linux 3 images, se
 
 Alibaba Cloud provides the following technical support for Alibaba Cloud Linux 3:
 
--   Eight-year LTS is provided in the form of security updates and vulnerability fixes until the release lifecycle ends on April 30, 2029. You can use one of the following methods to obtain free LTS:
+-   Eight years of LTS is provided in the form of security updates and vulnerability fixes until the release lifecycle ends on April 30, 2029. You can use one of the following methods to obtain free LTS:
     -   [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)
     -   [GitHub](https://alibaba.github.io/cloud-kernel/os.html?spm=5176.cnalinux.0.0.1f8323d1WpS5ZY&aly_as=32Di8ZOj)
 -   Images are updated every four months. Updates cover new features, security updates, and vulnerability fixes.
