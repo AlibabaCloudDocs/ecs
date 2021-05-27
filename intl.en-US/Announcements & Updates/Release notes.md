@@ -10,8 +10,8 @@ This topic describes the release notes of Elastic Compute Service \(ECS\) featur
 |Feature|Description|Release date|Region|References|
 |-------|:----------|:-----------|------|:---------|
 |Instance family|The g7 general purpose instance family, c7 compute optimized instance family, and r7 memory optimized instance family are released.|2021-04-19|Some|[Instance families](/intl.en-US/Instance/Instance families.md)|
-|Image|Alibaba Cloud Linux 3 public images are released.|2021-04-16|Some|[Overview](/intl.en-US/Images/Alibaba Cloud Linux 3/Overview.md)|
-|Reserved instance|Reserved instances can be applied to instances of more instance families.|2021-04-15|All|[Reserved instance overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Reserved instance overview.md)|
+|Image|Alibaba Cloud Linux 3 public images are released.|2021-04-16|All|[Overview](/intl.en-US/Images/Alibaba Cloud Linux 3/Overview.md)|
+|Reserved instance|Reserved instances can be applied to instances of more instance families.|2021-04-15|All|[Overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Overview.md)|
 |Snapshot|The instance snapshot feature is released. You can simultaneously create snapshots for multiple disks on an instance by creating a snapshot for the instance. This ensures a consistent write order of data.|2021-04-06|Some|[Create snapshots for multiple disks together by creating an instance snapshot](/intl.en-US/Snapshots/Use instance snapshots/Create snapshots for multiple disks together by creating an instance snapshot.md)|
 |Snapshot|The application-consistent snapshot feature is released. You can use application-consistent snapshots for rollback operations to ensure that applications start in a consistent state.|2021-04-06|Some|[Enable the application-consistent snapshot feature](/intl.en-US/Snapshots/Use instance snapshots/Enable the application-consistent snapshot feature.md)|
 
@@ -103,7 +103,7 @@ This topic describes the release notes of Elastic Compute Service \(ECS\) featur
 |Feature|Description|Release date|Region|References|
 |-------|:----------|:-----------|------|:---------|
 |Image|Technical support for the CoreOS Container Linux public images is discontinued. CoreOS Container Linux has reached its end of life, and no more security patches are provided. For security concerns, we recommend that you no longer use CoreOS Container Linux images. Alibaba Cloud will soon release Fedora CoreOS public images as a replacement.|2020-05-26|All|[Release notes](/intl.en-US/Images/Public image/Release notes.md)|
-|Reserved instance|The normalization factor of instance types can be queried to help understand the computing power requirements in the splitting and merging of reserved instances and the size flexibility of regional reserved instances.|2020-05-14|All|-   [Reserved instance overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Reserved instance overview.md)
+|Reserved instance|The normalization factor of instance types can be queried to help understand the computing power requirements in the splitting and merging of reserved instances and the size flexibility of regional reserved instances.|2020-05-14|All|-   [Overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Overview.md)
 -   [View normalization factors](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/View normalization factors.md) |
 
 ## April 2020
@@ -221,7 +221,7 @@ This topic describes the release notes of Elastic Compute Service \(ECS\) featur
 |Instance family|The gn6i GPU-accelerated compute optimized instance family is released.|2019-03-21|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance family|The sccgn6 GPU-accelerated compute optimized SCC instance family is released.|2019-03-20|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance family|The vgn5i lightweight GPU-accelerated compute optimized instance family is released.|2019-03-19|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
-|Reserved instance|The reserved instance feature is in invitational preview.|2019-03-18|All|[Reserved instance overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Reserved instance overview.md)|
+|Reserved instance|The reserved instance feature is in invitational preview.|2019-03-18|All|[Reserved instance overview](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Overview.md)|
 |Cloud Assistant|Cloud Assistant is available for ECS instances in the classic network.|2019-03-01|All|[Install the Cloud Assistant client](/intl.en-US/Deployment & Maintenance/Cloud assistant/Configure the Cloud Assistant client/Install the Cloud Assistant client.md)|
 
 ## January 2019
@@ -260,7 +260,7 @@ This topic describes the release notes of Elastic Compute Service \(ECS\) featur
 |Feature|Description|Release date|Region|References|
 |-------|:----------|:-----------|------|:---------|
 |t5, burstable instance family|The unlimited mode is available for the t5 burstable instance family.|2018-09-30|All|[Unlimited mode](/intl.en-US/Instance/Instance type families/Burstable instance types/Overview.mdsection_i6c_2kn_y5s)|
-|Instance metadata|Information of O&M system events is included in instance metadata.|2018-09-14|All|[Instance metadata](/intl.en-US/Instance/Manage instances/Metadata/Overview of instance metadata.md)|
+|Instance metadata|Information of O&M system events is included in instance metadata.|2018-09-14|All|[Instance metadata](/intl.en-US/Instance/Manage instances/Manage instance metadata/Overview of ECS instance metadata.md)|
 |Instance health status|The health status of each ECS instance is displayed on the instance details page.|2018-09-14|All|[View the health status of an instance](/intl.en-US/Deployment & Maintenance/Monitor the instance status/View the health status of an instance.md)|
 |Instance family|The gn6v new generation GPU-accelerated instance family \(V100 model\) is released.|2018-09-12|All|[Instance families](/intl.en-US/Instance/Instance families.md)|
 |Instance purchase|Multiple instances can be renewed at a time and historical instances can be purchased.|2018-09-07|All|[Manually renew an instance](/intl.en-US/Pricing/Renew instances/Manually renew an instance.md)|
@@ -324,7 +324,7 @@ This topic describes the release notes of Elastic Compute Service \(ECS\) featur
 |GPU-accelerated instance|NVIDIA GPU Cloud \(NGC\) GPU-accelerated containers are supported.|2018-03-28|All|[Deploy an NGC environment on gn5 instances](/intl.en-US/Best Practices/GPU instances/Deploy an NGC environment on instances with GPU capabilities.md)|
 |System event|The system event feature is released.|2018-03-26|All|[Overview](/intl.en-US/Deployment & Maintenance/System events/Overview.md)|
 |ECS Bare Metal Instance|ECS Bare Metal Instance is released.|2018-03-14|All|[Overview](/intl.en-US/Instance/Instance type families/ECS Bare Metal Instance types/Overview.md)|
-|Instance identifier|The ECS instance identifier feature is released.|2018-03-01|All|[Instance identity](/intl.en-US/Instance/Manage instances/Metadata/Instance identity.md)|
+|Instance identifier|The ECS instance identifier feature is released.|2018-03-01|All|[Instance identity](/intl.en-US/Instance/Manage instances/Manage instance metadata/Instance identity.md)|
 
 ## February 2018
 
@@ -358,7 +358,7 @@ This topic describes the release notes of Elastic Compute Service \(ECS\) featur
 
 |Feature|Description|Release date|Region|References|
 |-------|:----------|:-----------|------|:---------|
-|Elastic IP Address \(EIP\)|The public IP addresses of instances in VPCs can be converted into EIPs.|2017-10-31|All|[Convert an ECS public IP address to an EIP](/intl.en-US/User Guide/Create an EIP/Convert an automatically assigned public IP address to an EIP for a VPC-connected ECS instance.md)|
+|Elastic IP Address \(EIP\)|The public IP addresses of instances in VPCs can be converted into EIPs.|2017-10-31|All|[Convert an ECS public IP address to an EIP](/intl.en-US/User Guide/Create an EIP/Convert the static public IP address of an ECS instance in a VPC to an EIP.md)|
 |Preemptible instance|Preemptible Instance is released.|2017-10-18|All|[Overview](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Overview.md)|
 |t5, burstable instance family|The t5 burstable instance family is released.|2017-10-09|All|[Overview](/intl.en-US/Instance/Instance type families/Burstable instance types/Overview.md)|
 
