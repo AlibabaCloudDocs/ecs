@@ -8,6 +8,8 @@ This topic describes how to purchase an immediate capacity reservation. An immed
 
 When you purchase an immediate capacity reservation, you must specify attributes such as instance type, zone, and operating system. After the capacity reservation is purchased, the provision of resources that have matching attributes is guaranteed.
 
+**Note:** Resource Assurance is in invitational preview. To use Resource Assurance, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+
 ## Procedure
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
@@ -56,6 +58,6 @@ We recommend that you prepare a number of open and targeted private pools based 
 
 9.  Select the capacity reservations that you want to purchase. Then, read and select Notes. Verify that all configurations are correct, click **Purchase**, and then make payment as instructed.
 
-    You can view the capacity reservations that you purchased on the Capacity Reservation tab. If **Active** is displayed in the Status column corresponding to a capacity reservation, the capacity reservation is created. You can then use the capacity in the private pool associated with the capacity reservation to create pay-as-you-go instances. For more information, see [Use a private pool]().
+    You can view the capacity reservations that you purchased on the Capacity Reservation tab. If **Active** is displayed in the Status column corresponding to a capacity reservation, the capacity reservation is created. You can then use the capacity in the private pool associated with the capacity reservation to create pay-as-you-go instances. For more information, see [Use a private pool](/intl.en-US/Tag & Resource/Resource assurances/Use a private pool.md).
 
 
