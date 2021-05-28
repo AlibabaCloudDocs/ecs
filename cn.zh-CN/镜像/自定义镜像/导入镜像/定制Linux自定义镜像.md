@@ -1,38 +1,43 @@
-# 定制Linux自定义镜像 {#concept_nt5_4km_xdb .concept}
+---
+keyword: [上云, impotImage, ecs, 阿里云, 导入镜像]
+---
+
+# 定制Linux自定义镜像
 
 当镜像的操作系统不在阿里云所支持的平台列表中，并且不能安装cloud-init时，您可以在导入自定义镜像时选择Customized Linux（定制版镜像）。阿里云将定制版Linux镜像当作无法识别的操作系统，您需要在导入镜像前，根据本文描述在镜像中添加解析脚本，便于初次启动时自动化配置实例。
 
-## 限制要求 {#section_p3m_wkm_xdb .section}
+## 限制要求
 
 Customized Linux镜像具有如下限制条件：
 
 -   第一个分区必须可以被写入。
--   第一个分区类型支持FAT32、EXT2、EXT3、EXT4或UFS。
+-   第一个分区的文件类型只能是FAT32、EXT2、EXT3、EXT4或UFS。
 -   虚拟文件的大小必须大于5GiB。
 
 Customized Linux镜像具有如下安全要求：
 
 -   不能存在可被远程利用的高危漏洞。
--   使用控制台的[管理终端](cn.zh-CN/实例/连接实例/连接Linux实例/使用管理终端连接Linux实例.md#)登录实例时，如果存在初始默认密码，必须在首次登录时修改，修改密码之前不允许进入实例做任何操作。
--   不支持默认SSH密钥对，初始SSH密钥对必须由阿里云随机生成。
+-   使用控制台的管理终端（VNC）登录实例时，如果存在初始默认密码，您必须在首次登录时修改，修改密码之前不允许进入实例做任何操作。详情请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
+-   不支持默认SSH密钥对，初始SSH密钥对必须由阿里云生成。
 
-## 配置方法 {#section_zd1_lsn_1fb .section}
+## 配置方法
 
-制作并导入定制Linux自定义镜像前，您需要进行如下配置。
+制作并导入Customized Linux自定义镜像前，您需要进行如下配置。
 
 1.  在镜像的第一个分区的根目录下新建目录aliyun\_custom\_image。
 
     使用该Customized Linux镜像所创建的实例初次启动时，阿里云会在aliyun\_custom\_image目录的os.conf文件中写入实例相关配置信息。如果不存在os.conf文件，则系统自动创建。
 
-2.  在镜像中创建一份解析脚本，用以解析os.conf文件的系统配置。编写脚本，请参见[解析脚本注意事项](#)和[解析脚本示例](#)。
+2.  在镜像中创建一份解析脚本，用以解析os.conf文件的系统配置。
 
-## os.conf文件示例 {#configurationfiledemo .section}
+    编写脚本，请参见[解析脚本注意事项](#configureparsingscript)和[解析脚本示例](#scriptdemo)。
 
-经典网络类型实例和专有网络类型实例的os.conf文件示例如下。
 
--   经典网络类型实例
+## os.conf文件示例
 
-    ``` {#codeblock_hv9_xbh_02e}
+-   经典网络类型实例os.conf文件示例。
+
+    ```
     hostname=<yourHostName>
     password=<yourPassword>
     eth0_ip_addr=10.0.0.2
@@ -52,23 +57,23 @@ Customized Linux镜像具有如下安全要求：
 
     |参数名称|参数说明|
     |:---|:---|
-    |hostname|主机名参数。|
-    |password|密码参数，Base64编码的字符串。|
-    |eth0\_ip\_addr|eth0网卡IP地址。|
-    |eth0\_mac\_addr|eth0网卡MAC地址。|
-    |eth0\_netmask|eth0网卡掩码。|
-    |eth0\_gateway|eth0网卡默认网关。|
-    |eth0\_route|eth0内网路由列表，默认用半角分号分隔。|
-    |eth1\_ip\_addr|eth1网卡IP地址。|
-    |eth1\_mac\_addr|eth1网卡MAC地址。|
-    |eth1\_netmask|eth1网卡掩码。|
-    |eth1\_gateway|eth1网卡默认网关。|
-    |eth1\_route|eth1公网路由列表，默认用半角分号分隔。|
-    |dns\_nameserver|DNS地址列表，默认用空格分隔。|
+    |hostname|主机名参数|
+    |password|密码参数，Base64编码的字符串|
+    |eth0\_ip\_addr|eth0网卡IP地址|
+    |eth0\_mac\_addr|eth0网卡MAC地址|
+    |eth0\_netmask|eth0网卡掩码|
+    |eth0\_gateway|eth0网卡默认网关|
+    |eth0\_route|eth0内网路由列表，默认用半角分号分隔|
+    |eth1\_ip\_addr|eth1网卡IP地址|
+    |eth1\_mac\_addr|eth1网卡MAC地址|
+    |eth1\_netmask|eth1网卡掩码|
+    |eth1\_gateway|eth1网卡默认网关|
+    |eth1\_route|eth1公网路由列表，默认用半角分号分隔|
+    |dns\_nameserver|DNS地址列表，默认用空格分隔|
 
--   专有网络VPC类型实例
+-   专有网络VPC类型实例os.conf文件示例。
 
-    ``` {#codeblock_2dh_khn_b6p}
+    ```
     hostname=<yourHostName>
     password=<yourPassword>
     eth0_ip_addr=10.0.0.2
@@ -83,17 +88,17 @@ Customized Linux镜像具有如下安全要求：
 
     |参数名称|参数说明|
     |:---|:---|
-    |hostname|主机名参数。|
-    |password|密码参数，Base64编码的字符串。|
-    |eth0\_ip\_addr|eth0网卡IP地址。|
-    |eth0\_mac\_addr|eth0网卡MAC地址。|
-    |eth0\_netmask|eth0网卡掩码。|
-    |eth0\_gateway|eth0网卡默认网关。|
-    |eth0\_route|eth0内网路由列表，默认用半角分号分隔。|
-    |dns\_nameserver|DNS地址列表，默认用空格分隔。|
+    |hostname|主机名参数|
+    |password|密码参数，Base64编码的字符串|
+    |eth0\_ip\_addr|eth0网卡IP地址|
+    |eth0\_mac\_addr|eth0网卡MAC地址|
+    |eth0\_netmask|eth0网卡掩码|
+    |eth0\_gateway|eth0网卡默认网关|
+    |eth0\_route|eth0内网路由列表，默认用半角分号分隔|
+    |dns\_nameserver|DNS地址列表，默认用空格分隔|
 
 
-## 解析脚本注意事项 {#configureparsingscript .section}
+## 解析脚本注意事项
 
 实例初次启动时，正常情况下阿里云自动将配置项的相关信息写入第一个分区的根目录下aliyun\_custom\_image目录的os.conf文件中。配置Customized Linux镜像必须要在镜像中创建预定义解析脚本，用以从os.conf文件中读取实例配置信息并完成实例配置。
 
@@ -102,21 +107,19 @@ Customized Linux镜像具有如下安全要求：
 |需满足的条件|配置说明|
 |:-----|:---|
 |开机启动|解析脚本需要设置成开机自启动，例如，将解析脚本存放在/etc/init.d/目录下。|
-|配置项取值规则|如[os.conf 文件示例](#)的配置项所述，VPC与经典网络实例的配置项数量和部分配置项的取值规则均有所不同。|
-|配置文件读取路径|Customized Linux镜像在创建I/O优化实例或非I/O优化实例时，为第一个分区所分配的设备名默认不一样。所以在解析脚本中最好可以用`uuid`或`label`识别第一个分区的设备。用户密码为Base64编码的字符串，设置密码时需要做相关处理。|
+|配置项取值规则|如[os.conf 文件示例](#configurationfiledemo)的配置项所述，VPC与经典网络类型实例的配置项数量和部分配置项的取值规则均有所不同。|
+|配置文件读取路径|Customized Linux镜像在创建I/O优化实例或非I/O优化实例时，为第一个分区所分配的设备名默认不一样。所以在解析脚本中建议使用`uuid`或`label`识别第一个分区的设备。用户密码为Base64编码的字符串，设置密码时需要做相关处理。|
 |判断VPC或经典网络|解析脚本判断该网络类型时，可以查看是否存在eth1\_route或其他eth1相关的配置项。判断出当前实例的网络类型后再有针对性地解析和处理。 -   VPC类型实例在os.conf文件的eth0\_route参数中配置默认公网路由。
--   经典网络类型实例在os.conf文件的eth1\_route数中配置默认公网路由，内网路由配置在eth0\_route中。
-
- |
+-   经典网络类型实例在os.conf文件的eth1\_route参数中配置默认公网路由，内网路由配置在eth0\_route中。 |
 |配置优化|os.conf文件中的配置在实例的整个生命周期中执行一次即可，解析脚本执行成功后建议删除os.conf文件。同时解析脚本如果没有读取到os.conf文件配置，则不执行文件中的配置。|
 |自定义镜像处理|根据Customized Linux镜像创建的实例再制作自定义镜像时，镜像中也会包含这个开机启动脚本。阿里云会在实例第一次启动时写入os.conf配置，解析脚本在检测到该配置时即可执行相关配置。|
 |修改相关配置时的处理|当实例的配置信息通过阿里云的控制台或API发生变更时，阿里云将相关信息写入到os.conf文件中，解析脚本将被再次执行从而下发这些更改。|
 
-## 解析脚本示例 {#scriptdemo .section}
+## 解析脚本示例
 
 解析脚本以CentOS操作系统为例，仅供您参考。实际操作时，请根据操作系统类型调整脚本内容。使用脚本前，务必在镜像中调试脚本，并保证调试通过。
 
-``` {#codeblock_hy3_dby_m8o}
+```
 #!/bin/bash
 
 ### BEGIN INIT INFO
@@ -145,7 +148,7 @@ load_os_conf() {
 cleanup() {
     # ensure $os_conf_file is deleted, to avoid repeating config system
     rm $os_conf_file >& /dev/null
-    # ensure $os_conf_dir is exitst
+    # ensure $os_conf_dir exists
     mkdir -p $os_conf_dir
 }
 
@@ -197,8 +200,8 @@ config_interface() {
     local ip=$2
     local netmask=$3
     local mac=$4
-    inteface_cfg="/etc/sysconfig/network-scripts/ifcfg-${interface}"
-    cat << EOF > $inteface_cfg
+    interface_cfg="/etc/sysconfig/network-scripts/ifcfg-${interface}"
+    cat << EOF > $interface_cfg
 DEVICE=$interface
 IPADDR=$ip
 NETMASK=$netmask
