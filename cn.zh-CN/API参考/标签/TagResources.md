@@ -31,9 +31,11 @@
 -   keypair：SSH密钥对
 -   launchtemplate：启动模板
 -   reservedinstance：预留实例券
--   snapshotpolicy：自动快照策略 |
-|Tag.N.Key|String|否|TestKey|资源的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。 |
-|Tag.N.Value|String|否|TestValue|资源的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。 |
+-   snapshotpolicy：自动快照策略
+-   elasticityassurance：弹性保障
+-   capacityreservation：容量预定 |
+|Tag.N.Key|String|否|TestKey|资源的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。 |
+|Tag.N.Value|String|否|TestValue|资源的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。 |
 
 ## 返回数据
 
@@ -57,7 +59,7 @@ https://ecs.aliyuncs.com/?Action=TagResources
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <TagResourcesResponse>
@@ -65,7 +67,7 @@ https://ecs.aliyuncs.com/?Action=TagResources
 </TagResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -90,8 +92,8 @@ https://ecs.aliyuncs.com/?Action=TagResources
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
 |404|InvalidResourceId.NotFound|The specified ResourceIds are not found in our records.|指定的资源不存在，请检查参数ResourceId是否正确。|
 |404|InvalidResourceType.NotFound|The ResourceType provided does not exist in our records.|指定的资源类型不存在。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键不合法。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值不合法。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |400|OperationDenied.QuotaExceed|The quota of tags on resource is beyond permitted range.|资源标签已达上限。|
 |403|InvalidResourceId.NotSupported|The specified ResourceId does not support tagging.|指定的资源ID不支持标记。|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|指定的Tag.N.Key和Tag.N.Value不匹配。|
