@@ -74,7 +74,7 @@ https://ecs.aliyuncs.com/?Action=CreateCapacityReservation
 &InstanceType=ecs.g6.xlarge
 &InstanceAmount=2
 &ZoneId.1=cn-hangzhou-h
-&<公共请求参数>
+&<Common request parameters>
 ```
 
 Sample success responses
