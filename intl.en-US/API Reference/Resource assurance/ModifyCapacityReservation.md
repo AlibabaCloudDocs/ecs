@@ -20,7 +20,7 @@ You can call this operation to modify some information of a capacity reservation
 **Note:** The capacity reservation takes effect immediately when this parameter is left empty. |
 |EndTimeType|String|No|Unlimited|The release mode of the capacity reservation. Valid values:
 
--   Limited: The capacity reservation is released at the specified time. You must also specify the `EndTime`parameter.
+-   Limited: The capacity reservation is released at the specified time. You must also specify the `EndTime` parameter.
 -   Unlimited: You must manually release the capacity reservation. You can release capacity reservations at any time. |
 |EndTime|String|No|2021-10-30T06:32:00Z|The expiration time of the capacity reservation. This parameter takes effect only when `EndTimeType` is set to Limited. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](~~25696~~). |
 |Platform|String|No|Linux|The operating system type of the instance reserved. Valid values:
