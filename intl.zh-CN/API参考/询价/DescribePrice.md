@@ -186,7 +186,9 @@
 |PriceInfo|Struct| |价格信息类型（Price），包括价格和优惠规则。 |
 |Price|Struct| |价格。 |
 |Currency|String|CNY|货币单位。 |
-|DetailInfos|Array of ResourcePriceModel| |价格的详细信息。 |
+|DetailInfos|Array of ResourcePriceModel| |价格的详细信息。
+
+ **说明：** 该返回值正在邀测中，暂未开放使用。 |
 |ResourcePriceModel| | | |
 |DiscountPrice|Float|655.2|折扣价。 |
 |OriginalPrice|Float|4368|原价。 |
