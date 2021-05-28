@@ -39,7 +39,9 @@
 -   keypair：SSH密钥对
 -   launchtemplate：启动模板
 -   reservedinstance：预留实例券
--   snapshotpolicy：自动快照策略 |
+-   snapshotpolicy：自动快照策略
+-   elasticityassurance：弹性保障
+-   capacityreservation：容量预定 |
 |TagFilter.N.TagKey|String|是|env|模糊查找ECS资源时使用的标签键。标签键长度的取值范围：1~128。N的取值范围：1~5
 
  `TagFilter.N`用于模糊查找绑定了指定标签的ECS资源，由一个键和一个或多个值组成。模糊查询可能会有2秒延时，仅支持模糊过滤后资源数小于等于5000的情况。
@@ -71,7 +73,23 @@
 |TagResources|Array of TagResource| |由资源及其标签组成的集合，包含了资源ID、资源类型和标签键值等信息。 |
 |TagResource| | | |
 |ResourceId|String|i-bp1j6qtvdm8w0z1o\*\*\*\*|资源ID。 |
-|ResourceType|String|instance|资源类型。 |
+|ResourceType|String|instance|资源类型。可能值：
+
+ -   instance：ECS实例
+-   disk：磁盘
+-   snapshot：快照
+-   image：镜像
+-   securitygroup：安全组
+-   volume：存储卷
+-   eni：弹性网卡
+-   ddh：专有宿主机
+-   ddhcluster：专有宿主机集群
+-   keypair：SSH密钥对
+-   launchtemplate：启动模板
+-   reservedinstance：预留实例券
+-   snapshotpolicy：自动快照策略
+-   elasticityassurance：弹性保障
+-   capacityreservation：容量预定 |
 |TagKey|String|TestKey|标签键。 |
 |TagValue|String|TestValue|标签值。 |
 
