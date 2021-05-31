@@ -13,16 +13,17 @@ A region is a geographic area where a data center resides. The region of an Alib
     |Region|City|Region ID|Number of zones|
     |------|----|---------|---------------|
     |China \(Qingdao\)|Qingdao|cn-qingdao|2|
-    |China \(Beijing\)|Beijing|cn-beijing|8|
+    |China \(Beijing\)|Beijing|cn-beijing|10|
     |China \(Zhangjiakou\)|Zhangjiakou|cn-zhangjiakou|3|
     |China \(Hohhot\)|Hohhot|cn-huhehaote|2|
-    |China \(Ulanqab\)|Ulanqab|cn-wulanchabu|2|
+    |China \(Ulanqab\)|Ulanqab|cn-wulanchabu|3|
     |China \(Hangzhou\)|Hangzhou|cn-hangzhou|8|
-    |China \(Shanghai\)|Shanghai|cn-shanghai|7|
-    |China \(Shenzhen\)|Shenzhen|cn-shenzhen|5|
+    |China \(Shanghai\)|Shanghai|cn-shanghai|8|
+    |China \(Shenzhen\)|Shenzhen|cn-shenzhen|6|
     |China \(Heyuan\)|Heyuan|cn-heyuan|2|
     |China \(Guangzhou\)|Guangzhou|cn-guangzhou|2|
     |China \(Chengdu\)|Chengdu|cn-chengdu|2|
+    |China \(Nanjing\)|Nanjing \(in invitational preview\)|cn-nanjing|1|
 
 -   Region outside mainland China
 
@@ -53,10 +54,7 @@ When you select a region, you must consider the following factors:
         In mainland China, we recommend that you select a region that is the closest to the geographical location of your target users to speed up the access. However, in terms of network infrastructure, Border Gateway Protocol \(BGP\) network quality, quality of service \(QoS\), and ease of use and configuration on Elastic Compute Service \(ECS\) instances, Alibaba Cloud regions in mainland China are almost the same. BGP networks ensure fast access to all regions in mainland China.
 
     -   Outside mainland China
-
-        In mainland China, we recommend that you select a region that is the closest to the geographical location of your target users to speed up the access. However, in terms of network infrastructure, Border Gateway Protocol \(BGP\) network quality, quality of service \(QoS\), and ease of use and configuration on Elastic Compute Service \(ECS\) instances, Alibaba Cloud regions in mainland China are almost the same. BGP networks ensure fast access to all regions in mainland China.
-
-        -   If your target users are located in Hong Kong or Southeast Asia, you can select the following regions: China \(Hong Kong\), Singapore \(Singapore\), Malaysia \(Kuala Lumpur\), and Indonesia \(Jakarta\).
+        -   If your target users are located in China \(Hong Kong\) or Southeast Asia, you can select the following regions: China \(Hong Kong\), Singapore \(Singapore\), Malaysia \(Kuala Lumpur\), and Indonesia \(Jakarta\).
         -   If your target users are located in Japan or Korea, you can select the Japan \(Tokyo\) region.
         -   If your target users are located in India, you can select the India \(Mumbai\) region.
         -   If your target users are located in Australia, you can select the Australia \(Sydney\) region
