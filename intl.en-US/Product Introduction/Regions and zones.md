@@ -23,13 +23,13 @@ A region is a geographic area where a data center resides. The region of an Alib
     |China \(Heyuan\)|Heyuan|cn-heyuan|2|
     |China \(Guangzhou\)|Guangzhou|cn-guangzhou|2|
     |China \(Chengdu\)|Chengdu|cn-chengdu|2|
-    |China \(Nanjing\)|Nanjing \(in invitational preview\)|cn-nanjing|1|
+    |China \(Nanjing\)|Nanjing \(in invitational preview\)|cn-nanjing|1|
 
 -   Region outside mainland China
 
     |Region|City|Region ID|Number of zones|
     |------|----|---------|---------------|
-    |China \(Hong Kong\)|Hong Kong|cn-hongkong|2|
+    |China \(Hong Kong\)|Hong Kong|cn-hongkong|3|
     |Singapore \(Singapore\)|Singapore|ap-southeast-1|3|
     |Australia \(Sydney\)|Sydney|ap-southeast-2|2|
     |Malaysia \(Kuala Lumpur\)|Kuala Lumpur|ap-southeast-3|2|
