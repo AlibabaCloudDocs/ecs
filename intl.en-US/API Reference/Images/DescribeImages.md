@@ -55,7 +55,8 @@ This parameter is empty by default, which indicates that the results that match 
 |Architecture|String|No|i386|The image architecture. Valid values:
 
 -   i386
--   x86\_64 |
+-   x86\_64
+-   arm64 |
 |PageNumber|Integer|No|1|The number of the page to return. Pages start from page 1.
 
 Default value: 1. |
@@ -102,7 +103,8 @@ Default value: false. |
 |Architecture|String|x86\_64|The image architecture. Valid values:
 
 -   i386
--   x86\_64 |
+-   x86\_64
+-   arm64 |
 |CreationTime|String|2019-11-15T06:07:05Z|The time when the image was created. |
 |Description|String|Archive log for Oracle|The description of the image. |
 |DiskDeviceMappings|Array of DiskDeviceMapping| |The mappings between disks and snapshots under the image. |
