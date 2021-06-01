@@ -91,7 +91,7 @@ Default value: false. |
 
 -   If you set this parameter to `CreationStartTime`, you can query the resources that were created after the point in time specified by the `Filter.N.Value` value.
 -   If you set this parameter to `CreationEndTime`, you can query the resources that were created before the point in time specified by the `Filter.N.Value` value. |
-|Filter.N.Value|String|No|2017-12-05T22:40Z|The value of filter N used to query resources. When you specify this parameter, you must also specify the `Filter.N.Key`parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC. |
+|Filter.N.Value|String|No|2017-12-05T22:40Z|The value of filter N used to query resources. When you specify this parameter, you must also specify the `Filter.N.Key` parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC. |
 |ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the custom image belongs. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response. |
 
 ## Response parameters
