@@ -55,7 +55,8 @@
 |Architecture|String|否|i386|镜像的体系架构。取值范围：
 
  -   i386
--   x86\_64 |
+-   x86\_64
+-   arm64 |
 |PageNumber|Integer|否|1|镜像资源列表的页码。起始值：1
 
  默认值：1 |
@@ -102,7 +103,8 @@
 |Architecture|String|x86\_64|镜像系统架构类型。可能值：
 
  -   i386
--   x86\_64 |
+-   x86\_64
+-   arm64 |
 |CreationTime|String|2019-11-15T06:07:05Z|镜像的创建时间。 |
 |Description|String|Archive log for Oracle|描述信息。 |
 |DiskDeviceMappings|Array of DiskDeviceMapping| |镜像下包含云盘和快照的映射关系。 |
