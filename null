@@ -1,4 +1,4 @@
-# Linux实例初始化系统盘后重新挂载数据盘
+# Re-mount the data disk after initializing the Linux instance
 
-最新内容请参见[Linux系统ECS实例重新初始化系统盘后如何重新挂载数据盘？](/intl.zh-CN/块存储/块存储FAQ.md)。
+For the latest information, see [How do I re-attach data disks after I re-initialize the system disk of a Linux instance?](/intl.en-US/Block Storage/Elastic Block Storage FAQ.md).
 
