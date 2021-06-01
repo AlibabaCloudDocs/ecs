@@ -1,8 +1,8 @@
 # 创建RAID阵列（Linux）
 
-本文以Ubuntu系统ECS实例为例，介绍了如何使用Linux系统内置的mdadm命令为多块数据盘创建一个100GiB的RAID阵列。
+本文以Ubuntu系统ECS实例为例，介绍了如何使用Linux系统内置的mdadm命令为多块数据盘创建一个200 GiB的RAID阵列。
 
-您已经创建并挂载了多块云盘。建议您创建具有相同容量和相同类型的云盘。创建按量付费云盘的详细步骤请参见[创建云盘](/intl.zh-CN/块存储/云盘/创建云盘/创建云盘.md)和[挂载数据盘](/intl.zh-CN/块存储/云盘/挂载数据盘.md)，创建包年包月云盘请参见[创建包年包月云盘]()。
+您已经创建并挂载了多块云盘。建议您创建具有相同容量和相同类型的云盘。创建并挂载云盘的具体操作，请参见[创建云盘](/intl.zh-CN/块存储/云盘/创建云盘/创建云盘.md)和[挂载数据盘](/intl.zh-CN/块存储/云盘/挂载数据盘.md)。
 
 独立冗余磁盘阵列（Redundant Array of Independent Disks，简称RAID）是将多块云盘按一定的方式组成一个磁盘阵列组。相比单块云盘，RAID能够有效的提高磁盘的容量、读写带宽、可靠性和可用性。
 
@@ -19,136 +19,117 @@
 
 1.  以root权限远程连接ECS实例。连接方式请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
 
-2.  使用lsblk命令罗列ECS实例上所有云盘信息。
+2.  运行以下命令查看ECS实例上所有云盘信息。
 
     ```
-    root@lvs06:~# lsblk
+    lsblk
     ```
+
+    结果如下所示。
+
+    ![lsblk](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5221640261/p271747.png)
 
 3.  使用mdadm命令创建RAID阵列/dev/md0。
 
-    -   创建RAID0模式可以执行如下命令
+    请根据您的实际情况，创建RAID0或RAID1模式。
+
+    **说明：**
+
+    -   以下示例中`/dev/vd[bcdef]`表示为/dev/vdb、/dev/vdc、/dev/vdd、/dev/vde和/dev/vdf五块云盘组成RAID阵列。如果您使用其他云盘，需要修改成对应的云盘。
+    -   如果提示未安装mdadm，请先运行`apt-get install mdadm`命令安装mdadm工具。
+    -   创建RAID0模式，运行以下命令。
 
         ```
-        root@raid06:~# mdadm --create /dev/md0 --level=0 --raid-devices=5 /dev/vd\[bcdef\]
-        ices=5 /dev/vd[bcdef]
-        mdadm: Defaulting to version 1.2 metadata
-        mdadm: array /dev/md0 started
+        mdadm --create /dev/md0 --level=0 --raid-devices=5 /dev/vd[bcdef]
         ```
 
-        `--level=0`选项表示用于将阵列条带化的RAID0模式，/dev/vd\[bcdef\]值表示使用/dev/vdb、/dev/vdc、/dev/vdd、/dev/vde和/dev/vdf五块云盘组成一个RAID阵列。
+        -   `--level=0`：表示用于将阵列条带化的RAID0模式。
+        -   `--raid-devices=5`：表示RAID阵列由五块云盘组成。
+        -   `/dev/vd[bcdef]`：表示使用/dev/vdb、/dev/vdc、/dev/vdd、/dev/vde和/dev/vdf五块云盘组成一个RAID阵列。
+        结果如下所示。
 
-    -   创建RAID1模式可以执行如下命令
+        ![mdadm_raid0](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5221640261/p271752.png)
+
+    -   创建RAID1模式，运行以下命令。
 
         ```
-        root@raid06:~# mdadm --create /dev/md0 --level=1 --raid-devices=5 /dev/vd\[bcdef\]
+        mdadm --create /dev/md0 --level=1 --raid-devices=5 /dev/vd[bcdef]
         ```
 
-        `--level=1`选项表示用于将阵列镜像化的RAID1模式。
-
-4.  使用mdadm命令查看创建的RAID阵列/dev/md0信息。
+        -   `--level=1`表示用于将阵列镜像化的RAID1模式。
+        -   `--raid-devices=5`：表示RAID阵列由五块云盘组成。
+        -   `/dev/vd[bcdef]`：表示使用/dev/vdb、/dev/vdc、/dev/vdd、/dev/vde和/dev/vdf五块云盘组成一个RAID阵列。
+4.  运行以下命令查看创建的RAID阵列/dev/md0信息。
 
     ```
-    root@raid06:~# mdadm --detail /dev/md0
-    /dev/md0:
-            Version : 1.2
-      Creation Time : Sun May 1912:31:532019
-         Raid Level : raid0
-         Array Size : 104775680 (99.92 GiB 107.29 GB)
-       Raid Devices : 5
-      Total Devices : 5
-        Persistence : Superblock is persistent
-    
-        Update Time : Sun May 1912:31:532019
-              State : clean
-     Active Devices : 5
-    Working Devices : 5
-     Failed Devices : 0
-      Spare Devices : 0
-    
-         Chunk Size : 512K
-    
-               Name : raid06:0  (local to host raid06)
-               UUID : 59b65ca6:ad8ffc30:ee439c6b:db6ba***
-             Events : 0Number   Major   Minor   RaidDevice State
-           0253160      active sync   /dev/vdb
-           1253321      active sync   /dev/vdc
-           2253482      active sync   /dev/vdd
-           3253643      active sync   /dev/vde
-           4253804      active sync   /dev/vdf                        
+    mdadm --detail /dev/md0
     ```
 
-5.  使用mkfs命令在RAID阵列上创建一个文件系统，例如，ext4文件系统。
+    结果如下所示。
+
+    ![raid0](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1886640261/p271751.png)
+
+5.  运行以下命令在RAID阵列上创建一个文件系统，例如，ext4文件系统。
 
     您也可以创建其他类型的文件系统。
 
     ```
-    root@raid06:~# mkfs.ext4 /dev/md0
-    mke2fs 1.42.13 (17-May-2015)
-    Creating filesystem with261939204k blocks and 6553600 inodes
-    Filesystem UUID: 4fc55c24-d780-40d5-a077-03b484519***
-    Superblock backups stored on blocks:
-            32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
-            4096000, 7962624, 11239424, 20480000, 23887872
-    
-    Allocating group tables: done
-    Writing inode tables: done
-    Creating journal (32768 blocks): done
-    Writing superblocks and filesystem accounting information: done                        
+    mkfs.ext4 /dev/md0
     ```
 
-6.  使用root权限创建一份包含RAID信息的配置文件，设置RAID阵列在启动ECS实例时自动重组。
+    结果如下所示。
+
+    ![mkfs](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1886640261/p271801.png)
+
+6.  运行以下命令，创建一份包含RAID信息的配置文件，设置RAID阵列在启动ECS实例时自动重组。
 
     ```
-    root@raid06:~# sudo mdadm --detail --scan \| sudo tee -a /etc/mdadm/mdadm.conf
+    sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
     ```
 
-7.  （可选）创建挂载点，例如/media/raid0。
+7.  挂载RAID阵列的文件系统。
 
-    您也可以将云盘挂载到已有目录下。
+    1.  运行以下命令，创建挂载点，例如/media/raid0。
+
+        ```
+        mkdir /media/raid0
+        ```
+
+        **说明：** 您也可以将云盘挂载到已有目录下，例如/mnt。
+
+    2.  运行以下命令挂载文件系统，例如将/dev/md0挂载至/media/rad0。
+
+        ```
+        mount /dev/md0 /media/raid0
+        ```
+
+8.  运行以下命令查看RAID阵列的挂载信息。
 
     ```
-    root@raid06:~# mkdir /media/raid0
+    df -h
     ```
 
-8.  使用mount命令挂载文件系统，例如将/dev/md0挂载至/media/rad0。
+    结果如下所示，返回信息中，文件系统已经挂载到指定的挂载点。
 
-    ```
-    root@raid06:~# mount /dev/md0 /media/raid0
-    ```
-
-9.  使用df命令查看RAID阵列的挂载信息。
-
-    返回信息中，文件系统必须挂载到指定的挂载点。
-
-    ```
-    root@raid06:~# df -h
-    Filesystem      Size  Used Avail Use% Mounted on
-    udev            7.9G     07.9G   0% /dev
-    tmpfs           1.6G  3.5M  1.6G   1% /run
-    /dev/vda1        40G   23G   15G  61% /
-    tmpfs           7.9G     0  7.9G   0% /dev/shm
-    tmpfs           5.0M  4.0K  5.0M   1% /run/lock
-    tmpfs           7.9G     07.9G   0% /sys/fs/cgroup
-    tmpfs           1.6G     01.6G   0% /run/user/0
-    /dev/md0         99G   60M   94G   1% /media/raid0
-    ```
+    ![挂载信息](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1886640261/p271901.png)
 
 
 如果您需要在每次启动ECS实例时设置自动加载RAID阵列，可以在/etc/fstab配置文件中添加如下信息。
 
-1.  向/etc/fstab配置文件写入自启动设置。
+1.  运行以下命令，向/etc/fstab配置文件写入自启动设置。
 
     ```
-    root@raid06:~# echo /dev/md0 /media/rad0 defaults,nofail,nobootwait 0 2 \>\> /etc/fstab
+    echo `blkid /dev/md0 | awk '{print $2}' | sed 's/\"//g'` /media/raid0 ext4 defaults 0 0 >> /etc/fstab
     ```
 
+    -   `/dev/md0`：磁盘阵列名称。
+    -   `/media/raid0`：挂载点信息，如果需要挂载到其他路径，您需要修改成对应路径。
     **说明：** 如果您需要在未挂载RAID阵列的情况下启动ECS实例，可以添加nofail配置。即使在安装云盘时出现错误，nofail配置也允许启动ECS实例。如果您使用的是Ubuntu系统，还需要额外添加nobootwait配置。
 
-2.  使用mount命令/etc/fstab配置文件中挂载所有文件系统。
+2.  运行以下命令挂载/etc/fstab配置文件中的所有文件系统。
 
     ```
-    root@raid06:~# mount -a
+    mount -a
     ```
 
 
