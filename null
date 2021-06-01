@@ -1,6 +1,4 @@
-# Create an NVIDIA GPU-accelerated instance
+# Linux实例初始化系统盘后重新挂载数据盘
 
-NVIDIA GPU-accelerated instances must be installed with drivers to use the GPUs. You can configure the drivers to be automatically installed when you create instances or manually install the drivers after the instances are created.
-
-For more information, see [Create a NVIDIA GPU-accelerated instance]().
+最新内容请参见[Linux系统ECS实例重新初始化系统盘后如何重新挂载数据盘？](/cn.zh-CN/块存储/块存储FAQ.md)。
 
