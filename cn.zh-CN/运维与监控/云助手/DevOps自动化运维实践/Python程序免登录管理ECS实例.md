@@ -102,7 +102,7 @@ keyword: [云助手, 远程命令, 运维插件, 阿里云, ecs]
     
     
     
-    def wait_invoke_finshed_get_out(invoke_id,wait_count,wait_interval):
+    def wait_invoke_finished_get_out(invoke_id,wait_count,wait_interval):
         for i in range(wait_count):
             status,output = get_invoke_result(invoke_id)
             if status not in ["Running","Pending","Stopping"]:
@@ -131,7 +131,7 @@ keyword: [云助手, 远程命令, 运维插件, 阿里云, ecs]
         logger.info("run command,invoke-id:%s" % invoke_id)
     
         # 等待命令执行完成,循环查询10次，每次间隔5秒，查询次数和间隔请根据实际情况配置
-        status,output = wait_invoke_finshed_get_out(invoke_id,10,5)
+        status,output = wait_invoke_finished_get_out(invoke_id,10,5)
         if status:
             logger.info("invoke-id execute finished,status: %s,output:%s" %(status,output))
     
