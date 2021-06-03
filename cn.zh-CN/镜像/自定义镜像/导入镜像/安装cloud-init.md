@@ -6,7 +6,7 @@ keyword: [cloud-init, 阿里云, 镜像, 自定义, 配置]
 
 为保证运行镜像的ECS实例能成功完成初始化配置，建议您在制作Linux类型自定义镜像时，在源服务器上安装cloud-init。本文介绍安装阿里云版cloud-init和社区版cloud-init的操作步骤。
 
-cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置的开源服务软件。阿里云、AWS、Azure和OpenStack等主流云平台均支持cloud-init。阿里云版cloud-init能在ECS实例启动阶段完成系统初始化配置，包括NTP、软件源、主机名和SSH密钥对等，同时执行实例自定义数据（User data）脚本。更多详情，请参见[cloud-init官方文档](http://cloudinit.readthedocs.io/)。
+cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置的开源服务软件。阿里云、AWS、Azure和OpenStack等主流云平台均支持cloud-init。阿里云版cloud-init能在ECS实例启动阶段完成系统初始化配置，包括NTP、软件源、主机名和SSH密钥对等，同时执行实例自定义数据（User data）脚本。更多信息，请参见[cloud-init官方文档](http://cloudinit.readthedocs.io/)。
 
 阿里云所有公共镜像默认安装cloud-init。为保证使用自定义镜像创建的ECS实例能自动初始化系统配置，建议您在以下场景中为Linux服务器安装阿里云版cloud-init。
 
@@ -110,15 +110,17 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
 6.  运行以下命令执行安装cloud-init的脚本deploy.sh。
 
     ```
-    bash ./deploy.sh <issue> <major_version>
+    bash ./deploy.sh <issue\> <major\_version\>
     ```
 
     deploy.sh脚本的参数说明和取值示例如下：
 
     |参数|说明|示例|
     |--|--|--|
-    |issue|操作系统平台类型。取值范围：centos \| redhat \|rhel \| debian \| ubuntu \| opensuse \| sles。参数取值均大小写敏感，其中sles表示SUSE/SLES。|centos|
-    |major\_version|操作系统平台主要版本号。|CentOS 6.5的主要版本号为6|
+    |<issue\>|操作系统平台类型。取值范围：centos \| redhat \|rhel \| debian \| ubuntu \| opensuse \| sles。参数取值均大小写敏感，其中sles表示SUSE/SLES。|centos|
+    |<major\_version\>|操作系统平台主要版本号。|CentOS 7.6的主要版本号为7|
+
+    例如，您当前的操作系统为CentOS 7，则需要运行的命令为`bash ./deploy.sh centos 7`。
 
 7.  确认cloud-init是否安装成功。
 
@@ -260,15 +262,17 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
 4.  运行以下命令。安装cloud-init。
 
     ```
-    bash ./deploy.sh <issue> <major_version>
+    bash ./deploy.sh <issue\> <major\_version\>
     ```
 
     deploy.sh脚本的参数说明和取值示例如下：
 
     |参数|说明|示例|
     |--|--|--|
-    |issue|操作系统平台类型。取值范围：centos \| debian \| sles。参数取值均大小写敏感，其中sles表示SUSE/SLES。|centos|
-    |major\_version|操作系统平台主要版本号。|CentOS 6.5的主要版本号为6|
+    |<issue\>|操作系统平台类型。取值范围：centos \| debian \| sles。参数取值均大小写敏感，其中sles表示SUSE/SLES。|centos|
+    |<major\_version\>|操作系统平台主要版本号。|CentOS 6.5的主要版本号为6|
+
+    例如，您当前的操作系统为CentOS 6，则需要运行的命令为`bash ./deploy.sh centos 6`。
 
 
 ## （可选）安装社区版cloud-init
