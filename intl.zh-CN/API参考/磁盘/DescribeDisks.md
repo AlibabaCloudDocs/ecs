@@ -123,22 +123,11 @@
 |Filter.2.Key|String|否|CreationEndTime|查询资源时的筛选键，取值必须为`CreationEndTime`。同时设置`Filter.2.Key`和`Filter.2.Value`可以查询在指定时间点前创建的资源信息。 |
 |Filter.1.Value|String|否|2017-12-05T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
 |Filter.2.Value|String|否|2017-12-06T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.2.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
-|Tag.N.value|String|否|null|云盘或本地盘的标签值。
-
- **说明：** 为提高代码兼容性，请尽量使用Tag.N.Value参数。 |
-|Tag.N.key|String|否|null|云盘或本地盘的标签键。
-
- **说明：** 为提高代码兼容性，请尽量使用Tag.N.Key参数。 |
-|Tag.N.Key|String|否|TestKey|云盘或本地盘的标签键。N的取值范围：1~20
-
- 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。 |
-|Tag.N.Value|String|否|TestValue|云盘或本地盘的标签值。N的取值范围：1~20 |
 |ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|云盘或本地盘所在的企业资源组ID。使用该参数过滤资源时，资源数量不能超过1000个。 |
 |EnableShared|Boolean|否|false|是否是共享块存储。 |
 |Encrypted|Boolean|否|false|是否只筛选出加密云盘。
 
  默认值：false |
-|AdditionalAttributes.N|RepeatList|否|IOPS|其他属性值。目前仅支持传入值为IOPS，表示查询当前磁盘的IOPS上限。 |
 |DryRun|Boolean|否|false|是否只预检此次请求。取值范围：
 
  -   true：发送检查请求，不会查询资源状况。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码`DryRunOperation`。
@@ -146,6 +135,17 @@
 
  默认值：false |
 |KMSKeyId|String|否|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|云盘使用的KMS密钥ID。 |
+|Tag.N.key|String|否|null|云盘或本地盘的标签键。
+
+ **说明：** 为提高代码兼容性，请尽量使用Tag.N.Key参数。 |
+|Tag.N.Key|String|否|TestKey|云盘或本地盘的标签键。N的取值范围：1~20
+
+ 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。 |
+|Tag.N.Value|String|否|TestValue|云盘或本地盘的标签值。N的取值范围：1~20 |
+|Tag.N.value|String|否|null|云盘或本地盘的标签值。
+
+ **说明：** 为提高代码兼容性，请尽量使用Tag.N.Value参数。 |
+|AdditionalAttributes.N|RepeatList|否|IOPS|其他属性值。目前仅支持传入值为IOPS，表示查询当前磁盘的IOPS上限。 |
 
 ## 返回数据
 
@@ -208,7 +208,7 @@
  该参数值仅在`Status`参数值为`In_use`时才有值，其他状态时为空。 |
 |KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb408\*\*\*|云盘使用的KMS密钥ID。 |
 |MountInstanceNum|Integer|1|共享存储挂载的实例数量。 |
-|MountInstances|Array of MountInstance| |挂载到实例上的信息集合。 |
+|MountInstances|Array of MountInstance| |共享存储挂载到实例上的信息集合。 |
 |MountInstance| | | |
 |AttachedTime|String|2017-12-05T2340:00Z|挂载时间。按照[ISO8601](~~25696~~)标准表示，使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。 |
 |Device|String|/dev/xvda|云盘或本地盘的挂载点。 |
@@ -399,21 +399,21 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 |400|InvalidDiskType.ValueNotSupported|The specified disk type is not supported.|指定的磁盘属性不支持。|
 |400|InvalidCategory.ValueNotSupported|The specified disk category is not supported.|不支持指定的磁盘种类。|
 |400|InvalidStatus.ValueNotSupported|The specified disk status is not supported.|指定的磁盘状态不支持此类操作。|
-|403|InvalidDiskIds.Malformed|The amount of specified disk Ids exceeds the limit.|指定的磁盘ID格式不正确。|
-|404|InvalidDiskChargeType.NotFound|The DiskChargeType does not exist in our records|指定的磁盘计费方式不存在。|
-|404|InvalidLockReason.NotFound|The specified LockReason is not found|指定的锁定类型不存在。|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|指定的Tag.N.Key和Tag.N.Value不匹配。|
 |400|InvalidTagCount|The specified tags are beyond the permitted range.|指定的标记超出取值范围。|
 |400|InvalidRegion.NotFound|The specified parameter RegionId is not valid.|RegionId参数不合法。|
-|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |400|InvalidZoneId.NotFound|The zoneId provided does not exist in our records.|指定的可用区ID不存在。|
 |400|MissingParamter.RegionId|The regionId should not be null.|参数RegionId不得为空。|
 |400|InvalidParameter.DiskIds|The specified parameter diskIds is not valid.|指定的参数diskIds无效。|
 |400|IncompleteParamter|Some fields can not be null in this request.|请求中缺失参数。|
 |400|InvalidParamter|Some parameters are invalid in this request.|请求中包含非法参数。|
 |400|InvalidSnapshot.NotFound|The specified parameter SnapshotId is not valid.|指定的SnapshotId不合法。|
+|403|InvalidDiskIds.Malformed|The amount of specified disk Ids exceeds the limit.|指定的磁盘ID格式不正确。|
 |403|UserNotInTheWhiteList|The user is not in volume white list.|用户不在共享块存储白名单中，请您提交工单申请白名单。|
+|404|InvalidDiskChargeType.NotFound|The DiskChargeType does not exist in our records|指定的磁盘计费方式不存在。|
+|404|InvalidLockReason.NotFound|The specified LockReason is not found|指定的锁定类型不存在。|
 |404|InvalidDiskIds.ValueNotSupported|The specified parameter "DiskIds" is not supported.|指定的磁盘ID无效。|
+|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
