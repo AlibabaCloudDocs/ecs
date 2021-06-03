@@ -4,7 +4,7 @@ keyword: [pay-as-you-go, no fees for stopped instances, computing resources, pub
 
 # No Fees for Stopped Instances \(VPC-Connected\)
 
-If the No Fees for Stopped Instances \(VPC-Connected\) feature is enabled and the prerequisites described in this topic are met, some ECS resources are recycled and their billing stops. This helps reduce maintenance costs. The billing stops only for some resources of the ECS instances.
+If the No Fees for Stopped Instances \(VPC-Connected\) feature is enabled and the prerequisites described in this topic are met, some Elastic Compute Service \(ECS\) resources are recycled and their billing stops. This helps reduce maintenance costs. The billing stops only for some resources of the ECS instances.
 
 ## Prerequisites
 
@@ -17,10 +17,14 @@ The No Fees for Stopped Instances \(VPC-Connected\) feature is applicable to ins
 
 -   The instance families are not equipped with local disks.
 
-    Instance families equipped with local disks do not support No Fees for Stopped Instances \(VPC-Connected\). These instance families include d1, d1ne, i1, i2, i2g, and gn5. For more information, see the Local storage \(GiB\) column in [Instance families](/intl.en-US/Instance/Instance families.md).
+    Instance families equipped with local disks do not support No Fees for Stopped Instances \(VPC-Connected\), such as big data instance families and instance families with local SSDs. For more information, see the Local storage \(GiB\) column in [Instance families](/intl.en-US/Instance/Instance families.md).
+
+-   The instance families are not equipped with persistent memory.
+
+    Instance families equipped with persistent memory do not support No Fees for Stopped Instances \(VPC-Connected\), such as re6p and re6p-redis. For more information, see the Persistent memory \(GiB\) column in [Instance families](/intl.en-US/Instance/Instance families.md).
 
 
-By default, the No Fees for Stopped Instances \(VPC-Connected\) feature is disabled. For more information, see the [Enable the No Fees for Stopped Instances \(VPC-Connected\) feature](#default) section.
+By default, the No Fees for Stopped Instances \(VPC-Connected\) feature is disabled. For information about how to enable this feature, see the [Enable the No Fees for Stopped Instances \(VPC-Connected\) feature](#default)section.
 
 ## Applicable resources
 
@@ -46,7 +50,7 @@ After the No Fees for Stopped Instances \(VPC-Connected\) feature is enabled, th
 
 **Note:** If you stop an instance from within the operating system, the No Fees for Stopped Instances \(VPC-Connected\) feature is not triggered.
 
-If an instance is in the start period, the No Fees for Stopped Instances \(VPC-Connected\) feature cannot be triggered. The start period is the time it takes for a new instance that is started for the first time to enter the Running state from the Stopped state. For more information, see [ECS instance lifecycle](/intl.en-US/Instance/ECS instance lifecycle.md).
+If an instance is in the start period, the No Fees for Stopped Instances \(VPC-Connected\) feature cannot be triggered. The start period is the amount of time it takes for a new instance that is started for the first time to enter the Running state from the Stopped state. For more information, see [ECS instance lifecycle](/intl.en-US/Instance/ECS instance lifecycle.md).
 
 ## Impacts
 
@@ -70,14 +74,14 @@ In some cases, you may need to restart your instances multiple times within a sh
 
 For an instance that is stopped due to an overdue payment, if you clear the overdue payment within the specified period of time and reactivate the instance, whether the public IP address is retained is determined by the status of the No Fees for Stopped Instances \(VPC-Connected\) feature.
 
--   If the feature is enabled, the instance enters the No Fees for Stopped Instances \(VPC-Connected\) state when the instance is stopped due to an overdue payment. The computing resources \(vCPUs and memory\) and public IP address of the instance are automatically released and the public IP address may change when the instance is restarted.
+-   If the feature is enabled, the instance enters the No Fees for Stopped Instances \(VPC-Connected\) state when the instance is stopped due to an overdue payment. The computing resources \(vCPUs and memory\) and public IP address of the instance are automatically released and the public IP address may change when the instance is reactivated.
 -   If the feature is disabled, the billing of the instance stops when the instance is stopped due to an overdue payment. The public IP address is retained and does not change when the instance is reactivated.
 
 **Note:** If all three deductions for an instance fail, the instance is stopped. For information about the status changes of resources whose payments are overdue, see [Pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md).
 
 ## Enable the No Fees for Stopped Instances \(VPC-Connected\) feature
 
-By default, the No Fees for Stopped Instances \(VPC-Connected\) feature is disabled to avoid unexpected impacts on your applications. Enable the No Fees for Stopped Instances \(VPC-Connected\) feature after you make sure that it is suitable for your applications. For more information, see [Impacts](/intl.en-US/Pricing/Billing methods/No Fees for Stopped Instances (VPC-Connected).md).
+By default, the No Fees for Stopped Instances \(VPU-Connected\) feature is disabled to avoid unexpected impacts on your applications. Enable the No Fees for Stopped Instances \(VPC-Connected\) feature after you make sure that it is suitable for your applications. For more information, see [Impacts](/intl.en-US/Pricing/Billing methods/No Fees for Stopped Instances (VPC-Connected).md).
 
 This section describes how to enable the No Fees for Stopped Instances \(VPC-Connected\) feature for all applicable instances within your account. After this feature is enabled, the instances enter the No Fees for Stopped Instances \(VPC-Connected\) state when they are stopped. For more information, see [Prerequisites](/intl.en-US/Pricing/Billing methods/No Fees for Stopped Instances (VPC-Connected).md).
 
@@ -98,10 +102,10 @@ This section describes how to enable the No Fees for Stopped Instances \(VPC-Con
 
 This section describes how to disable the No Fees for Stopped Instances \(VPC-Connected\) feature for all applicable instances within your account. After this feature is disabled, the instances do not enter the No Fees for Stopped Instances \(VPC-Connected\) state when they are stopped.
 
-If an instance is in the No Fees for Stopped Instances \(VPC-Connected\) state, its computing resources \(vCPUs and memory\) and public IP address are already recycled. Therefore, after the No Fees for Stopped Instances \(VPC-Connected\) feature is disabled, no fees are charged for the computing resources \(vCPUs and memory\) until these resources are reassigned when the instance is restarted. The status of the IP address is subject to the type of the IP address.
+If an instance is in the No Fees for Stopped Instances \(VPC-Connected\) state, its computing resources \(vCPUs and memory\) and public IP address are already recycled. Therefore, after the No Fees for Stopped Instances \(VPC-Connected\) feature is disabled, you are not charged for the computing resources \(vCPUs and memory\) until these resources are reassigned when the instance is restarted. The status of the IP address is subject to the type of the IP address.
 
 -   If the instance uses a public IP address before it is stopped, a new public IP address is assigned to the instance.
--   If the ECS instance is associated with an EIP before the instance is stopped, the EIP remains unchanged.
+-   If the instance is associated with an EIP before it is stopped, the EIP remains unchanged.
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
@@ -124,6 +128,14 @@ You can configure the stop mode when you stop a single instance regardless of wh
 -   If you select **No Charges After Instance Is Stopped**, the instance enters the No Fees for Stopped Instances \(VPC-Connected\) state.
 
 ![No Charges After Instance Is Stopped](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6091909951/p52884.png)
+
+## View the stop mode
+
+After a pay-as-you-go instance is stopped, you can view the stop mode of the instance in the ECS console to check whether the No Fees for Stopped Instances \(VPC-Connected\) feature is enabled.
+
+On the Instances page, click the **Column Filters** icon and select **Stop Mode** to view the stop mode of the stopped instance.
+
+![Stop mode of the pay-as-you-go instance](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1747172261/p240720.png)
 
 ## References
 
