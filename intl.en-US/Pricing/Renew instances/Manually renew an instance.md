@@ -6,9 +6,9 @@ keyword: [subscription, renewal, manual renewal, billing cycle]
 
 This topic describes how to manually renew a subscription instance. Before a subscription instance is automatically released, you can manually renew the instance to extend its service duration.
 
-When you manually renew an instance, you can only extend the period of time for using its ECS resources, but cannot change its configurations. When you renew an instance, the public bandwidth of the instance is charged based on the original base public bandwidth, not based on the temporarily upgraded public bandwidth. For information about how to upgrade the base public bandwidth of an instance, see [Modify the bandwidth configurations of subscription instances](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth configurations of subscription instances.md).
+When you manually renew an instance, you can extend the period of time to use its Elastic Compute Service \(ECS\) resources, but you cannot change its configurations. When you renew an instance, you are charged for the public bandwidth of the instance based on the original base public bandwidth, not based on the temporarily upgraded public bandwidth. For information about how to upgrade the base public bandwidth of an instance, see [Modify the bandwidth configurations of subscription instances](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth configurations of subscription instances.md).
 
-Options for renewal duration vary based on the number of instances that you select for renewal. For more information, see the buy page.
+Options for renewal duration vary based on the number of instances that you select for renewal. For more information, visit the buy page.
 
 ## Renew one instance
 
@@ -22,7 +22,7 @@ Options for renewal duration vary based on the number of instances that you sele
 
 5.  Select a renewal duration.
 
-6.  Select *ECS Service Terms* and click **Create Order**.
+6.  Read and select *ECS Service Terms*, and then click **Create Order**.
 
 7.  Follow the instructions to complete the payment.
 
@@ -39,13 +39,11 @@ Options for renewal duration vary based on the number of instances that you sele
 
 5.  Click **Renew** in the lower part of the page.
 
-6.  On the page that appears, click **Batch Change**.
+6.  Select a renewal duration.
 
-7.  Select a renewal duration for the instances and click **OK**.
+7.  Read and select *ECS Service Terms*, and then click **Create Order**.
 
-8.  Select *ECS Service Terms* and click **Create Order**.
-
-9.  Follow the instructions to complete the payment.
+8.  Follow the instructions to complete the payment.
 
 
 **Related topics**  
