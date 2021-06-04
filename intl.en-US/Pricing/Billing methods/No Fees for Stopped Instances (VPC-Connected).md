@@ -24,7 +24,7 @@ The No Fees for Stopped Instances \(VPC-Connected\) feature is applicable to ins
     Instance families equipped with persistent memory do not support No Fees for Stopped Instances \(VPC-Connected\), such as re6p and re6p-redis. For more information, see the Persistent memory \(GiB\) column in [Instance families](/intl.en-US/Instance/Instance families.md).
 
 
-By default, the No Fees for Stopped Instances \(VPC-Connected\) feature is disabled. For information about how to enable this feature, see the [Enable the No Fees for Stopped Instances \(VPC-Connected\) feature](#default)section.
+By default, the No Fees for Stopped Instances \(VPC-Connected\) feature is disabled. For information about how to enable this feature, see the [Enable the No Fees for Stopped Instances \(VPC-Connected\) feature](#default) section.
 
 ## Applicable resources
 
