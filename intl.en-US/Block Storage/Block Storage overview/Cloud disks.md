@@ -10,7 +10,7 @@ Cloud disks are block-level Elastic Block Storage \(EBS\) products provided by A
 
 Cloud disks are classified into the following categories based on their performance:
 
--   Enhanced SSDs \(ESSDs\): ESSDs are based on the next-generation distributed block storage architecture and the 25 Gigabit Ethernet \(25 GE\) and remote direct memory access \(RDMA\) technologies. Each ESSD has low latency and can deliver up to one million input/output operations per second \(IOPS\). For more information, see [Enhanced SSDs](/intl.en-US/Block Storage/Block Storage overview/Enhanced SSDs.md).
+-   Enhanced SSDs \(ESSDs\): ESSDs are based on the next-generation distributed block storage architecture and the 25 Gigabit Ethernet \(25 GE\) and remote direct memory access \(RDMA\) technologies. Each ESSD has low latency and can deliver up to one million input/output operations per second \(IOPS\). For more information, see [ESSDs](/intl.en-US/Block Storage/Block Storage overview/ESSDs.md).
 
     We recommend that you use ESSDs for scenarios such as online transactional processing \(OLTP\) databases, NoSQL databases, and Elasticsearch, Logstash, and Kibana \(ELK\) log analysis.
 
@@ -41,35 +41,29 @@ The following table describes other limits.
 
 |Item|Limit|Adjustable|
 |:---|:----|:---------|
-|Permissions to create a pay-as-you-go disk|You must complete real-name verification before you can create a disk within a region in mainland China.|None.|
-|Quota for pay-as-you-go disks in all regions for an account|This quota is calculated by using the following formula: Number of ECS instances across all regions × 5. A minimum of ten pay-as-you-go disks can be created in each account.|Submit a ticket.|
-|Quota for system disks on an instance|1|None.|
-|Quota for data disks on an instance|16 \(including cloud disks and Shared Block Storage devices\)|None.|
-|Quota for instances to which a Shared Block Storage device can be attached|8|None.|
-|Quota for Shared Block Storage devices in all regions for an account|10|Submit a ticket.|
-|Capacity of a basic disk|5 GiB to 2,000 GiB|None.|
-|Capacity of a standard SSD|20 GiB to 32,768 GiB|None.|
-|Capacity of an ultra disk|20 GiB to 32,768 GiB|None.|
-|Capacity of an enhanced SSD \(ESSD\)|20 GiB to 32,768 GiB|None.|
-|Capacity of a local SSD|5 GiB to 800 GiB|None.|
-|Total capacity of all local SSDs on an instance|1,024 GiB|None.|
-|Capacity of a local NVMe SSD|1,456 GiB|None.|
-|Total capacity of all local NVMe SSDs on an instance|2,912 GiB|None.|
-|Capacity of a local SATA HDD|5,500 GiB|None.|
-|Total capacity of all local SATA HDDs on an instance|154, 000 GiB|None.|
-|Capacity of a Shared SSD Block Storage device|32,768 GiB|None.|
-|Total capacity of all Shared SSD Block Storage devices on an instance|128 TiB|None.|
-|Capacity of a Shared Ultra Block Storage device|32, 768 GiB|None.|
-|Total capacity of all Shared Ultra Block Storage devices on an instance|128 TiB|None.|
-|Capacity of a system disk|-   Windows Server: 40 GiB to 500 GiB
+|Permissions to create pay-as-you-go disks|To create disks within in mainland China regions, you must first complete real-name verification.|N/A|
+|Pay-as-you-go disks|You can view the resource quota in the ECS console. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|N/A|
+|System disks on an instance|1|N/A|
+|Data disks on an instance|You can attach up to 64 data disks to a g6se instance and up to 16 data disks to an instance of other instance families.|N/A|
+|Total capacity of all pay-as-you-go ultra disks within an account|You can view the resource quota in the ECS console. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|N/A|
+|Total capacity of all pay-as-you-go standard SSDs within an account|You can view the resource quota in the ECS console. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|N/A|
+|Total capacity of all pay-as-you-go enhanced SSDs \(ESSDs\) within an account|You can view the resource quota in the ECS console. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|N/A|
+|Capacity of a single basic disk|5 GiB to 2,000 GiB|N/A|
+|Capacity of a single standard SSD|20 GiB to 32,768 GiB|N/A|
+|Capacity of a single ultra disk|20 GiB to 32,768 GiB|N/A|
+|Capacity of a single ESSD|20 GiB to 32,768 GiB|N/A|
+|Capacity of a single local SSD|5 GiB to 800 GiB|N/A|
+|Total capacity of all local SSDs on an instance|1,024 GiB|N/A|
+|Capacity of a single system disk|-   Windows Server: 40 GiB to 500 GiB
+-   Red Hat: 40 GiB to 500 GiB
 -   CoreOS and FreeBSD: 30 GiB to 500 GiB
 -   Linux systems excluding CoreOS: 20 GiB to 500 GiB
 
-|None.|
-|Permissions to attach new local disks to instances that are equipped with local disks|Not allowed.|None.|
-|Permissions to change configurations of instances that are equipped with local disks|Only bandwidth configurations of instances that are equipped with local disks can be changed.|None.|
-|Mount points of system disks|/dev/vda|None.|
-|Mount points of data disks|/dev/vd\[b-z\]|None.|
+|N/A|
+|Permissions to attach new local disks to instances that are equipped with local disks|You cannot attach new local disks to instances that are already equipped with local disks.|N/A|
+|Permissions to change configurations of instances that are equipped with local disks|Only bandwidth configurations of instances that are equipped with local disks can be changed.|N/A|
+|Mount points of system disks|/dev/vda|N/A|
+|Mount points of data disks|/dev/vd\[b-z\]|N/A|
 
 ## Billing methods
 
@@ -105,7 +99,7 @@ The following table describes the operations that you can perform on cloud disks
 -   [Resize disks online for Linux instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Linux instances.md)
 -   [Resize disks online for Windows instances](/intl.en-US/Block Storage/Resize cloud disks/Resize disks online for Windows instances.md) |
 |Replace a system disk|[Replace the system disk \(public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace the system disk (public images).md)|
-|Back up disk data|-   [Create a normal snapshot](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)
+|Back up disk data|-   [Create a snapshot for a disk](/intl.en-US/Snapshots/Use snapshots/Create a normal snapshot.md)
 -   [Apply or disable an automatic snapshot policy](/intl.en-US/Snapshots/Automatic snapshot policies/Apply or disable an automatic snapshot policy.md) |
 |Restore a disk to its initial status|[Re-initialize a system disk](/intl.en-US/Block Storage/Cloud disks/Reinitialize a cloud disk/Re-initialize a system disk.md)|
 |Restore a disk to its status at a specific point in time|[Roll back a disk by using a snapshot](/intl.en-US/Block Storage/Cloud disks/Roll back a disk by using a snapshot.md)|
