@@ -14,7 +14,7 @@ You can create a pay-as-you-go disk and attach the disk to an Elastic Compute Se
 Before you attach a disk, take note of the following items:
 
 -   Disks that are created along with instances and subscription data disks that are created for subscription instances are automatically attached to the corresponding instances. You do not need to manually attach the disks.
--   Typically, a maximum of 16 data disks can be attached to a single instance. For some instance families such as g6se, more than 16 data disks can be attached to a single instance. For more information, see the "Elastic Block Storage \(EBS\) limits" section in [Limits](/intl.en-US/Product Introduction/Limits.md).
+-   A maximum of 16 data disks can be attached to a single instance. For more information, see the "Elastic Block Storage \(EBS\) limits" section in [Limits](/intl.en-US/Product Introduction/Limits.md).
 -   A disk can be attached only to a single instance.
 
 **Note:** The attach operation refers to attaching disks to ECS instances in the console, instead of mounting file systems to the operating systems of ECS instances by running the `mount` command. For more information, see [Format a data disk for a Linux instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Linux instance.md) and [Format a data disk for a Windows ECS instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Windows ECS instance.md).
