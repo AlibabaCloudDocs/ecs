@@ -149,7 +149,7 @@ You can use one of the following methods to start the KVM. Then, use the account
             <on_crash>restart</on_crash>
             <devices>
                 <emulator>/usr/bin/qemu-kvm</emulator><! -- Configure a KVM path based on the operating system. For example, the KVM path for Ubuntu is /usr/bin/kvm -->
-                <disk type='file' device='disk'><! -- Specify the type parameter based on the image format. Set type to qcow2 if the image is in the QCOW2 format, and set type to vhd if the image is in the VHD format. -->
+                <disk type='file' device='disk'><! -- Specify the type parameter based on the image format. Set type to qcow2 if the image is in the QCOW2 format, and set type to vpc if the image is in the VHD format. -->
                     <driver name='qemu' type='qcow2' cache='none' dataplane='on' io='native'/> <! -- If you want to create a snapshot in the qcow2 format, you must disable dataplane. -->
                     <source file='path'/> <! -- Enter the absolute path of the Alibaba Cloud Linux 2 image. -->
                     <target dev='vda' bus='virtio'/>
