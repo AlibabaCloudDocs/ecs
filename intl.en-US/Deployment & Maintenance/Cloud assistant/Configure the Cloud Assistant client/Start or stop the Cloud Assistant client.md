@@ -6,13 +6,15 @@ The Cloud Assistant client is an agent that runs Cloud Assistant commands on ECS
 
 To start or stop the Cloud Assistant client on a Windows instance, perform the following steps:
 
+**Warning:** **Aliyun Assist Service** is the process of the Cloud Assistant client. If you stop **Aliyun Assist Service**, the Cloud Assistant client also stops. This may cause an exception on the ECS instance and the failure to stop the instance in the ECS console. Proceed with caution when you stop Aliyun Assist Service.
+
 1.  Connect to the Windows instance. For more information, see [Connect to a Windows instance from a local client](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Windows instance from a local client.md).
 
-2.  Choose **Computer Management** \> **Services and Applications** \> **Services** and find **AliyunService**.
+2.  Click Start and choose **Windows Administrative Tools** \> **Computer Management**.
 
-    **Warning:** **AliyunService** is the process of the Cloud Assistant client. If you stop **AliyunService**, the Cloud Assistant client also stops. This may result in an exception on the ECS instance and cause the instance failed to be stopped in the ECS console. Proceed with caution when you stop AliyunService.
+3.  Choose **Computer Management \(Local\)** \> **Services and Applications** \> **Services**.
 
-3.  Click **Stop** or **Restart** below AliyunService.
+4.  Find **Aliyun Assist Service** and click **Stop** or **Restart**.
 
     ![Restart the service](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0597919951/p5250.png)
 
@@ -54,10 +56,10 @@ To start or stop the Cloud Assistant client on a Linux instance, perform the fol
 
 1.  Connect to the Linux instance. For more information, see [Connect to a Linux instance by using a username and password](/intl.en-US/Instance/Connect to instances/Connect to an instance by using third-party client tools/Connect to a Linux instance by using a username and password.md).
 
-2.  Run the following commands based on the init system of the ECS instance:
+2.  Run the following commands based on the init system of the Linux instance:
 
     -   For Linux operating systems based on new versions of the Linux kernel, which typically use the systemd initialization process, perform the following steps:
-        -   Check whether your ECS instance uses the systemd initialization process. If a message is returned, systemd is used.
+        -   Check whether your instance uses the systemd initialization process. If a message is returned, systemd is used.
 
             ```
             strings /sbin/init | grep "/lib/system"
@@ -76,7 +78,7 @@ To start or stop the Cloud Assistant client on a Linux instance, perform the fol
             ```
 
     -   For Ubuntu 14 or earlier operating systems, which typically use the UpStart initialization process, perform the following steps:
-        -   Check whether your ECS instance uses the UpStart initialization process. If a message is returned, UpStart is used.
+        -   Check whether your instance uses the UpStart initialization process. If a message is returned, UpStart is used.
 
             ```
             strings /sbin/init | grep "upstart"
@@ -95,7 +97,7 @@ To start or stop the Cloud Assistant client on a Linux instance, perform the fol
             ```
 
     -   For Linux operating systems based on earlier versions of the Linux kernel, which typically use the sysvinit initialization process, perform the following steps:
-        -   Check whether your ECS instance uses the sysvinit initialization process. If a message is returned, sysvinit is used.
+        -   Check whether your instance uses the sysvinit initialization process. If a message is returned, sysvinit is used.
 
             ```
             strings /sbin/init | grep "sysvinit"
