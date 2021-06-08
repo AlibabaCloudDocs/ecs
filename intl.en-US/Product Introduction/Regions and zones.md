@@ -33,7 +33,7 @@ A region is a geographic area where a data center resides. The region of an Alib
     |Singapore \(Singapore\)|Singapore|ap-southeast-1|3|
     |Australia \(Sydney\)|Sydney|ap-southeast-2|2|
     |Malaysia \(Kuala Lumpur\)|Kuala Lumpur|ap-southeast-3|2|
-    |Indonesia \(Jakarta\)|Jakarta|ap-southeast-5|2|
+    |Indonesia \(Jakarta\)|Jakarta|ap-southeast-5|3|
     |India \(Mumbai\)|Mumbai|ap-south-1|2|
     |Japan \(Tokyo\)|Tokyo|ap-northeast-1|2|
     |US \(Silicon Valley\)|Silicon Valley|us-west-1|2|
