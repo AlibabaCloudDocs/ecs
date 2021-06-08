@@ -1,6 +1,6 @@
 # DescribeLaunchTemplateVersions
 
-You call this operation to query versions of a launch template.
+Queries the versions of a launch template.
 
 ## Debugging
 
@@ -13,10 +13,10 @@ You call this operation to query versions of a launch template.
 |Action|String|Yes|DescribeLaunchTemplateVersions|The operation that you want to perform. Set the value to DescribeLaunchTemplateVersions. |
 |RegionId|String|Yes|cn-hangzhou|The region ID of the launch template.
 
-You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+ You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |LaunchTemplateId|String|No|lt-bp168lnahrdwl39p\*\*\*\*|The ID of the launch template.
 
-You must specify LaunchTemplateId or LaunchTemplateName to determine a launch template. |
+ You must specify LaunchTemplateId or LaunchTemplateName to determine a launch template. |
 |LaunchTemplateName|String|No|testLaunchTemplateName|The name of the launch template. |
 |LaunchTemplateVersion.N|RepeatList|No|1|Version N of the launch template. |
 |MinVersion|Long|No|1|The minimum version number in the version range to query. |
@@ -24,10 +24,10 @@ You must specify LaunchTemplateId or LaunchTemplateName to determine a launch te
 |DefaultVersion|Boolean|No|true|Specifies whether to query the default version. |
 |PageNumber|Integer|No|1|The number of the page to return. Pages start from page 1.
 
-Default value: 1. |
+ Default value: 1. |
 |PageSize|Integer|No|10|The number of entries to return on each page.
 
-Default value: 10. |
+ Default value: 10. |
 
 ## Response parameters
 
@@ -47,19 +47,20 @@ Default value: 10. |
 |Description|String|testDiskDescription|The description of the data disk. |
 |Device|String|/dev/xvda|The device name of the data disk.
 
-**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
+ **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
 |DiskName|String|testDiskName|The name of the data disk. |
-|Encrypted|String|false|Indicates whether the data disk is encrypted. |
+|Encrypted|String|false|Indicates whether to encrypt the data disk. |
 |PerformanceLevel|String|PL1|The performance level of the enhanced SSD \(ESSD\) used as the data disk. This parameter has a value only when the value of `Category` is cloud\_essd. Valid values:
 
--   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+ -   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
 -   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS. |
 |Size|Integer|2000|The size of the data disk. |
 |SnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|The ID of the snapshot used to create the data disk. |
+|DeploymentSetId|String|ds-bp1brhwhoqinyjd6\*\*\*\*|The ID of the deployment set. |
 |Description|String|testInstanceDescription|The description of the instance. |
-|EnableVmOsConfig|Boolean|false|Indicates whether to enable the operating system configuration of the instance is enabled. |
+|EnableVmOsConfig|Boolean|false|Indicates whether to enable the operating system configuration of the instance. |
 |HostName|String|testHostName|The hostname of the instance. |
 |ImageId|String|m-bp67acfmxazb4p\*\*\*\*|The ID of the image. |
 |ImageOwnerAlias|String|system|The source of the image. |
@@ -69,49 +70,49 @@ Default value: 10. |
 |InternetChargeType|String|PayByTraffic|The billing method for network usage. |
 |InternetMaxBandwidthIn|Integer|5|The maximum inbound public bandwidth. |
 |InternetMaxBandwidthOut|Integer|100|The maximum outbound public bandwidth. |
-|IoOptimized|String|none|Specifies whether the instance is I/O optimized. |
+|IoOptimized|String|none|Indicates whether the instance is I/O optimized. |
 |KeyPairName|String|testKeyPairName|The name of the key pair. |
 |NetworkInterfaces|Array of NetworkInterface| |Details about the secondary elastic network interfaces \(ENIs\). |
 |NetworkInterface| | | |
 |Description|String|testNetworkInterfacesDescription|The description of the secondary ENI. |
 |NetworkInterfaceName|String|testNetworkInterfaceName|The name of the secondary ENI. |
-|PrimaryIpAddress|String|203.0.\*. \*|The primary private IP address of the secondary ENI. |
-|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group to which the secondary ENI belongs. The security group and the ENI must belong to the same VPC.
+|PrimaryIpAddress|String|203.0.\*.\*|The primary private IP address of the secondary ENI. |
+|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group to which to assign the secondary ENI. The security group and the ENI must belong to the same virtual private cloud \(VPC\).
 
-**Note:** The SecurityGroupId and SecurityGroupIds parameters are mutually exclusive in the response. |
-|SecurityGroupIds|List|\["sg-bp15ed6xe1yxeycg7\*\*\*\*"\]|The IDs of the security groups to which the secondary ENI belongs.
+ **Note:** The SecurityGroupId and SecurityGroupIds parameters are mutually exclusive in the response. |
+|SecurityGroupIds|List|\["sg-bp15ed6xe1yxeycg7\*\*\*\*"\]|The IDs of the security groups to which to assign the secondary ENI.
 
-**Note:** The SecurityGroupId and SecurityGroupIds parameters are mutually exclusive in the response. |
-|VSwitchId|String|vsw-bp67acfmxazb4p\*\*\*\*|The ID of the vSwitch to which the ENI is connected. |
+ **Note:** The SecurityGroupId and SecurityGroupIds parameters are mutually exclusive in the response. |
+|VSwitchId|String|vsw-bp67acfmxazb4p\*\*\*\*|The ID of the vSwitch to which to connect the ENI. |
 |NetworkType|String|vpc|The network type. |
 |PasswordInherit|Boolean|true|Indicates whether the username and password pair preset in the image is used. |
 |Period|Integer|1|The subscription period. |
-|PrivateIpAddress|String|10.1.\*\*. \*\*|The private IP address of the instance. |
-|RamRoleName|String|testRamRoleName|The name of the instance RAM role. |
+|PrivateIpAddress|String|10.1.\*\*.\*\*|The private IP address of the instance. |
+|RamRoleName|String|testRamRoleName|The name of the instance Resource Access Management \(RAM\) role. |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the launch template belongs. |
-|SecurityEnhancementStrategy|String|active|Indicates whether security hardening is enabled. |
-|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group to which the instance belongs.
+|SecurityEnhancementStrategy|String|active|Indicates whether to enable security hardening. |
+|SecurityGroupId|String|sg-bp67acfmxazb4p\*\*\*\*|The ID of the security group to which to assign the instance.
 
-**Note:** The `SecurityGroupId` and `SecurityGroupIds` parameters are mutually exclusive in the response. |
-|SecurityGroupIds|List|\["sg-bp15ed6xe1yxeycg7\*\*\*\*"\]|The IDs of the security groups to which the instance belongs.
+ **Note:** The `SecurityGroupId` and `SecurityGroupIds` parameters are mutually exclusive in the response. |
+|SecurityGroupIds|List|\["sg-bp15ed6xe1yxeycg7\*\*\*\*"\]|The IDs of the security groups to which to assign the instance.
 
-**Note:** The `SecurityGroupId` and `SecurityGroupIds` parameters are mutually exclusive in the response. |
+ **Note:** The `SecurityGroupId` and `SecurityGroupIds` parameters are mutually exclusive in the response. |
 |SpotDuration|Integer|1|The protection period of the preemptible instance. Unit: hours. Valid values: 0 to 6.
 
--   Protection periods of 2 to 6 hours are in invitational preview. If you want to set this parameter to one of these values, submit a ticket.
--   If this parameter is set to 0, no protection period is configured for the preemptible instance. |
+ -   Protection periods of 2, 3, 4, 5, and 6 hours are in invitational preview. If you want to set this parameter to one of these values, submit a ticket.
+-   A value of 0 indicates that no protection period is configured for the preemptible instance. |
 |SpotPriceLimit|Float|0.98|The maximum hourly price of the preemptible instance. |
 |SpotStrategy|String|NoSpot|The bidding policy of the preemptible instance. |
 |SystemDisk.Category|String|cloud\_ssd|The category of the system disk. |
 |SystemDisk.DeleteWithInstance|Boolean|true|Indicates whether to release the system disk when the instance is released. |
 |SystemDisk.Description|String|testSystemDiskDescription|The description of the system disk. |
 |SystemDisk.DiskName|String|testSystemDiskName|The name of the system disk. |
-|SystemDisk.Iops|Integer|30000|The number of I/O operations per second on the system disk.
+|SystemDisk.Iops|Integer|30000|The number of I/O operations per second \(IOPS\) on the system disk.
 
-**Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
-|SystemDisk.PerformanceLevel|String|PL0|The performance level of the ESSD used as the system disk. This parameter has a value only when the value of `SystemDiskCategory` is cloud\_essd. Valid values:
+ **Note:** This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility. |
+|SystemDisk.PerformanceLevel|String|PL0|The performance level of the ESSD used as the system disk. This parameter has a value only when the value of `SystemDisk.Category` is cloud\_essd. Valid values:
 
--   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+ -   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 -   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
 -   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 -   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS. |
@@ -121,17 +122,17 @@ Default value: 10. |
 |Key|String|TestKey|The tag key of the instance. |
 |Value|String|TestValue|The tag value of the instance. |
 |UserData|String|SGVsbG9FQ1M=|The user data of the instance, which is Base64-encoded. |
-|VSwitchId|String|vsw-bp67acfmxazb4p\*\*\*\*|The ID of the vSwitch to which the instance is connected. |
+|VSwitchId|String|vsw-bp67acfmxazb4p\*\*\*\*|The ID of the vSwitch to which to connect the instance. |
 |VpcId|String|v-bp67acfmxazb4p\*\*\*\*|The ID of the VPC. |
 |ZoneId|String|cn-hangzhou-g|The ID of the zone. |
 |LaunchTemplateId|String|lt-bp67acfmxazb4p\*\*\*\*|The ID of the launch template. |
 |LaunchTemplateName|String|testLaunchTemplateName|The name of the launch template. |
 |ModifiedTime|String|2018-05-14T14:18:00Z|The time when the launch template was modified. |
 |VersionDescription|String|testVersionDescription|The description of the launch template version. |
-|VersionNumber|Long|1|The version number of the launch template. |
+|VersionNumber|Long|1|The number of the launch template version. |
 |RequestId|String|3989ED0C-20A1-4351-A127-2067FF8390AX|The ID of the request. |
 |PageSize|Integer|10|The number of entries returned per page. |
-|PageNumber|Integer|1|The number of the returned page. |
+|PageNumber|Integer|1|The page number of the returned page. |
 |TotalCount|Integer|1|The total number of launch templates. |
 
 ## Examples
@@ -169,7 +170,8 @@ Sample success responses
             <LaunchTemplateVersionSet>
                   <LaunchTemplateData>
                         <ImageOwnerAlias>system</ImageOwnerAlias>
-                        <PrivateIpAddress>10.1. **. **</PrivateIpAddress>
+                        <PrivateIpAddress>10.1.**.**</PrivateIpAddress>
+                        <DeploymentSetId>ds-bp1brhwhoqinyjd6****</DeploymentSetId>
                         <Description>testInstanceDescription</Description>
                         <ResourceGroupId>rg-bp67acfmxazb4p****</ResourceGroupId>
                         <DataDisks>
@@ -196,7 +198,7 @@ Sample success responses
                         <NetworkInterfaces>
                               <NetworkInterface>
                                     <NetworkInterfaceName>testNetworkInterfaceName</NetworkInterfaceName>
-                                    <PrimaryIpAddress>203.0. *. *</PrimaryIpAddress>
+                                    <PrimaryIpAddress>203.0.*.*</PrimaryIpAddress>
                                     <Description>testNetworkInterfacesDescription</Description>
                                     <SecurityGroupId>sg-bp67acfmxazb4p****</SecurityGroupId>
                                     <VSwitchId>vsw-bp67acfmxazb4p****</VSwitchId>
@@ -261,7 +263,8 @@ Sample success responses
             {
                 "LaunchTemplateData": {
                     "ImageOwnerAlias": "system", 
-                    "PrivateIpAddress": "10.1. **. **", 
+                    "PrivateIpAddress": "10.1.**.**", 
+                    "DeploymentSetId": "ds-bp1brhwhoqinyjd6****",
                     "Description": "testInstanceDescription", 
                     "ResourceGroupId": "rg-bp67acfmxazb4p****", 
                     "DataDisks": {
@@ -291,7 +294,7 @@ Sample success responses
                         "NetworkInterface": [
                             {
                                 "NetworkInterfaceName": "testNetworkInterfaceName", 
-                                "PrimaryIpAddress": "203.0. *. *", 
+                                "PrimaryIpAddress": "203.0.*.*", 
                                 "Description": "testNetworkInterfacesDescription", 
                                 "SecurityGroupId": "sg-bp67acfmxazb4p****", 
                                 "VSwitchId": "vsw-bp67acfmxazb4p****"
