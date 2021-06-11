@@ -52,7 +52,16 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
 
     **说明：** 阿里云TEE SDK中包含的Intel® SGX SDK的默认安装目录为/opt/alibaba/teesdk/intel/sgxsdk/。
 
-3.  配置阿里云SGX远程证明服务。
+3.  安装补丁。
+
+    Alibaba Cloud Linux 2.1903 64位UEFI版镜像搭载的SGX驱动在特定情况下存在内存泄露问题，该问题将在下个版本修复。如果您调用API创建了vSGX实例，建议安装补丁规避该问题。如果您通过控制台创建了vSGX实例，请跳过本步骤。
+
+    ```
+    yum install -y alinux-release-experimentals && \
+        yum install -y kernel-hotfix-5577959-23.al7.x86_64
+    ```
+
+4.  配置阿里云SGX远程证明服务。
 
     阿里云SGX远程证明服务完全兼容[Intel® SGX ECDSA远程证明服务](https://software.intel.com/content/www/us/en/develop/topics/software-guard-extensions/attestation-services.html)和Intel® SGX SDK，因此阿里云vSGX实例能够通过远程证明来获得远程提供商或生产者的信任。阿里云SGX远程证明服务为SGX SDK提供下列信息：
 
@@ -111,8 +120,8 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
     1.  打开阿里云exp源。
 
         ```
-        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
-        yum install -y alinux-release-experimentals
+        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7 && \
+            yum install -y alinux-release-experimentals
         ```
 
     2.  安装devtoolset。
@@ -165,8 +174,8 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
     1.  打开阿里云exp源。
 
         ```
-        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7
-        yum install -y alinux-release-experimentals
+        rpmkeys --import http://mirrors.cloud.aliyuncs.com/epel/RPM-GPG-KEY-EPEL-7 && \
+            yum install -y alinux-release-experimentals
         ```
 
     2.  安装devtoolset。
