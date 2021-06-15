@@ -37,6 +37,7 @@ Preemptible instances help you build a cost-effective solution to process busine
                 System.out.println("ErrMsg:" + e.getErrMsg());
                 System.out.println("RequestId:" + e.getRequestId());
             }
+            return null;
         }
     
      }
