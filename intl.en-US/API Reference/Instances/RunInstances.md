@@ -77,7 +77,7 @@ Default value: 0. |
 When you create multiple instances, you can perform the following operations:
 
 -   Batch configure sequential hostnames for the instances. For more information, see [Batch configure sequential names or hostnames for multiple instances](~~196048~~).
--   Use the `HostNames.N` parameter to configure hostnames for the instances. You cannot specify both the `HostName`and `HostNames.N` parameters. |
+-   Use the `HostNames.N` parameter to configure hostnames for the instances. You cannot specify both the `HostName` and `HostNames.N` parameters. |
 |UniqueSuffix|Boolean|No|true|Specifies whether to automatically append incremental suffixes to the hostnames specified by the `HostName` parameter and to the instance names specified by the `InstanceName` parameter when you create multiple instances at a time. The incremental suffixes range from 001 to 999. Valid values:
 
 -   true
