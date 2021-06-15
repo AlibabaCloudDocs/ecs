@@ -4,7 +4,7 @@ keyword: [阿里云, Alibaba Cloud Linux, ecs, 原生linux]
 
 # Alibaba Cloud Linux 2概述
 
-Alibaba Cloud Linux 2（原Aliyun Linux 2）是阿里云官方操作系统，为云上应用程序提供安全、稳定、高性能的定制化运行环境，并针对云基础设施进行了深度优化，为您打造更好的运行时体验。您可以免费使用Alibaba Cloud Linux 2公共镜像，并免费获得阿里云针对该操作系统的长期支持。
+Alibaba Cloud Linux 2（原Aliyun Linux 2）是阿里云官方操作系统，在全面兼容CentOS 7生态的同时，为云上应用程序提供安全、稳定、高性能的定制化运行环境，并针对云基础设施进行了深度优化，为您打造更好的运行时体验。您可以免费使用Alibaba Cloud Linux 2公共镜像，并免费获得阿里云针对该操作系统的长期支持。
 
 更多详情，请访问[Alibaba Cloud Linux 2产品详情页](https://www.aliyun.com/product/alinux)。
 
@@ -58,8 +58,8 @@ Alibaba Cloud Linux 2适用于下列场景。
 -   不支持的实例规格族：GPU计算型、GPU虚拟化型、FPGA计算型、NPU计算型、异构服务型、超级计算集群（SCC）、安全增强型等。
 -   支持的地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）。 |
 |Alibaba Cloud Linux 2.1903 64位 等保2.0三级版|aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20210325.vhd|基于默认标准镜像进行等保加固的镜像版本，该镜像符合等保2.0三级安全保护的基本要求。使用说明请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux等保2.0三级版镜像/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)。|
-|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
-|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
+|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。 **说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
+|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。 **说明：** 仅阿里云可信实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
 
 ## 费用
 
