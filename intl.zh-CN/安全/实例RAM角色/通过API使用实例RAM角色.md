@@ -9,7 +9,7 @@
 -   只有专有网络（VPC）网络类型的ECS实例才能使用实例RAM角色。
 -   一个ECS实例一次只能授予一个实例RAM角色。
 -   当您给ECS实例授予了实例RAM角色后，并希望在ECS实例内部部署的应用程序中访问云产品的API时，您需要通过实例元数据获取实例RAM角色的临时授权Token。详情请参见[获取临时授权Token](#Token)。
--   如果您是通过RAM用户子账号使用实例RAM角色，您需要通过云账号授权RAM用户使用实例RAM角色。具体操作，请参见[授权RAM用户使用实例RAM角色](#Authorize)。
+-   如果您是通过RAM用户使用实例RAM角色，您需要通过阿里云账号授权RAM用户使用实例RAM角色。具体操作，请参见[授权RAM用户使用实例RAM角色](#Authorize)。
 
 ## 操作步骤
 
@@ -24,7 +24,7 @@
 
 ## 步骤一：创建实例RAM角色
 
-调用[CreateRole](/intl.zh-CN/API参考（RAM）/角色管理接口/CreateRole.md)接口创建实例RAM角色。
+调用[CreateRole](/intl.zh-CN/API参考/API参考（RAM）/角色管理接口/CreateRole.md)接口创建实例RAM角色。
 
 设置RoleName参数，例如将其值置为EcsRamRoleDocumentTesting。
 
@@ -49,7 +49,7 @@
 
 ## 步骤二：授权实例RAM角色
 
-1.  调用[CreatePolicy](/intl.zh-CN/API参考（RAM）/权限策略管理接口/CreatePolicy.md)接口新建授权策略。
+1.  调用[CreatePolicy](/intl.zh-CN/API参考/API参考（RAM）/权限策略管理接口/CreatePolicy.md)接口新建授权策略。
 
     设置如下参数：
 
@@ -72,7 +72,7 @@
          }
         ```
 
-2.  调用[AttachPolicyToRole](/intl.zh-CN/API参考（RAM）/权限策略管理接口/AttachPolicyToRole.md)接口授权角色策略。
+2.  调用[AttachPolicyToRole](/intl.zh-CN/API参考/API参考（RAM）/权限策略管理接口/AttachPolicyToRole.md)接口授权角色策略。
 
     设置如下参数：
 
@@ -105,7 +105,7 @@
 检索名为EcsRamRoleDocumentTesting的实例RAM角色的临时授权Token。
 
 -   Linux实例：执行命令`curl http://100.100.100.200/latest/meta-data/Ram/security-credentials/EcsRamRoleDocumentTesting`。
--   Windows实例：具体操作，请参见[实例元数据](/intl.zh-CN/实例/管理实例/使用实例元数据/什么是实例元数据.md)。
+-   Windows实例：具体操作，请参见[实例元数据](/intl.zh-CN/实例/管理实例/使用实例元数据/ECS实例元数据概述.md)。
 
 获得临时授权Token。返回示例如下：
 
@@ -126,7 +126,7 @@
 
 1.  登录[RAM控制台](https://ram.console.aliyun.com/#/overview)。
 
-2.  授权RAM用户使用实例RAM角色。具体操作，请参见[为RAM用户授权](/intl.zh-CN/用户管理/为RAM用户授权.md)。
+2.  授权RAM用户使用实例RAM角色。具体操作，请参见[为RAM用户授权](/intl.zh-CN/用户管理/授权管理/为RAM用户授权.md)。
 
     ```
     {
@@ -161,13 +161,13 @@
 
 [使用实例RAM角色访问其他云产品](/intl.zh-CN/最佳实践/使用实例RAM角色访问其他云产品.md)
 
-[CreateRole](/intl.zh-CN/API参考（RAM）/角色管理接口/CreateRole.md)
+[CreateRole](/intl.zh-CN/API参考/API参考（RAM）/角色管理接口/CreateRole.md)
 
-[ListRoles](/intl.zh-CN/API参考（RAM）/角色管理接口/ListRoles.md)
+[ListRoles](/intl.zh-CN/API参考/API参考（RAM）/角色管理接口/ListRoles.md)
 
-[CreatePolicy](/intl.zh-CN/API参考（RAM）/权限策略管理接口/CreatePolicy.md)
+[CreatePolicy](/intl.zh-CN/API参考/API参考（RAM）/权限策略管理接口/CreatePolicy.md)
 
-[AttachPolicyToRole](/intl.zh-CN/API参考（RAM）/权限策略管理接口/AttachPolicyToRole.md)
+[AttachPolicyToRole](/intl.zh-CN/API参考/API参考（RAM）/权限策略管理接口/AttachPolicyToRole.md)
 
 [AttachInstanceRamRole](/intl.zh-CN/API参考/实例/AttachInstanceRamRole.md)
 
