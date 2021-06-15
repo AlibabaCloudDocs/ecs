@@ -4,7 +4,7 @@ keyword: [ecs, alibaba cloud linux, alibaba cloud linux 3, linux, 镜像, 操作
 
 # Alibaba Cloud Linux 3概述
 
-Alibaba Cloud Linux 3是阿里云官方操作系统的第三代发行版，继承Alibaba Cloud Linux 2功能特性的同时，进一步提升安全性、稳定性和运行时性能，在阿里云上为您提供了更好地操作系统体验。您可以免费使用Alibaba Cloud Linux 3公共镜像，并免费获得阿里云针对该操作系统的长期支持。
+Alibaba Cloud Linux 3是阿里云官方操作系统的第三代发行版，全面兼容CentOS 8生态，并且在完全继承Alibaba Cloud Linux 2自研特性的同时，进一步提升安全性、稳定性和运行时性能，在阿里云上为您提供了更好地操作系统体验。您可以免费使用Alibaba Cloud Linux 3公共镜像，并免费获得阿里云针对该操作系统的长期支持。
 
 ## 适用范围
 
