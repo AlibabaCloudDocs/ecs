@@ -12,6 +12,7 @@ This topic describes the features of Elastic Compute Service \(ECS\) Bare Metal 
         -   [ebmg6e, general purpose ECS Bare Metal Instance family with enhanced performance](#section_69g_hx0_psw)
         -   [ebmg6, general purpose ECS Bare Metal Instance family](#section_qkb_ez6_9c5)
     -   Compute optimized instance families:
+        -   [ebmc6me, compute optimized ECS Bare Metal Instance family](#ebmc6me)
         -   [ebmc6a, compute optimized ECS Bare Metal Instance family](#section_m8p_b2e_yqq)
         -   [ebmc6e, compute optimized ECS Bare Metal Instance family with enhanced performance](#section_mdc_24m_q3e)
         -   [ebmc6, compute optimized ECS Bare Metal Instance family](#section_zec_q52_xn9)
@@ -60,7 +61,7 @@ ECS Bare Metal Instance provides the following benefits based on technological i
 
 -   Exclusive computing resources
 
-    ECS Bare Metal Instance is a cloud-based elastic computing service that provides the same performance and resource isolation capabilities as physical machines. It can ensure the exclusivity of computing resources without virtualization overheads or feature loss. ECS Bare Metal Instance supports high clock speeds and 8, 32, 80, 96, and 104 vCPUs. An ECS bare metal instance that has eight vCPUs can have a maximum clock speed of 3.7 GHz to 4.1 GHz and provide better performance and faster response for gaming and finance businesses than peer services.
+    ECS Bare Metal Instance is a cloud-based elastic computing service that provides the same performance and resource isolation capabilities as physical machines. It can ensure the exclusivity of computing resources without virtualization overheads or feature loss. ECS Bare Metal Instance supports high clock speeds and 8, 32, 80, 96, and 104 vCPUs. An ECS bare metal instance that has eight vCPUs can have a maximum clock speed of 3.7 GHz to 4.1 GHz and provide better performance and faster response for gaming and finance business than peer services.
 
 -   Chip-level security
 
@@ -94,7 +95,7 @@ The following table compares the features of ECS bare metal instances, physical 
 |Cold migration between physical and virtual machines|Y|N|Y|
 |No need to install the operating system|Y|N|Y|
 |No need of local RAIDs and better protection of data in disks|Y|N|Y|
-|Networking|Compatibility with virtual private clouds \(VPCs\).|Y|N|Y|
+|Networking|Compatibility with virtual private clouds \(VPCs\)|Y|N|Y|
 |Compatibility with the classic network|Y|N|Y|
 |No communication bottlenecks between physical and virtual machine clusters in VPCs|Y|N|Y|
 |Management|Compatibility with existing ECS management systems|Y|N|Y|
@@ -204,6 +205,37 @@ Instance types
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
 -   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
+## ebmc6me, compute optimized ECS Bare Metal Instance family
+
+Features
+
+-   Provides dedicated hardware resources and physical isolation.
+-   Offers a CPU-to-memory ratio of 1:3.
+-   Uses 2.3 GHz Intel® Xeon® Gold 5218 \(Cascade Lake\) processors that deliver a turbo frequency of 3.9 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
+-   Supports IPv6.
+-   Supports only VPCs.
+-   Provides high network performance with a packet forwarding rate of 6,000,000 pps.
+-   Suits the following scenarios:
+    -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
+    -   Scenarios that require compatibility with third-party hypervisors to implement hybrid-cloud and multi-cloud deployments
+    -   Containers including Docker, Clear Containers, and Pouch
+    -   Video encoding, decoding, and rendering
+    -   Frontend servers of massively multiplayer online \(MMO\) games
+    -   High-performance scientific and engineering applications
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
+|ecs.ebmc6me.16xlarge|64|192.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+
 ## ebmc6a, compute optimized ECS Bare Metal Instance family
 
 The instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
@@ -256,7 +288,7 @@ Features
     -   Containers including Docker, Clear Containers, and Pouch
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   Web frontend servers
-    -   Frontend servers of massively multiplayer online \(MMO\) games
+    -   Frontend servers of MMO games
     -   Data analysis, batch processing, and video encoding
     -   High-performance scientific and engineering applications
 
@@ -323,7 +355,7 @@ Features
     -   Containers including Docker, Clear Containers, and Pouch
     -   In-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise-level applications
 
 Instance types
 
@@ -403,7 +435,7 @@ Instance types
 
 ## ebmre6p, persistent memory optimized ECS Bare Metal Instance family with enhanced performance
 
-To use ebmre6p,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+To use ebmre6p, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -423,8 +455,8 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|DRAM \(GiB\)|Persistent memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-----------|-------------------------|:-------------------|:-----------------------------|:---|----------------------------|---------|-------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|Persistent memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:----|:-------------|-------------------------|:-------------------|:-----------------------------|:---|----------------------------|---------|-------------------------|
 |ecs.ebmre6p.26xlarge|104|384.0|1536.0|32.0|6,000,000|32|10|200,000|16.0|
 
 **Note:**
@@ -434,7 +466,7 @@ Instance types
 
 ## ebmre6-6t, memory optimized ECS Bare Metal Instance family with enhanced performance
 
-To use ebmre6-6t,[submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+To use ebmre6-6t, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
 
 Features
 
@@ -448,7 +480,7 @@ Features
 -   Provides high network performance with a packet forwarding rate of 6,000,000 pps.
 -   Suits the following scenarios:
     -   Workloads that require direct access to physical resources or that require a license to be bound to the hardware
-    -   High-performance and in-memory databases such as SAP HANA databases
+    -   High-performance databases and in-memory databases such as SAP HANA
     -   Memory-intensive applications
     -   Big data processing engines such as Apache Spark and Presto
 
@@ -546,7 +578,7 @@ Features
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   High-performance databases and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise-level applications
 
 Instance types
 
@@ -637,7 +669,7 @@ Features
     -   Containers including Docker, Clear Containers, and Pouch
     -   High-performance databases and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise-level applications
 
 Instance types
 
@@ -664,13 +696,13 @@ Features
 -   Supports IPv6.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications, such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications that have high GPU workloads, such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|GPUs|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
-|:------------|:----|:-------------|----|:-------------------|:-----------------------------|:---------|:---|----------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
+|:------------|:----|:-------------|---|:-------------------|:-----------------------------|:---------|:---|----------------------------|
 |ecs.ebmgn7.26xlarge|104|768.0|NVIDIA A100 × 8|30.0|18,000,000|16|15|10|
 
 **Note:**
@@ -686,7 +718,7 @@ Features
 -   Uses NVIDIA V100 \(32 GB NVLink\) GPUs.
 -   Uses NVIDIA V100 GPUs \(SXM2-based\) that have the following features:
     -   Innovative Volta architecture
-    -   32 GB HBM2 memory \(900 GB/s bandwidth\) per GPU
+    -   32 GB HBM2 memory per GPU \(900 GB/s bandwidth\)
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
@@ -697,14 +729,14 @@ Features
 -   Supports IPv6.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
-    -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
+    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Scientific computing applications such as fluid dynamics, finance, molecular dynamics, and environmental analysis
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|GPUs|GPU memory \(GB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
-|:------------|:----|:-------------|----|-----------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
-|ecs.ebmgn6e.24xlarge|96|768.0|NVIDIA V100 × 8|32 GB × 8|32.0|4,800,000|16|15|20|
+|Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
+|:------------|:----|:-------------|---|----------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
+|ecs.ebmgn6e.24xlarge|96|768.0|NVIDIA V100 × 8|32GB × 8|32.0|4,800,000|16|15|20|
 
 **Note:**
 
@@ -719,7 +751,7 @@ Features
 -   Uses NVIDIA V100 GPUs.
 -   Uses NVIDIA V100 GPUs \(SXM2-based\) that have the following features:
     -   Innovative Volta architecture
-    -   16 GB HBM2 memory \(900 GB/s bandwidth\) per GPU
+    -   16 GB HBM2 memory per GPU \(900 GB/s bandwidth\)
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
@@ -730,13 +762,13 @@ Features
 -   Supports IPv6.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
-    -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
+    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Scientific computing applications such as fluid dynamics, finance, molecular dynamics, and environmental analysis
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|GPUs|GPU memory \(GB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
-|:------------|:----|:-------------|----|-----------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
+|:------------|:----|:-------------|---|----------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
 |ecs.ebmgn6v.24xlarge|96|384.0|NVIDIA V100 × 8|16GB × 8|30.0|4,500,000|8|32|10|
 
 **Note:**
@@ -751,7 +783,7 @@ Features
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Uses NVIDIA T4 GPUs that have the following features:
     -   Innovative NVIDIA Turing architecture
-    -   16 GB memory \(320 GB/s bandwidth\) per GPU
+    -   16 GB memory per GPU \(320 GB/s bandwidth\)
     -   2,560 CUDA cores per GPU
     -   Up to 320 Turing Tensor cores per GPU
     -   Mixed-precision Tensor cores that support 65 FP16 TFLOPS, 130 INT8 TOPS, and 260 INT4 TOPS
@@ -771,8 +803,8 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|GPUs|GPU memory \(GB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
-|:------------|:----|:-------------|----|-----------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
+|Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
+|:------------|:----|:-------------|---|------------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
 |ecs.ebmgn6i.24xlarge|96|384.0|NVIDIA T4 × 4|16GB × 4|30.0|4,500,000|8|32|10|
 
 **Note:**
