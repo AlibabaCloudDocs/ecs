@@ -59,7 +59,7 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20200904.vhd|2020-09-04|-   The `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image is updated to the latest software version to be compatible with CentOS 7.8. CVEs are fixed.
 -   Information in /etc/redhat-release is changed from Aliyun Linux release 7.2 LTS \(Hunting Beagle\) to Alibaba Cloud Linux \(Aliyun Linux\) release 2.1903 LTS \(Hunting Beagle\).
 -   The image type information in /etc/image-id is optimized.
--   The tuned service is disabled by default.
+-   The tuned service is enabled by default.
 -   Kernel updates:
     -   The kernel is updated to the kernel-4.19.91-21.al7 version.
     -   Kernel bugs and security vulnerabilities are fixed.
