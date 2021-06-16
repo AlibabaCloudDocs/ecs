@@ -68,8 +68,8 @@ Instance types
 |ecs.g7a.2xlarge|8|32|2.5/burstable up to 10|1,600,000|Up to 250,000|8|4|30,000/burstable up to 110,000|2/burstable up to 6|
 |ecs.g7a.4xlarge|16|64|5/burstable up to 10|2,000,000|300,000|8|8|60,000/burstable up to 110,000|3/burstable up to 6|
 |ecs.g7a.8xlarge|32|128|8/burstable up to 10|3,000,000|600,000|16|7|75,000/burstable up to 110,000|4/burstable up to 6|
-|ecs.g7a.16xlarge|64|256|16/none|6,000,000|1,000,000|32|7|150,000|8|
-|ecs.g7a.32xlarge|128|512|32/none|12,000,000|2,000,000|32|15|300,000|16|
+|ecs.g7a.16xlarge|64|256|16/none|6,000,000|1,000,000|32|7|150,000/none|8/none|
+|ecs.g7a.32xlarge|128|512|32/none|12,000,000|2,000,000|32|15|300,000/none|16/none|
 
 **Note:**
 
