@@ -112,7 +112,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20200904.vhd|2020-09-04|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本，兼容最新CentOS 7.8版本，修复软件包安全漏洞
 -   /etc/redhat-release的信息从Aliyun Linux release 7.2 LTS \(Hunting Beagle\)变更成Alibaba Cloud Linux \(Aliyun Linux\) release 2.1903 LTS \(Hunting Beagle\)
 -   优化/etc/image-id标识镜像类型
--   默认关闭tuned服务
+-   默认开启tuned服务
 -   内核更新：
     -   版本更新至kernel-4.19.91-21.al7
     -   修复内核重要缺陷及安全漏洞
@@ -128,7 +128,7 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 -   适用地域：华东1（杭州）、华南1（深圳）、华北3（张家口）、中国（香港） |
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20200529.vhd|2020-05-29|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本，兼容最新CentOS 7.8版本，修复软件包安全漏洞
 -   增加/etc/image-id标识
--   默认关闭tuned服务
+-   默认开启tuned服务
 -   内核更新：
     -   版本更新至kernel-4.19.91-19.1.al7
     -   开源阿里云内核对调度、内存QoS指标统计内核接口支持，提供调度、内存相关SLI细粒度监控能力
