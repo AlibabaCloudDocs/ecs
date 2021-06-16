@@ -8,21 +8,21 @@ This topic describes how to select an appropriate image from multiple image type
 
 When you select an image, you must consider the following factors:
 
--   [Region](#section_okd_bqv_hhb)
+-   [Regions](#section_okd_bqv_hhb)
 -   [Image type](#section_9op_qir_5qk)
 -   [Image fee](#section_rc2_iv0_l8f)
 -   [Operating system](#section_x1t_f35_hhb)
 -   [Built-in software](#section_0r4_eja_g94) \(such as MySQL and other applications\)
 
-## Region
+## Regions
 
-Each image is tied to its region and can only be used to create instances within the same region. For example, if you want to create an instance in China \(Beijing\), only images in the China \(Beijing\) region can be used. For more information about regions, see [Regions and zones]().
+An image is tied to its region and can only be used to create instances in the same region. For example, if you want to create an instance in the China \(Beijing\) region, you can use images only in the China \(Beijing\) region. For more information about regions, see [Regions and zones]().
 
-If you want to use an image that belongs to a different region, you must copy the image to that region. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md).
+If you want to use an image that belongs to a different region, you must first copy the image to your current region. For more information, see [Copy custom images](/intl.en-US/Images/Custom image/Copy custom images.md).
 
 ## Image type
 
-ECS images are classified into public images, custom images, shared images, and Alibaba Cloud Marketplace images based on image sources. For more information, see [Image types](/intl.en-US/Images/Image overview.md).
+ECS images are classified into public images, custom images, shared images, Alibaba Cloud Marketplace images, and community images based on image sources. For more information, see [Image types](/intl.en-US/Images/Image overview.md).
 
 ## Image fee
 
@@ -34,17 +34,17 @@ When you select an operating system, you must consider the following factors:
 
 -   Operating system architecture: 32-bit or 64-bit
 
-    |Operating system architecture|Applicable memory|Limit|
-    |:----------------------------|:----------------|:----|
+    |System Architecture|Applicable memory|Limit|
+    |:------------------|:----------------|:----|
     |32-bit|A maximum of 4 GiB memory|    -   If the memory of an instance type is greater than 4 GiB, you cannot use a 32-bit operating system.
     -   A 32-bit Windows operating system supports a maximum of four CPU cores. |
     |64-bit|A minimum of 4 GiB memory|If you want to use a memory of at least 4 GiB for your applications, use a 64-bit operating system.|
 
 -   Operating system type such as Windows, Linux, or Unix-like
 
-    |Operating system type|Logon mode|Feature|Scenario|
+    |Operating system type|Logon Type|Feature|Scenario|
     |:--------------------|:---------|:------|:-------|
-    |Windows|Remote Desktop Connection|A Windows public image is installed with a genuine activated system.|    -   Applicable to programs developed based on Windows architectures such as .NET programs.
+    |Windows|Remote Desktop Connection|A Windows public image is installed with a genuine activated system.|    -   Applicable to programs developed based on Windows architectures such as.NET programs.
     -   Supports SQL Server and other databases \(manual installation required\). |
     |Linux and Unix-like|SSH|    -   A common, stable, and secure server-side operating system.
     -   An open source operating system that provides fast deployment and easy source code compilation.
@@ -59,7 +59,7 @@ When you select an operating system, you must consider the following factors:
 
     Read the following considerations and select the suitable hardware configuration and Windows version:
 
-    -   Instance types with one vCPU and 1 GiB memory do not support the MySQL database.
+    -   Instance types that have one vCPU and 1 GiB memory do not support the MySQL database.
     -   Windows instances that are used for website building and web environment deployment must have at least 2 GiB memory.
     -   To ensure service availability, we recommend that you select an instance type that has at least 2 GiB of memory when you use Windows 2012.
     -   You must select an instance type that has at least 2 GiB of memory if you want to use Windows 2016 or Windows 2019. If your selected instance type has memory of less than 2 GiB, Windows 2016 or Windows 2019 may not be displayed in the public image list on the buy page.
@@ -80,7 +80,7 @@ When you select an operating system, you must consider the following factors:
 
         |Operating system|Software package format|Package manager|Billing|Feature|Relationship|
         |:---------------|-----------------------|---------------|:------|:------|:-----------|
-        |CentOS|.rpm|yum|Free usage|        -   Has stable but less frequent patch updates than those of Red Hat.
+        |CentOS|.rpm|yum|Free of charge|        -   Has stable but less frequent patch updates than those of Red Hat.
         -   Supports online and timely updates.
 |        -   CentOS is an open source version of Red Hat.
         -   They can use the same RPM package.
@@ -96,7 +96,7 @@ When you select an operating system, you must consider the following factors:
         |Operating system|Software package format|Package manager|Feature|Relationship|
         |:---------------|-----------------------|---------------|:------|:-----------|
         |Debian|.deb|aptitude|Stable|Ubuntu is built on the Debian architecture and infrastructure. Ubuntu is the enhanced version of Debian.|
-        |Ubuntu|apt-get|        -   User-friendly system configuration.
+        |Ubuntu|apt-get|        -   User-friendly system configuration
         -   Timely software updates.
         -   Easy to use and learn. |
 
@@ -104,7 +104,7 @@ When you select an operating system, you must consider the following factors:
 
         -   SUSE Linux
         -   OpenSUSE
-        The following table compares OpenSUSE with SUSE Linux.
+        The following table compares openSUSE with SUSE Linux.
 
         |Operating system|Feature|Relationship|
         |----------------|-------|------------|
@@ -118,7 +118,7 @@ When you select an operating system, you must consider the following factors:
 
     -   CoreOS
 
-        CoreOS is an open source lightweight operating system based on the Linux kernel and designed to provide infrastructure for clustered deployments. CoreOS focuses on automation, ease of application deployment, security, reliability, and scalability. CoreOS provides the underlying functionality required for deploying applications inside software containers, together with a set of built-in tools for service discovery and configuration sharing.
+        CoreOS is an opensource lightweight operating system based on the Linux kernel and designed to provide infrastructure for clustered deployments. CoreOS focuses on automation, ease of application deployment, security, reliability, and scalability. CoreOS provides the underlying functionality required for deploying applications inside software containers, together with a set of built-in tools for service discovery and configuration sharing.
 
     -   FreeBSD
 
