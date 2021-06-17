@@ -4,7 +4,7 @@
 
 -   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
 -   已创建网络类型为专有网络的安全组，并且安全组的入方向添加规则并放行80端口及3389端口。 添加规则的具体操作请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
--   已创建Windows操作系统的ECS实例，并且已经部署Web环境。本教程使用的软件版本如下。
+-   已创建Windows操作系统的ECS实例，并且已经部署Web环境。本教程使用的软件版本如下：
     -   操作系统：Windows Server 2012 R2 64位中文版
     -   IIS服务版本：7.5
     -   PHP版本：7.0.28
@@ -33,7 +33,7 @@
 
     1.  进入MySQL安装目录下的bin文件夹，按下`shift`键的同时，单击鼠标右键，然后选择**在此处打开命令窗口**。
 
-        ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4212649951/p81913.png)
+        ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4212649951/p81913.png)
 
     2.  打开MySQL数据库。
 
@@ -57,7 +57,7 @@
 
         如下图所示：
 
-        ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3212649951/p81914.png)
+        ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3212649951/p81914.png)
 
     3.  保存`wp-config.php`文件。
 
@@ -65,23 +65,23 @@
 
     1.  在Windows任务栏找到服务器管理器图标并打开。
 
-        ![服务器管理器](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3212649951/p110645.png)
+        ![服务器管理器](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3212649951/p110645.png)
 
-    2.  在服务器管理器顶部菜单栏，单击**工具** \> **Internet Information Service \(IIS\)管理器**。
+    2.  在服务器管理器顶部菜单栏，单击**工具** \> **Internet Information Services \(IIS\)管理器**。
 
-        ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3212649951/p81920.png)
+        ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3212649951/p81920.png)
 
     3.  在**连接**列表，单击**服务器名称** \> **网站**。
 
     4.  将已绑定80端口的网站删除，或者修改80端口为其他未被占用的端口号，例如：8080端口。
 
-        ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3212649951/p81925.png)
+        ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3212649951/p81925.png)
 
     5.  在右侧**操作**区域，单击**添加网站**，添加wordpress网站。
 
         添加信息如下图所示：
 
-        ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3212649951/p81927.png)
+        ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3212649951/p81927.png)
 
         配置说明：
 
@@ -114,7 +114,7 @@
 
 1.  注册域名。
 
-    详情请参见[注册通用域名](/intl.zh-CN/域名注册/注册域名.md)。
+    详情请参见[注册通用域名](/intl.zh-CN/域名注册/注册通用域名.md)。
 
 2.  备案。
 
@@ -126,7 +126,7 @@
 
 4.  返回搭建WordPress网站的ECS实例，进入MySQL安装目录下的bin文件夹，按下`shift`键的同时，单击鼠标右键，然后选择**在此处打开命令窗口**。
 
-    ![1](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4212649951/p81913.png)
+    ![1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4212649951/p81913.png)
 
 5.  登录MySQL数据库。
 
