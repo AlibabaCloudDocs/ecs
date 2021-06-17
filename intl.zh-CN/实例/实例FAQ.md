@@ -152,6 +152,7 @@ keyword: [购买实例, 企业级实例, GPU实例, 弹性裸金属服务器, �
     -   [什么时候可以强制停止实例？有什么后果？](#section_nlp_9qg_6gq)
     -   [为什么会重开机失败？](#section_vk6_sjc_agd)
     -   [使用弹性伸缩功能时，伸缩组内ECS实例开启了释放保护，为什么仍然被自动释放了？](#section_so8_gdz_2i5)
+    -   [如何测试实例的网络收发包能力？](#p_iqn_2bg_w3p)
 -   实例安全问题
     -   [ECS实例中AliVulfix进程是什么？](#section_4ek_d0m_191)
     -   [云服务器能防网络攻击吗？](#section_t6g_7b5_165)
@@ -398,7 +399,7 @@ Redis应用运行在持久内存型实例上，可以大幅度降低单GiB内存
 
 ## 如何查看GPU监控数据？
 
-您可以通过[云监控控制台](https://cloudmonitor.console.aliyun.com/)或[DescribeMetricList](/intl.zh-CN/API参考/云产品监控/DescribeMetricList.md)来查看GPU监控数据，详情请参见[GPU监控](/intl.zh-CN/主机监控/GPU监控.md)。
+您可以通过[云监控控制台](https://cloudmonitor.console.aliyun.com/)或[DescribeMetricList](/intl.zh-CN/API参考/云产品监控/DescribeMetricList.md)来查看GPU监控数据，详情请参见[t15305.md\#](/intl.zh-CN/主机监控/GPU监控.md)。
 
 ## 弹性裸金属服务器、传统云主机（虚拟机）和传统物理机有何本质区别？
 
@@ -447,7 +448,7 @@ SCC实例支持包年包月和按周付费。
 
 如果您需要订阅通知，请在云监控订阅抢占式实例中断通知，具体操作请参见[设置事件通知](/intl.zh-CN/运维与监控/事件通知/设置事件通知.md)。
 
-如果您需要确认待回收状态，请通过[实例元数据](/intl.zh-CN/实例/管理实例/使用实例元数据/实例元数据概述.md)或者[DescribeInstances](/intl.zh-CN/API参考/实例/DescribeInstances.md)接口返回的OperationLocks信息查看实例状态。
+如果您需要确认待回收状态，请通过[实例元数据](/intl.zh-CN/实例/管理实例/使用实例元数据/ECS实例元数据概述.md)或者[DescribeInstances](/intl.zh-CN/API参考/实例/DescribeInstances.md)接口返回的OperationLocks信息查看实例状态。
 
 ## 抢占式实例被释放后数据能自动保留吗？
 
@@ -1077,6 +1078,10 @@ Linux操作系统的云服务器和Windows操作系统的云服务器都可以�
 在弹性伸缩自动创建一台ECS实例后，如果您在ECS控制台的实例列表页面或者调用[ModifyInstanceAttribute](/intl.zh-CN/API参考/实例/ModifyInstanceAttribute.md)为ECS实例开启了释放保护，并不能阻止弹性伸缩自动释放实例。
 
 您可以在弹性伸缩控制台将伸缩组内的ECS实例转为保护状态，避免被自动释放，具体操作请参见[实例转为保护状态](/intl.zh-CN/实例管理/ECS实例/实例转为保护状态.md)。
+
+## 如何测试实例的网络收发包能力？
+
+通用的网络收发包测试方法，请参见[使用Netperf测试网络性能](https://www.alibabacloud.com/help/faq-detail/55757.htm)。
 
 ## ECS实例中AliVulfix进程是什么？
 
