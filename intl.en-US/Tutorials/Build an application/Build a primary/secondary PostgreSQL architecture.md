@@ -4,7 +4,7 @@ keyword: build a secondary PostgreSQL system on a local server
 
 # Build a primary/secondary PostgreSQL architecture
 
-PostgreSQL is one of the most advanced open source databases. ApsaraDB RDS for PostgreSQL is compatible with NoSQL databases. It supports efficient queries and plug-in management, and provides secure and stable services. This topic describes how to build a primary/secondary PostgreSQL architecture on an ECS instance that runs CentOS 7.
+PostgreSQL is one of the most advanced open source databases and supports NoSQL data types such as JSON, XML, and hstore. This topic describes how to build a primary/secondary PostgreSQL architecture on an Elastic Compute Service \(ECS\) instance that runs CentOS 7.
 
 -   An Alibaba Cloud account is created. To create an Alibaba Cloud account, go to the [account registration page](https://account.alibabacloud.com/register/intl_register.htm).
 -   An inbound rule is added to the security group of the instance to allow traffic on port 5432. For more information, see [Add security group rules](/intl.en-US/Security/Security groups/Add security group rules.md).
@@ -17,11 +17,11 @@ The following instance type and software versions are used in this topic. The op
 -   Operating system: CentOS 7.2
 -   PostgreSQL: 9.5
 
-To install PostgreSQL by using YUM and build a primary/secondary architecture of PostgreSQL, perform the following operations:
+To install PostgreSQL by using YUM and build a primary/secondary PostgreSQL architecture, perform the following operations:
 
 ## Step 1: Create two ECS instances
 
-To build a primary/secondary architecture of PostgreSQL, you must create two VPC-type instances. One instance works as the primary node and the other instance works as the secondary node. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
+To build a primary/secondary PostgreSQL architecture, you must create two instances of the Virtual Private Cloud \(VPC\) type. One instance works as the primary node, and the other instance works as the secondary node. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 
 **Note:** We recommend that you do not assign public IP addresses to the ECS instances. You can bind an elastic IP address \(EIP\) to each ECS instance. This allows you to upgrade the configurations or optimize the architecture based on your actual requirements. For more information, see [Apply for new EIPs](/intl.en-US/User Guide/Create an EIP/Apply for new EIPs.md).
 
@@ -49,16 +49,16 @@ To build a primary/secondary architecture of PostgreSQL, you must create two VPC
     /usr/pgsql-9.5/bin/postgresql95-setup initdb
     ```
 
-    **Note:** PostgreSQL 9.5 is used in this topic. We recommend that you use the latest version of PostgreSQL in your actual installation progress.
+    **Note:** PostgreSQL 9.5 is used in this topic. We recommend that you use the latest version of PostgreSQL in your actual installation process.
 
-2.  Run the following commands in sequence to start PostgreSQL and enable PostgreSQL to run at system startup:
+2.  Run the following commands in sequence to start PostgreSQL and enable PostgreSQL to run on system startup:
 
     ```
     systemctl start postgresql-9.5.service    #Start PostgreSQL.
     ```
 
     ```
-    systemctl enable postgresql-9.5.service   #Enable PostgreSQL to run at system startup.
+    systemctl enable postgresql-9.5.service   #Enable PostgreSQL to run on system startup.
     ```
 
 3.  Create a database account named replica. This database is used for replication between the primary and secondary nodes. Then, specify the password, logon permission, and backup permission.
@@ -69,13 +69,13 @@ To build a primary/secondary architecture of PostgreSQL, you must create two VPC
         su - postgres
         ```
 
-    2.  When `-bash-4.2$` appears, you are logged on to PostgreSQL. Then, enter the following command to go to the interactive terminal of PostgreSQL:
+    2.  When `-bash-4.2$` appears, you are logged on to PostgreSQL. Then, run the following command to go to the interactive terminal of PostgreSQL:
 
         ```
         psql
         ```
 
-    3.  When `postgres=#` appears, you are accessing the interactive terminal of PostgreSQL. Then, set a password for the `postgres` user to enhance security.
+    3.  When `postgres=#` appears, you are accessing the PostgreSQL interactive terminal. Then, set a password for the `postgres` account to enhance security.
 
         ```
         ALTER USER postgres WITH PASSWORD 'YourPassWord';
@@ -89,7 +89,7 @@ To build a primary/secondary architecture of PostgreSQL, you must create two VPC
         CREATE ROLE replica login replication encrypted password 'replica';
         ```
 
-    5.  Execute the following SQL statement to check whether the database account is created.
+    5.  Run the following command to check whether the database account is created:
 
         ```
         SELECT usename from pg_user;
@@ -105,7 +105,7 @@ To build a primary/secondary architecture of PostgreSQL, you must create two VPC
         (2 rows)
         ```
 
-    6.  Execute the following SQL statement to check whether the permissions are configured:
+    6.  Run the following command to check whether the permissions are configured:
 
         ```
         SELECT rolname from pg_roles;
@@ -121,13 +121,13 @@ To build a primary/secondary architecture of PostgreSQL, you must create two VPC
         (2 rows)
         ```
 
-    7.  Enter the following command and press the `Enter` key to exit the PostgreSQL interactive terminal.
+    7.  Run the following command and press the `Enter` key to exit the PostgreSQL interactive terminal:
 
         ```
         \q
         ```
 
-    8.  Enter the following command and press the `Enter` key to exit PostgreSQL.
+    8.  Run the following command and press the `Enter` key to exit PostgreSQL:
 
         ```
         exit
@@ -247,20 +247,20 @@ To build a primary/secondary architecture of PostgreSQL, you must create two VPC
     chown -R postgres.postgres /var/lib/pgsql/9.5/data
     ```
 
-6.  Run the following commands in sequence to start PostgreSQL and enable PostgreSQL to run at system startup:
+6.  Run the following commands in sequence to start PostgreSQL and enable PostgreSQL to run on system startup:
 
     ```
     systemctl start postgresql-9.5.service    #Start PostgreSQL.
     ```
 
     ```
-    systemctl enable postgresql-9.5.service   #Enable PostgreSQL to run at system startup.
+    systemctl enable postgresql-9.5.service   #Enable PostgreSQL to run on system startup.
     ```
 
 
-## Step 4: Test the primary/secondary architecture of PostgreSQL
+## Step 4: Test the primary/secondary PostgreSQL architecture
 
-To test the primary/secondary architecture of PostgreSQL, you must ensure that the data interaction must exist between the primary and secondary nodes. For example, the following content shows the expected result of testing when you create a backup directory for the secondary node:
+To test the primary/secondary PostgreSQL architecture, make sure that the data interaction exists between the primary and secondary nodes. For example, the following content shows the expected result of testing when you create a backup directory for the secondary node:
 
 ```
 # pg_basebackup -D /var/lib/pgsql/9.5/data -h <The IP address of the primary node> -p 5432 -U replica -X stream -P
@@ -275,7 +275,7 @@ To test the primary/secondary architecture of PostgreSQL, you must ensure that t
     The following results indicate that the sender process is available:
 
     ```
-    postgres  2916  0.0  0.3 340388  3220 ?        Ss   15:38   0:00 postgres: wal sender     process replica 192.168. **.**(49640) streaming 0/F01C1A8
+    postgres  2916  0.0  0.3 340388  3220 ?        Ss   15:38   0:00 postgres: wal sender     process replica 192.168.**.**(49640) streaming 0/F01C1A8
     ```
 
 2.  Run the following command to check the receiver process on the secondary node:
@@ -284,7 +284,7 @@ To test the primary/secondary architecture of PostgreSQL, you must ensure that t
     ps aux |grep receiver
     ```
 
-    The following results indicate that the receiver process is available.
+    The following results indicate that the receiver process is available:
 
     ```
     postgres 23284  0.0  0.3 387100  3444 ?        Ss   16:04   0:00 postgres: wal receiver process   streaming 0/F01C1A8
@@ -296,14 +296,14 @@ To test the primary/secondary architecture of PostgreSQL, you must ensure that t
     postgres=# select * from pg_stat_replication;
     ```
 
-    The following results indicate that the status of the secondary node is available.
+    The following results indicate that the status of the secondary node is available:
 
     ```
     pid | usesysid | usename | application_name | client_addr | client_hostname | client_port | backend_start | backend_xmin | state | sent_location | write_locati
     on | flush_location | replay_location | sync_priority | sync_state 
     ------+----------+---------+------------------+---------------+-----------------+------------- +-------------------------------+--------------+-----------+---------------+-------------
     ---+----------------+-----------------+---------------+------------
-    2916 | 16393 | replica | walreceiver | 192.168. **. ** | | 49640 | 2017-05-02 15:38:06.188988+08 | 1836 | streaming | 0/F01C0C8 | 0/F01C0C8 
+    2916 | 16393 | replica | walreceiver | 192.168.**.** | | 49640 | 2017-05-02 15:38:06.188988+08 | 1836 | streaming | 0/F01C0C8 | 0/F01C0C8 
     | 0/F01C0C8 | 0/F01C0C8 | 0 | async
     (1 rows)
     ```
