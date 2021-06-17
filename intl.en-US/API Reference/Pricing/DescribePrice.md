@@ -1,14 +1,14 @@
 # DescribePrice
 
-You can call this operation to query the most recent prices of Elastic Compute Resource \(ECS\) resources.
+Queries the most recent prices of Elastic Compute Resource \(ECS\) resources.
 
 ## Description
 
 -   The required parameters vary based on the types of resources whose prices you are querying.
     -   When the `ResourceType` parameter is set to instance, you must specify the `InstanceType` parameter.
-    -   When the `ResourceType` parameter is set to disk, you must specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the ResourceType parameter is set to `disk`, only the pay-as-you-go disk prices are returned. In this scenario, the `PriceUnit` parameter can be set only to `Hour`.
-    -   When the `ResourceType` parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
--   When the `ResourceType` is set to bandwidth, only the pay-by-traffic \(`PayByTraffic`\) price for network usage is returned.
+    -   When the `ResourceType` parameter is set to disk, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the ResourceType parameter is set to `disk`, only pay-as-you-go disk prices are returned. In this scenario, the `PriceUnit` parameter can be set only to `Hour`.
+    -   When the `ResourceType`parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
+-   When the `ResourceType` parameter is set to bandwidth, only the pay-by-traffic \(`PayByTraffic`\) price for network usage is returned.
 -   When the `ResourceType` parameter is set to instance, the prices of up to four data disks can be queried.
 -   By default, the `ChargeType` parameter is set to `PostPaid`. You can specify the `PriceUnit` parameter to query prices of ECS resources that have different billing cycles.
 
@@ -22,160 +22,160 @@ You can call this operation to query the most recent prices of Elastic Compute R
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|DescribePrice|The operation that you want to perform. Set the value to DescribePrice. |
 |RegionId|String|Yes|cn-hangzhou|The region ID of the ECS resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
-|ResourceType|String|No|instance|The type of resources whose most recent prices to query. Valid values:
+|ResourceType|String|No|instance|The type of the resource. Valid values:
 
--   instance: queries the most recent prices of ECS instances. When this parameter is set to `instance`, you must specify the `InstanceType` parameter.
--   disk: queries the most recent prices of disks. When this parameter is set to `disk`, you must specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters.
+ -   instance: queries the most recent prices of ECS instances. When this parameter is set to `instance`, you must specify the `InstanceType` parameter.
+-   disk: queries the most recent prices of disks. When this parameter is set to `disk`, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size`parameters.
 -   bandwidth: queries the most recent prices for network usage.
 -   ddh: queries the most recent prices of dedicated hosts.
 
-Default value: instance. |
+ Default value: instance. |
 |ImageId|String|No|centos\_7\_05\_64\_20G\_alibase\_20181212.vhd|The ID of the image, which indicates the runtime environment to load when the instance starts. You can call the [DescribeImages](~~25534~~) operation to query the available images. If you do not specify this parameter, the system queries the prices of Linux images. |
 |InstanceType|String|No|ecs.g6.large|The instance type. When the `ResourceType` parameter is set to `instance`, you must specify the InstanceType parameter. For more information, see [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the most recent list of instance types. |
 |IoOptimized|String|No|optimized|Specifies whether the instance is I/O optimized. Valid values:
 
--   none: The instance is not I/O optimized.
+ -   none: The instance is not I/O optimized.
 -   optimized: The instance is I/O optimized.
 
-If the instance type specified by the InstanceType parameter belongs to [Generation I instance families](~~55263~~), the default value is none.
+ If the instance type specified by the InstanceType parameter belongs to [Generation I instance families](~~55263~~), the default value is none.
 
-If the instance type specified by the InstanceType parameter does not belong to [Generation I instance families](~~55263~~), the default value is optimized. |
+ If the instance type specified by the InstanceType parameter does not belong to [Generation I instance families](~~55263~~), the default value is optimized. |
 |InstanceNetworkType|String|No|vpc|The network type of the instance. Valid values:
 
--   classic: classic network
+ -   classic: classic network
 -   vpc: Virtual Private Cloud \(VPC\)
 
-Default value: vpc. |
+ Default value: vpc. |
 |InternetChargeType|String|No|PayByTraffic|The billing method for network usage. Valid values:
 
--   PayByBandwidth: pay-by-bandwidth
+ -   PayByBandwidth: pay-by-bandwidth
 -   PayByTraffic: pay-by-traffic
 
-Default value: PayByTraffic. |
+ Default value: PayByTraffic. |
 |InternetMaxBandwidthOut|Integer|No|5|The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
 
-Default value: 0. |
+ Default value: 0. |
 |SystemDisk.Category|String|No|cloud\_ssd|The category of the system disk. Valid values:
 
--   cloud: basic disk
+ -   cloud: basic disk
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
 -   cloud\_essd: enhanced SSD \(ESSD\)
 
-Description of the default values:
+ Description of the default values:
 
--   When the InstanceType parameter is set to a retired instance type and the `IoOptimized` parameter is set to `none`, the default value is `cloud`.
+ -   When the InstanceType parameter is set to a retired instance type and the `IoOptimized` parameter is set to `none`, the default value is `cloud`.
 -   In other cases, the default value is `cloud_efficiency`. |
 |SystemDisk.Size|Integer|No|80|The size of the system disk. Unit: GiB. Valid values: 20 to 500.
 
-The default value is 40 or the size of the image, depending on whichever is greater.
+ The default value is 40 or the size of the image, whichever is greater.
 
-**Note:** The value of this parameter must be at least 20 and greater than or equal to the image size. |
+ **Note:** The value of this parameter must be at least 20 and greater than or equal to the size of the image. |
 |SystemDisk.PerformanceLevel|String|No|PL1|The performance level of the system disk when it is an ESSD. This parameter is valid only when the `SystemDiskCategory` parameter is set to cloud\_essd. Default value: PL1. Valid values:
 
--   PL0
+ -   PL0
 -   PL1
 -   PL2
 -   PL3 |
 |DataDisk.1.Size|Integer|No|2000|The size of the first data disk. Unit: GiB. Valid values:
 
--   Valid values when DataDisk.1.Category is set to cloud: 5 to 2000
+ -   Valid values when DataDisk.1.Category is set to cloud: 5 to 2000
 -   Valid values when DataDisk.1.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DataDisk.1.Category is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.1.Category is set to cloud\_essd: 20 to 32768
 -   Valid values when DataDisk.1.Category is set to ephemeral\_ssd: 5 to 800 |
 |DataDisk.1.Category|String|No|cloud\_ssd|The category of the first data disk. Valid values:
 
--   cloud: basic disk
+ -   cloud: basic disk
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
 -   cloud\_essd: ESSD |
 |DataDisk.1.PerformanceLevel|String|No|PL1|The performance level of the first data disk when it is an ESSD. This parameter is valid only when the `DataDisk.1.Category` parameter is set to cloud\_essd. Default value: PL1. Valid values:
 
--   PL0
+ -   PL0
 -   PL1
 -   PL2
 -   PL3 |
-|DataDisk.2.Size|Integer|No|200|The size of the second data disk. Unit: GiB.
+|DataDisk.2.Size|Integer|No|200|The size of the second data disk. Unit: GiB. Valid values:
 
--   Valid values when DataDisk.2.Category is set to cloud: 5 to 2000
+ -   Valid values when DataDisk.2.Category is set to cloud: 5 to 2000
 -   Valid values when DataDisk.2.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DataDisk.2.Category is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.2.Category is set to cloud\_essd: 20 to 32768
 -   Valid values when DataDisk.2.Category is set to ephemeral\_ssd: 5 to 800 |
 |DataDisk.2.Category|String|No|cloud\_ssd|The category of the second data disk. Valid values:
 
--   cloud: basic disk
+ -   cloud: basic disk
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
 -   cloud\_essd: ESSD |
 |DataDisk.2.PerformanceLevel|String|No|PL1|The performance level of the second data disk when it is an ESSD. This parameter is valid only when the `DataDisk.2.Category` parameter is set to cloud\_essd. Default value: PL1. Valid values:
 
--   PL0
+ -   PL0
 -   PL1
 -   PL2
 -   PL3 |
-|DataDisk.3.Size|Integer|No|2000|The size of the third data disk. Unit: GiB.
+|DataDisk.3.Size|Integer|No|2000|The size of the third data disk. Unit: GiB. Valid values:
 
--   Valid values when DataDisk.3.Category is set to cloud: 5 to 2000
+ -   Valid values when DataDisk.3.Category is set to cloud: 5 to 2000
 -   Valid values when DataDisk.3.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DataDisk.3.Category is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.3.Category is set to cloud\_essd: 20 to 32768
 -   Valid values when DataDisk.3.Category is set to ephemeral\_ssd: 5 to 800 |
 |DataDisk.3.Category|String|No|cloud\_ssd|The category of the third data disk. Valid values:
 
--   cloud: basic disk
+ -   cloud: basic disk
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
 -   cloud\_essd: ESSD |
-|DataDisk.3.PerformanceLevel|String|No|PL1|The performance level of the third data disk when it is an ESSD. This parameter is valid only when the `DataDisk.3.Category` parameter is set to cloud\_essd. Default value: PL1. Valid values:
+|DataDisk.3.PerformanceLevel|String|No|PL1|The performance level of the third data disk when it is an ESSD. This parameter is valid only when the `DataDisk.3.Category`parameter is set to cloud\_essd. Default value: PL1. Valid values:
 
--   PL0
+ -   PL0
 -   PL1
 -   PL2
 -   PL3 |
-|DataDisk.4.Size|Integer|No|2000|The size of the fourth data disk. Unit: GiB.
+|DataDisk.4.Size|Integer|No|2000|The size of the fourth data disk. Unit: GiB. Valid values:
 
--   Valid values when DataDisk.4.Category is set to cloud: 5 to 2000
+ -   Valid values when DataDisk.4.Category is set to cloud: 5 to 2000
 -   Valid values when DataDisk.4.Category is set to cloud\_efficiency: 20 to 32768
 -   Valid values when DataDisk.4.Category is set to cloud\_ssd: 20 to 32768
 -   Valid values when DataDisk.4.Category is set to cloud\_essd: 20 to 32768
 -   Valid values when DataDisk.4.Category is set to ephemeral\_ssd: 5 to 800 |
 |DataDisk.4.Category|String|No|cloud\_ssd|The category of the fourth data disk. Valid values:
 
--   cloud: basic disk
+ -   cloud: basic disk
 -   cloud\_efficiency: ultra disk
 -   cloud\_ssd: standard SSD
 -   ephemeral\_ssd: local SSD
 -   cloud\_essd: ESSD |
 |DataDisk.4.PerformanceLevel|String|No|PL1|The performance level of the fourth data disk when it is an ESSD. This parameter is valid only when the `DataDisk.4.Category` parameter is set to cloud\_essd. Default value: PL1. Valid values:
 
--   PL0
+ -   PL0
 -   PL1
 -   PL2
 -   PL3 |
 |Period|Integer|No|1|The billing duration of the ECS instance. Valid values:
 
--   Valid values when PriceUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+ -   Valid values when PriceUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 -   Valid values when PriceUnit is set to Year: 1, 2, 3, 4, and 5.
 -   Set the value to 1 when PriceUnit is set to Hour.
 
-Default value: 1. |
+ Default value: 1. |
 |PriceUnit|String|No|Year|The pricing unit of the ECS resource. Default value: Hour. Valid values:
 
--   Month
+ -   Month
 -   Year
 -   Hour |
 |Amount|Integer|No|1|The number of ECS instances that you want to purchase. You can specify this parameter when you want to query the prices of multiple instances that have specific specifications. Valid values: 1 to 1000.
 
-Default value: 1. |
-|AssuranceTimes|String|No|Unlimited|The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied for an unlimited number of times within its effective duration.
+ Default value: 1. |
+|AssuranceTimes|String|No|Unlimited|The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration.
 
-Default value: Unlimited. |
+ Default value: Unlimited. |
 |InstanceTypeList.N|RepeatList|No|ecs.g6.xlarge|Instance type N. You can select only a single instance type when you configure an elasticity assurance in unlimited mode. |
 |DedicatedHostType|String|No|ddh.c5|The dedicated host type. You can call the [DescribeDedicatedHostTypes](~~134240~~) operation to query the most recent list of dedicated host types. |
 
@@ -186,7 +186,9 @@ Default value: Unlimited. |
 |PriceInfo|Struct| |Details about the prices and discount rules. |
 |Price|Struct| |The price. |
 |Currency|String|CNY|The currency unit. |
-|DetailInfos|Array of ResourcePriceModel| |Details about the price. |
+|DetailInfos|Array of ResourcePriceModel| |Details about the price.
+
+ **Note:** This parameter is in invitational preview and unavailable. |
 |ResourcePriceModel| | | |
 |DiscountPrice|Float|655.2|The discount. |
 |OriginalPrice|Float|4368|The original price. |
@@ -238,7 +240,7 @@ Sample success responses
             </Price>
             <Rules>
                   <Rule>
-                        <Description>Receive a 15% discount on 1-year subscription</Description>
+                        <Description>Receive a 15% discount on a 1-year subscription </Description>
                         <RuleId>ONE_YEAR_85_PERCENT</RuleId>
                   </Rule>
             </Rules>
@@ -261,7 +263,7 @@ Sample success responses
     "Rules": {
       "Rule": [
         {
-          "Description": "Receive a 15% discount on 1-year subscription",
+          "Description": "Receive a 15% discount on a 1-year subscription",
           "RuleId": "ONE_YEAR_85_PERCENT"
         }
       ]
@@ -272,8 +274,8 @@ Sample success responses
 
 ## Error codes
 
-|HTTP status code|Error code|Error message|Description|
-|----------------|----------|-------------|-----------|
+|HttpCode|Error code|Error message|Description|
+|--------|----------|-------------|-----------|
 |400|InvalidInstanceType.ValueUnauthorized|The specified InstanceType is not authorized.|The error message returned because you are not authorized to use the specified instance type.|
 |400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|The error message returned because the specified InstanceType parameter does not exist or because you are not authorized to manage instances of this instance type.|
 |400|InvalidInternetChargeType.ValueNotSupported|The specified InternetChargeType is not valid.|The error message returned because the specified InternetChargeType parameter is invalid.|
@@ -306,7 +308,7 @@ Sample success responses
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter " DataDisk.n.Category " is not valid.|The error message returned because the specified DataDisk.N.Category parameter is invalid.|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter " SystemDisk.Category " is not valid.|The error message returned because the specified SystemDisk.Category parameter is invalid.|
 |403|InvalidDiskCategory.NotSupported|The specified disk category is not support the specified instance type.|The error message returned because the specified disk category does not support the instance type.|
-|403|InvalidDiskCategory.NotSupported|The upgrade operation of instance does not support this category of disk.|The error message returned because the upgrade operations of instances do not the specified disk category.|
+|403|InvalidDiskCategory.NotSupported|The upgrade operation of instance does not support this category of disk.|The error message returned because the upgrade operations of instances do not support the specified disk category.|
 |400|InstanceDiskCategoryLimitExceed|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|The error message returned because the specified DataDisk.N.Size parameter is invalid or because the snapshot size exceeds the maximum capacity allowed for the specified disk category.|
 |404|DependencyViolation.IoOptimized|The specified instancetype must be IoOptimized instance.|The error message returned because the specified instance type is not I/O optimized.|
 |404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|The error message returned because the specified system disk size is smaller than the image size.|
@@ -349,7 +351,7 @@ Sample success responses
 |400|EncryptedOption.Conflict|%s|The error message returned because the parameter used to encrypt disks is not supported.|
 |404|Invalid.InstanceId.NotFound|The Instance provided does not exist.|The error message returned because the specified instance does not exist.|
 |403|InvalidDiskSize.TooSmall|Specified system disk size is less than the size of image|The error message returned because the specified system disk size is smaller than the image size.|
-|404|InvalidMarketImage.NotFound|The specified marketplace image does not exist, please change the imageId and try again.|The error message returned because the specified Alibaba Cloud Marketplace image does not exist. Modify the ImageId parameter and try again later.|
+|404|InvalidMarketImage.NotFound|The specified marketplace image does not exist, please change the imageId and try again.|The error message returned because the specified Alibaba Cloud Marketplace image does not exist. Modify the ImageId parameter value and try again later.|
 |403|InvalidChargeType.MarketImage|The specified chargeType of marketplace image is invalid|The error message returned because the billing method for the Alibaba Cloud Marketplace image is not supported.|
 |403|InvalidDiskIds.NotFound|Some of the specified disks do not exist.|The error message returned because some specified disk IDs do not exist.|
 |403|InvalidDiskCategory.NotSupported|The specified disk category is not supported.|The error message returned because the specified disk category does not support the operation.|
