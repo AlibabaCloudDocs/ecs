@@ -10,13 +10,11 @@ keyword: [CLoud Shell, 创建ECS实例, CLI方式创建ECS实例, CLI]
 
 1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-    **说明：**
-
-    如果未注册阿里云账号，请先注册账号。具体请参见[阿里云账号注册流程](https://help.aliyun.com/knowledge_detail/37195.htm)。
+    **说明：** 如果未注册阿里云账号，请先注册账号。具体请参见[注册阿里云账号](https://www.alibabacloud.com/help/doc-detail/50482.htm)。
 
 2.  单击右上角的Cloud Shell图标，进入CLoud Shell控制台。
 
-    ![cloud shell](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7396958951/p100574.png)
+    ![cloud shell](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6576193261/p100574.png)
 
 
 ## 创建ECS实例准备工作
@@ -35,8 +33,8 @@ keyword: [CLoud Shell, 创建ECS实例, CLI方式创建ECS实例, CLI]
     执行以下命令创建VPC。
 
     ```
-    aliyun vpc CreateVpc \         
-    --RegionId cn-hangzhou \       
+    aliyun vpc CreateVpc \
+    --RegionId cn-hangzhou \
     --CidrBlock 192.168.0.0/16
     ```
 
@@ -187,7 +185,7 @@ aliyun ecs RunInstances \
 
 ## 连接ECS实例
 
-此示例介绍通过Cloud Shell登录Linux实例。如果您安装的是Windows实例，登录方式请参见[在本地客户端上连接Windows实例](/cn.zh-CN/实例/连接实例/连接Windows实例/在本地客户端上连接Windows实例.md)。
+此示例介绍通过Cloud Shell登录Linux实例。如果您安装的是Windows实例，登录方式请参见[在本地客户端上连接Windows实例](/cn.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/在本地客户端上连接Windows实例.md)。
 
 1.  查询实例公网IP地址。
 
@@ -206,11 +204,11 @@ aliyun ecs RunInstances \
 
     在返回结果中找到以下公网IP信息。
 
-    ![公网IP](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9396958951/p100712.png)
+    ![公网IP](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9396958951/p100712.png)
 
 2.  通过SSH登录ECS实例。
 
-    ![ssh登录](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/0496958951/p100726.png)
+    ![ssh登录](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0496958951/p100726.png)
 
 
 ## 释放ECS实例
