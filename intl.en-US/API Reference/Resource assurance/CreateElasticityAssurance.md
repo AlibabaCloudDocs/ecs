@@ -1,13 +1,12 @@
 # CreateElasticityAssurance
 
-You can call this operation to create an elasticity assurance.
+Creates an elasticity assurance.
 
 ## Description
 
-Elasticity Assurance provides a new method to purchase and use resources with flexibility and assurance. It offers assured resource reservations for pay-as-you-go Elastic Compute Service \(ECS\) instances. Pay-as-you-go ECS instances can be purchased within the capacity and effective duration of elasticity assurances.
+Elasticity Assurance provides a new method to purchase and use resources with flexibility and assurance. It offers assured resource reservations for pay-as-you-go Elastic Compute Service \(ECS\) instances. For more information, see [Overview of Elasticity Assurance](~~193630~~).
 
 -   Resource Assurance is in invitational preview. To use Resource Assurance, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
 -   Elasticity assurances are not refundable after purchase.
 -   Elasticity assurances are applicable only to pay-as-you-go ECS instances.
 -   Only elasticity assurances in unlimited mode are supported. You can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be applied for an unlimited number of times within their effective duration. Elasticity assurances in unlimited mode takes effect immediately after they are purchased.
@@ -26,34 +25,34 @@ Elasticity Assurance provides a new method to purchase and use resources with fl
 |InstanceType.N|RepeatList|Yes|ecs.c6.xlarge|Instance type N. An elasticity assurance can be created to reserve capacity of a single instance type. Set N to 1. |
 |Period|Integer|No|1|The effective duration of the elasticity assurance. The unit of the duration is determined by the `PeriodUnit` value. Valid values:
 
--   When the `PeriodUnit` parameter is set to `Month`, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+ -   When the `PeriodUnit` parameter is set to `Month`, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 -   When the `PeriodUnit` parameter is set to `Year`, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
 
-Default value: 1. |
+ Default value: 1. |
 |PeriodUnit|String|No|Year|The unit of the effective duration for the elasticity assurance. Valid values:
 
--   Month
+ -   Month
 -   Year
 
-Default value: Year. |
-|ClientToken|String|No|0c593ea1-3bea-11e9-b96b-88e9fe637760|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The `ClientToken` value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
+ Default value: Year. |
+|ClientToken|String|No|0c593ea1-3bea-11e9-b96b-88e9fe637760|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~). |
 |PrivatePoolOptions.Name|String|No|eapTestName|The name of the elasticity assurance. The name must be 2 to 128 characters in length and can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with `http://` or `https://`. |
 |Description|String|No|This is description.|The description of the elasticity assurance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 
-This parameter is empty by default. |
+ This parameter is empty by default. |
 |PrivatePoolOptions.MatchCriteria|String|No|Open|The type of the private pool to be associated with the elasticity assurance. Valid values:
 
--   Open: pen private pool
+ -   Open: open private pool
 -   Target: targeted private pool
 
-Default value: Open. |
+ Default value: Open. |
 |AssuranceTimes|String|No|Unlimited|The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied for an unlimited number of times within its effective duration.
 
-Default value: Unlimited. |
+ Default value: Unlimited. |
 |InstanceAmount|Integer|No|2|The total number of instances for which to reserve capacity of an instance type. |
-|StartTime|String|No|2020-10-30T06:32:00Z|The time when the elasticity assurance takes effect. The default value is the time when the CreateElasticityAssurance operation is called to create the elasticity assurance. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. For more information, see [ISO 8601](~~25696~~). |
+|StartTime|String|No|2020-10-30T06:32:00Z|The time when the elasticity assurance takes effect. The default value is the time when the CreateElasticityAssurance operation is called to create the elasticity assurance. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](~~25696~~). |
 |ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which to assign the elasticity assurance. |
-|Tag.N.Key|String|No|TestKey|The key of tag N of the elasticity assurance. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length. It cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`. |
+|Tag.N.Key|String|No|TestKey|The key of tag N of the elasticity assurance. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length. It cannot start with `acs:` or `aliyun`. It cannot contain `http://` or`https://`. |
 |Tag.N.Value|String|No|TestValue|The value of tag N of the elasticity assurance. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length. It cannot start with `acs:` or contain `http://` or `https://`. |
 
 ## Response parameters
