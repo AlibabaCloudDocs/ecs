@@ -68,7 +68,7 @@ This section describes how to create an activation code for managed instances in
 
 4.  Click the **Manage Instances** tab.
 
-    ![Create an activation code](../images/p225649.png)
+    ![Create an activation code](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p225649.png)
 
 5.  Click **Create Activation Code**.
 
@@ -87,7 +87,7 @@ This section describes how to create an activation code for managed instances in
 
     After the activation code is generated, the installation scripts are generated.
 
-    ![Generate scripts](../images/p225668.png)
+    ![Generate scripts](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p225668.png)
 
 8.  Select an installation script suitable for the operating system type of your server and click **Download** or **Copy** to save the script to your computer.
 
@@ -134,7 +134,7 @@ After you obtain the installation script, you must install the Cloud Assistant c
 
     After the operation is complete, the client is installed if information shown in the following figure is returned.
 
-    ![Return results in Linux](../images/p227024.png)
+    ![Return results in Linux](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p227024.png)
 
 
 **Install the Cloud Assistant client on a Windows server and register the server as an instance**
@@ -149,7 +149,7 @@ After you obtain the installation script, you must install the Cloud Assistant c
 
 3.  Right-click the installation script and select **Run with PowerShell** to install the Cloud Assistant client.
 
-    ![Windows installation script](../images/p227027.png)
+    ![Windows installation script](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p227027.png)
 
 
 ## Step 2: Install the Cloud Assistant client on the server and register the server as an instance \(proxy method\)
@@ -160,7 +160,7 @@ After you obtain the installation script, you must install the Cloud Assistant c
 
 This section describes how to configure a proxy server. Cent OS 7.8 is used in this example. If your server runs an operating system such as Debian, you must modify the commands shown in the following figure based on the installation script generated in the ECS console.
 
-![centos](../images/p268369.png)
+![centos](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p268369.png)
 
 -   ①: Download the Cloud Assistant client installation package
 -   ②: Install the Cloud Assistant client
@@ -255,7 +255,7 @@ If your server must use a proxy server to access the Internet, you must configur
 
 This section describes how to configure a proxy server. Windows Server 2016 Datacenter is used in the example. The installation script of the Cloud Assistant client for Windows is shown in the following figure. When you configure a proxy server, you must use the `RegionId`, `ActivationCode`, `ActivationId` parameter values.
 
-![Windows script](../images/p268965.png)
+![Windows script](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p268965.png)
 
 1.  Log on to the server by using **Remote Desktop Connection**.
 
@@ -269,7 +269,7 @@ This section describes how to configure a proxy server. Windows Server 2016 Data
 
     4.  In the lower-left corner, click **Internet Options**.
 
-        ![Proxy](../images/p268412.png)
+        ![Proxy](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p268412.png)
 
     5.  Click the **Connections** tab and click **LAN settings**.
 
@@ -303,7 +303,7 @@ This section describes how to configure a proxy server. Windows Server 2016 Data
 
     4.  In the left-side navigation pane, click **Advanced system settings**.
 
-        ![Configure proxy](../images/p267862.png)
+        ![Configure proxy](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p267862.png)
 
     5.  Click the **Advanced** tab and click **Environment Variables**.
 
@@ -356,9 +356,9 @@ After you install the Cloud Assistant client, you must go back to the ECS consol
 
 3.  Click the **Manage Instances** tab to view the list of managed instances.
 
-    ![Managed instance list](../images/p227029.png)
+    ![Managed instance list](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p227029.png)
 
-    As shown in the preceding figure, if **Connection Status** corresponding to the managed instance is **Running**, the managed instance is registered.
+    As shown in the preceding figure, if **Connection Status** corresponding to the managed instance is **Normal**, the managed instance is registered.
 
 
 You can then use Cloud Assistant to manage the server without logging on to the server. For how to use Cloud Assistant, see [Immediate execution](/intl.en-US/Deployment & Maintenance/Cloud assistant/Use the cloud assistant/Immediate execution.md) and [Send files to ECS instances](/intl.en-US/Deployment & Maintenance/Cloud assistant/Use the cloud assistant/Send files to ECS instances.md).
@@ -435,7 +435,7 @@ If your server runs a Windows operating system, perform the following steps:
 1.  Log on to the server with the administrator account.
 2.  Start Windows PowerShell as an administrator.
 
-    ![Start Powershell](../images/p227208.png)
+    ![Start Powershell](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p227208.png)
 
     1.  Click Start.
     2.  Choose **Windows PowerShell** \> **Windows PowerShell**.
@@ -448,13 +448,13 @@ If your server runs a Windows operating system, perform the following steps:
 
 4.  Open the service management window.
 
-    ![Service](../images/p227260.png)
+    ![Service](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p227260.png)
 
     1.  Click Start.
     2.  Choose **Administrative Tools** \> **Service**.
 5.  Find **Aliyun Assist Service** and click **Stop the service**.
 
-    ![Stop Service](../images/p227406.png)
+    ![Stop Service](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3261724261/p227406.png)
 
 
 ## References
