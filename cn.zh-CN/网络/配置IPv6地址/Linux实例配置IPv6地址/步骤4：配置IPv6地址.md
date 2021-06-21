@@ -6,7 +6,7 @@
 
 ecs-util-ipv6能为已分配IPv6地址的ECS实例一键配置IPv6地址，或者为没有分配IPv6地址的ECS实例一键清理IPv6配置。
 
-ecs-util-ipv6工具下载地址如下所示。
+ecs-util-ipv6工具下载地址如下所示：
 
 |系列|发行版|下载地址|
 |:-|:--|:---|
@@ -27,7 +27,7 @@ ecs-util-ipv6工具下载地址如下所示。
 
 使用限制如下：
 
--   ecs-util-ipv6工具仅适用于VPC类型实例，依赖实例元数据服务，使用前请勿将网络禁用或者将相关出口IP端口（100.100.100.200:80）禁用。详情请参见[实例元数据](/cn.zh-CN/实例/管理实例/使用实例元数据/实例元数据概述.md)。
+-   ecs-util-ipv6工具仅适用于VPC类型实例，依赖实例元数据服务，使用前请勿将网络禁用或者将相关出口IP端口（100.100.100.200:80）禁用。详情请参见[实例元数据](/cn.zh-CN/实例/管理实例/使用实例元数据/ECS实例元数据概述.md)。
 -   ecs-util-ipv6工具运行时会自动重启网卡、网络服务，短时间内网络可能会不可用，请慎重执行。
 
 下载对应系统版本工具到目标系统，赋予执行权限后使用管理员权限执行：
@@ -63,7 +63,7 @@ ecs-utils-ipv6 --disable        # disable ipv6
 ./ecs-utils-ipv6 --static <dev> <ip6s> <prefix_len> <gw6>     #手动配置网卡IPv6，支持多IPv6，请用""包含，多个IPv6用空格隔开
 ```
 
-对于需要自动化配置IPv6实例的需求，例如大批量配置，建议您使用云助手或者实例自定义数据配合脚本的方式来调用。详情请参见[云助手](/cn.zh-CN/运维与监控/云助手/云助手概述.md)和[实例自定义数据](/cn.zh-CN/实例/管理实例/使用实例自定义数据/生成实例自定义数据.md)。以下为脚本示例（假设是RHEL系列，Bash Shell脚本）。
+对于需要自动化配置IPv6实例的需求，例如大批量配置，建议您使用云助手或者实例自定义数据配合脚本的方式来调用。详情请参见[云助手](/cn.zh-CN/运维与监控/云助手/云助手概述.md)和[实例自定义数据](/cn.zh-CN/实例/管理实例/使用实例自定义数据/ECS实例自定义数据概述.md)。以下为脚本示例（假设是RHEL系列，Bash Shell脚本）。
 
 ```
 #!/bin/sh
@@ -92,7 +92,7 @@ Alibaba Cloud Linux 2镜像在`aliyun_2_1903_64_20G_alibase_20190829.vhd`及之�
 
 请先检查实例是否已开启IPv6服务。
 
-1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 2.  运行命令`ip addr | grep inet6`或者`ifconfig | grep inet6`：
     -   若返回`inet6`相关内容，表示实例已成功开启IPv6服务。您可以跳过本节内容。
     -   若未返回`inet6`相关内容，表示实例未开启IPv6服务，请根据下文开启IPv6服务。
@@ -253,7 +253,7 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
 
     **说明：** CentOS 8、Debian 10.3、Ubuntu 18.04默认开启了IPv6服务。
 
-    1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+    1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
 
     2.  运行命令`ip addr | grep inet6`或者`ifconfig | grep inet6`：
 
@@ -262,7 +262,7 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
 2.  开启IPv6服务。
 
     -   CentOS 6的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/modprobe.d/disable_ipv6.conf`，将`options ipv6 disable=1`修改为`options ipv6 disable=0`后保存退出。
         3.  运行`vi /etc/sysconfig/network`，将`NETWORKING_IPV6=no`修改为`NETWORKING_IPV6=yes`后保存退出。
         4.  运行以下命令：
@@ -292,9 +292,11 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
             net.ipv6.conf.lo.disable_ipv6 = 0
             ```
 
+            修改完成后，保存并退出。
+
         7.  运行`sysctl -p`使配置生效。
     -   CentOS 7的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/modprobe.d/disable_ipv6.conf`，将`options ipv6 disable=1`修改为`options ipv6 disable=0` 后保存退出。
         3.  运行`vi /etc/sysconfig/network`，将`NETWORKING_IPV6=no`修改为`NETWORKING_IPV6=yes`后保存退出。
         4.  运行`vi /etc/sysctl.conf`做如下修改：
@@ -309,13 +311,15 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
             net.ipv6.conf.lo.disable_ipv6 = 0
             ```
 
+            修改完成后，保存并退出。
+
         5.  运行`sysctl -p`使配置生效。
     -   CoreOS 14或17的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /usr/share/oem/grub.cfg`，删除`ipv6.disable=1`后保存退出。
         3.  重启实例。
     -   Debian 8或9的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/default/grub`，删除`ipv6.disable=1`后保存退出。
         3.  运行`vi /boot/grub/grub.cfg`，删除`ipv6.disable=1`后保存退出。
         4.  重启实例。
@@ -331,13 +335,15 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
             net.ipv6.conf.lo.disable_ipv6 = 0
             ```
 
+            修改完成后，保存并退出。
+
         6.  运行`sysctl -p`使配置生效。
     -   FreeBSD 11的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/rc.conf`，添加`ipv6_activate_all_interfaces="YES"`后保存退出。
         3.  运行`/etc/netstart restart`重启网络。
     -   OpenSUSE 42的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/sysctl.conf`做如下修改：
 
             ```
@@ -350,9 +356,11 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
             net.ipv6.conf.lo.disable_ipv6 = 0
             ```
 
+            修改完成后，保存并退出。
+
         3.  运行`sysctl -p`使配置生效。
     -   SUSE 11或12的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/modprobe.d/50-ipv6.conf`，删除`install ipv6 /bin/true`后保存退出。
         3.  运行`vi /etc/sysctl.conf`做如下修改：
 
@@ -366,9 +374,11 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
             net.ipv6.conf.lo.disable_ipv6 = 0
             ```
 
+            修改完成后，保存并退出。
+
         4.  运行`sysctl -p`使配置生效。
     -   Ubuntu 14或16的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/sysctl.conf`做如下修改：
 
             ```
@@ -381,20 +391,22 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
             net.ipv6.conf.lo.disable_ipv6 = 0
             ```
 
+            修改完成后，保存并退出。
+
         3.  运行`sysctl -p`使配置生效。
 3.  查询实例的IPv6地址。
 
     您可以通过控制台和实例元数据查看实例分配的IPv6地址。
 
     -   控制台：请参见[分配 IPv6 地址](/cn.zh-CN/网络/配置IPv6地址/Linux实例配置IPv6地址/步骤2：分配IPv6地址.md)。
-    -   实例元数据：通过以下元数据项获取IPv6地址。详情请参见[实例元数据](/cn.zh-CN/实例/管理实例/使用实例元数据/实例元数据概述.md)。
+    -   实例元数据：通过以下元数据项获取IPv6地址。详情请参见[实例元数据](/cn.zh-CN/实例/管理实例/使用实例元数据/ECS实例元数据概述.md)。
         -   IPv6 地址：network/interfaces/macs/\[mac\]/ipv6s
         -   IPv6 网关：network/interfaces/macs/\[mac\]/ipv6-gateway
         -   IPv6 虚拟交换机 CIDR 地址段：network/interfaces/macs/\[mac\]/vswitch-ipv6-cidr-block
 4.  手动配置IPv6地址。
 
     -   CentOS 6/7/8 和 Red Hat 6/7 的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/sysconfig/network-scripts/ifcfg-eth0`打开网卡配置文件，`eth0`为网卡标识符，您需要修改成实际的标识符。在文件中根据实际信息添加以下配置：
             -   单IPv6地址：
 
@@ -419,7 +431,7 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
             -   非CentOS 8系统运行`service network restart`或`systemctl restart network`。
             -   CentOS 8系统运行`nmcli c reload`。
     -   Debian/8/9和Ubuntu 14/16的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/network/interfaces`打开网卡配置文件，`eth0`为网卡标识符，您需要修改成实际的标识符。在文件中根据实际信息添加以下配置：
             -   单 IPv6 地址：
 
@@ -457,7 +469,7 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
 
         3.  重启网络服务：运行`service network restart`或`systemctl restart networking`。
     -   OpenSUSE 42 和 SUSE Linux 11/12的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/sysconfig/network/ifcfg-eth0`打开网卡配置文件，`eth0`为网卡标识符，您需要修改成实际的标识符。在文件中根据实际信息添加以下配置：
             -   单 IPv6 地址：
 
@@ -489,7 +501,7 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
 
         4.  重启网络服务：运行`service network restart`或`systemctl restart networking`。
     -   CoreOS 14/17的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/systemd/network/10-eth0.network`打开网卡配置文件，`eth0`为网卡标识符，您需要修改成实际的标识符。在文件中根据实际信息添加以下配置：
             -   单IPv6地址：
 
@@ -517,7 +529,7 @@ CentOS、Debian、FreeBSD、OpenSUSE、SUSE、Ubuntu系统请完成以下操作�
 
         3.  重启网络服务：运行`systemctr restart systemd-networkd`。
     -   FreeBSD 11的操作步骤如下：
-        1.  远程连接实例。具体操作，请参见[通过VNC远程连接登录Linux实例](/cn.zh-CN/实例/连接实例/连接Linux实例/通过VNC远程连接登录Linux实例.md)。
+        1.  远程连接实例。具体操作，请参见[通过密码认证登录Linux实例](/cn.zh-CN/实例/连接实例/使用VNC连接实例/通过密码认证登录Linux实例.md)。
         2.  运行`vi /etc/rc.conf`打开网卡配置文件，`vtnet0`为网卡标识符，您需要修改成实际的标识符。在文件中根据实际信息添加以下配置：
             -   单IPv6地址：
 
