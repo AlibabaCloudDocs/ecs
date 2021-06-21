@@ -41,7 +41,7 @@ Default value: Open. |
 **Note:** If this parameter is empty, the capacity reservation is created as an immediate capacity reservation. |
 |EndTimeType|String|No|Unlimited|The release mode of the capacity reservation. Valid values:
 
--   Limited: The capacity reservation is released at the specified time. If you specify this parameter, you must also specify the `EndTime`parameter.
+-   Limited: The capacity reservation is released at the specified time. If you specify this parameter, you must also specify the `EndTime` parameter.
 -   Unlimited: The capacity reservation must be manually released. You can release it at any time. |
 |EndTime|String|No|2021-10-30T06:32:00Z|The expiration time of the capacity reservation. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](~~25696~~). |
 |Platform|String|No|Linux|The operating system type of the instance. This parameter corresponds to the `Platform` parameter of regional reserved instances. If the operating system of a capacity reservation matches that of a regional reserved instance, the regional reserved instance can be applied to offset bills of the unused capacity of the capacity reservation. Valid values:
