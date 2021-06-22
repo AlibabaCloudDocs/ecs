@@ -13,8 +13,9 @@
     -   按量付费ESSD云盘支持升级和降低性能级别，但不支持降配到PL0。
     -   ESSD云盘的状态必须是**使用中**（In\_Use）状态或者**待挂载**（Available）状态。
     -   若ESSD云盘已挂载到ECS实例上，实例必须处于**运行中**（Running）状态或者**已停止**（Stopped）状态，ECS实例不能处于过期或者账号欠费状态。
-    -   由于ESSD云盘性能级别受容量限制，如果您无法升级性能级别，可以扩容（[ResizeDisk](~~25522~~)）后重新操作。更多详情，请参见[ESSD云盘](~~122389~~)。
+    -   由于ESSD云盘性能级别受容量限制，如果您无法升级性能级别，可以扩容（[ResizeDisk](~~25522~~)）后重新操作。更多信息，请参见[ESSD云盘](~~122389~~)。
 -   变更一块云盘类型的注意事项，请参见[变更云盘类型](~~161980~~)中的限制条件章节。
+-   开启多重挂载特性的云盘不支持云盘变配。
 
 调用接口后，新的云盘类型立即生效，阿里云按照新的云盘类型及云盘性能级别单价计算消费账单。
 
@@ -101,18 +102,19 @@ https://ecs.aliyuncs.com/?Action=ModifyDiskSpec
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|404|InvalidDiskId.NotFound|The specified disk does not exist.|指定的磁盘不存在。请您检查磁盘ID是否正确。|
+|400|InvalidPerformanceLevel.Malformed|The specified parameter PerformanceLevel is not valid.|指定的参数PerformanceLevel无效。|
+|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |403|DiskInArrears|The specified operation is denied as your disk owing fee.|指定的磁盘已欠费。|
-|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
 |403|InstanceExpiredOrInArrears|The specified operation is denied as your prepay instance is expired \(prepay mode\) or in arrears \(afterpay mode\).|包年包月实例已过期，请您续费后再进行操作。|
 |403|IncorrectDiskStatus|The current disk status does not support this operation.|当前的磁盘不支持此操作，请您确认磁盘处于正常使用状态，是否欠费。|
 |403|DiskCreatingSnapshot|The operation is denied due to a snapshot of the specified disk is not completed yet.|指定的磁盘正在创建快照。|
 |403|OperationDenied|The type of the disk does not support the operation.|此磁盘种类不支持指定的操作。|
-|400|InvalidPerformanceLevel.Malformed|The specified parameter PerformanceLevel is not valid.|指定的参数PerformanceLevel无效。|
 |403|OperationDenied.PerformanceLevelNotMatch|The specified PerformanceLevel and disk size do not match.|指定的性能等级与磁盘大小不匹配。|
-|400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
 |403|InvalidInstanceType.NotSupportDiskCategory|The instanceType of the specified instance does not support this disk category.|指定的实例规格（InstanceType）不支持当前实例的云盘类别。请尝试更换其它实例规格。关于实例规格支持的云盘类型，请参见实例规格族文档。|
 |403|OperationDenied.NoStock|The requested resource is sold out in the specified zone; try other types of resources or other regions and zones.|库存不足。|
+|403|InvalidOperation.MultiAttachDisk|Multi attach disk does not support this operation.|开启多重挂载特性的云盘不支持该操作。|
+|404|InvalidDiskId.NotFound|The specified disk does not exist.|指定的磁盘不存在。请您检查磁盘ID是否正确。|
+|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
