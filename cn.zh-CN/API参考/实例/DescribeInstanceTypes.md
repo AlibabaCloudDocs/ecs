@@ -36,6 +36,7 @@ DescribeInstanceTypes仅查询实例规格的配置和性能信息。如果您�
 |EniQuantity|Integer|2|支持挂载的弹性网卡上限。 |
 |EniTotalQuantity|Integer|0|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |EniTrunkSupported|Boolean|false|**说明：** 该参数正在邀测中，暂未开放使用。 |
+|EriQuantity|Integer|0|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |GPUAmount|Integer|0|GPU数量。 |
 |GPUSpec|String|NVIDIA V100|GPU类型。 |
 |InitialCredit|Integer|120|突发性能实例t5、t6的初始vCPU积分值。 |
@@ -58,7 +59,12 @@ DescribeInstanceTypes仅查询实例规格的配置和性能信息。如果您�
 -   local\_ssd\_pro：实例规格族i2、i2g、i1、ga1和gn5等搭载的NVMe SSD本地盘。 |
 |MaximumQueueNumberPerEni|Integer|2|单块弹性网卡最大队列数。 |
 |MemorySize|Float|8.0|内存大小。单位：GiB |
+|NvmeSupport|String|unsupported|实例规格所挂载的云盘是否支持NVMe。可能值：
+
+ -   required：支持。表示云盘以NVMe的方式挂载。
+-   unsupported：不支持。表示云盘不以NVMe的方式挂载。 |
 |PrimaryEniQueueNumber|Integer|2|主网卡默认队列数。 |
+|QueuePairNumber|Integer|0|**说明：** 该参数正在邀测中，暂未开放使用。 |
 |SecondaryEniQueueNumber|Integer|2|辅助弹性网卡默认队列数。 |
 |TotalEniQueueQuantity|Integer|4|实例规格允许修改的弹性网卡队列数总配额。 |
 |RequestId|String|00827261-20B7-4562-83F2-4DF39876A45A|请求ID。 |
