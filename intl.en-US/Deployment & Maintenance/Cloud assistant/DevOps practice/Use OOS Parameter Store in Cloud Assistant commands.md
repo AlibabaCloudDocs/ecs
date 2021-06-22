@@ -50,7 +50,7 @@ If you run a Cloud Assistant command as a RAM user, you must attach a policy to 
 
 If your command does not involve sensitive data, you can use common parameters. This section describes how to use common parameters of OOS Parameter Store in a Cloud Assistant command. In the example, a user is added to a Linux instance.
 
-1.  Create common parameters by using OOS Parameter Store. For more information, see [Manage common parameters]().
+1.  Create common parameters by using OOS Parameter Store.
 
     The following table provides an example of adding a username parameter to the common parameters. The value of the parameter is set to user01. You can change the value to suit your needs.
 
@@ -179,7 +179,7 @@ If your command involves sensitive data such as passwords used to log on to your
 
 **Note:** Before you perform the following operations, you must have created a user for the instance. For information about how to add users to Linux instances, see [Use common parameters in Cloud Assistant commands](#section_cdy_0u6_hbo).
 
-1.  Create encryption parameters and common parameters by using OSS Parameter Store. For more information, see [Manage common parameters]() and [Manage encryption parameters]().
+1.  Create encryption parameters and common parameters by using OSS Parameter Store.
 
     The following tables provide examples of creating a username parameter and a password parameter in OOS Parameter Store.
 
