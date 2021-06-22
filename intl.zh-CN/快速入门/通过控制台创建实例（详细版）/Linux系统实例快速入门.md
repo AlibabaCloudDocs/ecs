@@ -37,7 +37,7 @@ keyword: [快速入门, ecs, 新手, 使用指导, 阿里云, Alibaba Cloud Linu
     -   可用区：随机分配
 |实例创建后，无法直接更改地域和可用区，请谨慎选择。|
     |**实例规格**|    -   规格族：通用型g6
-    -   规格：ecs.g6.large
+    -   实例规格：ecs.g6.large
 |可供选择的实例规格由您所选择的地域以及库存供应决定。 您可以前往[ECS实例可购买地域](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion)，查看实例在各地域的可购情况。 |
     |**镜像**|    -   类型：公共镜像
     -   版本：Alibaba Cloud Linux 2.1903 LTS 64位
