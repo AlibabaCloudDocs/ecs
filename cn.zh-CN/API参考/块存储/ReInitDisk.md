@@ -9,6 +9,7 @@
 -   云盘的状态必须为**使用中**（In\_use），云盘挂载的ECS实例的状态必须为**已停止**（Stopped）。
 -   实例首次启动前，不能重新初始化挂载在其上的云盘。
 -   已存在本地快照的云盘，不能重新初始化。
+-   开启多重挂载特性的云盘，不能重新初始化。
 -   对于系统盘，初始化到镜像的最初状态。若创建云盘的源镜像被删除，则无法初始化。
 -   对于直接创建的数据盘，初始化到空盘状态。
 -   对于通过快照创建的数据盘，初始化到快照状态。
@@ -70,7 +71,7 @@ https://ecs.aliyuncs.com/?Action=ReInitDisk
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ReInitDiskResponse>
@@ -78,7 +79,7 @@ https://ecs.aliyuncs.com/?Action=ReInitDisk
 </ReInitDiskResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -90,7 +91,11 @@ https://ecs.aliyuncs.com/?Action=ReInitDisk
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|404|InvalidDiskId.NotFound|The specified disk does not exist.|指定的磁盘不存在。请您检查磁盘ID是否正确。|
+|400|InvalidPassword.Malformed|The specified parameter "Password" is not valid.|指定的Password参数不合法。|
+|400|DiskCategory.OperationNotSupported|The operation is not supported to the specified disk due to its disk category|由于磁盘种类限制，指定的磁盘不支持该操作。|
+|400|InvalidKeyPairName.NotFound|The specified KeyPairName does not exist.|指定的KeyPairName不存在。|
+|400|DependencyViolation.IoOptimize|The specified parameter InstanceId is not valid.|指定的实例IO优化配置不合法。|
+|400|InvalidRegionId.MalFormed|The specified RegionId is not valid|指定的RegionId不合法。|
 |403|IncorrectDiskStatus|The current disk status does not support this operation.|当前的磁盘不支持此操作，请您确认磁盘处于正常使用状态，是否欠费。|
 |403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|该资源目前的状态不支持此操作。|
 |403|InstanceLockedForSecurity|The instance is locked due to security.|您的资源被安全锁定，拒绝操作。|
@@ -99,16 +104,14 @@ https://ecs.aliyuncs.com/?Action=ReInitDisk
 |403|InstanceExpiredOrInArrears|The specified operation is denied as your prepay instance is expired \(prepay mode\) or in arrears \(afterpay mode\).|包年包月实例已过期，请您续费后再进行操作。|
 |403|DiskCreatingSnapshot|The operation is denied due to a snapshot of the specified disk is not completed yet.|指定的磁盘正在创建快照。|
 |403|InvalidSourceSnapshot|The snapshot which is used to create the specified disk has been deleted.|用于创建指定磁盘的快照已被删除。|
-|404|InvalidImageId.NotFound|The specified ImageId does not exist.|指定的镜像在该用户账号下不存在，请您检查镜像ID是否正确。|
 |403|SharedImageDeleted|The specified image by others shared is deleted.|指定的共享镜像已删除。|
-|400|InvalidPassword.Malformed|The specified parameter "Password" is not valid.|指定的Password参数不合法。|
-|400|DiskCategory.OperationNotSupported|The operation is not supported to the specified disk due to its disk category|由于磁盘种类限制，指定的磁盘不支持该操作。|
-|400|InvalidKeyPairName.NotFound|The specified KeyPairName does not exist.|指定的KeyPairName不存在。|
-|400|DependencyViolation.IoOptimize|The specified parameter InstanceId is not valid.|指定的实例IO优化配置不合法。|
 |403|UserNotInTheWhiteList|The user is not in volume white list.|用户不在共享块存储白名单中，请您提交工单申请白名单。|
-|400|InvalidRegionId.MalFormed|The specified RegionId is not valid|指定的RegionId不合法。|
-|404|InvalidDiskId.OperationNotSupported|The operation is not supported due to image not exist.|指定的镜像不存在。|
+|403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
+|403|InvalidOperation.MultiAttachDisk|Multi attach disk does not support this operation.|开启多重挂载特性的云盘不支持该操作。|
+|404|InvalidDiskId.NotFound|The specified disk does not exist.|指定的磁盘不存在。请您检查磁盘ID是否正确。|
+|404|InvalidImageId.NotFound|The specified ImageId does not exist.|指定的镜像在该用户账号下不存在，请您检查镜像ID是否正确。|
+|404|InvalidDiskId.OperationNotSupported|The operation is not supported due to image not exist.|指定的镜像不存在。|
 |500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
