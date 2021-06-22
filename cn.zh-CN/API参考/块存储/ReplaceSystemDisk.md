@@ -10,9 +10,9 @@
 -   不支持变更系统盘计费方式。
 -   实例的状态必须为已停止（Stopped）状态。
 
-**说明：** 仅适用于专有网络VPC类型实例：如果ECS实例开启了VPC内实例停机不收费功能，为防止地域内ECS实例库存不足而引起更换系统盘后无法重启实例，您需要在停止实例时关闭停机不收费功能。详情请参见[StopInstance](~~25501~~)。
+**说明：** 仅适用于专有网络VPC类型实例：如果ECS实例开启了VPC内实例停机不收费功能，为防止地域内ECS实例库存不足而引起更换系统盘后无法重启实例，您需要在停止实例时关闭停机不收费功能。更多信息，请参见[StopInstance](~~25501~~)。
 
--   ECS实例不能被安全锁定，即实例的`OperationLocks`参数值包含`"LockReason": "security"`。详情请参见[安全锁定时的API行为](~~25695~~)。
+-   ECS实例不能被安全锁定，即实例的`OperationLocks`参数值包含`"LockReason": "security"`。更多信息，请参见[安全锁定时的API行为](~~25695~~)。
 -   系统盘挂载的ECS实例不能有未支付的订单。
 -   您可以通过参数SystemDisk.Size重新指定系统盘的容量大小。
 
@@ -37,7 +37,7 @@
  默认值：Max\{40, 参数ImageId对应的镜像大小\}
 
  **说明：** 超过`Max{20, 更换前的系统盘容量}`的云盘容量部分，将收取额外费用。 |
-|ClientToken|String|否|123e4567-e89b-12d3-a456-426655440000|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。更多详情，请参见[如何保证幂等性](~~25693~~)。 |
+|ClientToken|String|否|123e4567-e89b-12d3-a456-426655440000|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。更多信息，请参见[如何保证幂等性](~~25693~~)。 |
 |UseAdditionalService|Boolean|否|true|是否使用阿里云提供的虚拟机系统配置（Windows：NTP、KMS；Linux：NTP、YUM）。
 
  **说明：** 挂载系统盘时（即设备名为/dev/xvda）有效。 |
@@ -124,44 +124,20 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
 |400|InvalidSystemDiskSize.ValueNotSupported|The specified parameter SystemDisk.Size is invalid.|指定的SystemDisk.Size不合法。|
-|404|InvalidInstanceId.NotFound|The specified instance does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
-|403|InvalidSystemDiskStatus.IsTransfering|The current status of the resource does not support this operation, system disk is transfering.|当前资源的状态不支持此操作，请再系统盘停止传输数据后重试。|
-|403|IncorrectDiskStatus|The current disk status does not support this operation.|当前的磁盘不支持此操作，请您确认磁盘处于正常使用状态，是否欠费。|
-|404|InvalidImageId.NotFound|The specified ImageId does not exist.|指定的镜像在该用户账号下不存在，请您检查镜像ID是否正确。|
-|403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|该资源目前的状态不支持此操作。|
-|403|InstanceLockedForSecurity|The instance is locked due to security.|您的资源被安全锁定，拒绝操作。|
-|403|ImageNotSubscribed|The specified image has not be subscribed.|指定的镜像未在镜像市场订阅。|
-|403|ImageRemovedInMarket|The specified market image is not available, Or the specified user defined image includes product code because it is based on an image subscribed from marketplace, and that image in marketplace includeing exact the same product code has been removed.|指定的市场镜像不可用，或者指定的用户定义镜像包含产品代码，因为它基于从市场订购的镜像，并且市场中包含完全相同的产品代码的镜像已被删除。|
-|500|OperationDenied|Internal Error.|内部错误。|
 |400|InvalidParameter.Conflict|The specified image does not support the specified instance type.|指定的镜像不能用于指定的实例规格。|
-|404|InvalidSystemDiskSize.MoreThanMaxSize|The specified SystemDisk.Size parameter exceeds the maximum size.|指定的系统盘大小超出最大容量。|
-|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
-|403|InstanceExpiredOrInArrears|The specified operation is denied as your prepay instance is expired \(prepay mode\) or in arrears \(afterpay mode\).|包年包月实例已过期，请您续费后再进行操作。|
-|403|ChargeTypeViolation|The operation is not permitted due to charge type of the instance.|付费方式不支持该操作，请您检查实例的付费类型是否与该操作冲突。|
-|403|DiskCreatingSnapshot|The operation is denied due to a snapshot of the specified disk is not completed yet.|指定的磁盘正在创建快照。|
-|403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|指定的镜像不支持I/O优化型实例。|
-|403|ImageNotSupportInstanceType|The specified image don not support the InstanceType instance.|指定的镜像不支持此类实例规格。|
-|403|QuotaExceed.BuyImage|The specified image is from the image market,You have not bought it or your quota has been exceeded.|您暂时不能使用指定的市场镜像。|
-|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
-|404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the min size.|指定的系统盘小于最低容量。|
-|404|NoSuchResource|The specified resource is not found.|指定的资源不存在。|
 |400|InvalidSystemDiskSize.ImageNotSupportResize|The specified image does not support resize.|指定的镜像不支持扩容。|
 |400|InvalidSystemDiskSize|The specified parameter SystemDisk.Size is invalid.|指定的SystemDisk.Size不合法。|
-|403|INST\_HAS\_UNPAID\_ORDER|The instance has unpaid order.|该实例有未完成的账单。|
 |400|InvalidSystemDiskSize.ValueNotSupported|The specified parameter SystemDisk.Size is invalid|指定的参数SystemDisk.Size不合法。|
 |400|InvalidPassword.Malformed|The specified parameter "Password" is not valid.|指定的Password参数不合法。|
 |400|InvalidPasswordParam.Mismatch|The input password should be null when passwdInherit is true.|启用PasswdInherit后，用户名密码应该设置为空。|
 |400|OperationDenied|The specified image contains the snapshot of the data disk,does not support this operation.|包含了数据盘快照的镜像，不支持此操作。|
 |400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
-|403|OperationDenied.InstanceCreating|The specified instance is creating.|指定的实例已存在。|
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
 |400|OperationDenied|%s|拒绝操作。|
 |400|InvalidKeyPairName.NotFound|The specified KeyPairName does not exist.|指定的KeyPairName不存在。|
 |400|DependencyViolation.IoOptimize|The specified parameter InstanceId is not valid.|指定的实例IO优化配置不合法。|
-|403|InvalidParameter.NotMatch|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|MissingParameter.Architecture|Architecture should not be null.|参数Architecture不能为空。|
 |400|InvalidArchitecture.Malformed|Architecture is not valid.|您输入的参数Architecture无效，请查看该参数格式是否正确。|
 |400|MissingParameter.Platform|Platform should not be null.|参数Platform不能为空。|
@@ -170,14 +146,39 @@ https://ecs.aliyuncs.com/?Action=ReplaceSystemDisk
 |400|InvalidDiskId.NotFound|The specified disk do not exist.|指定的磁盘不存在。|
 |400|InvalidDatadisk.DiskStatusViolation|The operation is not permitted due to status of the Datadisk.|当前数据盘的状态不支持此操作。|
 |400|InvalidDatadisk.DiskCategoryViolation|The operation is not permitted due to category of the Datadisk.|该数据盘的类型不支持该操作。|
-|403|ResourcesNotInSameZone|The specified instance and disk are not in the same zone.|指定的实例和磁盘不在同一可用区。|
 |400|InvalidSystemDiskSize.ValueNotSupported|The specified SystemDiskSize is not valid.|指定的SystemDisk.Size不合法。|
 |400|MissingParameter|The input parameter "ImageId" that is mandatory for processing this request is not supplied.|参数ImageId不得为空。|
-|403|ImageNotSupportInstanceType|The specified instanceType is not supported by instance with marketplace image.|指定的市场镜像不支持该实例规格。|
 |400|InvalidInstance.NotFoundSystemDisk|The specified instance has no system disk.|指定的实例没有挂载系统盘。请确保指定的实例已挂载了系统盘。您可以调用DescribeInstances查询指定实例的信息。|
-|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|403|InvalidSystemDiskStatus.IsTransfering|The current status of the resource does not support this operation, system disk is transfering.|当前资源的状态不支持此操作，请再系统盘停止传输数据后重试。|
+|403|IncorrectDiskStatus|The current disk status does not support this operation.|当前的磁盘不支持此操作，请您确认磁盘处于正常使用状态，是否欠费。|
+|403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|该资源目前的状态不支持此操作。|
+|403|InstanceLockedForSecurity|The instance is locked due to security.|您的资源被安全锁定，拒绝操作。|
+|403|ImageNotSubscribed|The specified image has not be subscribed.|指定的镜像未在镜像市场订阅。|
+|403|ImageRemovedInMarket|The specified market image is not available, Or the specified user defined image includes product code because it is based on an image subscribed from marketplace, and that image in marketplace includeing exact the same product code has been removed.|指定的市场镜像不可用，或者指定的用户定义镜像包含产品代码，因为它基于从市场订购的镜像，并且市场中包含完全相同的产品代码的镜像已被删除。|
+|403|InstanceExpiredOrInArrears|The specified operation is denied as your prepay instance is expired \(prepay mode\) or in arrears \(afterpay mode\).|包年包月实例已过期，请您续费后再进行操作。|
+|403|ChargeTypeViolation|The operation is not permitted due to charge type of the instance.|付费方式不支持该操作，请您检查实例的付费类型是否与该操作冲突。|
+|403|DiskCreatingSnapshot|The operation is denied due to a snapshot of the specified disk is not completed yet.|指定的磁盘正在创建快照。|
+|403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|指定的镜像不支持I/O优化型实例。|
+|403|ImageNotSupportInstanceType|The specified image don not support the InstanceType instance.|指定的镜像不支持此类实例规格。|
+|403|QuotaExceed.BuyImage|The specified image is from the image market,You have not bought it or your quota has been exceeded.|您暂时不能使用指定的市场镜像。|
+|403|INST\_HAS\_UNPAID\_ORDER|The instance has unpaid order.|该实例有未完成的账单。|
+|403|OperationDenied.InstanceCreating|The specified instance is creating.|指定的实例已存在。|
+|403|InvalidParameter.NotMatch|%s|您输入的参数无效，请检查参数之间是否冲突。|
+|403|ResourcesNotInSameZone|The specified instance and disk are not in the same zone.|指定的实例和磁盘不在同一可用区。|
+|403|ImageNotSupportInstanceType|The specified instanceType is not supported by instance with marketplace image.|指定的市场镜像不支持该实例规格。|
 |403|OperationDenied.UnpaidOrder|The specified instance has unpaid order.|指定的实例ID已存在未支付订单，您可以登录ECS管理控制台支付。|
 |403|OperationDenied.ImageNotValid|%s|当前镜像不支持此操作。|
+|403|InvalidOperation.MultiAttachDisk|Multi attach disk does not support this operation.|开启多重挂载特性的云盘不支持该操作。|
+|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
+|404|InvalidInstanceId.NotFound|The specified instance does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
+|404|InvalidImageId.NotFound|The specified ImageId does not exist.|指定的镜像在该用户账号下不存在，请您检查镜像ID是否正确。|
+|404|InvalidSystemDiskSize.MoreThanMaxSize|The specified SystemDisk.Size parameter exceeds the maximum size.|指定的系统盘大小超出最大容量。|
+|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
+|404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the min size.|指定的系统盘小于最低容量。|
+|404|NoSuchResource|The specified resource is not found.|指定的资源不存在。|
+|500|OperationDenied|Internal Error.|内部错误。|
+|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
