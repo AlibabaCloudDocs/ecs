@@ -10,6 +10,7 @@
 -   当云盘正在创建快照时，不允许扩容。
 -   云盘挂载的实例的状态必须为**运行中**（`Running`）或者**已停止**（`Stopped`）。
 -   扩容时，不会修改云盘分区和文件系统，您需要在扩容后自行分配存储空间。
+-   开启多重挂载特性的云盘只支持离线扩容。扩容前，您需要确保所挂载的全部实例均为**已停止**（`Stopped`）状态。
 
 ## 调试
 
@@ -33,7 +34,7 @@
 
  -   offline（默认）：离线扩容。扩容后，您必须在控制台[重启实例](~~25440~~)或者调用API [RebootInstance](~~25502~~)使操作生效。
 -   online：在线扩容，无需重启实例即可完成扩容。云盘类型支持高效云盘、SSD云盘和ESSD云盘。 |
-|ClientToken|String|否|123e4567-e89b-12d3-a456-426655440000|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。更多详情，请参见[如何保证幂等性](~~25693~~)。 |
+|ClientToken|String|否|123e4567-e89b-12d3-a456-426655440000|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。更多信息，请参见[如何保证幂等性](~~25693~~)。 |
 
 ## 返回数据
 
@@ -80,9 +81,16 @@ https://ecs.aliyuncs.com/?Action=ResizeDisk
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|403|InvalidDataDiskSize.ValueNotSupported|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|指定的DataDisk.n.Size超出允许范围，或者快照的容量超过指定磁盘类别的大小限制。|
-|404|InvalidDiskId.NotFound|The specified disk does not exist.|指定的磁盘不存在。请您检查磁盘ID是否正确。|
-|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
+|400|InvalidDataDiskSize.ValueNotSupported|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|指定的DataDisk.n.Size超出允许范围，或者快照的容量超过指定磁盘类别的大小限制。|
+|400|InvalidDataDiskCategory.ValueNotSupported|%s|指定的数据磁盘类型无效。|
+|400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
+|400|InvalidDataDiskSize.ValueNotSupported|%s|指定的数据盘容量无效。|
+|400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
+|400|IncompleteParamter|Some fields can not be null in this request.|请求中缺失参数。|
+|400|InvalidRegionId.MalFormed|The specified RegionId is not valid|指定的RegionId不合法。|
+|400|InvalidParam.Type|The specified type is not supported.|指定的参数Type无效。|
+|400|LastOrderProcessing|The previous order is still processing, please try again later.|订单正在处理中，稍后重试。|
+|400|InvalidSystemDiskSize.ImageNotSupportResize|The specified image does not support resize.|指定的镜像不支持扩容。|
 |403|OperationDenied|The type of the disk does not support the operation.|此磁盘种类不支持指定的操作。|
 |403|OperationDenied|The status of the disk or the instance that the disk is attaching with does not support the operation.|此磁盘或实例状态无法执行指定的操作。|
 |403|InvalidDiskSize.TooSmall|Specified new disk size is less than the original disk size.|指定的新磁盘小于原始磁盘。|
@@ -91,32 +99,26 @@ https://ecs.aliyuncs.com/?Action=ResizeDisk
 |403|DiskError|IncorrectDiskStatus|指定的磁盘状态不合法。|
 |403|DiskInArrears|The specified operation is denied as your disk owing fee.|指定的磁盘已欠费。|
 |403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|该资源目前的状态不支持此操作。|
-|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|DiskCreatingSnapshot|The operation is denied due to a snapshot of the specified disk is not completed yet.|指定的磁盘正在创建快照。|
-|400|InvalidDataDiskCategory.ValueNotSupported|%s|指定的数据磁盘类型无效。|
-|400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
-|400|InvalidDataDiskSize.ValueNotSupported|%s|指定的数据盘容量无效。|
-|400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
 |403|InvalidDiskSize|Specified new disk size is less than or equal the original disk size.|指定的新磁盘大小必须大于原始磁盘大小。|
-|400|IncompleteParamter|Some fields can not be null in this request.|请求中缺失参数。|
 |403|Operation.Conflict|The operation may conflicts with others.|该操作与其他操作冲突。|
 |403|InstanceLockedForSecurity|The instance is locked due to security.|您的资源被安全锁定，拒绝操作。|
 |403|IncorrectDiskStatus|The current disk status does not support this operation.|当前的磁盘不支持此操作，请您确认磁盘处于正常使用状态，是否欠费。|
 |403|UserNotInTheWhiteList|The user is not in disk white list.|您不在磁盘白名单中，请加入白名单后重试。|
-|400|InvalidRegionId.MalFormed|The specified RegionId is not valid|指定的RegionId不合法。|
 |403|InvalidDiskCategory.NotSupported|The specified disk category is not supported.|指定的云盘类型不支持当前操作。|
-|400|InvalidParam.Type|The specified type is not supported.|指定的参数Type无效。|
 |403|InvalidRegion.NotSupport|The specified region does not support resize online.|该地域不支持在线扩容。|
 |403|InvalidDiskCategory.NotSupported|The specified disk category does not support resize online.|指定的磁盘类型不支持在线扩容。|
 |403|IncorrectInstanceStatus|The current status of the resource does not support resize online.|当前资源的状态不支持此操作。|
 |403|InvalidInstanceStatus.NotRunning|The status of instance to which the disk attachs must be running when resizing online.|在线调整磁盘大小时，磁盘连接到的实例的状态必须正在运行。|
 |403|IncorrectDiskStatus|The current status of the resource does not support resize online|当前资源的状态不支持在线扩容。|
-|400|LastOrderProcessing|The previous order is still processing, please try again later.|订单正在处理中，稍后重试。|
 |403|InvalidParameter.KMSKeyId.CMKNotEnabled|The CMK needs to be enabled.|加密云盘设置了KMSKeyId后，CMK必须处于启用状态。您可以调用密钥管理服务的DescribeKey接口查询指定CMK的相关信息。|
 |403|InvalidParameter.KMSKeyId.KMSUnauthorized|ECS service have no right to access your KMS.|ECS服务无权访问您的KMS。|
-|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|SecurityRisk.3DVerification|We have detected a security risk with your default credit or debit card. Please proceed with verification via the link in your email.|我们检测到您的默认信用卡或借记卡存在安全风险。请通过电子邮件中的链接进行验证。|
-|400|InvalidSystemDiskSize.ImageNotSupportResize|The specified image does not support resize.|指定的镜像不支持扩容。|
+|403|InvalidOperation.MultiAttachDiskNotSupportResizeOnline|Multi attach disk does not support resize online.|开启多重挂载特性的云盘不支持在线扩容。|
+|404|InvalidDiskId.NotFound|The specified disk does not exist.|指定的磁盘不存在。请您检查磁盘ID是否正确。|
+|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|指定的实例不存在，请您检查实例ID是否正确。|
+|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
