@@ -70,7 +70,7 @@ By default, Cloud Assistant commands are run by the root user on Linux instances
     -   For Windows instances, the default execution path is the directory where the process of the Cloud Assistant client is located. Example: C:\\ProgramData\\aliyun\\assist\\$\(version\). |
     |Timeout Period|The timeout period for the command to run on instances. If a task that runs a command times out, Cloud Assistant forcibly stops the task process.**** Unit: seconds. Default value: 60. Minimum value: 10. If you set **Timeout Period** to a value of less than 10, the system changes the value to 10 to ensure that the execution succeeds. |
 
-6.  In the **Select Instances**section, select the instances on which you want to run the command.
+6.  In the **Select Instances** section, select the instances on which you want to run the command.
 
 7.  Click **Execute and Save** or **Run**.
 
