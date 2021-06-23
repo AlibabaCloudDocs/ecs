@@ -46,7 +46,7 @@ By default, Cloud Assistant commands are run by the root user on Linux instances
         |Password Name|The password used by the user hosted in Operation Orchestration Service \(OOS\) that is executing the command. This parameter is required only when the command is run by a regular user other than the system user on Windows instances. If the password of the user executing the command is not hosted in OOS, you must create and host the password in the parameter repository of OOS. For more information, see [Create encryption parameters]() and [Run Cloud Assistant commands on Windows instances as a regular user](/intl.en-US/Deployment & Maintenance/Cloud assistant/DevOps practice/Run Cloud Assistant commands as a regular user.mdsection_rgk_3gp_gdi). |
         |Command Parameters|In the **Command Parameters** fields, enter values for the custom parameters specified in the command. No format limits apply to the data types of values for the custom parameters. If the current task does not require values for these fields, you can leave the fields empty. **Note:** If you did not select **Use Parameters** when you create the command, the **Command Parameters** fields are not displayed in the Create Task panel. |
 
-    2.  In the **Select Instances**section, select one or more instances.
+    2.  In the **Select Instances** section, select one or more instances.
 
         If you have multiple instances, you can enter instance IDs or names to search for instances, and select tags or client status as filter conditions from the drop-down list to narrow down the search results.
 
