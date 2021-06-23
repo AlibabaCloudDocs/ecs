@@ -12,8 +12,9 @@
 
         以上两种方式只能任选其中之一。当返回的条目数较多时，推荐使用方式一。如果设置了`NextToken`，则请求参数`PageSize`和`PageNumber`将失效，且返回数据中的`TotalCount`无效。
 
+-   开启多重挂载特性的云盘可以挂载到多个实例上，您可以根据返回结果的`Attachment`列表查看云盘涉及的所有挂载信息。
 
-通过阿里云CLI调用API时，不同数据类型的请求参数取值必须遵循格式要求。详细信息，请参见[CLI参数格式说明](~~110340~~)。
+通过阿里云CLI调用API时，不同数据类型的请求参数取值必须遵循格式要求。更多信息，请参见[CLI参数格式说明](~~110340~~)。
 
 ## 调试
 
@@ -48,7 +49,7 @@
 -   ephemeral\_ssd：（已停售）本地SSD盘
 
  默认值：all |
-|Status|String|否|All|云盘状态。详细信息，请参见[云盘状态](~~25689~~)。取值范围：
+|Status|String|否|All|云盘状态。更多信息，请参见[云盘状态](~~25689~~)。取值范围：
 
  -   In\_use
 -   Available
@@ -135,6 +136,13 @@
 
  默认值：false |
 |KMSKeyId|String|否|0e478b7a-4262-4802-b8cb-00d3fb40\*\*\*\*|云盘使用的KMS密钥ID。 |
+|MultiAttach|String|否|Disabled|是否开启了多重挂载特性。取值范围：
+
+ -   Disabled：未开启
+-   Enabled：已开启
+-   LegacyShared：用于查询共享块存储
+
+ 多重挂载功能正在邀测中，如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)。 |
 |Tag.N.key|String|否|null|云盘或本地盘的标签键。
 
  **说明：** 为提高代码兼容性，请尽量使用Tag.N.Key参数。 |
@@ -153,9 +161,12 @@
 |--|--|---|--|
 |Disks|Array of Disk| |云盘或本地盘信息组成的集合。 |
 |Disk| | | |
-|AttachedTime|String|2018-01-01T01:04:22Z|挂载时间。按照ISO8601标准表示，使用UTC+0时间。格式为：yyyy-MM-ddThh:mmZ。
-
- 该参数值仅在`Status`参数值为`Available`时才有意义。 |
+|AttachedTime|String|2021-06-07T06:08:56Z|该云盘最后一次挂载的时间。按照ISO8601标准表示，使用UTC+0时间。格式为：yyyy-MM-ddThh:mmZ。 |
+|Attachments|Array of Attachment| |云盘所涉及的挂载信息。由`Attachment`对象组成的列表，查询共享块存储时不返回该列表。 |
+|Attachment| | | |
+|AttachedTime|String|2021-06-07T06:08:56Z|挂载的时间，以UTC +0时间为准。 |
+|Device|String|/dev/xvda|设备名称。 |
+|InstanceId|String|i-bp67acfmxazb4q\*\*\*\*|所挂载的实例ID。 |
 |AutoSnapshotPolicyId|String|sp-bp67acfmxazb4p\*\*\*\*|云盘采用的自动快照策略ID。 |
 |BdfId|String|null|该参数正在邀测中，暂未开放使用。 |
 |Category|String|cloud\_ssd|云盘或本地盘种类。可能值：
@@ -168,7 +179,7 @@
 -   local\_hdd\_pro：吞吐密集型本地盘
 -   ephemeral：（已停售）本地盘
 -   ephemeral\_ssd：（已停售）本地SSD盘 |
-|CreationTime|String|2018-01-01T01:01:22Z|创建时间。 |
+|CreationTime|String|2021-06-07T06:08:54Z|创建时间。 |
 |DedicatedBlockStorageClusterId|String|dbsc-f8zfynww0vzuhg4w\*\*\*\*|云盘所属的专属块存储集群ID。如果您的云盘在公共云块存储集群中，此参数为空。 |
 |DeleteAutoSnapshot|Boolean|false|是否同时删除自动快照。可能值：
 
@@ -181,15 +192,14 @@
  -   true：释放实例时，这块云盘随实例一起释放。
 -   false：释放实例时，这块云盘保留不释放。 |
 |Description|String|testDescription|云盘或本地盘描述。 |
-|DetachedTime|String|2018-01-08T01:01:22Z|卸载时间。
+|DetachedTime|String|2021-06-07T21:01:22Z|该云盘最后一次卸载时间。 |
+|Device|String|/dev/xvda|云盘或本地盘挂载的实例的设备名，例如/dev/xvdb。您需要注意：
 
- 该参数值仅在`Status`参数值为`Available`时才有意义。 |
-|Device|String|/dev/xvdb|云盘或本地盘挂载的实例的设备名，例如/dev/xvdb。
-
- 该参数仅在`Status`参数值为`In_use`时才有值，其他状态时为空。
+ -   该参数仅在`Status`参数值为`In_use`时才有值，其他状态时为空。
+-   对于开启多重挂载特性的云盘，该值始终为空。您可以通过返回的`Attachment`对象组成的列表，查看云盘所涉及的所有挂载信息。
 
  **说明：** 该参数即将停止使用，为提高代码兼容性，建议您尽量不要使用该参数。 |
-|DiskChargeType|String|PostPaid|云盘或本地盘的计费方式。可能值：
+|DiskChargeType|String|PrePaid|云盘或本地盘的计费方式。可能值：
 
  -   PrePaid：包年包月
 -   PostPaid：按量付费 |
@@ -198,14 +208,15 @@
 |EnableAutoSnapshot|Boolean|false|云盘是否启用自动快照策略功能。 |
 |EnableAutomatedSnapshotPolicy|Boolean|false|云盘是否设置了自动快照策略。 |
 |Encrypted|Boolean|false|是否为加密云盘。 |
-|ExpiredTime|String|2018-01-10T01:01:22Z|包年包月云盘的过期时间。 |
+|ExpiredTime|String|2021-07-07T16:00Z|包年包月云盘的过期时间。 |
 |IOPS|Integer|4000|每秒读写（I/O）操作的次数，单位：次/s。 |
 |IOPSRead|Integer|2000|每秒读操作的次数，单位：次/s。 |
 |IOPSWrite|Integer|2000|每秒写操作的次数，单位：次/s。 |
 |ImageId|String|m-bp13aqm171qynt3u\*\*\*|创建ECS实例时使用的镜像ID，只有通过镜像创建的云盘才有值，否则为空。这个值在云盘的生命周期内始终不变。 |
-|InstanceId|String|i-bp1j4i2jdf3owlheb\*\*\*|云盘或本地盘挂载的实例ID。
+|InstanceId|String|i-bp67acfmxazb4q\*\*\*\*|云盘或本地盘挂载的实例ID。您需要注意：
 
- 该参数值仅在`Status`参数值为`In_use`时才有值，其他状态时为空。 |
+ -   该参数值仅在`Status`参数值为`In_use`时才有值，其他状态时为空。
+-   对于开启多重挂载特性的云盘，该值始终为空。您可以通过返回的`Attachment`对象组成的列表，查看云盘所涉及的所有挂载信息。 |
 |KMSKeyId|String|0e478b7a-4262-4802-b8cb-00d3fb408\*\*\*|云盘使用的KMS密钥ID。 |
 |MountInstanceNum|Integer|1|共享存储挂载的实例数量。 |
 |MountInstances|Array of MountInstance| |共享存储挂载到实例上的信息集合。 |
@@ -213,10 +224,11 @@
 |AttachedTime|String|2017-12-05T2340:00Z|挂载时间。按照[ISO8601](~~25696~~)标准表示，使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。 |
 |Device|String|/dev/xvda|云盘或本地盘的挂载点。 |
 |InstanceId|String|i-bp1j4i2jdf3owlhe\*\*\*\*|云盘或本地盘挂载的实例ID。 |
+|MultiAttach|String|Disabled|云盘是否开启了多重挂载特性。 |
 |OperationLocks|Array of OperationLock| |云盘或本地盘锁定原因类型。 |
 |OperationLock| | | |
 |LockReason|String|security|云盘或本地盘被安全锁定的原因。 |
-|PerformanceLevel|String|PL2|ESSD云盘的性能等级。可能值：
+|PerformanceLevel|String|PL0|ESSD云盘的性能等级。可能值：
 
  -   PL0：单盘最高随机读写IOPS 1万。
 -   PL1：单盘最高随机读写IOPS 5万。
@@ -227,11 +239,11 @@
 |RegionId|String|cn-hangzhou|云盘或本地盘所属的地域ID。 |
 |ResourceGroupId|String|rg-bp67acfmxazb4p\*\*\*\*|云盘或本地盘所在的企业资源组ID。 |
 |SerialNumber|String|bp18um4r4f2fve2\*\*\*\*|云盘或本地盘的序列号。 |
-|Size|Integer|2000|云盘或本地盘大小，单位GiB。 |
+|Size|Integer|60|云盘或本地盘大小，单位GiB。 |
 |SourceSnapshotId|String|s-bp67acfmxazb4p\*\*\*\*|创建云盘使用的快照ID。
 
  如果创建云盘时，没有指定快照，则该参数值为空。该参数值在云盘的生命周期内始终不变。 |
-|Status|String|Available|云盘状态。可能值：
+|Status|String|In\_use|云盘状态。可能值：
 
  -   In\_use
 -   Available
@@ -245,16 +257,16 @@
 |Tag| | | |
 |TagKey|String|TestKey|标签键。 |
 |TagValue|String|TestValue|标签值。 |
-|Type|String|data|云盘或本地盘类型。可能值：
+|Type|String|system|云盘或本地盘类型。可能值：
 
  -   system：系统盘
 -   data：数据盘 |
-|ZoneId|String|cn-hangzhou-g|云盘或本地盘所属的可用区ID。 |
+|ZoneId|String|cn-hangzhou-i|云盘或本地盘所属的可用区ID。 |
 |NextToken|String|AAAAAdDWBF2\*\*\*\*|本次调用返回的查询凭证值。 |
 |PageNumber|Integer|1|云盘或本地盘列表的页码。 |
 |PageSize|Integer|1|输入时设置的每页行数。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
-|TotalCount|Integer|76|查询结果总条数。 |
+|TotalCount|Integer|15|查询结果总条数。 |
 
 ## 示例
 
@@ -274,54 +286,57 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 
 ```
 <DescribeDisksResponse>
-      <PageNumber>1</PageNumber>
-      <TotalCount>76</TotalCount>
+      <TotalCount>15</TotalCount>
+      <NextToken>AAAAAdDWBF2****</NextToken>
       <PageSize>1</PageSize>
-      <RequestId>C74847CB-9B69-4360-9969-3595F2B6B9C1</RequestId>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <PageNumber>1</PageNumber>
       <Disks>
             <Disk>
-                  <DiskChargeType>PostPaid</DiskChargeType>
-                  <ImageId>centos_7_06_64_20G_alibase_20190711.vhd</ImageId>
-                  <Device>/dev/xvda</Device>
                   <DetachedTime></DetachedTime>
-                  <Type>system</Type>
-                  <InstanceId>i-bp1j4i2jdf3owlhe****</InstanceId>
-                  <Encrypted>false</Encrypted>
-                  <ZoneId>cn-hangzhou-f</ZoneId>
-                  <EnableAutoSnapshot>true</EnableAutoSnapshot>
-                  <AttachedTime>2019-11-11T08:35:32Z</AttachedTime>
-                  <PerformanceLevel>PL2</PerformanceLevel>
-                  <SerialNumber>bp18um4r4f2fve2****</SerialNumber>
-                  <SourceSnapshotId>s-bp67acfmxazb4p****</SourceSnapshotId>
-                  <DeleteAutoSnapshot>false</DeleteAutoSnapshot>
+                  <Category>cloud_ssd</Category>
+                  <Description>testDescription</Description>
                   <KMSKeyId></KMSKeyId>
-                  <Size>40</Size>
-                  <Description></Description>
-                  <DedicatedBlockStorageClusterId></DedicatedBlockStorageClusterId>
-                  <BdfId></BdfId>
-                  <ProductCode></ProductCode>
-                  <Portable>false</Portable>
-                  <EnableAutomatedSnapshotPolicy>false</EnableAutomatedSnapshotPolicy>
                   <ResourceGroupId></ResourceGroupId>
-                  <DiskName></DiskName>
+                  <DedicatedBlockStorageClusterId></DedicatedBlockStorageClusterId>
+                  <Encrypted>false</Encrypted>
+                  <Size>40</Size>
+                  <DeleteAutoSnapshot>false</DeleteAutoSnapshot>
+                  <DiskChargeType>PrePaid</DiskChargeType>
+                  <MultiAttach>Disabled</MultiAttach>
+                  <Attachments>
+                        <Attachment>
+                              <AttachedTime>2021-06-07T06:08:56Z</AttachedTime>
+                              <InstanceId>i-bp67acfmxazb4q****</InstanceId>
+                              <Device>/dev/xvda</Device>
+                        </Attachment>
+                  </Attachments>
+                  <ExpiredTime>2021-07-07T16:00Z</ExpiredTime>
+                  <ImageId>m-bp13aqm171qynt3u***</ImageId>
                   <StorageSetId></StorageSetId>
-                  <AutoSnapshotPolicyId></AutoSnapshotPolicyId>
-                  <CreationTime>2019-11-11T08:35:29Z</CreationTime>
-                  <MountInstances>
-            </MountInstances>
-                  <Status>In_use</Status>
                   <Tags>
-                        <Tag>
-                              <TagValue>TestValue</TagValue>
-                              <TagKey>TestKey</TagKey>
-                        </Tag>
-                  </Tags>
-                  <Category>cloud_efficiency</Category>
-                  <RegionId>cn-hangzhou</RegionId>
+            </Tags>
+                  <Status>In_use</Status>
+                  <AttachedTime>2021-06-07T06:08:56Z</AttachedTime>
+                  <ZoneId>cn-hangzhou-i</ZoneId>
+                  <InstanceId>i-bp67acfmxazb4q****</InstanceId>
+                  <SourceSnapshotId></SourceSnapshotId>
+                  <ProductCode></ProductCode>
+                  <PerformanceLevel>PL0</PerformanceLevel>
+                  <Device>/dev/xvda</Device>
                   <DeleteWithInstance>true</DeleteWithInstance>
+                  <EnableAutomatedSnapshotPolicy>false</EnableAutomatedSnapshotPolicy>
+                  <EnableAutoSnapshot>false</EnableAutoSnapshot>
+                  <AutoSnapshotPolicyId>sp-bp67acfmxazb4p****</AutoSnapshotPolicyId>
+                  <DiskName>testDiskName</DiskName>
                   <OperationLocks>
             </OperationLocks>
-                  <ExpiredTime>2999-09-08T16:00Z</ExpiredTime>
+                  <BdfId></BdfId>
+                  <Portable>false</Portable>
+                  <Type>system</Type>
+                  <SerialNumber>bp18um4r4f2fve2****</SerialNumber>
+                  <CreationTime>2021-06-07T06:08:54Z</CreationTime>
+                  <RegionId>cn-hangzhou</RegionId>
                   <DiskId>d-bp18um4r4f2fve24****</DiskId>
             </Disk>
       </Disks>
@@ -332,59 +347,62 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 
 ```
 {
-	"PageNumber": 1,
-	"TotalCount": 76,
+	"TotalCount": 15,
+	"NextToken": "AAAAAdDWBF2****",
 	"PageSize": 1,
-	"RequestId": "C74847CB-9B69-4360-9969-3595F2B6B9C1",
+	"RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+	"PageNumber": 1,
 	"Disks": {
 		"Disk": [
 			{
-				"DiskChargeType": "PostPaid",
-				"ImageId": "centos_7_06_64_20G_alibase_20190711.vhd",
-				"Device": "/dev/xvda",
 				"DetachedTime": "",
-				"Type": "system",
-				"InstanceId": "i-bp1j4i2jdf3owlhe****",
-				"Encrypted": false,
-				"ZoneId": "cn-hangzhou-f",
-				"EnableAutoSnapshot": true,
-				"AttachedTime": "2019-11-11T08:35:32Z",
-				"PerformanceLevel": "PL2",
-				"SerialNumber": "bp18um4r4f2fve2****",
-				"SourceSnapshotId": "s-bp67acfmxazb4p****",
-				"DeleteAutoSnapshot": false,
+				"Category": "cloud_ssd",
+				"Description": "testDescription",
 				"KMSKeyId": "",
-				"Size": 40,
-				"Description": "",
-                "DedicatedBlockStorageClusterId": "",
-				"BdfId": "",
-				"ProductCode": "",
-				"Portable": false,
-				"EnableAutomatedSnapshotPolicy": false,
 				"ResourceGroupId": "",
-				"DiskName": "",
-				"StorageSetId": "",
-				"AutoSnapshotPolicyId": "",
-				"CreationTime": "2019-11-11T08:35:29Z",
-				"MountInstances": {
-					"MountInstance": []
-				},
-				"Status": "In_use",
-				"Tags": {
-					"Tag": [
+				"DedicatedBlockStorageClusterId": "",
+				"Encrypted": false,
+				"Size": 40,
+				"DeleteAutoSnapshot": false,
+				"DiskChargeType": "PrePaid",
+				"MultiAttach": "Disabled",
+				"Attachments": {
+					"Attachment": [
 						{
-							"TagValue": "TestValue",
-							"TagKey": "TestKey"
+							"AttachedTime": "2021-06-07T06:08:56Z",
+							"InstanceId": "i-bp67acfmxazb4q****",
+							"Device": "/dev/xvda"
 						}
 					]
 				},
-				"Category": "cloud_efficiency",
-				"RegionId": "cn-hangzhou",
+				"ExpiredTime": "2021-07-07T16:00Z",
+				"ImageId": "m-bp13aqm171qynt3u***",
+				"StorageSetId": "",
+				"Tags": {
+					"Tag": []
+				},
+				"Status": "In_use",
+				"AttachedTime": "2021-06-07T06:08:56Z",
+				"ZoneId": "cn-hangzhou-i",
+				"InstanceId": "i-bp67acfmxazb4q****",
+				"SourceSnapshotId": "",
+				"ProductCode": "",
+				"PerformanceLevel": "PL0",
+				"Device": "/dev/xvda",
 				"DeleteWithInstance": true,
+				"EnableAutomatedSnapshotPolicy": false,
+				"EnableAutoSnapshot": false,
+				"AutoSnapshotPolicyId": "sp-bp67acfmxazb4p****",
+				"DiskName": "testDiskName",
 				"OperationLocks": {
 					"OperationLock": []
 				},
-				"ExpiredTime": "2999-09-08T16:00Z",
+				"BdfId": "",
+				"Portable": false,
+				"Type": "system",
+				"SerialNumber": "bp18um4r4f2fve2****",
+				"CreationTime": "2021-06-07T06:08:54Z",
+				"RegionId": "cn-hangzhou",
 				"DiskId": "d-bp18um4r4f2fve24****"
 			}
 		]
@@ -410,6 +428,8 @@ https://ecs.aliyuncs.com/?Action=DescribeDisks
 |400|InvalidSnapshot.NotFound|The specified parameter SnapshotId is not valid.|指定的SnapshotId不合法。|
 |403|InvalidDiskIds.Malformed|The amount of specified disk Ids exceeds the limit.|指定的磁盘ID格式不正确。|
 |403|UserNotInTheWhiteList|The user is not in volume white list.|用户不在共享块存储白名单中，请您提交工单申请白名单。|
+|403|InvalidParameter.MultiAttachAndEnableSharedNotMatch|The parameter MultiAttach and EnableShared are not match.|设置的MultiAttach参数和EnableShared参数的值不兼容。|
+|403|InvalidParameter.MultiAttach|The specified param MultiAttach is not valid.|MultiAttach参数的取值有误。|
 |404|InvalidDiskChargeType.NotFound|The DiskChargeType does not exist in our records|指定的磁盘计费方式不存在。|
 |404|InvalidLockReason.NotFound|The specified LockReason is not found|指定的锁定类型不存在。|
 |404|InvalidDiskIds.ValueNotSupported|The specified parameter "DiskIds" is not supported.|指定的磁盘ID无效。|
