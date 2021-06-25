@@ -2,13 +2,13 @@
 
 本文档主要以CentOS7操作系统为例，介绍如何使用开源工具Extundelete快速恢复被误删除掉的数据。
 
-使用本教程进行操作前，请确保您已经注册了阿里云账号。如还未注册，请先完成[账号注册](https://account.aliyun.com/register/register.htm?)。
+使用本教程进行操作前，请确保您已经注册了阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
 
 在日常使用中有时难免会出现数据被误删除的情况，该如何快速、有效地恢复数据呢？在阿里云上恢复数据有多种方式，例如：
 
 -   通过ECS管理控制台回滚已创建的快照、恢复自定义镜像等方式。
--   购买多台ECS，实现业务的负载均衡和高可用。详情请参见[负载均衡](/cn.zh-CN/传统型负载均衡CLB/CLB产品简介/什么是传统型负载均衡CLB.md)。
--   使用对象存储OSS，存储静态网页和海量图片、视频等重要数据。详情请参见[对象存储 OSS（Object Storage Service）](/cn.zh-CN/产品简介/什么是对象存储OSS.md)。
+-   购买多台ECS，实现业务的负载均衡和高可用。详情请参见[负载均衡](/intl.zh-CN/传统型负载均衡CLB/CLB产品简介/什么是传统型负载均衡CLB.md)。
+-   使用对象存储OSS，存储静态网页和海量图片、视频等重要数据。详情请参见[对象存储 OSS（Object Storage Service）](/intl.zh-CN/产品简介/什么是对象存储OSS.md)。
 
 在Linux下，基于开源的数据恢复工具有很多，常见的有debugfs、R-Linux、ext3grep、extundelete等，比较常用的有ext3grep和extundelete，这两个工具的恢复原理基本一样，只是extundelete功能更加强大。使用阿里云的云服务器时，如果您不小心误删除数据，并且Linux系统也没有与Windows系统下回收站类似的功能，您可以方便快速安装extundelete工具。
 
@@ -60,7 +60,7 @@ make && make install
 
 完成以下操作，使用extundelete模拟数据误删除后恢复的过程：
 
-1.  检查ECS现有的磁盘和可用分区，并对/dev/vdb进行分区和格式化。具体操作，请参见[格式化和挂载数据盘](/cn.zh-CN/块存储/云盘基础操作/分区格式化数据盘/Linux格式化数据盘.md)。
+1.  检查ECS现有的磁盘和可用分区，并对/dev/vdb进行分区和格式化。具体操作，请参见[格式化和挂载数据盘](/intl.zh-CN/块存储/云盘/分区格式化数据盘/Linux格式化数据盘.md)。
 
     ```
     fdisk -l
