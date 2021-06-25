@@ -92,19 +92,6 @@ Alibaba Cloud Linux 3镜像目前只支持KVM虚拟机。镜像本身不可直�
                 gpgcheck: 1
                 enabled: 1
                 gpgkey: https://mirrors.aliyun.com/alinux/$releasever/RPM-GPG-KEY-ALINUX-3
-        
-        # 使用cloud-init可能导致meta-data中步骤失效，以下为网络设置的替代方案。
-        write_files:
-          - path: /etc/systemd/network/20-eth0.network
-            permissions: 0644
-            owner: root
-            content: |
-              [Match]
-              Name=eth0
-        
-              [Network]
-              Address=192.168.*.*/24
-              Gateway=192.168.*.1
         ```
 
 2.  本地安装`cloud-utils`软件包。
