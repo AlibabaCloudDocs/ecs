@@ -1,125 +1,129 @@
-# 误删文件后恢复数据
+# Restore data deleted by mistake
 
-本文档主要以CentOS7操作系统为例，介绍如何使用开源工具Extundelete快速恢复被误删除掉的数据。
+This topic describes how to use extundelete to restore data that was accidentally deleted. CentOS 7 is used in the examples.
 
-使用本教程进行操作前，请确保您已经注册了阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
+An Alibaba Cloud account is created. To create an Alibaba Cloud account, go to the [account registration page](https://account.aliyun.com/register/register.htm?).
 
-在日常使用中有时难免会出现数据被误删除的情况，该如何快速、有效地恢复数据呢？在阿里云上恢复数据有多种方式，例如：
+An Alibaba Cloud account is created. To create an Alibaba Cloud account, go to the [account registration page](https://account.alibabacloud.com/register/intl_register.htm).
 
--   通过ECS管理控制台回滚已创建的快照、恢复自定义镜像等方式。
--   购买多台ECS，实现业务的负载均衡和高可用。详情请参见[负载均衡](/intl.zh-CN/传统型负载均衡CLB/CLB产品简介/什么是传统型负载均衡CLB.md)。
--   使用对象存储OSS，存储静态网页和海量图片、视频等重要数据。详情请参见[对象存储 OSS（Object Storage Service）](/intl.zh-CN/产品简介/什么是对象存储OSS.md)。
+An Alibaba Cloud account is created. To create an Alibaba Cloud account, go to the account registration page.
 
-在Linux下，基于开源的数据恢复工具有很多，常见的有debugfs、R-Linux、ext3grep、extundelete等，比较常用的有ext3grep和extundelete，这两个工具的恢复原理基本一样，只是extundelete功能更加强大。使用阿里云的云服务器时，如果您不小心误删除数据，并且Linux系统也没有与Windows系统下回收站类似的功能，您可以方便快速安装extundelete工具。
+In practice, data may be accidentally deleted. In this case, you need to restore the data quickly and effectively. Alibaba Cloud offers several ways to restore data, including the following ways:
 
-extundelete工具能够利用inode信息结合日志去查询该inode所在的block位置，以此查找和恢复所需的数据。该工具最给力的一点就是支持ext3/ext4双格式分区恢复，基于整个磁盘的恢复功能较为强大。
+-   In the ECS console, roll back snapshots or restore custom images to restore data.
+-   Implement load balancing and high availability for your business by purchasing multiple instances. For more information, see [What is Server Load Balancer?](/intl.en-US/Classic Load Balancer/Product Introduction/What is CLB?.md).
+-   Use Object Storage Service \(OSS\) to store a large amount of data such as web pages, images, and videos. For more information, see [What is OSS?](/intl.en-US/Product Introduction/What is OSS?.md).
 
-在数据被误删除后，首先要做的是卸载被删除数据所在的磁盘或磁盘分区。因为将文件删除后，仅仅是将文件的inode节点中的扇区指针清零，实际文件还存储在磁盘上，如果磁盘以读写模式挂载，这些已删除的文件的数据块就可能被操作系统重新分配出去，在这些数据块被新的数据覆盖后，误删除的数据就无法恢复。所以，以只读模式挂载磁盘可以尽量降低数据块中数据被覆盖的风险，提高恢复数据成功的几率。
+There are multiple open source data recovery tools for Linux, such as debugfs, R-Linux, ext3grep, and extundelete. Although ext3grep and extundelete are both popular and adopt similar recovery techniques, extundelete has a higher performance. Linux systems do not have a Recycle Bin function built-in. You can install extundelete on Linux systems to restore data that has been deleted by accident.
 
-**说明：** 在实际线上恢复过程中，切勿将extundelete安装到您误删的文件所在硬盘，这样会有一定几率将需要恢复的数据彻底覆盖，切记操作前做好快照备份。
+extundelete can find and recover the deleted data by combining the inode information and logs to find the inode block. extundelete can recover deleted data from ext3 or ext4 partitions.
 
-本教程适用的对象是：
+If you accidentally delete data, you must first detach the disk or disk partition on which the deleted data was stored. This is because after a file is deleted, the inode pointers of the file are cleared but the file will remain on the disk. If the disk is attached in read/write mode, data blocks of the deleted file may be reallocated by the operating system. After the data blocks are overwritten by new data, the original data will be lost completely and cannot be restored. To reduce the risk of data overwriting and improve chance of data restoration, you can store files on disks in read-only mode.
 
--   磁盘中文件误删除的用户，且未对磁盘进行过写入等操作
--   网站访问量小、少量ECS实例的用户
+**Note:** When you restore deleted data online, do not install extundelete on the disk where the deleted data was located. Otherwise, you may overwrite the data that you want to restore. Back up the disk by taking a snapshot before you perform any operations.
 
-需安装的软件及版本：e2fsprogs-devel、e2fsprogs、gcc-c++、make（编译器等）、Extundelete-0.2.4。
+This topic is applicable to the following users:
 
-**说明：** extundelete需要libext2fs版本1.39或更高版本来运行，但是对于ext4系统是支持的，请确保您有e2fsprogs版本1.41或更高版本（可以通过运行命令`dumpe2fs`并记录其输出的版本）。
+-   Users who have accidentally deleted files from a disk and have not since performed write operations on the disk.
+-   Users whose websites have low traffic and who have few ECS instances.
 
-以上版本是写文档时的软件版本。您下载的版本可能与此不同。
+Required software releases: e2fsprogs-devel, e2fsprogs, gcc-c++, make \(a utility for compiling and linking multi-file projects\), and extundelete-0.2.4.
 
-## 操作步骤
+**Note:** libext2fs 1.39 or later is required to run extundelete. However, to restore data from ext4 partitions, make sure that you have access to e2fsprogs 1.41 or later. You can run the `dumpe2fs` command and record the version of e2fsprogs.
 
-使用开源工具Extundelete快速恢复被误删的数据的操作步骤如下：
+The preceding releases were available at the time of writing. The versions that you download may be different in your actual running environment.
 
-1.  [步骤一：部署extundelete工具](#section_vdo_3hc_rfl)
-2.  [步骤二：使用extundelete模拟数据误删除后恢复的过程](#section_xex_k3r_hup)
+## Procedure
 
-## 步骤一：部署extundelete工具
+Perform the following operations to use extundelete to restore data that was deleted by accident:
 
-运行以下命令，部署extundelete工具：
+1.  [Step 1: Deploy extundelete](#section_vdo_3hc_rfl)
+2.  [Step 2: Use extundelete to stimulate the restoration process](#section_xex_k3r_hup)
+
+## Step 1: Deploy extundelete
+
+Run the following commands to deploy extundelete:
 
 ```
 wget  http://zy-res.oss-cn-hangzhou.aliyuncs.com/server/extundelete-0.2.4.tar.bz2
-yum -y install  bzip2  e2fsprogs-devel  e2fsprogs  gcc-c++  make    #安装相关依赖和库
+yum -y install  bzip2  e2fsprogs-devel  e2fsprogs  gcc-c++  make    # Install related dependencies and libraries.
 tar -xvjf extundelete-0.2.4.tar.bz2
-cd extundelete-0.2.4                                #进入程序目录
-./configure                                         #如下图表示安装成功
+cd extundelete-0.2.4                                # Go to the program directory.
+./configure                                         # If the output in the following figure is generated, extundelete is installed.
 ```
 
-![部署extundelete工具](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8755893261/p12896.png)
+![Deploy extundelete](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2114488951/p12896.png)
 
 ```
 make && make install
 ```
 
-这个时候会出现src目录，该目录下有个extundelete可执行文件以及相应路径，其实默认文件安装路径为usr/local/bin，下面模拟删除后恢复数据的操作就在usr/local/bin目录下进行。
+At this point, the src directory appears. It contains an extundelete executable file and the corresponding path. The default path is usr/local/bin. The following step for data restoration is performed in the usr/local/bin directory.
 
-## 步骤二：使用extundelete模拟数据误删除后恢复的过程
+## Step 2: Use extundelete to stimulate the restoration process
 
-完成以下操作，使用extundelete模拟数据误删除后恢复的过程：
+Perform the following steps to use extundelete to stimulate the restoration process:
 
-1.  检查ECS现有的磁盘和可用分区，并对/dev/vdb进行分区和格式化。具体操作，请参见[格式化和挂载数据盘](/intl.zh-CN/块存储/云盘/分区格式化数据盘/Linux格式化数据盘.md)。
+1.  Check the available disks and partitions of your ECS instance, and then format and partition the /dev/vdb disk. For more information, see [Format a data disk for a Linux-based ECS instance](/intl.en-US/Block Storage/Cloud disks/Format a data disk/Format a data disk for a Linux instance.md).
 
     ```
     fdisk -l
     ```
 
-    ![检查磁盘和分区情况](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8755893261/p12898.png)
+    ![Check the available disks and partitions](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2114488951/p12898.png)
 
-2.  将分区后的磁盘挂载到/zhuyun目录下，然后在/zhuyun下新建测试文件hello，并写入内容`test`。
+2.  Attach the partitioned disk to the/zhuyun directory, create a file named hello in the /zhuyun directory, and then write `test` to the file.
 
     ```
-    mkdir /zhuyun                                #新建zhuyun目录
-    mount /dev/vdb1 /zhuyun                      #将磁盘挂载到zhuyun目录下
-    echo test > hello                            #写入测试文件
+    mkdir /zhuyun                                # Create the zhuyun directory.
+    mount /dev/vdb1 /zhuyun                      # Attach the disk to the zhuyun directory.
+    echo test > hello                            # Create a test file.
     ```
 
-3.  记录文件hello的md5值。md5sum命令用于生成和校验删除前和恢复后两个文件的md5值。
+3.  Record the MD5 values of the hello file. The md5sum command is used to generate and verify the MD5 values of the file before and after deletion.
 
     ```
     md5sum hello
     ```
 
-    ![记录文档的md5值](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8755893261/p12899.png)
+    ![Record the MD5 values of the file](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2114488951/p12899.png)
 
-4.  模拟删除hello文件。
+4.  Delete the hello file in simulation mode.
 
     ```
     rm -rf hello
     cd ~
-    fuser -k /zhuyun                     #结束使用某分区的进程树（确认没有资源占用的话，可以跳过此步）
+    fuser -k /zhuyun                     # Terminate the process tree that uses a specified partition. Skip this step if no resources are occupied.
     ```
 
-5.  卸载数据盘。
+5.  Detach a data disk.
 
     ```
-    umount /dev/vdb1                     #任何的文件恢复工具，在使用前，均要将要恢复的分区卸载或挂载为只读，防止数据被覆盖使用。
+    umount /dev/vdb1                     # Before you use any file restoration tool, unmount or mount the partitions to be restored in read-only mode to prevent their data from being overwritten.
     ```
 
-6.  使用extundelete工具恢复文件。
+6.  Use extundelete to restore the file.
 
     1.  ```
-extundelete --inode 2 /dev/vdb1       #为查找某i节点中的内容，使用2则说明为整个分区搜索，如果需要进入目录搜索，只须要指定目录I节点即可。这是可以看到删除的文件名和inode。
+extundelete --inode 2 /dev/vdb1       # Query the content in a specified inode. The "2" indicates that the entire partition is queried. To query a directory, you can specify the inode and the directory. The deleted file and the inode are displayed.
 ```
 
-        ![恢复文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8755893261/p12900.png)
+        ![Restore the file](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3114488951/p12900.png)
 
     2.  ```
-/usr/local/bin/extundelete  --restore-inode 12  /dev/vdb1    #恢复删除的文件
+/usr/local/bin/extundelete  --restore-inode 12  /dev/vdb1    # Restore the deleted file.
 ```
 
-        这个时候会在执行命令的同级目录下出现RECOVERED\_FILES目录。
+        At this point, the RECOVERED\_FILES directory appears under the directory where the command is executed.
 
-        ![生成恢复后的文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8755893261/p12901.png)
+        ![Generate the restored file](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3114488951/p12901.png)
 
-7.  通过md5sum命令查看恢复后RECOVERED\_FILES文件的md5值。
+7.  Run the md5sum command to check the MD5 value of the RECOVERED\_FILES file after restoration.
 
     ```
     md5sum RECOVERED_FILES
     ```
 
-    查看删除前的hello和恢复后的RECOVERED\_FILES两个文件的md5值是否一致，如果一致，则数据恢复成功。
+    Check whether the MD5 values of the hello and RECOVERED\_FILES files are the same. If they are, the data is restored.
 
 
