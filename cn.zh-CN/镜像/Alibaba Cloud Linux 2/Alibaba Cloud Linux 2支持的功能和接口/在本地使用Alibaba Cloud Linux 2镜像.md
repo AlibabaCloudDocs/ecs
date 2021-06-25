@@ -2,7 +2,7 @@
 
 Alibaba Cloud Linux 2提供了多种格式的本地镜像，并内置cloud-init。本文介绍如何在本地使用Alibaba Cloud Linux 2镜像。
 
-Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直接启动虚拟机，需要配置引导镜像。本文中本地环境为CentOS操作系统，使用Alibaba Cloud Linux 2创建了KVM虚拟机，并使用cloud-init初始化虚拟机系统设置，cloud-init的相关信息请参见[cloud-init官网 - 阿里云数据源说明文档](https://cloudinit.readthedocs.io/en/latest/topics/datasources/aliyun.html?spm=a2c4g.11186623.2.24.1bec3fcaonbql3)。然后使用NoCloud数据源在本地建立相关配置文件，以虚拟磁盘的形式挂载到KVM虚拟机中进行设置，并启动虚拟机。
+Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直接启动虚拟机，需要配置引导镜像。本文中本地环境为CentOS操作系统，使用Alibaba Cloud Linux 2创建了KVM虚拟机，并使用cloud-init初始化虚拟机系统设置。cloud-init的相关信息，请参见[cloud-init官网 - 阿里云数据源说明文档](https://cloudinit.readthedocs.io/en/latest/topics/datasources/aliyun.html?spm=a2c4g.11186623.2.24.1bec3fcaonbql3)。然后使用NoCloud数据源在本地建立相关配置文件，以虚拟磁盘的形式挂载到KVM虚拟机中进行设置，并启动虚拟机。
 
 本文适用于对KVM虚拟机有一定了解的用户。
 
@@ -42,14 +42,6 @@ Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直�
         #vim:syntax=yaml
         
         local-hostname: alinux-host
-        # FIXME: doesn't work for systemd-networkd
-        #network-interfaces: |
-        #  iface eth0 inet static
-        #  address 192.168.122.68
-        #  network 192.168.122.0
-        #  netmask 255.255.255.0
-        #  broadcast 192.168.122.255
-        #  gateway 192.168.122.1
         ```
 
     3.  创建`user-data`配置文件。
@@ -94,24 +86,6 @@ Alibaba Cloud Linux 2镜像目前只支持KVM虚拟机。镜像本身不可直�
                 gpgcheck: true
                 gpgkey: https://mirrors.aliyun.com/alinux/RPM-GPG-KEY-ALIYUN
                 name: Aliyun Linux - $releasever - Plus - mirrors.aliyun.com
-        
-        # 使用cloud-init或systemd-networkd可能导致meta-data中步骤失效，以下为网络设置的替代方案。
-        write_files:
-          - path: /etc/systemd/network/20-eth0.network
-            permissions: 0644
-            owner: root
-            content: |
-              [Match]
-              Name=eth0
-        
-              [Network]
-              Address=192.168.*.*/24
-              Gateway=192.168.*.1
-        
-        # 您也可以用以下网络设置的替代方案。
-        runcmd:
-          - ifdown eth0
-          - systemctl restart systemd-networkd
         ```
 
 2.  本地安装`cloud-utils`软件包。
