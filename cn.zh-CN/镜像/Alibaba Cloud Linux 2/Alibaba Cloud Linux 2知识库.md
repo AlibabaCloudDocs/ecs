@@ -20,4 +20,5 @@
 -   [Alibaba Cloud Linux 2快速启动版（qboot）系统的ECS实例升级内核失败](https://help.aliyun.com/knowledge_detail/183121.html)
 -   [Alibaba Cloud Linux 2系统的ECS实例内核日志（dmesg）存在“integrity: Unable to open file”信息](https://help.aliyun.com/knowledge_detail/184050.html)
 -   [如何在Alibaba Cloud Linux 2实例中通过“/etc/resolv.conf”文件自定义配置DNS](https://help.aliyun.com/knowledge_detail/188412.html)
+-   [在Alibaba Cloud Linux 2实例中使用docker-ce、epel等第三方YUM源安装软件失败](https://help.aliyun.com/document_detail/257795.html)
 
