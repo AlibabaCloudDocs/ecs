@@ -7,7 +7,7 @@ keyword: [Docker, 容器, Linux, ECS, 云服务器, 阿里云, Alibaba Cloud Lin
 本文介绍如何在Alibaba Cloud Linux 2.1903 LTS 64位操作系统的ECS实例上部署并使用Docker，适用于熟悉Linux操作系统，刚开始使用阿里云ECS的开发者。
 
 -   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
--   已创建了至少一台ECS实例。具体步骤，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
+-   已创建了至少一台ECS实例。具体操作，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
 
     本教程示例步骤适用于以下ECS实例配置：
 
@@ -21,7 +21,7 @@ keyword: [Docker, 容器, Linux, ECS, 云服务器, 阿里云, Alibaba Cloud Lin
 
 本教程主要介绍以下内容：
 
--   部署Docker，详情请参见[部署Docker](#section_gtl_cjs_ls2)。
+-   部署Docker，具体操作，请参见[部署Docker](#section_gtl_cjs_ls2)。
 -   使用Docker。
     -   Docker的基本用法介绍，请参见[使用Docker](#section_x1c_w5u_5wb)。
     -   制作镜像的示例操作，请参见[制作Docker镜像](#section_i4r_m92_6ev)。
@@ -32,44 +32,54 @@ keyword: [Docker, 容器, Linux, ECS, 云服务器, 阿里云, Alibaba Cloud Lin
 
 1.  远程连接ECS实例。连接方式请参见[连接方式概述](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
 
-2.  依次运行以下命令添加yum源。
+2.  安装Docker。
 
-    -   更新yum源。
+    您可以通过以下任一方式安装Docker：
 
-        ```
-        yum -y update
-        ```
-
-    -   安装epel源。
+    -   安装yum源中默认的Docker。
 
         ```
-        yum install -y epel-release 
+        yum -y install docker
         ```
 
-    -   清除yum缓存。
+    -   安装社区版Docker（docker-ce）。
+        1.  运行以下命令，下载docker-ce的yum源。
 
-        ```
-        yum clean all
-        ```
+            ```
+            wget -O /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+            ```
 
-    **说明：** 您可以运行命令yum list查看所有可安装的包。
+        2.  运行以下命令，安装Alibaba Cloud Linux 2专用的yum源兼容插件。
 
-3.  安装并运行Docker。
+            **说明：** 仅当您的实例为Alibaba Cloud Linux 2操作系统时，需要运行该命令。
+
+            ```
+            yum install yum-plugin-releasever-adapter --disablerepo=* --enablerepo=plus
+            ```
+
+        3.  运行以下命令，安装docker-ce。
+
+            ```
+            yum -y install docker-ce
+            ```
+
+3.  运行以下命令，启动Docker服务。
 
     ```
-    yum install docker-io -y
     systemctl start docker
     ```
 
-4.  查看Docker版本信息，确认是否成功安装Docker。
+4.  运行以下命令，查看Docker服务的运行状态。
 
     ```
-    docker --version
+    systemctl status docker
     ```
 
-    出现以下信息则表明安装成功。
+    回显结果如下图所示，表示Docker已成功部署并处于运行状态。
 
-    ![site](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9669638161/p128549.png)
+    ![docker active](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4200954261/p287883.png)
+
+    **说明：** 如果您需要查看Docker的版本，请运行docker -v命令。
 
 
 ## 使用Docker
@@ -83,6 +93,7 @@ Docker有以下基本用法：
     systemctl stop docker      #停止Docker守护进程
     systemctl restart docker   #重启Docker守护进程
     systemctl enable docker    #设置Docker开机自启动
+    systemctl status docker    #查看Docker的运行状态
     ```
 
 -   管理镜像。本文使用的是来自阿里云仓库的Apache镜像。
@@ -155,7 +166,7 @@ Docker有以下基本用法：
 
         在浏览器输入ECS实例IP地址加8080端口访问测试，出现以下内容则说明运行成功。
 
-        **说明：** ECS实例的安全组入方向规则需要放行8080端口，详情请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
+        **说明：** ECS实例的安全组入方向规则需要放行8080端口。具体操作，请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
 
         ![映射结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4712649951/p12348.png)
 
