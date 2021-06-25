@@ -6,18 +6,17 @@ keyword: [Docker, 容器, Linux, ECS, 云服务器, 阿里云, Alibaba Cloud Lin
 
 本文介绍如何在Alibaba Cloud Linux 2.1903 LTS 64位操作系统的ECS实例上部署并使用Docker，适用于熟悉Linux操作系统，刚开始使用阿里云ECS的开发者。
 
--   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
--   已创建了至少一台ECS实例。具体操作，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
+已创建了至少一台ECS实例。具体操作，请参见[使用向导创建实例](/intl.zh-CN/实例/创建实例/使用向导创建实例.md)。
 
-    本教程示例步骤适用于以下ECS实例配置：
+本教程示例步骤适用于以下ECS实例配置：
 
-    -   实例规格：ecs.g6.large
-    -   操作系统：公共镜像Alibaba Cloud Linux 2.1903 LTS 64位
+-   实例规格：ecs.g6.large
+-   操作系统：公共镜像Alibaba Cloud Linux 2.1903 LTS 64位
 
-        **说明：** 本示例操作命令同样适用于CentOS 7系统。
+    **说明：** 本示例操作命令同样适用于CentOS 7系统。
 
-    -   网络类型：专有网络VPC
-    -   IP地址：公网IP
+-   网络类型：专有网络VPC
+-   IP地址：公网IP
 
 本教程主要介绍以下内容：
 
@@ -184,11 +183,11 @@ Docker有以下基本用法：
     2.  按i进入编辑模式，添加以下内容。
 
         ```
-        #声明基础镜像来源
+        #声明基础镜像来源。
         FROM apachephp:v1
-        #声明镜像拥有者
+        #声明镜像拥有者。
         MAINTAINER DTSTACK
-        #RUN后面接容器运行前需要执行的命令，由于Dockerfile文件不能超过127行，因此当命令较多时建议写到脚本中执行
+        #RUN后面接容器运行前需要执行的命令，由于Dockerfile文件不能超过127行，因此当命令较多时建议写到脚本中执行。
         RUN mkdir /dtstact
         #开机启动命令，此处最后一个命令需要是可在前台持续执行的命令，否则容器后台运行时会因为命令执行完而退出。
         ENTRYPOINT ping www.aliyun.com
@@ -199,24 +198,24 @@ Docker有以下基本用法：
 2.  构建镜像。
 
     ```
-    docker build -t webalibabacloudlinux:v1 .    # . 是Dockerfile文件的路径，不能忽略
-    docker images                                #查看是否创建成功
+    docker build -t webalibabacloudlinux:v1 .    #命令末尾的`.`是Dockerfile文件的路径，不能忽略。
+    docker images                                #查看是否创建成功。
     ```
 
 3.  运行容器并查看。
 
     ```
-    docker run -d webalibabacloudlinux:v1    #后台运行容器
-    docker ps                                #查看当前运行中的容器
-    docker ps -a                             #查看所有容器，包括未运行中的
-    docker logs CONTAINER ID/IMAGE           #如未查看到刚才运行的容器，则用容器id或者名字查看启动日志排错
+    docker run -d webalibabacloudlinux:v1    #后台运行容器。
+    docker ps                                #查看当前运行中的容器。
+    docker ps -a                             #查看所有容器，包括未运行中的。
+    docker logs CONTAINER ID/IMAGE           #如未查看到刚才运行的容器，则用容器id或者名字查看启动日志排错。
     ```
 
 4.  制作镜像。
 
     ```
     docker commit fb2844b6**** dtstackweb:v1     #commit参数后添加容器ID和构建新镜像的名称和版本号。
-    docker images                                #列出本地（已下载的和本地创建的）镜像
+    docker images                                #列出本地（已下载的和本地创建的）镜像。
     ```
 
 5.  将镜像推送至远程仓库。
@@ -224,9 +223,9 @@ Docker有以下基本用法：
     默认推送到Docker Hub。您需要先登录Docker，为镜像绑定标签，将镜像命名为`Docker用户名/镜像名:标签`的格式。最终完成推送。
 
     ```
-    docker login --username=dtstack_plus registry.cn-shanghai.aliyuncs.com #执行后输入镜像仓库密码
-    docker tag [ImageId] registry.cn-shanghai.aliyuncs.com/dtstack123/test:[标签]
-    docker push registry.cn-shanghai.aliyuncs.com/dtstack123/test:[标签]
+    docker login --username=dtstack_plus registry.cn-shanghai.aliyuncs.com    #执行后输入镜像仓库密码。
+    docker tag \[ImageId\] registry.cn-shanghai.aliyuncs.com/dtstack123/test:\[标签\]
+    docker push registry.cn-shanghai.aliyuncs.com/dtstack123/test:\[标签\]
     ```
 
 
