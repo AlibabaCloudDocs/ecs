@@ -56,7 +56,7 @@ https://ecs.aliyuncs.com/?Action=JoinSecurityGroup
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <JoinSecurityGroupResponse>
@@ -64,7 +64,7 @@ https://ecs.aliyuncs.com/?Action=JoinSecurityGroup
 </JoinSecurityGroupResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -89,6 +89,7 @@ https://ecs.aliyuncs.com/?Action=JoinSecurityGroup
 |403|AclLimitExceed|%s|AccessPoint已超出限额值。|
 |403|InstanceSecurityGroupLimitExceeded|%s|实例绑定的安全组数量达到最大限制。|
 |400|InvalidInstanceId.Malformed|The specified parameter "InstanceId" is not valid.|指定的参数InstanceId格式有误。|
+|403|InvalidOperation.ResourceManagedByCloudProduct|%s|云产品托管的安全组不支持修改操作。|
 |404|InvalidEniId.NotFound|%s|指定的弹性网卡ID不存在。|
 |403|InvalidOperation.InvalidEniType|%s|当前弹性网卡的类型不支持此操作。|
 |400|InvalidOperation.InvalidEniState|%s|弹性网卡当前的状态不支持此操作。|
@@ -96,6 +97,7 @@ https://ecs.aliyuncs.com/?Action=JoinSecurityGroup
 |400|NotBelongUser|%s|您没有权限操作此资源，请检查操作的资源是否正确。|
 |400|MissingParameter.RegionId|The specified RegionId should not be null.|RegionId是必选参数。|
 |403|InvalidOperation.EniServiceManaged|%s|操作无效。|
+|403|InvalidParam.EniIdAndInstanceId.Conflict|%s|InstanceId与NetworkInterfaceId两者冲突。两个参数不能同时被赋值。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
