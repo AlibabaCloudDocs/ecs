@@ -16,7 +16,7 @@
 |SecurityGroupId.N|RepeatList|否|sg-bp67acfmxazb4p\*\*\*\*|SecurityGroupId列表，弹性网卡最终加入的安全组，并会移出已有的安全组。N的取值范围为1-5。
 
  **说明：** 修改安全组后很快会生效，但可能有较小的延迟。 |
-|NetworkInterfaceName|String|否|eniTestName|弹性网卡的名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。
+|NetworkInterfaceName|String|否|eniTestName|弹性网卡的名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以`http://`和`https://`开头。可以包含数字、半角冒号（:）、下划线（\_）或者连字符（-）。
 
  默认值：空 |
 |QueueNumber|Integer|否|8|网卡队列数。取值范围：1~2048
@@ -24,7 +24,7 @@
  -   只允许修改辅助网卡队列数。
 -   允许修改处于可用状态（`Available`）的辅助网卡队列数，或者已绑定（`InUse`）至实例但实例为已停止（`Stopped`）状态的辅助网卡队列数。
 -   辅助网卡队列数不能超过实例规格允许的单块网卡最大队列数，同时实例的所有网卡累加队列数不能超过实例规格允许的队列数总配额。实例规格的单块网卡最大队列数和总配额可以通过[DescribeInstanceTypes](~~25620~~)接口查询`MaximumQueueNumberPerEni`、`TotalEniQueueQuantity`字段。 |
-|Description|String|否|testDescription|弹性网卡的描述信息。 长度为2~256个英文或中文字符，不能以http://和https://开头。
+|Description|String|否|testDescription|弹性网卡的描述信息。 长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。
 
  默认值：空 |
 
@@ -50,7 +50,7 @@ https://ecs.aliyuncs.com/?Action=ModifyNetworkInterfaceAttribute
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DetachNetworkInterfaceResponse>
@@ -58,7 +58,7 @@ https://ecs.aliyuncs.com/?Action=ModifyNetworkInterfaceAttribute
 </DetachNetworkInterfaceResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -95,6 +95,10 @@ https://ecs.aliyuncs.com/?Action=ModifyNetworkInterfaceAttribute
 |403|InvalidOperation.InvalidEniType|%s|当前弹性网卡的类型不支持此操作。|
 |400|Forbidden.RegionId|%s|当前地域暂时没有提供该服务。|
 |403|InvalidOperation.EniServiceManaged|%s|操作无效。|
+|403|InvalidOperation.ResourceManagedByCloudProduct|%s|云产品托管的安全组不支持修改操作。|
+|403|InvalidParameter.InvalidEniQueueNumber|%s|弹性网卡队列数有误，具体信息请参见错误信息%s占位符的实际返回结果。|
+|403|InvalidOperation.MaxEniQueueNumberExceeded|%s|弹性网卡队列数超过上限，具体信息请参见错误信息%s占位符的实际返回结果。|
+|403|InvalidOperation.ExceedInstanceTypeQueueNumber|%s|弹性网卡队列总数超过上限，具体信息请参见错误信息%s占位符的实际返回结果。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
