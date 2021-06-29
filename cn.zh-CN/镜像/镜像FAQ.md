@@ -40,7 +40,6 @@ keyword: [快照和镜像, 镜像付费, ECS实例迁移, 更换镜像, 选择�
     -   [复制镜像怎么收费的？](#section_nbz_q4c_ghb)
     -   [在复制镜像过程中，源镜像和目标镜像有什么限制？](#section_inj_s4c_ghb)
     -   [怎么复制我的云账号的镜像资源到其他阿里云账号的其他地域？](#section_kyv_54c_ghb)
-    -   [\#section\_k14\_x4c\_ghb](#section_k14_x4c_ghb)
     -   [能否跨地域复制来源于镜像市场镜像的自定义镜像？](#section_1w2_og0_5js)
     -   [中国内地以外的地域迁移数据到中国内地地域有什么方法？](#section_oqq_9z9_t00)
 -   共享镜像FAQ
