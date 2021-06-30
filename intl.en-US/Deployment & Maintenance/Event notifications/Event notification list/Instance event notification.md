@@ -120,8 +120,7 @@ The following table describes the subparameters contained in the content paramet
 |------------|-----------|-------|
 |resourceId|The ID of the instance.|i-bp1ecr\*\*\*\*\*\*\*\*5go2go|
 |resourceType|The type of the resource. Set the value to ALIYUN::ECS::Instance.|ALIYUN::ECS::Instance|
-|state|The status of the instance. Valid values: -   Pending: The instance is being prepared.
--   Created: The instance is created. This event notification is sent only once when the instance is created.
+|state|The status of the instance. Valid values: -   Created: The instance is created. This event notification is sent only once when the instance is created.
 -   Starting: The instance is being started.
 -   Running: The instance is running.
 -   Stopping: The instance is being stopped or restarted.
