@@ -30,6 +30,7 @@ This topic describes the features of Elastic Compute Service \(ECS\) Bare Metal 
         -   [ebmhfc6, compute optimized ECS Bare Metal Instance family with high clock speeds](#section_s0v_ihb_z5x)
         -   [ebmhfr6, memory optimized ECS Bare Metal Instance family with high clock speeds](#section_sns_ot8_a1r)
     -   GPU-accelerated compute optimized instance families:
+        -   [ebmgn7i, GPU-accelerated compute optimized ECS Bare Metal Instance family](#ebmgn7i)
         -   [ebmgn7, GPU-accelerated compute optimized ECS Bare Metal Instance family](#section_71m_cxy_5ct)
         -   [ebmgn6e, GPU-accelerated compute optimized ECS Bare Metal Instance family](#section_xyl_5bo_wez)
         -   [ebmgn6v, GPU-accelerated compute optimized ECS Bare Metal Instance family](#section_lke_80h_kzu)
@@ -129,12 +130,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|--------------------|:-----------------------------|----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmg6a.64xlarge|256|1024.0|64.0|24,000,000|32|31|10|600,000|32.0|
+|ecs.ebmg6a.64xlarge|256|1024|64|24,000,000|32|31|10|600,000|32|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmg6e, general purpose ECS Bare Metal Instance family with enhanced performance
 
@@ -166,12 +167,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmg6e.26xlarge|104|384.0|32.0|24,000,000|1,800,000|32|10|480,000|16.0|
+|ecs.ebmg6e.26xlarge|104|384|32|24,000,000|1,800,000|32|10|480,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmg6, general purpose ECS Bare Metal Instance family
 
@@ -198,12 +199,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmg6.26xlarge|104|384.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmg6.26xlarge|104|384|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmc6me, compute optimized ECS Bare Metal Instance family
 
@@ -229,12 +230,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmc6me.16xlarge|64|192.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmc6me.16xlarge|64|192|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmc6a, compute optimized ECS Bare Metal Instance family
 
@@ -262,12 +263,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|--------------------|:-----------------------------|----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmc6a.64xlarge|256|512.0|64.0|24,000,000|32|31|10|600,000|32.0|
+|ecs.ebmc6a.64xlarge|256|512|64|24,000,000|32|31|10|600,000|32|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmc6e, compute optimized ECS Bare Metal Instance family with enhanced performance
 
@@ -296,12 +297,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmc6e.26xlarge|104|192.0|32.0|24,000,000|1,800,000|32|10|480,000|16.0|
+|ecs.ebmc6e.26xlarge|104|192|32|24,000,000|1,800,000|32|10|480,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmc6, compute optimized ECS Bare Metal Instance family
 
@@ -327,12 +328,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmc6.26xlarge|104|192.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmc6.26xlarge|104|192|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmr6a, memory optimized ECS Bare Metal Instance family
 
@@ -355,18 +356,18 @@ Features
     -   Containers including Docker, Clear Containers, and Pouch
     -   In-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise-level applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|--------------------|:-----------------------------|----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmr6a.64xlarge|256|2048.0|64.0|24,000,000|32|31|10|600,000|32.0|
+|ecs.ebmr6a.64xlarge|256|2048|64|24,000,000|32|31|10|600,000|32|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmr6e, memory optimized ECS Bare Metal Instance family with enhanced performance
 
@@ -395,12 +396,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmr6e.26xlarge|104|768.0|32.0|24,000,000|1,800,000|32|10|480,000|16.0|
+|ecs.ebmr6e.26xlarge|104|768|32|24,000,000|1,800,000|32|10|480,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmr6, memory optimized ECS Bare Metal Instance family
 
@@ -426,12 +427,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmr6.26xlarge|104|768.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmr6.26xlarge|104|768|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmre6p, persistent memory optimized ECS Bare Metal Instance family with enhanced performance
 
@@ -440,7 +441,7 @@ To use ebmre6p, [submit a ticket](https://workorder-intl.console.aliyun.com/cons
 Features
 
 -   Provides dedicated hardware resources and physical isolation.
--   Uses the Intel ® OptaneTM persistent memory and is tuned for Redis applications in an end-to-end manner to provide cost-effectiveness.
+-   Uses the Intel® OptaneTM persistent memory and is tuned for Redis applications in an end-to-end manner to provide cost-effectiveness.
 -   Supports a maximum of 1,920 GiB memory \(384 GiB DRAM + 1,536 GiB Intel® OptaneTM persistent memory\), offers a CPU-to-memory ratio of 1:20, and can meet the needs of memory-intensive applications.
 -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver an all-core turbo frequency of 3.2 GHz for consistent computing performance.
 -   Is an instance family in which all instances are I/O optimized.
@@ -457,12 +458,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Persistent memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|-------------------------|:-------------------|:-----------------------------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmre6p.26xlarge|104|384.0|1536.0|32.0|6,000,000|32|10|200,000|16.0|
+|ecs.ebmre6p.26xlarge|104|384|1536|32|6,000,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmre6-6t, memory optimized ECS Bare Metal Instance family with enhanced performance
 
@@ -488,12 +489,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmre6-6t.52xlarge|208|6144.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmre6-6t.52xlarge|208|6144|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmhfg7, general purpose ECS Bare Metal Instance family with high clock speeds
 
@@ -521,12 +522,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmhfg7.48xlarge|192|768.0|64.0|24,000,000|32|31|10|600,000|32.0|
+|ecs.ebmhfg7.48xlarge|192|768|64|24,000,000|32|31|10|600,000|32|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmhfc7, compute optimized ECS Bare Metal Instance family with high clock speeds
 
@@ -535,7 +536,7 @@ Features
 -   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Offers a CPU-to-memory ratio of 1:2.
--   Uses the third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency of not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
+-   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports only ESSDs and provides ultra-high I/O performance.
 -   Supports IPv6.
@@ -553,12 +554,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmhfc7.48xlarge|192|384.0|64.0|24,000,000|32|31|10|600,000|32.0|
+|ecs.ebmhfc7.48xlarge|192|384|64|24,000,000|32|31|10|600,000|32|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmhfr7, memory optimized ECS Bare Metal Instance family with high clock speeds
 
@@ -567,7 +568,7 @@ Features
 -   Uses the fast path acceleration feature of chips to provide predictable and consistent ultra-high computing, storage, and network performance based on the third-generation SHENLONG architecture.
 -   Provides dedicated hardware resources and physical isolation.
 -   Offers a CPU-to-memory ratio of 1:8.
--   Uses the third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency of not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
+-   Uses third-generation Intel® Xeon® Scalable processors \(Cooper Lake\) that deliver a base frequency of not lower than 3.3 GHz and an all-core turbo frequency of 3.8 GHz.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports only ESSDs and provides ultra-high I/O performance.
 -   Supports IPv6.
@@ -578,18 +579,18 @@ Features
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
     -   High-performance databases and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise-level applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmhfr7.48xlarge|192|1536.0|64.0|24,000,000|32|31|10|600,000|32.0|
+|ecs.ebmhfr7.48xlarge|192|1536|64|24,000,000|32|31|10|600,000|32|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmhfg6, general purpose ECS Bare Metal Instance family with high clock speeds
 
@@ -614,12 +615,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|-----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmhfg6.20xlarge|80|384.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmhfg6.20xlarge|80|384|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmhfc6, compute optimized ECS Bare Metal Instance family with high clock speeds
 
@@ -644,12 +645,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmhfc6.20xlarge|80|192.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmhfc6.20xlarge|80|192|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmhfr6, memory optimized ECS Bare Metal Instance family with high clock speeds
 
@@ -669,18 +670,50 @@ Features
     -   Containers including Docker, Clear Containers, and Pouch
     -   High-performance databases and in-memory databases
     -   Data analysis, data mining, and distributed memory caching
-    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise-level applications
+    -   Hadoop clusters, Spark clusters, and other memory-intensive enterprise applications
 
 Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmhfr6.20xlarge|80|768.0|32.0|6,000,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmhfr6.20xlarge|80|768|32|6,000,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+
+## ebmgn7i, GPU-accelerated compute optimized ECS Bare Metal Instance family
+
+This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+
+Features
+
+-   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
+-   Uses NVIDIA A10 GPUs. The GPUs have the following features:
+    -   Innovative Ampere architecture
+    -   Support for acceleration features such as vGPU, RTX technology, and TensorRT inference engine
+-   Uses 2.9 GHz Intel® Xeon® Scalable processors \(Ice Lake\) that deliver an all-core turbo frequency of 3.5 GHz.
+-   Is an instance family in which all instances are I/O optimized.
+-   Supports ESSDs, standard SSDs, and ultra disks.
+-   Supports IPv6.
+-   Provides ultra-high network performance with a packet forwarding rate of 24,000,000 pps.
+-   Suits the following scenarios:
+    -   Concurrent AI inference tasks that require high-performance CPUs, memory, and GPUs, such as image recognition, speech recognition, and behavior identification
+    -   Computationally intensive graphics processing tasks that require high-performance 3D graphics virtualization capabilities, such as remote graphic design and cloud gaming
+    -   Scenarios that require high network bandwidth and disk bandwidth, such as the creation of high-performance render farms
+    -   Small-scale deep learning and training applications that require high network bandwidth
+
+Instance types
+
+|Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|
+|:------------|:----|:-------------|---|----------|:-------------------|:-----------------------------|:---------|:---|
+|ecs.ebmgn7i.32xlarge|128|768|NVIDIA A10 × 4|24 GB × 4|64|24,000,000|32|32|
+
+**Note:**
+
+-   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmgn7, GPU-accelerated compute optimized ECS Bare Metal Instance family
 
@@ -690,25 +723,25 @@ Features
 -   Uses NVIDIA A100 GPUs. NVSwitches are used to establish connections between NVIDIA A100 GPUs. The GPUs have the following features:
     -   Innovative Ampere architecture
     -   40 GB HBM2 memory per GPU
--   Uses 2.5 GHz Intel ® Xeon ® Platinum 8269CY \(Cascade Lake\) processors.
+-   Uses 2.5 GHz Intel® Xeon ® Platinum 8269CY \(Cascade Lake\) processors.
 -   Is an instance family in which all instances are I/O optimized.
 -   Supports ESSDs, standard SSDs, and ultra disks.
 -   Supports IPv6.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications, such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Deep learning applications such as training applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
     -   Scientific computing applications that have high GPU workloads, such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|GPU|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
 |:------------|:----|:-------------|---|:-------------------|:-----------------------------|:---------|:---|----------------------------|
-|ecs.ebmgn7.26xlarge|104|768.0|NVIDIA A100 × 8|30.0|18,000,000|16|15|10|
+|ecs.ebmgn7.26xlarge|104|768|NVIDIA A100 × 8|30|18,000,000|16|15|10|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmgn6e, GPU-accelerated compute optimized ECS Bare Metal Instance family
 
@@ -718,7 +751,7 @@ Features
 -   Uses NVIDIA V100 \(32 GB NVLink\) GPUs.
 -   Uses NVIDIA V100 GPUs \(SXM2-based\) that have the following features:
     -   Innovative Volta architecture
-    -   32 GB HBM2 memory per GPU \(900 GB/s bandwidth\)
+    -   32 GB HBM2 memory \(900 GB/s bandwidth\) per GPU
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
@@ -729,19 +762,19 @@ Features
 -   Supports IPv6.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
-    -   Scientific computing applications such as fluid dynamics, finance, molecular dynamics, and environmental analysis
+    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
 |:------------|:----|:-------------|---|----------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
-|ecs.ebmgn6e.24xlarge|96|768.0|NVIDIA V100 × 8|32GB × 8|32.0|4,800,000|16|15|20|
+|ecs.ebmgn6e.24xlarge|96|768|NVIDIA V100 × 8|32 GB × 8|32|4,800,000|16|15|20|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmgn6v, GPU-accelerated compute optimized ECS Bare Metal Instance family
 
@@ -751,7 +784,7 @@ Features
 -   Uses NVIDIA V100 GPUs.
 -   Uses NVIDIA V100 GPUs \(SXM2-based\) that have the following features:
     -   Innovative Volta architecture
-    -   16 GB HBM2 memory per GPU \(900 GB/s bandwidth\)
+    -   16 GB HBM2 memory \(900 GB/s bandwidth\) per GPU
     -   5,120 CUDA cores per GPU
     -   640 Tensor cores per GPU
     -   Support for up to six NVLink connections for a total bandwidth of 300 GB/s per GPU \(25 GB/s per connection\)
@@ -762,19 +795,19 @@ Features
 -   Supports IPv6.
 -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   Deep learning applications, such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
-    -   Scientific computing applications such as fluid dynamics, finance, molecular dynamics, and environmental analysis
+    -   Deep learning applications such as training and inference applications of AI algorithms used in image classification, autonomous vehicles, and speech recognition
+    -   Scientific computing applications such as computational fluid dynamics, computational finance, molecular dynamics, and environmental analysis
 
 Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
 |:------------|:----|:-------------|---|----------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
-|ecs.ebmgn6v.24xlarge|96|384.0|NVIDIA V100 × 8|16GB × 8|30.0|4,500,000|8|32|10|
+|ecs.ebmgn6v.24xlarge|96|384|NVIDIA V100 × 8|16 GB × 8|30|4,500,000|8|32|10|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmgn6i, GPU-accelerated compute optimized ECS Bare Metal Instance family
 
@@ -783,7 +816,7 @@ Features
 -   Provides flexible and powerful software-defined compute based on the SHENLONG architecture.
 -   Uses NVIDIA T4 GPUs that have the following features:
     -   Innovative NVIDIA Turing architecture
-    -   16 GB memory per GPU \(320 GB/s bandwidth\)
+    -   16 GB memory \(320 GB/s bandwidth\) per GPU
     -   2,560 CUDA cores per GPU
     -   Up to 320 Turing Tensor cores per GPU
     -   Mixed-precision Tensor cores that support 65 FP16 TFLOPS, 130 INT8 TOPS, and 260 INT4 TOPS
@@ -803,14 +836,14 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
-|:------------|:----|:-------------|---|------------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
-|ecs.ebmgn6i.24xlarge|96|384.0|NVIDIA T4 × 4|16GB × 4|30.0|4,500,000|8|32|10|
+|Instance type|vCPUs|Memory \(GiB\)|GPU|GPU memory|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
+|:------------|:----|:-------------|---|----------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
+|ecs.ebmgn6i.24xlarge|96|384|NVIDIA T4 × 4|16 GB × 4|30|4,500,000|8|32|10|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmg5s, general purpose ECS Bare Metal Instance family with enhanced network performance
 
@@ -834,12 +867,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmg5s.24xlarge|96|384.0|32.0|4,500,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmg5s.24xlarge|96|384|32|4,500,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmg5, general purpose ECS Bare Metal Instance family
 
@@ -863,12 +896,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|ENIs|Private IP addresses per ENI|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:---|----------------------------|
-|ecs.ebmg5.24xlarge|96|384.0|10.0|4,000,000|32|10|
+|ecs.ebmg5.24xlarge|96|384|10|4,000,000|32|10|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmc5s, compute optimized ECS Bare Metal Instance family with enhanced network performance
 
@@ -892,12 +925,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmc5s.24xlarge|96|192.0|32.0|4,500,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmc5s.24xlarge|96|192|32|4,500,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmc4, compute optimized ECS Bare Metal Instance family
 
@@ -921,12 +954,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|ENIs|Private IP addresses per ENI|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:---|----------------------------|
-|ecs.ebmc4.8xlarge|32|64.0|10.0|4,000,000|12|10|
+|ecs.ebmc4.8xlarge|32|64|10|4,000,000|12|10|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmr5s, memory optimized ECS Bare Metal Instance family with enhanced network performance
 
@@ -951,12 +984,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:----------|:---|----------------------------|---------|-------------------------|
-|ecs.ebmr5s.24xlarge|96|768.0|32.0|4,500,000|1,800,000|32|10|200,000|16.0|
+|ecs.ebmr5s.24xlarge|96|768|32|4,500,000|1,800,000|32|10|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## ebmhfg5, ECS Bare Metal Instance family with high clock speeds
 
@@ -984,12 +1017,12 @@ Instance types
 
 |Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|ENIs|Private IP addresses per ENI|
 |:------------|:----|:-------------|:-------------------|:-----------------------------|:---|----------------------------|
-|ecs.ebmhfg5.2xlarge|8|32.0|6.0|2,000,000|6|8|
+|ecs.ebmhfg5.2xlarge|8|32|6|2,000,000|6|8|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## Billing methods
 
