@@ -48,7 +48,7 @@ Features
 -   Network:
     -   Supports IPv6.
     -   Provides ultra-high packet forwarding rates.
-    -   Provides burstable network bandwidth performance for low-specification instances.
+    -   Provides burstable bandwidth performance for low-specification instances.
     -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
     -   Video encoding and decoding
@@ -74,7 +74,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g7, general purpose instance family
 
@@ -84,7 +84,7 @@ Features
 -   Supports the virtual Trusted Platform Module \(vTPM\) feature and implements trusted boots based on Trusted Cryptography Module \(TCM\) or Trusted Platform Module \(TPM\) chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Uses the third-generation Intel® Xeon® scalable processors \(Ice Lake\) that deliver a base frequency of 2.7 GHz and an all-core turbo frequency of 3.5 GHz for consistent computing performance.
+    -   Uses the third-generation Intel® Xeon® Scalable processors \(Ice Lake\) that deliver a base frequency of 2.7 GHz and an all-core turbo frequency of 3.5 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -124,7 +124,7 @@ Instance types
 
 -   If you use Virtual Network Computing \(VNC\) to log on to a Windows instance, two cursors may appear. For information about how to fix this issue, see the “Why do two cursors appear after I use VNC to log on to a Windows instance?” section in [Instance FAQ](/intl.en-US/Instance/Instance FAQ.md).
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g7t, security-enhanced general purpose instance family
 
@@ -134,11 +134,11 @@ Features
 
 -   Supports encrypted computing based on Intel® Software Guard Extensions \(SGX\) and up to 256 GiB encrypted memory to protect the confidentiality and integrity of essential code and data from malware attacks.
 -   Supports SGX technology applicable to virtual machines and allows you to select instance types that suit your needs.
--   Implements trusted boot based on TCM or TPM chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
+-   Implements trusted boots based on TCM or TPM chips. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Offloads a large number of virtualization features to dedicated hardware with the use of the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1: 4. About 50% of memory is encrypted.
-    -   Uses the third-generation Intel® Xeon® scalable processors \(Ice Lake\) that deliver a base frequency of 2.7 GHz and an all-core turbo frequency of 3.5 GHz for consistent computing performance.
+    -   Uses the third-generation Intel® Xeon® Scalable processors \(Ice Lake\) that deliver a base frequency of 2.7 GHz and an all-core turbo frequency of 3.5 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -175,7 +175,7 @@ Instance types
 -   The instance family is in invitational preview. Resources are limited. No service level agreement \(SLA\) compliance is ensured. To use this instance family, submit an application based on your minimum business requirements.
 -   Intel Ice Lake supports only remote attestation based on Intel SGX DCAP, and does not support remote attestation based on Intel EPID. You must adapt applications before you can use the remote attestation feature. For more information about remote attestation, see [attestation-service](https://software.intel.com/content/www/us/en/develop/topics/software-guard-extensions/attestation-services.html).
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g7ne, general purpose instance family with enhanced network performance
 
@@ -186,7 +186,7 @@ Features
 -   Significantly improves the network throughput and packet forwarding rate per instance. A single instance can deliver a packet forwarding rate of up to 24,000,000 pps.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
-    -   Uses Intel ® Xeon ® Platinum 8369HB \(Cooper Lake\) or Intel ® Xeon® Platinum 8369HC \(Cooper Lake\) processors that deliver a turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
+    -   Uses Intel® Xeon® Platinum 8369HB \(Cooper Lake\) or Intel® Xeon® Platinum 8369HC \(Cooper Lake\) processors that deliver a turbo frequency of 3.8 GHz and a minimum clock speed of 3.3 GHz for consistent computing performance.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
     -   Supports only ESSDs and provides ultra-high I/O performance.
@@ -215,7 +215,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g6se, storage enhanced instance family
 
@@ -239,7 +239,7 @@ Features
     -   Provides ultra-high packet forwarding rates.
     -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
-    -   I/O-intensive scenarios such as large and medium-sized Online Transaction Processing \(OLTP\) core databases
+    -   I/O-intensive scenarios such as large and medium-sized online transactional processing \(OLTP\) core databases
     -   Large and medium-sized NoSQL databases
     -   Search and real-time log analytics
     -   Traditional large enterprise-level commercial software, such as SAP
@@ -258,7 +258,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g6a, general purpose instance family
 
@@ -308,13 +308,13 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g6t, security-enhanced general purpose instance family
 
 Features
 
--   Implements trusted boot based on TCM or TPM chips. During a trusted boot, all modules in the boot chain from the underlying hardware to the guest OS are measured and verified.
+-   Implements trusted boots based on TCM or TPM chips. During a trusted boot, each module in the boot chain from the underlying hardware to the guest OS is measured and verified.
 -   Provides vTPMs that deliver a full set of trusted capabilities at the IaaS layer based on integrity monitoring.
 -   Supports the Enclave feature and provides a trusted isolation space inside ECS instances to encapsulate the security operations of legitimate software within an enclave. This ensures the confidentiality and integrity of your code and data against malware attacks.
 -   Offloads a large number of virtualization features to dedicated hardware with the use of the third-generation SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads. This instance family improves storage performance, network performance, and computing stability by an order of magnitude by using fast path acceleration of chips.
@@ -361,7 +361,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 -   The results for network capabilities are the maximum values obtained from single item tests. For example, when network bandwidth is tested, no stress tests are performed on the packet forwarding rate or other network metrics.
 
 ## g6e, general purpose instance family with enhanced performance
@@ -414,7 +414,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 -   The results for network capabilities are the maximum values obtained from single item tests. For example, when network bandwidth is tested, no stress tests are performed on the packet forwarding rate or other network metrics.
 
 ## g6, general purpose instance family
@@ -473,7 +473,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g5, general purpose instance family
 
@@ -518,7 +518,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## g5ne, general purpose instance family with enhanced network performance
 
@@ -559,7 +559,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## sn2ne, general purpose instance family with enhanced network performance
 
@@ -598,10 +598,10 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.mdsection_e9r_xkf_z15).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.mdsection_e9r_xkf_z15).
 
 ## References
 
--   [Instance families](/intl.en-US/Instance/Instance families.md)
+-   [Instance family](/intl.en-US/Instance/Instance family.md)
 -   [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md)
 
