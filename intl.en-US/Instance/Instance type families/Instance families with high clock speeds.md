@@ -27,7 +27,7 @@ Features
     -   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -49,28 +49,28 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfc7.large|2|4.0|1.2|10.0|900|250|2|2|6|20|1.0|
-|ecs.hfc7.xlarge|4|8.0|2.0|10.0|1,000|250|4|3|15|30|1.5|
-|ecs.hfc7.2xlarge|8|16.0|3.0|10.0|1,600|250|8|4|15|45|2.0|
-|ecs.hfc7.3xlarge|12|24.0|4.5|10.0|2,000|250|8|6|15|60|2.5|
-|ecs.hfc7.4xlarge|16|32.0|6.0|10.0|2,500|300|8|8|300|75|3.0|
-|ecs.hfc7.6xlarge|24|48.0|8.0|10.0|3,000|450|12|8|300|90|4.0|
-|ecs.hfc7.8xlarge|32|64.0|10.0|None|4,000|600|16|8|300|105|5.0|
-|ecs.hfc7.12xlarge|48|96.0|16.0|None|6,000|1,000|24|8|300|150|8.0|
-|ecs.hfc7.24xlarge|96|192.0|32.0|None|12,000|1,800|32|15|300|300|16.0|
+|Instance type|vCPU|Memory \(GiB\)|Baseline/burst bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:----------------------------------|:-----------------------------|-----------|:---------|:---|----------------------------|---------|-------------------------|
+|ecs.hfc7.large|2|4|1.2/10|900,000|250,000|2|2|6|20,000|1|
+|ecs.hfc7.xlarge|4|8|2/10|1,000,000|250,000|4|3|15|30,000|1.5|
+|ecs.hfc7.2xlarge|8|16|3/10|1,600,000|250,000|8|4|15|45,000|2|
+|ecs.hfc7.3xlarge|12|24|4.5/10|2,000,000|250,000|8|6|15|60,000|2.5|
+|ecs.hfc7.4xlarge|16|32|6/10|2,500,000|300,000|8|8|30|75,000|3|
+|ecs.hfc7.6xlarge|24|48|8/10|3,000,000|450,000|12|8|30|90,000|4|
+|ecs.hfc7.8xlarge|32|64|10/none|4,000,000|600,000|16|8|30|105,000|5|
+|ecs.hfc7.12xlarge|48|96|16/none|6,000,000|1,000,000|24|8|30|150,000|8|
+|ecs.hfc7.24xlarge|96|192|32/none|12,000,000|1,800,000|32|15|30|300,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## hfc6, compute optimized instance family with high clock speeds
 
 Features
 
--   Offloads a large number of virtualization features to dedicated hardware with the use of the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:2.
     -   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.5 GHz for consistent computing performance.
@@ -89,11 +89,11 @@ Features
 
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
-    -   Supports enhanced SSDs, standard SSDs, and ultra disks.
+    -   Supports ESSDs, standard SSDs, and ultra disks.
     -   Provides high storage I/O performance based on large computing capacity.
 
         **Note:** For more information about the storage I/O performance of the next-generation enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
@@ -111,23 +111,23 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfc6.large|2|4.0|1.0|3.0|300|2|2|6|10|1.0|
-|ecs.hfc6.xlarge|4|8.0|1.5|5.0|500|4|3|10|20|1.5|
-|ecs.hfc6.2xlarge|8|16.0|2.5|8.0|800|8|4|10|25|2.0|
-|ecs.hfc6.3xlarge|12|24.0|4.0|10.0|900|8|6|10|30|2.5|
-|ecs.hfc6.4xlarge|16|32.0|5.0|10.0|1,000|8|8|20|40|3.0|
-|ecs.hfc6.6xlarge|24|48.0|75|10.0|1,500|12|8|20|50|4.0|
-|ecs.hfc6.8xlarge|32|64.0|10.0|None|2,000|16|8|20|60|5.0|
-|ecs.hfc6.10xlarge|40|96.0|12.5|None|3,000|32|7|20|100|8.0|
-|ecs.hfc6.16xlarge|64|128.0|20.0|None|4,000|32|8|20|120|10.0|
-|ecs.hfc6.20xlarge|80|192.0|25.0|None|6,000|32|15|20|200|16.0|
+|Instance type|vCPU|Memory \(GiB\)|Baseline/burst bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:----------------------------------|:-----------------------------|-----------|:---------|:---|----------------------------|---------|-------------------------|
+|ecs.hfc6.large|2|4|1/3|300,000|35,000|2|2|6|10,000|1|
+|ecs.hfc6.xlarge|4|8|1.5/5|500,000|70,000|4|3|10|20,000|1.5|
+|ecs.hfc6.2xlarge|8|16|2.5/8|800,000|150,000|8|4|10|25,000|2|
+|ecs.hfc6.3xlarge|12|24|4/10|900,000|220,000|8|6|10|30,000|2.5|
+|ecs.hfc6.4xlarge|16|32|5/10|1,000,000|300,000|8|8|20|40,000|3|
+|ecs.hfc6.6xlarge|24|48|7.5/10|1,500,000|450,000|12|8|20|50,000|4|
+|ecs.hfc6.8xlarge|32|64|10/none|2,000,000|600,000|16|8|20|60,000|5|
+|ecs.hfc6.10xlarge|40|96|12.5/none|3,000,000|1,000,000|32|7|20|100,000|8|
+|ecs.hfc6.16xlarge|64|128|20/none|4,000,000|1,200,000|32|8|20|120,000|10|
+|ecs.hfc6.20xlarge|80|192|25/none|6,000,000|1,800,000|32|15|20|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## hfg7, general purpose instance family with high clock speeds
 
@@ -139,7 +139,7 @@ Features
     -   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -154,7 +154,7 @@ Features
     -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
-    -   Enterprise-grade applications of various types and sizes
+    -   Enterprise-level applications of various types and sizes
     -   Game servers
     -   Small and medium-sized database systems, caches, and search clusters
     -   High-performance scientific computing
@@ -162,28 +162,28 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfg7.large|2|8.0|1.2|10.0|900|250|2|2|6|20|1.0|
-|ecs.hfg7.xlarge|4|16.0|2.0|10.0|1,000|250|4|3|15|30|1.5|
-|ecs.hfg7.2xlarge|8|32.0|3.0|10.0|1,600|250|8|4|15|45|2.0|
-|ecs.hfg7.3xlarge|12|48.0|4.5|10.0|2,000|250|8|6|15|60|2.5|
-|ecs.hfg7.4xlarge|16|64.0|6.0|10.0|2,500|300|8|8|300|75|3.0|
-|ecs.hfg7.6xlarge|24|96.0|8.0|10.0|3,000|450|12|8|300|90|4.0|
-|ecs.hfg7.8xlarge|32|128.0|10.0|None|4,000|600|16|8|300|105|5.0|
-|ecs.hfg7.12xlarge|48|192.0|16.0|None|6,000|1,000|24|8|300|150|8.0|
-|ecs.hfg7.24xlarge|96|384.0|32.0|None|12,000|1,800|32|15|300|300|16.0|
+|Instance type|vCPU|Memory \(GiB\)|Baseline/burst bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:----------------------------------|:-----------------------------|-----------|:---------|:---|----------------------------|---------|-------------------------|
+|ecs.hfg7.large|2|8|1.2/10|900,000|250,000|2|2|6|20,000|1|
+|ecs.hfg7.xlarge|4|16|2/10|1,000,000|250,000|4|3|15|30,000|1.5|
+|ecs.hfg7.2xlarge|8|32|3/10|1,600,000|250,000|8|4|15|45,000|2|
+|ecs.hfg7.3xlarge|12|48|4.5/10|2,000,000|250,000|8|6|15|60,000|2.5|
+|ecs.hfg7.4xlarge|16|64|6/10|2,500,000|300,000|8|8|30|75,000|3|
+|ecs.hfg7.6xlarge|24|96|8/10|3,000,000|450,000|12|8|30|90,000|4|
+|ecs.hfg7.8xlarge|32|128|10/none|4,000,000|600,000|16|8|30|105,000|5|
+|ecs.hfg7.12xlarge|48|192|16/none|6,000,000|1,000,000|24|8|30|150,000|8|
+|ecs.hfg7.24xlarge|96|384|32/none|12,000,000|1,800,000|32|15|30|300,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## hfg6, general purpose instance family with high clock speeds
 
 Features
 
--   Offloads a large number of virtualization features to dedicated hardware with the use of the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4.
     -   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.5 GHz for consistent computing performance.
@@ -202,11 +202,11 @@ Features
 
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
-    -   Supports enhanced SSDs, standard SSDs, and ultra disks.
+    -   Supports ESSDs, standard SSDs, and ultra disks.
     -   Provides high storage I/O performance based on large computing capacity.
 
         **Note:** For more information about the storage I/O performance of the next-generation enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
@@ -217,32 +217,32 @@ Features
     -   Provides high network performance based on large computing capacity.
 -   Suits the following scenarios:
     -   Scenarios where large volumes of packets are received and transmitted, such as on-screen video comments and telecom data forwarding
-    -   Enterprise-grade applications of various types and sizes
+    -   Enterprise-level applications of various types and sizes
     -   Websites and application servers
     -   Game servers
     -   Small and medium-sized database systems, caches, and search clusters
-    -   Data analysis and computing
-    -   Compute clusters and memory-intensive data processing
+    -   Data analysis and computing.
+    -   Computing clusters and memory-intensive data processing
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfg6.large|2|8.0|1.0|3.0|300|2|2|6|10|1.0|
-|ecs.hfg6.xlarge|4|16.0|1.5|5.0|500|4|3|10|20|1.5|
-|ecs.hfg6.2xlarge|8|32.0|2.5|8.0|800|8|4|10|25|2.0|
-|ecs.hfg6.3xlarge|12|48.0|4.0|10.0|900|8|6|10|30|2.5|
-|ecs.hfg6.4xlarge|16|64.0|5.0|10.0|1,000|8|8|20|40|3.0|
-|ecs.hfg6.6xlarge|24|96.0|7.5|10.0|1,500|12|8|20|50|4.0|
-|ecs.hfg6.8xlarge|32|128.0|10.0|None|2,000|16|8|20|60|5.0|
-|ecs.hfg6.10xlarge|40|192.0|12.5|None|3,000|32|7|20|100|8.0|
-|ecs.hfg6.16xlarge|64|256.0|20.0|None|4,000|32|8|20|120|10.0|
-|ecs.hfg6.20xlarge|80|384.0|25.0|None|6,000|32|15|20|200|16.0|
+|Instance type|vCPU|Memory \(GiB\)|Baseline/burst bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:----------------------------------|:-----------------------------|-----------|:---------|:---|----------------------------|---------|-------------------------|
+|ecs.hfg6.large|2|8|1/3|300,000|35,000|2|2|6|10,000|1|
+|ecs.hfg6.xlarge|4|16|1.5/5|500,000|70,000|4|3|10|20,000|1.5|
+|ecs.hfg6.2xlarge|8|32|2.5/8|800,000|150,000|8|4|10|25,000|2|
+|ecs.hfg6.3xlarge|12|48|4/10|900,000|220,000|8|6|10|30,000|2.5|
+|ecs.hfg6.4xlarge|16|64|5/10|1,000,000|300,000|8|8|20|40,000|3|
+|ecs.hfg6.6xlarge|24|96|7.5/10|1,500,000|450,000|12|8|20|50,000|4|
+|ecs.hfg6.8xlarge|32|128|10/none|2,000,000|600,000|16|8|20|60,000|5|
+|ecs.hfg6.10xlarge|40|192|12.5/none|3,000,000|1,000,000|32|7|20|100,000|8|
+|ecs.hfg6.16xlarge|64|256|20/none|4,000,000|1,200,000|32|8|20|120,000|10|
+|ecs.hfg6.20xlarge|80|384|25/none|6,000,000|1,800,000|32|15|20|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## hfr7, memory optimized instance family with high clock speeds
 
@@ -254,7 +254,7 @@ Features
     -   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -275,28 +275,28 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|Connections \(K\)|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|-----------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfr7.large|2|16.0|1.2|10.0|900|250|2|2|6|20|1.0|
-|ecs.hfr7.xlarge|4|32.0|2.0|10.0|1,000|250|4|3|15|30|1.5|
-|ecs.hfr7.2xlarge|8|64.0|3.0|10.0|1,600|250|8|4|15|45|2.0|
-|ecs.hfr7.3xlarge|12|96.0|4.5|10.0|2,000|250|8|6|15|60|2.5|
-|ecs.hfr7.4xlarge|16|128.0|6.0|10.0|2,500|300|8|8|300|75|3.0|
-|ecs.hfr7.6xlarge|24|192.0|8.0|10.0|3,000|450|12|8|300|90|4.0|
-|ecs.hfr7.8xlarge|32|256.0|10.0|None|4,000|600|16|8|300|105|5.0|
-|ecs.hfr7.12xlarge|48|384.0|16.0|None|6,000|1,000|24|8|300|150|8.0|
-|ecs.hfr7.24xlarge|96|768.0|32.0|None|12,000|1,800|32|15|300|300|16.0|
+|Instance type|vCPU|Memory \(GiB\)|Baseline/burst bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:----------------------------------|:-----------------------------|-----------|:---------|:---|----------------------------|---------|-------------------------|
+|ecs.hfr7.large|2|16|1.2/10|900,000|250,000|2|2|6|20,000|1|
+|ecs.hfr7.xlarge|4|32|2/10|1,000,000|250,000|4|3|15|30,000|1.5|
+|ecs.hfr7.2xlarge|8|64|3/10|1,600,000|250,000|8|4|15|45,000|2|
+|ecs.hfr7.3xlarge|12|96|4.5/10|2,000,000|250,000|8|6|15|60,000|2.5|
+|ecs.hfr7.4xlarge|16|128|6/10|2,500,000|300,000|8|8|30|75,000|3|
+|ecs.hfr7.6xlarge|24|192|8/10|3,000,000|450,000|12|8|30|90,000|4|
+|ecs.hfr7.8xlarge|32|256|10/none|4,000,000|600,000|16|8|30|105,000|5|
+|ecs.hfr7.12xlarge|48|384|16/none|6,000,000|1,000,000|24|8|30|150,000|8|
+|ecs.hfr7.24xlarge|96|768|32/none|12,000,000|1,800,000|32|15|30|300,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## hfr6, memory optimized instance family with high clock speeds
 
 Features
 
--   Offloads a large number of virtualization features to dedicated hardware with the use of the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
+-   Uses the SHENLONG architecture to provide predictable and consistent ultra-high performance and reduce virtualization overheads.
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:8.
     -   Uses 3.1 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.5 GHz for consistent computing performance.
@@ -315,11 +315,11 @@ Features
 
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
-    -   Supports enhanced SSDs, standard SSDs, and ultra disks.
+    -   Supports ESSDs, standard SSDs, and ultra disks.
     -   Provides high storage I/O performance based on large computing capacity.
 
         **Note:** For more information about the storage I/O performance of the next-generation enterprise-level instance families, see [Storage I/O performance](/intl.en-US/Block Storage/Performance/Storage I/O performance.md).
@@ -336,23 +336,23 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Baseline bandwidth \(bidirectional\), Gbit/s|Burstable bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|Disk IOPS \(K\)|Disk bandwidth \(Gbit/s\)|
-|:------------|:----|:-------------|:-------------------------------------------|---------------------------------------------|:---------------------------------------------|:---------|:---------------------------------|----------------------------|---------------|-------------------------|
-|ecs.hfr6.large|2|16.0|1.0|3.0|300|2|2|6|10|1.0|
-|ecs.hfr6.xlarge|4|32.0|1.5|5.0|500|4|3|10|20|1.5|
-|ecs.hfr6.2xlarge|8|64.0|2.5|8.0|800|8|4|10|25|2.0|
-|ecs.hfr6.3xlarge|12|96.0|4.0|10.0|900|8|6|10|30|2.5|
-|ecs.hfr6.4xlarge|16|128.0|5.0|10.0|1,000|8|8|20|40|3.0|
-|ecs.hfr6.6xlarge|24|192.0|7.5|10.0|1,500|12|8|20|50|4.0|
-|ecs.hfr6.8xlarge|32|256.0|10.0|None|2,000|16|8|20|60|5.0|
-|ecs.hfr6.10xlarge|40|384.0|12.5|None|3,000|32|7|20|100|8.0|
-|ecs.hfr6.16xlarge|64|512.0|20.0|None|4,000|32|8|20|120|10.0|
-|ecs.hfr6.20xlarge|80|768.0|25.0|None|6,000|32|15|20|200|16.0|
+|Instance type|vCPU|Memory \(GiB\)|Baseline/burst bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|Connections|NIC queues|ENIs|Private IP addresses per ENI|Disk IOPS|Disk bandwidth \(Gbit/s\)|
+|:------------|:---|:-------------|:----------------------------------|:-----------------------------|-----------|:---------|:---|----------------------------|---------|-------------------------|
+|ecs.hfr6.large|2|16|1/3|300,000|35,000|2|2|6|10,000|1|
+|ecs.hfr6.xlarge|4|32|1.5/5|500,000|70,000|4|3|10|20,000|1.5|
+|ecs.hfr6.2xlarge|8|64|2.5/8|800,000|150,000|8|4|10|25,000|2|
+|ecs.hfr6.3xlarge|12|96|4/10|900,000|220,000|8|6|10|30,000|2.5|
+|ecs.hfr6.4xlarge|16|128|5/10|1,000,000|300,000|8|8|20|40,000|3|
+|ecs.hfr6.6xlarge|24|192|7.5/10|1,500,000|450,000|12|8|20|50,000|4|
+|ecs.hfr6.8xlarge|32|256|10/none|2,000,000|600,000|16|8|20|60,000|5|
+|ecs.hfr6.10xlarge|40|384|12.5/none|3,000,000|1,000,000|32|7|20|100,000|8|
+|ecs.hfr6.16xlarge|64|512|20/none|4,000,000|1,200,000|32|8|20|120,000|10|
+|ecs.hfr6.20xlarge|80|768|25/none|6,000,000|1,800,000|32|15|20|200,000|16|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## hfc5, compute optimized instance family with high clock speeds
 
@@ -361,7 +361,7 @@ Features
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:2.
     -   Uses 3.1 GHz Intel® Xeon® Gold 6149 \(Skylake\) processors.
-    -   Provides consistent computing performance.
+    -   Offers consistent computing performance.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
     -   Supports only standard SSDs and ultra disks.
@@ -374,20 +374,20 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:----|:-------------|:----------------------------------|:---------------------------------------------|:---------|:---------------------------------|----------------------------|
-|ecs.hfc5.large|2|4.0|1.0|300|2|2|6|
-|ecs.hfc5.xlarge|4|8.0|1.5|500|2|3|10|
-|ecs.hfc5.2xlarge|8|16.0|2.0|1,000|2|4|10|
-|ecs.hfc5.3xlarge|12|24.0|2.5|1,300|4|6|10|
-|ecs.hfc5.4xlarge|16|32.0|3.0|1,600|4|8|20|
-|ecs.hfc5.6xlarge|24|48.0|4.5|2,000|6|8|20|
-|ecs.hfc5.8xlarge|32|64.0|6.0|2,500|8|8|20|
+|Instance type|vCPU|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
+|:------------|:---|:-------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
+|ecs.hfc5.large|2|4|1|300,000|2|2|6|
+|ecs.hfc5.xlarge|4|8|1.5|500,000|2|3|10|
+|ecs.hfc5.2xlarge|8|16|2|1,000,000|2|4|10|
+|ecs.hfc5.3xlarge|12|24|2.5|1,300,000|4|6|10|
+|ecs.hfc5.4xlarge|16|32|3|1,600,000|4|8|20|
+|ecs.hfc5.6xlarge|24|48|4.5|2,000,000|6|8|20|
+|ecs.hfc5.8xlarge|32|64|6|2,500,000|8|8|20|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
 ## hfg5, general purpose instance family with high clock speeds
 
@@ -396,7 +396,7 @@ Features
 -   Compute:
     -   Offers a CPU-to-memory ratio of 1:4 \(excluding the instance type that has 56 vCPUs\).
     -   Uses 3.1 GHz Intel® Xeon® Gold 6149 \(Skylake\) processors.
-    -   Provides consistent computing performance.
+    -   Offers consistent computing performance.
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
     -   Supports only standard SSDs and ultra disks.
@@ -409,19 +409,19 @@ Features
 
 Instance types
 
-|Instance type|vCPUs|Memory \(GiB\)|Bandwidth \(bidirectional\), Gbit/s|Packet forwarding rate \(bidirectional\), Kpps|NIC queues|ENIs \(including one primary ENI\)|Private IP addresses per ENI|
-|:------------|:----|:-------------|:----------------------------------|:---------------------------------------------|:---------|:---------------------------------|----------------------------|
-|ecs.hfg5.large|2|8.0|1.0|300|2|2|6|
-|ecs.hfg5.xlarge|4|16.0|1.5|500|2|3|10|
-|ecs.hfg5.2xlarge|8|32.0|2.0|1,000|2|4|10|
-|ecs.hfg5.3xlarge|12|48.0|2.5|1,300|4|6|10|
-|ecs.hfg5.4xlarge|16|64.0|3.0|1,600|4|8|20|
-|ecs.hfg5.6xlarge|24|96.0|4.5|2,000|6|8|20|
-|ecs.hfg5.8xlarge|32|128.0|6.0|2,500|8|8|20|
-|ecs.hfg5.14xlarge|56|160.0|10.0|4,000|14|8|20|
+|Instance type|vCPU|Memory \(GiB\)|Bandwidth \(Gbit/s\)|Packet forwarding rate \(pps\)|NIC queues|ENIs|Private IP addresses per ENI|
+|:------------|:---|:-------------|:-------------------|:-----------------------------|:---------|:---|----------------------------|
+|ecs.hfg5.large|2|8|1|300,000|2|2|6|
+|ecs.hfg5.xlarge|4|16|1.5|500,000|2|3|10|
+|ecs.hfg5.2xlarge|8|32|2|1,000,000|2|4|10|
+|ecs.hfg5.3xlarge|12|48|2.5|1,300,000|4|6|10|
+|ecs.hfg5.4xlarge|16|64|3|1,600,000|4|8|20|
+|ecs.hfg5.6xlarge|24|96|4.5|2,000,000|6|8|20|
+|ecs.hfg5.8xlarge|32|128|6|2,500,000|8|8|20|
+|ecs.hfg5.14xlarge|56|160|10|4,000,000|14|8|20|
 
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
 
