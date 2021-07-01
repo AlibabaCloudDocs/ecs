@@ -14,7 +14,7 @@ When you use a savings plan, your pay-as-you-go instances of each instance type 
 
 For example, Alex has several ecs.g6.xlarge instances in the China \(Shanghai\) region and can use a three-year general-purpose savings plan to obtain the following discounts.
 
-**Note:** The prices used in this example are for demonstration only. For more information about the actual prices and discounts, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page and the[Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page.
+**Note:** The prices used in this example are for demonstration only. For more information about the actual prices and discounts, see the [Pricing](https://www.alibabacloud.com/product/ecs) tab of the Elastic Compute Service page and the [Discount Details](https://usercenter2-intl.aliyun.com/resource/spn/price) page.
 
 For example, the regular pay-as-you-go unit price of ecs.g6.xlarge instances is `USD 0.155/instance/hour`, and a three-year savings plan provides savings of `54.5%` off the pay-as-you-go price for the ecs.g6 instance family in the China \(Shanghai\) region. The savings plan unit price of the ecs.g6.xlarge instances is calculated based on the following formula: `USD 0.155/instance/hour × 0.455 = USD 0.0705/instance/hour`.
 
