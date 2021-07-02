@@ -32,7 +32,7 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
+    -   Fixed the CVE-2021-3156 vulnerability. |
 |CentOS 7.9|centos\_7\_9\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 3.10.0-1160.11.1.el7.x86\_64.
 -   Changes: updated to include the latest patches. |
 |CentOS 8.2|centos\_8\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.18.0-193.28.1.el8\_2.x86\_64.
@@ -86,7 +86,7 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
     -   Updated to include the latest operating system patches.
     -   Upgraded cloud-init to version 19.1.
 
-**Note:** cloud-init dynamically generates network configurations. For more information about custom network configurations, see the "\(Optional\) Custom network configurations" section in [Install cloud-init](/intl.en-US/Images/Custom image/Import images/Install cloud-init.md). |
+**Note:** cloud-init dynamically generates network configurations. For more information about custom network configurations, see the "\(Optional\) Customize network configuration" section in [Install cloud-init](/intl.en-US/Images/Custom image/Import images/Install cloud-init.md). |
 |CentOS 6.10|centos\_6\_10\_x64\_20G\_alibase\_20200319.vhd|2020-03-19|-   Kernel version: 2.6.32-754.28.1.el6.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 8.0|centos\_8\_0\_x64\_20G\_alibase\_20200218.vhd|2020-02-18|-   Kernel version: 4.18.0-147.5.1.el8\_1.x86\_64.
@@ -109,7 +109,7 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
     -   Updated to include the latest operating system patches.
     -   Upgraded cloud-init to version 19.1.
 
-**Note:** cloud-init dynamically generates network configurations. For more information about custom network configurations, see the "\(Optional\) Custom network configurations" section in [Install cloud-init](/intl.en-US/Images/Custom image/Import images/Install cloud-init.md). |
+**Note:** cloud-init dynamically generates network configurations. For more information about custom network configurations, see the "\(Optional\) Customize network configuration" section in [Install cloud-init](/intl.en-US/Images/Custom image/Import images/Install cloud-init.md). |
 |CentOS 6.10|centos\_6\_10\_x64\_20G\_alibase\_20191223.vhd|2019-12-25|-   Kernel version: 2.6.32-754.24.3.el6.x86\_64.
 -   Changes: updated to include the latest operating system patches. |
 |CentOS 7.7|centos\_7\_7\_64\_20G\_alibase\_20191008.vhd|2019-10-8|-   Kernel version: 3.10.0-1062.1.2.el7.x86\_64.
@@ -175,7 +175,7 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |Debian 10.5|debian\_10\_5\_x64\_20G\_alibase\_20200819.vhd|2020-08-19|-   Kernel version: 4.19.0-10-amd64.
 -   Changes:
     -   Updated to include the latest patches.
-    -   Updated NIC configurations and configured DHCP for eight NICs by default. |
+    -   Updated network interface controller \(NIC\) configurations and configured DHCP for eight NICs by default. |
 |Debian 9.13|debian\_9\_13\_x64\_20G\_alibase\_20200819.vhd|2020-08-19|-   Kernel version: 4.9.0-13-amd64.
 -   Changes:
     -   Updated to include the latest patches.
@@ -215,7 +215,7 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
     -   Updated to include the latest operating system patches.
     -   Upgraded cloud-init to version 19.1.
 
-**Note:** cloud-init dynamically generates network configurations. For more information about custom network configurations, see the "\(Optional\) Custom network configurations" section in [Install cloud-init](/intl.en-US/Images/Custom image/Import images/Install cloud-init.md). |
+**Note:** cloud-init dynamically generates network configurations. For more information about custom network configurations, see the "\(Optional\) Customize network configuration" section in [Install cloud-init](/intl.en-US/Images/Custom image/Import images/Install cloud-init.md). |
 |Debian 9.9|debian\_9\_09\_64\_20G\_alibase\_20190702.vhd|2019-7-2|-   Kernel version: 4.9.0-9-amd64.
 -   Changes: updated to include the latest operating system patches. |
 |Debian 9.9|debian\_9\_09\_64\_20G\_alibase\_20190510.vhd|2019-5-10|-   Kernel version: 4.9.0-9-amd64.
@@ -257,85 +257,85 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 5.4.0-73-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 5.4.0-73-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 4.15.0-143-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 4.15.0-143-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 4.4.0-210-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 4.4.0-210-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.4.0-67-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.4.0-67-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.15.0-139-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.15.0-139-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.4.0-206-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 4.4.0-206-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.4.0-65-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.4.0-65-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.15.0-135-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 4.15.0-135-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.4.0-58-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.4.0-58-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.15.0-128-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.15.0-128-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.4.0-198-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 4.4.0-198-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.4.0-54-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.4.0-54-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.15.0-124-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.15.0-124-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.4.0-194-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 4.4.0-194-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.4.0-47-generic.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.4.0-47-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.15.0-117-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.15.0-117-generic.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.4.0-189-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 4.4.0-189-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.15.0-112-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.15.0-112-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.4.0-187-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200817.vhd|2020-08-17|-   Kernel version: 4.4.0-187-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.15.0-111-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.15.0-111-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.4.0-185-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 4.4.0-185-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.15.0-106-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.15.0-106-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.4.0-184-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200618.vhd|2020-06-18|-   Kernel version: 4.4.0-184-generic.
 -   Changes: updated to include the latest patches. |
-|Ubuntu 20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release.
+|Ubuntu20.04|ubuntu\_20\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   New release.
 -   Kernel version: 5.4.0-31-generic. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 4.4.0-179-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200522.vhd|2020-05-22|-   Kernel version: 4.4.0-179-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200521.vhd|2020-05-21|-   Kernel version: 4.15.0-101-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200521.vhd|2020-05-21|-   Kernel version: 4.15.0-101-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.15.0-96-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.15.0-96-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.4.0-177-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.4.0-177-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200329.vhd|2020-03-29|-   Kernel version: 4.15.0-91-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200329.vhd|2020-03-29|-   Kernel version: 4.15.0-91-generic.
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Enabled IPv6 by default. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200319.vhd|2020-03-19|-   Kernel version: 4.4.0-176-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200319.vhd|2020-03-19|-   Kernel version: 4.4.0-176-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.15.0-88-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.15.0-88-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.4.0-174-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20200220.vhd|2020-02-20|-   Kernel version: 4.4.0-174-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.15.0-72-generic.
+|Ubuntu18.04|ubuntu\_18\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.15.0-72-generic.
 -   Changes: updated to include the latest operating system patches. |
-|Ubuntu 16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.4.0-170-generic.
+|Ubuntu16.04|ubuntu\_16\_04\_x64\_20G\_alibase\_20191225.vhd|2019-12-25|-   Kernel version: 4.4.0-170-generic.
 -   Changes: updated to include the latest operating system patches. |
 |Ubuntu 18.04|ubuntu\_18\_04\_64\_20G\_alibase\_20190624.vhd|2019-6-24|-   Kernel version: 4.15.0-52-generic.
 -   Changes: updated to include the latest operating system patches and fixed the CVE-2019-11477 vulnerability. |
@@ -380,44 +380,44 @@ This topic describes the updates to Elastic Compute Service \(ECS\) public image
 |CoreOS 2303\_3.0|coreos\_2303\_3\_x64\_30G\_alibase\_20191223.vhd|2019-12-23|-   Kernel version: 4.19.86-coreos.
 -   Changes: updated to include the latest operating system patches. |
 
-## openSUSE
+## OpenSUSE
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 5.3.18-lp152.69-default.
--   Changes: updated to include the latest patches. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.3.18-lp152.66-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210420.vhd|2021-04-20|-   Kernel version: 5.3.18-lp152.69-default.
+-   Updated to include the latest patches. |
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210318.vhd|2021-03-18|-   Kernel version: 5.3.18-lp152.66-default.
 -   Changes:
     -   Updated to include the latest patches.
     -   Supported NVME drivers. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.3.18-lp152.60-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20210128.vhd|2021-01-28|-   Kernel version: 5.3.18-lp152.60-default.
 -   Changes:
     -   Updated to include the latest patches.
     -   Fixed the CVE-2021-3156 vulnerability in the Linux kernel. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
--   Changes: updated to include the latest patches. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
--   Changes: updated to include the latest patches.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201228.vhd|2020-12-28|-   Kernel version: 5.3.18-lp152.57-default.
+-   Updated to include the latest patches. |
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20201120.vhd|2020-11-20|-   Kernel version: 5.3.18-lp152.50-default.
+-   Updated to include the latest patches.
 -   Fixed the CVE-2020-14386 vulnerability in the Linux kernel. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
--   Changes: updated to include the latest patches. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200818.vhd|2020-08-18|-   Kernel version: 5.3.18-lp152.33-default.
--   Changes: updated to include the latest patches. |
-|openSUSE 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 5.3.18-lp152.20.7-default.
--   Changes: updated to include the latest patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200623.vhd|2020-06-23|-   Kernel version: 4.12.14-lp151.28.52-default.
--   Changes: updated to include the latest patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200520.vhd|2020-05-20|-   Kernel version: 4.12.14-lp151.28.48-default.
--   Changes: updated to include the latest patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.12.14-lp151.28.48-default.
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200914.vhd|2020-09-14|-   Kernel version: 5.3.18-lp152.41-default.
+-   Updated to include the latest patches. |
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200818.vhd|2020-08-18|-   Kernel version: 5.3.18-lp152.33-default.
+-   Updated to include the latest patches. |
+|Opensuse 15.2|opensuse\_15\_2\_x64\_20G\_alibase\_20200717.vhd|2020-07-17|-   Kernel version: 5.3.18-lp152.20.7-default.
+-   Updated to include the latest patches. |
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200623.vhd|2020-06-23|-   Kernel version: 4.12.14-lp151.28.52-default.
+-   Updated to include the latest patches. |
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200520.vhd|2020-05-20|-   Kernel version: 4.12.14-lp151.28.48-default.
+-   Updated to include the latest patches. |
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200426.vhd|2020-04-26|-   Kernel version: 4.12.14-lp151.28.48-default.
 -   Changes:
     -   Enabled IPv6 by default.
     -   Updated to include the latest operating system patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200331.vhd|2020-03-31|-   Kernel version: 4.12.14-lp151.28.44-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200331.vhd|2020-03-31|-   Kernel version: 4.12.14-lp151.28.44-default.
 -   Changes: updated to include the latest operating system patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200222.vhd|2020-02-22|-   Kernel version: 4.12.14-lp151.28.36-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20200222.vhd|2020-02-22|-   Kernel version: 4.12.14-lp151.28.36-default.
 -   Changes: updated to include the latest operating system patches. |
-|openSUSE 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20191219.vhd|2019-12-19|-   Kernel version: 4.12.14-lp151.28.36-default.
+|Opensuse 15.1|opensuse\_15\_1\_x64\_20G\_alibase\_20191219.vhd|2019-12-19|-   Kernel version: 4.12.14-lp151.28.36-default.
 -   Changes:
     -   Updated to include the latest operating system patches.
     -   Upgraded cloud-init to version 19.1. |
@@ -486,7 +486,7 @@ Trusted images are applicable only to the following instance families and dedica
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
 |CentOS 7.8|centos\_7\_8\_tpm\_x64\_20G\_alibase\_20200810.vhd|2020-08-10|-   New release.
--   Installed with GRUB 2 and TPM, to which the following RPM packages are related:
+-   Installed with GRUB 2 and Trusted Platform Module \(TPM\), to which the following RPM packages are related:
     -   grub2 \(trusted customized version\)
     -   tpm2-abrmd
     -   tpm2-tss
@@ -514,6 +514,11 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20210516.vhd
+-   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20210516.vhd
+
+|2021-05-16|-   Updated to include the KB5003209 operating system patch released in May 2021.
+-   Fixed the CVE-2020-24587, CVE-2021-31186, and CVE-2021-28479 vulnerabilities. |
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20210416.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20210416.vhd
 
@@ -522,7 +527,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20210316.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20210316.vhd
 
-|2021-03-16|-   Updated to include the KB5000848 operating system patches released in March 2021.
+|2021-03-16|-   Updated to include the KB5000848 operating system patch released in March 2021.
 -   Fixed the CVE-2021-26877 and CVE-2021-26897 vulnerabilities. |
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_9600\_x64\_dtc\_zh-cn\_40G\_alibase\_20210220.vhd
 -   English version: win2012r2\_9600\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
@@ -611,7 +616,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   English Edition: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
--   Upgraded .NET Framework to version 4.8. |
+-   .Upgraded .NET Framework to version 4.8. |
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20190523.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20190523.vhd
 
@@ -623,14 +628,19 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2012 R2 Datacenter|-   Chinese version: win2012r2\_64\_dtc\_9600\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: win2012r2\_64\_dtc\_9600\_en-us\_40G\_alibase\_20181220.vhd
 
-|2018-12-20|-   Updated to include the KB4471320 security patch released in December 2018. You must update Windows clients by using the latest patches to establish Remote Desktop Protocol \(RDP\) connections.
--   Upgraded .NET Framework to version 4.7.2.
+|2018-12-20|-   Updated to include the KB4471320 security patch released in December 2018. You must update Windows clients by using the latest patch to establish Remote Desktop Protocol \(RDP\) connections.
+-   .Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
 ## Windows Server 2016
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20210516.vhd
+-   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210516.vhd
+
+|2021-05-16|-   Updated to include the KB5003197 operating system patch released in May 2021.
+-   Fixed the CVE-2020-24587, CVE-2021-31186, and CVE-2021-28479 vulnerabilities. |
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20210416.vhd
 -   English version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210416.vhd
 
@@ -639,7 +649,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20210316.vhd
 -   Chinese version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210316.vhd
 
-|2021-03-16|-   Updated to include the KB5000803 operating system patches released in March 2021.
+|2021-03-16|-   Updated to include the KB5000803 operating system patch released in March 2021.
 -   Fixed the CVE-2021-26877 and CVE-2021-26897 vulnerabilities. |
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_1607\_x64\_dtc\_zh-cn\_40G\_alibase\_20210220.vhd
 -   Chinese version: win2016\_1607\_x64\_dtc\_en-us\_40G\_alibase\_20210220.vhd
@@ -728,7 +738,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
--   Upgraded .NET Framework to version 4.8. |
+-   .Upgraded .NET Framework to version 4.8. |
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20190523.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20190523.vhd
 
@@ -740,14 +750,24 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2016 Datacenter|-   Chinese version: win2016\_64\_dtc\_1607\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: win2016\_64\_dtc\_1607\_en-us\_40G\_alibase\_20181220.vhd
 
-|2018-12-20|-   Updated to include the KB4471321 security patch released in December 2018. You must update Windows clients by using the latest patches to establish RDP connections.
--   Upgraded .NET Framework to version 4.7.2.
+|2018-12-20|-   Updated to include the KB4471321 security patch released in December 2018. You must update Windows clients by using the latest patch to establish Remote Desktop Protocol \(RDP\) connections.
+-   .Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
 ## Windows Server 2019
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210516.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210516.vhd
+
+|2021-05-16|-   Updated to include the KB5003171 operating system patch released in May 2021.
+-   Fixed the CVE-2020-24587, CVE-2021-31186, and CVE-2021-28479 vulnerabilities. |
+|Windows Server 2019 Datacenter|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_alibase\_20210516.vhd
+-   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_alibase\_20210516.vhd
+
+|2021-05-16|-   Updated to include the KB5003171 operating system patch released in May 2021.
+-   Fixed the CVE-2020-24587, CVE-2021-31186, and CVE-2021-28479 vulnerabilities. |
 |Windows Server 2019 Datacenter with Containers|-   Chinese version: win2019\_1809\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210416.vhd
 -   English version: win2019\_1809\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210416.vhd
 
@@ -923,7 +943,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
--   Upgraded .NET Framework to version 4.8. |
+-   .Upgraded .NET Framework to version 4.8. |
 |Windows Server 2019 Datacenter|-   Chinese version: win2019\_64\_dtc\_1809\_zh-cn\_40G\_alibase\_20190528.vhd
 -   English version: win2019\_64\_dtc\_1809\_en-us\_40G\_alibase\_20190528.vhd
 
@@ -968,7 +988,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   English version: winsvr\_64\_dtcC\_1903\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
--   Upgraded .NET Framework to version 4.8. |
+-   .Upgraded .NET Framework to version 4.8. |
 
 ## Windows Server Version 1909
 
@@ -1039,25 +1059,35 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 
 |Release|Image ID|Release date|Description|
 |:------|--------|------------|:----------|
+|Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210516.vhd
+-   English version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210516.vhd
+
+|2021-05-16|-   Updated to include the KB5003173 operating system patch released in May 2021.
+-   Fixed the CVE-2020-24587, CVE-2021-31186, CVE-2021-28479, CVE-2021-31205, and CVE-2021-31166 vulnerabilities. |
+|Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20210516.vhd
+-   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20210516.vhd
+
+|2021-05-16|-   Updated to include the KB5003173 operating system patch released in May 2021.
+-   Fixed the CVE-2020-24587, CVE-2021-31186, CVE-2021-28479, CVE-2021-31205, and CVE-2021-31166 vulnerabilities. |
 |Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210416.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210416.vhd
 
-|2021-04-16|-   Updated to include the KB5001330 operating system patches released in April 2021.
+|2021-04-16|-   Updated to include the KB5001330 operating system patch released in April 2021.
 -   Fixed the CVE-2021-28325, CVE-2021-28324 and CVE-2021-28442 vulnerabilities. |
 |Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20210416.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20210416.vhd
 
-|2021-04-16|-   Updated to include the KB5001330 operating system patches released in April 2021.
+|2021-04-16|-   Updated to include the KB5001330 operating system patch released in April 2021.
 -   Fixed the CVE-2021-28325, CVE-2021-28324 and CVE-2021-28442 vulnerabilities. |
 |Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210316.vhd
 -   English version wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210316.vhd
 
-|2021-03-16|-   Updated to include the KB5000802 operating system patches released in March 2021.
+|2021-03-16|-   Updated to include the KB5000802 operating system patch released in March 2021.
 -   Fixed the CVE-2021-26877 and CVE-2021-26897 vulnerabilities. |
 |Windows Server Version 2004 Datacenter|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_alibase\_20210316.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_alibase\_20210316.vhd
 
-|2021-03-16|-   Updated to include the KB5000802 operating system patches released in March 2021.
+|2021-03-16|-   Updated to include the KB5000802 operating system patch released in March 2021.
 -   Fixed the CVE-2021-26877 and CVE-2021-26897 vulnerabilities. |
 |Windows Server Version 2004 Datacenter with Containers|-   Chinese version: wincore\_2004\_x64\_dtc\_zh-cn\_40G\_container\_alibase\_20210220.vhd
 -   English version: wincore\_2004\_x64\_dtc\_en-us\_40G\_container\_alibase\_20210220.vhd
@@ -1163,7 +1193,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 -   English version: win2008r2\_64\_ent\_sp1\_en-us\_40G\_alibase\_20190718.vhd
 
 |2019-7-18|-   Updated to include the operating system patches released in July 2019.
--   Upgraded .NET Framework to version 4.8. |
+-   .Upgraded .NET Framework to version 4.8. |
 |Windows Server 2008 Standard Edition SP2|-   Chinese version: win2008\_32\_std\_sp2\_zh-cn\_40G\_alibase\_20190517.vhd
 -   English version: none
 
@@ -1181,7 +1211,7 @@ AMD images are applicable only to the ecs.ebmg6a, ecs.ebmc6a, and ecs.ebmr6a ins
 |Windows Server 2008 R2 Enterprise|-   Chinese version: win2008r2\_64\_ent\_sp1\_zh-cn\_40G\_alibase\_20181220.vhd
 -   English version: none
 
-|2018-12-20|-   Updated to include the KB4471318 security patch released in December 2018. You must update Windows clients by using the latest patches to establish RDP connections.
--   Upgraded .NET Framework to version 4.7.2.
+|2018-12-20|-   Updated to include the KB4471318 security patch released in December 2018. You must update Windows clients by using the latest patch to establish RDP connections.
+-   .Upgraded .NET Framework to version 4.7.2.
 -   Used the Sysprep tool to generalize the image. |
 
