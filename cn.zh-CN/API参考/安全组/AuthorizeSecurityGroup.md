@@ -11,7 +11,7 @@
 -   出方向和入方向安全组规则总和不能超过200条。
 -   安全组规则优先级（Priority）可选范围为1~100。数字越小，代表优先级越高。
 -   优先级相同的安全组规则，以拒绝访问（drop）的规则优先。
--   源端设备可以是指定的IP地址范围（SourceCidrIp、Ipv6SourceCidrIp），也可以是其他安全组（SourceGroupId）中的ECS实例。
+-   源端设备可以是指定的IP地址范围（SourceCidrIp、Ipv6SourceCidrIp、SourcePrefixListId），也可以是其他安全组（SourceGroupId）中的ECS实例。
 -   如果匹配的安全组规则已存在，此次AuthorizeSecurityGroup调用成功，但不会增加规则数。
 -   以下任意一组参数可以确定一条安全组规则，只指定一个参数无法确定一条安全组规则。
     -   设置指定IP地址段的访问权限。此时，经典网络类型安全组的网卡类型（NicType）可设置公网（internet）和内网（intranet）。VPC类型安全组的网卡类型（NicType）只可设置内网（intranet）。如以下请求示例：IpProtocol、PortRange、（可选）SourcePortRange、NicType、Policy和SourceCidrIp。
@@ -45,6 +45,22 @@
                 
         ```
 
+    -   在安全组规则中关联前缀列表。此时，前缀列表仅支持网络类型为VPC的安全组，网卡类型（NicType）只可设置为内网（intranet）。如以下请求示例：IpProtocol、PortRange、（可选）SourcePortRange、NicType、Policy和SourcePrefixListId。
+
+        ```
+        
+                https://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroup
+                &SecurityGroupId=sg-F876FF7**
+                &SourcePrefixListId=pl-x1j1k5ykzqlixdcy****
+                &SourceGroupOwnerAccount=test@aliyun.com
+                &IpProtocol=tcp
+                &PortRange=22/22
+                &NicType=intranet
+                &Policy=drop
+                &<公共请求参数>
+               
+        ```
+
 -   更多关于安全组规则的设置示例，请参见[应用案例](~~25475~~)和[安全组五元组规则介绍](~~97439~~)。
 
 ## 调试
@@ -72,7 +88,7 @@
 -   GRE协议：-1/-1
 -   IpProtocol取值为all：-1/-1
 
- 参见[典型应用的常用端口](~~40724~~)了解端口的应用场景。 |
+ 了解端口的应用场景，请参见[典型应用的常用端口](~~40724~~)。 |
 |RegionId|String|是|cn-hangzhou|安全组所属地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |SecurityGroupId|String|是|sg-bp67acfmxazb4p\*\*\*\*|目的端安全组ID。 |
 |SourceGroupId|String|否|sg-bp67acfmxazb4p\*\*\*\*|需要设置访问权限的源端安全组ID。至少设置一项`SourceGroupId`或者`SourceCidrIp`参数。
@@ -95,6 +111,12 @@
  **说明：** 仅支持VPC类型ECS实例的IPv6地址。
 
  默认值：无 |
+|SourcePrefixListId|String|否|pl-x1j1k5ykzqlixdcy\*\*\*\*|需要设置访问权限的源端前缀列表ID。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
+
+ 注意事项：
+
+ -   安全组的网络类型为经典网络时，不支持设置前缀列表。关于安全组以及前缀列表使用限制的更多信息，请参见[使用限制](~~25412~~)。
+-   当您指定了`SourceCidrIp`、`Ipv6SourceCidrIp`或`SourceGroupId`参数中的一个时，将忽略该参数。 |
 |SourcePortRange|String|否|22/22|源端安全组开放的传输层协议相关的端口范围。取值范围：
 
  -   TCP/UDP协议：取值范围为1~65535。使用斜线（/）隔开起始端口和终止端口。例如：1/200
