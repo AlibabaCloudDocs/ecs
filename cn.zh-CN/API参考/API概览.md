@@ -80,6 +80,7 @@
 |[CreateCapacityReservation](/cn.zh-CN/API参考/资源保障/CreateCapacityReservation.md)|调用CreateCapacityReservation创建容量预定服务。|
 |[DescribeElasticityAssurances](/cn.zh-CN/API参考/资源保障/DescribeElasticityAssurances.md)|调用DescribeElasticityAssurances查询弹性保障服务的详细信息。|
 |[DescribeElasticityAssuranceInstances](/cn.zh-CN/API参考/资源保障/DescribeElasticityAssuranceInstances.md)|调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。|
+|[DescribeCapacityReservations](/cn.zh-CN/API参考/资源保障/DescribeCapacityReservations.md)|调用DescribeCapacityReservations查询一个或多个容量预定服务的详细信息。|
 |[DescribeCapacityReservationInstances](/cn.zh-CN/API参考/资源保障/DescribeCapacityReservationInstances.md)|调用DescribeCapacityReservationInstances查询容量预定服务已匹配的实例列表。|
 |[DescribeInstanceAttachmentAttributes](/cn.zh-CN/API参考/资源保障/DescribeInstanceAttachmentAttributes.md)|调用DescribeInstanceAttachmentAttributes查询实例匹配的私有池信息。|
 |[ModifyElasticityAssurance](/cn.zh-CN/API参考/资源保障/ModifyElasticityAssurance.md)|调用ModifyElasticityAssurance修改一个弹性保障服务的名称与描述信息。|
@@ -168,18 +169,34 @@
 |---|--|
 |[CreateSnapshot](/cn.zh-CN/API参考/快照/CreateSnapshot.md)|调用CreateSnapshot为一块云盘创建一份快照。|
 |[CreateAutoSnapshotPolicy](/cn.zh-CN/API参考/快照/CreateAutoSnapshotPolicy.md)|调用CreateAutoSnapshotPolicy创建一条自动快照策略。|
+|[CreateSnapshotGroup](/cn.zh-CN/API参考/快照/CreateSnapshotGroup.md)|调用CreateSnapshotGroup为指定ECS实例中的云盘创建实例快照。实例快照包含一个或多个云盘对应的快照。|
 |[ApplyAutoSnapshotPolicy](/cn.zh-CN/API参考/快照/ApplyAutoSnapshotPolicy.md)|调用ApplyAutoSnapshotPolicy为一块或者多块云盘应用自动快照策略。目标云盘已经应用了自动快照策略时，调用ApplyAutoSnapshotPolicy可以更换云盘当前应用的自动快照策略。|
 |[CopySnapshot](/cn.zh-CN/API参考/快照/CopySnapshot.md)|调用CopySnapshot将一份普通快照从一个地域复制到另一个地域。|
+|[ResetDisks](/cn.zh-CN/API参考/快照/ResetDisks.md)|调用ResetDisks通过实例快照回滚一个或多个云盘。|
 |[DeleteSnapshot](/cn.zh-CN/API参考/快照/DeleteSnapshot.md)|调用DeleteSnapshot删除指定的快照。如果需要取消正在创建的快照，也可以调用该接口删除快照，即取消创建快照任务。|
 |[CancelAutoSnapshotPolicy](/cn.zh-CN/API参考/快照/CancelAutoSnapshotPolicy.md)|调用CancelAutoSnapshotPolicy取消一块或者多块云盘的自动快照策略。|
 |[DeleteAutoSnapshotPolicy](/cn.zh-CN/API参考/快照/DeleteAutoSnapshotPolicy.md)|删除一条自动快照策略。如果目标自动快照策略已经被应用到磁盘上，删除自动快照策略后，这些磁盘不再执行该策略。|
+|[DeleteSnapshotGroup](/cn.zh-CN/API参考/快照/DeleteSnapshotGroup.md)|调用DeleteSnapshotGroup删除指定的实例快照。|
 |[DescribeAutoSnapshotPolicyEX](/cn.zh-CN/API参考/快照/DescribeAutoSnapshotPolicyEX.md)|调用DescribeAutoSnapshotPolicyEX查询您已创建的自动快照策略。|
 |[DescribeSnapshots](/cn.zh-CN/API参考/快照/DescribeSnapshots.md)|调用DescribeSnapshots查询一台ECS实例或一块云盘所有的快照列表。InstanceId、DiskId和SnapshotIds不是必需参数，但是可以构建过滤器逻辑，参数之间为逻辑与（And）关系。|
 |[DescribeSnapshotLinks](/cn.zh-CN/API参考/快照/DescribeSnapshotLinks.md)|调用DescribeSnapshotLinks查询云盘快照链。快照链是一块云盘所有快照组成的关系链，一块云盘对应一条快照链。|
-|[ModifyAutoSnapshotPolicyEx](/cn.zh-CN/API参考/快照/ModifyAutoSnapshotPolicyEx.md)|调用ModifyAutoSnapshotPolicyEx修改一条自动快照策略。修改自动快照策略后，之前已应用该策略的云盘随即执行修改后的自动快照策略。|
+|[DescribeSnapshotGroups](/cn.zh-CN/API参考/快照/DescribeSnapshotGroups.md)|调用DescribeSnapshotGroups查询一个或多个实例快照的信息。|
 |[DescribeSnapshotsUsage](/cn.zh-CN/API参考/快照/DescribeSnapshotsUsage.md)|调用DescribeSnapshotsUsage查询您在一个地域下的快照数量以及快照容量。|
 |[DescribeSnapshotPackage](/cn.zh-CN/API参考/快照/DescribeSnapshotPackage.md)|调用DescribeSnapshotPackage查询您在一个阿里云地域下已经购买的对象存储OSS存储包。存储包可以用于抵扣普通快照存储容量，但不支持抵扣本地快照。|
+|[ModifyAutoSnapshotPolicyEx](/cn.zh-CN/API参考/快照/ModifyAutoSnapshotPolicyEx.md)|调用ModifyAutoSnapshotPolicyEx修改一条自动快照策略。修改自动快照策略后，之前已应用该策略的云盘随即执行修改后的自动快照策略。|
 |[ModifySnapshotAttribute](/cn.zh-CN/API参考/快照/ModifySnapshotAttribute.md)|调用ModifySnapshotAttribute修改一份快照的名称或描述。|
+|[ModifySnapshotGroup](/cn.zh-CN/API参考/快照/ModifySnapshotGroup.md)|调用ModifySnapshotGroup修改指定实例快照的名称与描述信息。|
+
+## 前缀列表
+
+|API|描述|
+|---|--|
+|[CreatePrefixList](/cn.zh-CN/API参考/前缀列表/CreatePrefixList.md)|调用CreatePrefixList创建一个前缀列表。|
+|[DescribePrefixLists](/cn.zh-CN/API参考/前缀列表/DescribePrefixLists.md)|调用DescribePrefixLists查询一个或多个前缀列表的信息。|
+|[DescribePrefixListAssociations](/cn.zh-CN/API参考/前缀列表/DescribePrefixListAssociations.md)|调用DescribePrefixListAssociations查询指定前缀列表已关联的资源信息。|
+|[DescribePrefixListAttributes](/cn.zh-CN/API参考/前缀列表/DescribePrefixListAttributes.md)|调用DescribePrefixListAttributes查询指定前缀列表的详细信息，包含前缀列表的名称、地址族、最大条目容量以及条目的详细信息等。|
+|[ModifyPrefixList](/cn.zh-CN/API参考/前缀列表/ModifyPrefixList.md)|调用ModifyPrefixList修改指定前缀列表的名称、描述和条目。|
+|[DeletePrefixList](/cn.zh-CN/API参考/前缀列表/DeletePrefixList.md)|调用DeletePrefixList删除指定的前缀列表，同时删除前缀列表中的所有条目。|
 
 ## 安全组
 
@@ -294,6 +311,7 @@
 |[InvokeCommand](/cn.zh-CN/API参考/云助手/InvokeCommand.md)|调用InvokeCommand为一台或多台ECS实例触发一条云助手命令。|
 |[StopInvocation](/cn.zh-CN/API参考/云助手/StopInvocation.md)|调用StopInvocation停止一台或多台ECS实例中一条正在进行中（Running）的云助手命令进程。|
 |[DisableActivation](/cn.zh-CN/API参考/云助手/DisableActivation.md)|调用DisableActivation手动禁用指定的激活码。|
+|[ModifyCommand](/cn.zh-CN/API参考/云助手/ModifyCommand.md)|调用ModifyCommand修改一条云助手命令相关参数以及命令内容。|
 |[DeleteCommand](/cn.zh-CN/API参考/云助手/DeleteCommand.md)|调用DeleteCommand删除一条云助手命令。|
 |[DeregisterManagedInstance](/cn.zh-CN/API参考/云助手/DeregisterManagedInstance.md)|调用DeregisterManagedInstance注销一个托管实例。注销后您将无法再使用云助手向实例发送命令或文件。|
 |[DescribeCommands](/cn.zh-CN/API参考/云助手/DescribeCommands.md)|调用DescribeCommands查询您已经创建的云助手命令。只输入参数Action和RegionId，不输入其他任何请求参数，则默认查询您所有可用的命令（CommandId）。|
@@ -331,6 +349,7 @@
 |---|--|
 |[DescribePrice](/cn.zh-CN/API参考/询价/DescribePrice.md)|调用DescribePrice查询云服务器ECS资源的最新价格。|
 |[DescribeRenewalPrice](/cn.zh-CN/API参考/询价/DescribeRenewalPrice.md)|调用DescribeRenewalPrice查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。|
+|[DescribeInstanceModificationPrice](/cn.zh-CN/API参考/询价/DescribeInstanceModificationPrice.md)|调用DescribeInstanceModificationPrice查询未到期的包年包月ECS实例升配时目标实例规格的价格信息、新增包年包月数据盘的价格信息。|
 
 ## 其他接口
 
