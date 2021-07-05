@@ -6,9 +6,11 @@ keyword: [LNMP, CentOS 7, Nginx, MySQL, PHP7]
 
 Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下快速方便地搭建出LNMP Web服务环境。本教程介绍如何手动在ECS实例上搭建LNMP环境，其中LNMP分别代表Linux、Nginx、MySQL和PHP。
 
--   已注册阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
 -   已创建ECS实例并为实例分配公网IP地址，具体操作请参见[创建方式导航](/intl.zh-CN/实例/创建实例/创建方式导航.md)。
--   已在实例安全组的入方向添加安全组规则并放行80端口。具体操作请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
+-   已在实例安全组的入方向添加安全组规则并放行22、80、443端口。具体操作请参见[添加安全组规则](/intl.zh-CN/安全/安全组/添加安全组规则.md)。
+
+    **说明：** 基于服务器数据安全考虑，本文仅说明部署与测试LNMP环境所必须放行的端口，您可以根据实际需求，放行其他应用所需的端口号。例如，远程连接MySQL数据库时，需要放行MySQL默认占用的3306端口。
+
 
 本教程适用于熟悉Linux操作系统，刚开始使用阿里云进行建站的个人用户。
 
@@ -308,7 +310,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
         ```
 
 
-更多详情，请参见[MySQL文档](http://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html)。
+更多信息，请参见[MySQL文档](http://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html)。
 
 ## 步骤七：配置PHP
 
