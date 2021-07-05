@@ -23,6 +23,8 @@ The items that can be checked by the instance health diagnostics feature are dis
 -   Billing: checks whether an instance or its associated components such as elastic IP addresses \(EIPs\) encounters billing issues. Examples: whether subscription instances expire, whether pay-as-you-go instances are stopped due to overdue payments within your account, and whether disks are unavailable for use due to overdue payments within your account.
 -   Security group rules: checks whether the ports specified in security groups associated with an instance are enabled, including common ports and custom ports. You can diagnose the source address, destination port, and protocol based on your requirements.
 
+For more information about the diagnostic items and scope, see [Diagnostic items and results](/intl.en-US/Deployment & Maintenance/Instance health diagnostics/Diagnostic items and results.md).
+
 When you use the instance health diagnostics feature, take note of the following items:
 
 -   Instances of retired instance families do not support the instance health diagnostics feature.
