@@ -1,0 +1,49 @@
+# Terms
+
+This topic describes the terms used in Elastic Compute Service \(ECS\).
+
+## ECS terms
+
+|Term|Description|
+|----|-----------|
+|[ECS instance](/intl.en-US/Instance/Overview.md)|An ECS instance is a virtual server that includes basic components such as CPU, memory, operating system \(OS\), network configurations, and disks.|
+|[ECS instance type](/intl.en-US/Instance/Instance families.md)|Instance types define the basic attributes such as computing capacity, storage capacity, and networking performance of ECS instances. Instance types must be used together with images, Elastic Block Storage \(EBS\) devices, and network resources to create ECS instances that serve different purposes.|
+|[image](/intl.en-US/Images/Image overview.md)|Images contain information that is necessary to run ECS instances, such as OSs and initialization data of applications.|
+|[public image](/intl.en-US/Images/Public image/Overview.md)|Public images are base images provided by Alibaba Cloud. Public images are licensed and include Windows Server OS images and mainstream Linux OS images.|
+|-   [Alibaba Cloud Linux 3](/intl.en-US/Images/Alibaba Cloud Linux 3/Overview.md)
+-   [Alibaba Cloud Linux 2](/intl.en-US/Images/Alibaba Cloud Linux 2/Overview.md)
+
+|Alibaba Cloud Linux 2 and 3 are OSs provided by Alibaba Cloud. They offer a safe, stable, and high-performance customized environment for applications on ECS instances and are optimized for the infrastructure of Alibaba Cloud.|
+|[custom image](/intl.en-US/Images/Custom image/Overview.md)|Custom images can be created or imported and contain the system environment, application environment, and related software configurations to eliminate the need for repeated manual configurations.|
+|[Elastic Block Storage device](/intl.en-US/Block Storage/Block Storage overview/Block Storage overview.md)|EBS devices offer high performance and reduce latency. You can partition and format an EBS device and create file systems on it to meet the data storage requirements of your business.|
+|[disk](/intl.en-US/Block Storage/Block Storage overview/Cloud disks.md)|Disks are block-level EBS devices that use a triplicate mechanism to ensure 99.9999999% data durability for ECS instances.|
+|[local disk](/intl.en-US/Block Storage/Block Storage overview/Local disks.md)|Local disks are located on the same physical server as the ECS instance to which the disks are attached. Local disks are cost-effective and provide high storage I/O. However, the durability of data stored on local disks is determined by the reliability of the associated physical server, which increases the risks of single points of failure \(SPOFs\).|
+|[snapshot](/intl.en-US/Snapshots/Snapshot overview.md)|A snapshot is a point-in-time backup of a disk and is used to back up or restore the disk.|
+|[security group](/intl.en-US/Security/Security groups/Overview.md)|A security group is a virtual firewall that is used to control the inbound and outbound traffic of ECS instances in the security group.|
+|[SSH key pair](/intl.en-US/Security/Key pairs/Overview.md)|An SSH key pair is a secure and convenient authentication method provided by Alibaba Cloud for instance logon. An SSH key pair consists of a public key and a private key. You can use SSH key pairs to log on to only Linux instances.|
+|[Instance RAM role](/intl.en-US/Security/Instance RAM roles/Overview.md)|Instance Resource Access Management \(RAM\) roles enable ECS instances to assume roles with specific access permissions. An instance can access the APIs of specified Alibaba Cloud services and manage specified Alibaba Cloud resources based on a Security Token Service \(STS\) temporary credential to ensure high security.|
+|[virtual private cloud \(VPC\)](/intl.en-US/Product Introduction/What is a VPC?.md)|A VPC is a private network established on Alibaba Cloud. VPCs are logically isolated from each other. You have full control over your VPC. For example, you can specify a CIDR block and configure route tables and gateways for the VPC.|
+|[elastic network interface \(ENI\)](/intl.en-US/Network/Elastic Network Interfaces/ENI overview.md)|An ENI is an independent virtual network interface that can be bound to or unbound from an ECS instance to implement the flexible scaling and migration of services.|
+|[launch template](/intl.en-US/Elasticity/Launch template/Launch templates.md)|A launch template contains configuration information that you can use to create ECS instances and eliminates repeated manual configurations.|
+|[deployment set](/intl.en-US/Elasticity/Deployment sets/Overview.md)|Deployment sets support the high-availability policy. Instances within a deployment set are strictly distributed across different physical servers. This ensures high service availability and disaster recovery at the underlying layer.|
+|[dedicated host](/intl.en-US/Product Introduction/What is DDH?.md)|A dedicated host is a cloud host whose physical resources are exclusively reserved for a single tenant. Dedicated hosts meet strict security and compliance requirements and support bring your own licenses \(BYOLs\) when you migrate services to the cloud.|
+|[auto provisioning group](/intl.en-US/Elasticity/Manage auto provisioning groups/Auto Provisioning overview.md)|Auto provisioning groups support quick deployment of instance clusters across instance types and zones. Auto provisioning groups can create preemptible instances and pay-as-you-go instances by using a combination of provisioning policies to provide high stability at low cost.|
+|[tag](/intl.en-US/Tag & Resource/Tags/Overview.md)|Each tag consists of a key-value pair. You can add tags to resources with the same characteristics, such as resources that belong to the same organization and resources that serve the same purpose. You can query and manage resources based on tags in an efficient manner.|
+|[resource group](/intl.en-US/Tag & Resource/Resource/Resource groups.md)|Resource groups allow you to manage resources across services and regions based on your business requirements and manage the permissions of resource groups.|
+|[Cloud Assistant](/intl.en-US/Deployment & Maintenance/Cloud assistant/Overview.md)|Cloud Assistant is an automated O&M tool provided by Alibaba Cloud. Cloud Assistant allows you to perform operations such as running commands in ECS instances and sending files to ECS instances without logging on to the ECS instances.|
+|[system event](/intl.en-US/Deployment & Maintenance/System events/Overview.md)|System events are scheduled or unexpected O&M events that affect the running status of ECS instances and require the restart, stop, or release of ECS instances. For system events, ECS sends you notifications that contain information such as solutions and event cycles so that you can back up data and make preparations in a timely manner.|
+
+## Billing terms
+
+|Term|Description|
+|----|-----------|
+|[subscription](/intl.en-US/Pricing/Billing methods/Subscription.md)|In this billing method, you pay for resources upfront and use them over a period of time.|
+|[pay-as-you-go](/intl.en-US/Pricing/Billing methods/Pay-as-you-go.md)|In this billing method, you pay for resources after you use them. Resources can be purchased and released as needed.|
+|[preemptible instance](/intl.en-US/Instance/Instance purchasing options/Preemptible instances/Overview.md)|In this billing method, you can bid for available computing resources to create preemptible instances. Preemptible instances offer discounts compared with pay-as-you-go instances. However, preemptible instances can be reclaimed.|
+|[reserved instance](/intl.en-US/Instance/Instance purchasing options/Reserved Instances/Overview.md)|Reserved instances are discounted coupons that are used together with pay-as-you-go instances. When you purchase a reserved instance, you make a commitment to use instances that have specified configurations such as instance type, region, and zone to receive discounted billing. Reserved instances are applied to offset the bills of computing resources.|
+|[savings plan](/intl.en-US/Instance/Instance purchasing options/Savings plans/Overview.md)|Savings plans are discounted plans that are used together with pay-as-you-go instances. When you purchase a savings plan, you make a commitment to use a consistent amount \(measured in USD/hour\) of resources to receive discounted billing. Savings plans are applied to offset the bills of computing resources and system disks.|
+|[Resource Assurance](/intl.en-US/Instance/Instance purchasing options/Resource assurances/Overview of Resource Assurance.md)|After an elasticity assurance or a capacity reservation is created, the system generates a private pool to reserve resources for a specific number of instances that have specific attributes. During the validity period of the elasticity assurance or the capacity reservation, you always have access to the resources reserved within the private pool when you want to create instances.|
+|[storage capacity unit \(SCU\)](/intl.en-US/Block Storage/Storage capacity units/Overview.md)|SCUs are storage resource plans that are used together with pay-as-you-go storage resources. When you purchase an SCU, you make a commitment to use storage resources of specific capacity to receive discounted billing. SCUs are applied to offset the bills of various storage resources such as EBS devices, Apsara File Storage NAS file systems, and Object Storage Service \(OSS\) buckets.|
+|[pay-by-bandwidth](/intl.en-US/Pricing/Billing items/Public bandwidth.md)|Pay-by-bandwidth is a billing method for network usage. You are charged based on the specified bandwidth.|
+|[pay-by-traffic](/intl.en-US/Pricing/Billing items/Public bandwidth.md)|Pay-by-bandwidth is a billing method for network usage. You are charged for the actual amount of traffic that you use. You must configure a maximum bandwidth value to avoid unmanageable fees incurred by traffic bursts.|
+
