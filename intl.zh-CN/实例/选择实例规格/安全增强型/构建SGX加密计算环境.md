@@ -8,6 +8,8 @@ Intel® SGX以硬件安全保障信息安全，不依赖固件和软件的安全
 
 阿里云安全增强型实例规格族g7t、c7t、r7t基于Intel®SGX技术提供加密内存，并支持虚拟机形态的SGX技术，您可以在vSGX实例中开发并运行SGX程序。
 
+**说明：** 如果您在Intel SGX Enclave中使用了与硬件相绑定的密钥加密数据（例如基于SGX Sealing），实例所在的宿主机发生变化后将导致无法解密对应数据。建议您在应用层做好数据冗余和备份，以保证应用的可靠性。
+
 ## 构建SGX加密计算环境
 
 为开发SGX程序，您需要在vSGX实例上安装运行时（runtime）、SDK，并配置远程证明服务。建议您使用Alibaba Cloud Linux 2.1903 64位UEFI版镜像获得更好的使用体验。Alibaba Cloud Linux 2.1903 64位UEFI版镜像已搭载SGX驱动，并提供完全兼容Intel® SGX SDK的阿里云TEE SDK。
