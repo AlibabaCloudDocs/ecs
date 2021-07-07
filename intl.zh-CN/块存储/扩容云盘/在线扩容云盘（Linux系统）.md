@@ -111,7 +111,7 @@ keyword: [ecs, 磁盘扩容, 扩展分区]
     df -Th
     ```
 
-    执行结果如下所示。
+    执行结果如下所示。其中，`Mounted on`列为文件系统对应的挂载点。
 
     ![查看文件系统](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6620659951/p135833.png)
 
