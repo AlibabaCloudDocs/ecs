@@ -76,7 +76,7 @@ If your Windows instance cannot access the Internet, you can use this method to 
 
     In this example, open the amd64 subfolder in the C:\\test\\210408.1454.1459\_bin\\Win8\\amd64 path because the Windows instance is running a Windows Server 2012 R2 operating system.
 
-5.  After theamd64 subfolder is opened, press the Shift key and right-click a blank area at the same time. Then, select **Open PowerShell window here**.
+5.  After the amd64 subfolder is opened, press the Shift key and right-click a blank area at the same time. Then, select **Open PowerShell window here**.
 
     ![powershell](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8492565261/p274577.png)
 
