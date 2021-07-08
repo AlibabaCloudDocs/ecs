@@ -1,36 +1,37 @@
 # 使用Enclave构建机密计算环境
 
-本文介绍如何使用Enclave功能创建一个可信的隔离空间，从而保护您的应用程序和数据的安全。
+本文介绍如何使用阿里云虚拟化Enclave创建一个可信的隔离空间，从而保护您的应用程序和数据的安全。
 
 数据一般分为三种形态：静态数据、传输中的数据以及使用中的数据。前两者可以通过加密等方式来保障数据安全；而使用中的数据的安全性保障十分困难，目前一般使用机密计算（Confidential Computing）来保护使用中的数据的安全性。
 
-阿里云为安全增强型实例提供了Enclave功能，在ECS实例内部提供一个可信的隔离空间，将合法软件的安全操作封装在一个Enclave中，保障您的代码和数据的机密性与完整性，不受恶意软件的攻击。
+阿里云虚拟化Enclave在ECS实例内部提供一个可信的隔离空间，将合法软件的安全操作封装在一个Enclave中，保障您的代码和数据的机密性与完整性，不受恶意软件的攻击。
 
-**说明：** Enclave功能正在邀测中。您可以前往[产品详情页](https://www.aliyun.com/daily-act/ecs/aliyun-enclave)申请使用。
+**说明：** 阿里云虚拟化Enclave正在邀测中。您可以前往[产品详情页](https://www.aliyun.com/daily-act/ecs/aliyun-enclave)申请使用。
 
-Enclave功能适用于对敏感和机密数据有强保护需求的业务，例如金融服务、互联网、医疗等。
+阿里云虚拟化Enclave适用于对敏感和机密数据有强保护需求的业务，例如金融服务、互联网、医疗等。
 
 ## Enclave的工作原理
 
-使用阿里云Enclave构建机密计算环境的工作原理，是在ECS实例（即主VM）内切分计算资源（包括vCPU和内存），创建一个Enclave VM（简称EVM）作为可信执行环境。EVM的安全性保障体现在以下几方面：
+使用阿里云虚拟化Enclave构建机密计算环境的工作原理，是在ECS实例（即主VM）内切分计算资源（包括vCPU和内存），创建一个Enclave VM（简称EVM）作为可信执行环境。EVM的安全性保障体现在以下几方面：
 
 -   由底层虚拟化技术提供安全隔离，EVM和主VM之间隔离，并且和其他ECS实例也隔离。
 -   EVM运行独立的、定制化的可信操作系统，没有持久化存储、交互式连接或外部网络通路，仅允许通过本地安全信道（基于vsock）与主VM进行通信，最大程度缩小攻击面。您可以将涉及机密数据的应用放入EVM中运行，通过安全调用的形式与运行在主VM上的应用进行交互。
 
-阿里云Enclave的工作原理图如下所示。
+阿里云虚拟化Enclave的工作原理图如下所示。
 
 ![enclave原理图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3916902161/p237059.png)
 
-阿里云Enclave提供的安全性由多个方面结合实现。底层基于带有TPM/TCM芯片的第三代神龙架构，且为EVM提供vTPM/vTCM设备来增强其安全性和可信能力；上层提供高兼容性的SDK，方便您快速搭建Enclave环境并使用。在可信证明能力方面，您可以对运行在机密执行环境中的代码进行验证，例如借助SDK，机密应用可在运行时生成证明材料（包括平台、应用信息、签名等），再通过远程证明服务端（可结合KMS）验证证明材料的有效性。当主VM切分资源给EVM，并且EVM开始运行时，底层会执行资源访问隔离，确保主VM无法访问这些已经切分出去的vCPU或内存资源，保障EVM的正常运行和私密性。
+阿里云虚拟化Enclave提供的安全性由多个方面结合实现。底层基于带有TPM/TCM芯片的第三代神龙架构，且为EVM提供vTPM/vTCM设备来增强其安全性和可信能力；上层提供高兼容性的SDK，方便您快速搭建Enclave环境并使用。在可信证明能力方面，您可以对运行在机密执行环境中的代码进行验证，例如借助SDK，机密应用可在运行时生成证明材料（包括平台、应用信息、签名等），再通过远程证明服务端（可结合KMS）验证证明材料的有效性。当主VM切分资源给EVM，并且EVM开始运行时，底层会执行资源访问隔离，确保主VM无法访问这些已经切分出去的vCPU或内存资源，保障EVM的正常运行和私密性。
 
-阿里云Enclave功能的架构图如下所示。
+阿里云虚拟化Enclave功能的架构图如下所示。
 
 ![enclave架构图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9345962161/p237060.png)
 
 ## 使用限制
 
--   每个安全增强型ECS实例只允许创建一个Enclave。
--   使用Enclave前您必须至少保留一个处理器物理核以及部分内存给主VM使用，剩余的处理器和内存资源可以灵活地分配给Enclave。如果您开启了超线程，则代表保留了属于一个物理核的两个处理器超线程。
+-   仅g7、c7、r7支持阿里云虚拟化Enclave。
+-   每台ECS实例只允许创建一个Enclave。
+-   使用Enclave前您必须至少保留一个处理器物理核以及部分内存给主VM使用，剩余的处理器和内存资源可以灵活地分配给Enclave。如果您开启了超线程，则代表保留了属于一个物理核的两个处理器超线程，因此启用Enlave特性的ECS实例至少需要具备4 vCPU。
 
 其他通用限制，请参见[使用限制](/cn.zh-CN/产品简介/使用限制.md)。
 
@@ -40,11 +41,11 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
 
     Enclave Runtime工具集负责在主VM上管理Enclave的生命周期，包括Enclave的启动和终止。您可以通过以下任一方式安装：
 
-    -   在创建实例时勾选**Enclave**，自动安装Enclave Runtime工具集。
+    -   在创建ECS实例时勾选**Enclave**，自动安装Enclave Runtime工具集。
 
         ![随实例安装](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9345962161/p240198.png)
 
-    -   在创建实例后，运行以下命令，在主VM中安装Enclave Runtime工具集。
+    -   在创建ECS实例后，运行以下命令，在主VM中安装Enclave Runtime工具集。
 
         ```
         sudo rpmkeys --import http://mirrors.aliyun.com/epel/RPM-GPG-KEY-EPEL-7
@@ -73,7 +74,7 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
 
 ## 通过SDK使用Enclave
 
-阿里云Enclave提供了SDK，让您在启用了Enclave的ECS实例上开发自己的应用。阿里云Enclave还提供了一组与SGX-SDK兼容的API接口定义和代码库，如果您已经有SGX应用，则只需经过少量迁移工作即可将应用运行在Enclave平台上。
+阿里云虚拟化Enclave提供了SDK，让您在启用了Enclave的ECS实例上开发自己的应用。阿里云虚拟化Enclave还提供了一组与SGX-SDK兼容的API接口定义和代码库，如果您已经有SGX应用，则只需经过少量迁移工作即可将应用运行在Enclave平台上。
 
 1.  在开发环境中准备以下Dockerfile文件。
 
