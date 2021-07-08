@@ -10,8 +10,6 @@ Resource Assurance is a service that guarantees resources to flexibly meet your 
 
 ## Introduction
 
-Resource Assurance is in invitational preview. To use Resource Assurance, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-
 The following table describes the different services that Resource Assurance provide.
 
 |Service|Feature|Description|
