@@ -1,5 +1,5 @@
 ---
-keyword: [阿里云, ecs, 磁盘扩容, 扩容, windows扩容]
+keyword: [VirtIO驱动, 扩容, windows扩容, 查询序列号]
 ---
 
 # Windows实例更新RedHat VirtIO驱动
@@ -14,15 +14,14 @@ keyword: [阿里云, ecs, 磁盘扩容, 扩容, windows扩容]
 Windows实例更新RedHat VirtIO驱动的操作步骤如下。
 
 1.  [步骤一：检查驱动版本](#section_mhl_nhy_dhb)
-2.  [步骤二：下载驱动程序](#section_93w_k6h_jgz)
-3.  [步骤三：更新RedHat VirtIO驱动](#section_pvf_cr1_qgb)
+2.  [步骤二：更新驱动程序](#section_93w_k6h_jgz)
 
 ## 步骤一：检查驱动版本
 
 检查驱动版本有以下两种方式。
 
 -   方式一：使用PowerShell检查驱动版本
-    1.  远程连接Windows实例。详情请参见[在本地客户端上连接Windows实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/在本地客户端上连接Windows实例.md)。
+    1.  远程连接Windows实例。详情请参见[通过密码认证登录Windows实例](/intl.zh-CN/实例/连接实例/使用第三方客户端工具连接实例/在本地客户端上连接Windows实例.md)。
     2.  打开CMD命令行窗口。
     3.  输入powershell进入PowerShell交互界面。
     4.  输入以下命令检查驱动版本，根据返回信息判断ECS实例是否支持在线扩容。
@@ -50,60 +49,42 @@ Windows实例更新RedHat VirtIO驱动的操作步骤如下。
 |查询序列号|大于等于58015|您可以直接查看磁盘序列号。具体操作，请参见[查看磁盘序列号](/intl.zh-CN/块存储/云盘/查看磁盘序列号.md)。|
 |小于58015|请继续下一步。|
 
-## 步骤二：下载驱动程序
+## 步骤二：更新驱动程序
 
-下载并解压安装包（[virtio驱动包](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/169523/cn_zh/1590721781509/virtio_58015.zip)），本文后续步骤假设您解压后驱动包所在路径为C:\\Users\\Administrator\\Desktop\\virtioDriver。ECS实例的操作系统与解压后文件夹目录的对应关系如下表所示。
+如果您的Windows实例能够访问公网，建议您使用本小节中的步骤快速更新virtio驱动。如果实例不能访问公网，或需要批量更新virtio驱动，请参见[如何手动更新Windows实例的virtio驱动](/intl.zh-CN/镜像/常见问题/如何手动更新Windows实例的virtio驱动.md)中的步骤。
 
-|驱动文件（夹）名称|文件（夹）描述|
-|:--------|:------|
-|win7|Windows Server 2008 R2和Windows 7|
-|Wlh|Windows Server 2008|
-|Win8|Windows Server 2012和Windows Server 2012 R2|
-|win10|Windows 10、Windows Server 2016、Windows Server 2019及更新版本的Windows Server系统|
-|amd64|64位|
-|x86|32位|
+您在手动更新virtio驱动前，建议您先为Windows实例创建快照备份数据。具体操作，请参见[创建一个云盘快照](/intl.zh-CN/快照/使用快照/创建一个云盘快照.md)。
 
-## 步骤三：更新RedHat VirtIO驱动
+1.  远程连接待更新驱动的Windows实例。
 
-更新RedHat VirtIO驱动有以下两种方式。
+    具体操作，请参见[连接方式介绍](/intl.zh-CN/实例/连接实例/连接方式概述.md)。
 
--   方式一：使用pnputil添加和安装驱动
-    1.  打开CMD命令行窗口。
-    2.  运行以下命令添加驱动包。
+2.  在Windows实例中，下载用于更新virtio驱动的脚本。
 
-        ```
-        pnputil -i -a <path to virtio driver inf\>
-        ```
+    下载地址：[InstallVirtIo.ps1](https://windows-driver-cn-beijing.oss-cn-beijing.aliyuncs.com/virtio/InstallVirtIo.ps1)
 
-        请确保您已经将目标.inf文件解压到指定的目录（<path to virtio driver inf\>中，例如C:\\Users\\Administrator\\Desktop\\virtioDriver\\win7\\amd64\\viostor.inf）。
+3.  执行InstallVirtIo.ps1脚本更新virtio驱动。
 
-        -   只更新云盘驱动，则运行：
+    例如，您将脚本InstallVirtIo.ps1下载到了C:\\test目录下。
 
-            ```
-            pnputil -i -a C:\Users\Administrator\Desktop\virtioDriver\win7\amd64\viostor.inf
-            ```
+    1.  打开C:\\test文件夹。
 
-        -   更新所有RedHat VirtIO相关驱动，则运行：
+        您需要打开InstallVirtIo.ps1实际的下载目录。
 
-            ```
-            pnputil -i -a C:\Users\Administrator\Desktop\virtioDriver\win7\amd64\*.inf
-            ```
+    2.  选中InstallVirtIo.ps1文件，单击鼠标右键，然后单击**使用 PowerShell 运行**。
 
-    3.  重启ECS实例的操作系统，使驱动更新生效。
--   方式二：手动添加驱动
-    1.  打开设备管理器。
-    2.  右键单击**存储控制器**下的**Red Hat VirtIO SCSI controller**，并选择**更新驱动程序软件**。
+        ![执行脚本](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6902421261/p274473.png)
 
-        **说明：** 如果出现多个**Red Hat VirtIO SCSI controller**，只需更新其中一个即可。
+        您也可以在文件夹的空白区域，按下Shift键的同时，单击鼠标右键，然后单击**在此处打开 Powershell 窗口\(S\)**。在Windows PowerShell中手动执行InstallVirtIo.ps1脚本。
 
-        ![更新驱动](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5563359951/p41810.png)
+        **说明：** 如果您当前Windows实例的登录用户为普通用户，需要以管理员权限执行脚本。如果是系统用户，则可以直接执行脚本。
 
-    3.  选择**浏览计算机以查找驱动程序软件**。
-    4.  选择**从计算机的设备驱动程序列表中选择**。
-    5.  单击**从磁盘安装**。
-    6.  选择对应文件夹下的驱动文件viostor，并按向导提示更新驱动。
-    7.  重启ECS实例的操作系统，使得驱动更新生效。
+4.  脚本执行完成后，重启Windows实例。
+
+    具体操作，请参见[重启实例](/intl.zh-CN/实例/管理实例状态/重启实例.md)。重启实例后，virtio驱动更新才会生效。
+
 
 -   如果需要在线扩容云盘，请参见[在线扩容云盘](/intl.zh-CN/块存储/扩容云盘/在线扩容云盘（Linux系统）.md)。
 -   如果需要查询磁盘序列号，请参见[查看磁盘序列号](/intl.zh-CN/块存储/云盘/查看磁盘序列号.md)。
+-   更多更新RedHat VirtIO驱动方式，请参见[如何手动更新Windows实例的virtio驱动](/intl.zh-CN/镜像/常见问题/如何手动更新Windows实例的virtio驱动.md)。
 
