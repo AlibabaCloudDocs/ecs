@@ -25,8 +25,8 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
     -   The kernel is updated to the kernel-4.19.91-23.al7 version.
     -   Kernel bugs and key security vulnerabilities are fixed.
     -   Intel SGX is supported.
-    -   The network diagnosis tool Ping Trace is supported.
-    -   Cgroups can be created in a lightweight manner in scenarios in which multiple instances are deployed on a single server. This can effectively reduce the amount of time required to create cgroups.
+    -   The network diagnostic tool Ping Trace is supported.
+    -   Cgroups can be created in a lightweight manner in scenarios where multiple instances are deployed on a single server. This can reduce the amount of time required to create cgroups.
     -   Intel IceLake MCA is supported. |
 |aliyun\_2\_1903\_x64\_20G\_qboot\_alibase\_20210325.vhd|2021-03-25|-   The `Alibaba Cloud Linux 2.1903 64-bit (Quick Start)` image is updated.
 -   This image is derived from the aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd version of the `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image.
@@ -43,7 +43,7 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
     -   The kernel is updated to the kernel-4.19.91-22.2.al7 version.
     -   Kernel bugs and key security vulnerabilities are fixed.
     -   The kernel file system is synchronized with the latest ext4 file system from the Linux community to gain enhanced stability.
-    -   Redundant Array of Independent Disks \(RAID\) is supported by default.
+    -   RAID is supported by default.
     -   The Dragonfly Enclaves feature is supported.
     -   The performance debugging of Intel IceLake PMU Topdown is supported.
     -   The read capability of io\_uring buffer is optimized.
@@ -59,7 +59,7 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20200904.vhd|2020-09-04|-   The `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image is updated to the latest software version to be compatible with CentOS 7.8. CVEs are fixed.
 -   Information in /etc/redhat-release is changed from Aliyun Linux release 7.2 LTS \(Hunting Beagle\) to Alibaba Cloud Linux \(Aliyun Linux\) release 2.1903 LTS \(Hunting Beagle\).
 -   The image type information in /etc/image-id is optimized.
--   The tuned service is enabled by default.
+-   The tuned service is disabled by default.
 -   Kernel updates:
     -   The kernel is updated to the kernel-4.19.91-21.al7 version.
     -   Kernel bugs and security vulnerabilities are fixed.
@@ -149,6 +149,17 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
 -   This image is derived from the aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd version of the `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image.
 -   Boot mode is changed to the Unified Extensible Firmware Interface \(UEFI\) mode. This is the only supported mode.
 -   The kernel is updated to the kernel-kernel-kernel-4.19.91-23.al7 version. |
+|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210325.vhd|2021-03-25|Instance families:-   ecs.g7
+-   ecs.c7
+-   ecs.r7
+-   ecs.g7t
+-   ecs.c7t
+-   ecs.r7t
+
+|-   The `Alibaba Cloud Linux 2.1903 64-bit (UEFI)` image is updated.
+-   This image is derived from the aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd version of the `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image.
+-   Boot mode is changed to the UEFI mode. This is the only supported mode.
+-   Applicable regions: China \(Beijing\), China \(Hangzhou\), China \(Shanghai\), and China \(Shenzhen\). |
 |aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210218.vhd|2021-02-18|Trusted instance families:-   ecs.g6t
 -   ecs.c6t
 
@@ -171,7 +182,7 @@ This topic describes the updates to Alibaba Cloud Linux 2 images. The release no
 |aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210120.vhd|2021-01-20|Trusted instance families:-   ecs.g6t
 -   ecs.c6t
 
-|-   The `Alibaba Cloud Linux 2.1903 64-bit (Trusted)` image is updated.
+|-   The `Alibaba Cloud Linux 2.1903 64-bit (Trusted) image` is updated.
 -   This image is derived from the aliyun\_2\_1903\_x64\_20G\_alibase\_20210120.vhd version of the `Alibaba Cloud Linux 2.1903 LTS 64-bit` base image.
 -   Boot mode is changed to the UEFI mode. This is the only supported mode.
 -   The kernel is updated to the kernel-4.19.91-22.2.al7 version. |
