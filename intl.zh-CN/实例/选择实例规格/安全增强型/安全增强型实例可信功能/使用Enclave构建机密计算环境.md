@@ -105,7 +105,13 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
       deenclave/sdk-builder
     ```
 
-2.  在启动后的容器实例内，运行cmake命令对示例代码执行构建。
+2.  在启动后的容器实例内，运行以下命令配置环境变量。
+
+    ```
+    source /opt/alibaba/teesdk/desdk/environment
+    ```
+
+3.  在启动后的容器实例内，运行cmake命令对示例代码执行构建。
 
     ```
     cmake3 -B build && \
@@ -114,9 +120,9 @@ Enclave功能适用于对敏感和机密数据有强保护需求的业务，例�
 
     构建成功后，应用和Enclave所在路径分别为/opt/app-root/src/build/SampleMath/App/app和/opt/app-root/src/build/SampleMath/Enclave/enclave.signed.so。
 
-3.  将应用上传至主实例。
+4.  将应用上传至主实例。
 
-4.  在ECS主VM上启动Enclave，并执行示例代码SampleMath，然后查看执行结果。
+5.  在ECS主VM上启动Enclave，并执行示例代码SampleMath，然后查看执行结果。
 
     ```
     [root@AliYun ~]# ./app
