@@ -84,7 +84,7 @@ Instance types
 
 ## i3, instance family with local SSDs
 
-The instance family is in invitational preview.
+This instance family is in the beta testing phase.
 
 Features
 
