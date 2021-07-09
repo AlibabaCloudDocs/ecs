@@ -16,7 +16,7 @@ An Elastic Compute Service \(ECS\) instance can access the Internet by using the
 
 -   Elastic IP address \(EIP\)
 
-    EIPs are public IP addresses that you can separately purchase and use. Only instances that are deployed in virtual private clouds \(VPCs\) support EIPs. For information about the billing details of EIPs, see [Overview](/intl.en-US/Pricing/Overview.md).
+    EIPs are public IP addresses that you can separately purchase and use. Only instances that are deployed in virtual private clouds \(VPCs\) support EIPs. For information about the billing details of EIPs, see [Overview](/intl.en-US/Pricing/Billing overview.md).
 
 -   NAT gateway
 
@@ -44,7 +44,7 @@ Two billing methods for network usage are available: pay-by-bandwidth and pay-by
     **Note:** When the **pay-by-traffic** billing method for network usage is used, the peak inbound and outbound bandwidths are both the upper limits of bandwidths and are for reference only. In the event of resource contention, these peak bandwidths cannot be guaranteed. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth** billing method for network usage.
 
 
-**Note:** You can also purchase a data transfer plan to offset the network traffic fees. For more information, see the [Data Transfer Plan](https://www.alibabacloud.com/help/zh/product/55093.htm) documentation.
+**Note:** You can also purchase a data transfer plan to offset the network traffic fees. For more information, see the [Data Transfer Plan](https://www.alibabacloud.com/help/product/55093.htm) documentation.
 
 The pricing of bandwidth varies based on regions. For more information, see the [Pricing](https://www.alibabacloud.com/zh/product/ecs#pricing) tab on the Elastic Compute Service page. The following table describes the billing methods for network usage and their relationship with billing methods of ECS instances.
 
