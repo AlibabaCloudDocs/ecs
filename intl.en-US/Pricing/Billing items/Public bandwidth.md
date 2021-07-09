@@ -46,7 +46,7 @@ Two billing methods for network usage are available: pay-by-bandwidth and pay-by
 
 **Note:** You can also purchase a data transfer plan to offset the network traffic fees. For more information, see the [Data Transfer Plan](https://www.alibabacloud.com/help/product/55093.htm) documentation.
 
-The pricing of bandwidth varies based on regions. For more information, see the [Pricing](https://www.alibabacloud.com/zh/product/ecs#pricing) tab on the Elastic Compute Service page. The following table describes the billing methods for network usage and their relationship with billing methods of ECS instances.
+The pricing of bandwidth varies based on regions. For more information, see the [Pricing](https://www.alibabacloud.com/product/ecs#pricing) tab on the Elastic Compute Service page. The following table describes the billing methods for network usage and their relationship with billing methods of ECS instances.
 
 |Billing method for network usage|Billing method of ECS instances|Billing rule for network usage|
 |--------------------------------|-------------------------------|------------------------------|
