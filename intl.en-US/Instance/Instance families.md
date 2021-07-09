@@ -157,7 +157,7 @@ Features
     -   Uses 2.55 GHz AMD EPYCTM MILAN processors that deliver a maximum single-core turbo frequency of 3.5 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -301,7 +301,7 @@ Instance types
 
 ## g7ne, general purpose instance family with enhanced network performance
 
-This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+This instance family is in the beta testing phase.
 
 Features
 
@@ -349,7 +349,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -450,7 +450,7 @@ Features
     -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -503,7 +503,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -554,7 +554,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -738,7 +738,7 @@ Features
     -   Uses 2.55 GHz AMD EPYCTM MILAN processors that deliver a maximum single-core turbo frequency of 3.5 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -891,7 +891,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -944,7 +944,7 @@ Features
     -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -995,7 +995,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -1044,7 +1044,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 \(Cascade\) processors that deliver a maximum turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -1173,7 +1173,7 @@ Features
     -   Uses 2.55 GHz AMD EPYCTM MILAN processors that deliver a maximum single-core turbo frequency of 3.5 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -1321,7 +1321,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -1426,7 +1426,7 @@ Features
     -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -1474,7 +1474,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -1739,7 +1739,7 @@ Instance types
 
 ## i3, instance family with local SSDs
 
-The instance family is in invitational preview.
+This instance family is in the beta testing phase.
 
 Features
 
@@ -1923,7 +1923,7 @@ Features
     -   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -1985,7 +1985,7 @@ Features
 
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -2035,7 +2035,7 @@ Features
     -   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -2098,7 +2098,7 @@ Features
 
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -2150,7 +2150,7 @@ Features
     -   Uses Intel® Xeon® Cooper Lake processors that deliver an all-core turbo frequency of 3.8 GHz and have a minimum clock speed of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -2211,7 +2211,7 @@ Features
 
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
