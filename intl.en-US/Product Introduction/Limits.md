@@ -158,24 +158,24 @@ Starting from November 27, 2020, the maximum bandwidth available for you to crea
 |Item|Limit on basic security groups|Limit on advanced security groups|
 |----|------------------------------|---------------------------------|
 |Security groups of an instance|You can view the resource quota in the ECS console1. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|The limit is the same as that on basic security groups.|
-|Classic network-type ECS instances that can be contained in a classic network-type security group|1,0002|The classic network is not supported.|
+|Classic network-type ECS instances that can be contained in a classic network-type security group|1,000②|The classic network is not supported.|
 |VPC-type ECS instances that can be contained in a VPC-type security group|It depends on the number of private IP addresses that can be contained in the VPC-type security group.|No limits apply.|
 |Security groups to which an ECS instance can belong|5 You can submit a ticket to raise the limit to 10 or 16 security groups.
 
 |The limit is the same as that on basic security groups.|
 |Security groups to which an elastic network interface \(ENI\) of an ECS instance can belong|
-|Inbound and outbound rules in a security group|2003|The limit is the same as that on basic security groups.|
+|Inbound and outbound rules in a security group|200③|The limit is the same as that on basic security groups.|
 |Inbound and outbound rules in all security groups to which an ENI belongs|1,000|The limit is the same as that on basic security groups.|
-|Private IP addresses that can be contained in a VPC-type security group|2,0004|65,536|
+|Private IP addresses that can be contained in a VPC-type security group|2,000④|65,536|
 |Internet access port|The default SMTP port for outbound traffic is Port 25 and is disabled by default. The port cannot be enabled by configuring security group rules.|The limit is the same as that on basic security groups.|
 
--   1 The following regions share the quota for security groups that can be created within each account: China \(Hangzhou\), China \(Shanghai\), China \(Qingdao\), China \(Beijing\), China \(Shenzhen\), China \(Hong Kong\), US \(Silicon Valley\), and Singapore \(Singapore\). A maximum of 100 security groups can be created in all of these regions within an account.
--   2 If more than 1,000 classic network-type instances need mutual access over the internal network, you can assign them to multiple security groups and authorize mutual access among these security groups.
--   3 If you increase the quota for security groups to which an ECS instance can belong, the quota for rules in each security group decreases. The product of the quota for security groups to which an ECS instance can belong and the quota for rules in each security group cannot exceed 1,000. For example, if the quota for security groups to which the ECS instance can belong is 5, 10, or 16, the corresponding quota for rules in each security group is 200, 100, or 60, as verified by using the following formulas: 5 × 200 = 1000, 10 × 100 = 1000, and 16 × 60 ≤ 1000.
+-   ① The following regions share the quota for security groups that can be created within each account: China \(Hangzhou\), China \(Shanghai\), China \(Qingdao\), China \(Beijing\), China \(Shenzhen\), China \(Hong Kong\), US \(Silicon Valley\), and Singapore \(Singapore\). A maximum of 100 security groups can be created in all of these regions within an account.
+-   ② If more than 1,000 classic network-type instances need mutual access over the internal network, you can assign them to multiple security groups and authorize mutual access among these security groups.
+-   ③ If you increase the quota for security groups to which an ECS instance can belong, the quota for rules in each security group decreases. The product of the quota for security groups to which an ECS instance can belong and the quota for rules in each security group cannot exceed 1,000. For example, if the quota for security groups to which the ECS instance can belong is 5, 10, or 16, the corresponding quota for rules in each security group is 200, 100, or 60, as verified by using the following formulas: 5 × 200 = 1000, 10 × 100 = 1000, and 16 × 60 ≤ 1000.
 
     If prefix lists are referenced in security group rules, the maximum entry capacity of the prefix lists counts towards the quota for security group rules. For example, the maximum number of entries that a prefix list can support is 100. If the prefix list is referenced in a security group, the prefix list counts as 100 rules for the security group regardless of the number of existing entries in the prefix list.
 
--   4 If more than 2,000 private IP addresses need mutual access over the internal network, you can distribute the ECS instances of these private IP addresses to multiple security groups and authorize mutual access among these security groups.
+-   ④ If more than 2,000 private IP addresses need mutual access over the internal network, you can distribute the ECS instances of these private IP addresses to multiple security groups and authorize mutual access among these security groups.
 
 ## Prefix list limits
 
