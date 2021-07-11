@@ -24,7 +24,7 @@ In this topic, the following instance configurations are used:
 
 3.  Create the `windows-testpage-1` and `windows-testpage-2` folders.
 
-    ![wwwroot](../images/p128806.png)
+    ![wwwroot](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2407695261/p128806.png)
 
 4.  Open the `windows-testpage-1` folder, create the test1.php file in the folder, and then enter the following content in the file:
 
@@ -57,7 +57,7 @@ In this topic, the following instance configurations are used:
 
     The following figure shows how to configure the website.
 
-    ![netsite1](../images/p128817.png)
+    ![netsite1](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3407695261/p128817.png)
 
     The following list describes how to configure the parameters:
 
@@ -69,7 +69,7 @@ In this topic, the following instance configurations are used:
 
     The following figure shows how to configure the website.
 
-    ![netsite2](../images/p128819.png)
+    ![netsite2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3407695261/p128819.png)
 
     The following list describes how to configure the parameters:
 
@@ -79,7 +79,7 @@ In this topic, the following instance configurations are used:
     -   Host name: Specify the `test2.com` domain name as the hostname.
     The following figure indicates that the websites are added.
 
-    ![result](../images/p128823.png)
+    ![result](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3407695261/p128823.png)
 
 
 ## \(Optional\) Configure the hosts file on the local host
