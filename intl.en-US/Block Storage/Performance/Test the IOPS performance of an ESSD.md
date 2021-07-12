@@ -124,7 +124,7 @@ This topic describes how to test the IOPS performance of an enhanced SSD \(ESSD\
     |`/dev/your_device`|The device name of the ESSD.|/dev/vdb|
     |`cpus_allowed_policy`|The parameter provided by fio to bind vCPUs. fio provides the `cpus_allowed_policy` and `cpus_allowed` parameters to bind vCPUs.|split|
 
-    The preceding command runs `jobs`to bind queues to different CPU cores. These queues have different queue IDs. To view the ID of the CPU core to which a queue is bound, perform the following steps:
+    The preceding command runs `jobs` to bind queues to different CPU cores. These queues have different queue IDs. To view the ID of the CPU core to which a queue is bound, perform the following steps:
 
     -   Run the `ls /sys/block/your_device/mq/` command. In this command, `your_device` is your device name. Example: vdb. This command returns the ID of the queue for an ESSD whose device name is in the /dev/vd\* format.
     -   Run the `cat /sys/block/your_device/mq//cpu_list` command. In this command, `your_device` is your device name. Example: vdb. This command returns the ID of the CPU core to which the queue for an ESSD is bound. The device name of the ESSD is in the /dev/vd\* format.
