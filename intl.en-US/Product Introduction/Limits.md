@@ -157,7 +157,7 @@ Starting from November 27, 2020, the maximum bandwidth available for you to crea
 
 |Item|Limit on basic security groups|Limit on advanced security groups|
 |----|------------------------------|---------------------------------|
-|Security groups of an instance|You can view the resource quota in the ECS console1. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|The limit is the same as that on basic security groups.|
+|Security groups of an instance|You can view the resource quota in the ECS console①. For more information, see [View and increase resource quotas](/intl.en-US/Tag & Resource/Resource/Privileges & Quotas/View and increase resource quotas.md).|The limit is the same as that on basic security groups.|
 |Classic network-type ECS instances that can be contained in a classic network-type security group|1,000②|The classic network is not supported.|
 |VPC-type ECS instances that can be contained in a VPC-type security group|It depends on the number of private IP addresses that can be contained in the VPC-type security group.|No limits apply.|
 |Security groups to which an ECS instance can belong|5 You can submit a ticket to raise the limit to 10 or 16 security groups.
