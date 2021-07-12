@@ -120,7 +120,7 @@ Before you perform the operations, take note of the following items:
 
 Question 1: How do I view the details of errors that occur during the image upload process?
 
-If your project reports errors during the image upload process, such as compilation errors, you can use the following method to view the details of errors: Run the `sh /root/xbinst_oem/tool/faas_checklog.sh <Name of the uploaded package>` command to view the log file.
+If your project reports errors during the image upload process, such as compilation errors, you can run the `sh /root/xbinst_oem/tool/faas_checklog.sh <Name of the uploaded package>` command to view the log file.
 
 Question 2: How do I reload an image?
 
@@ -131,8 +131,6 @@ You can perform the following operations to reload an image:
     -   If you installed the `xdma` driver, run the `sudo rmmod xdma` command in the instance to uninstall the driver.
     -   If you installed the `xocl` driver, run the `sudo rmmod xocl` command in the instance to uninstall the driver.
 2.  Download the image.
-
-    You can use faascmd to download the image:
 
     ```
     faascmd download_image --instanceId=hereIsYourInstanceId --fpgauuid=hereIsFpgaUUID --fpgatype=xilinx --imageuuid=hereIsImageUUID --imagetype=afu --shell=hereIsShellVersionOfFpga
