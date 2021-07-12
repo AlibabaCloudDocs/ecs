@@ -120,10 +120,7 @@
 
 问题一：上传镜像时出现异常，如何查看异常详情？
 
-如果您的工程在上传生成镜像的过程中出现异常，例如云上编译服务器编译报错，您可以通过以下两种方式来查看异常详情：
-
--   查看faas\_compiling.log。使用上传脚本faas\_upload\_and\_create\_image.sh时，如果编译失败会自动下载并打印faas\_compiling.log到terminal中。
--   手动执行命令查看编译log文件：`sh /root/xbinst_oem/tool/faas_checklog.sh <bit.tar.gz之前上传的压缩包文件名>`
+如果您的工程在上传生成镜像的过程中出现异常，例如云上编译服务器编译报错，您可以手动执行命令查看编译log文件：`sh /root/xbinst_oem/tool/faas_checklog.sh <bit.tar.gz之前上传的压缩包文件名>`。
 
 问题二：如何重新加载镜像？
 
@@ -135,19 +132,9 @@
     -   如果您安装了`xocl`驱动，则需要在实例中运行`sudo rmmod xocl`命令卸载驱动。
 2.  下载镜像。
 
-    您可以使用以下两种方式之一：
-
-    -   使用脚本：
-
-        ```
-        sh faas_download_image.sh bit.tar.gz <0/1> #最后的数字为实例中FPGA的序号
-        ```
-
-    -   使用faascmd：
-
-        ```
-        faascmd download_image --instanceId=hereIsYourInstanceId --fpgauuid=hereIsFpgaUUID --fpgatype=xilinx --imageuuid=hereIsImageUUID --imagetype=afu --shell=hereIsShellVersionOfFpga
-        ```
+    ```
+    faascmd download_image --instanceId=hereIsYourInstanceId --fpgauuid=hereIsFpgaUUID --fpgatype=xilinx --imageuuid=hereIsImageUUID --imagetype=afu --shell=hereIsShellVersionOfFpga
+    ```
 
 3.  安装驱动。
 
