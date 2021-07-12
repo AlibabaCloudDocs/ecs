@@ -66,8 +66,6 @@ Features
 
     If a local disk fails, you receive a notification about the system event. You can respond to the system event by initiating the process of fixing the damaged disk. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
 
-    -   If a backup disk is available on the physical machine, Alibaba Cloud online replaces the damaged disk with the backup disk.
-    -   If no backup disks are available on the physical machine, the disk hardware must be manually replaced before Alibaba Cloud can replace the damaged disk.
     **Note:** After you initiate the process of fixing the damaged disk, data in the damaged disk cannot be recovered.
 
 -   Compute:
@@ -106,8 +104,6 @@ Features
 
     If a local disk fails, you receive a notification about the system event. You can respond to the system event by initiating the process of fixing the damaged disk. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
 
-    -   If a backup disk is available on the physical machine, Alibaba Cloud online replaces the damaged disk with the backup disk.
-    -   If no backup disks are available on the physical machine, the disk hardware must be manually replaced before Alibaba Cloud can replace the damaged disk.
     **Note:** After you initiate the process of fixing the damaged disk, data in the damaged disk cannot be recovered.
 
 -   Compute:
