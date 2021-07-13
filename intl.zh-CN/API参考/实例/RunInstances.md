@@ -9,6 +9,7 @@
     -   产品选型：调用[DescribeInstanceTypes](~~25620~~)查看目标实例规格的性能数据，或者参见[选型配置](~~58291~~)了解如何选择实例规格。
     -   查询库存：调用[DescribeAvailableResource](~~66186~~)查看指定地域或者可用区内的资源供给情况。
     -   网络规划：您需要确保您已经有可用的安全组。更多详情，请参见[CreateSecurityGroup](~~25553~~)。创建专有网络VPC类型实例前，您需要预先在相应的阿里云地域[创建VPC](~~65430~~)。
+
 -   **注意事项**：
     -   单次最多能创建100台实例。
     -   您可以指定参数`AutoReleaseTime`设置实例自动释放时间。
@@ -34,7 +35,7 @@
 
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
-|Action|String|是|RunInstances|系统规定参数。取值：**RunInstances**。 |
+|Action|String|是|RunInstances|系统规定参数。取值：RunInstances |
 |RegionId|String|是|cn-hangzhou|实例所属的地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |ImageId|String|否|aliyun\_2\_1903\_x64\_20G\_alibase\_20200324.vhd|镜像ID，启动实例时选择的镜像资源。您可以通过[DescribeImages](~~25534~~)查询您可以使用的镜像资源。如果您不指定`LaunchTemplateId`或`LaunchTemplateName`以确定启动模板，也不通过指定`ImageFamily`选用镜像族系最新可用的自定义镜像，则`ImageId`为必选参数。 |
 |ImageFamily|String|否|hangzhou-daily-update|镜像族系名称，通过设置该参数来获取当前镜像族系内最新可用的自定义镜像来创建实例。
@@ -96,11 +97,9 @@
 
 ```
 
- 您需要注意：
+ 其中，Windows实例不能以正斜线（/）为密码首字符。
 
- -   如果传入`Password`参数，建议您使用HTTPS协议发送请求，避免密码泄露。
--   Windows实例不能以正斜线（/）为密码首字符。
--   部分操作系统的实例不支持配置密码，仅支持配置密钥对。例如：Others Linux、Fedora CoreOS。 |
+ **说明：** 如果传入`Password`参数，建议您使用HTTPS协议发送请求，避免密码泄露。 |
 |PasswordInherit|Boolean|否|false|是否使用镜像预设的密码。取值范围：
 
  -   true：使用
@@ -202,17 +201,17 @@
 |ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|实例所在的企业资源组ID。 |
 |Period|Integer|否|1|购买资源的时长，单位由`PeriodUnit`指定。当参数`InstanceChargeType`取值为`PrePaid`时才生效且为必选值。一旦指定了`DedicatedHostId`，则取值范围不能超过专有宿主机的订阅时长。取值范围：
 
- -   PeriodUnit=Month时，Period取值：\{“1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”, ”48”, ”60”\}。 |
+ PeriodUnit=Month时，Period取值：\{“1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”, ”48”, ”60”\}。 |
 |PeriodUnit|String|否|Month|包年包月计费方式的时长单位。取值范围：
 
- -   Month（默认） |
+ Month（默认） |
 |AutoRenew|Boolean|否|true|是否要自动续费。当参数`InstanceChargeType`取值`PrePaid`时才生效。取值范围：
 
  -   true：自动续费
 -   false（默认）：不自动续费 |
 |AutoRenewPeriod|Integer|否|1|单次自动续费的续费时长。取值范围：
 
- -   PeriodUnit=Month时：\{“1”, “2”, “3”, “6”, “12”, "24", "36", "48", "60"\}。
+ PeriodUnit=Month时：\{“1”, “2”, “3”, “6”, “12”, "24", "36", "48", "60"\}。
 
  默认值：1 |
 |InstanceChargeType|String|否|PrePaid|实例的付费方式。取值范围：
@@ -268,14 +267,34 @@
 |CpuOptions.Numa|String|否|1|CPU Numa节点数。 |
 |SecurityOptions.TrustedSystemMode|String|否|vTPM|可信系统模式。取值：vTPM
 
- 目前，可信系统模式支持的实例规格族：g7、c7、r7以及七代安全增强型（g7t、c7t、r7t）。
+ 目前，可信系统模式支持的实例规格族：
+
+ -   g7、c7、r7
+-   安全增强型（g7t、c7t、r7t）
 
  当您创建以上实例规格族的ECS实例时，需要设置该参数。具体说明如下：
 
  -   如果您使用阿里云可信系统，请将该参数值设置为vTPM，在实例启动时即可通过阿里云可信系统完成可信校验。
 -   如果您不使用阿里云可信系统，可以不设置该参数值。
+-   通过OpenAPI创建可信系统的ECS实例时，只能调用`RunInstances`实现，`CreateInstance`目前不支持设置`SecurityOptions.TrustedSystemMode`参数。
 
- 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。 |
+ 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。
+
+ **说明：** Enclave机密计算和可信系统无法同时设置，即不能同时指定`SecurityOptions.TrustedSystemMode`与`SecurityOptions.ConfidentialComputingMode`，否则会报错。
+
+ 默认值：空 |
+|SecurityOptions.ConfidentialComputingMode|String|否|Enclave|机密计算模式。取值：Enclave
+
+ 该参数取值为Enclave时，表示ECS实例使用Enclave构建机密计算环境。目前仅实例规格族c7、g7、r7，支持调用`RunInstances`时指定该参数使用Enclave机密计算。您需要注意：
+
+ -   机密计算功能正在邀测中，如需使用，请提交工单。
+-   通过OpenAPI创建Enclave机密计算的ECS实例时，只能调用`RunInstances`实现，`CreateInstance`目前不支持设置`SecurityOptions.ConfidentialComputingMode`参数。
+
+ 关于机密计算的更多信息，请参见[使用Enclave构建机密计算环境](~~203433~~)。
+
+ **说明：** 创建ECS实例时，Enclave机密计算和可信系统无法同时设置，即不能同时指定`SecurityOptions.TrustedSystemMode`与`SecurityOptions.ConfidentialComputingMode`，否则会报错。
+
+ 默认值：空 |
 |HttpEndpoint|String|否|enabled|是否启用实例元数据的访问通道。取值范围：
 
  -   enabled：启用
@@ -316,10 +335,10 @@
 -   如果专有宿主机不属于专有宿主机集群，则ECS实例创建失败。
 
  您可以通过[DescribeDedicatedHostClusters](~~184145~~)查询专有宿主机集群ID列表。 |
-|SecurityGroupIds.N|String|否|sg-bp15ed6xe1yxeycg7\*\*\*\*|将实例同时加入多个安全组。N的取值范围与实例能够加入安全组配额有关，更多详情，请参见[安全组限制](~~101348~~)。
+|SecurityGroupIds.N|RepeatList|否|sg-bp15ed6xe1yxeycg7\*\*\*\*|将实例同时加入多个安全组。N的取值范围与实例能够加入安全组配额有关，更多详情，请参见[安全组限制](~~101348~~)。
 
  **说明：** 不支持同时指定SecurityGroupId和SecurityGroupIds.N。 |
-|HostNames.N|String|否|ecs-host-01|创建多台实例时，为每台实例指定不同的主机名。限制说明如下：
+|HostNames.N|RepeatList|否|ecs-host-01|创建多台实例时，为每台实例指定不同的主机名。限制说明如下：
 
  -   N的个数需要和`Amount`参数值保持一致。
 -   不支持同时设置`HostName`参数和`HostNames.N`参数。
@@ -391,12 +410,12 @@
 
  -   不能超过实例规格允许的单块网卡最大队列数。
 -   实例的所有网卡累加队列数不能超过实例规格允许的队列数总配额。实例规格的单块网卡最大队列数和总配额可以通过[DescribeInstanceTypes](~~25620~~)接口查询`MaximumQueueNumberPerEni`、`TotalEniQueueQuantity`字段。 |
-|NetworkInterface.N.SecurityGroupIds.N|String|否|sg-bp15ed6xe1yxeycg7\*\*\*\*|将辅助弹性网卡同时加入多个安全组。`SecurityGroupIds.N`中N的取值范围与弹性网卡实例能够加入安全组配额有关，更多详情，请参见[使用限制](~~25412~~)。
+|NetworkInterface.N.SecurityGroupIds.N|RepeatList|否|sg-bp15ed6xe1yxeycg7\*\*\*\*|将辅助弹性网卡同时加入多个安全组。`SecurityGroupIds.N`中N的取值范围与弹性网卡实例能够加入安全组配额有关，更多详情，请参见[使用限制](~~25412~~)。
 
  **说明：** 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。 |
-|Tag.N.Key|String|否|TestKey|实例、云盘和主网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或`https://`。 |
-|Tag.N.Value|String|否|TestValue|实例、云盘和主网卡的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。 |
-|Ipv6Address.N|String|否|Ipv6Address.1=2001:db8:1234:1a00::\*\*\*|为主网卡指定一个IPv6地址。目前，N的取值范围仅支持1。取值示例：`Ipv6Address.1=2001:db8:1234:1a00::***`。
+|Tag.N.Key|String|否|TestKey|实例、云盘和主网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或 https://。 |
+|Tag.N.Value|String|否|TestValue|实例、云盘和主网卡的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。 |
+|Ipv6Address.N|RepeatList|否|Ipv6Address.1=2001:db8:1234:1a00::\*\*\*|为主网卡指定一个IPv6地址。目前，N的取值范围仅支持1。取值示例：`Ipv6Address.1=2001:db8:1234:1a00::***`。
 
  **说明：** 指定了参数`Ipv6Address.N`时，`Amount`参数取值只能为1，且不能指定`Ipv6AddressCount`。 |
 
@@ -404,10 +423,10 @@
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
+|InstanceIdSets|List|\["i-bp67acfmxazb4pd2\*\*\*\*", "i-bp1i43l28m7u48p1\*\*\*\*", "i-bp12yqg7jdyxl11f\*\*\*\*"\]|实例ID（`InstanceIdSet`）列表。 |
 |RequestId|String|473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E|请求ID。 |
-|OrderId|String|1234567890|订单ID。该参数只有创建包年包月ECS实例（请求参数`InstanceChargeType=PrePaid`）时有返回值。 |
 |TradePrice|Float|0.165|订单成交价。 |
-|InstanceIdSets|Array of String|\["i-bp67acfmxazb4pd2\*\*\*\*", "i-bp1i43l28m7u48p1\*\*\*\*", "i-bp12yqg7jdyxl11f\*\*\*\*"\]|实例ID（`InstanceIdSet`）列表。 |
+|OrderId|String|1234567890|订单ID。该参数只有创建包年包月ECS实例（请求参数`InstanceChargeType=PrePaid`）时有返回值。 |
 
 ## 示例
 
@@ -430,34 +449,32 @@ https://ecs.aliyuncs.com/?Action=RunInstances
 `XML`格式
 
 ```
-HTTP/1.1 200 OK
-Content-Type:application/xml
-
 <RunInstancesResponse>
-    <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
-    <InstanceIdSets>
-        <InstanceIdSet>i-bp67acfmxazb4pd2****</InstanceIdSet>
-        <InstanceIdSet>i-bp1i43l28m7u48p1****</InstanceIdSet>
-        <InstanceIdSet>i-bp12yqg7jdyxl11f****</InstanceIdSet>
-    </InstanceIdSets>
-    <OrderId>1234567890</OrderId>
-    <TradePrice>0.165</TradePrice>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <InstanceIdSets>
+            <InstanceIdSet>i-bp67acfmxazb4pd2****</InstanceIdSet>
+            <InstanceIdSet>i-bp1i43l28m7u48p1****</InstanceIdSet>
+            <InstanceIdSet>i-bp12yqg7jdyxl11f****</InstanceIdSet>
+      </InstanceIdSets>
+      <OrderId>1234567890</OrderId>
+      <TradePrice>0.165</TradePrice>
 </RunInstancesResponse>
 ```
 
 `JSON`格式
 
 ```
-HTTP/1.1 200 OK
-Content-Type:application/json
-
 {
-  "RequestId" : "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-  "InstanceIdSets" : {
-    "InstanceIdSet" : [ "i-bp67acfmxazb4pd2****", "i-bp1i43l28m7u48p1****", "i-bp12yqg7jdyxl11f****" ]
-  },
-  "OrderId" : "1234567890",
-  "TradePrice" : "0.165"
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E", 
+    "InstanceIdSets": {
+        "InstanceIdSet": [
+            "i-bp67acfmxazb4pd2****",
+            "i-bp1i43l28m7u48p1****",
+            "i-bp12yqg7jdyxl11f****"
+        ]
+    },
+    "OrderId": "1234567890", 
+    "TradePrice": "0.165"
 }
 ```
 
@@ -480,7 +497,7 @@ Content-Type:application/json
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.n.Category" is not valid.|指定的参数DataDisk.n.Category不合法。|
 |400|InvalidDataDevice.Malformed|The specified parameter "DataDisk.n.Device" is not valid.|指定的参数DataDisk.n.Device不合法。|
 |400|InvalidNodeControllerId.Malformed|The specified parameter "NodeControllerId" is not valid.|指定的NodeControllerId不合法。|
-|400|InvalidInnerIpAddress.Malformed|The specified parameter "InnerIpAddress" is not valid.|指定的DiskDeviceMapping.n.DiskImageSize超出最大限值。|
+|400|InvalidInnerIpAddress.Malformed|The specified parameter "InnerIpAddress" is not valid.|指定的InnerIpAddress参数不合法。|
 |400|InvalidInnerIpAddress.Unusable|The specified InnerIpAddress is already used or not found in usable ip range.|指定的InnerIpAddress不可用。|
 |400|InvalidParameter.Conflict|The specified image does not support the specified instance type.|指定的镜像不能用于指定的实例规格。|
 |400|ImageNotSupportCloudInit|The specified image does not support cloud-init.|指定的镜像不支持cloud-init。|
@@ -602,8 +619,6 @@ Content-Type:application/json
 |400|Invalid.PrivatePoolOptionsId|The specified PrivatePoolOptions.Id is invalid.|指定的PrivatePoolOptions.Id参数无效。|
 |400|Invalid.PrivatePoolOptionsId|The parameter PrivatePoolOptions.Id should be null when PrivatePoolOptions.MatchCriteria is not Target.|当PrivatePoolOptions.MatchCriteria参数取值不为Target时，PrivatePoolOptions.Id参数需要为空。|
 |401|InvalidRamRole.NotEcsRole|The specified ram role is not authorized for ecs, please check your role policy.|指定的RAM角色无权使用ECS，请检查您的角色策略。|
-|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
-|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |403|InvalidParams.InstanceNameExceed|The uniqueSuffix takes three naming places, please shorten your InstanceName.|UniqueSuffix参数会占用三个命名空间，请缩短您的实例名称。|
 |403|InvalidParams.HostnameExceed|The uniqueSuffix takes three naming places, please shorten your Hostname.|UniqueSuffix参数会占用三个命名空间，请缩短您的实例主机名。|
 |403|ImageNotSubscribed|The specified image has not be subscribed.|指定的镜像未在镜像市场订阅。|
@@ -666,7 +681,7 @@ Content-Type:application/json
 |403|OperationDenied.InconsistentNetwork|The specified security group and vswitch are not in the same vpc.|指定的安全组和交换机没有在同一个VPC下。|
 |403|OperationDenied|If the network segment of the vswitch is the same as that of its VPC. Therefore, the VPC cannot create other vswitchs across the region.|VPC与虚拟交换机的网段相同，无法在多可用区内创建其他交换机。|
 |403|DefaultVswitch.Existed|The default vswitch for VPC already exists.|当前VPC中已经有了默认交换机。|
-|403|OperationDenied.NoStock|The requested resource is sold out in the specified zone; try other types of resources or other regions and zones.|请求的资源在指定的可用区已售完，请您更换实例规格或者可用区重试，调用 DescribeZones 接口可以获得库存结果。|
+|403|OperationDenied.NoStock|The requested resource is sold out in the specified zone; try other types of resources or other regions and zones.|库存不足。|
 |403|IncorrectInstanceStatus|The current status of the resource does not support this operation.|该资源目前的状态不支持此操作。|
 |403|CategoryViolation|The specified instance does not support this operation because of its disk category.|挂载有本地磁盘的实例不支持升降配。|
 |403|ResourcesNotInSameZone|The specified instance and dedicated host are not in the same zone.|指定的实例和专有宿主机不在同一个地域下。|
@@ -723,6 +738,8 @@ Content-Type:application/json
 |404|InvalidParameter.KMSKeyId.NotFound|The specified KMSKeyId does not exist.|指定的参数KMSKeyId不存在。|
 |404|InvalidSecurityGroupId.NotFound|%s|指定的安全组ID不存在。|
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|指定的磁盘是不可移植的。|
+|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|500|InternalError|The request processing has failed due to some unknown error, exception or failure.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)查看更多错误码。
 
