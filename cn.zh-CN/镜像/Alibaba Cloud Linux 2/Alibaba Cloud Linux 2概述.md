@@ -6,14 +6,14 @@ keyword: [阿里云, Alibaba Cloud Linux, ecs, 原生linux]
 
 Alibaba Cloud Linux 2（原Aliyun Linux 2）是阿里云官方操作系统，在全面兼容CentOS 7生态的同时，为云上应用程序提供安全、稳定、高性能的定制化运行环境，并针对云基础设施进行了深度优化，为您打造更好的运行时体验。您可以免费使用Alibaba Cloud Linux 2公共镜像，并免费获得阿里云针对该操作系统的长期支持。
 
-更多详情，请访问[Alibaba Cloud Linux 2产品详情页](https://www.aliyun.com/product/alinux)。
+更多信息，请访问[Alibaba Cloud Linux 2产品详情页](https://www.aliyun.com/product/alinux)。
 
 ## 适用范围
 
 Alibaba Cloud Linux 2适用于下列场景。
 
 -   各种云场景工作负载。例如数据库、云原生容器、数据分析、Web应用程序，以及生产环境中的其他工作负载。
--   多种实例规格族，包括弹性裸金属服务器。详情请参见[实例规格族](/cn.zh-CN/实例/实例规格族.md)。
+-   多种实例规格族，包括弹性裸金属服务器。更多信息，请参见[实例规格族](/cn.zh-CN/实例/实例规格族.md)。
     -   支持的实例vCPU范围为1 vCPU~768 vCPU。
     -   支持的实例内存范围为0.5 GiB~12288 GiB。
     -   不支持非I/O优化实例。
@@ -30,18 +30,17 @@ Alibaba Cloud Linux 2适用于下列场景。
 ## Alibaba Cloud Linux 2特性
 
 -   默认搭载并启用最新版本阿里云云内核，新版云内核提供了以下特性。
-    -   基于内核社区长期支持（LTS）的4.19定制而成，增加适用于云场景的新特性、改进内核性能并修复重大缺陷，详情请参见[Alibaba Cloud Linux 2发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.md)。
+    -   基于内核社区长期支持（LTS）的4.19定制而成，增加适用于云场景的新特性、改进内核性能并修复重大缺陷。更多信息，请参见[Alibaba Cloud Linux 2发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.md)。
     -   提供针对ECS实例环境定制优化的内核启动参数和系统配置参数。
     -   提供操作系统崩溃后的内核转储（Kdump）能力，您可根据需要在线打开或者关闭该功能，无需重启操作系统。
-    -   提供内核热补丁升级（Live Patch）能力。
+    -   提供内核热补丁升级（Live Patch）能力。 更多信息，请参见[内核热补丁概述](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持内核热补丁/内核热补丁概述.md)。
 -   软件包预装和更新说明。
     -   用户态软件包保持与最新版CentOS 7兼容，该版本用户态软件包可直接在Alibaba Cloud Linux 2使用。
     -   默认搭载阿里云CLI。
-    -   网络服务从network.service切换为systemd-networkd。
-    -   软件包安全漏洞（CVE）修复在Alibaba Cloud Linux 2版本支持期限内会持续更新，详情请参见[Alibaba Cloud Linux 2 CVE更新记录](http://mirrors.aliyun.com/alinux/cve/alinux2.xml)。Alibaba Cloud Linux 2提供自动化修复方案，详情请参见[基于YUM的安全更新操作](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/基于YUM的安全更新操作.md)。
+    -   软件包安全漏洞（CVE）修复在Alibaba Cloud Linux 2版本支持期限内会持续更新。更多信息，请参见[Alibaba Cloud Linux 2 CVE更新记录](http://mirrors.aliyun.com/alinux/cve/alinux2.xml)。Alibaba Cloud Linux 2提供自动化修复方案。具体操作，请参见[基于YUM的安全更新操作](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/基于YUM的安全更新操作.md)。
 -   大幅优化开机启动速度，提升运行时的系统性能，并增强系统稳定性。
     -   针对ECS实例环境大幅优化启动速度，在实际测试中，相比其他操作系统约减少60%的启动时间。
-    -   优化调度、内存、IO及网络等子系统，在部分的开源基准测试（benchmark）中，相比其他操作系统约提升10%~30%性能。
+    -   优化调度、内存以及IO等子系统，在部分的开源基准测试（benchmark）中，相比其他操作系统约提升10%~30%性能。
     -   持续增强系统稳定性，在宕机数据统计结果中，相比其他操作系统减少约50%的宕机率。
 
 ## Alibaba Cloud Linux 2镜像
@@ -58,12 +57,12 @@ Alibaba Cloud Linux 2适用于下列场景。
 -   不支持的实例规格族：GPU计算型、GPU虚拟化型、FPGA计算型、NPU计算型、异构服务型、超级计算集群（SCC）、安全增强型等。
 -   支持的地域：华东1（杭州）、华南1（深圳）、华北2（北京）、华北3（张家口）、中国（香港）。 |
 |Alibaba Cloud Linux 2.1903 64位 等保2.0三级版|aliyun\_2\_1903\_x64\_20G\_dengbao\_alibase\_20210325.vhd|基于默认标准镜像进行等保加固的镜像版本，该镜像符合等保2.0三级安全保护的基本要求。使用说明请参见[Alibaba Cloud Linux等保2.0三级版镜像使用说明](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux等保2.0三级版镜像/Alibaba Cloud Linux等保2.0三级版镜像使用说明.md)。|
-|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。 **说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
-|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。 **说明：** 仅阿里云可信实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
+|Alibaba Cloud Linux 2.1903 LTS 64位 AMD版|aliyun\_2\_1903\_x64\_20G\_uefi\_alibase\_20210218.vhd|基于默认标准镜像支持阿里云AMD实例的镜像版本，仅支持UEFI启动模式。**说明：** 仅阿里云AMD弹性裸金属实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
+|Alibaba Cloud Linux 2.1903 64位 可信版|aliyun\_2\_1903\_x64\_20G\_secured\_alibase\_20210325.vhd|基于默认标准镜像支持阿里云可信实例的镜像版本。**说明：** 仅阿里云可信实例可以使用该镜像。更多信息，请参见[仅适用部分实例规格族的镜像发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.mdsection_zai_t2o_j01)。 |
 
 ## 费用
 
-Alibaba Cloud Linux 2是免费镜像，但当您选用Alibaba Cloud Linux 2镜像创建ECS实例时，需要支付其他资源产生的费用，如vCPU、内存、存储、公网带宽和快照等。计费详情请参见[计费概述](/cn.zh-CN/产品计费/计费概述.md)。
+Alibaba Cloud Linux 2是免费镜像，但当您选用Alibaba Cloud Linux 2镜像创建ECS实例时，需要支付其他资源产生的费用，如vCPU、内存、存储、公网带宽和快照等。计费详情，请参见[计费概述](/cn.zh-CN/产品计费/计费概述.md)。
 
 ## 获取Alibaba Cloud Linux 2
 
@@ -71,12 +70,12 @@ Alibaba Cloud Linux 2是免费镜像，但当您选用Alibaba Cloud Linux 2镜�
 
 -   ECS实例
     -   新创建ECS实例时选择**公共镜像**，并选择Alibaba Cloud Linux 2的相应版本。
-        -   创建ECS实例的具体操作请参见[使用向导创建实例](/cn.zh-CN/实例/创建实例/使用向导创建实例.md)。
-        -   Alibaba Cloud Linux 2多个版本的区别请参见[Alibaba Cloud Linux 2的多个镜像之间有何不同？](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2 FAQ.md)。
-    -   已创建的ECS实例可通过更换系统盘，将现有操作系统更换为Alibaba Cloud Linux 2。详情请参见[更换系统盘（公共镜像）](/cn.zh-CN/块存储/云盘基础操作/更换系统盘/更换系统盘（公共镜像）.md)。
+        -   创建ECS实例的具体操作，请参见[使用向导创建实例](/cn.zh-CN/实例/创建实例/使用向导创建实例.md)。
+        -   Alibaba Cloud Linux 2多个版本的区别，请参见[Alibaba Cloud Linux 2的多个镜像之间有何不同？](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2 FAQ.md)。
+    -   已创建的ECS实例可通过更换系统盘，将现有操作系统更换为Alibaba Cloud Linux 2。具体操作，请参见[更换系统盘（公共镜像）](/cn.zh-CN/块存储/云盘基础操作/更换系统盘/更换系统盘（公共镜像）.md)。
 -   本地环境（基于KVM技术的虚拟化环境）
 
-    直接下载Alibaba Cloud Linux 2虚拟机镜像并安装启动。详情请参见 [在本地使用Alibaba Cloud Linux 2镜像](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/在本地使用Alibaba Cloud Linux 2镜像.md)。
+    直接下载Alibaba Cloud Linux 2虚拟机镜像并安装启动。更多信息，请参见 [在本地使用Alibaba Cloud Linux 2镜像](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2支持的功能和接口/在本地使用Alibaba Cloud Linux 2镜像.md)。
 
 
 ## 使用Alibaba Cloud Linux 2
@@ -130,15 +129,6 @@ Alibaba Cloud Linux 2是免费镜像，但当您选用Alibaba Cloud Linux 2镜�
         ```
 
         **说明：** Kdump服务预留的内存地址空间归还给操作系统后，必须重启操作系统才可再次开启Kdump服务。
-
--   配置网络
-
-    Alibaba Cloud Linux 2默认使用systemd-networkd配置网络，DHCP或静态IP的配置文件位于/etc/systemd/network/目录。
-
-    ```
-    # 该命令可以重启网络服务
-    sudo systemctl restart systemd-networkd
-    ```
 
 -   获取Debuginfo包和源码包
     -   依次运行以下命令可以获取Debuginfo包。
@@ -208,8 +198,8 @@ Alibaba Cloud Linux 2是免费镜像，但当您选用Alibaba Cloud Linux 2镜�
 
 ## 更新记录
 
--   Alibaba Cloud Linux 2镜像发布记录请参见[Alibaba Cloud Linux 2发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.md)。
--   Alibaba Cloud Linux 2 CVE更新记录请参见[Alibaba Cloud Linux 2 CVE更新记录](http://mirrors.aliyun.com/alinux/cve/alinux2.xml)。
+-   Alibaba Cloud Linux 2镜像发布记录，请参见[Alibaba Cloud Linux 2发布记录](/cn.zh-CN/镜像/Alibaba Cloud Linux 2/Alibaba Cloud Linux 2发布记录.md)。
+-   Alibaba Cloud Linux 2 CVE更新记录，请参见[Alibaba Cloud Linux 2 CVE更新记录](http://mirrors.aliyun.com/alinux/cve/alinux2.xml)。
 
 ## 技术支持
 
