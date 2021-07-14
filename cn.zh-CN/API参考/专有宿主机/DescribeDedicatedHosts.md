@@ -2,6 +2,13 @@
 
 调用DescribeDedicatedHosts查询一台或多台专有宿主机的详细信息，包括专有宿主机的物理性能指标、机器码、使用状态和已创建的ECS实例列表等。
 
+## 接口说明
+
+您可以通过以下任一方式查询一台或多台专有宿主机的详细信息：
+
+-   指定`DedicatedHostIds`查询专有宿主机的详细信息。
+-   指定`DedicatedHostClusterId`查询专有宿主机集群内专有宿主机的详细信息。
+
 ## 调试
 
 [您可以在OpenAPI Explorer中直接运行该接口，免去您计算签名的困扰。运行成功后，OpenAPI Explorer可以自动生成SDK代码示例。](https://api.aliyun.com/#product=Ecs&api=DescribeDedicatedHosts&type=RPC&version=2014-05-26)
@@ -33,9 +40,10 @@
 |PageSize|Integer|否|10|响应信息的每页行数。最大值：100
 
  默认值：10 |
-|Tag.N.Key|String|否|TestKey|专有宿主机的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或 https://。 |
-|Tag.N.Value|String|否|TestValue|专有宿主机的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。 |
 |ResourceGroupId|String|否|rg-aek3b6jzp66\*\*\*\*|专有宿主机所在资源组ID。 |
+|DedicatedHostClusterId|String|否|dc-bp12wlf6am0vz9v2\*\*\*\*|专有宿主机集群ID。 |
+|Tag.N.Key|String|否|TestKey|专有宿主机的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或`https://`。 |
+|Tag.N.Value|String|否|TestValue|专有宿主机的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。 |
 
 ## 返回数据
 
@@ -57,7 +65,7 @@
  -   on：加入自动部署资源池。
 -   off：不加入自动部署资源池。
 
- 自动部署详情，请参见[自动部署功能介绍](~~118938~~)。 |
+ 关于自动部署的更多信息，请参见[自动部署功能介绍](~~118938~~)。 |
 |AutoReleaseTime|String|2017-01-01T12:00Z|自动释放时间。按照[ISO8601](~~25696~~)标准表示，并需要使用UTC+0时间，格式为`yyyy-MM-ddTHH:mmZ`。 |
 |Capacity|Struct| |专有宿主机性能指标集合。 |
 |AvailableLocalStorage|Integer|65|剩余的本地盘容量。单位：GiB。 |
@@ -80,6 +88,8 @@
 |Description|String|this-is-my-DDH|专有宿主机的描述信息。 |
 |ExpiredTime|String|2019-01-01T12:00Z|包年包月专有宿主机的到期时间。按照[ISO8601](~~25696~~)标准表示，并需要使用UTC+0时间，格式为`yyyy-MM-ddTHH:mmZ`。 |
 |GPUSpec|String|gpu|GPU型号。 |
+|HostDetailInfo|Struct| |该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。 |
+|SerialNumber|String|null|该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。 |
 |Instances|Array of Instance| |专有宿主机上创建的ECS实例。 |
 |Instance| | | |
 |InstanceId|String|i-bp14ot0ykf8w13a1\*\*\*\*|专有宿主机上创建的ECS实例ID。 |
@@ -129,7 +139,7 @@ https://ecs.aliyuncs.com/?Action=DescribeDedicatedHosts
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeDedicatedHostsResponse>
@@ -233,7 +243,7 @@ https://ecs.aliyuncs.com/?Action=DescribeDedicatedHosts
 </DescribeDedicatedHostsResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -352,10 +362,10 @@ https://ecs.aliyuncs.com/?Action=DescribeDedicatedHosts
 |--------|---|----|--|
 |400|InvalidStatus.ValueNotSupported|The pecified dedicated host status is not supported.|当前宿主机状态不支持此操作。|
 |400|MissingParamter.RegionId|The regionId should not be null.|参数RegionId不得为空。|
-|403|InvalidDedicatedHostIds.Malformed|The amount of specified dedicatedHostIds exceeds the limit.|参数DedicatedHostIds中的数据最多设置100个。|
 |400|InvalidParameter.DedicatedHostIds|The specified parameter dedicatedHostIds is not valid.|指定的参数DedicatedHostIds无效。|
 |400|InvalidRegion.NotFound|The specified parameter RegionId is not valid.|RegionId参数不合法。|
 |400|InvalidZone.NotFound|The specified parameter ZoneId is not valid.|指定的ZoneId不合法。|
+|403|InvalidDedicatedHostIds.Malformed|The amount of specified dedicatedHostIds exceeds the limit.|参数DedicatedHostIds中的数据最多设置100个。|
 |404|InvalidLockReason.NotFound|The specified LockReason is not found|指定的锁定类型不存在。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
