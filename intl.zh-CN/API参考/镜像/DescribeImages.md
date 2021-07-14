@@ -67,16 +67,6 @@
 
  -   instance：镜像处于运行状态，有ECS实例使用。
 -   none：镜像处于闲置状态，暂无ECS实例使用。 |
-|Tag.N.value|String|否|null|镜像的标签值。
-
- **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用Tag.N.Value参数。 |
-|Tag.N.key|String|否|null|镜像的标签键。
-
- **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用Tag.N.Key参数。 |
-|Tag.N.Key|String|否|TestKey|镜像的标签键。N的取值范围：1~20
-
- 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。 |
-|Tag.N.Value|String|否|TestValue|镜像的标签值。N的取值范围：1~20 |
 |DryRun|Boolean|否|false|是否只预检此次请求。
 
  -   true：发送检查请求，不会查询资源状况。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码DryRunOperation。
@@ -87,12 +77,22 @@
 
  -   CreateEcs（默认）：创建实例。
 -   ChangeOS：更换系统盘/更换操作系统。 |
+|ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|自定义镜像所在的企业资源组ID。使用该参数过滤资源时，资源数量不能超过1000个。 |
+|Tag.N.key|String|否|null|镜像的标签键。
+
+ **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用Tag.N.Key参数。 |
+|Tag.N.Key|String|否|TestKey|镜像的标签键。N的取值范围：1~20
+
+ 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。 |
+|Tag.N.Value|String|否|TestValue|镜像的标签值。N的取值范围：1~20 |
+|Tag.N.value|String|否|null|镜像的标签值。
+
+ **说明：** 该参数即将被弃用，为提高兼容性，建议您尽量使用Tag.N.Value参数。 |
 |Filter.N.Key|String|否|CreationStartTime|查询资源时的筛选键。取值范围：
 
  -   当该参数取值为`CreationStartTime`时，可以查询在指定时间点（`Filter.N.Value`）后创建的资源信息。
 -   当该参数取值为`CreationEndTime`时，可以查询在指定时间点（`Filter.N.Value`）前创建的资源信息。 |
 |Filter.N.Value|String|否|2017-12-05T22:40Z|查询资源时的筛选值。指定该参数时必须同时指定`Filter.N.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。 |
-|ResourceGroupId|String|否|rg-bp67acfmxazb4p\*\*\*\*|自定义镜像所在的企业资源组ID。使用该参数过滤资源时，资源数量不能超过1000个。 |
 
 ## 返回数据
 
@@ -306,11 +306,10 @@ https://ecs.aliyuncs.com/?Action=DescribeImages
 |--------|---|----|--|
 |400|InvalidImageOwnerAlias.ValueNotSupported|The specified ImageOwnerAlias value is not supported.|无效的镜像所有者别名，请您检查该参数是否正确。|
 |400|InvalidParamter|Invalid Parameter|指定的参数不合法。|
-|404|InvalidFilterKey.NotFound| |指定的起始时间或到期时间参数错误。|
-|404|InvalidUsage|The specifed Usage is not valid|指定有引用关系的资源类型（image、disk、image\_disk、none）不合法。|
 |400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|指定的Tag.N.Key和Tag.N.Value不匹配。|
 |400|InvalidTagCount|The specified tags are beyond the permitted range.|指定的标记超出取值范围。|
 |400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|您指定的实例规格不存在，或者您没有权限操作此规格的实例。|
+|404|InvalidUsage|The specifed Usage is not valid|指定有引用关系的资源类型（image、disk、image\_disk、none）不合法。|
 |404|InvalidOSType|The specifed OSType is not valid|不支持指定的操作系统。|
 |404|InvalidArchitecture|The specifed Architecture is not valid|指定的架构不存在。|
 |500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
