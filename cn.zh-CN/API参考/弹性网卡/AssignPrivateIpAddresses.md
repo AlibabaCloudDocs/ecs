@@ -52,7 +52,7 @@ https://ecs.aliyuncs.com/?Action=AssignPrivateIpAddresses
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <AssignPrivateIpAddressesResponse>
@@ -66,7 +66,7 @@ https://ecs.aliyuncs.com/?Action=AssignPrivateIpAddresses
 </AssignPrivateIpAddressesResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -86,21 +86,21 @@ https://ecs.aliyuncs.com/?Action=AssignPrivateIpAddresses
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|403|InvalidUserType.NotSupported|%s|您当前的账号不支持此操作。|
-|403|Abs.InvalidAccount.NotFound|%s|您的阿里云账号不存在，或者您的AccessKey已经过期。|
-|403|MissingParameter|%s|缺失参数，请检查参数是否完整。|
-|403|Forbidden.NotSupportRAM|%s|暂不支持RAM用户执行该操作。|
+|400|Throttling|Request was denied due to request throttling.|当前的操作太过频繁，请稍后重试。|
 |400|UnsupportedParameter|%s|不支持参数。|
-|403|Forbidden.SubUser|%s|您的账号没有操作此资源的权限，请向主账号申请相关的权限。|
 |400|InvalidParameter|%s|无效的参数。|
 |400|InvalidInstanceID.Malformed|%s|参数InstanceId格式错误。|
 |400|InvalidOperation.InvalidEcsState|%s|实例当前的状态不支持此操作。|
 |400|InvalidOperation.InvalidEniState|%s|弹性网卡当前的状态不支持此操作。|
 |400|InvalidOperation.DetachPrimaryEniNotAllowed|%s|不允许解绑实例的主网卡。|
-|404|InvalidEcsId.NotFound|%s|指定的实例ID不存在。|
-|404|InvalidEniId.NotFound|%s|指定的弹性网卡ID不存在。|
-|404|InvalidVSwitchId.NotFound|%s|指定的交换机不存在。|
-|404|InvalidSecurityGroupId.NotFound|%s|指定的安全组ID不存在。|
+|400|MissingParameter|%s|缺失参数，请检查参数是否完整。|
+|400|Forbidden.RegionId|%s|当前地域暂时没有提供该服务。|
+|400|InvalidAction|%s|操作无效。|
+|400|InvalidPrivateIpAddress.Duplicated|Specified private IP address is duplicated.|指定的私网IP已经被使用，请您更换IP再重试。|
+|403|InvalidUserType.NotSupported|%s|您当前的账号不支持此操作。|
+|403|Abs.InvalidAccount.NotFound|%s|您的阿里云账号不存在，或者您的AccessKey已经过期。|
+|403|Forbidden.NotSupportRAM|%s|暂不支持RAM用户执行该操作。|
+|403|Forbidden.SubUser|%s|您的账号没有操作此资源的权限，请向主账号申请相关的权限。|
 |403|MaxEniCountExceeded|%s|已超过可以操作的最大弹性网卡数。|
 |403|EniPerInstanceLimitExceeded|%s|实例绑定的弹性网卡数量已经达到了最大限度，不能在为实例绑定弹性网卡。|
 |403|InvalidOperation.AvailabilityZoneMismatch|%s|该操作无效。|
@@ -108,17 +108,19 @@ https://ecs.aliyuncs.com/?Action=AssignPrivateIpAddresses
 |403|SecurityGroupInstanceLimitExceed|%s|该安全组内已有的实例数量已达到最大限制。|
 |403|InvalidSecurityGroupId.NotVpc|%s|参数SecurityGroupId无效，该安全组的网络类型不是专有网络。|
 |403|InvalidOperation.InvalidEniType|%s|当前弹性网卡的类型不支持此操作。|
-|404|InvalidInstanceId.NotFound|%s|指定的实例不存在，请确认参数InstanceId是否正确。|
 |403|InvalidVSwitchId.IpNotEnough|%s|指定的交换机内IP数量不足。|
 |403|InvalidVSwitchId.IpInvalid|%s|指定的私网IP无效。|
 |403|InvalidIp.IpAssigned|%s|指定的IP已被分配。|
+|403|MaxEniPrivateIpsCountExceeded|%s|指定的ENI分配的辅助私网IP数量超过限制，具体信息请参见错误信息%s占位符的实际返回结果。|
 |403|Operation.Conflict|%s|您当前的操作与其它正在执行的操作有冲突，请稍后重试。|
-|400|Forbidden.RegionId|%s|当前地域暂时没有提供该服务。|
-|400|InvalidAction|%s|操作无效。|
 |403|InvalidOperation.Ipv4CountExceeded|%s|IPv4数量达到上限，导致该操作无效。|
 |403|InvalidOperation.EniServiceManaged|%s|操作无效。|
-|400|InvalidPrivateIpAddress.Duplicated|Specified private IP address is duplicated.|指定的私网IP已经被使用，请您更换IP再重试。|
 |403|InvalidIp.IpRepeated|%s|指定的IP重复。|
+|404|InvalidEcsId.NotFound|%s|指定的实例ID不存在。|
+|404|InvalidEniId.NotFound|%s|指定的弹性网卡ID不存在。|
+|404|InvalidVSwitchId.NotFound|%s|指定的交换机不存在。|
+|404|InvalidSecurityGroupId.NotFound|%s|指定的安全组ID不存在。|
+|404|InvalidInstanceId.NotFound|%s|指定的实例不存在，请确认参数InstanceId是否正确。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
