@@ -15,6 +15,19 @@ keyword: [发布更新, ecs, alibaba cloud linux]
 
 |镜像ID|发布时间|发布内容|
 |----|----|----|
+|aliyun\_2\_1903\_x64\_20G\_alibase\_20210630.vhd|2021-06-30|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本。
+-   内核更新：
+    -   版本更新至kernel-4.19.91-24.al7
+    -   修复内核缺陷及重要安全漏洞
+    -   支持x86 FSGSBASE特性
+    -   支持AMD Milan架构
+    -   支持RDMA NET Namespace特性
+    -   支持ZSR特性
+    -   支持CPU资源隔离Group Identity特性
+    -   支持ARM64 MPAM特性
+    -   支持Hisilicon、PHYTIUM、Zhaoxin架构
+    -   在/proc/<pid\>/status以及/proc/<pid\>/smap中加入了进程的THP使能信息。
+-   适用地域：华东1（杭州）、华北1（青岛）、华北2（北京）、西南1（成都）、中国（香港）、新加坡 |
 |aliyun\_2\_1903\_x64\_20G\_alibase\_20210325.vhd|2021-03-25|-   更新`Alibaba Cloud Linux 2.1903 LTS 64位`基础镜像到最新的软件版本，兼容最新CentOS 7.9版本，修复软件包安全漏洞
 -   修复CVE-2021-3156漏洞，即Linux sudo权限漏洞。更多信息，请参见[漏洞公告 \| Linux sudo权限漏洞（CVE-2021-3156）](/cn.zh-CN/动态与公告/安全公告/漏洞公告 | Linux sudo权限漏洞（CVE-2021-3156）.md)
 -   默认的网络配置服务切换为network-scripts
