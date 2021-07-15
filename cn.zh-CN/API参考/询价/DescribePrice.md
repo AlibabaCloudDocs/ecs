@@ -184,6 +184,22 @@
  默认值：Unlimited |
 |InstanceTypeList.N|RepeatList|否|ecs.g6.xlarge|实例规格。目前仅支持无限次保障服务设置单个实例规格。 |
 |DedicatedHostType|String|否|ddh.c5|专有宿主机的规格。您可以调用[DescribeDedicatedHostTypes](~~134240~~)接口获得最新的专有宿主机规格表。 |
+|SpotStrategy|String|否|NoSpot|按量付费实例的抢占策略。取值范围：
+
+ -   NoSpot：正常按量付费实例。
+-   SpotWithPriceLimit：设置上限价格的抢占式实例。
+-   SpotAsPriceGo：系统自动出价，最高按量付费价格。
+
+ 默认值：NoSpot
+
+ **说明：** 当`PriceUnit=Hour`、`Period=1`时，该参数才有效。由于`PriceUnit`默认值为`Hour`，`Period`默认值为`1`，因此您在设置该参数值时，无需设置`PriceUnit`和`Period`参数值。 |
+|SpotDuration|Integer|否|1|抢占式实例的保留时长，单位为小时。取值范围：0~6
+
+ -   保留时长2~6正在邀测中，如需开通请提交工单。
+-   取值为0，则为无保护期模式。
+
+ 默认值：1 |
+|ZoneId|String|否|cn-hagzhou-i|可用区ID。 |
 
 ## 返回数据
 
@@ -282,6 +298,7 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
+|400|InvalidSpotAuthorized|The specified Spot param is unauthorized.|指定的SpotDuration参数值未获得授权。|
 |400|InvalidInstanceType.ValueUnauthorized|The specified InstanceType is not authorized.|指定的实例规格未授权使用。|
 |400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|您指定的实例规格不存在，或者您没有权限操作此规格的实例。|
 |400|InvalidInternetChargeType.ValueNotSupported|The specified InternetChargeType is not valid.|暂不支持指定的网络付费类型的实例，请确认相关参数是否正确。|
@@ -290,59 +307,27 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 |400|InvalidDataDiskSize.ValueNotSupported|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|指定的DataDisk.n.Size超出允许范围，或者快照的容量超过指定磁盘类别的大小限制。|
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.n.Category" is not valid.|指定的参数DataDisk.n.Category不合法。|
 |400|InvalidParameter.Conflict|The specified image does not support the specified instance type.|指定的镜像不能用于指定的实例规格。|
-|403|ImageNotSubscribed|The specified image has not be subscribed.|指定的镜像未在镜像市场订阅。|
-|403|OperationDenied|The specified Image is disabled or is deleted.|指定的镜像被禁用或被删除。|
-|403|InvalidSystemDiskCategory.ValueUnauthorized|The disk category is not authorized.|该磁盘类别未经授权。|
-|403|InstanceDiskCategoryLimitExceed|The total size of specified disk category in an instance exceeds.|磁盘种类总容量超过实例限制。|
-|403|ImageRemovedInMarket|The specified market image is not available, Or the specified user defined image includes product code because it is based on an image subscribed from marketplace, and that image in marketplace includeing exact the same product code has been removed.|指定的市场镜像不可用，或者指定的用户定义镜像包含产品代码，因为它基于从市场订购的镜像，并且市场中包含完全相同的产品代码的镜像已被删除。|
-|403|QuotaExceed.PortableCloudDisk|The quota of portable cloud disk exceeds.|可卸载磁盘数量已达上限。|
-|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
 |400|InvalidNetworkType.Mismatch|Specified parameter "InternetChargeType" conflict with instance network type.|实例的网络类型不支持指定的网络计费方式。|
 |400|InvalidDiskCategory.Mismatch|The specified disk categories' combination is not supported.|不支持的磁盘种类搭配。|
-|403|Forbbiden|User not authorized to operate on the specified resource.|用户未被授权操作指定的资源。|
-|404|InvalidImageId.NotFound|The specified ImageId does not exist.|指定的镜像在该用户账号下不存在，请您检查镜像ID是否正确。|
-|403|InstanceDiskNumLimitExceed|The number of specified disk in an instance exceeds.|实例下磁盘数目超过限制。|
-|403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|指定的镜像不支持I/O优化型实例。|
-|403|ImageNotSupportInstanceType|The specified image don't support the InstanceType instance.|指定的镜像不支持此类实例规格。|
 |400|InvalidIoOptimizedValue.ValueNotSupported|IoOptimized value not supported.|不支持指定的I/O优化值。|
-|404|IoOptimized.NotSupported|The specified instancetype is not support IoOptimized instance|指定的实例规格不支持I/O优化。|
-|403|InvalidDiskSize.TooSmall|Specified disk size is less than the size of snapshot|指定的磁盘容量小于快照容量。|
-|403|OperationDenied|The type of the disk does not support the operation|此磁盘种类不支持指定的操作。|
-|404|InvalidInstanceChargeType.NotFound|The InstanceChargeType does not exist in our records|指定的实例计费方式不存在。|
 |400|InvalidPeriod|The specified period is not valid.|指定的时段不合法。|
-|403|InvalidDiskCategory.Mismatch|The specified disk categories combination is not supported.|不支持的磁盘种类搭配。|
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter " DataDisk.n.Category " is not valid.|指定的磁盘类型无效。|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter " SystemDisk.Category " is not valid.|指定的系统盘类型无效。|
-|403|InvalidDiskCategory.NotSupported|The specified disk category is not support the specified instance type.|指定的磁盘种类不支持该实例规格。|
-|403|InvalidDiskCategory.NotSupported|The upgrade operation of instance does not support this category of disk.|实例的升级操作不支持此类磁盘。|
 |400|InstanceDiskCategoryLimitExceed|The specified DataDisk.n.Size beyond the permitted range, or the capacity of snapshot exceeds the size limit of the specified disk category.|指定的DataDisk.n.Size超出允许范围，或者快照的容量超过了指定磁盘类别的大小限制。|
-|404|DependencyViolation.IoOptimized|The specified instancetype must be IoOptimized instance.|指定的实例规格必须为I/O优化实例，请您检查实例规格是否正确。|
-|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
-|404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the minimum size.|指定的SystemDisk.Size低于最小值。|
-|404|InvalidSystemDiskSize.MoreThanMaxSize|The specified parameter SystemDisk.Size is more than the maximum size|指定的SystemDisk.Size超过最大值。|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified vm bandwidth is not valid.|指定的虚拟机带宽无效。|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter SystemDisk.Category is not valid.|指定的SystemDisk.Category不合法。|
-|403|InvalidParameter.ResourceOwnerAccount|ResourceOwnerAccount is Invalid.|指定的ResourceOwnerAccount不合法。|
-|403|RegionUnauthorized|There is no authority to create instance in the specified region.|用户未被授权在指定的地域创建实例。|
-|404|InvalidSystemDiskSize.ValueNotSupported|The specified parameter SystemDisk.Size is invalid.|指定的SystemDisk.Size不合法。|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified parameter Bandwidth is not valid.|指定的Bandwidth不合法。|
 |400|InstanceDiskNumber.LimitExceed|The total number of specified disk in an instance exceeds.|实例下磁盘数目超过限制。|
 |400|InvalidDiskCategory.ValueNotSupported|The specified parameter "DiskCategory" is not valid.|指定的SystemDisk.Category参数有误。|
-|403|OperationDenied|The resource is out of usage.|该实例不在运行状态，请您启动实例或检查操作是否合理。|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|%s|参数InternetMaxBandwidthOut无效。|
 |400|InvalidDataDiskCategory.ValueNotSupported|%s|指定的数据磁盘类型无效。|
 |400|InvalidSystemDiskCategory.ValueNotSupported|%s|当前操作不支持此系统磁盘类型。|
 |400|InvalidParameter.Conflict|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |400|InvalidInternetChargeType.ValueNotSupported|%s|暂不支持指定的网络计费方式，请确认相关参数是否正确。|
 |400|InvalidInstanceType.ValueNotSupported|%s|该操作暂不支持指定的实例类型。|
-|403|InstanceType.Offline|%s|实例规格因停售、供货不足等原因，不支持该操作。|
 |400|RegionUnauthorized|%s|该地域未被授权。|
-|500|InternalError|%s|内部错误。|
 |400|InvalidSystemDiskSize.ValueNotSupported|%s|当前操作不支持设置的系统盘大小。|
 |400|InvalidDataDiskSize.ValueNotSupported|%s|指定的数据盘容量无效。|
-|404|InvalidInstanceType.Missing|The InstanceType parameter that is mandatory for processing the request is not provided.|InstanceType参数为必填参数。|
-|404|InvalidNetworkType.ValueNotSupported|The specified parameter NetworkType is not valid.|指定的网络类型不合法。|
-|404|InvalidDiskCategory.Missing|The DataDisk.1.Category parameter that is mandatory for processing the request is not provided.|没有指定数据盘类型。|
 |400|InvalidSystemDiskCategory.ValueNotSupported|The specified parameter "SystemDisk.Size" is not valid.|指定的SystemDisk.Size不合法。|
 |400|InvalidSystemDiskSize.LessThanImageSize|The specified parameter "SystemDisk.Size" is less than the image size.|指定的SystemDisk.Size小于镜像大小。|
 |400|InvalidDataDiskCategory.ValueNotSupported|The specified parameter "DataDisk.Category" is not valid.|指定的参数DataDisk.Category不合法。|
@@ -351,21 +336,53 @@ https://ecs.aliyuncs.com/?Action=DescribePrice
 |400|PriceNotFound|The price of your queried resource is not available now, please try other resources.|未找到价格，请修改相应的参数值重试。|
 |400|InvalidResourceType.ValueNotSupported|The specified parameter ResourceType is not valid.|指定的资源类型不合法。|
 |400|InvalidPriceUnit.ValueNotSupported|The specified parameter PriceUnit is not valid.|指定的单价不合法。|
-|403|OperationDenied|The specified parameter InstanceNetworkType is not authorized.|用户未被授权指定的实例网络类型。|
 |400|InvalidInternetMaxBandwidthOut.ValueNotSupported|The specified parameter InternetMaxBandwidthOut is not valid.|指定的公网出带宽最大值不合法。|
-|403|InvalidAmount.Malformed|The specified parameter Amount is not valid.|参数Amount格式错误。|
 |400|EncryptedOption.Conflict|%s|参数不支持（加密盘）。|
-|404|Invalid.InstanceId.NotFound|The Instance provided does not exist.|指定的实例不存在。|
+|403|ImageNotSubscribed|The specified image has not be subscribed.|指定的镜像未在镜像市场订阅。|
+|403|OperationDenied|The specified Image is disabled or is deleted.|指定的镜像被禁用或被删除。|
+|403|InvalidSystemDiskCategory.ValueUnauthorized|The disk category is not authorized.|该磁盘类别未经授权。|
+|403|InstanceDiskCategoryLimitExceed|The total size of specified disk category in an instance exceeds.|磁盘种类总容量超过实例限制。|
+|403|ImageRemovedInMarket|The specified market image is not available, Or the specified user defined image includes product code because it is based on an image subscribed from marketplace, and that image in marketplace includeing exact the same product code has been removed.|指定的市场镜像不可用，或者指定的用户定义镜像包含产品代码，因为它基于从市场订购的镜像，并且市场中包含完全相同的产品代码的镜像已被删除。|
+|403|QuotaExceed.PortableCloudDisk|The quota of portable cloud disk exceeds.|可卸载磁盘数量已达上限。|
+|403|Forbbiden|User not authorized to operate on the specified resource.|用户未被授权操作指定的资源。|
+|403|InstanceDiskNumLimitExceed|The number of specified disk in an instance exceeds.|实例下磁盘数目超过限制。|
+|403|IoOptimized.NotSupported|The specified image is not support IoOptimized Instance.|指定的镜像不支持I/O优化型实例。|
+|403|ImageNotSupportInstanceType|The specified image don't support the InstanceType instance.|指定的镜像不支持此类实例规格。|
+|403|InvalidDiskSize.TooSmall|Specified disk size is less than the size of snapshot|指定的磁盘容量小于快照容量。|
+|403|OperationDenied|The type of the disk does not support the operation|此磁盘种类不支持指定的操作。|
+|403|InvalidDiskCategory.Mismatch|The specified disk categories combination is not supported.|不支持的磁盘种类搭配。|
+|403|InvalidDiskCategory.NotSupported|The specified disk category is not support the specified instance type.|指定的磁盘种类不支持该实例规格。|
+|403|InvalidDiskCategory.NotSupported|The upgrade operation of instance does not support this category of disk.|实例的升级操作不支持此类磁盘。|
+|403|InvalidParameter.ResourceOwnerAccount|ResourceOwnerAccount is Invalid.|指定的ResourceOwnerAccount不合法。|
+|403|RegionUnauthorized|There is no authority to create instance in the specified region.|用户未被授权在指定的地域创建实例。|
+|403|OperationDenied|The resource is out of usage.|该实例不在运行状态，请您启动实例或检查操作是否合理。|
+|403|InstanceType.Offline|%s|实例规格因停售、供货不足等原因，不支持该操作。|
+|403|OperationDenied|The specified parameter InstanceNetworkType is not authorized.|用户未被授权指定的实例网络类型。|
+|403|InvalidAmount.Malformed|The specified parameter Amount is not valid.|参数Amount格式错误。|
 |403|InvalidDiskSize.TooSmall|Specified system disk size is less than the size of image|指定的系统盘容量小于此镜像的大小。|
-|404|InvalidMarketImage.NotFound|The specified marketplace image does not exist, please change the imageId and try again.|指定的市场镜像不存在，请更改参数后重试。|
 |403|InvalidChargeType.MarketImage|The specified chargeType of marketplace image is invalid|该市场镜像的付费类型无效。|
 |403|InvalidDiskIds.NotFound|Some of the specified disks do not exist.|指定的磁盘不存在。|
 |403|InvalidDiskCategory.NotSupported|The specified disk category is not supported.|指定的云盘类型不支持当前操作。|
 |403|PrePaidInstance.Expired|The prePaid instance has expired.|包年包月实例已到期。|
+|403|InvalidAction.Unauthorized|The specified action is not valid.|指定的操作无效。|
+|404|InvalidImageId.NotFound|The specified ImageId does not exist.|指定的镜像在该用户账号下不存在，请您检查镜像ID是否正确。|
+|404|IoOptimized.NotSupported|The specified instancetype is not support IoOptimized instance|指定的实例规格不支持I/O优化。|
+|404|InvalidInstanceChargeType.NotFound|The InstanceChargeType does not exist in our records|指定的实例计费方式不存在。|
+|404|DependencyViolation.IoOptimized|The specified instancetype must be IoOptimized instance.|指定的实例规格必须为I/O优化实例，请您检查实例规格是否正确。|
+|404|InvalidSystemDiskSize.LessThanImageSize|The specified parameter SystemDisk.Size is less than the image size.|指定的参数SystemDisk.Size小于镜像文件大小数值。|
+|404|InvalidSystemDiskSize.LessThanMinSize|The specified parameter SystemDisk.Size is less than the minimum size.|指定的SystemDisk.Size低于最小值。|
+|404|InvalidSystemDiskSize.MoreThanMaxSize|The specified parameter SystemDisk.Size is more than the maximum size|指定的SystemDisk.Size超过最大值。|
+|404|InvalidSystemDiskSize.ValueNotSupported|The specified parameter SystemDisk.Size is invalid.|指定的SystemDisk.Size不合法。|
+|404|InvalidInstanceType.Missing|The InstanceType parameter that is mandatory for processing the request is not provided.|InstanceType参数为必填参数。|
+|404|InvalidNetworkType.ValueNotSupported|The specified parameter NetworkType is not valid.|指定的网络类型不合法。|
+|404|InvalidDiskCategory.Missing|The DataDisk.1.Category parameter that is mandatory for processing the request is not provided.|没有指定数据盘类型。|
+|404|Invalid.InstanceId.NotFound|The Instance provided does not exist.|指定的实例不存在。|
+|404|InvalidMarketImage.NotFound|The specified marketplace image does not exist, please change the imageId and try again.|指定的市场镜像不存在，请更改参数后重试。|
 |404|InvalidDiskIds.NotPortable|The specified DiskId is not portable.|指定的磁盘是不可移植的。|
 |404|InvalidSystemDisk.NotFound|The specified system disk does not exist.|指定的系统盘不存在。|
 |404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
-|403|InvalidAction.Unauthorized|The specified action is not valid.|指定的操作无效。|
+|500|InternalError|The request processing has failed due to some unknown error.|内部错误，请重试。如果多次尝试失败，请提交工单。|
+|500|InternalError|%s|内部错误。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
