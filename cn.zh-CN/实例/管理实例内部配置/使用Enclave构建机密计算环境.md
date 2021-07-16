@@ -45,6 +45,8 @@
 
         ![随实例安装](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9345962161/p240198.png)
 
+        **说明：** 通过OpenAPI创建Enclave机密计算的ECS实例时，只能调用[RunInstances](/cn.zh-CN/API参考/实例/RunInstances.md)实现，[CreateInstance](/cn.zh-CN/API参考/实例/CreateInstance.md)目前不支持设置机密计算模式参数（`SecurityOptions.ConfidentialComputingMode`）。
+
     -   在创建ECS实例后，运行以下命令，在主VM中安装Enclave Runtime工具集。
 
         ```
