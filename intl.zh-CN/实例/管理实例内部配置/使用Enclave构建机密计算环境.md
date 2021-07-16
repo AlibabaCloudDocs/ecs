@@ -123,9 +123,9 @@
 
     构建成功后，应用和Enclave所在路径分别为/opt/app-root/src/build/SampleMath/App/app和/opt/app-root/src/build/SampleMath/Enclave/enclave.signed.so。
 
-4.  将应用上传至主实例。
+4.  将应用上传至主VM。
 
-5.  在ECS主VM上启动Enclave，并执行示例代码SampleMath，然后查看执行结果。
+5.  在主VM上启动Enclave，并执行示例代码SampleMath，然后查看执行结果。
 
     ```
     [root@AliYun ~]# ./app
