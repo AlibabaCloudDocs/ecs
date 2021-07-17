@@ -34,7 +34,7 @@ Features
     -   Uses 2.55 GHz AMD EPYCTM MILAN processors that deliver a maximum single-core turbo frequency of 3.5 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -71,7 +71,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## r7, memory optimized instance family
 
@@ -118,11 +118,11 @@ Instance types
 
 -   If you use Virtual Network Computing \(VNC\) to log on to a Windows instance, two cursors may appear. For information about how to fix this issue, see the “Why do two cursors appear after I use VNC to log on to a Windows instance?” section in [Instance FAQ](/intl.en-US/Instance/Instance FAQ.mdsection_jma_ml8_us3).
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## r7t, security-enhanced memory optimized instance family
 
-This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+This instance family is in the beta testing phase.
 
 Features
 
@@ -170,7 +170,7 @@ Instance types
 -   The instance family is in invitational preview. Resources are limited. No service level agreement \(SLA\) compliance is ensured. To use this instance family, submit an application based on your minimum business requirements.
 -   Intel Ice Lake supports only remote attestation based on Intel SGX DCAP, and does not support remote attestation based on Intel EPID. You must adapt applications before you can use the remote attestation feature. For more information about remote attestation, see [attestation-service](https://software.intel.com/content/www/us/en/develop/topics/software-guard-extensions/attestation-services.html).
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## re6p, persistent memory optimized instance family
 
@@ -223,7 +223,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## r6a, memory optimized instance family
 
@@ -235,7 +235,7 @@ Features
     -   Uses 2.6 GHz AMD EPYCTM ROME processors that deliver a turbo frequency of 3.3 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -271,7 +271,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## r6e, memory optimized instance family with enhanced performance
 
@@ -283,7 +283,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269 processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -319,7 +319,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 -   The results for network capabilities are the maximum values obtained from single item tests. For example, when network bandwidth is tested, no stress tests are performed on the packet forwarding rate or other network metrics.
 
 ## r6, memory optimized instance family
@@ -332,7 +332,7 @@ Features
     -   Uses 2.5 GHz Intel® Xeon® Platinum 8269CY \(Cascade Lake\) processors that deliver a turbo frequency of 3.2 GHz for consistent computing performance.
     -   Allows you to enable or disable Hyper-Threading.
 
-        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize CPU options](/intl.en-US/Instance/Manage instances/Customize CPU options/Customize CPU options.md).
+        **Note:** By default, Hyper-Threading is enabled on ECS instances. For more information, see [Customize and view CPU options](/intl.en-US/Instance/Manage instance attributes/Customize CPU options/Customize and view CPU options.md).
 
 -   Storage:
     -   Is an instance family in which all instances are I/O optimized.
@@ -372,7 +372,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## re6, high memory instance family
 
@@ -403,7 +403,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## r5, memory optimized instance family
 
@@ -444,7 +444,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## re4, high memory instance family
 
@@ -476,7 +476,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## re4e, high memory instance family
 
@@ -505,7 +505,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## se1ne, memory optimized instance family with enhanced network performance
 
@@ -543,7 +543,7 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## se1, memory optimized instance family
 
@@ -576,10 +576,10 @@ Instance types
 **Note:**
 
 -   You can go to the [ECS Instance Types Available for Each Region page](https://ecs-buy.aliyun.com/instanceTypes/#/instanceTypeByRegion) to view the instance types available in each region.
--   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance family.md).
+-   For more information about these specifications, see [Description of instance specifications](/intl.en-US/Instance/Instance families.md).
 
 ## References
 
--   [Instance family](/intl.en-US/Instance/Instance family.md)
+-   [Instance families](/intl.en-US/Instance/Instance families.md)
 -   [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md)
 
