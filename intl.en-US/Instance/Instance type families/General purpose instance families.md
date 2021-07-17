@@ -128,7 +128,7 @@ Instance types
 
 ## g7t, security-enhanced general purpose instance family
 
-This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+This instance family is in the beta testing phase.
 
 Features
 
@@ -179,7 +179,7 @@ Instance types
 
 ## g7ne, general purpose instance family with enhanced network performance
 
-This instance family is in the beta testing phase.
+This instance family is in the beta testing phase.
 
 Features
 
