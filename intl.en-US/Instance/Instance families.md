@@ -250,7 +250,7 @@ Instance types
 
 ## g7t, security-enhanced general purpose instance family
 
-This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+This instance family is in the beta testing phase.
 
 Features
 
@@ -301,7 +301,7 @@ Instance types
 
 ## g7ne, general purpose instance family with enhanced network performance
 
-This instance family is in the beta testing phase.
+This instance family is in the beta testing phase.
 
 Features
 
@@ -832,7 +832,7 @@ Instance types
 
 ## c7t, security-enhanced compute optimized instance family
 
-This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+This instance family is in the beta testing phase.
 
 Features
 
@@ -1261,7 +1261,7 @@ Instance types
 
 ## r7t, security-enhanced memory optimized instance family
 
-This instance family is in invitational preview. To use this instance family, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
+This instance family is in the beta testing phase.
 
 Features
 
@@ -1594,8 +1594,6 @@ Features
 
     If a local disk fails, you receive a notification about the system event. You can respond to the system event by initiating the process of fixing the damaged disk. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
 
-    -   If a backup disk is available on the physical machine, Alibaba Cloud online replaces the damaged disk with the backup disk.
-    -   If no backup disks are available on the physical machine, the disk hardware must be manually replaced before Alibaba Cloud can replace the damaged disk.
     **Note:** After you initiate the process of fixing the damaged disk, data in the damaged disk cannot be recovered.
 
 -   Compute:
@@ -1634,8 +1632,6 @@ Features
 
     If a local disk fails, you receive a notification about the system event. You can respond to the system event by initiating the process of fixing the damaged disk. For more information, see [Overview of system events on ECS instances equipped with local disks](/intl.en-US/Deployment & Maintenance/System events/System events on ECS instances equipped with local disks/Overview of system events on ECS instances equipped with local disks.md).
 
-    -   If a backup disk is available on the physical machine, Alibaba Cloud online replaces the damaged disk with the backup disk.
-    -   If no backup disks are available on the physical machine, the disk hardware must be manually replaced before Alibaba Cloud can replace the damaged disk.
     **Note:** After you initiate the process of fixing the damaged disk, data in the damaged disk cannot be recovered.
 
 -   Compute:
