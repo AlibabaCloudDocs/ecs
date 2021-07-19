@@ -113,6 +113,7 @@
 |ExtendedAttribute|Struct| |事件扩展属性。 |
 |Device|String|/dev/vda|本地盘设备名。 |
 |DiskId|String|d-diskid1|本地盘ID。 |
+|HostId|String|dh-bp1ewce1gk3iwv2\*\*\*\*|宿主机ID。 |
 |HostType|String|ddh|宿主机类型。可能值：
 
  -   ddh：专有宿主机
