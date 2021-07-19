@@ -42,7 +42,7 @@
 -   snapshotpolicy：自动快照策略
 -   elasticityassurance：弹性保障
 -   capacityreservation：容量预定 |
-|TagFilter.N.TagKey|String|是|env|模糊查找ECS资源时使用的标签键。标签键长度的取值范围：1~128。N的取值范围：1~5
+|TagFilter.N.TagKey|String|否|env|模糊查找ECS资源时使用的标签键。标签键长度的取值范围：1~128。N的取值范围：1~5
 
  `TagFilter.N`用于模糊查找绑定了指定标签的ECS资源，由一个键和一个或多个值组成。模糊查询可能会有2秒延时，仅支持模糊过滤后资源数小于等于5000的情况。
 
@@ -145,28 +145,28 @@ https://ecs.aliyuncs.com/?Action=ListTagResources
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
+|400|NumberExceed.ResourceIds|The ResourceIds parameter's number is exceed , Valid : 50|参数“ResourceIds”中包含的“ResourceId”不能超过 50 个。|
+|400|NumberExceed.Tags|The Tags parameter's number is exceed , Valid : 20|标签个数超过最大限制，本操作最多可以操作 20 个标签。|
+|400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
+|400|OperationDenied.QuotaExceed|The quota of tags on resource is beyond permitted range.|资源标签已达上限。|
+|400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|指定的Tag.N.Key和Tag.N.Value不匹配。|
+|400|InvalidTagCount|The specified tags are beyond the permitted range.|指定的标记超出取值范围。|
+|400|Invalid.Scope|The specified scope is invalid.|可见范围参数无效。|
+|403|PermissionDenied.TagOwnerUid|The specified operator not have permission to set TagOwnerUid value.|无权设置标签归属者。|
+|403|PermissionDenied.Scope|The specified operator not have permission to set Scope value.|指定的操作员无权设置范围值。|
+|403|InvalidResourceId.NotSupported|The specified ResourceId does not support tagging.|指定的资源ID不支持标记。|
+|403|NoPermission.Tag|The operator is not permission for the tag.|您没有操作该资源标签的权限。|
 |404|InvalidRegionId.NotFound|%s|提供的地域ID不存在。|
 |404|MissingParameter.TagOwnerUid|The parameter - TagOwnerUid should not be null|参数TagOwnerUid不能为空。|
 |404|MissingParameter.TagOwnerBid|The parameter - TagOwnerBid should not be null|参数TagOwnerBid不能为空。|
 |404|MissingParameter.ResourceType|The parameter - ResourceType should not be null|参数ResourceType不能为空。|
 |404|MissingParameter.Tags|The parameter - Tags should not be null|参数Tags不能为空。|
 |404|MissingParameter.RegionId|The parameter - RegionId should not be null|参数RegionId不能为空。|
-|403|PermissionDenied.TagOwnerUid|The specified operator not have permission to set TagOwnerUid value.|无权设置标签归属者。|
-|403|PermissionDenied.Scope|The specified operator not have permission to set Scope value.|指定的操作员无权设置范围值。|
-|400|NumberExceed.ResourceIds|The ResourceIds parameter's number is exceed , Valid : 50|参数“ResourceIds”中包含的“ResourceId”不能超过 50 个。|
-|400|NumberExceed.Tags|The Tags parameter's number is exceed , Valid : 20|标签个数超过最大限制，本操作最多可以操作 20 个标签。|
-|400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
 |404|InvalidResourceId.NotFound|The specified ResourceIds are not found in our records.|指定的资源不存在，请检查参数ResourceId是否正确。|
 |404|InvalidResourceType.NotFound|The ResourceType provided does not exist in our records.|指定的资源类型不存在。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
-|400|OperationDenied.QuotaExceed|The quota of tags on resource is beyond permitted range.|资源标签已达上限。|
-|403|InvalidResourceId.NotSupported|The specified ResourceId does not support tagging.|指定的资源ID不支持标记。|
-|400|InvalidTag.Mismatch|The specified Tag.n.Key and Tag.n.Value are not match.|指定的Tag.N.Key和Tag.N.Value不匹配。|
-|400|InvalidTagCount|The specified tags are beyond the permitted range.|指定的标记超出取值范围。|
 |404|InvalidRegionId.NotFound|The specified RegionId does not exist.|指定的地域ID不存在。|
-|400|Invalid.Scope|The specified scope is invalid.|可见范围参数无效。|
-|403|NoPermission.Tag|The operator is not permission for the tag.|您没有操作该资源标签的权限。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
 
