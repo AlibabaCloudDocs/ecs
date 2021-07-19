@@ -19,7 +19,7 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
 
 ## 版本说明
 
-不同云平台及不同版本之间的cloud-init不完全兼容，请选择合适的版本并配置合适的数据源（datasource）。其中，阿里云cloud-init的最新版本为19.1.7，数据源为`Aliyun`。
+不同云平台及不同版本之间的cloud-init不完全兼容，请选择合适的版本并配置合适的数据源（datasource）。其中，阿里云cloud-init的最新版本为19.1.10，数据源为`Aliyun`。
 
 **说明：** 安装后，cloud-init默认开机自启动，若您选择的版本不兼容或数据源配置不当，下次重启服务器时可能导致cloud-init运行异常、系统启动缓慢，甚至无法正常启动系统。因此，请选择较高版本，以及合适的数据源（如`Aliyun`）。
 
@@ -51,14 +51,14 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
     cloud-init --version
     ```
 
-    如果返回版本低于社区0.7.9版本，您需要安装阿里云版cloud-init 19.1.7。
+    如果返回版本低于社区0.7.9版本，您需要安装阿里云版cloud-init 19.1.10。
 
 4.  完成服务器数据备份。
 
 
-## （推荐）安装阿里云版cloud-init 19.1.7
+## （推荐）安装阿里云版cloud-init 19.1.10
 
-按以下步骤，下载数据源为`Aliyun`的19.1.7版本cloud-init。
+按以下步骤，下载数据源为`Aliyun`的19.1.10版本cloud-init。
 
 1.  确保源服务器已安装Python PIP依赖库。
 
@@ -85,19 +85,19 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
 2.  运行以下命令下载阿里云版cloud-init。
 
     ```
-    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloudinit/cloud-init-19.1.10.tgz
     ```
 
 3.  运行以下命令解压cloud-init安装包到当前目录。
 
     ```
-    tar -zxvf cloud-init-19.1.7.tgz
+    tar -zxvf cloud-init-19.1.10.tgz
     ```
 
 4.  进入cloud-init目录下，并安装依赖库。
 
     ```
-    cd ./cloud-init-19.1.7
+    cd ./cloud-init-19.1.10
     pip3 install -r ./requirements.txt
     ```
 
@@ -131,7 +131,7 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
 
 不同Linux发行平台安装阿里云cloud-init的shell脚本示例如下，供您参考。实际安装时，请根据您的操作系统适当调整脚本。
 
--   CentOS 6/7
+-   CentOS 7/8
 
     ```
     # 检查安装python3-pip
@@ -141,14 +141,14 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
     # 备份旧版cloud-init
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # 下载并解压阿里云版cloud-init
-    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
-    tar -zxvf ./cloud-init-19.1.7.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.10.tgz
+    tar -zxvf ./cloud-init-19.1.10.tgz
     # 安装cloud-init
     issue_major=$( cat /etc/redhat-release | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh centos "$issue_major"
     ```
 
--   Red Hat Enterprise Linux 6/7
+-   Red Hat Enterprise Linux 7/8
 
     ```
     # 检查安装python3-pip
@@ -158,14 +158,14 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
     # 备份旧版cloud-init
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # 下载并解压阿里云版cloud-init
-    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
-    tar -zxvf ./cloud-init-19.1.7.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.10.tgz
+    tar -zxvf ./cloud-init-19.1.10.tgz
     # 安装cloud-init
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh rhel "$issue_major"
     ```
 
--   Ubuntu 14/16/18
+-   Ubuntu 16/18/20
 
     ```
     # 检查安装python3-pip
@@ -175,14 +175,14 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
     # 备份旧版cloud-init
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # 下载并解压阿里云版cloud-init
-    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
-    tar -zxvf ./cloud-init-19.1.7.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.10.tgz
+    tar -zxvf ./cloud-init-19.1.10.tgz
     # 安装cloud-init
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh ubuntu "$issue_major"
     ```
 
--   Debian 8/9
+-   Debian 9/10
 
     ```
     # 检查安装python3-pip
@@ -192,14 +192,14 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
     # 备份旧版cloud-init
     test -d /etc/cloud && mv /etc/cloud /etc/cloud-old
     # 下载并解压阿里云版cloud-init
-    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
-    tar -zxvf ./cloud-init-19.1.7.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.10.tgz
+    tar -zxvf ./cloud-init-19.1.10.tgz
     # 安装cloud-init
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh debian "$issue_major"
     ```
 
--   SUSE 11/12
+-   SUSE 12/15
 
     ```
     # 检查安装python3-pip
@@ -209,14 +209,14 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
     # 备份旧版cloud-init
     test -d /etc/cloud && mv /etc/cloud/etc/cloud-old
     # 下载并解压阿里云版cloud-init
-    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
-    tar -zxvf ./cloud-init-19.1.7.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.10.tgz
+    tar -zxvf ./cloud-init-19.1.10.tgz
     # 安装cloud-init
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh sles "$issue_major"
     ```
 
--   OpenSUSE 13/42
+-   OpenSUSE 15
 
     ```
     # 检查安装python3-pip
@@ -226,8 +226,8 @@ cloud-init是云平台为Linux操作系统的虚拟机做系统初始化配置�
     # 备份旧版cloud-init
     test -d /etc/cloud && mv /etc/cloud/etc/cloud-old
     # 下载并解压阿里云版cloud-init
-    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.7.tgz
-    tar -zxvf ./cloud-init-19.1.7.tgz
+    wget https://ecs-image-tools.oss-cn-hangzhou.aliyuncs.com/cloud-init-19.1.10.tgz
+    tar -zxvf ./cloud-init-19.1.10.tgz
     # 安装cloud-init
     issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
     bash ./cloud-init-*/tools/deploy.sh opensuse"$issue_major"
