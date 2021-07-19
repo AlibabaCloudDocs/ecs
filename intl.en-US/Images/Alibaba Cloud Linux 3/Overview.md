@@ -4,7 +4,7 @@ keyword: [ECS, Alibaba Cloud Linux, Alibaba Cloud Linux 3, Linux, image, operati
 
 # Overview
 
-Alibaba Cloud Linux 3 is the third release of the Linux operating system provided by Alibaba Cloud. In addition to all of the features inherited from Alibaba Cloud Linux 2, Alibaba Cloud Linux 3 offers a better cloud operating system experience and provides improved security, stability, and runtime performance. You can create Elastic Compute Service \(ECS\) instances from Alibaba Cloud Linux 3 images. Alibaba Cloud Linux 3 images are free to use, and Alibaba Cloud provides long-term technical support \(LTS\) for them.
+Alibaba Cloud Linux 3 is the third edition of the Linux operating system developed by Alibaba Cloud and is fully compatible with the CentOS 8 ecosystem. In addition to all the proprietary features inherited from Alibaba Cloud Linux 2, Alibaba Cloud Linux 3 offers a better cloud operating system experience and provides improved security, stability, and runtime performance. You can create Elastic Compute Service \(ECS\) instances from Alibaba Cloud Linux 3 images. Alibaba Cloud Linux 3 images are free to use, and Alibaba Cloud provides long-term technical support \(LTS\) for them.
 
 ## Scenarios
 
@@ -18,10 +18,10 @@ Alibaba Cloud Linux 3 is suitable for the following scenarios:
 
 ## Benefits
 
-Alibaba Cloud Linux 3 inherits all of the benefits of Alibaba Cloud Linux 2. Compared with other Linux distributions, Alibaba Cloud Linux 3 has the following advantages:
+Alibaba Cloud Linux 3 inherits all the benefits of Alibaba Cloud Linux 2. Compared with other Linux distributions, Alibaba Cloud Linux 3 has the following advantages:
 
 -   Alibaba Cloud provides free software maintenance and technical support for Alibaba Cloud Linux 3 until April 30, 2029.
--   Alibaba Cloud Linux 3 uses Linux Kernel 5.10 LTS as the kernel to provide the latest enhanced operating system features from the Linux community to power cloud-based application environments.
+-   Alibaba Cloud Linux 3 uses Linux Kernel 5.10 LTS as the kernel to provide the latest enhanced operating system features from the Linux community to improve cloud-based application environments.
 -   Alibaba Cloud Linux 3 uses GCC 10.2, binutils 2.35, and glibc 2.32 to enhance stability and improve compatibility with other software.
 -   Alibaba Cloud Linux 3 is compatible with the CentOS 8 and RHEL 8 software ecosystems.
 -   Alibaba Cloud Linux 3 is optimized for integration with the Alibaba Cloud infrastructure and provides faster system startup and higher runtime performance.
@@ -39,20 +39,25 @@ Alibaba Cloud Linux 3 images are provided for free. However, you must pay for ot
 
 ## Obtain Alibaba Cloud Linux 3 images
 
-You can use the following methods to obtain and use Alibaba Cloud Linux 3 images:
+You can use one of the following methods to obtain and use Alibaba Cloud Linux 3 images:
 
--   When you create an ECS instance, select **Public Image**, and then select Alibaba Cloud Linux 3 and its version. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
--   Change the operating system of an existing ECS instance to Alibaba Cloud Linux 3 by replacing the system disk. For more information, see [Replace the system disk \(public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace the system disk (public images).md).
+-   ECS instances
+    -   When you create an ECS instance, select **Public Image**, and then select Alibaba Cloud Linux 3 and its version. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
+    -   Change the operating system of an existing ECS instance to Alibaba Cloud Linux 3 by replacing the system disk. For more information, see [Replace the system disk \(public images\)](/intl.en-US/Block Storage/Cloud disks/Change the operating system/Replace the system disk (public images).md).
+-   On-premises environments such as a virtualization environment based on Kernel-based Virtual Machine \(KVM\)
+
+    Download and install an Alibaba Cloud Linux 3 image, and then restart the system. For more information, see [Use Alibaba Cloud Linux 3 images in an on-premises environment](/intl.en-US/Images/Alibaba Cloud Linux 3/Features and interfaces supported by Alibaba Cloud Linux 3/Use Alibaba Cloud Linux 3 images in an on-premises environment.md).
+
 
 ## Update history
 
-For more information about the release notes of Alibaba Cloud Linux 3 images, see [Release notes](/intl.en-US/Images/Alibaba Cloud Linux 3/Release notes.md).
+For information about the release notes of Alibaba Cloud Linux 3 images, see [Release notes](/intl.en-US/Images/Alibaba Cloud Linux 3/Release notes.md).
 
 ## Technical support
 
 Alibaba Cloud provides the following technical support for Alibaba Cloud Linux 3:
 
--   Eight years of LTS is provided in the form of security updates and vulnerability fixes until the release lifecycle ends on April 30, 2029. You can use one of the following methods to obtain free LTS:
+-   Eight years of LTS is guaranteed in the form of security updates and vulnerability fixes until the release lifecycle ends on April 30, 2029. You can use one of the following methods to obtain free LTS:
     -   [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)
     -   [GitHub](https://alibaba.github.io/cloud-kernel/os.html?spm=5176.cnalinux.0.0.1f8323d1WpS5ZY&aly_as=32Di8ZOj)
 -   Images are updated every four months. Updates cover new features, security updates, and vulnerability fixes.
